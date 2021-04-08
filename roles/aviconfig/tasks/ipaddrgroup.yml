@@ -1,0 +1,32 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi IpAddrGroup | Create or Update IpAddrGroup
+  vmware.alb.avi_ipaddrgroup:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    addrs: "{{ item.addrs | default(omit) }}"
+    apic_epg_name: "{{ item.apic_epg_name | default(omit) }}"
+    country_codes: "{{ item.country_codes | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
+    ip_ports: "{{ item.ip_ports | default(omit) }}"
+    labels: "{{ item.labels | default(omit) }}"
+    marathon_app_name: "{{ item.marathon_app_name | default(omit) }}"
+    marathon_service_port: "{{ item.marathon_service_port | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    prefixes: "{{ item.prefixes | default(omit) }}"
+    ranges: "{{ item.ranges | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+  when:
+    - (avi_role_state_mode == "present" and avi_config_state == "present")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.ipaddrgroup | default([]) }}"

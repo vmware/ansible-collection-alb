@@ -1,0 +1,39 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi ServerAutoScalePolicy | Delete ServerAutoScalePolicy
+  vmware.alb.avi_serverautoscalepolicy:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    delay_for_server_garbage_collection: "{{ item.delay_for_server_garbage_collection | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
+    intelligent_autoscale: "{{ item.intelligent_autoscale | default(omit) }}"
+    intelligent_scalein_margin: "{{ item.intelligent_scalein_margin | default(omit) }}"
+    intelligent_scaleout_margin: "{{ item.intelligent_scaleout_margin | default(omit) }}"
+    labels: "{{ item.labels | default(omit) }}"
+    max_scalein_adjustment_step: "{{ item.max_scalein_adjustment_step | default(omit) }}"
+    max_scaleout_adjustment_step: "{{ item.max_scaleout_adjustment_step | default(omit) }}"
+    max_size: "{{ item.max_size | default(omit) }}"
+    min_size: "{{ item.min_size | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    scalein_alertconfig_refs: "{{ item.scalein_alertconfig_refs | default(omit) }}"
+    scalein_cooldown: "{{ item.scalein_cooldown | default(omit) }}"
+    scaleout_alertconfig_refs: "{{ item.scaleout_alertconfig_refs | default(omit) }}"
+    scaleout_cooldown: "{{ item.scaleout_cooldown | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    use_predicted_load: "{{ item.use_predicted_load | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+  when:
+    - (item.name | length > 0)
+    - (not (item.system_default | default(false)))
+    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.serverautoscalepolicy | default([]) }}"

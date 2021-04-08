@@ -1,0 +1,46 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi SSLKeyAndCertificate | Delete SSLKeyAndCertificate
+  vmware.alb.avi_sslkeyandcertificate:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    ca_certs: "{{ item.ca_certs | default(omit) }}"
+    certificate: "{{ item.certificate | default(omit) }}"
+    certificate_base64: "{{ item.certificate_base64 | default(omit) }}"
+    certificate_management_profile_ref: "{{ item.certificate_management_profile_ref | default(omit) }}"
+    created_by: "{{ item.created_by | default(omit) }}"
+    dynamic_params: "{{ item.dynamic_params | default(omit) }}"
+    enable_ocsp_stapling: "{{ item.enable_ocsp_stapling | default(omit) }}"
+    enckey_base64: "{{ item.enckey_base64 | default(omit) }}"
+    enckey_name: "{{ item.enckey_name | default(omit) }}"
+    format: "{{ item.format | default(omit) }}"
+    hardwaresecuritymodulegroup_ref: "{{ item.hardwaresecuritymodulegroup_ref | default(omit) }}"
+    key: "{{ item.key | default(omit) }}"
+    key_base64: "{{ item.key_base64 | default(omit) }}"
+    key_params: "{{ item.key_params | default(omit) }}"
+    key_passphrase: "{{ item.key_passphrase | default(omit) }}"
+    labels: "{{ item.labels | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    ocsp_config: "{{ item.ocsp_config | default(omit) }}"
+    ocsp_error_status: "{{ item.ocsp_error_status | default(omit) }}"
+    ocsp_responder_url_list_from_certs: "{{ item.ocsp_responder_url_list_from_certs | default(omit) }}"
+    ocsp_response_info: "{{ item.ocsp_response_info | default(omit) }}"
+    status: "{{ item.status | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    type: "{{ item.type | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+  when:
+    - (item.name | length > 0)
+    - (not (item.system_default | default(false)))
+    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.sslkeyandcertificate | default([]) }}"

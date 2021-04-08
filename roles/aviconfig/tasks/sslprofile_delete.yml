@@ -1,0 +1,41 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi SSLProfile | Delete SSLProfile
+  vmware.alb.avi_sslprofile:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    accepted_ciphers: "{{ item.accepted_ciphers | default(omit) }}"
+    accepted_versions: "{{ item.accepted_versions | default(omit) }}"
+    cipher_enums: "{{ item.cipher_enums | default(omit) }}"
+    ciphersuites: "{{ item.ciphersuites | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
+    dhparam: "{{ item.dhparam | default(omit) }}"
+    ec_named_curve: "{{ item.ec_named_curve | default(omit) }}"
+    enable_early_data: "{{ item.enable_early_data | default(omit) }}"
+    enable_ssl_session_reuse: "{{ item.enable_ssl_session_reuse | default(omit) }}"
+    labels: "{{ item.labels | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    prefer_client_cipher_ordering: "{{ item.prefer_client_cipher_ordering | default(omit) }}"
+    send_close_notify: "{{ item.send_close_notify | default(omit) }}"
+    signature_algorithm: "{{ item.signature_algorithm | default(omit) }}"
+    ssl_rating: "{{ item.ssl_rating | default(omit) }}"
+    ssl_session_timeout: "{{ item.ssl_session_timeout | default(omit) }}"
+    tags: "{{ item.tags | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    type: "{{ item.type | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+  when:
+    - (item.name | length > 0)
+    - (not (item.system_default | default(false)))
+    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.sslprofile | default([]) }}"

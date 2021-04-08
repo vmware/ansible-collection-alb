@@ -1,0 +1,155 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+
+- name: Check ansible version
+  when:
+    - ansible_version.full is version_compare('2.4', '<')
+  debug: msg="This role works best with ansible version 2.4 or greater. It is recommended to use the latest ansible version for the best experience."
+
+- name: Avi Config | Load Avi controller creds
+  include_vars:
+    file: "{{ avi_creds_file }}"
+  when:
+    - avi_creds_file is defined
+
+- name: Avi Config | Load configuration file
+  include_vars:
+    file: "{{ avi_config_file }}"
+    name: cfg_file_vars
+  when:
+    - avi_config_file is defined
+
+- name: Avi Config | Set Avi Config variable from file contents
+  set_fact:
+    avi_role_cfg: "{{ cfg_file_vars.avi_config }}"
+  when:
+    - avi_config_file is defined
+
+- name: Avi Config | Setting Avi role config to parameter avi_config
+  set_fact:
+    avi_role_cfg: "{{ avi_config | default({}) }}"
+  when:
+    - avi_config_file is not defined
+
+- name: Initialize Avi module includes
+  set_fact:
+    config_resources: []
+
+- name: Avi Config | Check tenant exists
+  vmware.alb.avi_api_session:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username  | default(omit) }}"
+    password: "{{ avi_password  | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    http_method: get
+    path: "tenant"
+    params:
+      name: "{{ item.name | default('admin') }}"
+  with_items: "{{ avi_role_cfg.tenant | default([]) }}"
+  register: tenant_res
+
+- name: Avi Config | Create Tenant
+  include_tasks: "tenant.yml"
+  vars:
+    avi_role_state_mode: present
+  when:
+    - tenant_res.results[0] is defined
+    - tenant_res.results[0].obj is defined
+    - tenant_res.results[0].obj.count == 0
+
+- name: Avi Config | Fetch cloud status
+  vmware.alb.avi_api_session:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username  | default(omit) }}"
+    password: "{{ avi_password  | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    http_method: get
+    path: "cloud-inventory"
+    params:
+      name: "{{ item.name }}"
+  with_items: "{{ avi_role_cfg.cloud | default([]) }}"
+  register: cloud_res
+
+- name: Avi Config | Create no access cloud
+  include_tasks: "no_access_cloud.yml"
+  vars:
+    avi_role_state_mode: present
+  when:
+    - cloud_res.results[0] is defined
+    - cloud_res.results[0].obj is defined
+    - cloud_res.results[0].obj.count == 0
+
+- name: Avi Config | Create no access cloud before delete
+  include_tasks: "no_access_cloud.yml"
+  vars:
+    avi_role_state_mode: present
+  when:
+    - cloud_res.results[0] is defined
+    - cloud_res.results[0].obj is defined
+    - cloud_res.results[0].obj.count != 0
+    - avi_config_state == "absent"
+
+- name: Avi Config | Create Network
+  include_tasks: "network.yml"
+  vars:
+    avi_role_state_mode: present
+
+- name: Build Avi module includes
+  set_fact:
+    config_resources: "{{ config_resources | default([]) + [outer_item] }}"
+  when:
+    - avi_role_cfg | default({})
+    - avi_role_cfg[outer_item] is defined
+  with_items: "{{ avi_resource_types }}"
+  loop_control:
+    loop_var: outer_item
+
+- name: Include Avi Resource Create or Update Tasks
+  include_tasks: "{{ outer_item }}.yml"
+  vars:
+    avi_role_state_mode: present
+    update_sysconfig_dns_vs_ref: False
+  when:
+    - avi_config_state == "present"
+    - avi_role_cfg | default({})
+    - avi_role_cfg[outer_item] is defined
+  with_items: "{{ config_resources }}"
+  loop_control:
+    loop_var: outer_item
+
+- name: Update Systemconfiguration DNS VS reference
+  include_tasks: "systemconfiguration.yml"
+  vars:
+    avi_role_state_mode: present
+    update_sysconfig_dns_vs_ref: True
+  when:
+    - avi_config_state == "present"
+    - avi_role_cfg | default({})
+    - avi_role_cfg.systemconfiguration is defined
+
+- name: Delete Systemconfiguration DNS VS reference
+  include_tasks: "systemconfiguration_delete.yml"
+  vars:
+    avi_role_state_mode: absent
+  when:
+    - avi_role_cfg | default({})
+    - avi_role_cfg.systemconfiguration is defined
+
+- name: Include Avi Resource Deletion Tasks
+  include_tasks: "{{ outer_item }}_delete.yml"
+  vars:
+    avi_role_state_mode: absent
+  when:
+    - avi_config_state == "absent"
+    - avi_role_cfg | default({})
+    - avi_role_cfg[outer_item] is defined
+  with_items: "{{ config_resources[::-1] }}"
+  loop_control:
+    loop_var: outer_item
+
+- name: Avi Config | Resetting avi_role_cfg to terminate its lifecycle
+  set_fact:
+    avi_role_cfg: {}

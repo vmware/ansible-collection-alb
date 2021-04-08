@@ -1,0 +1,29 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+
+---
+- name: Avi Cloud | Setup No Access Cloud
+  no_log: "{{ avi_role_config_log_mode | default(False)}}"
+  vmware.alb.avi_cloud:
+    controller: "{{ avi_controller | default(omit)}}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ res_config.tenant | default(omit)}}"
+    state: "{{ avi_role_state_mode }}"
+    api_version: "{{ api_version | default(omit)}}"
+    avi_credentials: "{{ avi_credentials | default(omit)}}"
+    api_context: "{{avi_api_context | default(omit)}}"
+    dhcp_enabled: "{{ res_config.dhcp_enabled | default(omit) }}"
+    # To create NO_ACCESS cloud.
+    vtype: "CLOUD_NONE"
+    license_tier: "{{ res_config.license_tier | default(omit) }}"
+    ip6_autocfg_enabled: "{{ res_config.ip6_autocfg_enabled | default(omit) }}"
+    enable_vip_static_routes: "{{ res_config.enable_vip_static_routes | default(omit) }}"
+    prefer_static_routes: "{{ res_config.prefer_static_routes | default(omit) }}"
+    license_type: "{{ res_config.license_type | default(omit) }}"
+    name: "{{res_config.name}}"
+  when:
+    - (res_config.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.cloud | default([]) }}"
+  loop_control:
+    loop_var: res_config

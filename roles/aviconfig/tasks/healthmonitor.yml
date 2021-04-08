@@ -1,0 +1,47 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi HealthMonitor | Create or Update HealthMonitor
+  vmware.alb.avi_healthmonitor:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    allow_duplicate_monitors: "{{ item.allow_duplicate_monitors | default(omit) }}"
+    authentication: "{{ item.authentication | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
+    disable_quickstart: "{{ item.disable_quickstart | default(omit) }}"
+    dns_monitor: "{{ item.dns_monitor | default(omit) }}"
+    external_monitor: "{{ item.external_monitor | default(omit) }}"
+    failed_checks: "{{ item.failed_checks | default(omit) }}"
+    http_monitor: "{{ item.http_monitor | default(omit) }}"
+    https_monitor: "{{ item.https_monitor | default(omit) }}"
+    imap_monitor: "{{ item.imap_monitor | default(omit) }}"
+    imaps_monitor: "{{ item.imaps_monitor | default(omit) }}"
+    is_federated: "{{ item.is_federated | default(omit) }}"
+    monitor_port: "{{ item.monitor_port | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    pop3_monitor: "{{ item.pop3_monitor | default(omit) }}"
+    pop3s_monitor: "{{ item.pop3s_monitor | default(omit) }}"
+    radius_monitor: "{{ item.radius_monitor | default(omit) }}"
+    receive_timeout: "{{ item.receive_timeout | default(omit) }}"
+    send_interval: "{{ item.send_interval | default(omit) }}"
+    sip_monitor: "{{ item.sip_monitor | default(omit) }}"
+    smtp_monitor: "{{ item.smtp_monitor | default(omit) }}"
+    smtps_monitor: "{{ item.smtps_monitor | default(omit) }}"
+    successful_checks: "{{ item.successful_checks | default(omit) }}"
+    tcp_monitor: "{{ item.tcp_monitor | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    type: "{{ item.type | default(omit) }}"
+    udp_monitor: "{{ item.udp_monitor | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+  when:
+    - (avi_role_state_mode == "present" and avi_config_state == "present")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.healthmonitor | default([]) }}"

@@ -1,0 +1,40 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi NsxtSegmentRuntime | Delete NsxtSegmentRuntime
+  vmware.alb.avi_nsxtsegmentruntime:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    cloud_ref: "{{ item.cloud_ref | default(omit) }}"
+    dhcp6_ranges: "{{ item.dhcp6_ranges | default(omit) }}"
+    dhcp_enabled: "{{ item.dhcp_enabled | default(omit) }}"
+    dhcp_ranges: "{{ item.dhcp_ranges | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    nw_name: "{{ item.nw_name | default(omit) }}"
+    nw_ref: "{{ item.nw_ref | default(omit) }}"
+    opaque_network_id: "{{ item.opaque_network_id | default(omit) }}"
+    segment_gw: "{{ item.segment_gw | default(omit) }}"
+    segment_gw6: "{{ item.segment_gw6 | default(omit) }}"
+    segment_id: "{{ item.segment_id | default(omit) }}"
+    segname: "{{ item.segname | default(omit) }}"
+    subnet: "{{ item.subnet | default(omit) }}"
+    subnet6: "{{ item.subnet6 | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    tier1_id: "{{ item.tier1_id | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+    vlan_ids: "{{ item.vlan_ids | default(omit) }}"
+    vrf_context_ref: "{{ item.vrf_context_ref | default(omit) }}"
+  when:
+    - (item.name | length > 0)
+    - (not (item.system_default | default(false)))
+    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.nsxtsegmentruntime | default([]) }}"

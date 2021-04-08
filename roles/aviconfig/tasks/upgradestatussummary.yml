@@ -1,0 +1,35 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi UpgradeStatusSummary | Create or Update UpgradeStatusSummary
+  vmware.alb.avi_upgradestatussummary:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    enable_patch_rollback: "{{ item.enable_patch_rollback | default(omit) }}"
+    enable_rollback: "{{ item.enable_rollback | default(omit) }}"
+    end_time: "{{ item.end_time | default(omit) }}"
+    image_ref: "{{ item.image_ref | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    node_type: "{{ item.node_type | default(omit) }}"
+    obj_cloud_ref: "{{ item.obj_cloud_ref | default(omit) }}"
+    obj_state: "{{ item.obj_state | default(omit) }}"
+    patch_image_ref: "{{ item.patch_image_ref | default(omit) }}"
+    start_time: "{{ item.start_time | default(omit) }}"
+    tasks_completed: "{{ item.tasks_completed | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    total_tasks: "{{ item.total_tasks | default(omit) }}"
+    upgrade_ops: "{{ item.upgrade_ops | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+    version: "{{ item.version | default(omit) }}"
+  when:
+    - (avi_role_state_mode == "present" and avi_config_state == "present")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.upgradestatussummary | default([]) }}"

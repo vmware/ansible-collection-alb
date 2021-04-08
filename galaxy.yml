@@ -1,0 +1,23 @@
+namespace: vmware
+name: alb
+version: 1.0.0
+readme: README.md
+authors:
+- Gaurav Rastogi <grastogi@vmware.com>
+- Sandeep Bandi <sabandi@vmware.com>
+- Amol Shinde <samol@vmware.com>
+description: VMware Advanced Load Balancer (formerly Avi) Ansible Collection
+license_file: 'LICENSE'
+tags:
+  - avi
+  - controller
+  - avicontroller
+  - avisdk
+  - avinetworks
+  - network
+  - load
+  - balancer
+  - sdk
+repository: https://github.com/vmware/ansible-collection-alb
+issues: https://github.com/vmware/ansible-collection-alb/issues
+
