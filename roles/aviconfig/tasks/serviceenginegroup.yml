@@ -37,6 +37,7 @@
     cloud_ref: "{{ item.cloud_ref | default(omit) }}"
     compress_ip_rules_for_each_ns_subnet: "{{ item.compress_ip_rules_for_each_ns_subnet | default(omit) }}"
     config_debugs_on_all_cores: "{{ item.config_debugs_on_all_cores | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     connection_memory_percentage: "{{ item.connection_memory_percentage | default(omit) }}"
     core_shm_app_cache: "{{ item.core_shm_app_cache | default(omit) }}"
     core_shm_app_learning: "{{ item.core_shm_app_learning | default(omit) }}"

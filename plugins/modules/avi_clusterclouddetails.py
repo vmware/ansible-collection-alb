@@ -44,6 +44,11 @@ options:
             - Azure info to configure cluster_vip on the controller.
             - Field introduced in 17.2.5.
         type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     name:
         description:
             - Field introduced in 17.2.5.
@@ -100,6 +105,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         azure_info=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

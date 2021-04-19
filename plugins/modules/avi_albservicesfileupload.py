@@ -44,6 +44,11 @@ options:
             - Salesforce alphanumeric caseid to attach uploaded file to.
             - Field introduced in 18.2.6.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     error:
         description:
             - Error reported during file upload.
@@ -124,6 +129,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         case_id=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         error=dict(type='str',),
         file_path=dict(type='str', required=True),
         name=dict(type='str', required=True),

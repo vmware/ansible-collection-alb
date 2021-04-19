@@ -40,6 +40,17 @@ options:
             - Patch operation to use when using avi_api_update_method as patch.
         choices: ["add", "replace", "delete"]
         type: str
+    allow_unlabelled_access:
+        description:
+            - Allow access to unlabelled objects.
+            - Field introduced in 20.1.5.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     filters:
         description:
             - Filters for granular object access control based on object labels.
@@ -106,6 +117,8 @@ def main():
         avi_api_update_method=dict(default='put',
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
+        allow_unlabelled_access=dict(type='bool',),
+        configpb_attributes=dict(type='dict',),
         filters=dict(type='list',),
         name=dict(type='str', required=True),
         privileges=dict(type='list',),

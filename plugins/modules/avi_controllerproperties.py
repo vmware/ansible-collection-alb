@@ -141,6 +141,11 @@ options:
             - Unit is min.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     consistency_check_timeout_period:
         description:
             - Period for consistency check job.
@@ -214,6 +219,13 @@ options:
             - Enable/disable memory balancer.
             - Field introduced in 17.2.8.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    enable_resmgr_log_cache_print:
+        description:
+            - Enable printing of cached logs inside resource manager.
+            - Used for debugging purposes only.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     fatal_error_lease_time:
         description:
@@ -604,6 +616,7 @@ def main():
         cleanup_sessions_timeout_period=dict(type='int',),
         cloud_reconcile=dict(type='bool',),
         cluster_ip_gratuitous_arp_period=dict(type='int',),
+        configpb_attributes=dict(type='dict',),
         consistency_check_timeout_period=dict(type='int',),
         controller_resource_info_collection_period=dict(type='int',),
         crashed_se_reboot=dict(type='int',),
@@ -615,6 +628,7 @@ def main():
         edit_system_limits=dict(type='bool',),
         enable_api_sharding=dict(type='bool',),
         enable_memory_balancer=dict(type='bool',),
+        enable_resmgr_log_cache_print=dict(type='bool',),
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),

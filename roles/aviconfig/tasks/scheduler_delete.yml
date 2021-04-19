@@ -14,6 +14,7 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     backup_config_ref: "{{ item.backup_config_ref | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     enabled: "{{ item.enabled | default(omit) }}"
     end_date_time: "{{ item.end_date_time | default(omit) }}"
     frequency: "{{ item.frequency | default(omit) }}"

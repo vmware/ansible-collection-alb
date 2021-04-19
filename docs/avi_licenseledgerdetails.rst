@@ -8,7 +8,7 @@ vmware.alb.avi_licenseledgerdetails
 **Module for setup of LicenseLedgerDetails Avi RESTful Object**
 
 
-Version added: "1.0.0"
+Version added: "21.1.1"
 
 .. contents::
    :local:
@@ -205,13 +205,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create LicenseLedgerDetails object
-      vmware.alb.avi_licenseledgerdetails:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_licenseledgerdetails
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create LicenseLedgerDetails object
+          avi_licenseledgerdetails:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_licenseledgerdetails
 
 
 Authors

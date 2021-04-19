@@ -45,6 +45,11 @@ options:
             - It is a reference to an object of type cloud.
             - Field introduced in 20.1.1.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     content_lib:
         description:
             - Vcenter template to create service engine.
@@ -123,6 +128,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         cloud_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         content_lib=dict(type='dict', required=True),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),

@@ -60,6 +60,11 @@ options:
         description:
             - It is a reference to an object of type cloud.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     debugvrfcontext:
         description:
             - Configure debug flags for vrf.
@@ -81,6 +86,7 @@ options:
     labels:
         description:
             - Key/value labels which can be used for object access policy permission scoping.
+            - Field deprecated in 20.1.5.
             - Field introduced in 18.2.7, 20.1.1.
         type: list
     lldp_enable:
@@ -90,6 +96,11 @@ options:
             - Allowed in basic(allowed values- true) edition, essentials(allowed values- true) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
+        type: list
     name:
         description:
             - Name of the object.
@@ -157,12 +168,14 @@ def main():
         bfd_profile=dict(type='dict',),
         bgp_profile=dict(type='dict',),
         cloud_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         debugvrfcontext=dict(type='dict',),
         description=dict(type='str',),
         gateway_mon=dict(type='list',),
         internal_gateway_monitor=dict(type='dict',),
         labels=dict(type='list',),
         lldp_enable=dict(type='bool',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         static_routes=dict(type='list',),
         system_default=dict(type='bool',),

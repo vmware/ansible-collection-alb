@@ -14,6 +14,7 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     account_lock_timeout: "{{ item.account_lock_timeout | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     credentials_timeout_threshold: "{{ item.credentials_timeout_threshold | default(omit) }}"
     max_concurrent_sessions: "{{ item.max_concurrent_sessions | default(omit) }}"
     max_login_failure_count: "{{ item.max_login_failure_count | default(omit) }}"

@@ -15,6 +15,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     azure_serviceprincipal: "{{ item.azure_serviceprincipal | default(omit) }}"
     azure_userpass: "{{ item.azure_userpass | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     gcp_credentials: "{{ item.gcp_credentials | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     nsxt_credentials: "{{ item.nsxt_credentials | default(omit) }}"

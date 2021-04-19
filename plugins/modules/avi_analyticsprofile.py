@@ -136,6 +136,11 @@ options:
             - Field introduced in 17.1.1.
             - Allowed in basic edition, essentials edition, enterprise edition.
         type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     conn_lossy_ooo_threshold:
         description:
             - A connection between client and avi is considered lossy when more than this percentage of out of order packets are received.
@@ -602,8 +607,14 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     name:
         description:
@@ -754,6 +765,7 @@ def main():
         apdex_server_rtt_tolerated_factor=dict(type='float',),
         client_log_config=dict(type='dict',),
         client_log_streaming_config=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         conn_lossy_ooo_threshold=dict(type='int',),
         conn_lossy_timeo_rexmt_threshold=dict(type='int',),
         conn_lossy_total_rexmt_threshold=dict(type='int',),
@@ -822,6 +834,7 @@ def main():
         hs_security_tls13_score=dict(type='float',),
         hs_security_weak_signature_algo_penalty=dict(type='float',),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         ondemand_metrics_idle_timeout=dict(type='int',),
         ranges=dict(type='list',),

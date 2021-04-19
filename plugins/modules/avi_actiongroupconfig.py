@@ -50,6 +50,11 @@ options:
             - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - User defined description for the object.
@@ -139,6 +144,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         action_script_config_ref=dict(type='str',),
         autoscale_trigger_notification=dict(type='bool',),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         email_config_ref=dict(type='str',),
         external_only=dict(type='bool', required=True),

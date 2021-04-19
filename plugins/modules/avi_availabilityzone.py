@@ -45,6 +45,11 @@ options:
             - It is a reference to an object of type cloud.
             - Field introduced in 20.1.1.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     name:
         description:
             - Availabilty zone where vcenter list belongs to.
@@ -112,6 +117,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         cloud_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

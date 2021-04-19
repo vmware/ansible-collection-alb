@@ -49,6 +49,11 @@ options:
         description:
             - It is a reference to an object of type cloud.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     configured_subnets:
         description:
             - List of subnet.
@@ -72,7 +77,13 @@ options:
     labels:
         description:
             - Key/value labels which can be used for object access policy permission scoping.
+            - Field deprecated in 20.1.5.
             - Field introduced in 18.2.7, 20.1.1.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     name:
         description:
@@ -148,11 +159,13 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         attrs=dict(type='list',),
         cloud_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         configured_subnets=dict(type='list',),
         dhcp_enabled=dict(type='bool',),
         exclude_discovered_subnets=dict(type='bool',),
         ip6_autocfg_enabled=dict(type='bool',),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         synced_from_se=dict(type='bool',),
         tenant_ref=dict(type='str',),

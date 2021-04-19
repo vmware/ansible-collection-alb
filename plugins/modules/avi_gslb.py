@@ -67,6 +67,11 @@ options:
             - Group to specify if the client ip addresses are public or private.
             - Field introduced in 17.1.2.
         type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - User defined description for the object.
@@ -397,6 +402,7 @@ def main():
         async_interval=dict(type='int',),
         clear_on_max_retries=dict(type='int',),
         client_ip_addr_group=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         dns_configs=dict(type='list',),
         enable_config_by_members=dict(type='bool',),

@@ -8,7 +8,7 @@ vmware.alb.avi_authprofile
 **Module for setup of AuthProfile Avi RESTful Object**
 
 
-Version added: "1.0.0"
+Version added: "21.1.1"
 
 .. contents::
    :local:
@@ -98,6 +98,26 @@ Parameters
                     - Patch operation to use when using avi_api_update_method as patch.
                 </div>
             </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
         </tr>
                 <tr>
             <td colspan="2">
@@ -338,37 +358,41 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-      - name: Create user authorization profile based on the LDAP
-        vmware.alb.avi_authprofile:
-          controller: '{{ controller }}'
-          password: '{{ password }}'
-          username: '{{ username }}'
-          http:
-            cache_expiration_time: 5
-            group_member_is_full_dn: false
-          ldap:
-            base_dn: dc=avi,dc=local
-            bind_as_administrator: true
-            port: 389
-            security_mode: AUTH_LDAP_SECURE_NONE
-            server:
-            - 192.168.12.18
-            settings:
-              admin_bind_dn: user@avi.local
-              group_filter: (objectClass=*)
-              group_member_attribute: member
-              group_member_is_full_dn: true
-              group_search_dn: dc=avi,dc=local
-              group_search_scope: AUTH_LDAP_SCOPE_SUBTREE
-              ignore_referrals: true
-              password: password
-              user_id_attribute: samAccountname
-              user_search_dn: dc=avi,dc=local
-              user_search_scope: AUTH_LDAP_SCOPE_ONE
-          name: ProdAuth
-          tenant_ref: /api/tenant?name=admin
-          type: AUTH_PROFILE_LDAP
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+          - name: Create user authorization profile based on the LDAP
+            avi_authprofile:
+              controller: '{{ controller }}'
+              password: '{{ password }}'
+              username: '{{ username }}'
+              http:
+                cache_expiration_time: 5
+                group_member_is_full_dn: false
+              ldap:
+                base_dn: dc=avi,dc=local
+                bind_as_administrator: true
+                port: 389
+                security_mode: AUTH_LDAP_SECURE_NONE
+                server:
+                - 192.168.12.18
+                settings:
+                  admin_bind_dn: user@avi.local
+                  group_filter: (objectClass=*)
+                  group_member_attribute: member
+                  group_member_is_full_dn: true
+                  group_search_dn: dc=avi,dc=local
+                  group_search_scope: AUTH_LDAP_SCOPE_SUBTREE
+                  ignore_referrals: true
+                  password: password
+                  user_id_attribute: samAccountname
+                  user_search_dn: dc=avi,dc=local
+                  user_search_scope: AUTH_LDAP_SCOPE_ONE
+              name: ProdAuth
+              tenant_ref: /api/tenant?name=admin
+              type: AUTH_PROFILE_LDAP
 
 
 

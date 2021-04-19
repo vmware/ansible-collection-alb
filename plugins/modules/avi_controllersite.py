@@ -45,6 +45,11 @@ options:
             - Field introduced in 18.2.5.
         required: true
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     name:
         description:
             - Name for the site controller cluster.
@@ -111,6 +116,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         address=dict(type='str', required=True),
+        configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
         port=dict(type='int',),
         tenant_ref=dict(type='str',),

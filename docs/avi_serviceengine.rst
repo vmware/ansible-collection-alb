@@ -8,7 +8,7 @@ vmware.alb.avi_serviceengine
 **Module for setup of ServiceEngine Avi RESTful Object**
 
 
-Version added: "1.0.0"
+Version added: "21.1.1"
 
 .. contents::
    :local:
@@ -432,13 +432,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create ServiceEngine object
-      vmware.alb.avi_serviceengine:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_serviceengine
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create ServiceEngine object
+          avi_serviceengine:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_serviceengine
 
 
 Authors

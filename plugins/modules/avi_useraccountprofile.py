@@ -47,6 +47,11 @@ options:
             - Unit is min.
             - Default value when not specified in API or module is interpreted by Avi Controller as 30.
         type: int
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     credentials_timeout_threshold:
         description:
             - The time period after which credentials expire.
@@ -125,6 +130,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         account_lock_timeout=dict(type='int',),
+        configpb_attributes=dict(type='dict',),
         credentials_timeout_threshold=dict(type='int',),
         max_concurrent_sessions=dict(type='int',),
         max_login_failure_count=dict(type='int',),

@@ -50,6 +50,11 @@ options:
             - Field introduced in 20.1.3.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     default_license_tier:
         description:
             - Specifies the default license tier which would be used by new clouds.
@@ -188,6 +193,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         admin_auth_configuration=dict(type='dict',),
         common_criteria_mode=dict(type='bool',),
+        configpb_attributes=dict(type='dict',),
         default_license_tier=dict(type='str',),
         dns_configuration=dict(type='dict',),
         dns_virtualservice_refs=dict(type='list',),

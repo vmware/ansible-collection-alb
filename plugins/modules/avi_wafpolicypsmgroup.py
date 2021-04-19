@@ -39,6 +39,11 @@ options:
             - Patch operation to use when using avi_api_update_method as patch.
         choices: ["add", "replace", "delete"]
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - Free-text comment about this group.
@@ -68,6 +73,7 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
         type: list
@@ -77,6 +83,11 @@ options:
             - These are used to partition the application name space.
             - Field introduced in 18.2.3.
             - Maximum of 16384 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     miss_action:
         description:
@@ -144,12 +155,14 @@ def main():
         avi_api_update_method=dict(default='put',
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         enable=dict(type='bool',),
         hit_action=dict(type='str',),
         is_learning_group=dict(type='bool',),
         labels=dict(type='list',),
         locations=dict(type='list',),
+        markers=dict(type='list',),
         miss_action=dict(type='str',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),

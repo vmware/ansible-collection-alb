@@ -50,6 +50,11 @@ options:
             - Enum options - CLOUD_NONE, CLOUD_VCENTER, CLOUD_OPENSTACK, CLOUD_AWS, CLOUD_VCA, CLOUD_APIC, CLOUD_MESOS, CLOUD_LINUXSERVER, CLOUD_DOCKER_UCP,
             - CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT.
         type: list
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     hyp_props:
         description:
             - Hypervisor properties.
@@ -105,6 +110,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         cc_props=dict(type='dict',),
         cc_vtypes=dict(type='list',),
+        configpb_attributes=dict(type='dict',),
         hyp_props=dict(type='list',),
         info=dict(type='list',),
         url=dict(type='str',),

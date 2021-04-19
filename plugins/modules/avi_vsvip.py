@@ -51,6 +51,11 @@ options:
             - It is a reference to an object of type cloud.
             - Field introduced in 17.1.1.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     dns_info:
         description:
             - Service discovery specific data including fully qualified domain name, type and time-to-live of the dns record.
@@ -75,8 +80,14 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     name:
         description:
@@ -180,10 +191,12 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         bgp_peer_labels=dict(type='list',),
         cloud_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         dns_info=dict(type='list',),
         east_west_placement=dict(type='bool',),
         ipam_selector=dict(type='dict',),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         tier1_lr=dict(type='str',),

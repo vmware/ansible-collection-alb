@@ -8,7 +8,7 @@ vmware.alb.avi_httppolicyset
 **Module for setup of HTTPPolicySet Avi RESTful Object**
 
 
-Version added: "1.0.0"
+Version added: "21.1.1"
 
 .. contents::
    :local:
@@ -116,6 +116,26 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Internally set by cloud connector.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>
@@ -289,10 +309,33 @@ Parameters
                   - Also allows for classification and tagging of similar objects.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 20.1.5.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>markers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of labels to be used for granular rbac.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
                 </div>
                                             </td>
         </tr>
@@ -375,43 +418,47 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-    - name: Create a HTTP Policy set two switch between testpool1 and testpool2
-      vmware.alb.avi_httppolicyset:
-        controller: 192.168.138.18
-        username: admin
-        password: password
-        name: test-HTTP-Policy-Set
-        tenant_ref: /api/tenant?name=admin
-        http_request_policy:
-        rules:
-          - index: 1
-            enable: true
-            name: test-test1
-            match:
-              path:
-                match_case: INSENSITIVE
-                match_str:
-                  - /test1
-                match_criteria: EQUALS
-            switching_action:
-              action: HTTP_SWITCHING_SELECT_POOL
-              status_code: HTTP_LOCAL_RESPONSE_STATUS_CODE_200
-              pool_ref: "/api/pool?name=testpool1"
-          - index: 2
-            enable: true
-            name: test-test2
-            match:
-              path:
-                match_case: INSENSITIVE
-                match_str:
-                  - /test2
-                match_criteria: CONTAINS
-            switching_action:
-              action: HTTP_SWITCHING_SELECT_POOL
-              status_code: HTTP_LOCAL_RESPONSE_STATUS_CODE_200
-              pool_ref: "/api/pool?name=testpool2"
-        is_internal_policy: false
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+        - name: Create a HTTP Policy set two switch between testpool1 and testpool2
+          avi_httppolicyset:
+            controller: 192.168.138.18
+            username: admin
+            password: password
+            name: test-HTTP-Policy-Set
+            tenant_ref: /api/tenant?name=admin
+            http_request_policy:
+            rules:
+              - index: 1
+                enable: true
+                name: test-test1
+                match:
+                  path:
+                    match_case: INSENSITIVE
+                    match_str:
+                      - /test1
+                    match_criteria: EQUALS
+                switching_action:
+                  action: HTTP_SWITCHING_SELECT_POOL
+                  status_code: HTTP_LOCAL_RESPONSE_STATUS_CODE_200
+                  pool_ref: "/api/pool?name=testpool1"
+              - index: 2
+                enable: true
+                name: test-test2
+                match:
+                  path:
+                    match_case: INSENSITIVE
+                    match_str:
+                      - /test2
+                    match_criteria: CONTAINS
+                switching_action:
+                  action: HTTP_SWITCHING_SELECT_POOL
+                  status_code: HTTP_LOCAL_RESPONSE_STATUS_CODE_200
+                  pool_ref: "/api/pool?name=testpool2"
+            is_internal_policy: false
 
 
 

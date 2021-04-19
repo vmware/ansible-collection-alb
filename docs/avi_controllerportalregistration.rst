@@ -8,7 +8,7 @@ vmware.alb.avi_controllerportalregistration
 **Module for setup of ControllerPortalRegistration Avi RESTful Object**
 
 
-Version added: "1.0.0"
+Version added: "21.1.1"
 
 .. contents::
    :local:
@@ -216,13 +216,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create ControllerPortalRegistration object
-      vmware.alb.avi_controllerportalregistration:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_controllerportalregistration
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create ControllerPortalRegistration object
+          avi_controllerportalregistration:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_controllerportalregistration
 
 
 Authors

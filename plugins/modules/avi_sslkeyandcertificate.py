@@ -58,6 +58,11 @@ options:
         description:
             - It is a reference to an object of type certificatemanagementprofile.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     created_by:
         description:
             - Creator name.
@@ -114,8 +119,14 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     name:
         description:
@@ -225,6 +236,7 @@ def main():
         certificate=dict(type='dict', required=True),
         certificate_base64=dict(type='bool',),
         certificate_management_profile_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         dynamic_params=dict(type='list',),
         enable_ocsp_stapling=dict(type='bool',),
@@ -237,6 +249,7 @@ def main():
         key_params=dict(type='dict',),
         key_passphrase=dict(type='str', no_log=True,),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         ocsp_config=dict(type='dict',),
         ocsp_error_status=dict(type='str',),

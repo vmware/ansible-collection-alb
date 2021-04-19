@@ -40,6 +40,11 @@ options:
             - Patch operation to use when using avi_api_update_method as patch.
         choices: ["add", "replace", "delete"]
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - User defined description for the object.
@@ -157,6 +162,7 @@ def main():
         avi_api_update_method=dict(default='put',
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         http=dict(type='dict',),
         jwt_profile_ref=dict(type='str',),

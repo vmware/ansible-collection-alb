@@ -16,6 +16,7 @@
     async_interval: "{{ item.async_interval | default(omit) }}"
     clear_on_max_retries: "{{ item.clear_on_max_retries | default(omit) }}"
     client_ip_addr_group: "{{ item.client_ip_addr_group | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     dns_configs: "{{ item.dns_configs | default(omit) }}"
     enable_config_by_members: "{{ item.enable_config_by_members | default(omit) }}"

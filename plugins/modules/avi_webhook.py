@@ -44,6 +44,11 @@ options:
             - Callback url for the webhook.
             - Field introduced in 17.1.1.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - Field introduced in 17.1.1.
@@ -111,6 +116,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         callback_url=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),

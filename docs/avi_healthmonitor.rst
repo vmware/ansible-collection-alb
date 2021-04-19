@@ -8,7 +8,7 @@ vmware.alb.avi_healthmonitor
 **Module for setup of HealthMonitor Avi RESTful Object**
 
 
-Version added: "1.0.0"
+Version added: "21.1.1"
 
 .. contents::
    :local:
@@ -151,6 +151,26 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed in basic edition, essentials edition, enterprise edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>
@@ -360,6 +380,26 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>markers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of labels to be used for granular rbac.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
                 </div>
                                             </td>
         </tr>
@@ -744,23 +784,27 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-    - name: Create a HTTPS health monitor
-      vmware.alb.avi_healthmonitor:
-        controller: 192.168.138.18
-        username: admin
-        password: password
-        https_monitor:
-          http_request: HEAD / HTTP/1.0
-          http_response_code:
-            - HTTP_2XX
-            - HTTP_3XX
-        receive_timeout: 4
-        failed_checks: 3
-        send_interval: 10
-        successful_checks: 3
-        type: HEALTH_MONITOR_HTTPS
-        name: MyWebsite-HTTPS
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+        - name: Create a HTTPS health monitor
+          avi_healthmonitor:
+            controller: 192.168.138.18
+            username: admin
+            password: password
+            https_monitor:
+              http_request: HEAD / HTTP/1.0
+              http_response_code:
+                - HTTP_2XX
+                - HTTP_3XX
+            receive_timeout: 4
+            failed_checks: 3
+            send_interval: 10
+            successful_checks: 3
+            type: HEALTH_MONITOR_HTTPS
+            name: MyWebsite-HTTPS
 
 
 

@@ -48,6 +48,11 @@ options:
         description:
             - Populate ip addresses from members of this cisco apic epg.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     country_codes:
         description:
             - Populate the ip address ranges from the geo database for this country.
@@ -64,6 +69,7 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
         type: list
@@ -77,6 +83,11 @@ options:
             - If marathon app has multiple service ports, this is required.
             - Else, the first task port is used.
         type: int
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
+        type: list
     name:
         description:
             - Name of the ip address group.
@@ -153,12 +164,14 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         addrs=dict(type='list',),
         apic_epg_name=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         country_codes=dict(type='list',),
         description=dict(type='str',),
         ip_ports=dict(type='list',),
         labels=dict(type='list',),
         marathon_app_name=dict(type='str',),
         marathon_service_port=dict(type='int',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         prefixes=dict(type='list',),
         ranges=dict(type='list',),

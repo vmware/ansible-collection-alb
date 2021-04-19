@@ -8,7 +8,7 @@ vmware.alb.avi_natpolicy
 **Module for setup of NatPolicy Avi RESTful Object**
 
 
-Version added: "1.0.0"
+Version added: "21.1.1"
 
 .. contents::
    :local:
@@ -102,6 +102,26 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>created_by</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -155,10 +175,33 @@ Parameters
                   - Also allows for classification and tagging of similar objects.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 20.1.5.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>markers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of labels to be used for granular rbac.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
                 </div>
                                             </td>
         </tr>
@@ -268,13 +311,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create NatPolicy object
-      vmware.alb.avi_natpolicy:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_natpolicy
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create NatPolicy object
+          avi_natpolicy:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_natpolicy
 
 
 Authors

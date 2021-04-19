@@ -13,6 +13,7 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     test_se_datastore_level_3_refs: "{{ item.test_se_datastore_level_3_refs | default(omit) }}"

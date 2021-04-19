@@ -44,6 +44,11 @@ options:
             - User defined alert action script.
             - Please refer to kb.avinetworks.com for more information.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     name:
         description:
             - A user-friendly name of the script.
@@ -100,6 +105,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         action_script=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

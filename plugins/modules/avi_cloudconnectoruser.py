@@ -50,6 +50,11 @@ options:
             - Field introduced in 17.2.1.
             - Allowed in basic edition, essentials edition, enterprise edition.
         type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     gcp_credentials:
         description:
             - Credentials for google cloud platform.
@@ -151,6 +156,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         azure_serviceprincipal=dict(type='dict',),
         azure_userpass=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         gcp_credentials=dict(type='dict',),
         name=dict(type='str', required=True),
         nsxt_credentials=dict(type='dict',),

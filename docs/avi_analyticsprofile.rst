@@ -8,7 +8,7 @@ vmware.alb.avi_analyticsprofile
 **Module for setup of AnalyticsProfile Avi RESTful Object**
 
 
-Version added: "1.0.0"
+Version added: "21.1.1"
 
 .. contents::
    :local:
@@ -444,6 +444,26 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed in basic edition, essentials edition, enterprise edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>
@@ -2187,10 +2207,33 @@ Parameters
                   - Also allows for classification and tagging of similar objects.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 20.1.5.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>markers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of labels to be used for granular rbac.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
                 </div>
                                             </td>
         </tr>
@@ -2394,65 +2437,69 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-      - name: Create a custom Analytics profile object
-        vmware.alb.avi_analyticsprofile:
-          controller: '{{ controller }}'
-          username: '{{ username }}'
-          password: '{{ password }}'
-          apdex_response_threshold: 500
-          apdex_response_tolerated_factor: 4.0
-          apdex_rtt_threshold: 250
-          apdex_rtt_tolerated_factor: 4.0
-          apdex_rum_threshold: 5000
-          apdex_rum_tolerated_factor: 4.0
-          apdex_server_response_threshold: 400
-          apdex_server_response_tolerated_factor: 4.0
-          apdex_server_rtt_threshold: 125
-          apdex_server_rtt_tolerated_factor: 4.0
-          conn_lossy_ooo_threshold: 50
-          conn_lossy_timeo_rexmt_threshold: 20
-          conn_lossy_total_rexmt_threshold: 50
-          conn_lossy_zero_win_size_event_threshold: 2
-          conn_server_lossy_ooo_threshold: 50
-          conn_server_lossy_timeo_rexmt_threshold: 20
-          conn_server_lossy_total_rexmt_threshold: 50
-          conn_server_lossy_zero_win_size_event_threshold: 2
-          enable_se_analytics: true
-          enable_server_analytics: true
-          exclude_client_close_before_request_as_error: false
-          exclude_persistence_change_as_error: false
-          exclude_server_tcp_reset_as_error: false
-          exclude_syn_retransmit_as_error: false
-          exclude_tcp_reset_as_error: false
-          hs_event_throttle_window: 1209600
-          hs_max_anomaly_penalty: 10
-          hs_max_resources_penalty: 25
-          hs_max_security_penalty: 100
-          hs_min_dos_rate: 1000
-          hs_performance_boost: 20
-          hs_pscore_traffic_threshold_l4_client: 10.0
-          hs_pscore_traffic_threshold_l4_server: 10.0
-          hs_security_certscore_expired: 0.0
-          hs_security_certscore_gt30d: 5.0
-          hs_security_certscore_le07d: 2.0
-          hs_security_certscore_le30d: 4.0
-          hs_security_chain_invalidity_penalty: 1.0
-          hs_security_cipherscore_eq000b: 0.0
-          hs_security_cipherscore_ge128b: 5.0
-          hs_security_cipherscore_lt128b: 3.5
-          hs_security_encalgo_score_none: 0.0
-          hs_security_encalgo_score_rc4: 2.5
-          hs_security_hsts_penalty: 0.0
-          hs_security_nonpfs_penalty: 1.0
-          hs_security_selfsignedcert_penalty: 1.0
-          hs_security_ssl30_score: 3.5
-          hs_security_tls10_score: 5.0
-          hs_security_tls11_score: 5.0
-          hs_security_tls12_score: 5.0
-          hs_security_weak_signature_algo_penalty: 1.0
-          name: jason-analytics-profile
-          tenant_ref: /api/tenant?name=Demo
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+          - name: Create a custom Analytics profile object
+            avi_analyticsprofile:
+              controller: '{{ controller }}'
+              username: '{{ username }}'
+              password: '{{ password }}'
+              apdex_response_threshold: 500
+              apdex_response_tolerated_factor: 4.0
+              apdex_rtt_threshold: 250
+              apdex_rtt_tolerated_factor: 4.0
+              apdex_rum_threshold: 5000
+              apdex_rum_tolerated_factor: 4.0
+              apdex_server_response_threshold: 400
+              apdex_server_response_tolerated_factor: 4.0
+              apdex_server_rtt_threshold: 125
+              apdex_server_rtt_tolerated_factor: 4.0
+              conn_lossy_ooo_threshold: 50
+              conn_lossy_timeo_rexmt_threshold: 20
+              conn_lossy_total_rexmt_threshold: 50
+              conn_lossy_zero_win_size_event_threshold: 2
+              conn_server_lossy_ooo_threshold: 50
+              conn_server_lossy_timeo_rexmt_threshold: 20
+              conn_server_lossy_total_rexmt_threshold: 50
+              conn_server_lossy_zero_win_size_event_threshold: 2
+              enable_se_analytics: true
+              enable_server_analytics: true
+              exclude_client_close_before_request_as_error: false
+              exclude_persistence_change_as_error: false
+              exclude_server_tcp_reset_as_error: false
+              exclude_syn_retransmit_as_error: false
+              exclude_tcp_reset_as_error: false
+              hs_event_throttle_window: 1209600
+              hs_max_anomaly_penalty: 10
+              hs_max_resources_penalty: 25
+              hs_max_security_penalty: 100
+              hs_min_dos_rate: 1000
+              hs_performance_boost: 20
+              hs_pscore_traffic_threshold_l4_client: 10.0
+              hs_pscore_traffic_threshold_l4_server: 10.0
+              hs_security_certscore_expired: 0.0
+              hs_security_certscore_gt30d: 5.0
+              hs_security_certscore_le07d: 2.0
+              hs_security_certscore_le30d: 4.0
+              hs_security_chain_invalidity_penalty: 1.0
+              hs_security_cipherscore_eq000b: 0.0
+              hs_security_cipherscore_ge128b: 5.0
+              hs_security_cipherscore_lt128b: 3.5
+              hs_security_encalgo_score_none: 0.0
+              hs_security_encalgo_score_rc4: 2.5
+              hs_security_hsts_penalty: 0.0
+              hs_security_nonpfs_penalty: 1.0
+              hs_security_selfsignedcert_penalty: 1.0
+              hs_security_ssl30_score: 3.5
+              hs_security_tls10_score: 5.0
+              hs_security_tls11_score: 5.0
+              hs_security_tls12_score: 5.0
+              hs_security_weak_signature_algo_penalty: 1.0
+              name: jason-analytics-profile
+              tenant_ref: /api/tenant?name=Demo
 
 
 
