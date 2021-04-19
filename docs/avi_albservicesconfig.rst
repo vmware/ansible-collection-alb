@@ -8,8 +8,6 @@ vmware.alb.avi_albservicesconfig
 **Module for setup of ALBServicesConfig Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

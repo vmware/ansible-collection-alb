@@ -8,8 +8,6 @@ vmware.alb.avi_fileobject
 **Module for setup of FileObject Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

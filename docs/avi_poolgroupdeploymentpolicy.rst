@@ -8,8 +8,6 @@ vmware.alb.avi_poolgroupdeploymentpolicy
 **Module for setup of PoolGroupDeploymentPolicy Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

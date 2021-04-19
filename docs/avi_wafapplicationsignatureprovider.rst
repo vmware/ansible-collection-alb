@@ -8,8 +8,6 @@ vmware.alb.avi_wafapplicationsignatureprovider
 **Module for setup of WafApplicationSignatureProvider Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

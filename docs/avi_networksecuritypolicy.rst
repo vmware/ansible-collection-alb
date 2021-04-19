@@ -8,8 +8,6 @@ vmware.alb.avi_networksecuritypolicy
 **Module for setup of NetworkSecurityPolicy Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

@@ -8,8 +8,6 @@ vmware.alb.avi_pkiprofile
 **Module for setup of PKIProfile Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

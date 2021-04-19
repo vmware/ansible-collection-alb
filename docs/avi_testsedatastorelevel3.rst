@@ -8,8 +8,6 @@ vmware.alb.avi_testsedatastorelevel3
 **Module for setup of TestSeDatastoreLevel3 Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

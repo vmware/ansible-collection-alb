@@ -8,8 +8,6 @@ vmware.alb.avi_geodb
 **Module for setup of GeoDB Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

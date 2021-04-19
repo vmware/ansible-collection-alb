@@ -8,8 +8,6 @@ vmware.alb.avi_cloud
 **Module for setup of Cloud Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

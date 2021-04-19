@@ -8,8 +8,6 @@ vmware.alb.avi_clusterclouddetails
 **Module for setup of ClusterCloudDetails Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

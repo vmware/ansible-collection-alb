@@ -8,8 +8,6 @@ vmware.alb.avi_l4policyset
 **Module for setup of L4PolicySet Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

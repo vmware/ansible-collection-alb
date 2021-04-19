@@ -8,8 +8,6 @@ vmware.alb.avi_certificatemanagementprofile
 **Module for setup of CertificateManagementProfile Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

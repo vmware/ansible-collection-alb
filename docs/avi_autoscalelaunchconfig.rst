@@ -8,8 +8,6 @@ vmware.alb.avi_autoscalelaunchconfig
 **Module for setup of AutoScaleLaunchConfig Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

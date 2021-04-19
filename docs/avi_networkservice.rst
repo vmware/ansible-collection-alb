@@ -8,8 +8,6 @@ vmware.alb.avi_networkservice
 **Module for setup of NetworkService Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

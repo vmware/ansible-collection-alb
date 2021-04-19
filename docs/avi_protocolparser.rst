@@ -8,8 +8,6 @@ vmware.alb.avi_protocolparser
 **Module for setup of ProtocolParser Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

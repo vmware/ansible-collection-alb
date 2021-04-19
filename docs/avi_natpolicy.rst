@@ -8,8 +8,6 @@ vmware.alb.avi_natpolicy
 **Module for setup of NatPolicy Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

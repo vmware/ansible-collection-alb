@@ -8,8 +8,6 @@ vmware.alb.avi_errorpageprofile
 **Module for setup of ErrorPageProfile Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1

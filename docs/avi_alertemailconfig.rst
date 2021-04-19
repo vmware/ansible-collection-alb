@@ -8,8 +8,6 @@ vmware.alb.avi_alertemailconfig
 **Module for setup of AlertEmailConfig Avi RESTful Object**
 
 
-Version added: "21.1.1"
-
 .. contents::
    :local:
    :depth: 1
