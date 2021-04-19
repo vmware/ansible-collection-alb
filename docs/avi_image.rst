@@ -8,8 +8,6 @@ vmware.alb.avi_image
 **Module for setup of Image Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -426,13 +424,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create Image object
-      vmware.alb.avi_image:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_image
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create Image object
+          avi_image:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_image
 
 
 Authors

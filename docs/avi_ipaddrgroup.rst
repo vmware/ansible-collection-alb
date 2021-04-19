@@ -8,8 +8,6 @@ vmware.alb.avi_ipaddrgroup
 **Module for setup of IpAddrGroup Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -136,6 +134,26 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>country_codes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -203,6 +221,9 @@ Parameters
                   - Also allows for classification and tagging of similar objects.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 20.1.5.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
@@ -247,6 +268,26 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Else, the first task port is used.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>markers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of labels to be used for granular rbac.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
                 </div>
                                             </td>
         </tr>
@@ -363,26 +404,30 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-      - name: Create an IP Address Group configuration
-        vmware.alb.avi_ipaddrgroup:
-          controller: '{{ controller }}'
-          username: '{{ username }}'
-          password: '{{ password }}'
-          name: Client-Source-Block
-          prefixes:
-          - ip_addr:
-              addr: 192.168.138.18
-              type: V4
-            mask: 8
-          - ip_addr:
-              addr: 192.168.20.11
-              type: V4
-            mask: 12
-          - ip_addr:
-              addr: 192.168.20.12
-              type: V4
-            mask: 16
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+          - name: Create an IP Address Group configuration
+            avi_ipaddrgroup:
+              controller: '{{ controller }}'
+              username: '{{ username }}'
+              password: '{{ password }}'
+              name: Client-Source-Block
+              prefixes:
+              - ip_addr:
+                  addr: 192.168.138.18
+                  type: V4
+                mask: 8
+              - ip_addr:
+                  addr: 192.168.20.11
+                  type: V4
+                mask: 12
+              - ip_addr:
+                  addr: 192.168.20.12
+                  type: V4
+                mask: 16
 
 
 

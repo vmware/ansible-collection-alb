@@ -2,7 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 avi_resource_types:
-  - tenant
+  - labelgroup
   - albservicesconfig
   - systemlimits
   - licenseledgerdetails
@@ -10,6 +10,7 @@ avi_resource_types:
   - useraccountprofile
   - cloudproperties
   - seproperties
+  - tenant
   - cloudconnectoruser
   - hardwaresecuritymodulegroup
   - alertscriptconfig

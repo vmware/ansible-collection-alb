@@ -43,6 +43,11 @@ options:
         description:
             - Alerts are copied to the comma separated list of  email recipients.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - User defined description for the object.
@@ -107,6 +112,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         cc_emails=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),

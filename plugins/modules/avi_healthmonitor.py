@@ -55,6 +55,11 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in basic edition, essentials edition, enterprise edition.
         type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - User defined description for the object.
@@ -108,6 +113,11 @@ options:
             - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
+        type: list
     monitor_port:
         description:
             - Use this port instead of the port defined for the server in the pool.
@@ -252,6 +262,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         allow_duplicate_monitors=dict(type='bool',),
         authentication=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         disable_quickstart=dict(type='bool',),
         dns_monitor=dict(type='dict',),
@@ -262,6 +273,7 @@ def main():
         imap_monitor=dict(type='dict',),
         imaps_monitor=dict(type='dict',),
         is_federated=dict(type='bool',),
+        markers=dict(type='list',),
         monitor_port=dict(type='int',),
         name=dict(type='str', required=True),
         pop3_monitor=dict(type='dict',),

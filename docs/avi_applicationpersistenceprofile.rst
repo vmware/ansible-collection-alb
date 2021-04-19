@@ -8,8 +8,6 @@ vmware.alb.avi_applicationpersistenceprofile
 **Module for setup of ApplicationPersistenceProfile Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -113,6 +111,26 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Specifies the application cookie persistence profile parameters.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>
@@ -232,10 +250,33 @@ Parameters
                   - Also allows for classification and tagging of similar objects.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 20.1.5.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>markers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of labels to be used for granular rbac.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
                 </div>
                                             </td>
         </tr>
@@ -382,27 +423,31 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-      - name: Create an Application Persistence setting using http cookie.
-        vmware.alb.avi_applicationpersistenceprofile:
-          controller: '{{ controller }}'
-          username: '{{ username }}'
-          password: '{{ password }}'
-          http_cookie_persistence_profile:
-            always_send_cookie: false
-            cookie_name: My-HTTP
-            key:
-            - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
-              name: c1276819-550c-4adf-912d-59efa5fd7269
-            - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
-              name: a080de57-77c3-4580-a3ea-e7a6493c14fd
-            - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
-              name: 60478846-33c6-484d-868d-bbc324fce4a5
-            timeout: 15
-          name: My-HTTP-Cookie
-          persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE
-          server_hm_down_recovery: HM_DOWN_PICK_NEW_SERVER
-          tenant_ref: /api/tenant?name=Demo
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+          - name: Create an Application Persistence setting using http cookie.
+            avi_applicationpersistenceprofile:
+              controller: '{{ controller }}'
+              username: '{{ username }}'
+              password: '{{ password }}'
+              http_cookie_persistence_profile:
+                always_send_cookie: false
+                cookie_name: My-HTTP
+                key:
+                - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
+                  name: c1276819-550c-4adf-912d-59efa5fd7269
+                - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
+                  name: a080de57-77c3-4580-a3ea-e7a6493c14fd
+                - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
+                  name: 60478846-33c6-484d-868d-bbc324fce4a5
+                timeout: 15
+              name: My-HTTP-Cookie
+              persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE
+              server_hm_down_recovery: HM_DOWN_PICK_NEW_SERVER
+              tenant_ref: /api/tenant?name=Demo
 
 
 

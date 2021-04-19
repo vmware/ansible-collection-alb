@@ -17,6 +17,7 @@
     alert_rule: "{{ item.alert_rule | default(omit) }}"
     autoscale_alert: "{{ item.autoscale_alert | default(omit) }}"
     category: "{{ item.category | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     enabled: "{{ item.enabled | default(omit) }}"
     expiry_time: "{{ item.expiry_time | default(omit) }}"

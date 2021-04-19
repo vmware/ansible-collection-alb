@@ -51,6 +51,11 @@ options:
             - Information about the default contact for this controller cluster.
             - Field introduced in 20.1.1.
         type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     feature_opt_in_status:
         description:
             - Information about the portal features opted in for controller.
@@ -155,6 +160,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         app_signature_config=dict(type='dict', required=True),
         asset_contact=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         feature_opt_in_status=dict(type='dict', required=True),
         ip_reputation_config=dict(type='dict', required=True),
         mode=dict(type='str',),

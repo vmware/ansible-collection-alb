@@ -44,6 +44,11 @@ options:
         description:
             - Tenantconfiguration settings for tenant.
         type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     created_by:
         description:
             - Creator of this tenant.
@@ -52,6 +57,20 @@ options:
         description:
             - User defined description for the object.
         type: str
+    enforce_label_group:
+        description:
+            - The referred label groups are enforced on the tenant if this is set to true.if this is set to false, the label groups are suggested for the
+            - tenant.
+            - Field introduced in 20.1.5.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    label_group_refs:
+        description:
+            - The label_groups to be enforced on the tenant.
+            - This is strictly enforced only if enforce_label_group is set to true.
+            - It is a reference to an object of type labelgroup.
+            - Field introduced in 20.1.5.
+        type: list
     local:
         description:
             - Boolean flag to set local.
@@ -66,6 +85,7 @@ options:
         description:
             - Suggestive pool of key value pairs for recommending assignment of labels to objects in the user interface.
             - Every entry is unique in both key and value.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 256 items allowed.
         type: list
@@ -120,8 +140,11 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         config_settings=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         description=dict(type='str',),
+        enforce_label_group=dict(type='bool',),
+        label_group_refs=dict(type='list',),
         local=dict(type='bool',),
         name=dict(type='str', required=True),
         suggested_object_labels=dict(type='list',),

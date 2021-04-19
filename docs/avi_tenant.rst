@@ -8,8 +8,6 @@ vmware.alb.avi_tenant
 **Module for setup of Tenant Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -119,6 +117,26 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>created_by</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -147,6 +165,58 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - User defined description for the object.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enforce_label_group</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The referred label groups are enforced on the tenant if this is set to true.if this is set to false, the label groups are suggested for the
+                </div>
+                                <div style="font-size: small">
+                  - tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>label_group_refs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The label_groups to be enforced on the tenant.
+                </div>
+                                <div style="font-size: small">
+                  - This is strictly enforced only if enforce_label_group is set to true.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type labelgroup.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
                 </div>
                                             </td>
         </tr>
@@ -209,6 +279,9 @@ Parameters
                   - Every entry is unique in both key and value.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 20.1.5.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
@@ -258,19 +331,23 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-      - name: Create Tenant using Service Engines in provider mode
-        vmware.alb.avi_tenant:
-          controller: '{{ controller }}'
-          password: '{{ password }}'
-          username: '{{ username }}'
-          config_settings:
-            se_in_provider_context: false
-            tenant_access_to_provider_se: true
-            tenant_vrf: false
-          description: VCenter, Open Stack, AWS Virtual services
-          local: true
-          name: Demo
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+          - name: Create Tenant using Service Engines in provider mode
+            avi_tenant:
+              controller: '{{ controller }}'
+              password: '{{ password }}'
+              username: '{{ username }}'
+              config_settings:
+                se_in_provider_context: false
+                tenant_access_to_provider_se: true
+                tenant_vrf: false
+              description: VCenter, Open Stack, AWS Virtual services
+              local: true
+              name: Demo
 
 
 

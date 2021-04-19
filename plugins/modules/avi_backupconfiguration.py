@@ -66,6 +66,11 @@ options:
         description:
             - Default passphrase for configuration export and periodic backup.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     maximum_backups_stored:
         description:
             - Rotate the backup files based on this count.
@@ -158,6 +163,7 @@ def main():
         aws_secret_access=dict(type='str', no_log=True,),
         backup_file_prefix=dict(type='str',),
         backup_passphrase=dict(type='str', no_log=True,),
+        configpb_attributes=dict(type='dict',),
         maximum_backups_stored=dict(type='int',),
         name=dict(type='str', required=True),
         remote_directory=dict(type='str',),
@@ -178,7 +184,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'backupconfiguration',
-                           {'aws_access_key', 'backup_passphrase', 'aws_secret_access'})
+                           {'backup_passphrase', 'aws_access_key', 'aws_secret_access'})
 
 
 if __name__ == '__main__':

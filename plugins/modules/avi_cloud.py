@@ -71,6 +71,11 @@ options:
         description:
             - Cloudstackconfiguration settings for cloud.
         type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     custom_tags:
         description:
             - Custom tags for all avi created resources in the cloud infrastructure.
@@ -95,6 +100,12 @@ options:
             - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    dns_resolvers:
+        description:
+            - Dns resolver for the cloud.
+            - Field introduced in 20.1.5.
+            - Maximum of 1 items allowed.
+        type: list
     docker_configuration:
         description:
             - Dockerconfiguration settings for cloud.
@@ -315,10 +326,12 @@ def main():
         aws_configuration=dict(type='dict',),
         azure_configuration=dict(type='dict',),
         cloudstack_configuration=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         custom_tags=dict(type='list',),
         dhcp_enabled=dict(type='bool',),
         dns_provider_ref=dict(type='str',),
         dns_resolution_on_se=dict(type='bool',),
+        dns_resolvers=dict(type='list',),
         docker_configuration=dict(type='dict',),
         east_west_dns_provider_ref=dict(type='str',),
         east_west_ipam_provider_ref=dict(type='str',),

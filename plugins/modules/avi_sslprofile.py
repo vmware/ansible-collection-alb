@@ -75,6 +75,11 @@ options:
             - Default value when not specified in API or module is interpreted by Avi Controller as
             - TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - User defined description for the object.
@@ -107,8 +112,14 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     name:
         description:
@@ -241,12 +252,14 @@ def main():
         accepted_versions=dict(type='list', required=True),
         cipher_enums=dict(type='list',),
         ciphersuites=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         dhparam=dict(type='str',),
         ec_named_curve=dict(type='str',),
         enable_early_data=dict(type='bool',),
         enable_ssl_session_reuse=dict(type='bool',),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         prefer_client_cipher_ordering=dict(type='bool',),
         send_close_notify=dict(type='bool',),

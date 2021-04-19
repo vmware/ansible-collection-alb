@@ -74,6 +74,11 @@ options:
             - It is a reference to an object of type cloud.
             - Field introduced in 20.1.1.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - A description for this icap profile.
@@ -100,6 +105,11 @@ options:
             - Field introduced in 20.1.1.
         required: true
         type: str
+    nsx_defender_config:
+        description:
+            - Nsxdefender specific icap configurations.
+            - Field introduced in 21.1.1.
+        type: dict
     pool_group_ref:
         description:
             - The pool group which is used to connect to icap servers.
@@ -205,10 +215,12 @@ def main():
         buffer_size=dict(type='int',),
         buffer_size_exceed_action=dict(type='str',),
         cloud_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         enable_preview=dict(type='bool',),
         fail_action=dict(type='str',),
         name=dict(type='str', required=True),
+        nsx_defender_config=dict(type='dict',),
         pool_group_ref=dict(type='str', required=True),
         preview_size=dict(type='int',),
         response_timeout=dict(type='int',),

@@ -44,6 +44,11 @@ options:
             - Backup configuration to be executed by this scheduler.
             - It is a reference to an object of type backupconfiguration.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     enabled:
         description:
             - Boolean flag to set enabled.
@@ -139,6 +144,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         backup_config_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         enabled=dict(type='bool',),
         end_date_time=dict(type='str',),
         frequency=dict(type='int',),

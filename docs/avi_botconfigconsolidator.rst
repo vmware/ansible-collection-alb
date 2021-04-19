@@ -8,8 +8,6 @@ vmware.alb.avi_botconfigconsolidator
 **Module for setup of BotConfigConsolidator Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -231,13 +229,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create BotConfigConsolidator object
-      vmware.alb.avi_botconfigconsolidator:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_botconfigconsolidator
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create BotConfigConsolidator object
+          avi_botconfigconsolidator:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_botconfigconsolidator
 
 
 Authors

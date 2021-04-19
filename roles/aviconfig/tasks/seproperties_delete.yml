@@ -13,6 +13,7 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     se_agent_properties: "{{ item.se_agent_properties | default(omit) }}"
     se_bootup_properties: "{{ item.se_bootup_properties | default(omit) }}"
     se_runtime_properties: "{{ item.se_runtime_properties | default(omit) }}"

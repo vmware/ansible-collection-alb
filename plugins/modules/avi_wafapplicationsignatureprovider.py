@@ -44,6 +44,11 @@ options:
             - Available application names and the ruleset version, when the rules for an application changed the last time.
             - Field introduced in 20.1.1.
         type: list
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     last_check_for_updates_error:
         description:
             - The error message indicating why the last update check failed.
@@ -134,6 +139,7 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         available_applications=dict(type='list',),
+        configpb_attributes=dict(type='dict',),
         last_check_for_updates_error=dict(type='str',),
         last_failed_check_for_updates=dict(type='dict',),
         last_successful_check_for_updates=dict(type='dict',),

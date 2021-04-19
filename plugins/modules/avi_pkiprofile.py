@@ -44,6 +44,11 @@ options:
         description:
             - List of certificate authorities (root and intermediate) trusted that is used for certificate validation.
         type: list
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     created_by:
         description:
             - Creator name.
@@ -77,8 +82,14 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     name:
         description:
@@ -142,12 +153,14 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         ca_certs=dict(type='list',),
+        configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         crl_check=dict(type='bool',),
         crls=dict(type='list',),
         ignore_peer_chain=dict(type='bool',),
         is_federated=dict(type='bool',),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

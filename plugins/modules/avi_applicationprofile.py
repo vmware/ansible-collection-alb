@@ -46,6 +46,11 @@ options:
             - Internally set by cloud connector.
             - Field introduced in 17.2.14, 18.1.5, 18.2.1.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     created_by:
         description:
             - Name of the application profile creator.
@@ -67,6 +72,11 @@ options:
         description:
             - Specifies the http application proxy profile parameters.
         type: dict
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
+        type: list
     name:
         description:
             - The name of the application profile.
@@ -212,11 +222,13 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         cloud_config_cksum=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         description=dict(type='str',),
         dns_service_profile=dict(type='dict',),
         dos_rl_profile=dict(type='dict',),
         http_profile=dict(type='dict',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         preserve_client_ip=dict(type='bool',),
         preserve_client_port=dict(type='bool',),

@@ -8,8 +8,6 @@ vmware.alb.avi_upgradestatusinfo
 **Module for setup of UpgradeStatusInfo Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -1083,13 +1081,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create UpgradeStatusInfo object
-      vmware.alb.avi_upgradestatusinfo:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_upgradestatusinfo
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create UpgradeStatusInfo object
+          avi_upgradestatusinfo:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_upgradestatusinfo
 
 
 Authors

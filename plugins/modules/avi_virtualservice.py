@@ -174,6 +174,11 @@ options:
             - edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as CLOUD_NONE.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     connections_rate_limit:
         description:
             - Rate limit the incoming connections to this virtual service.
@@ -337,6 +342,7 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
         type: list
@@ -350,6 +356,11 @@ options:
             - Limit potential dos attackers who exceed max_cps_per_client significantly to a fraction of max_cps_per_client for a while.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
+        type: list
     max_cps_per_client:
         description:
             - Maximum connections per second per client ip.
@@ -736,6 +747,7 @@ def main():
         cloud_config_cksum=dict(type='str',),
         cloud_ref=dict(type='str',),
         cloud_type=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         connections_rate_limit=dict(type='dict',),
         content_rewrite=dict(type='dict',),
         created_by=dict(type='str',),
@@ -768,6 +780,7 @@ def main():
         labels=dict(type='list',),
         ldap_vs_config=dict(type='dict',),
         limit_doser=dict(type='bool',),
+        markers=dict(type='list',),
         max_cps_per_client=dict(type='int',),
         microservice_ref=dict(type='str',),
         min_pools_up=dict(type='int',),

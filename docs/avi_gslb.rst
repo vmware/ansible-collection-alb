@@ -8,8 +8,6 @@ vmware.alb.avi_gslb
 **Module for setup of Gslb Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -174,6 +172,26 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.1.2.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>
@@ -599,119 +617,123 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-    - name: Example to create Gslb object
-      vmware.alb.avi_gslb:
-        name: "test-gslb"
-        avi_credentials:
-          username: '{{ username }}'
-          password: '{{ password }}'
-          controller: '{{ controller }}'
-        sites:
-          - name: "test-site1"
-            username: "gslb_username"
-            password: "gslb_password"
-            ip_addresses:
-              - type: "V4"
-                addr: "192.168.138.18"
-            enabled: True
-            member_type: "GSLB_ACTIVE_MEMBER"
-            port: 443
-            cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
-          - name: "test-site2"
-            username: "gslb_username"
-            password: "gslb_password"
-            ip_addresses:
-              - type: "V4"
-                addr: "192.168.138.19"
-            enabled: True
-            member_type: "GSLB_ACTIVE_MEMBER"
-            port: 443
-            cluster_uuid: "cluster-0c37ae8d-ab62-410c-ad3e-06fa831950b1"
-        dns_configs:
-          - domain_name: "test1.com"
-          - domain_name: "test2.com"
-        leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+        - name: Example to create Gslb object
+          avi_gslb:
+            name: "test-gslb"
+            avi_credentials:
+              username: '{{ username }}'
+              password: '{{ password }}'
+              controller: '{{ controller }}'
+            sites:
+              - name: "test-site1"
+                username: "gslb_username"
+                password: "gslb_password"
+                ip_addresses:
+                  - type: "V4"
+                    addr: "192.168.138.18"
+                enabled: True
+                member_type: "GSLB_ACTIVE_MEMBER"
+                port: 443
+                cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
+              - name: "test-site2"
+                username: "gslb_username"
+                password: "gslb_password"
+                ip_addresses:
+                  - type: "V4"
+                    addr: "192.168.138.19"
+                enabled: True
+                member_type: "GSLB_ACTIVE_MEMBER"
+                port: 443
+                cluster_uuid: "cluster-0c37ae8d-ab62-410c-ad3e-06fa831950b1"
+            dns_configs:
+              - domain_name: "test1.com"
+              - domain_name: "test2.com"
+            leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
 
-    - name: Update Gslb site's configurations (Patch Add Operation)
-      vmware.alb.avi_gslb:
-        avi_credentials:
-          username: '{{ username }}'
-          password: '{{ password }}'
-          controller: '{{ controller }}'
-        avi_api_update_method: patch
-        avi_api_patch_op: add
-        leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
-        name: "test-gslb"
-        dns_configs:
-          - domain_name: "temp1.com"
-          - domain_name: "temp2.com"
-        sites:
-          - name: "test-site1"
-            username: "gslb_username"
-            password: "gslb_password"
-            ip_addresses:
-              - type: "V4"
-                addr: "192.168.138.20"
-            enabled: True
-            member_type: "GSLB_ACTIVE_MEMBER"
-            port: 283
-            cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
+        - name: Update Gslb site's configurations (Patch Add Operation)
+          avi_gslb:
+            avi_credentials:
+              username: '{{ username }}'
+              password: '{{ password }}'
+              controller: '{{ controller }}'
+            avi_api_update_method: patch
+            avi_api_patch_op: add
+            leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
+            name: "test-gslb"
+            dns_configs:
+              - domain_name: "temp1.com"
+              - domain_name: "temp2.com"
+            sites:
+              - name: "test-site1"
+                username: "gslb_username"
+                password: "gslb_password"
+                ip_addresses:
+                  - type: "V4"
+                    addr: "192.168.138.20"
+                enabled: True
+                member_type: "GSLB_ACTIVE_MEMBER"
+                port: 283
+                cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
 
-    - name: Update Gslb site's configurations (Patch Replace Operation)
-      vmware.alb.avi_gslb:
-        avi_credentials:
-          username: "{{ username }}"
-          password: "{{ password }}"
-          controller: "{{ controller }}"
-        # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
-        leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
-        name: "test-gslb"
-        avi_api_update_method: patch
-        avi_api_patch_op: replace
-        dns_configs:
-          - domain_name: "test3.com"
-          - domain_name: "temp3.com"
-        sites:
-          - name: "test-site1"
-            username: "gslb_username"
-            password: "gslb_password"
-            ip_addresses:
-              - type: "V4"
-                addr: "192.168.138.21"
-            enabled: True
-            member_type: "GSLB_ACTIVE_MEMBER"
-            port: 283
-            cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
+        - name: Update Gslb site's configurations (Patch Replace Operation)
+          avi_gslb:
+            avi_credentials:
+              username: "{{ username }}"
+              password: "{{ password }}"
+              controller: "{{ controller }}"
+            # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
+            leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
+            name: "test-gslb"
+            avi_api_update_method: patch
+            avi_api_patch_op: replace
+            dns_configs:
+              - domain_name: "test3.com"
+              - domain_name: "temp3.com"
+            sites:
+              - name: "test-site1"
+                username: "gslb_username"
+                password: "gslb_password"
+                ip_addresses:
+                  - type: "V4"
+                    addr: "192.168.138.21"
+                enabled: True
+                member_type: "GSLB_ACTIVE_MEMBER"
+                port: 283
+                cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
 
-    - name: Delete Gslb site's den_vses configurations (Patch Delete(dns_vses) Operation)
-      vmware.alb.avi_gslb:
-        avi_credentials:
-          username: "{{ username }}"
-          password: "{{ password }}"
-          controller: "{{ controller }}"
-        # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
-        leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
-        name: "test-gslb"
-        avi_api_update_method: patch
-        avi_api_patch_op: delete
-        dns_configs:
-        sites:
-          - ip_addresses: "192.168.138.22"
-          - ip_addresses: "192.168.138.23"
+        - name: Delete Gslb site's den_vses configurations (Patch Delete(dns_vses) Operation)
+          avi_gslb:
+            avi_credentials:
+              username: "{{ username }}"
+              password: "{{ password }}"
+              controller: "{{ controller }}"
+            # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
+            leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
+            name: "test-gslb"
+            avi_api_update_method: patch
+            avi_api_patch_op: delete
+            dns_configs:
+            sites:
+              - ip_addresses: "192.168.138.22"
+              - ip_addresses: "192.168.138.23"
 
-    - name: Delete Gslb complete site's configurations (Patch Delete(site) Operation)
-      vmware.alb.avi_gslb:
-        avi_credentials: "{{ avi_credentials }}"
-        api_version: 18.2.8
-        avi_api_update_method: patch
-        avi_api_patch_op: delete
-        patch_level: '/site'
-        name: gslb.lab2.local
-        leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
-        dns_configs:
-        sites:
-          - ip_addresses: 192.168.138.24
+        - name: Delete Gslb complete site's configurations (Patch Delete(site) Operation)
+          avi_gslb:
+            avi_credentials: "{{ avi_credentials }}"
+            api_version: 18.2.8
+            avi_api_update_method: patch
+            avi_api_patch_op: delete
+            patch_level: '/site'
+            name: gslb.lab2.local
+            leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
+            dns_configs:
+            sites:
+              - ip_addresses: 192.168.138.24
 
 
 

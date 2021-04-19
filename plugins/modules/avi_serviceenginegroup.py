@@ -197,6 +197,11 @@ options:
             - Field introduced in 17.2.13,18.1.5,18.2.1.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     connection_memory_percentage:
         description:
             - Percentage of memory for connection state.
@@ -1862,6 +1867,7 @@ def main():
         cloud_ref=dict(type='str',),
         compress_ip_rules_for_each_ns_subnet=dict(type='bool',),
         config_debugs_on_all_cores=dict(type='bool',),
+        configpb_attributes=dict(type='dict',),
         connection_memory_percentage=dict(type='int',),
         core_shm_app_cache=dict(type='bool',),
         core_shm_app_learning=dict(type='bool',),

@@ -39,6 +39,11 @@ options:
             - Patch operation to use when using avi_api_update_method as patch.
         choices: ["add", "replace", "delete"]
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     delay_for_server_garbage_collection:
         description:
             - Delay in minutes after which a down server will be removed from pool.
@@ -73,8 +78,14 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     max_scalein_adjustment_step:
         description:
@@ -179,12 +190,14 @@ def main():
         avi_api_update_method=dict(default='put',
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
+        configpb_attributes=dict(type='dict',),
         delay_for_server_garbage_collection=dict(type='int',),
         description=dict(type='str',),
         intelligent_autoscale=dict(type='bool',),
         intelligent_scalein_margin=dict(type='int',),
         intelligent_scaleout_margin=dict(type='int',),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         max_scalein_adjustment_step=dict(type='int',),
         max_scaleout_adjustment_step=dict(type='int',),
         max_size=dict(type='int',),

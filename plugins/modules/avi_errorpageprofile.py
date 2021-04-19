@@ -51,6 +51,11 @@ options:
             - Field deprecated in 18.1.1.
             - Field introduced in 17.2.4.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     error_pages:
         description:
             - Defined error pages for http status codes.
@@ -66,8 +71,14 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     name:
         description:
@@ -126,9 +137,11 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         app_name=dict(type='str',),
         company_name=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         error_pages=dict(type='list',),
         host_name=dict(type='str',),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

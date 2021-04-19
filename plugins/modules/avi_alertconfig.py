@@ -61,6 +61,11 @@ options:
             - Default value when not specified in API or module is interpreted by Avi Controller as REALTIME.
         required: true
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     description:
         description:
             - A custom description field.
@@ -182,6 +187,7 @@ def main():
         alert_rule=dict(type='dict', required=True),
         autoscale_alert=dict(type='bool',),
         category=dict(type='str', required=True),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         enabled=dict(type='bool',),
         expiry_time=dict(type='int',),

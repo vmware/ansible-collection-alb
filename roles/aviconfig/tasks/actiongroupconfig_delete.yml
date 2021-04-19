@@ -15,6 +15,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     action_script_config_ref: "{{ item.action_script_config_ref | default(omit) }}"
     autoscale_trigger_notification: "{{ item.autoscale_trigger_notification | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     email_config_ref: "{{ item.email_config_ref | default(omit) }}"
     external_only: "{{ item.external_only | default(omit) }}"

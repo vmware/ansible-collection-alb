@@ -8,8 +8,6 @@ vmware.alb.avi_cluster
 **Module for setup of Cluster Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -242,13 +240,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create Cluster object
-      vmware.alb.avi_cluster:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_cluster
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create Cluster object
+          avi_cluster:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_cluster
 
 
 Authors

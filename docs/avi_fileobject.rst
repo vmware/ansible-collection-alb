@@ -8,8 +8,6 @@ vmware.alb.avi_fileobject
 **Module for setup of FileObject Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -455,13 +453,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create FileObject object
-      vmware.alb.avi_fileobject:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_fileobject
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create FileObject object
+          avi_fileobject:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_fileobject
 
 
 Authors

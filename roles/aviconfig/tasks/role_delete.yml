@@ -13,6 +13,8 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    allow_unlabelled_access: "{{ item.allow_unlabelled_access | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     filters: "{{ item.filters | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     privileges: "{{ item.privileges | default(omit) }}"

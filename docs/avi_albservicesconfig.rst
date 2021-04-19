@@ -8,8 +8,6 @@ vmware.alb.avi_albservicesconfig
 **Module for setup of ALBServicesConfig Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -142,6 +140,26 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>
@@ -404,13 +422,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create ALBServicesConfig object
-      vmware.alb.avi_albservicesconfig:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_albservicesconfig
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create ALBServicesConfig object
+          avi_albservicesconfig:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_albservicesconfig
 
 
 Authors

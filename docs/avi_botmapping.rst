@@ -8,8 +8,6 @@ vmware.alb.avi_botmapping
 **Module for setup of BotMapping Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -214,13 +212,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create BotMapping object
-      vmware.alb.avi_botmapping:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_botmapping
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create BotMapping object
+          avi_botmapping:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_botmapping
 
 
 Authors

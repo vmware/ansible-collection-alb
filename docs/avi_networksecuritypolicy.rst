@@ -8,8 +8,6 @@ vmware.alb.avi_networksecuritypolicy
 **Module for setup of NetworkSecurityPolicy Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -122,6 +120,26 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>created_by</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -179,6 +197,29 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>internal</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Network security policy is created and modified by internal modules only.
+                </div>
+                                <div style="font-size: small">
+                  - Should not be modified by users.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ip_reputation_db_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -221,10 +262,33 @@ Parameters
                   - Also allows for classification and tagging of similar objects.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 20.1.5.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>markers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of labels to be used for granular rbac.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
                 </div>
                                             </td>
         </tr>
@@ -321,26 +385,30 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-      - name: Create a network security policy to block clients represented by ip group known_attackers
-        vmware.alb.avi_networksecuritypolicy:
-          controller: '{{ controller }}'
-          username: '{{ username }}'
-          password: '{{ password }}'
-          name: vs-gurutest-ns
-          rules:
-          - action: NETWORK_SECURITY_POLICY_ACTION_TYPE_DENY
-            age: 0
-            enable: true
-            index: 1
-            log: false
-            match:
-              client_ip:
-                group_refs:
-                - Demo:known_attackers
-                match_criteria: IS_IN
-            name: Rule 1
-          tenant_ref: /api/tenant?name=Demo
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+          - name: Create a network security policy to block clients represented by ip group known_attackers
+            avi_networksecuritypolicy:
+              controller: '{{ controller }}'
+              username: '{{ username }}'
+              password: '{{ password }}'
+              name: vs-gurutest-ns
+              rules:
+              - action: NETWORK_SECURITY_POLICY_ACTION_TYPE_DENY
+                age: 0
+                enable: true
+                index: 1
+                log: false
+                match:
+                  client_ip:
+                    group_refs:
+                    - Demo:known_attackers
+                    match_criteria: IS_IN
+                name: Rule 1
+              tenant_ref: /api/tenant?name=Demo
 
 
 

@@ -8,8 +8,6 @@ vmware.alb.avi_nsxtsegmentruntime
 **Module for setup of NsxtSegmentRuntime Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -520,13 +518,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create NsxtSegmentRuntime object
-      vmware.alb.avi_nsxtsegmentruntime:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_nsxtsegmentruntime
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create NsxtSegmentRuntime object
+          avi_nsxtsegmentruntime:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_nsxtsegmentruntime
 
 
 Authors

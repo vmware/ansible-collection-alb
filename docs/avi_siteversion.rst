@@ -8,8 +8,6 @@ vmware.alb.avi_siteversion
 **Module for setup of SiteVersion Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -380,13 +378,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create SiteVersion object
-      vmware.alb.avi_siteversion:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_siteversion
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create SiteVersion object
+          avi_siteversion:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_siteversion
 
 
 Authors

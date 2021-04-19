@@ -8,8 +8,6 @@ vmware.alb.avi_cloud
 **Module for setup of Cloud Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -225,6 +223,26 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>custom_tags</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -311,6 +329,29 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>dns_resolvers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Dns resolver for the cloud.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 1 items allowed.
                 </div>
                                             </td>
         </tr>
@@ -966,28 +1007,32 @@ Examples
 --------
 
 .. code-block:: yaml
-        
-      - name: Create a VMWare cloud with write access mode
-        vmware.alb.avi_cloud:
-          username: '{{ username }}'
-          controller: '{{ controller }}'
-          password: '{{ password }}'
-          apic_mode: false
-          dhcp_enabled: true
-          enable_vip_static_routes: false
-          license_type: LIC_CORES
-          mtu: 1500
-          name: VCenter Cloud
-          prefer_static_routes: false
-          tenant_ref: /api/tenant?name=admin
-          vcenter_configuration:
-            datacenter_ref: /api/vimgrdcruntime/datacenter-2-10.10.20.100
-            management_network: /api/vimgrnwruntime/dvportgroup-103-10.10.20.100
-            password: password
-            privilege: WRITE_ACCESS
-            username: user
-            vcenter_url: 192.168.15.18
-          vtype: CLOUD_VCENTER
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:        
+          - name: Create a VMWare cloud with write access mode
+            avi_cloud:
+              username: '{{ username }}'
+              controller: '{{ controller }}'
+              password: '{{ password }}'
+              apic_mode: false
+              dhcp_enabled: true
+              enable_vip_static_routes: false
+              license_type: LIC_CORES
+              mtu: 1500
+              name: VCenter Cloud
+              prefer_static_routes: false
+              tenant_ref: /api/tenant?name=admin
+              vcenter_configuration:
+                datacenter_ref: /api/vimgrdcruntime/datacenter-2-10.10.20.100
+                management_network: /api/vimgrnwruntime/dvportgroup-103-10.10.20.100
+                password: password
+                privilege: WRITE_ACCESS
+                username: user
+                vcenter_url: 192.168.15.18
+              vtype: CLOUD_VCENTER
 
 
 

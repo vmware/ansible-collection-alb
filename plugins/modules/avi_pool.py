@@ -124,6 +124,11 @@ options:
         description:
             - It is a reference to an object of type cloud.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     conn_pool_properties:
         description:
             - Connnection pool properties.
@@ -235,6 +240,11 @@ options:
             - If enabled and no explicit domain name is specified, avi will use the incoming host header to do the match.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    http2_properties:
+        description:
+            - Http2 pool properties.
+            - Field introduced in 21.1.1.
+        type: dict
     ignore_server_port:
         description:
             - Ignore the server port in building the load balancing state.applicable only for consistent hash load balancing algorithm or disable port
@@ -257,6 +267,7 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
         type: list
@@ -300,6 +311,11 @@ options:
             - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
+        type: list
     max_concurrent_connections_per_server:
         description:
             - The maximum number of concurrent connections allowed to each server within the pool.
@@ -556,6 +572,7 @@ def main():
         capacity_estimation_ttfb_thresh=dict(type='int',),
         cloud_config_cksum=dict(type='str',),
         cloud_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         conn_pool_properties=dict(type='dict',),
         connection_ramp_duration=dict(type='int',),
         created_by=dict(type='str',),
@@ -573,6 +590,7 @@ def main():
         gslb_sp_enabled=dict(type='bool',),
         health_monitor_refs=dict(type='list',),
         host_check_enabled=dict(type='bool',),
+        http2_properties=dict(type='dict',),
         ignore_server_port=dict(type='bool',),
         inline_health_monitor=dict(type='bool',),
         ipaddrgroup_ref=dict(type='str',),
@@ -582,6 +600,7 @@ def main():
         lb_algorithm_core_nonaffinity=dict(type='int',),
         lb_algorithm_hash=dict(type='str',),
         lookup_server_by_name=dict(type='bool',),
+        markers=dict(type='list',),
         max_concurrent_connections_per_server=dict(type='int',),
         max_conn_rate_per_server=dict(type='dict',),
         min_health_monitors_up=dict(type='int',),

@@ -55,6 +55,11 @@ options:
             - Provider details if type is microsoft azure.
             - Field introduced in 17.2.1.
         type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     custom_profile:
         description:
             - Provider details if type is custom.
@@ -76,8 +81,14 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     name:
         description:
@@ -175,11 +186,13 @@ def main():
         allocate_ip_in_vrf=dict(type='bool',),
         aws_profile=dict(type='dict',),
         azure_profile=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         custom_profile=dict(type='dict',),
         gcp_profile=dict(type='dict',),
         infoblox_profile=dict(type='dict',),
         internal_profile=dict(type='dict',),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         oci_profile=dict(type='dict',),
         openstack_profile=dict(type='dict',),

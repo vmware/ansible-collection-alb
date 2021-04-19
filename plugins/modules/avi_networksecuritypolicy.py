@@ -45,6 +45,11 @@ options:
             - Checksum of cloud configuration for network sec policy.
             - Internally set by cloud connector.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
     created_by:
         description:
             - Creator name.
@@ -59,6 +64,12 @@ options:
             - It is a reference to an object of type geodb.
             - Field introduced in 21.1.1.
         type: str
+    internal:
+        description:
+            - Network security policy is created and modified by internal modules only.
+            - Should not be modified by users.
+            - Field introduced in 21.1.1.
+        type: bool
     ip_reputation_db_ref:
         description:
             - Ip reputation database.
@@ -70,8 +81,14 @@ options:
         description:
             - Key value pairs for granular object access control.
             - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+        type: list
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
         type: list
     name:
         description:
@@ -143,11 +160,14 @@ def main():
                                    choices=['put', 'patch']),
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
         cloud_config_cksum=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         description=dict(type='str',),
         geo_db_ref=dict(type='str',),
+        internal=dict(type='bool',),
         ip_reputation_db_ref=dict(type='str',),
         labels=dict(type='list',),
+        markers=dict(type='list',),
         name=dict(type='str',),
         rules=dict(type='list',),
         tenant_ref=dict(type='str',),

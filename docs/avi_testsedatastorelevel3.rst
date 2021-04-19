@@ -8,8 +8,6 @@ vmware.alb.avi_testsedatastorelevel3
 **Module for setup of TestSeDatastoreLevel3 Avi RESTful Object**
 
 
-Version added: "1.0.0"
-
 .. contents::
    :local:
    :depth: 1
@@ -102,6 +100,26 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -182,13 +200,18 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Example to create TestSeDatastoreLevel3 object
-      vmware.alb.avi_testsedatastorelevel3:
-        controller: 192.168.15.18
-        username: admin
-        password: something
-        state: present
-        name: sample_testsedatastorelevel3
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create TestSeDatastoreLevel3 object
+          avi_testsedatastorelevel3:
+            controller: 192.168.15.18
+            username: admin
+            password: something
+            state: present
+            name: sample_testsedatastorelevel3
 
 
 Authors
