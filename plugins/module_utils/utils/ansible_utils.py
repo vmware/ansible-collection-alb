@@ -6,6 +6,7 @@ Created on Aug 16, 2016
 
 @author: Gaurav Rastogi (grastogi@avinetworks.com)
 """
+from __future__ import (absolute_import, division, print_function)
 import os
 import re
 import sys
@@ -153,7 +154,7 @@ def get_unicode_type():
     else:
         return str
 
-RE_REF_MATCH = re.compile('^/api/[\w/]+\?name\=[\w]+[^#<>]*$')
+RE_REF_MATCH = re.compile('^/api/[\w/]+\?name\=[\w*]+[^#<>]*$')
 
 # if HTTP ref match then strip out the #name
 # HTTP_REF_MATCH = re.compile('https://[\w.0-9:-]+/api/[\w/\?.#&-]*$')
