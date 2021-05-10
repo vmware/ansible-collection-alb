@@ -14,7 +14,6 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     case_id: "{{ item.case_id | default(omit) }}"
-    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     error: "{{ item.error | default(omit) }}"
     file_path: "{{ item.file_path | default(omit) }}"
     name: "{{ item.name | default(omit) }}"

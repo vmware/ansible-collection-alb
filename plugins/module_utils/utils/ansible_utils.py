@@ -10,6 +10,7 @@ from __future__ import (absolute_import, division, print_function)
 import os
 import re
 import sys
+import yaml
 import logging
 from copy import deepcopy
 from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, avi_sdk_syslog_logger, \
@@ -329,8 +330,8 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
 
 
 POP_FIELDS = ['state', 'controller', 'username', 'password', 'api_version',
-              'avi_credentials', 'avi_api_update_method', 'avi_api_patch_op',
-              'api_context', 'tenant', 'tenant_uuid', 'avi_disable_session_cache_as_fact']
+              'avi_credentials', 'avi_api_update_method', 'avi_api_patch_op', 'avi_patch_path',
+              'avi_patch_value', 'api_context', 'tenant', 'tenant_uuid', 'avi_disable_session_cache_as_fact']
 
 
 def get_api_context(module, api_creds):
@@ -389,7 +390,8 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
     # Get the api version.
     avi_update_method = module.params.get('avi_api_update_method', 'put')
     avi_patch_op = module.params.get('avi_api_patch_op', 'add')
-
+    avi_patch_path = module.params.get('avi_patch_path')
+    avi_patch_value = module.params.get('avi_patch_value', None)
     api_version = api_creds.api_version
     name = module.params.get('name', None)
     # Added Support to get uuid
@@ -525,7 +527,19 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                 changed = True
             else:
                 obj.pop('name', None)
-                patch_data = {avi_patch_op: obj}
+                patch_data = {}
+                if avi_patch_path:
+                    if avi_patch_value:
+                        avi_patch_value = yaml.load(avi_patch_value)
+                    patch_data = {
+                        "json_patch": [{
+                            "op": avi_patch_op,
+                            "path": avi_patch_path,
+                            "value": avi_patch_value
+                        }]
+                    }
+                else:
+                    patch_data.update({avi_patch_op: obj})
                 try:
                     rsp = api.patch(
                         obj_path, data=patch_data, tenant=tenant,

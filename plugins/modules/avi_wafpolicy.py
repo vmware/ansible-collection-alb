@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+# SPDX-License-Identifier: Apache License 2.0
 
 
 from __future__ import (absolute_import, division, print_function)
@@ -133,6 +133,25 @@ options:
         description:
             - Rules to bypass WAF.
         type: dict
+    avi_api_update_method:
+        description:
+            - Default method for object update is HTTP PUT.
+            - Setting to patch will override that behavior to use HTTP PATCH.
+        default: put
+        choices: ["put", "patch"]
+        type: str
+    avi_api_patch_op:
+        description:
+            - Patch operation to use when using avi_api_update_method as patch.
+        choices: ["add", "replace", "delete", "remove"]
+    avi_patch_path:
+        description:
+            - Patch path to use when using avi_api_update_method as patch.
+        type: str
+    avi_patch_value:
+        description:
+            - Patch value to use when using avi_api_update_method as patch.
+        type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -220,7 +239,9 @@ def main():
                    choices=['absent', 'present']),
         avi_api_update_method=dict(default='put',
                                    choices=['put', 'patch']),
-        avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
         allow_mode_delegation=dict(type='bool',),
         created_by=dict(type='str',),
         crs_groups=dict(type='list',),

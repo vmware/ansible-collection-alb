@@ -1,4 +1,4 @@
-# VMware Advanced Load Balancer (formerly Avi) Ansible Collection 
+# Advanced Load Balancer (formerly Avi) Ansible Collection
 
 <!--start requires_ansible-->
 ## Ansible version compatibility
