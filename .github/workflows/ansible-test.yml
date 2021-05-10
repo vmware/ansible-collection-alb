@@ -151,3 +151,44 @@ jobs:
     - name: Run unit tests
       run: ansible-test units --docker -v --color --truncate 0 --python 3.8 --coverage
       working-directory: /home/runner/.ansible/collections/ansible_collections/vmware/alb
+
+  release:
+    name: release
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [ sanity, units ]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get current version
+        id: cversion
+        run: echo "::set-output name=version::$(grep version galaxy.yml | awk -F'"' '{ print $2 }')"
+
+      - name: Set up Galaxy auth
+        run: |
+          mkdir -p ~/.ansible
+          echo "token: $GALAXY_API_KEY" > ~/.ansible/galaxy_token
+        env:
+          GALAXY_API_KEY: ${{ secrets.GALAXY_API_KEY }}
+        shell: bash
+
+      - name: Create release and publish
+        id: release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          semantic_version: ${{ steps.cversion.outputs.version }}
+          extra_plugins: |
+            conventional-changelog-conventionalcommits@^4.4.0
+            @semantic-release/git@^9.0.0
+            @semantic-release/exec@^5.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Store built collection
+        uses: actions/upload-artifact@v2
+        with:
+          name: collection
+          path: |
+            *.tar.gz
