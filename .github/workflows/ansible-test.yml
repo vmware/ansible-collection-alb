@@ -163,8 +163,7 @@ jobs:
 
       - name: Get current version
         id: cversion
-        run: echo "::set-output name=version::$(grep version galaxy.yml | awk -F'"' '{ print $2 }')"
-        working-directory: /home/runner/.ansible/collections/ansible_collections/vmware/alb
+        run: echo "::set-output name=version::$(grep version /home/runner/.ansible/collections/ansible_collections/vmware/alb/galaxy.yml | awk -F'"' '{ print $2 }')"
 
       - name: Set up Galaxy auth
         run: |
