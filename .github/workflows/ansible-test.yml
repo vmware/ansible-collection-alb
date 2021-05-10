@@ -54,7 +54,7 @@ jobs:
         run: ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
 
       - name: Install galaxy-importer
-        run: pip install galaxy-importer
+        run: ANSIBLE_SKIP_CONFLICT_CHECK=1 pip install galaxy-importer
 
       - name: Create galaxy-importer directory
         run: sudo mkdir -p /etc/galaxy-importer
