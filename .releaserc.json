@@ -15,7 +15,7 @@
             "@semantic-release/git",
             {
                 "assets": [
-                    "galaxy.yml",
+                    "galaxy.yml"
                 ]
             }
         ],
