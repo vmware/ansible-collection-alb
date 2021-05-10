@@ -165,11 +165,12 @@ jobs:
       - name: Get current version
         id: cversion
         run: echo "::set-output name=version::$(grep version galaxy.yml | awk -F'"' '{ print $2 }')"
+        working-directory: /home/runner/.ansible/collections/ansible_collections/vmware/alb
 
       - name: Set up Galaxy auth
         run: |
           mkdir -p ~/.ansible
-          echo "token: $GALAXY_API_KEY" > ~/.ansible/galaxy_token
+          echo "token: 1a85312475880f87b4ff5d169acd3fdbca9aadc5" > ~/.ansible/galaxy_token
         env:
           GALAXY_API_KEY: ${{ secrets.GALAXY_API_KEY }}
         shell: bash
