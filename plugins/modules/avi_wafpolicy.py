@@ -36,7 +36,7 @@ options:
     avi_api_patch_op:
         description:
             - Patch operation to use when using avi_api_update_method as patch.
-        choices: ["add", "replace", "delete"]
+        choices: ["add", "replace", "delete", "remove"]
         type: str
     name:
         description:
@@ -133,17 +133,6 @@ options:
         description:
             - Rules to bypass WAF.
         type: dict
-    avi_api_update_method:
-        description:
-            - Default method for object update is HTTP PUT.
-            - Setting to patch will override that behavior to use HTTP PATCH.
-        default: put
-        choices: ["put", "patch"]
-        type: str
-    avi_api_patch_op:
-        description:
-            - Patch operation to use when using avi_api_update_method as patch.
-        choices: ["add", "replace", "delete", "remove"]
     avi_patch_path:
         description:
             - Patch path to use when using avi_api_update_method as patch.

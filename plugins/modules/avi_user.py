@@ -67,6 +67,7 @@ options:
         description:
             - Patch operation to use when using avi_api_update_method as patch.
         choices: ["add", "replace", "delete", "remove"]
+        type: str
     avi_patch_path:
         description:
             - Patch path to use when using avi_api_update_method as patch.
