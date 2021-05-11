@@ -1,0 +1,47 @@
+name: Publish Collection to Repository
+# Controls when the action will run.
+on:
+  release:
+    types: [created]
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+      # Sets up python3
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Get current version
+        id: cversion
+        run: echo "::set-output name=version::$(grep version home/runner/.ansible/collections/ansible_collections/vmware/alb/galaxy.yml | awk -F'"' '{ print $2 }')"
+
+      - name: Set up Galaxy auth
+        run: |
+          mkdir -p ~/.ansible
+          echo "token: $GALAXY_API_KEY" > ~/.ansible/galaxy_token
+        env:
+          GALAXY_API_KEY: ${{ secrets.GALAXY_API_KEY }}
+        shell: bash
+
+      - name: update release
+        id: update_release
+        uses: tubone24/update_release@v1.0
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload ansible collection
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        with:
+          upload_url: ${{ steps.update_release.outputs.upload_url }}
+          asset_path: avi_ansible-collection-alb-${{ steps.cversion.outputs.version }}.tar.gz
+          asset_name: ansible-collection-alb-${{ steps.cversion.outputs.version }}
+          asset_content_type: application/gzip
