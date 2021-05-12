@@ -168,7 +168,7 @@ jobs:
       - name: Set up Galaxy auth
         run: |
           mkdir -p ~/.ansible
-          echo "token: 1a85312475880f87b4ff5d169acd3fdbca9aadc5" > ~/.ansible/galaxy_token
+          echo "token: ${{ secrets.GALAXY_API_KEY }}" > ~/.ansible/galaxy_token
         env:
           GALAXY_API_KEY: ${{ secrets.GALAXY_API_KEY }}
         shell: bash
