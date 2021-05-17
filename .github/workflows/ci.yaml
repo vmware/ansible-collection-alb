@@ -40,30 +40,30 @@ jobs:
       run: sudo mkdir -p /etc/galaxy-importer
 
     - name: Create galaxy-importer.cfg
-      run: sudo cp ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb/.github/workflows/galaxy-importer.cfg /etc/galaxy-importer/galaxy-importer.cfg
+      run: sudo cp ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb/.github/workflows/galaxy-importer.cfg /etc/galaxy-importer/galaxy-importer.cfg
 
     - name: Run galaxy-importer check
-      run: python -m galaxy_importer.main ${GITHUB_WORKSPACE}/amolopcito-*.tar.gz | tee ${GITHUB_WORKSPACE}/log.txt
+      run: python -m galaxy_importer.main ${GITHUB_WORKSPACE}/vmware-*.tar.gz | tee ${GITHUB_WORKSPACE}/log.txt
 
     - name: Check errors
       run: if grep -E 'ERROR' ${GITHUB_WORKSPACE}/log.txt; then exit 1; else exit 0; fi
 
     - name: Run unit tests
       run: ansible-test units --docker -v --color --truncate 0 --python 3.8
-      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
 
     - name: Run sanity test validate-modules
       run: ansible-test sanity --test validate-modules --docker -v --color --truncate 0 --python 3.8
-      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
 
     - name: Run sanity test yamllint
       run: ansible-test sanity --test yamllint --docker -v --color --truncate 0 --python 3.8
-      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
 
     - name: Run sanity test ansible-doc
       run: ansible-test sanity --test ansible-doc --docker -v --color --truncate 0 --python 3.8
-      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
 
     - name: Run sanity test compile
       run: ansible-test sanity --test compile --docker -v --color --truncate 0 --python 3.8
-      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
