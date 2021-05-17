@@ -3,9 +3,12 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  build:
-    name: Build alb collection
+  test:
+    name: Test alb collection
     runs-on: ubuntu-latest
+    env:
+      ANSIBLE_SKIP_CONFLICT_CHECK: 1
+      HOME: "/home/runner"
     strategy:
       matrix:
         ansible: [2.9.17, 2.10.5]
@@ -18,176 +21,49 @@ jobs:
       with:
         python-version: 3.8
 
+    - name: Get Python and Pip version
+      run: echo $(pip --version)
+
     - name: Install ansible-base (v${{ matrix.ansible }})
       run: pip install https://github.com/ansible/ansible/archive/v${{ matrix.ansible }}.tar.gz --disable-pip-version-check
 
     - name: Build a collection tarball
-      run: ansible-galaxy collection build --output-path "${GITHUB_WORKSPACE}/.cache/collection-tarballs"
-
-    - name: Store migrated collection artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: collection
-        path: .cache/collection-tarballs
-
-  importer:
-    name: Galaxy-importer check
-    needs:
-      - build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.8
-
-      - name: Install ansible-base (v2.9.17)
-        run: pip install https://github.com/ansible/ansible/archive/v2.9.17.tar.gz --disable-pip-version-check
-
-      - name: Download migrated collection artifacts
-        uses: actions/download-artifact@v1
-        with:
-          name: collection
-          path: .cache/collection-tarballs
-
-      - name: Install the collection tarball
-        run: ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
-
-      - name: Install galaxy-importer
-        run: ANSIBLE_SKIP_CONFLICT_CHECK=1 pip install galaxy-importer
-
-      - name: Create galaxy-importer directory
-        run: sudo mkdir -p /etc/galaxy-importer
-
-      - name: Create galaxy-importer.cfg
-        run: sudo cp /home/runner/.ansible/collections/ansible_collections/vmware/alb/.github/workflows/galaxy-importer.cfg /etc/galaxy-importer/galaxy-importer.cfg
-
-      - name: Run galaxy-importer check
-        run: python -m galaxy_importer.main .cache/collection-tarballs/vmware-*.tar.gz | tee .cache/collection-tarballs/log.txt && sudo cp ./importer_result.json .cache/collection-tarballs/importer_result.json
-
-#      - name: Check warnings and errors
-#        run: if grep -E 'WARNING|ERROR' .cache/collection-tarballs/log.txt; then exit 1; else exit 0; fi
-
-      - name: Store galaxy_importer check log file
-        uses: actions/upload-artifact@v1
-        with:
-          name: galaxy-importer-log
-          path: .cache/collection-tarballs/importer_result.json
-
-  sanity:
-    name: Sanity in ubuntu-latest
-    needs:
-    - build
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ansible: [2.9.17, 2.10.5]
-    steps:
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.8
-
-    - name: Install ansible-base (v${{ matrix.ansible }})
-      run: pip install https://github.com/ansible/ansible/archive/v${{ matrix.ansible }}.tar.gz --disable-pip-version-check
-
-    - name: Install coverage (v4.5.4)
-      run: pip install coverage==4.5.4
-
-    - name: Download migrated collection artifacts
-      uses: actions/download-artifact@v1
-      with:
-        name: collection
-        path: .cache/collection-tarballs
+      run: ansible-galaxy collection build
 
     - name: Install the collection tarball
-      run: ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
+      run: ansible-galaxy collection install *.tar.gz
 
-    - name: Run sanity tests
-      run: ansible-test sanity --test validate-modules --docker -v --color --truncate 0 --coverage --python 3.8
-      working-directory: /home/runner/.ansible/collections/ansible_collections/vmware/alb
+    - name: Install galaxy-importer
+      run: ANSIBLE_SKIP_CONFLICT_CHECK=${{ env.ANSIBLE_SKIP_CONFLICT_CHECK }} pip install galaxy-importer
 
-    - name: Run sanity tests
-      run: ansible-test sanity --test yamllint --docker -v --color --truncate 0 --coverage --python 3.8
-      working-directory: /home/runner/.ansible/collections/ansible_collections/vmware/alb
+    - name: Create galaxy-importer directory
+      run: sudo mkdir -p /etc/galaxy-importer
 
-    - name: Run sanity tests
-      run: ansible-test sanity --test ansible-doc --docker -v --color --truncate 0 --coverage --python 3.8
-      working-directory: /home/runner/.ansible/collections/ansible_collections/vmware/alb
+    - name: Create galaxy-importer.cfg
+      run: sudo cp ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb/.github/workflows/galaxy-importer.cfg /etc/galaxy-importer/galaxy-importer.cfg
 
-    - name: Run sanity tests
-      run: ansible-test sanity --test compile --docker -v --color --truncate 0 --coverage --python 3.8
-      working-directory: /home/runner/.ansible/collections/ansible_collections/vmware/alb
+    - name: Run galaxy-importer check
+      run: python -m galaxy_importer.main ${GITHUB_WORKSPACE}/amolopcito-*.tar.gz | tee ${GITHUB_WORKSPACE}/log.txt
 
-  units:
-    name: Units in ubuntu-latest
-    needs:
-    - build
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ansible: [2.9.17, 2.10.5]
-    steps:
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.8
-
-    - name: Install ansible-base (v${{ matrix.ansible }})
-      run: pip install https://github.com/ansible/ansible/archive/v${{ matrix.ansible }}.tar.gz --disable-pip-version-check
-
-    - name: Install coverage (v4.5.4)
-      run: pip install coverage==4.5.4
-
-    - name: Download migrated collection artifacts
-      uses: actions/download-artifact@v1
-      with:
-        name: collection
-        path: .cache/collection-tarballs
-
-    - name: Install the collection tarball
-      run: ansible-galaxy collection install .cache/collection-tarballs/*.tar.gz
+    - name: Check errors
+      run: if grep -E 'ERROR' ${GITHUB_WORKSPACE}/log.txt; then exit 1; else exit 0; fi
 
     - name: Run unit tests
-      run: ansible-test units --docker -v --color --truncate 0 --python 3.8 --coverage
-      working-directory: /home/runner/.ansible/collections/ansible_collections/vmware/alb
+      run: ansible-test units --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
 
-  release:
-    name: release
-    needs: [ sanity, units ]
-    runs-on: ubuntu-latest
+    - name: Run sanity test validate-modules
+      run: ansible-test sanity --test validate-modules --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+    - name: Run sanity test yamllint
+      run: ansible-test sanity --test yamllint --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
 
-      - name: Get current version
-        id: cversion
-        run: echo "::set-output name=version::$(grep version /home/runner/.ansible/collections/ansible_collections/vmware/alb/galaxy.yml | awk -F'"' '{ print $2 }')"
+    - name: Run sanity test ansible-doc
+      run: ansible-test sanity --test ansible-doc --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
 
-      - name: Set up Galaxy auth
-        run: |
-          mkdir -p ~/.ansible
-          echo "token: ${{ secrets.GALAXY_API_KEY }}" > ~/.ansible/galaxy_token
-        env:
-          GALAXY_API_KEY: ${{ secrets.GALAXY_API_KEY }}
-        shell: bash
-
-      - name: Create release and publish
-        id: release
-        uses: cycjimmy/semantic-release-action@v2
-        with:
-          semantic_version: ${{ steps.cversion.outputs.version }}
-          extra_plugins: |
-            conventional-changelog-conventionalcommits@^4.4.0
-            @semantic-release/git@^9.0.0
-            @semantic-release/exec@^5.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Store built collection
-        uses: actions/upload-artifact@v2
-        with:
-          name: collection
-          path: |
-            *.tar.gz
+    - name: Run sanity test compile
+      run: ansible-test sanity --test compile --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/amolopcito/alb
