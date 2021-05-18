@@ -1,34 +1,7 @@
-# avinetworks.aviconfig
-
-[![Build Status](https://travis-ci.org/avinetworks/ansible-role-aviconfig.svg?branch=master)](https://travis-ci.org/avinetworks/ansible-role-aviconfig)
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-avinetworks.aviconfig-blue.svg)](https://galaxy.ansible.com/avinetworks/aviconfig/)
-
+# aviconfig
 
 This role provides ability for user to configure Avi by simply providing a dictionary of avi configuration objects.
 This role invokes the right Avi Ansible modules as tasks in correct order ensuring consistent and successful configuration.
-
-## Requirements
-
- - python >= 2.7
- - avisdk
-
-This role requires Ansible 2.2 or higher. Requirements are listed in the metadata file.
-
-Please install avisdk from pip prior to running this module.
-```bash
-
-pip install avisdk --upgrade
-```
-
-## Installation
-
-To install the aviconfig Ansible Module, please issue the command on the machine you will run Ansible from.
-```bash
-
-ansible-galaxy install avinetworks.aviconfig
-```
-
-For more information please visit http://docs.ansible.com/ansible/galaxy.html
 
 ## Role Variables
 
@@ -61,7 +34,7 @@ Eg.
 
 - name: Avi Application | Setup Foo
   import_role:
-    name: avinetworks.aviconfig
+    name: aviconfig
   vars:
     avi_config: "{{avi_config}}"
 ```
@@ -73,7 +46,7 @@ This provides location to the role to read the Avi configuration objects. It loa
 
 - name: Avi Application | Setup VMWare Cloud with Write Access
   import_role:
-    name: avinetworks.aviconfig
+    name: aviconfig
   vars:
     avi_config_file: application/config.yml
 ```
@@ -86,7 +59,7 @@ Eg.
 
 - name: Avi Application | Setup VMWare Cloud with Write Access
   import_role:
-    name: avinetworks.aviconfig
+    name: aviconfig
   vars:
     avi_config_file: application/config.yml
     avi_creds_file: credentials/creds.yml
@@ -109,12 +82,12 @@ Eg. ansible-playbook site_applications.yml --extra-vars "site_dir=`pwd` avi_conf
 ---
 - hosts: localhost
   connection: local
-  roles:
-    - role: avinetworks.avisdk
+  collections:
+    - vmware.nsx_alb
   tasks:
     - name: Avi Application | Setup foo
       import_role:
-        name: avinetworks.aviconfig
+        name: aviconfig
       vars:
         avi_config_file: "foo/config.yml"
         avi_creds_file: "vars/creds.yml"
@@ -126,8 +99,8 @@ This example shows usage of how to create avi_config as part of task and pass it
 ---
 - hosts: localhost
   connection: local
-  roles:
-    - role: avinetworks.avisdk
+  collections:
+    - vmware.nsx_alb
   tasks:
     - name: defining avi config
       set_fact:
@@ -152,7 +125,7 @@ This example shows usage of how to create avi_config as part of task and pass it
 
     - name: Avi Application | Setup foo
       import_role:
-        name: avinetworks.aviconfig
+        name: aviconfig
       vars:
         avi_config: "{{avi_config}}"
         avi_creds_file: "vars/creds.yaml"
