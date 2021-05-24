@@ -1,0 +1,69 @@
+name: Ansible CI
+on:
+  - pull_request
+
+jobs:
+  test:
+    name: Test alb collection
+    runs-on: ubuntu-latest
+    env:
+      ANSIBLE_SKIP_CONFLICT_CHECK: 1
+      HOME: "/home/runner"
+    strategy:
+      matrix:
+        ansible: [2.9.17, 2.10.5]
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+
+    - name: Get Python and Pip version
+      run: echo $(pip --version)
+
+    - name: Install ansible-base (v${{ matrix.ansible }})
+      run: pip install https://github.com/ansible/ansible/archive/v${{ matrix.ansible }}.tar.gz --disable-pip-version-check
+
+    - name: Build a collection tarball
+      run: ansible-galaxy collection build
+
+    - name: Install the collection tarball
+      run: ansible-galaxy collection install *.tar.gz
+
+    - name: Install galaxy-importer
+      run: ANSIBLE_SKIP_CONFLICT_CHECK=${{ env.ANSIBLE_SKIP_CONFLICT_CHECK }} pip install galaxy-importer
+
+    - name: Create galaxy-importer directory
+      run: sudo mkdir -p /etc/galaxy-importer
+
+    - name: Create galaxy-importer.cfg
+      run: sudo cp ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb/.github/workflows/galaxy-importer.cfg /etc/galaxy-importer/galaxy-importer.cfg
+
+    - name: Run galaxy-importer check
+      run: python -m galaxy_importer.main ${GITHUB_WORKSPACE}/vmware-*.tar.gz | tee ${GITHUB_WORKSPACE}/log.txt
+
+    - name: Check errors
+      run: if grep -E 'ERROR' ${GITHUB_WORKSPACE}/log.txt; then exit 1; else exit 0; fi
+
+    - name: Run unit tests
+      run: ansible-test units --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
+
+    - name: Run sanity test validate-modules
+      run: ansible-test sanity --test validate-modules --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
+
+    - name: Run sanity test yamllint
+      run: ansible-test sanity --test yamllint --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
+
+    - name: Run sanity test ansible-doc
+      run: ansible-test sanity --test ansible-doc --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
+
+    - name: Run sanity test compile
+      run: ansible-test sanity --test compile --docker -v --color --truncate 0 --python 3.8
+      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb

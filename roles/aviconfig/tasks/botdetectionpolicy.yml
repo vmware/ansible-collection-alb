@@ -14,7 +14,7 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     allow_list: "{{ item.allow_list | default(omit) }}"
-    bot_mapping_uuids: "{{ item.bot_mapping_uuids | default(omit) }}"
+    bot_mapping_refs: "{{ item.bot_mapping_refs | default(omit) }}"
     consolidator_ref: "{{ item.consolidator_ref | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     ip_location_detector: "{{ item.ip_location_detector | default(omit) }}"

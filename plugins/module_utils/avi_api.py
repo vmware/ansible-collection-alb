@@ -1,6 +1,7 @@
 # Copyright 2021 VMware, Inc.
 # SPDX-License-Identifier: Apache License 2.0
 
+from __future__ import (absolute_import, division, print_function)
 import os
 import sys
 import copy
@@ -41,7 +42,7 @@ def avi_timedelta(td):
     return ts
 
 
-def avi_sdk_syslog_logger(logger_name='avi.sdk'):
+def avi_sdk_syslog_logger(logger_name='ansible_collections.vmware.alb.plugins.module_utils'):
     # The following sets up syslog module to log underlying avi SDK messages
     # based on the environment variables:
     #   AVI_LOG_HANDLER: names the logging handler to use. Only syslog is

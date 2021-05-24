@@ -1,0 +1,22 @@
+name: Release collection to Ansible Galaxy
+on:
+  release:
+    types:
+      - published
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Install ansible-base to deploy collection
+        run: pip install ansible-base
+      - name: Build and Deploy Collection
+        #uses: artis3n/ansible_galaxy_collection@v2
+        uses: arillso/action.ansible.collection@master
+        with:
+          api_key: ${{ secrets.GALAXY_API_KEY }}

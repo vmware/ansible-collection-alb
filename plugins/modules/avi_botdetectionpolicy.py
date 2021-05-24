@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+# SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
@@ -37,17 +37,27 @@ options:
     avi_api_patch_op:
         description:
             - Patch operation to use when using avi_api_update_method as patch.
-        choices: ["add", "replace", "delete"]
+        choices: ["add", "replace", "delete", "remove"]
+        type: str
+    avi_patch_path:
+        description:
+            - Patch path to use when using avi_api_update_method as patch.
+        type: str
+    avi_patch_value:
+        description:
+            - Patch value to use when using avi_api_update_method as patch.
         type: str
     allow_list:
         description:
             - Allow the user to skip botmanagement for selected requests.
             - Field introduced in 21.1.1.
         type: dict
-    bot_mapping_uuids:
+    bot_mapping_refs:
         description:
             - System- and user-defined rules for classification.
+            - It is a reference to an object of type botmapping.
             - Field introduced in 21.1.1.
+            - Maximum of 2 items allowed.
         type: list
     consolidator_ref:
         description:
@@ -135,9 +145,11 @@ def main():
                    choices=['absent', 'present']),
         avi_api_update_method=dict(default='put',
                                    choices=['put', 'patch']),
-        avi_api_patch_op=dict(choices=['add', 'replace', 'delete']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
         allow_list=dict(type='dict',),
-        bot_mapping_uuids=dict(type='list',),
+        bot_mapping_refs=dict(type='list',),
         consolidator_ref=dict(type='str',),
         description=dict(type='str',),
         ip_location_detector=dict(type='dict', required=True),
