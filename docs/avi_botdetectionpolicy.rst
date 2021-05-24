@@ -120,7 +120,7 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>bot_mapping_uuids</b>
+                <b>bot_mapping_refs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">list</span>
@@ -133,7 +133,13 @@ Parameters
                   - System- and user-defined rules for classification.
                 </div>
                                 <div style="font-size: small">
+                  - It is a reference to an object of type botmapping.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 2 items allowed.
                 </div>
                                             </td>
         </tr>

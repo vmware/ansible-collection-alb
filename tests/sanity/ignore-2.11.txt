@@ -188,3 +188,14 @@ plugins/modules/avi_wafprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_jwtserverprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_webhook.py validate-modules:missing-gplv3-license
 plugins/modules/avi_l4policyset.py validate-modules:missing-gplv3-license
+plugins/modules/avi_bootstrap_controller.py validate-modules:no-log-needed
+plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed
+plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed
+plugins/modules/avi_jwtprofile.py validate-modules:no-log-needed
+plugins/modules/avi_jwtserverprofile.py validate-modules:no-log-needed
+plugins/modules/avi_pool.py validate-modules:no-log-needed
+plugins/modules/avi_serviceenginegroup.py validate-modules:no-log-needed
+plugins/modules/avi_sslkeyandcertificate.py validate-modules:no-log-needed
+plugins/modules/avi_sslkeyandcertificate.py validate-modules:no-log-needed
+plugins/modules/avi_virtualservice.py validate-modules:no-log-needed
+plugins/modules/avi_webhook.py validate-modules:no-log-needed

@@ -53,7 +53,7 @@ RETURN = """
 """
 
 from ansible.module_utils._text import to_native
-from ansible.errors import AnsibleError, AnsibleParserError
+from ansible.errors import AnsibleError
 from ansible.plugins.lookup import LookupBase
 from ansible.utils.display import Display
 from ansible_collections.vmware.alb.plugins.module_utils.sdk.avi_api import ApiSession, AviCredentials
