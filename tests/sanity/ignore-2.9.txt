@@ -14,6 +14,7 @@ plugins/modules/avi_gslbservice_patch_member.py validate-modules:missing-gplv3-l
 plugins/modules/avi_bootstrap_controller.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_fileservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_image.py validate-modules:missing-gplv3-license
+plugins/modules/avi_saml_api_session.py validate-modules:doc-type-does-not-match-spec
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
@@ -114,4 +115,3 @@ plugins/modules/avi_authprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_ssopolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemconfiguration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_virtualservice.py validate-modules:missing-gplv3-license
-plugins/modules/avi_saml_api_session.py validate-modules:doc-type-does-not-match-spec
