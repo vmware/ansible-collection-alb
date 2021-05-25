@@ -50,12 +50,12 @@ options:
         type: str
     apic_configuration:
         description:
-            - Apicconfiguration settings for cloud.
+            - Field deprecated in 21.1.1.
         type: dict
     apic_mode:
         description:
+            - Field deprecated in 21.1.1.
             - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     autoscale_polling_interval:
         description:
@@ -194,6 +194,7 @@ options:
     nsx_configuration:
         description:
             - Configuration parameters for nsx manager.
+            - Field deprecated in 21.1.1.
             - Field introduced in 17.1.1.
         type: dict
     nsxt_configuration:

@@ -30,6 +30,7 @@
     scalein_cooldown: "{{ item.scalein_cooldown | default(omit) }}"
     scaleout_alertconfig_refs: "{{ item.scaleout_alertconfig_refs | default(omit) }}"
     scaleout_cooldown: "{{ item.scaleout_cooldown | default(omit) }}"
+    scheduled_scalings: "{{ item.scheduled_scalings | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     use_predicted_load: "{{ item.use_predicted_load | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"

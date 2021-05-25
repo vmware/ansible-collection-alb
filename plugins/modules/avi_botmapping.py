@@ -72,7 +72,7 @@ options:
         type: str
     uuid:
         description:
-            - A unique identifier of this mapping.
+            - A unique identifier for this mapping.
             - Field introduced in 21.1.1.
         type: str
 extends_documentation_fragment:

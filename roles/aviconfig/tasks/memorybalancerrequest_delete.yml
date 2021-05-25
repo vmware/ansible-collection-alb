@@ -1,8 +1,8 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi BotDetectionPolicy | Delete BotDetectionPolicy
-  vmware.alb.avi_botdetectionpolicy:
+- name: Avi MemoryBalancerRequest | Delete MemoryBalancerRequest
+  vmware.alb.avi_memorybalancerrequest:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -13,21 +13,17 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    allow_list: "{{ item.allow_list | default(omit) }}"
-    description: "{{ item.description | default(omit) }}"
-    ip_location_detector: "{{ item.ip_location_detector | default(omit) }}"
-    ip_reputation_detector: "{{ item.ip_reputation_detector | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    controller_info: "{{ item.controller_info | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    system_bot_mapping_ref: "{{ item.system_bot_mapping_ref | default(omit) }}"
-    system_consolidator_ref: "{{ item.system_consolidator_ref | default(omit) }}"
+    process_info: "{{ item.process_info | default(omit) }}"
+    process_instance: "{{ item.process_instance | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    user_agent_detector: "{{ item.user_agent_detector | default(omit) }}"
-    user_bot_mapping_ref: "{{ item.user_bot_mapping_ref | default(omit) }}"
-    user_consolidator_ref: "{{ item.user_consolidator_ref | default(omit) }}"
+    timestamp: "{{ item.timestamp | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))
     - (avi_config_state == "absent" or avi_role_state_mode == "absent")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.botdetectionpolicy | default([]) }}"
+  with_items: "{{ avi_role_cfg.memorybalancerrequest | default([]) }}"

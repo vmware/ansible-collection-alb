@@ -13,12 +13,12 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_botdetectionpolicy
+module: avi_memorybalancerrequest
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 
-short_description: Module for setup of BotDetectionPolicy Avi RESTful Object
+short_description: Module for setup of MemoryBalancerRequest Avi RESTful Object
 description:
-    - This module is used to configure BotDetectionPolicy object
+    - This module is used to configure MemoryBalancerRequest object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -47,81 +47,50 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    allow_list:
+    configpb_attributes:
         description:
-            - Allow the user to skip botmanagement for selected requests.
+            - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
         type: dict
-    description:
+    controller_info:
         description:
-            - Human-readable description of this bot detection policy.
+            - Current details regarding controller.
             - Field introduced in 21.1.1.
-        type: str
-    ip_location_detector:
-        description:
-            - The ip location configuration used in this policy.
-            - Field introduced in 21.1.1.
-        required: true
-        type: dict
-    ip_reputation_detector:
-        description:
-            - The ip reputation configuration used in this policy.
-            - Field introduced in 21.1.1.
-        required: true
         type: dict
     name:
         description:
-            - The name of this bot detection policy.
+            - Name of controller process.
             - Field introduced in 21.1.1.
         required: true
         type: str
-    system_bot_mapping_ref:
+    process_info:
         description:
-            - System-defined rules for classification.
-            - It is a reference to an object of type botmapping.
+            - Current process information of the controller process.
             - Field introduced in 21.1.1.
-        type: str
-    system_consolidator_ref:
+        type: dict
+    process_instance:
         description:
-            - The installation provides an updated ruleset for consolidating the results of different decider phases.
-            - It is a reference to an object of type botconfigconsolidator.
+            - Instance of the controller process.
             - Field introduced in 21.1.1.
         type: str
     tenant_ref:
         description:
-            - The unique identifier of the tenant to which this policy belongs.
+            - Uuid of tenant object.
             - It is a reference to an object of type tenant.
+            - Field introduced in 21.1.1.
+        type: str
+    timestamp:
+        description:
+            - Time at which memory balancer request was created/updated.
             - Field introduced in 21.1.1.
         type: str
     url:
         description:
             - Avi controller URL of the object.
         type: str
-    user_agent_detector:
-        description:
-            - The user-agent configuration used in this policy.
-            - Field introduced in 21.1.1.
-        required: true
-        type: dict
-    user_bot_mapping_ref:
-        description:
-            - User-defined rules for classification.
-            - These are applied before the system classification rules.
-            - If a rule matches, processing terminates and the system-defined rules will not run.
-            - It is a reference to an object of type botmapping.
-            - Field introduced in 21.1.1.
-        type: str
-    user_consolidator_ref:
-        description:
-            - The user-provided ruleset for consolidating the results of different decider phases.
-            - This runs before the system consolidator.
-            - If it successfully sets a consolidation, the system consolidator will not change it.
-            - It is a reference to an object of type botconfigconsolidator.
-            - Field introduced in 21.1.1.
-        type: str
     uuid:
         description:
-            - A unique identifier to this bot detection policy.
+            - Uuid of memory balancer request object.
             - Field introduced in 21.1.1.
         type: str
 extends_documentation_fragment:
@@ -129,18 +98,18 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Example to create BotDetectionPolicy object
-  vmware.alb.avi_botdetectionpolicy:
+- name: Example to create MemoryBalancerRequest object
+  vmware.alb.avi_memorybalancerrequest:
     controller: 192.168.15.18
     username: admin
     password: something
     state: present
-    name: sample_botdetectionpolicy
+    name: sample_memorybalancerrequest
 """
 
 RETURN = '''
 obj:
-    description: BotDetectionPolicy (api/botdetectionpolicy) object
+    description: MemoryBalancerRequest (api/memorybalancerrequest) object
     returned: success, changed
     type: dict
 '''
@@ -163,18 +132,14 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        allow_list=dict(type='dict',),
-        description=dict(type='str',),
-        ip_location_detector=dict(type='dict', required=True),
-        ip_reputation_detector=dict(type='dict', required=True),
+        configpb_attributes=dict(type='dict',),
+        controller_info=dict(type='dict',),
         name=dict(type='str', required=True),
-        system_bot_mapping_ref=dict(type='str',),
-        system_consolidator_ref=dict(type='str',),
+        process_info=dict(type='dict',),
+        process_instance=dict(type='str',),
         tenant_ref=dict(type='str',),
+        timestamp=dict(type='str',),
         url=dict(type='str',),
-        user_agent_detector=dict(type='dict', required=True),
-        user_bot_mapping_ref=dict(type='str',),
-        user_consolidator_ref=dict(type='str',),
         uuid=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
@@ -184,7 +149,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'botdetectionpolicy',
+    return avi_ansible_api(module, 'memorybalancerrequest',
                            set())
 
 

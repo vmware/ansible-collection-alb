@@ -32,6 +32,7 @@ avi_resource_types:
   - wafapplicationsignatureprovider
   - errorpagebody
   - testsedatastorelevel3
+  - botipreputationtypemapping
   - botconfigconsolidator
   - federationcheckpoint
   - gslbgeodbprofile
@@ -46,6 +47,7 @@ avi_resource_types:
   - securitymanagerdata
   - cluster
   - poolgroupdeploymentpolicy
+  - memorybalancerrequest
   - jwtprofile
   - backupconfiguration
   - clusterclouddetails

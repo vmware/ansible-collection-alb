@@ -129,6 +129,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Populate ip addresses from members of this cisco apic epg.
                 </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 21.1.1.
+                </div>
                                             </td>
         </tr>
                 <tr>

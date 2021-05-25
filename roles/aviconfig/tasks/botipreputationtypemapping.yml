@@ -1,8 +1,8 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi BotDetectionPolicy | Create or Update BotDetectionPolicy
-  vmware.alb.avi_botdetectionpolicy:
+- name: Avi BotIPReputationTypeMapping | Create or Update BotIPReputationTypeMapping
+  vmware.alb.avi_botipreputationtypemapping:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -13,19 +13,11 @@
     api_context: "{{ avi_api_context | default(omit) }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    allow_list: "{{ item.allow_list | default(omit) }}"
-    description: "{{ item.description | default(omit) }}"
-    ip_location_detector: "{{ item.ip_location_detector | default(omit) }}"
-    ip_reputation_detector: "{{ item.ip_reputation_detector | default(omit) }}"
+    ip_reputation_mappings: "{{ item.ip_reputation_mappings | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    system_bot_mapping_ref: "{{ item.system_bot_mapping_ref | default(omit) }}"
-    system_consolidator_ref: "{{ item.system_consolidator_ref | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    user_agent_detector: "{{ item.user_agent_detector | default(omit) }}"
-    user_bot_mapping_ref: "{{ item.user_bot_mapping_ref | default(omit) }}"
-    user_consolidator_ref: "{{ item.user_consolidator_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.botdetectionpolicy | default([]) }}"
+  with_items: "{{ avi_role_cfg.botipreputationtypemapping | default([]) }}"

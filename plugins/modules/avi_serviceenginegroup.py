@@ -269,6 +269,11 @@ options:
             - Field introduced in 18.2.3.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1000000.
         type: int
+    deactivate_ipv6_discovery:
+        description:
+            - If activated, ipv6 address and route discovery are deactivated.requires se reboot.
+            - Field introduced in 21.1.1.
+        type: bool
     dedicated_dispatcher_core:
         description:
             - Dedicate the core that handles packet receive/transmit from the network to just the dispatching function.
@@ -693,6 +698,96 @@ options:
             - Enum options - LIC_BACKEND_SERVERS, LIC_SOCKETS, LIC_CORES, LIC_HOSTS, LIC_SE_BANDWIDTH, LIC_METERED_SE_BANDWIDTH.
             - Field introduced in 17.2.5.
         type: str
+    log_agent_compress_logs:
+        description:
+            - Flag to indicate if log files are compressed upon full on the service engine.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    log_agent_debug_enabled:
+        description:
+            - Enable debug logs by default on service engine.
+            - This includes all other debugging logs.
+            - Debug logs can also be explcitly enabled from the cli shell.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    log_agent_file_sz_appl:
+        description:
+            - Maximum application log file size before rollover.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+        type: int
+    log_agent_file_sz_conn:
+        description:
+            - Maximum connection log file size before rollover.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+        type: int
+    log_agent_file_sz_debug:
+        description:
+            - Maximum debug log file size before rollover.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+        type: int
+    log_agent_file_sz_event:
+        description:
+            - Maximum event log file size before rollover.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+        type: int
+    log_agent_log_storage_min_sz:
+        description:
+            - Minimum storage allocated for logs irrespective of memory and cores.
+            - Field introduced in 21.1.1.
+            - Unit is mb.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
+        type: int
+    log_agent_max_concurrent_rsync:
+        description:
+            - Maximum concurrent rsync requests initiated from log-agent to the controller.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
+        type: int
+    log_agent_max_storage_excess_percent:
+        description:
+            - Excess percentage threshold of disk size to trigger cleanup of logs on the service engine.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 110.
+        type: int
+    log_agent_max_storage_ignore_percent:
+        description:
+            - Maximum storage on the disk not allocated for logs on the service engine.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 20.0.
+        type: float
+    log_agent_min_storage_per_vs:
+        description:
+            - Minimum storage allocated to any given virtualservice on the service engine.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+        type: int
+    log_agent_sleep_interval:
+        description:
+            - Internal timer to stall log-agent and prevent it from hogging cpu cycles on the service engine.
+            - Field introduced in 21.1.1.
+            - Unit is milliseconds.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+        type: int
+    log_agent_trace_enabled:
+        description:
+            - Enable trace logs by default on service engine.
+            - Configuration operations are logged along with other important logs by service engine.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    log_agent_unknown_vs_timer:
+        description:
+            - Timeout to purge unknown virtual service logs from the service engine.
+            - Field introduced in 21.1.1.
+            - Unit is sec.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1800.
+        type: int
     log_disksz:
         description:
             - Maximum disk capacity (in mb) to be allocated to an se.
@@ -707,6 +802,12 @@ options:
             - Allowed in basic(allowed values- true) edition, essentials(allowed values- true) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    log_message_max_file_list_size:
+        description:
+            - Maximum number of file names in a log message.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 64.
+        type: int
     max_concurrent_external_hm:
         description:
             - Maximum number of external health monitors that can run concurrently in a service engine.
@@ -1134,6 +1235,18 @@ options:
             - Field introduced in 20.1.4.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
+    se_dp_log_nf_enqueue_percent:
+        description:
+            - Internal buffer full indicator on the service engine beyond which the unfiltered logs are abandoned.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 70.
+        type: int
+    se_dp_log_udf_enqueue_percent:
+        description:
+            - Internal buffer full indicator on the service engine beyond which the user filtered logs are abandoned.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 90.
+        type: int
     se_dp_max_hb_version:
         description:
             - The highest supported se-se heartbeat protocol version.
@@ -1249,6 +1362,24 @@ options:
             - Field introduced in 20.1.3.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
+    se_log_buffer_app_blocking_dequeue:
+        description:
+            - Internal flag that blocks dataplane until all application logs are flushed to log-agent process.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    se_log_buffer_conn_blocking_dequeue:
+        description:
+            - Internal flag that blocks dataplane until all connection logs are flushed to log-agent process.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    se_log_buffer_events_blocking_dequeue:
+        description:
+            - Internal flag that blocks dataplane until all outstanding events are flushed to log-agent process.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     se_lro:
         description:
             - Enable or disable large receive optimization for vnics.
@@ -1603,6 +1734,12 @@ options:
             - Field introduced in 20.1.1.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    use_legacy_netlink:
+        description:
+            - Enable legacy model of netlink notifications.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     use_objsync:
         description:
             - Enable interse objsyc distribution framework.
@@ -1888,6 +2025,7 @@ def main():
         custom_tag=dict(type='list',),
         data_network_id=dict(type='str',),
         datascript_timeout=dict(type='int',),
+        deactivate_ipv6_discovery=dict(type='bool',),
         dedicated_dispatcher_core=dict(type='bool',),
         description=dict(type='str',),
         disable_avi_securitygroups=dict(type='bool',),
@@ -1952,8 +2090,23 @@ def main():
         least_load_core_selection=dict(type='bool',),
         license_tier=dict(type='str',),
         license_type=dict(type='str',),
+        log_agent_compress_logs=dict(type='bool',),
+        log_agent_debug_enabled=dict(type='bool',),
+        log_agent_file_sz_appl=dict(type='int',),
+        log_agent_file_sz_conn=dict(type='int',),
+        log_agent_file_sz_debug=dict(type='int',),
+        log_agent_file_sz_event=dict(type='int',),
+        log_agent_log_storage_min_sz=dict(type='int',),
+        log_agent_max_concurrent_rsync=dict(type='int',),
+        log_agent_max_storage_excess_percent=dict(type='int',),
+        log_agent_max_storage_ignore_percent=dict(type='float',),
+        log_agent_min_storage_per_vs=dict(type='int',),
+        log_agent_sleep_interval=dict(type='int',),
+        log_agent_trace_enabled=dict(type='bool',),
+        log_agent_unknown_vs_timer=dict(type='int',),
         log_disksz=dict(type='int',),
         log_malloc_failure=dict(type='bool',),
+        log_message_max_file_list_size=dict(type='int',),
         max_concurrent_external_hm=dict(type='int',),
         max_cpu_usage=dict(type='int',),
         max_memory_per_mempool=dict(type='int',),
@@ -2015,6 +2168,8 @@ def main():
         se_dp_hm_drops=dict(type='int',),
         se_dp_isolation=dict(type='bool',),
         se_dp_isolation_num_non_dp_cpus=dict(type='int',),
+        se_dp_log_nf_enqueue_percent=dict(type='int',),
+        se_dp_log_udf_enqueue_percent=dict(type='int',),
         se_dp_max_hb_version=dict(type='int',),
         se_dp_vnic_queue_stall_event_sleep=dict(type='int',),
         se_dp_vnic_queue_stall_threshold=dict(type='int',),
@@ -2031,6 +2186,9 @@ def main():
         se_ipc_udp_port=dict(type='int',),
         se_kni_burst_factor=dict(type='int',),
         se_l3_encap_ipc=dict(type='int',),
+        se_log_buffer_app_blocking_dequeue=dict(type='bool',),
+        se_log_buffer_conn_blocking_dequeue=dict(type='bool',),
+        se_log_buffer_events_blocking_dequeue=dict(type='bool',),
         se_lro=dict(type='bool',),
         se_mp_ring_retry_count=dict(type='int',),
         se_mtu=dict(type='int',),
@@ -2080,6 +2238,7 @@ def main():
         upstream_send_timeout=dict(type='int',),
         url=dict(type='str',),
         use_hyperthreaded_cores=dict(type='bool',),
+        use_legacy_netlink=dict(type='bool',),
         use_objsync=dict(type='bool',),
         use_standard_alb=dict(type='bool',),
         user_agent_cache_config=dict(type='dict',),

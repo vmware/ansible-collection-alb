@@ -120,55 +120,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>bot_mapping_refs</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - System- and user-defined rules for classification.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type botmapping.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 21.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 2 items allowed.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>consolidator_ref</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - The installation provides an updated ruleset for consolidating the results of different decider phases.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type botconfigconsolidator.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 21.1.1.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>description</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -258,6 +209,52 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>system_bot_mapping_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - System-defined rules for classification.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type botmapping.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>system_consolidator_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The installation provides an updated ruleset for consolidating the results of different decider phases.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type botconfigconsolidator.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -312,6 +309,64 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - The user-agent configuration used in this policy.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>user_bot_mapping_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - User-defined rules for classification.
+                </div>
+                                <div style="font-size: small">
+                  - These are applied before the system classification rules.
+                </div>
+                                <div style="font-size: small">
+                  - If a rule matches, processing terminates and the system-defined rules will not run.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type botmapping.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>user_consolidator_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The user-provided ruleset for consolidating the results of different decider phases.
+                </div>
+                                <div style="font-size: small">
+                  - This runs before the system consolidator.
+                </div>
+                                <div style="font-size: small">
+                  - If it successfully sets a consolidation, the system consolidator will not change it.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type botconfigconsolidator.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.

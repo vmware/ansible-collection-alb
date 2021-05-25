@@ -55,6 +55,7 @@ options:
     apic_epg_name:
         description:
             - Populate ip addresses from members of this cisco apic epg.
+            - Field deprecated in 21.1.1.
         type: str
     configpb_attributes:
         description:

@@ -153,7 +153,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Script that consolidates results from all components.
+                  - Script that consolidates results from all bot decision components.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -173,7 +173,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The unique identifier of the tenant to which this mapping belongs.
+                  - The unique identifier of the tenant to which this consolidator belongs.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
@@ -213,7 +213,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A unique identifier to this consolidator.
+                  - A unique identifier for this consolidator.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.

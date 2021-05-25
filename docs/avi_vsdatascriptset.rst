@@ -309,6 +309,29 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>pki_profile_refs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuids of pkiprofile objects that could be referred by vsdatascriptset objects.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type pkiprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>pool_group_refs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -395,6 +418,52 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed in basic edition, essentials edition, enterprise edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ssl_key_certificate_refs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuids of sslkeyandcertificate objects that could be referred by vsdatascriptset objects.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type sslkeyandcertificate.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ssl_profile_refs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuids of sslprofile objects that could be referred by vsdatascriptset objects.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type sslprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>

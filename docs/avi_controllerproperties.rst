@@ -780,6 +780,32 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enable_per_process_stop</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable stopping of individual processes if process cross the given threshold limit, even when the total controller memory usage is belowits
+                </div>
+                                <div style="font-size: small">
+                  - threshold limit.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_resmgr_log_cache_print</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1832,10 +1858,10 @@ Parameters
                   - Time to wait for the scaled out se to become ready before marking the scaleout done, applies to apic configuration only.
                 </div>
                                 <div style="font-size: small">
-                  - Unit is sec.
+                  - Field deprecated in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 360.
+                  - Unit is sec.
                 </div>
                                             </td>
         </tr>
