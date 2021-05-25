@@ -119,7 +119,7 @@ plugins/modules/avi_analyticsprofile.py validate-modules:parameter-list-no-eleme
 plugins/modules/avi_applicationpersistenceprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_autoscalelaunchconfig.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_availabilityzone.py validate-modules:parameter-list-no-elements
-plugins/modules/avi_botdetectionpolicy.py validate-modules:parameter-list-no-elements
+plugins/modules/avi_botipreputationtypemapping.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_botmapping.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_certificatemanagementprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_cloud.py validate-modules:parameter-list-no-elements
@@ -199,3 +199,5 @@ plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed
 plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed
 plugins/modules/avi_jwtprofile.py validate-modules:no-log-needed
 plugins/modules/avi_jwtserverprofile.py validate-modules:no-log-needed
+plugins/modules/avi_vsdatascriptset.py validate-modules:no-log-needed
+plugins/modules/avi_bootstrap_controller.py validate-modules:doc-required-mismatch

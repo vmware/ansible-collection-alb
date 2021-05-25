@@ -194,7 +194,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'backupconfiguration',
-                           {'aws_secret_access', 'aws_access_key', 'backup_passphrase'})
+                           {'aws_secret_access', 'backup_passphrase', 'aws_access_key'})
 
 
 if __name__ == '__main__':
