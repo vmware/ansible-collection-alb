@@ -75,6 +75,7 @@
     routing_pool: "{{ item.routing_pool | default(omit) }}"
     server_auto_scale: "{{ item.server_auto_scale | default(omit) }}"
     server_count: "{{ item.server_count | default(omit) }}"
+    server_disable_type: "{{ item.server_disable_type | default(omit) }}"
     server_name: "{{ item.server_name | default(omit) }}"
     server_reselect: "{{ item.server_reselect | default(omit) }}"
     server_timeout: "{{ item.server_timeout | default(omit) }}"

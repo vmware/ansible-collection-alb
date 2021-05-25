@@ -101,6 +101,12 @@ options:
             - Name for the virtual service datascript collection.
         required: true
         type: str
+    pki_profile_refs:
+        description:
+            - Uuids of pkiprofile objects that could be referred by vsdatascriptset objects.
+            - It is a reference to an object of type pkiprofile.
+            - Field introduced in 21.1.1.
+        type: list
     pool_group_refs:
         description:
             - Uuid of pool groups that could be referred by vsdatascriptset objects.
@@ -124,6 +130,18 @@ options:
             - The name is composed of the virtual service name and the datascript name.
             - Field introduced in 18.2.9.
             - Allowed in basic edition, essentials edition, enterprise edition.
+        type: list
+    ssl_key_certificate_refs:
+        description:
+            - Uuids of sslkeyandcertificate objects that could be referred by vsdatascriptset objects.
+            - It is a reference to an object of type sslkeyandcertificate.
+            - Field introduced in 21.1.1.
+        type: list
+    ssl_profile_refs:
+        description:
+            - Uuids of sslprofile objects that could be referred by vsdatascriptset objects.
+            - It is a reference to an object of type sslprofile.
+            - Field introduced in 21.1.1.
         type: list
     string_group_refs:
         description:
@@ -191,10 +209,13 @@ def main():
         labels=dict(type='list',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
+        pki_profile_refs=dict(type='list',),
         pool_group_refs=dict(type='list',),
         pool_refs=dict(type='list',),
         protocol_parser_refs=dict(type='list',),
         rate_limiters=dict(type='list',),
+        ssl_key_certificate_refs=dict(type='list',),
+        ssl_profile_refs=dict(type='list',),
         string_group_refs=dict(type='list',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

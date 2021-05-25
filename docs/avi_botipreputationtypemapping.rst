@@ -1,11 +1,11 @@
-.. vmware.alb.avi_botmapping:
+.. vmware.alb.avi_botipreputationtypemapping:
 
 
 *****************************
-vmware.alb.avi_botmapping
+vmware.alb.avi_botipreputationtypemapping
 *****************************
 
-**Module for setup of BotMapping Avi RESTful Object**
+**Module for setup of BotIPReputationTypeMapping Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_botmapping
 
 Synopsis
 --------
-- This module is used to configure BotMapping object.
+- This module is used to configure BotIPReputationTypeMapping object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -100,26 +100,20 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>mapping_rules</b>
+                <b>ip_reputation_mappings</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">list</span>
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Rules for bot classification.
+                  - Map every ipreputationtype to a bot type (can be unknown).
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Minimum of 1 items required.
                 </div>
                                             </td>
         </tr>
@@ -199,7 +193,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A unique identifier for this mapping.
+                  - A unique identifier of this mapping.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -220,13 +214,13 @@ Examples
       collections:
         - vmware.alb
       tasks:
-        - name: Example to create BotMapping object
-          avi_botmapping:
+        - name: Example to create BotIPReputationTypeMapping object
+          avi_botipreputationtypemapping:
             controller: 192.168.15.18
             username: admin
             password: something
             state: present
-            name: sample_botmapping
+            name: sample_botipreputationtypemapping
 
 
 Authors

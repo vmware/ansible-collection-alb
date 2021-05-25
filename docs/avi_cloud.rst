@@ -110,7 +110,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Apicconfiguration settings for cloud.
+                  - Field deprecated in 21.1.1.
                 </div>
                                             </td>
         </tr>
@@ -127,10 +127,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
+                  - Field deprecated in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                  - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
                 </div>
                                             </td>
         </tr>
@@ -670,6 +670,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Configuration parameters for nsx manager.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 21.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.1.1.

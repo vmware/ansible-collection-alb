@@ -13,12 +13,12 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_botdetectionpolicy
+module: avi_botipreputationtypemapping
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 
-short_description: Module for setup of BotDetectionPolicy Avi RESTful Object
+short_description: Module for setup of BotIPReputationTypeMapping Avi RESTful Object
 description:
-    - This module is used to configure BotDetectionPolicy object
+    - This module is used to configure BotIPReputationTypeMapping object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -47,49 +47,20 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    allow_list:
+    ip_reputation_mappings:
         description:
-            - Allow the user to skip botmanagement for selected requests.
+            - Map every ipreputationtype to a bot type (can be unknown).
             - Field introduced in 21.1.1.
-        type: dict
-    description:
-        description:
-            - Human-readable description of this bot detection policy.
-            - Field introduced in 21.1.1.
-        type: str
-    ip_location_detector:
-        description:
-            - The ip location configuration used in this policy.
-            - Field introduced in 21.1.1.
-        required: true
-        type: dict
-    ip_reputation_detector:
-        description:
-            - The ip reputation configuration used in this policy.
-            - Field introduced in 21.1.1.
-        required: true
-        type: dict
+        type: list
     name:
         description:
-            - The name of this bot detection policy.
+            - The name of this mapping.
             - Field introduced in 21.1.1.
         required: true
-        type: str
-    system_bot_mapping_ref:
-        description:
-            - System-defined rules for classification.
-            - It is a reference to an object of type botmapping.
-            - Field introduced in 21.1.1.
-        type: str
-    system_consolidator_ref:
-        description:
-            - The installation provides an updated ruleset for consolidating the results of different decider phases.
-            - It is a reference to an object of type botconfigconsolidator.
-            - Field introduced in 21.1.1.
         type: str
     tenant_ref:
         description:
-            - The unique identifier of the tenant to which this policy belongs.
+            - The unique identifier of the tenant to which this mapping belongs.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.1.
         type: str
@@ -97,31 +68,9 @@ options:
         description:
             - Avi controller URL of the object.
         type: str
-    user_agent_detector:
-        description:
-            - The user-agent configuration used in this policy.
-            - Field introduced in 21.1.1.
-        required: true
-        type: dict
-    user_bot_mapping_ref:
-        description:
-            - User-defined rules for classification.
-            - These are applied before the system classification rules.
-            - If a rule matches, processing terminates and the system-defined rules will not run.
-            - It is a reference to an object of type botmapping.
-            - Field introduced in 21.1.1.
-        type: str
-    user_consolidator_ref:
-        description:
-            - The user-provided ruleset for consolidating the results of different decider phases.
-            - This runs before the system consolidator.
-            - If it successfully sets a consolidation, the system consolidator will not change it.
-            - It is a reference to an object of type botconfigconsolidator.
-            - Field introduced in 21.1.1.
-        type: str
     uuid:
         description:
-            - A unique identifier to this bot detection policy.
+            - A unique identifier of this mapping.
             - Field introduced in 21.1.1.
         type: str
 extends_documentation_fragment:
@@ -129,18 +78,18 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Example to create BotDetectionPolicy object
-  vmware.alb.avi_botdetectionpolicy:
+- name: Example to create BotIPReputationTypeMapping object
+  vmware.alb.avi_botipreputationtypemapping:
     controller: 192.168.15.18
     username: admin
     password: something
     state: present
-    name: sample_botdetectionpolicy
+    name: sample_botipreputationtypemapping
 """
 
 RETURN = '''
 obj:
-    description: BotDetectionPolicy (api/botdetectionpolicy) object
+    description: BotIPReputationTypeMapping (api/botipreputationtypemapping) object
     returned: success, changed
     type: dict
 '''
@@ -163,18 +112,10 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        allow_list=dict(type='dict',),
-        description=dict(type='str',),
-        ip_location_detector=dict(type='dict', required=True),
-        ip_reputation_detector=dict(type='dict', required=True),
+        ip_reputation_mappings=dict(type='list',),
         name=dict(type='str', required=True),
-        system_bot_mapping_ref=dict(type='str',),
-        system_consolidator_ref=dict(type='str',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
-        user_agent_detector=dict(type='dict', required=True),
-        user_bot_mapping_ref=dict(type='str',),
-        user_consolidator_ref=dict(type='str',),
         uuid=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
@@ -184,7 +125,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'botdetectionpolicy',
+    return avi_ansible_api(module, 'botipreputationtypemapping',
                            set())
 
 

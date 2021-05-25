@@ -255,6 +255,9 @@ Parameters
                   - This is applicable only for service integration mode with cisco apic controller.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 21.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 17.2.12,18.1.2.
                 </div>
                                 <div style="font-size: small">
@@ -959,9 +962,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.4.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
                 </div>
                                             </td>
         </tr>

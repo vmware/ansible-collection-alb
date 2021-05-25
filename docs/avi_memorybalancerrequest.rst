@@ -1,11 +1,11 @@
-.. vmware.alb.avi_botmapping:
+.. vmware.alb.avi_memorybalancerrequest:
 
 
 *****************************
-vmware.alb.avi_botmapping
+vmware.alb.avi_memorybalancerrequest
 *****************************
 
-**Module for setup of BotMapping Avi RESTful Object**
+**Module for setup of MemoryBalancerRequest Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_botmapping
 
 Synopsis
 --------
-- This module is used to configure BotMapping object.
+- This module is used to configure MemoryBalancerRequest object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -100,26 +100,40 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>mapping_rules</b>
+                <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
+                    <span style="color: purple">dict</span>
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Rules for bot classification.
+                  - Protobuf versioning for config pbs.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>controller_info</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Current details regarding controller.
+                </div>
                                 <div style="font-size: small">
-                  - Minimum of 1 items required.
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>
@@ -139,7 +153,47 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The name of this mapping.
+                  - Name of controller process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>process_info</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Current process information of the controller process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>process_instance</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Instance of the controller process.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -159,10 +213,30 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The unique identifier of the tenant to which this mapping belongs.
+                  - Uuid of tenant object.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>timestamp</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time at which memory balancer request was created/updated.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -199,7 +273,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A unique identifier for this mapping.
+                  - Uuid of memory balancer request object.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -220,13 +294,13 @@ Examples
       collections:
         - vmware.alb
       tasks:
-        - name: Example to create BotMapping object
-          avi_botmapping:
+        - name: Example to create MemoryBalancerRequest object
+          avi_memorybalancerrequest:
             controller: 192.168.15.18
             username: admin
             password: something
             state: present
-            name: sample_botmapping
+            name: sample_memorybalancerrequest
 
 
 Authors

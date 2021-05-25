@@ -196,7 +196,7 @@ Parameters
                   - Maximum extra capacity as percentage of load used by the intelligent scheme.
                 </div>
                                 <div style="font-size: small">
-                  - Scalein is triggered when available capacity is more than this margin.
+                  - Scale-in is triggered when available capacity is more than this margin.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-99.
@@ -222,7 +222,7 @@ Parameters
                   - Minimum extra capacity as percentage of load used by the intelligent scheme.
                 </div>
                                 <div style="font-size: small">
-                  - Scaleout is triggered when available capacity is less than this margin.
+                  - Scale-out is triggered when available capacity is less than this margin.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-99.
@@ -294,10 +294,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Maximum number of servers to scalein simultaneously.
+                  - Maximum number of servers to scale-in simultaneously.
                 </div>
                                 <div style="font-size: small">
-                  - The actual number of servers to scalein is chosen such that target number of servers is always more than or equal to the min_size.
+                  - The actual number of servers to scale-in is chosen such that target number of servers is always more than or equal to the min_size.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -317,10 +317,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Maximum number of servers to scaleout simultaneously.
+                  - Maximum number of servers to scale-out simultaneously.
                 </div>
                                 <div style="font-size: small">
-                  - The actual number of servers to scaleout is chosen such that target number of servers is always less than or equal to the max_size.
+                  - The actual number of servers to scale-out is chosen such that target number of servers is always less than or equal to the max_size.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -340,7 +340,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Maximum number of servers after scaleout.
+                  - Maximum number of servers after scale-out.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0-400.
@@ -400,7 +400,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Trigger scalein when alerts due to any of these alert configurations are raised.
+                  - Trigger scale-in when alerts due to any of these alert configurations are raised.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type alertconfig.
@@ -420,7 +420,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Cooldown period during which no new scalein is triggered to allow previous scalein to successfully complete.
+                  - Cooldown period during which no new scale-in is triggered to allow previous scale-in to successfully complete.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
@@ -443,7 +443,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Trigger scaleout when alerts due to any of these alert configurations are raised.
+                  - Trigger scale-out when alerts due to any of these alert configurations are raised.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type alertconfig.
@@ -463,13 +463,39 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Cooldown period during which no new scaleout is triggered to allow previous scaleout to successfully complete.
+                  - Cooldown period during which no new scale-out is triggered to allow previous scale-out to successfully complete.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 300.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>scheduled_scalings</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Schedule-based scale-in/out policy.
+                </div>
+                                <div style="font-size: small">
+                  - During schedule intervals, metrics based autoscale is not enabled and number of servers will be solely derived from schedulescale policy.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 1 items allowed.
                 </div>
                                             </td>
         </tr>

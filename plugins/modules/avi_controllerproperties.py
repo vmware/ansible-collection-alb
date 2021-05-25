@@ -228,6 +228,13 @@ options:
             - Field introduced in 17.2.8.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    enable_per_process_stop:
+        description:
+            - Enable stopping of individual processes if process cross the given threshold limit, even when the total controller memory usage is belowits
+            - threshold limit.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     enable_resmgr_log_cache_print:
         description:
             - Enable printing of cached logs inside resource manager.
@@ -504,8 +511,8 @@ options:
     vs_apic_scaleout_timeout:
         description:
             - Time to wait for the scaled out se to become ready before marking the scaleout done, applies to apic configuration only.
+            - Field deprecated in 21.1.1.
             - Unit is sec.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 360.
         type: int
     vs_awaiting_se_timeout:
         description:
@@ -638,6 +645,7 @@ def main():
         edit_system_limits=dict(type='bool',),
         enable_api_sharding=dict(type='bool',),
         enable_memory_balancer=dict(type='bool',),
+        enable_per_process_stop=dict(type='bool',),
         enable_resmgr_log_cache_print=dict(type='bool',),
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),

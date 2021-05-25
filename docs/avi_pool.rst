@@ -218,6 +218,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Synchronize cisco apic epg members with pool servers.
                 </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 21.1.1.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -880,6 +883,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in basic edition, essentials edition, enterprise edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -1532,6 +1538,32 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Field deprecated in 18.2.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>server_disable_type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Server graceful disable timeout behaviour.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - DISALLOW_NEW_CONNECTION, ALLOW_NEW_CONNECTION_IF_PERSISTENCE_PRESENT.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as DISALLOW_NEW_CONNECTION.
                 </div>
                                             </td>
         </tr>

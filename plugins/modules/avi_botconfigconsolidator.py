@@ -60,12 +60,12 @@ options:
         type: str
     script:
         description:
-            - Script that consolidates results from all components.
+            - Script that consolidates results from all bot decision components.
             - Field introduced in 21.1.1.
         type: str
     tenant_ref:
         description:
-            - The unique identifier of the tenant to which this mapping belongs.
+            - The unique identifier of the tenant to which this consolidator belongs.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.1.
         type: str
@@ -75,7 +75,7 @@ options:
         type: str
     uuid:
         description:
-            - A unique identifier to this consolidator.
+            - A unique identifier for this consolidator.
             - Field introduced in 21.1.1.
         type: str
 extends_documentation_fragment:

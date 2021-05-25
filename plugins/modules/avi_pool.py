@@ -78,6 +78,7 @@ options:
     apic_epg_name:
         description:
             - Synchronize cisco apic epg members with pool servers.
+            - Field deprecated in 21.1.1.
         type: str
     append_port:
         description:
@@ -252,6 +253,7 @@ options:
         description:
             - Http2 pool properties.
             - Field introduced in 21.1.1.
+            - Allowed in basic edition, essentials edition, enterprise edition.
         type: dict
     ignore_server_port:
         description:
@@ -424,6 +426,13 @@ options:
         description:
             - Field deprecated in 18.2.1.
         type: int
+    server_disable_type:
+        description:
+            - Server graceful disable timeout behaviour.
+            - Enum options - DISALLOW_NEW_CONNECTION, ALLOW_NEW_CONNECTION_IF_PERSISTENCE_PRESENT.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as DISALLOW_NEW_CONNECTION.
+        type: str
     server_name:
         description:
             - Fully qualified dns hostname which will be used in the tls sni extension in server connections if sni is enabled.
@@ -629,6 +638,7 @@ def main():
         routing_pool=dict(type='bool',),
         server_auto_scale=dict(type='bool',),
         server_count=dict(type='int',),
+        server_disable_type=dict(type='str',),
         server_name=dict(type='str',),
         server_reselect=dict(type='dict',),
         server_timeout=dict(type='int',),
