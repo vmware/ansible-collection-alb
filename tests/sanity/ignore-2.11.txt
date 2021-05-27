@@ -141,6 +141,7 @@ plugins/modules/avi_controllerportalregistration.py validate-modules:missing-gpl
 plugins/modules/avi_dynamicdnsrecord.py validate-modules:missing-gplv3-license
 plugins/modules/avi_controllersite.py validate-modules:missing-gplv3-license
 plugins/modules/avi_role.py validate-modules:missing-gplv3-license
+plugins/modules/avi_inventoryfaultconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesfileupload.py validate-modules:missing-gplv3-license
 plugins/modules/avi_webhook.py validate-modules:missing-gplv3-license
 plugins/modules/avi_securitymanagerdata.py validate-modules:missing-gplv3-license

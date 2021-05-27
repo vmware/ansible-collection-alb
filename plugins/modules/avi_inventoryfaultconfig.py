@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 # module_check: supported
 
-# Avi Version: 17.1.1
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
@@ -14,12 +13,12 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_cloudconnectoruser
+module: avi_inventoryfaultconfig
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 
-short_description: Module for setup of CloudConnectorUser Avi RESTful Object
+short_description: Module for setup of InventoryFaultConfig Avi RESTful Object
 description:
-    - This module is used to configure CloudConnectorUser object
+    - This module is used to configure InventoryFaultConfig object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -48,100 +47,63 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    azure_serviceprincipal:
-        description:
-            - Field introduced in 17.2.1.
-            - Allowed in basic edition, essentials edition, enterprise edition.
-        type: dict
-    azure_userpass:
-        description:
-            - Field introduced in 17.2.1.
-            - Allowed in basic edition, essentials edition, enterprise edition.
-        type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
         type: dict
-    gcp_credentials:
+    controller_faults:
         description:
-            - Credentials for google cloud platform.
-            - Field introduced in 18.2.1.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Configure controller faults.
+            - Field introduced in 21.1.1.
         type: dict
     name:
         description:
-            - Name of the object.
-        required: true
+            - Name.
+            - Field introduced in 21.1.1.
         type: str
-    nsxt_credentials:
+    serviceengine_faults:
         description:
-            - Credentials to talk to nsx-t manager.
-            - Field introduced in 20.1.1.
-            - Allowed in essentials edition, enterprise edition.
+            - Configure serviceengine faults.
+            - Field introduced in 21.1.1.
         type: dict
-    obj_password:
-        description:
-            - Password of cloudconnectoruser.
-        type: str
-    oci_credentials:
-        description:
-            - Credentials for oracle cloud infrastructure.
-            - Field introduced in 18.2.1,18.1.3.
-            - Allowed in basic edition, essentials edition, enterprise edition.
-        type: dict
-    private_key:
-        description:
-            - Private_key of cloudconnectoruser.
-        type: str
-    public_key:
-        description:
-            - Public_key of cloudconnectoruser.
-        type: str
     tenant_ref:
         description:
+            - Tenant.
             - It is a reference to an object of type tenant.
+            - Field introduced in 21.1.1.
         type: str
-    tencent_credentials:
-        description:
-            - Credentials for tencent cloud.
-            - Field introduced in 18.2.3.
-            - Allowed in basic edition, essentials edition, enterprise edition.
-        type: dict
     url:
         description:
             - Avi controller URL of the object.
         type: str
     uuid:
         description:
-            - Unique object identifier of the object.
+            - Uuid auto generated.
+            - Field introduced in 21.1.1.
         type: str
-    vcenter_credentials:
+    virtualservice_faults:
         description:
-            - Credentials to talk to vcenter.
-            - Field introduced in 20.1.1.
+            - Configure virtualservice faults.
+            - Field introduced in 21.1.1.
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-  - name: Create a Cloud connector user that is used for integration into cloud platforms
-    vmware.alb.avi_cloudconnectoruser:
-      controller: '{{ controller }}'
-      name: root
-      password: '{{ password }}'
-      private_key: |
-        -----BEGIN RSA PRIVATE KEY-----
-        -----END RSA PRIVATE KEY-----'
-      public_key: 'ssh-rsa ...'
-      tenant_ref: /api/tenant?name=admin
-      username: '{{ username }}'
+- name: Example to create InventoryFaultConfig object
+  vmware.alb.avi_inventoryfaultconfig:
+    controller: 192.168.15.18
+    username: admin
+    password: something
+    state: present
+    name: sample_inventoryfaultconfig
 """
 
 RETURN = '''
 obj:
-    description: CloudConnectorUser (api/cloudconnectoruser) object
+    description: InventoryFaultConfig (api/inventoryfaultconfig) object
     returned: success, changed
     type: dict
 '''
@@ -164,21 +126,14 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        azure_serviceprincipal=dict(type='dict',),
-        azure_userpass=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
-        gcp_credentials=dict(type='dict',),
-        name=dict(type='str', required=True),
-        nsxt_credentials=dict(type='dict',),
-        obj_password=dict(type='str',),
-        oci_credentials=dict(type='dict',),
-        private_key=dict(type='str', no_log=True,),
-        public_key=dict(type='str',),
+        controller_faults=dict(type='dict',),
+        name=dict(type='str',),
+        serviceengine_faults=dict(type='dict',),
         tenant_ref=dict(type='str',),
-        tencent_credentials=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
-        vcenter_credentials=dict(type='dict',),
+        virtualservice_faults=dict(type='dict',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
@@ -187,8 +142,8 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'cloudconnectoruser',
-                           {'private_key', 'password'})
+    return avi_ansible_api(module, 'inventoryfaultconfig',
+                           set())
 
 
 if __name__ == '__main__':
