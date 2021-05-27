@@ -42,6 +42,7 @@ avi_resource_types:
   - dynamicdnsrecord
   - controllersite
   - role
+  - inventoryfaultconfig
   - albservicesfileupload
   - webhook
   - securitymanagerdata

@@ -88,6 +88,7 @@ Name | Description
 [vmware.alb.avi_dynamicdnsrecord](https://github.com/vmware/ansible-collection-alb/blob/main/docs/avi_dynamicdnsrecord.rst)|Module to create update or delete DynamicDnsRecord
 [vmware.alb.avi_controllersite](https://github.com/vmware/ansible-collection-alb/blob/main/docs/avi_controllersite.rst)|Module to create update or delete ControllerSite
 [vmware.alb.avi_role](https://github.com/vmware/ansible-collection-alb/blob/main/docs/avi_role.rst)|Module to create update or delete Role
+[vmware.alb.avi_inventoryfaultconfig](https://github.com/vmware/ansible-collection-alb/blob/main/docs/avi_inventoryfaultconfig.rst)|Module to create update or delete InventoryFaultConfig
 [vmware.alb.avi_albservicesfileupload](https://github.com/vmware/ansible-collection-alb/blob/main/docs/avi_albservicesfileupload.rst)|Module to create update or delete ALBServicesFileUpload
 [vmware.alb.avi_webhook](https://github.com/vmware/ansible-collection-alb/blob/main/docs/avi_webhook.rst)|Module to create update or delete Webhook
 [vmware.alb.avi_securitymanagerdata](https://github.com/vmware/ansible-collection-alb/blob/main/docs/avi_securitymanagerdata.rst)|Module to create update or delete SecurityManagerData
