@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_sslkeyandcertificate
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of SSLKeyAndCertificate Avi RESTful Object
 description:
     - This module is used to configure SSLKeyAndCertificate object
@@ -279,7 +278,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'sslkeyandcertificate',
-                           {'key_passphrase', 'key'})
+                           ['key', 'key_passphrase'])
 
 
 if __name__ == '__main__':

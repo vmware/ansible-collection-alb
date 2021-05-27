@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_gslbservice
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of GslbService Avi RESTful Object
 description:
     - This module is used to configure GslbService object

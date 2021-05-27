@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_network
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of Network Avi RESTful Object
 description:
     - This module is used to configure Network object

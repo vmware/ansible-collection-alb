@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_systemconfiguration
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of SystemConfiguration Avi RESTful Object
 description:
     - This module is used to configure SystemConfiguration object
