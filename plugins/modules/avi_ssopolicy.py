@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_ssopolicy
 author: Chaitanya Deshpande (@chaitanyaavi) <chaitanya.deshpande@avinetworks.com>
-
 short_description: Module for setup of SSOPolicy Avi RESTful Object
 description:
     - This module is used to configure SSOPolicy object

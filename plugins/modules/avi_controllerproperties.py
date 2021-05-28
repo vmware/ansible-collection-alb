@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_controllerproperties
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of ControllerProperties Avi RESTful Object
 description:
     - This module is used to configure ControllerProperties object
@@ -711,7 +710,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'portal_token'})
+                           ['portal_token'])
 
 
 if __name__ == '__main__':

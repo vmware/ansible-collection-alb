@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_pingaccessagent
 author: Chaitanya Deshpande (@chaitanyaavi) <chaitanya.deshpande@avinetworks.com>
-
 short_description: Module for setup of PingAccessAgent Avi RESTful Object
 description:
     - This module is used to configure PingAccessAgent object

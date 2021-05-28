@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_clusterclouddetails
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of ClusterCloudDetails Avi RESTful Object
 description:
     - This module is used to configure ClusterCloudDetails object

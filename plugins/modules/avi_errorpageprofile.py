@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_errorpageprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of ErrorPageProfile Avi RESTful Object
 description:
     - This module is used to configure ErrorPageProfile object

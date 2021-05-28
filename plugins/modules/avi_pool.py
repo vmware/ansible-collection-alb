@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_pool
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of Pool Avi RESTful Object
 description:
     - This module is used to configure Pool object
@@ -447,7 +446,7 @@ options:
             - Server timeout value specifies the time within which a server connection needs to be established and a request-response exchange completes
             - between avi and the server.
             - Value of 0 results in using default timeout of 60 minutes.
-            - Allowed values are 0-3600000.
+            - Allowed values are 0-21600000.
             - Field introduced in 18.1.5,18.2.1.
             - Unit is milliseconds.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.

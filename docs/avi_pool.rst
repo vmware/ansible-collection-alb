@@ -1626,7 +1626,7 @@ Parameters
                   - Value of 0 results in using default timeout of 60 minutes.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 0-3600000.
+                  - Allowed values are 0-21600000.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.1.5,18.2.1.

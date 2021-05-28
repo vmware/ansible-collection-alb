@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_alertscriptconfig
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of AlertScriptConfig Avi RESTful Object
 description:
     - This module is used to configure AlertScriptConfig object

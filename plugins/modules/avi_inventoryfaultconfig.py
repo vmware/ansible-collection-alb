@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_inventoryfaultconfig
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of InventoryFaultConfig Avi RESTful Object
 description:
     - This module is used to configure InventoryFaultConfig object
@@ -50,28 +49,28 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 21.1.1.
+            - Field introduced in 20.1.6.
         type: dict
     controller_faults:
         description:
             - Configure controller faults.
-            - Field introduced in 21.1.1.
+            - Field introduced in 20.1.6.
         type: dict
     name:
         description:
             - Name.
-            - Field introduced in 21.1.1.
+            - Field introduced in 20.1.6.
         type: str
     serviceengine_faults:
         description:
             - Configure serviceengine faults.
-            - Field introduced in 21.1.1.
+            - Field introduced in 20.1.6.
         type: dict
     tenant_ref:
         description:
             - Tenant.
             - It is a reference to an object of type tenant.
-            - Field introduced in 21.1.1.
+            - Field introduced in 20.1.6.
         type: str
     url:
         description:
@@ -80,12 +79,12 @@ options:
     uuid:
         description:
             - Uuid auto generated.
-            - Field introduced in 21.1.1.
+            - Field introduced in 20.1.6.
         type: str
     virtualservice_faults:
         description:
             - Configure virtualservice faults.
-            - Field introduced in 21.1.1.
+            - Field introduced in 20.1.6.
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi

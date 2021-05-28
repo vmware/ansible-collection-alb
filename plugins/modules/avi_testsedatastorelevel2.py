@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_testsedatastorelevel2
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of TestSeDatastoreLevel2 Avi RESTful Object
 description:
     - This module is used to configure TestSeDatastoreLevel2 object
