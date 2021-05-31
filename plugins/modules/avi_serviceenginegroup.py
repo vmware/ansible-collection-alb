@@ -1228,7 +1228,9 @@ options:
     se_dp_isolation_num_non_dp_cpus:
         description:
             - Number of cpus for non se-dp tasks in se datapath isolation mode.
-            - Translates total cpus minus 'num_non_dp_cpus' for datapath use.requires se reboot.
+            - Translates total cpus minus 'num_non_dp_cpus' for datapath use.
+            - It is recommended to reserve an even number of cpus for hyper-threaded processors.
+            - Requires se reboot.
             - Allowed values are 1-8.
             - Special values are 0- 'auto'.
             - Field introduced in 20.1.4.

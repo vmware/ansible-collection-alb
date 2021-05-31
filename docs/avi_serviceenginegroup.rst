@@ -4532,7 +4532,13 @@ Parameters
                   - Number of cpus for non se-dp tasks in se datapath isolation mode.
                 </div>
                                 <div style="font-size: small">
-                  - Translates total cpus minus 'num_non_dp_cpus' for datapath use.requires se reboot.
+                  - Translates total cpus minus 'num_non_dp_cpus' for datapath use.
+                </div>
+                                <div style="font-size: small">
+                  - It is recommended to reserve an even number of cpus for hyper-threaded processors.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-8.
