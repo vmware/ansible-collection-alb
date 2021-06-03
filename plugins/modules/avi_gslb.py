@@ -192,13 +192,18 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Example to create Gslb object
   vmware.alb.avi_gslb:
     name: "test-gslb"
-    avi_credentials:
-      username: '{{ username }}'
-      password: '{{ password }}'
-      controller: '{{ controller }}'
+    avi_credentials: "{{ avi_credentials }}"
     sites:
       - name: "test-site1"
         username: "gslb_username"
@@ -227,10 +232,7 @@ EXAMPLES = """
 
 - name: Update Gslb site's configurations (Patch Add Operation)
   vmware.alb.avi_gslb:
-    avi_credentials:
-      username: '{{ username }}'
-      password: '{{ password }}'
-      controller: '{{ controller }}'
+    avi_credentials: "{{ avi_credentials }}"
     avi_api_update_method: patch
     avi_api_patch_op: add
     leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
@@ -252,10 +254,7 @@ EXAMPLES = """
 
 - name: Update Gslb site's configurations (Patch Replace Operation)
   vmware.alb.avi_gslb:
-    avi_credentials:
-      username: "{{ username }}"
-      password: "{{ password }}"
-      controller: "{{ controller }}"
+    avi_credentials: "{{ avi_credentials }}"
     # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
     leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
     name: "test-gslb"
@@ -278,10 +277,7 @@ EXAMPLES = """
 
 - name: Delete Gslb site's den_vses configurations (Patch Delete(dns_vses) Operation)
   vmware.alb.avi_gslb:
-    avi_credentials:
-      username: "{{ username }}"
-      password: "{{ password }}"
-      controller: "{{ controller }}"
+    avi_credentials: "{{ avi_credentials }}"
     # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
     leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
     name: "test-gslb"
@@ -295,7 +291,6 @@ EXAMPLES = """
 - name: Delete Gslb complete site's configurations (Patch Delete(site) Operation)
   vmware.alb.avi_gslb:
     avi_credentials: "{{ avi_credentials }}"
-    api_version: 18.2.8
     avi_api_update_method: patch
     avi_api_patch_op: delete
     patch_level: '/site'

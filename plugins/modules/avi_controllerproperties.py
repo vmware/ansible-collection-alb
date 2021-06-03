@@ -122,6 +122,12 @@ options:
             - Field introduced in 17.2.2.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    check_fqdn_syntax:
+        description:
+            - Enforce fqdn syntax checks.
+            - Field introduced in 20.1.6.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     cleanup_expired_authtoken_timeout_period:
         description:
             - Period for auth token cleanup job.
@@ -238,7 +244,7 @@ options:
         description:
             - Enable printing of cached logs inside resource manager.
             - Used for debugging purposes only.
-            - Field introduced in 21.1.1.
+            - Field introduced in 20.1.6.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     fatal_error_lease_time:
@@ -582,11 +588,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Example to create ControllerProperties object
   vmware.alb.avi_controllerproperties:
-    controller: 192.168.15.18
-    username: admin
-    password: something
+    avi_credentials: "{{ avi_credentials }}"
     state: present
     name: sample_controllerproperties
 """
@@ -628,6 +640,7 @@ def main():
         attach_ip_retry_interval=dict(type='int',),
         attach_ip_retry_limit=dict(type='int',),
         bm_use_ansible=dict(type='bool',),
+        check_fqdn_syntax=dict(type='bool',),
         cleanup_expired_authtoken_timeout_period=dict(type='int',),
         cleanup_sessions_timeout_period=dict(type='int',),
         cloud_reconcile=dict(type='bool',),

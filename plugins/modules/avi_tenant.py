@@ -109,18 +109,24 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create Tenant using Service Engines in provider mode
-    vmware.alb.avi_tenant:
-      controller: '{{ controller }}'
-      password: '{{ password }}'
-      username: '{{ username }}'
-      config_settings:
-        se_in_provider_context: false
-        tenant_access_to_provider_se: true
-        tenant_vrf: false
-      description: VCenter, Open Stack, AWS Virtual services
-      local: true
-      name: Demo
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create Tenant using Service Engines in provider mode
+  vmware.alb.avi_tenant:
+    avi_credentials: "{{ avi_credentials }}"
+    config_settings:
+      se_in_provider_context: false
+      tenant_access_to_provider_se: true
+      tenant_vrf: false
+    description: VCenter, Open Stack, AWS Virtual services
+    local: true
+    name: Demo
 """
 
 RETURN = '''

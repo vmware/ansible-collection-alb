@@ -103,19 +103,25 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create a network profile for an UDP application
-    vmware.alb.avi_networkprofile:
-      controller: '{{ controller }}'
-      username: '{{ username }}'
-      password: '{{ password }}'
-      name: System-UDP-Fast-Path
-      profile:
-        type: PROTOCOL_TYPE_UDP_FAST_PATH
-        udp_fast_path_profile:
-          per_pkt_loadbalance: false
-          session_idle_timeout: 10
-          snat: true
-      tenant_ref: /api/tenant?name=admin
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create a network profile for an UDP application
+  vmware.alb.avi_networkprofile:
+    avi_credentials: "{{ avi_credentials }}"
+    name: System-UDP-Fast-Path
+    profile:
+      type: PROTOCOL_TYPE_UDP_FAST_PATH
+      udp_fast_path_profile:
+        per_pkt_loadbalance: false
+        session_idle_timeout: 10
+        snat: true
+    tenant_ref: /api/tenant?name=admin
 """
 
 RETURN = '''

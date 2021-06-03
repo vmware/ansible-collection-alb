@@ -109,14 +109,20 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create an Autoscale Launch configuration.
-    vmware.alb.avi_autoscalelaunchconfig:
-      controller: '{{ controller }}'
-      username: '{{ username }}'
-      password: '{{ password }}'
-      image_id: default
-      name: default-autoscalelaunchconfig
-      tenant_ref: /api/tenant?name=admin
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create an Autoscale Launch configuration.
+  vmware.alb.avi_autoscalelaunchconfig:
+    avi_credentials: "{{ avi_credentials }}"
+    image_id: default
+    name: default-autoscalelaunchconfig
+    tenant_ref: /api/tenant?name=admin
 """
 
 RETURN = '''

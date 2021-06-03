@@ -2,6 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi SSLKeyAndCertificate | Upload or Update SSL certificate - always changed due to sensitve field
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_sslkeyandcertificate:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -57,9 +58,9 @@
 - name: Avi SSLKeyAndCertificate | create self-signed SSL cert if not present
   command: >
     openssl req -new -nodes -x509 -subj "/C=US/ST=CA/L=San Francisco/O=IT/CN={{ item.1.name }}"
-    -days 3650 -keyout "{{site_dir}}"/applications/"{{ app_name }}"/"{{item.1.name}}".key -out
-    "{{site_dir}}"/applications/"{{ app_name }}"/"{{item.1.name}}".crt -extensions
-    v3_ca creates="{{site_dir}}"/applications/"{{ app_name }}"/"{{item.1.name}}".crt
+    -days 3650 -keyout "{{ site_dir }}"/applications/"{{ app_name }}"/"{{ item.1.name }}".key -out
+    "{{ site_dir }}"/applications/"{{ app_name }}"/"{{ item.1.name }}".crt -extensions
+    v3_ca creates="{{ site_dir }}"/applications/"{{ app_name }}"/"{{ item.1.name }}".crt
   args:
     creates: "{{ site_dir/applications/app_name/item.1.name.crt }}"
   with_indexed_items: "{{ avi_role_cfg.sslkeyandcertificate | default([]) }}"
@@ -90,6 +91,7 @@
     - item.certificate.certificate is undefined
 
 - name: Avi SSLKeyAndCertificate | Create / Update self signed certs
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_sslkeyandcertificate:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"

@@ -689,11 +689,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Create SSL Virtual Service using Pool testpool2
   vmware.alb.avi_virtualservice:
-    controller: 192.168.138.18
-    username: admin
-    password: password
+    avi_credentials: "{{ avi_credentials }}"
     name: newtestvs
     state: present
     performance_limits:

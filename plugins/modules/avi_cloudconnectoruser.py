@@ -125,17 +125,23 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create a Cloud connector user that is used for integration into cloud platforms
-    vmware.alb.avi_cloudconnectoruser:
-      controller: '{{ controller }}'
-      name: root
-      password: '{{ password }}'
-      private_key: |
-        -----BEGIN RSA PRIVATE KEY-----
-        -----END RSA PRIVATE KEY-----'
-      public_key: 'ssh-rsa ...'
-      tenant_ref: /api/tenant?name=admin
-      username: '{{ username }}'
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create a Cloud connector user that is used for integration into cloud platforms
+  vmware.alb.avi_cloudconnectoruser:
+    avi_credentials: "{{ avi_credentials }}"
+    name: root
+    private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      -----END RSA PRIVATE KEY-----'
+    public_key: 'ssh-rsa ...'
+    tenant_ref: /api/tenant?name=admin
 """
 
 RETURN = '''

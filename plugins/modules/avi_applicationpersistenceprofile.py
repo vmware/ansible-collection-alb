@@ -133,26 +133,32 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create an Application Persistence setting using http cookie.
-    vmware.alb.avi_applicationpersistenceprofile:
-      controller: '{{ controller }}'
-      username: '{{ username }}'
-      password: '{{ password }}'
-      http_cookie_persistence_profile:
-        always_send_cookie: false
-        cookie_name: My-HTTP
-        key:
-        - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
-          name: c1276819-550c-4adf-912d-59efa5fd7269
-        - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
-          name: a080de57-77c3-4580-a3ea-e7a6493c14fd
-        - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
-          name: 60478846-33c6-484d-868d-bbc324fce4a5
-        timeout: 15
-      name: My-HTTP-Cookie
-      persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE
-      server_hm_down_recovery: HM_DOWN_PICK_NEW_SERVER
-      tenant_ref: /api/tenant?name=Demo
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create an Application Persistence setting using http cookie.
+  vmware.alb.avi_applicationpersistenceprofile:
+    avi_credentials: "{{ avi_credentials }}"
+    http_cookie_persistence_profile:
+      always_send_cookie: false
+      cookie_name: My-HTTP
+      key:
+      - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
+        name: c1276819-550c-4adf-912d-59efa5fd7269
+      - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
+        name: a080de57-77c3-4580-a3ea-e7a6493c14fd
+      - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
+        name: 60478846-33c6-484d-868d-bbc324fce4a5
+      timeout: 15
+    name: My-HTTP-Cookie
+    persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE
+    server_hm_down_recovery: HM_DOWN_PICK_NEW_SERVER
+    tenant_ref: /api/tenant?name=Demo
 """
 
 RETURN = '''

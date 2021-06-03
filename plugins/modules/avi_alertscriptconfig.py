@@ -78,14 +78,20 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create Alert Script to perform AWS server autoscaling
-    vmware.alb.avi_alertscriptconfig:
-      username: '{{ username }}'
-      controller: '{{ controller }}'
-      password: '{{ password }}'
-      action_script: "echo Hello"
-      name: AWS-Launch-Script
-      tenant_ref: /api/tenant?name=Demo
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create Alert Script to perform AWS server autoscaling
+  vmware.alb.avi_alertscriptconfig:
+    avi_credentials: "{{ avi_credentials }}"
+    action_script: "echo Hello"
+    name: AWS-Launch-Script
+    tenant_ref: /api/tenant?name=Demo
 """
 
 RETURN = '''

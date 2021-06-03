@@ -43,7 +43,7 @@ EXAMPLES = '''
         controller: "{{ controller }}"
         username: "{{ username }}"
         password: "{{ password }}"
-        api_version: "18.1.3"
+        api_version: "{{ api_version }}"
       se_name: "10.10.20.30"
       data_vnics_config:
       - if_name: "eth1"

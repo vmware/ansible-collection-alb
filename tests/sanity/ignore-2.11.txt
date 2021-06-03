@@ -148,7 +148,6 @@ plugins/modules/avi_securitymanagerdata.py validate-modules:missing-gplv3-licens
 plugins/modules/avi_cluster.py validate-modules:missing-gplv3-license
 plugins/modules/avi_poolgroupdeploymentpolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_memorybalancerrequest.py validate-modules:missing-gplv3-license
-plugins/modules/avi_jwtprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_backupconfiguration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_clusterclouddetails.py validate-modules:missing-gplv3-license
 plugins/modules/avi_certificatemanagementprofile.py validate-modules:missing-gplv3-license

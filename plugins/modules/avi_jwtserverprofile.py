@@ -51,6 +51,14 @@ options:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
         type: dict
+    is_federated:
+        description:
+            - This field describes the object's replication scope.
+            - If the field is set to false, then the object is visible within the controller-cluster.
+            - If the field is set to true, then the object is replicated across the federation.
+            - Field introduced in 20.1.6.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     issuer:
         description:
             - Uniquely identifiable name of the token issuer.
@@ -89,11 +97,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Example to create JWTServerProfile object
   vmware.alb.avi_jwtserverprofile:
-    controller: 192.168.15.18
-    username: admin
-    password: something
+    avi_credentials: "{{ avi_credentials }}"
     state: present
     name: sample_jwtserverprofile
 """
@@ -124,6 +138,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
+        is_federated=dict(type='bool',),
         issuer=dict(type='str', required=True),
         jwks_keys=dict(type='str', required=True),
         name=dict(type='str', required=True),

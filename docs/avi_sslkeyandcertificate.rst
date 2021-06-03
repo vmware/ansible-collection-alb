@@ -684,12 +684,16 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
         - name: Create a SSL Key and Certificate
           avi_sslkeyandcertificate:
-            controller: 192.168.138.18
-            username: admin
-            password: password
+            avi_credentials: "{{ avi_credentials }}"
             key: |
                 -----BEGIN PRIVATE KEY-----
                 ....

@@ -517,11 +517,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Create a Pool with two servers and HTTP monitor
   vmware.alb.avi_pool:
-    controller: 192.168.138.18
-    username: avi_user
-    password: avi_password
+    avi_credentials: "{{ avi_credentials }}"
     name: testpool1
     description: testpool1
     state: present
@@ -537,9 +543,9 @@ EXAMPLES = """
 
 - name: Patch pool with a single server using patch op and avi_credentials
   vmware.alb.avi_pool:
+    avi_credentials: "{{ avi_credentials }}"
     avi_api_update_method: patch
     avi_api_patch_op: delete
-    avi_credentials: "{{avi_credentials}}"
     name: test-pool
     servers:
       - ip:
