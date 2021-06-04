@@ -122,9 +122,9 @@ options:
             - Field introduced in 17.2.2.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
-    check_fqdn_syntax:
+    check_vsvip_fqdn_syntax:
         description:
-            - Enforce fqdn syntax checks.
+            - Enforce vsvip fqdn syntax checks.
             - Field introduced in 20.1.6.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
@@ -640,7 +640,7 @@ def main():
         attach_ip_retry_interval=dict(type='int',),
         attach_ip_retry_limit=dict(type='int',),
         bm_use_ansible=dict(type='bool',),
-        check_fqdn_syntax=dict(type='bool',),
+        check_vsvip_fqdn_syntax=dict(type='bool',),
         cleanup_expired_authtoken_timeout_period=dict(type='int',),
         cleanup_sessions_timeout_period=dict(type='int',),
         cloud_reconcile=dict(type='bool',),

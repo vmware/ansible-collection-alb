@@ -385,7 +385,7 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>check_fqdn_syntax</b>
+                <b>check_vsvip_fqdn_syntax</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">bool</span>
@@ -395,7 +395,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enforce fqdn syntax checks.
+                  - Enforce vsvip fqdn syntax checks.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.6.
