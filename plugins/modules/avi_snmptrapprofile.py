@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_snmptrapprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of SnmpTrapProfile Avi RESTful Object
 description:
     - This module is used to configure SnmpTrapProfile object
@@ -78,11 +77,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Example to create SnmpTrapProfile object
   vmware.alb.avi_snmptrapprofile:
-    controller: 192.168.15.18
-    username: admin
-    password: something
+    avi_credentials: "{{ avi_credentials }}"
     state: present
     name: sample_snmptrapprofile
 """

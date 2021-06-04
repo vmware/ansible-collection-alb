@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_securitypolicy
 author: Chaitanya Deshpande (@chaitanyaavi) <chaitanya.deshpande@avinetworks.com>
-
 short_description: Module for setup of SecurityPolicy Avi RESTful Object
 description:
     - This module is used to configure SecurityPolicy object
@@ -137,11 +136,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Example to create SecurityPolicy object
   vmware.alb.avi_securitypolicy:
-    controller: 192.168.15.18
-    username: admin
-    password: something
+    avi_credentials: "{{ avi_credentials }}"
     state: present
     name: sample_securitypolicy
 """

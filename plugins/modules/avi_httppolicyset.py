@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_httppolicyset
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of HTTPPolicySet Avi RESTful Object
 description:
     - This module is used to configure HTTPPolicySet object
@@ -130,11 +129,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Create a HTTP Policy set two switch between testpool1 and testpool2
   vmware.alb.avi_httppolicyset:
-    controller: 192.168.138.18
-    username: admin
-    password: password
+    avi_credentials: "{{ avi_credentials }}"
     name: test-HTTP-Policy-Set
     tenant_ref: /api/tenant?name=admin
     http_request_policy:

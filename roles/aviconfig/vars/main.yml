@@ -49,7 +49,6 @@ avi_resource_types:
   - cluster
   - poolgroupdeploymentpolicy
   - memorybalancerrequest
-  - jwtprofile
   - backupconfiguration
   - clusterclouddetails
   - certificatemanagementprofile

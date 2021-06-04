@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_ipamdnsproviderprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of IpamDnsProviderProfile Avi RESTful Object
 description:
     - This module is used to configure IpamDnsProviderProfile object
@@ -147,25 +146,31 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create IPAM DNS provider setting
-    vmware.alb.avi_ipamdnsproviderprofile:
-      controller: '{{ controller }}'
-      username: '{{ username }}'
-      password: '{{ password }}'
-      internal_profile:
-        dns_service_domain:
-        - domain_name: ashish.local
-          num_dns_ip: 1
-          pass_through: true
-          record_ttl: 100
-        - domain_name: guru.local
-          num_dns_ip: 1
-          pass_through: true
-          record_ttl: 200
-        ttl: 300
-      name: Ashish-DNS
-      tenant_ref: /api/tenant?name=Demo
-      type: IPAMDNS_TYPE_INTERNAL
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create IPAM DNS provider setting
+  vmware.alb.avi_ipamdnsproviderprofile:
+    avi_credentials: "{{ avi_credentials }}"
+    internal_profile:
+      dns_service_domain:
+      - domain_name: ashish.local
+        num_dns_ip: 1
+        pass_through: true
+        record_ttl: 100
+      - domain_name: guru.local
+        num_dns_ip: 1
+        pass_through: true
+        record_ttl: 200
+      ttl: 300
+    name: Ashish-DNS
+    tenant_ref: /api/tenant?name=Demo
+    type: IPAMDNS_TYPE_INTERNAL
 """
 
 RETURN = '''

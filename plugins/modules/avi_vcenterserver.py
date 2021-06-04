@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_vcenterserver
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of VCenterServer Avi RESTful Object
 description:
     - This module is used to configure VCenterServer object
@@ -103,11 +102,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Example to create VCenterServer object
   vmware.alb.avi_vcenterserver:
-    controller: 192.168.15.18
-    username: admin
-    password: something
+    avi_credentials: "{{ avi_credentials }}"
     state: present
     name: sample_vcenterserver
 """
