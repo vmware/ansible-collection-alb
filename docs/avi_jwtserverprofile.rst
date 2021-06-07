@@ -120,6 +120,55 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>controller_internal_auth</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Jwt auth configuration for profile_type controller_internal_auth.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.6.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>is_federated</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This field describes the object's replication scope.
+                </div>
+                                <div style="font-size: small">
+                  - If the field is set to false, then the object is visible within the controller-cluster.
+                </div>
+                                <div style="font-size: small">
+                  - If the field is set to true, then the object is replicated across the federation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>issuer</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -127,13 +176,10 @@ Parameters
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uniquely identifiable name of the token issuer.
+                  - Uniquely identifiable name of the token issuer, only allowed with profile_type client_auth.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
@@ -150,16 +196,39 @@ Parameters
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Jwks key set used for validating the jwt.
+                  - Jwks key set used for validating the jwt, only allowed with profile_type client_auth.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>jwt_profile_type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Type of jwt server profile which defines the usage type.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - CLIENT_AUTH, CONTROLLER_INTERNAL_AUTH.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as CLIENT_AUTH.
                 </div>
                                             </td>
         </tr>
@@ -259,12 +328,16 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "avi_user"
+          password: "avi_password"
+          controller: "192.168.138.18"
+          api_version: "21.1.1"
       tasks:
         - name: Example to create JWTServerProfile object
           avi_jwtserverprofile:
-            controller: 192.168.15.18
-            username: admin
-            password: something
+            avi_credentials: "{{ avi_credentials }}"
             state: present
             name: sample_jwtserverprofile
 

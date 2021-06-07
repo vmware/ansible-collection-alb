@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_alertsyslogconfig
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of AlertSyslogConfig Avi RESTful Object
 description:
     - This module is used to configure AlertSyslogConfig object
@@ -82,17 +81,23 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create Alert Syslog object to forward all events to external syslog server
-    vmware.alb.avi_alertsyslogconfig:
-      controller: '{{ controller }}'
-      name: Roberts-syslog
-      password: '{{ password }}'
-      syslog_servers:
-      - syslog_server: 192.168.15.11
-        syslog_server_port: 514
-        udp: true
-      tenant_ref: /api/tenant?name=admin
-      username: '{{ username }}'
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create Alert Syslog object to forward all events to external syslog server
+  vmware.alb.avi_alertsyslogconfig:
+    avi_credentials: "{{ avi_credentials }}"
+    name: Roberts-syslog
+    syslog_servers:
+    - syslog_server: 192.168.15.11
+      syslog_server_port: 514
+      udp: true
+    tenant_ref: /api/tenant?name=admin
 """
 
 RETURN = '''

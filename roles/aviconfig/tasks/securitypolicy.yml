@@ -2,6 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi SecurityPolicy | Create or Update SecurityPolicy
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_securitypolicy:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"

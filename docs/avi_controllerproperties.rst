@@ -385,6 +385,29 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>check_vsvip_fqdn_syntax</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enforce vsvip fqdn syntax checks.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>cleanup_expired_authtoken_timeout_period</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -822,7 +845,7 @@ Parameters
                   - Used for debugging purposes only.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 20.1.6.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -2125,12 +2148,16 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "avi_user"
+          password: "avi_password"
+          controller: "192.168.138.18"
+          api_version: "21.1.1"
       tasks:
         - name: Example to create ControllerProperties object
           avi_controllerproperties:
-            controller: 192.168.15.18
-            username: admin
-            password: something
+            avi_credentials: "{{ avi_credentials }}"
             state: present
             name: sample_controllerproperties
 

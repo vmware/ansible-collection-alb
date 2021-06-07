@@ -420,12 +420,16 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
         - name: Create a HTTP Policy set two switch between testpool1 and testpool2
           avi_httppolicyset:
-            controller: 192.168.138.18
-            username: admin
-            password: password
+            avi_credentials: "{{ avi_credentials }}"
             name: test-HTTP-Policy-Set
             tenant_ref: /api/tenant?name=admin
             http_request_policy:

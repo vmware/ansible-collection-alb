@@ -2,6 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi ControllerProperties | Delete ControllerProperties
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_controllerproperties:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -25,6 +26,7 @@
     attach_ip_retry_interval: "{{ item.attach_ip_retry_interval | default(omit) }}"
     attach_ip_retry_limit: "{{ item.attach_ip_retry_limit | default(omit) }}"
     bm_use_ansible: "{{ item.bm_use_ansible | default(omit) }}"
+    check_vsvip_fqdn_syntax: "{{ item.check_vsvip_fqdn_syntax | default(omit) }}"
     cleanup_expired_authtoken_timeout_period: "{{ item.cleanup_expired_authtoken_timeout_period | default(omit) }}"
     cleanup_sessions_timeout_period: "{{ item.cleanup_sessions_timeout_period | default(omit) }}"
     cloud_reconcile: "{{ item.cloud_reconcile | default(omit) }}"

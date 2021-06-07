@@ -2,6 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi CloudConnectorUser | Delete CloudConnectorUser
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_cloudconnectoruser:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"

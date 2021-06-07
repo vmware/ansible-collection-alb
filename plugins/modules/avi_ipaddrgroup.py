@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_ipaddrgroup
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of IpAddrGroup Avi RESTful Object
 description:
     - This module is used to configure IpAddrGroup object
@@ -127,25 +126,31 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create an IP Address Group configuration
-    vmware.alb.avi_ipaddrgroup:
-      controller: '{{ controller }}'
-      username: '{{ username }}'
-      password: '{{ password }}'
-      name: Client-Source-Block
-      prefixes:
-      - ip_addr:
-          addr: 192.168.138.18
-          type: V4
-        mask: 8
-      - ip_addr:
-          addr: 192.168.20.11
-          type: V4
-        mask: 12
-      - ip_addr:
-          addr: 192.168.20.12
-          type: V4
-        mask: 16
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create an IP Address Group configuration
+  vmware.alb.avi_ipaddrgroup:
+    avi_credentials: "{{ avi_credentials }}"
+    name: Client-Source-Block
+    prefixes:
+    - ip_addr:
+        addr: 192.168.138.18
+        type: V4
+      mask: 8
+    - ip_addr:
+        addr: 192.168.20.11
+        type: V4
+      mask: 12
+    - ip_addr:
+        addr: 192.168.20.12
+        type: V4
+      mask: 16
 """
 
 RETURN = '''

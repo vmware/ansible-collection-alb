@@ -489,26 +489,30 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
-          - name: Create IPAM DNS provider setting
-            avi_ipamdnsproviderprofile:
-              controller: '{{ controller }}'
-              username: '{{ username }}'
-              password: '{{ password }}'
-              internal_profile:
-                dns_service_domain:
-                - domain_name: ashish.local
-                  num_dns_ip: 1
-                  pass_through: true
-                  record_ttl: 100
-                - domain_name: guru.local
-                  num_dns_ip: 1
-                  pass_through: true
-                  record_ttl: 200
-                ttl: 300
-              name: Ashish-DNS
-              tenant_ref: /api/tenant?name=Demo
-              type: IPAMDNS_TYPE_INTERNAL
+        - name: Create IPAM DNS provider setting
+          avi_ipamdnsproviderprofile:
+            avi_credentials: "{{ avi_credentials }}"
+            internal_profile:
+              dns_service_domain:
+              - domain_name: ashish.local
+                num_dns_ip: 1
+                pass_through: true
+                record_ttl: 100
+              - domain_name: guru.local
+                num_dns_ip: 1
+                pass_through: true
+                record_ttl: 200
+              ttl: 300
+            name: Ashish-DNS
+            tenant_ref: /api/tenant?name=Demo
+            type: IPAMDNS_TYPE_INTERNAL
 
 
 

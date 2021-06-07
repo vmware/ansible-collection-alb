@@ -265,12 +265,16 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "avi_user"
+          password: "avi_password"
+          controller: "192.168.138.18"
+          api_version: "21.1.1"
       tasks:
         - name: Example to create AvailabilityZone object
           avi_availabilityzone:
-            controller: 192.168.15.18
-            username: admin
-            password: something
+            avi_credentials: "{{ avi_credentials }}"
             state: present
             name: sample_availabilityzone
 

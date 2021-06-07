@@ -42,9 +42,11 @@ extends_documentation_fragment:
 EXAMPLES = '''
   - name: Upload se patch image to controller
     vmware.alb.avi_api_image:
-      controller: ""
-      username: ""
-      password: ""
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
       file_path: ./se_patch.pkg
       api_version: 20.1.1
 '''

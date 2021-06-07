@@ -83,11 +83,12 @@ plugins/modules/avi_wafpolicypsmgroup.py validate-modules:parameter-list-no-elem
 plugins/modules/avi_wafprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_wafpolicy.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_user.py validate-modules:parameter-list-no-elements
-plugins/modules/avi_jwtprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_labelgroup.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_healthmonitor.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_applicationprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_serviceenginegroup.py validate-modules:parameter-list-no-elements
+plugins/modules/avi_authprofile.py validate-modules:parameter-list-no-elements
+plugins/modules/avi_webhook.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_saml_api_session.py validate-modules:doc-type-does-not-match-spec
 plugins/modules/avi_bootstrap_controller.py validate-modules:doc-required-mismatch
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
@@ -137,7 +138,6 @@ plugins/modules/avi_securitymanagerdata.py validate-modules:missing-gplv3-licens
 plugins/modules/avi_cluster.py validate-modules:missing-gplv3-license
 plugins/modules/avi_poolgroupdeploymentpolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_memorybalancerrequest.py validate-modules:missing-gplv3-license
-plugins/modules/avi_jwtprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_backupconfiguration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_clusterclouddetails.py validate-modules:missing-gplv3-license
 plugins/modules/avi_certificatemanagementprofile.py validate-modules:missing-gplv3-license
