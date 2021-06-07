@@ -2,6 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi TestSeDatastoreLevel3 | Delete TestSeDatastoreLevel3
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_testsedatastorelevel3:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"

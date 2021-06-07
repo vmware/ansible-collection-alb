@@ -343,15 +343,19 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
-          - name: Create an Autoscale Launch configuration.
-            avi_autoscalelaunchconfig:
-              controller: '{{ controller }}'
-              username: '{{ username }}'
-              password: '{{ password }}'
-              image_id: default
-              name: default-autoscalelaunchconfig
-              tenant_ref: /api/tenant?name=admin
+        - name: Create an Autoscale Launch configuration.
+          avi_autoscalelaunchconfig:
+            avi_credentials: "{{ avi_credentials }}"
+            image_id: default
+            name: default-autoscalelaunchconfig
+            tenant_ref: /api/tenant?name=admin
 
 
 

@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_stringgroup
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of StringGroup Avi RESTful Object
 description:
     - This module is used to configure StringGroup object
@@ -109,24 +108,30 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create a string group configuration
-    vmware.alb.avi_stringgroup:
-      controller: '{{ controller }}'
-      password: '{{ password }}'
-      username: '{{ username }}'
-      kv:
-      - key: text/html
-      - key: text/xml
-      - key: text/plain
-      - key: text/css
-      - key: text/javascript
-      - key: application/javascript
-      - key: application/x-javascript
-      - key: application/xml
-      - key: application/pdf
-      name: System-Compressible-Content-Types
-      tenant_ref: /api/tenant?name=admin
-      type: SG_TYPE_STRING
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create a string group configuration
+  vmware.alb.avi_stringgroup:
+    avi_credentials: "{{ avi_credentials }}"
+    kv:
+    - key: text/html
+    - key: text/xml
+    - key: text/plain
+    - key: text/css
+    - key: text/javascript
+    - key: application/javascript
+    - key: application/x-javascript
+    - key: application/xml
+    - key: application/pdf
+    name: System-Compressible-Content-Types
+    tenant_ref: /api/tenant?name=admin
+    type: SG_TYPE_STRING
 """
 
 RETURN = '''

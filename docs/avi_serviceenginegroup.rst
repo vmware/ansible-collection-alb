@@ -4532,7 +4532,13 @@ Parameters
                   - Number of cpus for non se-dp tasks in se datapath isolation mode.
                 </div>
                                 <div style="font-size: small">
-                  - Translates total cpus minus 'num_non_dp_cpus' for datapath use.requires se reboot.
+                  - Translates total cpus minus 'num_non_dp_cpus' for datapath use.
+                </div>
+                                <div style="font-size: small">
+                  - It is recommended to reserve an even number of cpus for hyper-threaded processors.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-8.
@@ -7229,12 +7235,16 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "avi_user"
+          password: "avi_password"
+          controller: "192.168.138.18"
+          api_version: "21.1.1"
       tasks:
         - name: Example to create ServiceEngineGroup object
           avi_serviceenginegroup:
-            controller: 192.168.15.18
-            username: admin
-            password: something
+            avi_credentials: "{{ avi_credentials }}"
             state: present
             name: sample_serviceenginegroup
 

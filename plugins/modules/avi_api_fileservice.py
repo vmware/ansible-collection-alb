@@ -56,12 +56,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
+  - hosts: all
+    vars:
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
 
   - name: Download se image from controller
     vmware.alb.avi_api_fileservice:
-      controller: ""
-      username: ""
-      password: ""
+      avi_credentials: "{{ avi_credentials }}"
       upload: false
       path: seova
       file_path: ./se.ova
@@ -69,9 +74,7 @@ EXAMPLES = '''
 
   - name: Upload HSM package to controller
     vmware.alb.avi_api_fileservice:
-      controller: ""
-      username: ""
-      password: ""
+      avi_credentials: "{{ avi_credentials }}"
       upload: true
       path: hsmpackages?hsmtype=safenet
       file_path: ./safenet.tar

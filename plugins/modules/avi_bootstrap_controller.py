@@ -54,9 +54,10 @@ EXAMPLES = '''
   - name: Initialize user password
     vmware.alb.avi_bootstrap_controller:
       avi_credentials:
-        controller: "controller_ip"
-        port: "443"
-        api_version: "18.2.3"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
       ssh_key_pair: "/path/to/key-pair-file.pem"
       password: new_password
       con_wait_time: 3600

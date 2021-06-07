@@ -1626,7 +1626,7 @@ Parameters
                   - Value of 0 results in using default timeout of 60 minutes.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 0-3600000.
+                  - Allowed values are 0-21600000.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.1.5,18.2.1.
@@ -1889,12 +1889,16 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
         - name: Create a Pool with two servers and HTTP monitor
           avi_pool:
-            controller: 192.168.138.18
-            username: avi_user
-            password: avi_password
+            avi_credentials: "{{ avi_credentials }}"
             name: testpool1
             description: testpool1
             state: present
@@ -1910,9 +1914,9 @@ Examples
 
         - name: Patch pool with a single server using patch op and avi_credentials
           avi_pool:
+            avi_credentials: "{{ avi_credentials }}"
             avi_api_update_method: patch
             avi_api_patch_op: delete
-            avi_credentials: "{{avi_credentials}}"
             name: test-pool
             servers:
               - ip:

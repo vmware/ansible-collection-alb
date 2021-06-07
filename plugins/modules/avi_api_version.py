@@ -28,9 +28,11 @@ extends_documentation_fragment:
 EXAMPLES = '''
   - name: Get AVI API version
     vmware.alb.avi_api_version:
-      controller: ""
-      username: ""
-      password: ""
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
       tenant: ""
     register: avi_controller_version
 '''

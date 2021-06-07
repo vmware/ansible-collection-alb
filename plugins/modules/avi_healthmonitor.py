@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_healthmonitor
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of HealthMonitor Avi RESTful Object
 description:
     - This module is used to configure HealthMonitor object
@@ -227,11 +226,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Create a HTTPS health monitor
   vmware.alb.avi_healthmonitor:
-    controller: 192.168.138.18
-    username: admin
-    password: password
+    avi_credentials: "{{ avi_credentials }}"
     https_monitor:
       http_request: HEAD / HTTP/1.0
       http_response_code:

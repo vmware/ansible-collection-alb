@@ -2,6 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi JWTServerProfile | Delete JWTServerProfile
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_jwtserverprofile:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -14,8 +15,11 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    controller_internal_auth: "{{ item.controller_internal_auth | default(omit) }}"
+    is_federated: "{{ item.is_federated | default(omit) }}"
     issuer: "{{ item.issuer | default(omit) }}"
     jwks_keys: "{{ item.jwks_keys | default(omit) }}"
+    jwt_profile_type: "{{ item.jwt_profile_type | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"

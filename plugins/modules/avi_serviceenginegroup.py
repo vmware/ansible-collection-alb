@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_serviceenginegroup
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of ServiceEngineGroup Avi RESTful Object
 description:
     - This module is used to configure ServiceEngineGroup object
@@ -1229,7 +1228,9 @@ options:
     se_dp_isolation_num_non_dp_cpus:
         description:
             - Number of cpus for non se-dp tasks in se datapath isolation mode.
-            - Translates total cpus minus 'num_non_dp_cpus' for datapath use.requires se reboot.
+            - Translates total cpus minus 'num_non_dp_cpus' for datapath use.
+            - It is recommended to reserve an even number of cpus for hyper-threaded processors.
+            - Requires se reboot.
             - Allowed values are 1-8.
             - Special values are 0- 'auto'.
             - Field introduced in 20.1.4.
@@ -1956,11 +1957,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Example to create ServiceEngineGroup object
   vmware.alb.avi_serviceenginegroup:
-    controller: 192.168.15.18
-    username: admin
-    password: something
+    avi_credentials: "{{ avi_credentials }}"
     state: present
     name: sample_serviceenginegroup
 """

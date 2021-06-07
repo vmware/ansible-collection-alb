@@ -148,7 +148,11 @@ extends_documentation_fragment:
 EXAMPLES = '''
   - name: Create WAF Policy Example using System-Waf-Policy as base policy
     vmware.alb.avi_wafpolicy:
-      avi_credentials: ''
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
       patch_file: ./vs-1-waf-policy-patches.json
       base_waf_policy: System-WAF-Policy
       name: vs1-waf-policy

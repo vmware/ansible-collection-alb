@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_authprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of AuthProfile Avi RESTful Object
 description:
     - This module is used to configure AuthProfile object
@@ -71,6 +70,11 @@ options:
         description:
             - Ldap server and directory settings.
         type: dict
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.6.
+        type: list
     name:
         description:
             - Name of the auth profile.
@@ -115,36 +119,42 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create user authorization profile based on the LDAP
-    vmware.alb.avi_authprofile:
-      controller: '{{ controller }}'
-      password: '{{ password }}'
-      username: '{{ username }}'
-      http:
-        cache_expiration_time: 5
-        group_member_is_full_dn: false
-      ldap:
-        base_dn: dc=avi,dc=local
-        bind_as_administrator: true
-        port: 389
-        security_mode: AUTH_LDAP_SECURE_NONE
-        server:
-        - 192.168.12.18
-        settings:
-          admin_bind_dn: user@avi.local
-          group_filter: (objectClass=*)
-          group_member_attribute: member
-          group_member_is_full_dn: true
-          group_search_dn: dc=avi,dc=local
-          group_search_scope: AUTH_LDAP_SCOPE_SUBTREE
-          ignore_referrals: true
-          password: password
-          user_id_attribute: samAccountname
-          user_search_dn: dc=avi,dc=local
-          user_search_scope: AUTH_LDAP_SCOPE_ONE
-      name: ProdAuth
-      tenant_ref: /api/tenant?name=admin
-      type: AUTH_PROFILE_LDAP
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create user authorization profile based on the LDAP
+  vmware.alb.avi_authprofile:
+    avi_credentials: "{{ avi_credentials }}"
+    http:
+      cache_expiration_time: 5
+      group_member_is_full_dn: false
+    ldap:
+      base_dn: dc=avi,dc=local
+      bind_as_administrator: true
+      port: 389
+      security_mode: AUTH_LDAP_SECURE_NONE
+      server:
+      - 192.168.12.18
+      settings:
+        admin_bind_dn: user@avi.local
+        group_filter: (objectClass=*)
+        group_member_attribute: member
+        group_member_is_full_dn: true
+        group_search_dn: dc=avi,dc=local
+        group_search_scope: AUTH_LDAP_SCOPE_SUBTREE
+        ignore_referrals: true
+        password: password
+        user_id_attribute: samAccountname
+        user_search_dn: dc=avi,dc=local
+        user_search_scope: AUTH_LDAP_SCOPE_ONE
+    name: ProdAuth
+    tenant_ref: /api/tenant?name=admin
+    type: AUTH_PROFILE_LDAP
 """
 
 RETURN = '''
@@ -177,6 +187,7 @@ def main():
         http=dict(type='dict',),
         jwt_profile_ref=dict(type='str',),
         ldap=dict(type='dict',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         pa_agent_ref=dict(type='str',),
         saml=dict(type='dict',),
