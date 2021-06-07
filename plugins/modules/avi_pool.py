@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_pool
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of Pool Avi RESTful Object
 description:
     - This module is used to configure Pool object
@@ -447,7 +446,7 @@ options:
             - Server timeout value specifies the time within which a server connection needs to be established and a request-response exchange completes
             - between avi and the server.
             - Value of 0 results in using default timeout of 60 minutes.
-            - Allowed values are 0-3600000.
+            - Allowed values are 0-21600000.
             - Field introduced in 18.1.5,18.2.1.
             - Unit is milliseconds.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -518,11 +517,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Create a Pool with two servers and HTTP monitor
   vmware.alb.avi_pool:
-    controller: 192.168.138.18
-    username: avi_user
-    password: avi_password
+    avi_credentials: "{{ avi_credentials }}"
     name: testpool1
     description: testpool1
     state: present
@@ -538,9 +543,9 @@ EXAMPLES = """
 
 - name: Patch pool with a single server using patch op and avi_credentials
   vmware.alb.avi_pool:
+    avi_credentials: "{{ avi_credentials }}"
     avi_api_update_method: patch
     avi_api_patch_op: delete
-    avi_credentials: "{{avi_credentials}}"
     name: test-pool
     servers:
       - ip:

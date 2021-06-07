@@ -482,7 +482,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as ECDSA+SHA256:RSA+SHA256.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as auto.
                 </div>
                                             </td>
         </tr>
@@ -632,49 +632,53 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
-          - name: Create SSL profile with list of allowed ciphers
-            avi_sslprofile:
-              controller: '{{ controller }}'
-              username: '{{ username }}'
-              password: '{{ password }}'
-              accepted_ciphers: >
-                ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA:
-                ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:
-                AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:
-                AES256-SHA:DES-CBC3-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:
-                ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA
-              accepted_versions:
-              - type: SSL_VERSION_TLS1
-              - type: SSL_VERSION_TLS1_1
-              - type: SSL_VERSION_TLS1_2
-              cipher_enums:
-              - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-              - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
-              - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
-              - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-              - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-              - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-              - TLS_RSA_WITH_AES_128_GCM_SHA256
-              - TLS_RSA_WITH_AES_256_GCM_SHA384
-              - TLS_RSA_WITH_AES_128_CBC_SHA256
-              - TLS_RSA_WITH_AES_256_CBC_SHA256
-              - TLS_RSA_WITH_AES_128_CBC_SHA
-              - TLS_RSA_WITH_AES_256_CBC_SHA
-              - TLS_RSA_WITH_3DES_EDE_CBC_SHA
-              - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
-              - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-              - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-              - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-              - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-              - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
-              name: PFS-BOTH-RSA-EC
-              send_close_notify: true
-              ssl_rating:
-                compatibility_rating: SSL_SCORE_EXCELLENT
-                performance_rating: SSL_SCORE_EXCELLENT
-                security_score: '100.0'
-              tenant_ref: /api/tenant?name=Demo
+        - name: Create SSL profile with list of allowed ciphers
+          avi_sslprofile:
+            avi_credentials: "{{ avi_credentials }}"
+            accepted_ciphers: >
+              ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA:
+              ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:
+              AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:
+              AES256-SHA:DES-CBC3-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:
+              ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA
+            accepted_versions:
+            - type: SSL_VERSION_TLS1
+            - type: SSL_VERSION_TLS1_1
+            - type: SSL_VERSION_TLS1_2
+            cipher_enums:
+            - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+            - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+            - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+            - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+            - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+            - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+            - TLS_RSA_WITH_AES_128_GCM_SHA256
+            - TLS_RSA_WITH_AES_256_GCM_SHA384
+            - TLS_RSA_WITH_AES_128_CBC_SHA256
+            - TLS_RSA_WITH_AES_256_CBC_SHA256
+            - TLS_RSA_WITH_AES_128_CBC_SHA
+            - TLS_RSA_WITH_AES_256_CBC_SHA
+            - TLS_RSA_WITH_3DES_EDE_CBC_SHA
+            - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+            - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+            - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+            - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+            - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+            - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+            name: PFS-BOTH-RSA-EC
+            send_close_notify: true
+            ssl_rating:
+              compatibility_rating: SSL_SCORE_EXCELLENT
+              performance_rating: SSL_SCORE_EXCELLENT
+              security_score: '100.0'
+            tenant_ref: /api/tenant?name=Demo
 
 
 

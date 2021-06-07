@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_microservicegroup
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of MicroServiceGroup Avi RESTful Object
 description:
     - This module is used to configure MicroServiceGroup object
@@ -87,14 +86,20 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create a Microservice Group that can be used for setting up Network security policy
-    vmware.alb.avi_microservicegroup:
-      controller: '{{ controller }}'
-      username: '{{ username }}'
-      password: '{{ password }}'
-      description: Group created by my Secure My App UI.
-      name: vs-msg-marketing
-      tenant_ref: /api/tenant?name=admin
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create a Microservice Group that can be used for setting up Network security policy
+  vmware.alb.avi_microservicegroup:
+    avi_credentials: "{{ avi_credentials }}"
+    description: Group created by my Secure My App UI.
+    name: vs-msg-marketing
+    tenant_ref: /api/tenant?name=admin
 """
 
 RETURN = '''

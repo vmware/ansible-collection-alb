@@ -45,20 +45,26 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
+  - hosts: all
+    vars:
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
+
   - name: Update user password
     vmware.alb.avi_useraccount:
-      controller: ""
-      username: ""
-      password: ""
+      avi_credentials: "{{ avi_credentials }}"
       full_name: "abc xyz"
       email: "abc@xyz.com"
-      old_password: ""
-      api_version: ""
+      old_password: "{{ avi_credentials.password }}"
       force_change: false
+
   - name: Update user password using avi_credentials
     vmware.alb.avi_useraccount:
-      avi_credentials: ""
-      old_password: ""
+      avi_credentials: "{{ avi_credentials }}"
+      old_password: "{{ avi_credentials.password }}"
       force_change: false
 '''
 

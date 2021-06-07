@@ -2,6 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi ServerAutoScalePolicy | Create or Update ServerAutoScalePolicy
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_serverautoscalepolicy:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"

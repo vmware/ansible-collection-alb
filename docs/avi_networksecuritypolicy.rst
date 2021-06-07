@@ -389,26 +389,30 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
-          - name: Create a network security policy to block clients represented by ip group known_attackers
-            avi_networksecuritypolicy:
-              controller: '{{ controller }}'
-              username: '{{ username }}'
-              password: '{{ password }}'
-              name: vs-gurutest-ns
-              rules:
-              - action: NETWORK_SECURITY_POLICY_ACTION_TYPE_DENY
-                age: 0
-                enable: true
-                index: 1
-                log: false
-                match:
-                  client_ip:
-                    group_refs:
-                    - Demo:known_attackers
-                    match_criteria: IS_IN
-                name: Rule 1
-              tenant_ref: /api/tenant?name=Demo
+        - name: Create a network security policy to block clients represented by ip group known_attackers
+          avi_networksecuritypolicy:
+            avi_credentials: "{{ avi_credentials }}"
+            name: vs-gurutest-ns
+            rules:
+            - action: NETWORK_SECURITY_POLICY_ACTION_TYPE_DENY
+              age: 0
+              enable: true
+              index: 1
+              log: false
+              match:
+                client_ip:
+                  group_refs:
+                  - Demo:known_attackers
+                  match_criteria: IS_IN
+              name: Rule 1
+            tenant_ref: /api/tenant?name=Demo
 
 
 

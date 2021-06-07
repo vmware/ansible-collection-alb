@@ -621,14 +621,17 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
         - name: Example to create Gslb object
           avi_gslb:
             name: "test-gslb"
-            avi_credentials:
-              username: '{{ username }}'
-              password: '{{ password }}'
-              controller: '{{ controller }}'
+            avi_credentials: "{{ avi_credentials }}"
             sites:
               - name: "test-site1"
                 username: "gslb_username"
@@ -657,10 +660,7 @@ Examples
 
         - name: Update Gslb site's configurations (Patch Add Operation)
           avi_gslb:
-            avi_credentials:
-              username: '{{ username }}'
-              password: '{{ password }}'
-              controller: '{{ controller }}'
+            avi_credentials: "{{ avi_credentials }}"
             avi_api_update_method: patch
             avi_api_patch_op: add
             leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
@@ -682,10 +682,7 @@ Examples
 
         - name: Update Gslb site's configurations (Patch Replace Operation)
           avi_gslb:
-            avi_credentials:
-              username: "{{ username }}"
-              password: "{{ password }}"
-              controller: "{{ controller }}"
+            avi_credentials: "{{ avi_credentials }}"
             # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
             leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
             name: "test-gslb"
@@ -708,10 +705,7 @@ Examples
 
         - name: Delete Gslb site's den_vses configurations (Patch Delete(dns_vses) Operation)
           avi_gslb:
-            avi_credentials:
-              username: "{{ username }}"
-              password: "{{ password }}"
-              controller: "{{ controller }}"
+            avi_credentials: "{{ avi_credentials }}"
             # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
             leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
             name: "test-gslb"
@@ -725,7 +719,6 @@ Examples
         - name: Delete Gslb complete site's configurations (Patch Delete(site) Operation)
           avi_gslb:
             avi_credentials: "{{ avi_credentials }}"
-            api_version: 18.2.8
             avi_api_update_method: patch
             avi_api_patch_op: delete
             patch_level: '/site'

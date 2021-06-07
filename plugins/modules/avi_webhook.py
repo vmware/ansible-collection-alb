@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_webhook
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of Webhook Avi RESTful Object
 description:
     - This module is used to configure Webhook object
@@ -61,6 +60,11 @@ options:
         description:
             - Field introduced in 17.1.1.
         type: str
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.6.
+        type: list
     name:
         description:
             - The name of the webhook profile.
@@ -91,11 +95,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Example to create Webhook object
   vmware.alb.avi_webhook:
-    controller: 192.168.15.18
-    username: admin
-    password: something
+    avi_credentials: "{{ avi_credentials }}"
     state: present
     name: sample_webhook
 """
@@ -128,6 +138,7 @@ def main():
         callback_url=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

@@ -786,12 +786,16 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
         - name: Create a HTTPS health monitor
           avi_healthmonitor:
-            controller: 192.168.138.18
-            username: admin
-            password: password
+            avi_credentials: "{{ avi_credentials }}"
             https_monitor:
               http_request: HEAD / HTTP/1.0
               http_response_code:

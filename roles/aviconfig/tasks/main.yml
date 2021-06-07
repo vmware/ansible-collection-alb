@@ -37,6 +37,7 @@
     config_resources: []
 
 - name: Avi Config | Check tenant exists
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_api_session:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username  | default(omit) }}"
@@ -60,6 +61,7 @@
     - tenant_res.results[0].obj.count == 0
 
 - name: Avi Config | Fetch cloud status
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_api_session:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username  | default(omit) }}"
@@ -111,7 +113,7 @@
   include_tasks: "{{ outer_item }}.yml"
   vars:
     avi_role_state_mode: present
-    update_sysconfig_dns_vs_ref: False
+    update_sysconfig_dns_vs_ref: false
   when:
     - avi_config_state == "present"
     - avi_role_cfg | default({})
@@ -124,7 +126,7 @@
   include_tasks: "systemconfiguration.yml"
   vars:
     avi_role_state_mode: present
-    update_sysconfig_dns_vs_ref: True
+    update_sysconfig_dns_vs_ref: true
   when:
     - avi_config_state == "present"
     - avi_role_cfg | default({})

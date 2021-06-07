@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_networksecuritypolicy
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of NetworkSecurityPolicy Avi RESTful Object
 description:
     - This module is used to configure NetworkSecurityPolicy object
@@ -123,25 +122,31 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-  - name: Create a network security policy to block clients represented by ip group known_attackers
-    vmware.alb.avi_networksecuritypolicy:
-      controller: '{{ controller }}'
-      username: '{{ username }}'
-      password: '{{ password }}'
-      name: vs-gurutest-ns
-      rules:
-      - action: NETWORK_SECURITY_POLICY_ACTION_TYPE_DENY
-        age: 0
-        enable: true
-        index: 1
-        log: false
-        match:
-          client_ip:
-            group_refs:
-            - Demo:known_attackers
-            match_criteria: IS_IN
-        name: Rule 1
-      tenant_ref: /api/tenant?name=Demo
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Create a network security policy to block clients represented by ip group known_attackers
+  vmware.alb.avi_networksecuritypolicy:
+    avi_credentials: "{{ avi_credentials }}"
+    name: vs-gurutest-ns
+    rules:
+    - action: NETWORK_SECURITY_POLICY_ACTION_TYPE_DENY
+      age: 0
+      enable: true
+      index: 1
+      log: false
+      match:
+        client_ip:
+          group_refs:
+          - Demo:known_attackers
+          match_criteria: IS_IN
+      name: Rule 1
+    tenant_ref: /api/tenant?name=Demo
 """
 
 RETURN = '''

@@ -15,7 +15,6 @@ DOCUMENTATION = '''
 ---
 module: avi_jwtserverprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of JWTServerProfile Avi RESTful Object
 description:
     - This module is used to configure JWTServerProfile object
@@ -52,17 +51,35 @@ options:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
         type: dict
+    controller_internal_auth:
+        description:
+            - Jwt auth configuration for profile_type controller_internal_auth.
+            - Field introduced in 20.1.6.
+        type: dict
+    is_federated:
+        description:
+            - This field describes the object's replication scope.
+            - If the field is set to false, then the object is visible within the controller-cluster.
+            - If the field is set to true, then the object is replicated across the federation.
+            - Field introduced in 20.1.6.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     issuer:
         description:
-            - Uniquely identifiable name of the token issuer.
+            - Uniquely identifiable name of the token issuer, only allowed with profile_type client_auth.
             - Field introduced in 20.1.3.
-        required: true
         type: str
     jwks_keys:
         description:
-            - Jwks key set used for validating the jwt.
+            - Jwks key set used for validating the jwt, only allowed with profile_type client_auth.
             - Field introduced in 20.1.3.
-        required: true
+        type: str
+    jwt_profile_type:
+        description:
+            - Type of jwt server profile which defines the usage type.
+            - Enum options - CLIENT_AUTH, CONTROLLER_INTERNAL_AUTH.
+            - Field introduced in 20.1.6.
+            - Default value when not specified in API or module is interpreted by Avi Controller as CLIENT_AUTH.
         type: str
     name:
         description:
@@ -90,11 +107,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Example to create JWTServerProfile object
   vmware.alb.avi_jwtserverprofile:
-    controller: 192.168.15.18
-    username: admin
-    password: something
+    avi_credentials: "{{ avi_credentials }}"
     state: present
     name: sample_jwtserverprofile
 """
@@ -125,8 +148,11 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        issuer=dict(type='str', required=True),
-        jwks_keys=dict(type='str', required=True),
+        controller_internal_auth=dict(type='dict',),
+        is_federated=dict(type='bool',),
+        issuer=dict(type='str',),
+        jwks_keys=dict(type='str',),
+        jwt_profile_type=dict(type='str',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

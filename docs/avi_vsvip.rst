@@ -494,11 +494,17 @@ Examples
       connection: local
       collections:
         - vmware.alb
+      vars:
+        avi_credentials:
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
       tasks:        
         - name: Create vsvip for virtualservice for newtestvs
           avi_vsvip:
             name: vsvip-newtestvs-Default-Cloud
-            avi_credentials: '{{ avi_credentials }}'
+            avi_credentials: "{{ avi_credentials }}"
             api_context: '{{avi_api_context | default(omit)}}'
             vrf_context_ref: /api/vrfcontext/?name=global
             tenant_ref: /api/tenant/?name=admin

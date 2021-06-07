@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_vsvip
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of VsVip Avi RESTful Object
 description:
     - This module is used to configure VsVip object
@@ -153,10 +152,18 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Create vsvip for virtualservice for newtestvs
   vmware.alb.avi_vsvip:
     name: vsvip-newtestvs-Default-Cloud
-    avi_credentials: '{{ avi_credentials }}'
+    avi_credentials: "{{ avi_credentials }}"
     api_context: '{{avi_api_context | default(omit)}}'
     vrf_context_ref: /api/vrfcontext/?name=global
     tenant_ref: /api/tenant/?name=admin

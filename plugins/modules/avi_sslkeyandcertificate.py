@@ -16,7 +16,6 @@ DOCUMENTATION = '''
 ---
 module: avi_sslkeyandcertificate
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-
 short_description: Module for setup of SSLKeyAndCertificate Avi RESTful Object
 description:
     - This module is used to configure SSLKeyAndCertificate object
@@ -198,11 +197,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
 - name: Create a SSL Key and Certificate
   vmware.alb.avi_sslkeyandcertificate:
-    controller: 192.168.138.18
-    username: admin
-    password: password
+    avi_credentials: "{{ avi_credentials }}"
     key: |
         -----BEGIN PRIVATE KEY-----
         ....
@@ -279,7 +284,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'sslkeyandcertificate',
-                           {'key_passphrase', 'key'})
+                           ['key', 'key_passphrase'])
 
 
 if __name__ == '__main__':
