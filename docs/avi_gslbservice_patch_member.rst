@@ -84,26 +84,6 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>state</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - The state that should be applied to the member. Member is
-                </div>
-                                <div style="font-size: small">
-                  - identified using field member.ip.addr.
-                </div>
-                                            </td>
-        </tr>
             </table>
     <br/>
 
