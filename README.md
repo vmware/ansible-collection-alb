@@ -48,6 +48,17 @@ pip install requests
 ### Modules
 Name | Description
 --- | ---
+[vmware.alb.avi_gslbservice_patch_member](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_gslbservice_patch_member.rst)|Module to create update or delete GslbservicePatchMember
+[vmware.alb.avi_api_session](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_api_session.rst)|Module to create update or delete ApiSession
+[vmware.alb.avi_saml_api_session](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_saml_api_session.rst)|Module to create update or delete SamlApiSession
+[vmware.alb.avi_api_image](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_api_image.rst)|Module to create update or delete ApiImage
+[vmware.alb.avi_api_version](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_api_version.rst)|Module to create update or delete ApiVersion
+[vmware.alb.avi_bootstrap_controller](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_bootstrap_controller.rst)|Module to create update or delete BootstrapController
+[vmware.alb.avi_api_fileservice](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_api_fileservice.rst)|Module to create update or delete ApiFileservice
+[vmware.alb.avi_update_se_data_vnics](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_update_se_data_vnics.rst)|Module to create update or delete UpdateSeDataVnics
+[vmware.alb.avi_useraccount](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_useraccount.rst)|Module to create update or delete Useraccount
+[vmware.alb.avi_wafpolicy](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_wafpolicy.rst)|Module to create update or delete Wafpolicy
+[vmware.alb.avi_user](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_user.rst)|Module to create update or delete User
 [vmware.alb.avi_labelgroup](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_labelgroup.rst)|Module to create update or delete LabelGroup
 [vmware.alb.avi_albservicesconfig](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_albservicesconfig.rst)|Module to create update or delete ALBServicesConfig
 [vmware.alb.avi_systemlimits](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_systemlimits.rst)|Module to create update or delete SystemLimits
