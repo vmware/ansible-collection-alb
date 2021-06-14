@@ -52,6 +52,6 @@ jobs:
       run: ansible-test units --docker -v --color --truncate 0 --python 3.8
       working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
 
-    - name: Run sanity test validate-modules
+    - name: Run ansible sanity tests
       run: ansible-test sanity --docker -v --color --truncate 0 --python 3.8
       working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb

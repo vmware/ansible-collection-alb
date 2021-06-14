@@ -2,6 +2,7 @@ LICENSE line-endings
 NOTICE line-endings
 roles/aviconfig/README.md line-endings
 plugins/modules/avi_sslprofile.py pep8:E501
+plugins/lookup/avi.py import-3.8!skip
 plugins/module_utils/avi_api.py import-3.8!skip
 plugins/module_utils/saml_avi_api.py import-3.8!skip
 plugins/module_utils/utils/ansible_utils.py import-3.8!skip
@@ -117,7 +118,6 @@ plugins/modules/avi_sslkeyandcertificate.py validate-modules:no-log-needed
 plugins/modules/avi_serviceenginegroup.py validate-modules:no-log-needed
 plugins/modules/avi_pool.py validate-modules:no-log-needed
 plugins/modules/avi_bootstrap_controller.py validate-modules:no-log-needed
-plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed
 plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed
 plugins/modules/avi_jwtserverprofile.py validate-modules:no-log-needed
 plugins/modules/avi_vsdatascriptset.py validate-modules:no-log-needed
