@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # module_check: supported
 
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential

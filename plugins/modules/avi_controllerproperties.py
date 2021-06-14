@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # module_check: supported
 
 # Avi Version: 17.1.2
@@ -126,7 +126,6 @@ options:
         description:
             - Enforce vsvip fqdn syntax checks.
             - Field introduced in 20.1.6.
-            - Allowed in basic edition, essentials edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     cleanup_expired_authtoken_timeout_period:

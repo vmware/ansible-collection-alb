@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # module_check: not supported
 
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
@@ -128,8 +128,8 @@ def main():
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
-                    'Python requests package is not installed. '
-                    'For installation instructions, visit https://pypi.org/project/requests.'))
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)
     new_password = module.params.get('password')

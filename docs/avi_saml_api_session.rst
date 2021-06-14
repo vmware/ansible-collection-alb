@@ -1,9 +1,9 @@
 .. vmware.alb.avi_saml_api_session:
 
 
-*****************************
+**********************************************
 vmware.alb.avi_saml_api_session
-*****************************
+**********************************************
 
 **Module for setup of SamlApiSession Avi RESTful Object**
 

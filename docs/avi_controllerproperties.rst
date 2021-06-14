@@ -1,9 +1,9 @@
 .. vmware.alb.avi_controllerproperties:
 
 
-*****************************
+**********************************************
 vmware.alb.avi_controllerproperties
-*****************************
+**********************************************
 
 **Module for setup of ControllerProperties Avi RESTful Object**
 
@@ -89,11 +89,44 @@ Parameters
                     <li><div style="color: blue"><b>add</b>&nbsp;&larr;</div></li>
                     <li>replace</li>
                     <li>delete</li>
+                    <li>remove</li>
                 </ul>
             </td>
             <td>
                 <div style="font-size: small">
                     - Patch operation to use when using avi_api_update_method as patch.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>avi_patch_path</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div style="font-size: small">
+                    - Patch path to use when using avi_api_update_method as patch.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>avi_patch_value</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div style="font-size: small">
+                    - Patch value to use when using avi_api_update_method as patch.
                 </div>
             </td>
         </tr>
@@ -399,9 +432,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.6.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.

@@ -1,9 +1,9 @@
 .. vmware.alb.avi_gslbservice_patch_member:
 
 
-*****************************
+**********************************************
 vmware.alb.avi_gslbservice_patch_member
-*****************************
+**********************************************
 
 **Module for setup of GslbservicePatchMember Avi RESTful Object**
 
@@ -50,7 +50,7 @@ Parameters
                     - The state that should be applied on the entity.
                 </div>
             </td>
-        </tr><tr></tr><tr></tr>
+        </tr>
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
