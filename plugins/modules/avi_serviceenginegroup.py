@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # module_check: supported
 
 # Avi Version: 17.1.1
@@ -831,9 +831,9 @@ options:
         type: int
     max_num_se_dps:
         description:
-            - Configures the maximum number of se_dp processes created on the se, requires se reboot.
+            - Configures the maximum number of se_dp processes that handles traffic.
             - If not configured, defaults to the number of cpus on the se.
-            - This should only be used if user wants to limit the number of se_dps to less than the available cpus on the se.
+            - If decreased, it will only take effect after se reboot.
             - Allowed values are 1-128.
             - Field introduced in 20.1.1.
             - Allowed in basic(allowed values- 0) edition, essentials(allowed values- 0) edition, enterprise edition.

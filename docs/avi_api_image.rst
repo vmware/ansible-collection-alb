@@ -1,9 +1,9 @@
 .. vmware.alb.avi_api_image:
 
 
-*****************************
+**********************************************
 vmware.alb.avi_api_image
-*****************************
+**********************************************
 
 **Module for setup of ApiImage Avi RESTful Object**
 
