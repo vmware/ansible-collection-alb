@@ -1,8 +1,8 @@
 # Advanced Load Balancer (formerly Avi) Ansible Collection
 
 [![Apache licensed](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/vmware/ansible-collection-alb/blob/eng/LICENSE)
-[![CI](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml/badge.svg?branch=eng)](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml)
 [![Collection](https://img.shields.io/badge/collection-vmware.alb-blue.svg)](https://galaxy.ansible.com/vmware/alb/)
+[![CI](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml/badge.svg?branch=eng)](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml)
 
 <!--start requires_ansible-->
 ## Ansible version compatibility
