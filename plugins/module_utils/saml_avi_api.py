@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
+__metaclass__ = type
 from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, \
     sessionDict, APIError
 import requests
@@ -47,7 +48,7 @@ class OneloginSAMLApiSession(ApiSession):
                  retry_conxn_errors=True, data_log=False,
                  avi_credentials=None, session_id=None, csrftoken=None,
                  lazy_authentication=False, max_api_retries=None,
-                 idp_cookies=None,user_hdrs=None):
+                 idp_cookies=None, user_hdrs=None):
         """
         This extends ApiSession class and overrides authentication method
         for SMAL authentication.

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 # module_check: not supported
 
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
@@ -135,8 +135,8 @@ def main():
 
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
-                    'Python requests package is not installed. '
-                    'For installation instructions, visit https://pypi.org/project/requests.'))
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
     idp_class = module.params.get("idp_class", None)
     idp = get_idp_class(idp_class)
     if not idp:

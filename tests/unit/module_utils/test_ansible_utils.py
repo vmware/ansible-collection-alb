@@ -8,30 +8,32 @@ __metaclass__ = type
 from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (avi_obj_cmp, ref_n_str_cmp)
 
 new_obj = {
-        "name": "testpool1",
-        "description": "testpool1",
-        "servers": [
-            {
-                "ip": {
-                    "addr": "192.168.2.20",
-                    "type": "V4"
-                }
+    "name": "testpool1",
+    "description": "testpool1",
+    "servers": [
+        {
+            "ip": {
+                "addr": "192.168.2.20",
+                "type": "V4"
             }
-        ]
-    }
+        }
+    ]
+}
+
 
 existing_object = {
-        "name": "testpool1",
-        "description": "testpool1",
-        "servers": [
-            {
-                "ip": {
-                    "addr": "192.168.2.20",
-                    "type": "V4"
-                }
+    "name": "testpool1",
+    "description": "testpool1",
+    "servers": [
+        {
+            "ip": {
+                "addr": "192.168.2.20",
+                "type": "V4"
             }
-        ]
-    }
+        }
+    ]
+}
+
 
 def test_compare_single_value():
     """
@@ -44,10 +46,11 @@ def test_compare_single_value():
     exist = not ref_n_str_cmp(health_monitor, existing_health_monitor)
     assert exist
 
+
 def test_compare_object():
     """
     If both objects are equal then it return true
     If both objects are not equal then it return false
     """
     exist = avi_obj_cmp(new_obj, existing_object)
-    assert  exist
+    assert exist
