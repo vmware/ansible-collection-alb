@@ -1,6 +1,6 @@
 # Advanced Load Balancer (formerly Avi) Ansible Collection
 
-[![Github Action eng](https://github.com/github/docs/actions/workflows/ci.yml/badge.svg?branch=eng)]
+[![Ansible CI](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml/badge.svg?branch=eng)](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-vmware.alb-blue.svg)](https://galaxy.ansible.com/vmware/alb/)
 
 <!--start requires_ansible-->
