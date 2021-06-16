@@ -1,6 +1,9 @@
-name: Ansible CI
+name: CI
 on:
-  - pull_request
+  push:
+    branches:
+      - eng
+  pull_request:
 
 jobs:
   test:
@@ -52,18 +55,6 @@ jobs:
       run: ansible-test units --docker -v --color --truncate 0 --python 3.8
       working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
 
-    - name: Run sanity test validate-modules
-      run: ansible-test sanity --test validate-modules --docker -v --color --truncate 0 --python 3.8
-      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
-
-    - name: Run sanity test yamllint
-      run: ansible-test sanity --test yamllint --docker -v --color --truncate 0 --python 3.8
-      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
-
-    - name: Run sanity test ansible-doc
-      run: ansible-test sanity --test ansible-doc --docker -v --color --truncate 0 --python 3.8
-      working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
-
-    - name: Run sanity test compile
-      run: ansible-test sanity --test compile --docker -v --color --truncate 0 --python 3.8
+    - name: Run ansible sanity tests
+      run: ansible-test sanity --docker -v --color --truncate 0 --python 3.8
       working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
