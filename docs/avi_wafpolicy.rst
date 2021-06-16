@@ -1,9 +1,9 @@
 .. vmware.alb.avi_wafpolicy:
 
 
-*****************************
+**********************************************
 vmware.alb.avi_wafpolicy
-*****************************
+**********************************************
 
 **Module for setup of Wafpolicy Avi RESTful Object**
 
@@ -89,6 +89,7 @@ Parameters
                     <li><div style="color: blue"><b>add</b>&nbsp;&larr;</div></li>
                     <li>replace</li>
                     <li>delete</li>
+                    <li>remove</li>
                 </ul>
             </td>
             <td>

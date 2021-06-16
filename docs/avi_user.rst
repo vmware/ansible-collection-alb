@@ -1,9 +1,9 @@
 .. vmware.alb.avi_user:
 
 
-*****************************
+**********************************************
 vmware.alb.avi_user
-*****************************
+**********************************************
 
 **Module for setup of User Avi RESTful Object**
 
@@ -89,6 +89,7 @@ Parameters
                     <li><div style="color: blue"><b>add</b>&nbsp;&larr;</div></li>
                     <li>replace</li>
                     <li>delete</li>
+                    <li>remove</li>
                 </ul>
             </td>
             <td>

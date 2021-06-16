@@ -1,9 +1,9 @@
 .. vmware.alb.avi_serviceenginegroup:
 
 
-*****************************
+**********************************************
 vmware.alb.avi_serviceenginegroup
-*****************************
+**********************************************
 
 **Module for setup of ServiceEngineGroup Avi RESTful Object**
 
@@ -89,11 +89,44 @@ Parameters
                     <li><div style="color: blue"><b>add</b>&nbsp;&larr;</div></li>
                     <li>replace</li>
                     <li>delete</li>
+                    <li>remove</li>
                 </ul>
             </td>
             <td>
                 <div style="font-size: small">
                     - Patch operation to use when using avi_api_update_method as patch.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>avi_patch_path</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div style="font-size: small">
+                    - Patch path to use when using avi_api_update_method as patch.
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>avi_patch_value</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td></td>
+            <td>
+                <div style="font-size: small">
+                    - Patch value to use when using avi_api_update_method as patch.
                 </div>
             </td>
         </tr>
@@ -3056,13 +3089,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Configures the maximum number of se_dp processes created on the se, requires se reboot.
+                  - Configures the maximum number of se_dp processes that handles traffic.
                 </div>
                                 <div style="font-size: small">
                   - If not configured, defaults to the number of cpus on the se.
                 </div>
                                 <div style="font-size: small">
-                  - This should only be used if user wants to limit the number of se_dps to less than the available cpus on the se.
+                  - If decreased, it will only take effect after se reboot.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-128.
