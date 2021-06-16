@@ -1,6 +1,9 @@
 name: CI
 on:
   push:
+    branches:
+      - '*'
+      - '!jenkins_sync_*'
   pull_request:
 
 jobs:
