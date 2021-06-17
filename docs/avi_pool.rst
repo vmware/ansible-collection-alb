@@ -287,6 +287,12 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in basic(allowed values- never) edition, essentials(allowed values- never) edition, enterprise edition.
+                </div>
+                                <div style="font-size: small">
+                  - Special default for basic edition is never, essentials edition is never, enterprise is non_default_80_443.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as NON_DEFAULT_80_443.
                 </div>
                                             </td>

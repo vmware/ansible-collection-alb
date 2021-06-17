@@ -87,6 +87,8 @@ options:
             - settings as well as http healthmonitors attached to pools.
             - Enum options - NON_DEFAULT_80_443, NEVER, ALWAYS.
             - Field introduced in 21.1.1.
+            - Allowed in basic(allowed values- never) edition, essentials(allowed values- never) edition, enterprise edition.
+            - Special default for basic edition is never, essentials edition is never, enterprise is non_default_80_443.
             - Default value when not specified in API or module is interpreted by Avi Controller as NON_DEFAULT_80_443.
         type: str
     application_persistence_profile_ref:
