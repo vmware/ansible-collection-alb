@@ -1,9 +1,9 @@
 name: CI
 on:
   push:
-    branches:
-      - '*'
-      - '!jenkins_sync_*'
+    branches-ignore:
+      - 'jenkins_sync_*'
+      - 'test_*'
   pull_request:
 
 jobs:
