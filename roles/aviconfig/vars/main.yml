@@ -69,6 +69,7 @@ avi_resource_types:
   - scheduler
   - sslkeyandcertificate
   - networksecuritypolicy
+  - wafpolicy
   - botdetectionpolicy
   - testsedatastorelevel1
   - backup

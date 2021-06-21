@@ -1,9 +1,8 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
-
 
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
@@ -15,10 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_wafpolicy
-author: Chaitanya Deshpande (@chaitanyaavi) <chaitanya.deshpande@avinetworks.com>
-short_description: Avi WAF Policy Module
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+short_description: Module for setup of WafPolicy Avi RESTful Object
 description:
-    - This module can be used for creation, updation and deletion of a user.
+    - This module is used to configure WafPolicy object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -38,101 +38,6 @@ options:
             - Patch operation to use when using avi_api_update_method as patch.
         choices: ["add", "replace", "delete", "remove"]
         type: str
-    name:
-        description:
-            - Name of Waf policy.
-        required: true
-        type: str
-    base_waf_policy:
-        description:
-            - Name of the base waf policy on which patch is applied
-        required: true
-        type: str
-    patch_file:
-        description:
-            - File path of json patch file
-        required: true
-        type: str
-    tenant_ref:
-        description:
-            - It is a reference to an object of type tenant.
-        type: str
-    url:
-        description:
-            - Avi controller URL of the object.
-        type: str
-    uuid:
-        description:
-            - Unique object identifier of the object.
-        type: str
-    allow_mode_delegation:
-        description:
-            - Allow Rules to overwrite the policy mode.
-            - This must be set if the policy mode is set to enforcement.
-        type: bool
-    created_by:
-        description:
-            - Creator name.
-        type: str
-    crs_groups:
-        description:
-            - WAF Rules are categorized in to groups based on their characterization.
-            - These groups are system created with CRS groups.
-        type: list
-    description:
-        description:
-            - Free-text comment about this exclusion.
-        type: str
-    enable_app_learning:
-        description:
-            - Enable Application Learning for this WAF policy.
-        type: bool
-    failure_mode:
-        description:
-            - WAF Policy failure mode. This can be 'Open' or 'Closed'.
-        type: str
-    learning:
-        description:
-            - Configure parameters for WAF learning.
-        type: dict
-    mode:
-        description:
-            - WAF Rule mode. This can be detection or enforcement.
-            - If this is not set, the Policy mode is used.
-            - This only takes effect if the policy allows delegation.
-        type: str
-    paranoia_level:
-        description:
-            - WAF Ruleset paranoia mode. This is used to select Rules based on the paranoia-level.
-        type: str
-    positive_security_model:
-        description:
-            - The Positive Security Model.
-            - This is used to describe how the request or parts of the request should look like.
-            - It is executed in the Request Body Phase of Avi WAF.",
-        type: dict
-    post_crs_groups:
-        description:
-            - WAF Rules are categorized in to groups based on their characterization.
-            - These groups are created by the user and will be enforced after the CRS groups.
-        type: list
-    pre_crs_groups:
-        description:
-            - WAF Rules are categorized in to groups based on their characterization.
-            - These groups are created by the user and will be enforced before the CRS groups.
-        type: list
-    waf_crs_ref:
-        description:
-            - It is a reference to an object of type waf crs.
-        type: str
-    waf_profile_ref:
-        description:
-            - It is a reference to an object of type waf profile.
-        type: str
-    whitelist:
-        description:
-            - Rules to bypass WAF.
-        type: dict
     avi_patch_path:
         description:
             - Patch path to use when using avi_api_update_method as patch.
@@ -141,89 +46,234 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    allow_mode_delegation:
+        description:
+            - Allow rules to overwrite the policy mode.
+            - This must be set if the policy mode is set to enforcement.
+            - Field introduced in 18.1.5, 18.2.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    allowlist:
+        description:
+            - A set of rules which describe conditions under which the request will bypass the waf.
+            - This will be processed in the request header phase before any other waf related code.
+            - Field introduced in 20.1.3.
+        type: dict
+    application_signatures:
+        description:
+            - Application specific signatures.
+            - Field introduced in 20.1.1.
+        type: dict
+    confidence_override:
+        description:
+            - Configure thresholds for confidence labels.
+            - Field introduced in 20.1.1.
+        type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.1.
+        type: dict
+    created_by:
+        description:
+            - Creator name.
+            - Field introduced in 17.2.4.
+        type: str
+    crs_groups:
+        description:
+            - This entry is deprecated.
+            - If you want to change the property of a crs group or rule (enabled, mode, exclusions), please use the crs_overrides field instead.
+            - Field deprecated in 20.1.6.
+            - Field introduced in 17.2.1.
+        type: list
+    crs_overrides:
+        description:
+            - Override attributes for crs rules.
+            - Field introduced in 20.1.6.
+        type: list
+    description:
+        description:
+            - Field introduced in 17.2.1.
+        type: str
+    enable_app_learning:
+        description:
+            - Enable application learning for this waf policy.
+            - Field introduced in 18.2.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    enable_auto_rule_updates:
+        description:
+            - Enable application learning based rule updates on the waf profile.
+            - Rules will be programmed in dedicated waf learning group.
+            - Field introduced in 20.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    enable_regex_learning:
+        description:
+            - Enable dynamic regex generation for positive security model rules.
+            - This is an experimental feature and shouldn't be used in production.
+            - Field introduced in 20.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    failure_mode:
+        description:
+            - Waf policy failure mode.
+            - This can be 'open' or 'closed'.
+            - Enum options - WAF_FAILURE_MODE_OPEN, WAF_FAILURE_MODE_CLOSED.
+            - Field introduced in 18.1.2.
+            - Default value when not specified in API or module is interpreted by Avi Controller as WAF_FAILURE_MODE_OPEN.
+        type: str
+    geo_db_ref:
+        description:
+            - Geo location mapping database used by this wafpolicy.
+            - It is a reference to an object of type geodb.
+            - Field introduced in 21.1.1.
+        type: str
+    labels:
+        description:
+            - Key value pairs for granular object access control.
+            - Also allows for classification and tagging of similar objects.
+            - Field deprecated in 20.1.5.
+            - Field introduced in 20.1.2.
+            - Maximum of 4 items allowed.
+        type: list
+    learning:
+        description:
+            - Configure parameters for waf learning.
+            - Field deprecated in 18.2.3.
+            - Field introduced in 18.1.2.
+        type: dict
+    learning_params:
+        description:
+            - Parameters for tuning application learning.
+            - Field introduced in 20.1.1.
+        type: dict
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.5.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+        type: list
+    min_confidence:
+        description:
+            - Minimum confidence label required for auto rule updates.
+            - Enum options - CONFIDENCE_VERY_HIGH, CONFIDENCE_HIGH, CONFIDENCE_PROBABLE, CONFIDENCE_LOW, CONFIDENCE_NONE.
+            - Field introduced in 20.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as CONFIDENCE_VERY_HIGH.
+        type: str
+    mode:
+        description:
+            - Waf policy mode.
+            - This can be detection or enforcement.
+            - It can be overwritten by rules if allow_mode_delegation is set.
+            - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+            - Field introduced in 17.2.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as WAF_MODE_DETECTION_ONLY.
+        type: str
+    name:
+        description:
+            - Field introduced in 17.2.1.
+        required: true
+        type: str
+    paranoia_level:
+        description:
+            - Waf ruleset paranoia  mode.
+            - This is used to select rules based on the paranoia-level tag.
+            - Enum options - WAF_PARANOIA_LEVEL_LOW, WAF_PARANOIA_LEVEL_MEDIUM, WAF_PARANOIA_LEVEL_HIGH, WAF_PARANOIA_LEVEL_EXTREME.
+            - Field introduced in 17.2.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as WAF_PARANOIA_LEVEL_LOW.
+        type: str
+    positive_security_model:
+        description:
+            - The positive security model.
+            - This is used to describe how the request or parts of the request should look like.
+            - It is executed in the request body phase of avi waf.
+            - Field introduced in 18.2.3.
+        type: dict
+    post_crs_groups:
+        description:
+            - Waf rules are categorized in to groups based on their characterization.
+            - These groups are created by the user and will be enforced after the crs groups.
+            - Field introduced in 17.2.1.
+        type: list
+    pre_crs_groups:
+        description:
+            - Waf rules are categorized in to groups based on their characterization.
+            - These groups are created by the user and will be  enforced before the crs groups.
+            - Field introduced in 17.2.1.
+        type: list
+    resolved_crs_groups:
+        description:
+            - A resolved version of waf_crs_ref with waf_crs_overrides applied.
+            - Field introduced in 20.1.6.
+        type: list
+    tenant_ref:
+        description:
+            - It is a reference to an object of type tenant.
+            - Field introduced in 17.2.1.
+        type: str
+    url:
+        description:
+            - Avi controller URL of the object.
+        type: str
+    uuid:
+        description:
+            - Field introduced in 17.2.1.
+        type: str
+    waf_crs_ref:
+        description:
+            - Waf core ruleset used for the crs part of this policy.
+            - It is a reference to an object of type wafcrs.
+            - Field introduced in 18.1.1.
+        type: str
+    waf_profile_ref:
+        description:
+            - Waf profile for waf policy.
+            - It is a reference to an object of type wafprofile.
+            - Field introduced in 17.2.1.
+        required: true
+        type: str
+    whitelist:
+        description:
+            - A set of rules which describe conditions under which the request will bypass the waf.
+            - This will be executed in the request header phase before any other waf related code.
+            - Field deprecated in 20.1.3.
+            - Field introduced in 18.2.3.
+        type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
-EXAMPLES = '''
-  - name: Create WAF Policy Example using System-Waf-Policy as base policy
-    vmware.alb.avi_wafpolicy:
-      avi_credentials:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        controller: "{{ controller }}"
-        api_version: "{{ api_version }}"
-      patch_file: ./vs-1-waf-policy-patches.json
-      base_waf_policy: System-WAF-Policy
-      name: vs1-waf-policy
-      state: present
-'''
+EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Example to create WafPolicy object
+  vmware.alb.avi_wafpolicy:
+    avi_credentials: "{{ avi_credentials }}"
+    state: present
+    name: sample_wafpolicy
+"""
 
 RETURN = '''
 obj:
-    description: Avi REST resource
+    description: WafPolicy (api/wafpolicy) object
     returned: success, changed
     type: dict
 '''
 
-import json
-from copy import deepcopy
 from ansible.module_utils.basic import AnsibleModule
-
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
-    from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-        ApiSession, AviCredentials)
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
-
-
-def update_patch(base_policy, patch):
-    base_policy.pop('_last_modified', '')
-    base_policy.pop('url', '')
-    for k, v in base_policy.items():
-        if k in patch and not k == 'crs_groups':
-            base_policy[k] = patch[k]
-    if 'crs_groups' in patch:
-        base_group_dict = dict()
-        # Converting list to dict for quick patch iterations
-        for group in base_policy['crs_groups']:
-            base_group_dict[group['name']] = group
-            rules = group.pop('rules')
-            group['rules'] = {}
-            for rule in rules:
-                rk = '%s$$%s' % (rule['rule_id'], rule['name'])
-                base_group_dict[group['name']]['rules'][rk] = rule
-
-        # Iterating over patch and updating base policy rules
-        for p_group in patch['crs_groups']:
-            base_group = base_group_dict.get(p_group['name'], None)
-            if not base_group:
-                base_group_dict[p_group['name']] = p_group
-                continue
-            for p_rule in p_group['rules']:
-                p_rk = '%s$$%s' % (p_rule['rule_id'], p_rule['name'])
-                base_rule = base_group['rules'].get(p_rk)
-                state = base_rule.pop('state', 'present')
-                if not state == 'present':
-                    base_group['rules'].pop(p_rule['index'])
-                    continue
-                if base_rule:
-                    base_rule.update(p_rule)
-                else:
-                    base_group['rules'][p_rule['index']] = p_rule
-
-        # Converting dict back to object structure
-        for bg_name in base_group_dict:
-            base_group_dict[bg_name]['rules'] = sorted(
-                base_group_dict[bg_name]['rules'].values(),
-                key=lambda i: i['index'])
-        base_policy['crs_groups'] = sorted(
-            base_group_dict.values(), key=lambda i: i['index'])
 
 
 def main():
@@ -236,86 +286,47 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         allow_mode_delegation=dict(type='bool',),
+        allowlist=dict(type='dict',),
+        application_signatures=dict(type='dict',),
+        confidence_override=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         crs_groups=dict(type='list',),
+        crs_overrides=dict(type='list',),
         description=dict(type='str',),
         enable_app_learning=dict(type='bool',),
+        enable_auto_rule_updates=dict(type='bool',),
+        enable_regex_learning=dict(type='bool',),
         failure_mode=dict(type='str',),
+        geo_db_ref=dict(type='str',),
+        labels=dict(type='list',),
         learning=dict(type='dict',),
-        mode=dict(type='str'),
+        learning_params=dict(type='dict',),
+        markers=dict(type='list',),
+        min_confidence=dict(type='str',),
+        mode=dict(type='str',),
         name=dict(type='str', required=True),
         paranoia_level=dict(type='str',),
         positive_security_model=dict(type='dict',),
         post_crs_groups=dict(type='list',),
         pre_crs_groups=dict(type='list',),
+        resolved_crs_groups=dict(type='list',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         waf_crs_ref=dict(type='str',),
-        waf_profile_ref=dict(type='str'),
+        waf_profile_ref=dict(type='str', required=True),
         whitelist=dict(type='dict',),
-        base_waf_policy=dict(type='str', required=True),
-        patch_file=dict(type='str', required=True),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs,
-                           supports_check_mode=True)
+    module = AnsibleModule(
+        argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    api_creds = AviCredentials()
-    api_creds.update_from_ansible_module(module)
-    api = ApiSession.get_session(
-        api_creds.controller, api_creds.username, password=api_creds.password,
-        timeout=api_creds.timeout, tenant=api_creds.tenant,
-        tenant_uuid=api_creds.tenant_uuid, token=api_creds.token,
-        port=api_creds.port, api_version=api_creds.api_version)
-
-    obj_uuid = None
-    existing_obj = api.get_object_by_name(
-        'wafpolicy', module.params.get('name'),
-        params={"include_name": True})
-    if existing_obj:
-        obj_uuid = existing_obj.pop('uuid', None)
-
-    changed = False
-
-    # Delete call if state is absent
-    if module.params.get('state') == 'absent':
-        if obj_uuid:
-            changed = True
-        if changed and not module.check_mode:
-            api.delete_by_name('wafpolicy', module.params.get('name'))
-        ansible_return(
-            module, None, changed, existing_obj=existing_obj,
-            api_context=api.get_context())
-
-    if not existing_obj:
-        existing_obj = api.get_object_by_name(
-            'wafpolicy', module.params.get('base_waf_policy'),
-            params={"include_name": True})
-
-    with open(module.params.get('patch_file'), "r+") as f:
-        waf_patch = json.loads(f.read())
-        waf_patch.update((k, v) for k, v in module.params.items()
-                         if v and k not in waf_patch)
-        new_obj = deepcopy(existing_obj)
-        update_patch(new_obj, waf_patch)
-        changed = not avi_obj_cmp(new_obj, existing_obj)
-        if module.check_mode:
-            ansible_return(
-                module, None, changed, existing_obj=existing_obj,
-                api_context=api.get_context())
-        rsp = None
-        if changed:
-            if obj_uuid:
-                new_obj['uuid'] = obj_uuid
-                rsp = api.put('wafpolicy/%s' % obj_uuid, data=new_obj)
-            else:
-                rsp = api.post('wafpolicy', data=new_obj)
-
-        ansible_return(module, rsp, changed, req=new_obj)
+    return avi_ansible_api(module, 'wafpolicy',
+                           set())
 
 
 if __name__ == '__main__':

@@ -5,7 +5,7 @@
 vmware.alb.avi_wafpolicy
 **********************************************
 
-**Module for setup of Wafpolicy Avi RESTful Object**
+**Module for setup of WafPolicy Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_wafpolicy
 
 Synopsis
 --------
-- This module is used to configure Wafpolicy object.
+- This module is used to configure WafPolicy object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -111,64 +111,99 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allow Rules to overwrite the policy mode.
+                  - Allow rules to overwrite the policy mode.
                 </div>
                                 <div style="font-size: small">
                   - This must be set if the policy mode is set to enforcement.
                 </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>avi_patch_path</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Patch path to use when using avi_api_update_method as patch.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>avi_patch_value</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Patch value to use when using avi_api_update_method as patch.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>base_waf_policy</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
                                 <div style="font-size: small">
-                <b>required: true</b>
+                  - Field introduced in 18.1.5, 18.2.1.
                 </div>
-                            </td>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>allowlist</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the base waf policy on which patch is applied
+                  - A set of rules which describe conditions under which the request will bypass the waf.
+                </div>
+                                <div style="font-size: small">
+                  - This will be processed in the request header phase before any other waf related code.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>application_signatures</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Application specific signatures.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>confidence_override</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Configure thresholds for confidence labels.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>
@@ -187,6 +222,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Creator name.
                 </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.4.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -202,10 +240,36 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - WAF Rules are categorized in to groups based on their characterization.
+                  - This entry is deprecated.
                 </div>
                                 <div style="font-size: small">
-                  - These groups are system created with CRS groups.
+                  - If you want to change the property of a crs group or rule (enabled, mode, exclusions), please use the crs_overrides field instead.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 20.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>crs_overrides</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Override attributes for crs rules.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.6.
                 </div>
                                             </td>
         </tr>
@@ -222,7 +286,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Free-text comment about this exclusion.
+                  - Field introduced in 17.2.1.
                 </div>
                                             </td>
         </tr>
@@ -239,7 +303,65 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable Application Learning for this WAF policy.
+                  - Enable application learning for this waf policy.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enable_auto_rule_updates</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable application learning based rule updates on the waf profile.
+                </div>
+                                <div style="font-size: small">
+                  - Rules will be programmed in dedicated waf learning group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enable_regex_learning</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable dynamic regex generation for positive security model rules.
+                </div>
+                                <div style="font-size: small">
+                  - This is an experimental feature and shouldn't be used in production.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
         </tr>
@@ -256,7 +378,71 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - WAF Policy failure mode. This can be 'Open' or 'Closed'.
+                  - Waf policy failure mode.
+                </div>
+                                <div style="font-size: small">
+                  - This can be 'open' or 'closed'.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - WAF_FAILURE_MODE_OPEN, WAF_FAILURE_MODE_CLOSED.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as WAF_FAILURE_MODE_OPEN.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>geo_db_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Geo location mapping database used by this wafpolicy.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type geodb.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>labels</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key value pairs for granular object access control.
+                </div>
+                                <div style="font-size: small">
+                  - Also allows for classification and tagging of similar objects.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 20.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 4 items allowed.
                 </div>
                                             </td>
         </tr>
@@ -273,7 +459,82 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Configure parameters for WAF learning.
+                  - Configure parameters for waf learning.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.2.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>learning_params</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Parameters for tuning application learning.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>markers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of labels to be used for granular rbac.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in basic edition, essentials edition, enterprise edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>min_confidence</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Minimum confidence label required for auto rule updates.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - CONFIDENCE_VERY_HIGH, CONFIDENCE_HIGH, CONFIDENCE_PROBABLE, CONFIDENCE_LOW, CONFIDENCE_NONE.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as CONFIDENCE_VERY_HIGH.
                 </div>
                                             </td>
         </tr>
@@ -290,13 +551,22 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - WAF Rule mode. This can be detection or enforcement.
+                  - Waf policy mode.
                 </div>
                                 <div style="font-size: small">
-                  - If this is not set, the Policy mode is used.
+                  - This can be detection or enforcement.
                 </div>
                                 <div style="font-size: small">
-                  - This only takes effect if the policy allows delegation.
+                  - It can be overwritten by rules if allow_mode_delegation is set.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as WAF_MODE_DETECTION_ONLY.
                 </div>
                                             </td>
         </tr>
@@ -316,7 +586,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of Waf policy.
+                  - Field introduced in 17.2.1.
                 </div>
                                             </td>
         </tr>
@@ -333,27 +603,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - WAF Ruleset paranoia mode. This is used to select Rules based on the paranoia-level.
+                  - Waf ruleset paranoia  mode.
                 </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>patch_file</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
                                 <div style="font-size: small">
-                <b>required: true</b>
+                  - This is used to select rules based on the paranoia-level tag.
                 </div>
-                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - File path of json patch file
+                                <div style="font-size: small">
+                  - Enum options - WAF_PARANOIA_LEVEL_LOW, WAF_PARANOIA_LEVEL_MEDIUM, WAF_PARANOIA_LEVEL_HIGH, WAF_PARANOIA_LEVEL_EXTREME.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as WAF_PARANOIA_LEVEL_LOW.
                 </div>
                                             </td>
         </tr>
@@ -370,13 +632,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The Positive Security Model.
+                  - The positive security model.
                 </div>
                                 <div style="font-size: small">
                   - This is used to describe how the request or parts of the request should look like.
                 </div>
                                 <div style="font-size: small">
-                  - It is executed in the Request Body Phase of Avi WAF.",
+                  - It is executed in the request body phase of avi waf.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
                 </div>
                                             </td>
         </tr>
@@ -393,10 +658,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - WAF Rules are categorized in to groups based on their characterization.
+                  - Waf rules are categorized in to groups based on their characterization.
                 </div>
                                 <div style="font-size: small">
-                  - These groups are created by the user and will be enforced after the CRS groups.
+                  - These groups are created by the user and will be enforced after the crs groups.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
                 </div>
                                             </td>
         </tr>
@@ -413,10 +681,33 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - WAF Rules are categorized in to groups based on their characterization.
+                  - Waf rules are categorized in to groups based on their characterization.
                 </div>
                                 <div style="font-size: small">
-                  - These groups are created by the user and will be enforced before the CRS groups.
+                  - These groups are created by the user and will be  enforced before the crs groups.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>resolved_crs_groups</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - A resolved version of waf_crs_ref with waf_crs_overrides applied.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.6.
                 </div>
                                             </td>
         </tr>
@@ -434,6 +725,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
                 </div>
                                             </td>
         </tr>
@@ -467,7 +761,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique object identifier of the object.
+                  - Field introduced in 17.2.1.
                 </div>
                                             </td>
         </tr>
@@ -484,7 +778,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - It is a reference to an object of type waf crs.
+                  - Waf core ruleset used for the crs part of this policy.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type wafcrs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.1.
                 </div>
                                             </td>
         </tr>
@@ -498,10 +798,19 @@ Parameters
                 </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - It is a reference to an object of type waf profile.
+                  - Waf profile for waf policy.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type wafprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
                 </div>
                                             </td>
         </tr>
@@ -518,7 +827,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Rules to bypass WAF.
+                  - A set of rules which describe conditions under which the request will bypass the waf.
+                </div>
+                                <div style="font-size: small">
+                  - This will be executed in the request header phase before any other waf related code.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
                 </div>
                                             </td>
         </tr>
@@ -542,7 +860,7 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create Wafpolicy object
+        - name: Example to create WafPolicy object
           avi_wafpolicy:
             avi_credentials: "{{ avi_credentials }}"
             state: present

@@ -1188,6 +1188,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.5.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in basic edition, essentials edition, enterprise edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -1867,6 +1870,35 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>use_service_ssl_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This applies only when use_service_port is set to true.
+                </div>
+                                <div style="font-size: small">
+                  - If enabled, ssl mode of the connection to the server is decided by the ssl mode on the virtualservice service port, on which the request was
+                </div>
+                                <div style="font-size: small">
+                  - received.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.

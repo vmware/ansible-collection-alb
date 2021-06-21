@@ -1,0 +1,53 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi WafPolicy | Delete WafPolicy
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  vmware.alb.avi_wafpolicy:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    allow_mode_delegation: "{{ item.allow_mode_delegation | default(omit) }}"
+    allowlist: "{{ item.allowlist | default(omit) }}"
+    application_signatures: "{{ item.application_signatures | default(omit) }}"
+    confidence_override: "{{ item.confidence_override | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    created_by: "{{ item.created_by | default(omit) }}"
+    crs_groups: "{{ item.crs_groups | default(omit) }}"
+    crs_overrides: "{{ item.crs_overrides | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
+    enable_app_learning: "{{ item.enable_app_learning | default(omit) }}"
+    enable_auto_rule_updates: "{{ item.enable_auto_rule_updates | default(omit) }}"
+    enable_regex_learning: "{{ item.enable_regex_learning | default(omit) }}"
+    failure_mode: "{{ item.failure_mode | default(omit) }}"
+    geo_db_ref: "{{ item.geo_db_ref | default(omit) }}"
+    labels: "{{ item.labels | default(omit) }}"
+    learning: "{{ item.learning | default(omit) }}"
+    learning_params: "{{ item.learning_params | default(omit) }}"
+    markers: "{{ item.markers | default(omit) }}"
+    min_confidence: "{{ item.min_confidence | default(omit) }}"
+    mode: "{{ item.mode | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    paranoia_level: "{{ item.paranoia_level | default(omit) }}"
+    positive_security_model: "{{ item.positive_security_model | default(omit) }}"
+    post_crs_groups: "{{ item.post_crs_groups | default(omit) }}"
+    pre_crs_groups: "{{ item.pre_crs_groups | default(omit) }}"
+    resolved_crs_groups: "{{ item.resolved_crs_groups | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+    waf_crs_ref: "{{ item.waf_crs_ref | default(omit) }}"
+    waf_profile_ref: "{{ item.waf_profile_ref | default(omit) }}"
+    whitelist: "{{ item.whitelist | default(omit) }}"
+  when:
+    - (item.name | length > 0)
+    - (not (item.system_default | default(false)))
+    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.wafpolicy | default([]) }}"

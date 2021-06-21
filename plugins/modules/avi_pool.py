@@ -326,6 +326,7 @@ options:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
+            - Allowed in basic edition, essentials edition, enterprise edition.
         type: list
     max_concurrent_connections_per_server:
         description:
@@ -503,6 +504,14 @@ options:
             - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    use_service_ssl_mode:
+        description:
+            - This applies only when use_service_port is set to true.
+            - If enabled, ssl mode of the connection to the server is decided by the ssl mode on the virtualservice service port, on which the request was
+            - received.
+            - Field introduced in 21.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     uuid:
         description:
             - Uuid of the pool.
@@ -658,6 +667,7 @@ def main():
         tier1_lr=dict(type='str',),
         url=dict(type='str',),
         use_service_port=dict(type='bool',),
+        use_service_ssl_mode=dict(type='bool',),
         uuid=dict(type='str',),
         vrf_ref=dict(type='str',),
     )
