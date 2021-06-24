@@ -252,6 +252,8 @@ plugins/modules/avi_sslkeyandcertificate.py validate-modules:missing-gplv3-licen
 plugins/modules/avi_sslkeyandcertificate.py import-3.8!skip
 plugins/modules/avi_networksecuritypolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_networksecuritypolicy.py import-3.8!skip
+plugins/modules/avi_wafpolicy.py validate-modules:missing-gplv3-license
+plugins/modules/avi_wafpolicy.py import-3.8!skip
 plugins/modules/avi_botdetectionpolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_botdetectionpolicy.py import-3.8!skip
 plugins/modules/avi_testsedatastorelevel1.py validate-modules:missing-gplv3-license
