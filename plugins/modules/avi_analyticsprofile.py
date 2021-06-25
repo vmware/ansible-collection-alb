@@ -618,6 +618,11 @@ options:
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
         type: list
+    latency_audit_props:
+        description:
+            - Influence the audit of ingress latency and connection establishement time.
+            - Field introduced in 21.1.1.
+        type: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -850,6 +855,7 @@ def main():
         hs_security_tls13_score=dict(type='float',),
         hs_security_weak_signature_algo_penalty=dict(type='float',),
         labels=dict(type='list',),
+        latency_audit_props=dict(type='dict',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         ondemand_metrics_idle_timeout=dict(type='int',),
