@@ -62,6 +62,11 @@ options:
             - Field introduced in 21.1.1.
         required: true
         type: str
+    node_uuid:
+        description:
+            - Uuid of node.
+            - Field introduced in 21.1.1.
+        type: str
     process_info:
         description:
             - Current process information of the controller process.
@@ -140,6 +145,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         controller_info=dict(type='dict',),
         name=dict(type='str', required=True),
+        node_uuid=dict(type='str',),
         process_info=dict(type='dict',),
         process_instance=dict(type='str',),
         tenant_ref=dict(type='str',),

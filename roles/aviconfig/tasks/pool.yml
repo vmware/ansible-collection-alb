@@ -88,6 +88,7 @@
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     tier1_lr: "{{ item.tier1_lr | default(omit) }}"
     use_service_port: "{{ item.use_service_port | default(omit) }}"
+    use_service_ssl_mode: "{{ item.use_service_ssl_mode | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     vrf_ref: "{{ item.vrf_ref | default(omit) }}"
   when:

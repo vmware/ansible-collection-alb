@@ -248,6 +248,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.5.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in basic edition, essentials edition, enterprise edition.
+                </div>
                                             </td>
         </tr>
                 <tr>

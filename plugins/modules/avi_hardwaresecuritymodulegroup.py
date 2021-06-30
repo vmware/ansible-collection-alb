@@ -68,6 +68,7 @@ options:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
+            - Allowed in basic edition, essentials edition, enterprise edition.
         type: list
     name:
         description:
