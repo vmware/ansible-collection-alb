@@ -125,6 +125,13 @@ options:
             - Allowed in basic edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    user_agent_db_config:
+        description:
+            - Default values to be used for user agent db service.
+            - Field introduced in 21.1.1.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+        required: true
+        type: dict
     uuid:
         description:
             - Field introduced in 18.2.6.
@@ -187,6 +194,7 @@ def main():
         url=dict(type='str',),
         use_split_proxy=dict(type='bool',),
         use_tls=dict(type='bool',),
+        user_agent_db_config=dict(type='dict', required=True),
         uuid=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
