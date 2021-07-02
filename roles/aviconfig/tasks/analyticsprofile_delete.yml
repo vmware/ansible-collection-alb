@@ -95,6 +95,7 @@
     hs_security_tls13_score: "{{ item.hs_security_tls13_score | default(omit) }}"
     hs_security_weak_signature_algo_penalty: "{{ item.hs_security_weak_signature_algo_penalty | default(omit) }}"
     labels: "{{ item.labels | default(omit) }}"
+    latency_audit_props: "{{ item.latency_audit_props | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     ondemand_metrics_idle_timeout: "{{ item.ondemand_metrics_idle_timeout | default(omit) }}"
