@@ -179,7 +179,7 @@ Examples
       collections:
         - vmware.alb
       tasks:
-        - name: Example to create create Pool object
+        - name: Example to create a Pool object
           avi_pool:
             avi_credentials:
               username: "admin"
@@ -193,7 +193,35 @@ Examples
                  addr: "192.168.12.15"
                  type: 'V4'
 
-Example using config role:
+Example usage of external credentials/variable file while using alb module
+```
+# creds.yml
+avi_credentials:
+    controller: "192.168.1.11"
+    username: "admin"
+    password: "password"
+    api_version: 20.1.5
+```
+```
+# example.yml
+- hosts: localhost
+  connection: local
+  collections:
+    - vmware.alb
+  vars_files:
+    - creds.yml
+  tasks:
+    - name: Example to create a Pool object
+      avi_pool:
+        avi_credentials: "{{ avi_credentials |  default(omit) }}"
+        name: app1-pool
+        lb_algorithm: LB_ALGORITHM_LEAST_LOAD
+        servers:
+        - ip:
+             addr: "192.168.12.15"
+             type: 'V4'
+```
+Example for using aviconfig role:
 ```
 # config.yml
 avi_config:
@@ -204,14 +232,6 @@ avi_config:
         - ip:
              addr: 192.160.1.10
              type: 'V4'
-```
-```
-# creds.yml
-avi_credentials:
-    controller: "192.168.1.11"
-    username: "admin"
-    password: "password"
-    api_version: 20.1.5
 ```
 ```
 # collection.yml
@@ -226,4 +246,7 @@ avi_credentials:
       vars:
           avi_config_file: "config.yml"
           avi_creds_file: "creds.yml"
+          # avi_creds_file parameter is only valid for aviconfig role.
+          # For importing credentials from external file in modules,
+          # please use vars_files parameter as shown in previous example
 ```
