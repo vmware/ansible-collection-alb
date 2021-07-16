@@ -1,0 +1,60 @@
+---
+- name: "Create health monitor"
+  avi_healthmonitor:
+    username: "{{ avi_credentials.username }}"
+    password: "{{ avi_credentials.password }}"
+    controller: "{{ avi_credentials.controller }}"
+    api_version: "{{ avi_credentials.api_version }}"
+    failed_checks: "2"
+    state: "present"
+    send_interval: "10"
+    successful_checks: "3"
+    type: "HEALTH_MONITOR_HTTPS"
+    name: "TestMonitor-HTTPS"
+  register: result
+- assert:
+    that:
+      - result is changed
+      - result.obj.name == "TestMonitor-HTTPS"
+      - not result.old_obj
+      - result.obj.uuid is defined
+
+- name: update health monitor
+  avi_healthmonitor:
+    username: "{{ avi_credentials.username }}"
+    password: "{{ avi_credentials.password }}"
+    controller: "{{ avi_credentials.controller }}"
+    api_version: "{{ avi_credentials.api_version }}"
+    state: "present"
+    uuid: "{{ result.obj.uuid }}"
+    type: "HEALTH_MONITOR_HTTPS"
+    send_interval: "6"
+    failed_checks: "1"
+    successful_checks: "2"
+    name: "Testupdated-HTTPS"
+  register: updated_result
+- assert:
+    that:
+      - updated_result is changed
+      - updated_result.obj is defined
+      - updated_result.old_obj is defined
+      - updated_result.obj.uuid is defined
+      - updated_result.old_obj.name == "TestMonitor-HTTPS"
+      - updated_result.obj.name == "Testupdated-HTTPS"
+
+- name: Delete health monitor
+  avi_healthmonitor:
+    username: "{{ avi_credentials.username }}"
+    password: "{{ avi_credentials.password }}"
+    controller: "{{ avi_credentials.controller }}"
+    api_version: "{{ avi_credentials.api_version }}"
+    state: "absent"
+    uuid: "{{ updated_result.obj.uuid }}"
+    type: "HEALTH_MONITOR_HTTPS"
+    name: "Testupdated-HTTPS"
+  register: delete_result
+- assert:
+    that:
+      - delete_result is changed
+      - delete_result.old_obj.name == "Testupdated-HTTPS"
+      - not delete_result.obj
