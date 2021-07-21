@@ -349,6 +349,7 @@ options:
         description:
             - Distributes vnic ownership among cores so multiple cores handle dispatcher duties.requires se reboot.
             - Field introduced in 18.2.5.
+            - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     downstream_send_timeout:
@@ -807,6 +808,12 @@ options:
             - Field introduced in 21.1.1.
             - Default value when not specified in API or module is interpreted by Avi Controller as 64.
         type: int
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 20.1.7.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+        type: list
     max_concurrent_external_hm:
         description:
             - Maximum number of external health monitors that can run concurrently in a service engine.
@@ -850,6 +857,7 @@ options:
             - Maximum number of queues per vnic setting to '0' utilises all queues that are distributed across dispatcher cores.
             - Allowed values are 0,1,2,4,8,16.
             - Field introduced in 18.2.7, 20.1.1.
+            - Allowed in basic(allowed values- 1) edition, essentials(allowed values- 1) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
     max_rules_per_lb:
@@ -1049,6 +1057,7 @@ options:
             - If set to 0, then number of dispatcher cores is deduced automatically.requires se reboot.
             - Allowed values are 0,1,2,4,8,16.
             - Field introduced in 17.2.12, 18.1.3, 18.2.1.
+            - Allowed in basic(allowed values- 0) edition, essentials(allowed values- 0) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     num_flow_cores_sum_changes_to_ignore:
@@ -2114,6 +2123,7 @@ def main():
         log_disksz=dict(type='int',),
         log_malloc_failure=dict(type='bool',),
         log_message_max_file_list_size=dict(type='int',),
+        markers=dict(type='list',),
         max_concurrent_external_hm=dict(type='int',),
         max_cpu_usage=dict(type='int',),
         max_memory_per_mempool=dict(type='int',),
