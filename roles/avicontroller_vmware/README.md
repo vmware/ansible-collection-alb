@@ -2,13 +2,6 @@
 
 Using this module you are able to install the Avi Vantage Controlller, to Vmware cloud.
 
-Requirements
-------------
- - python >= 2.6
- - pyVmomi
- - pyVim
- - ovftool (Installation bundle packaged with the role please run command '<roles_dir>/avinetworks.avicontroller-vmware/files/VMware-ovftool-4.1.0-2459827-lin.x86_64.bundle' to install ovftool)
-
 Role Variables
 --------------
 
@@ -39,11 +32,6 @@ Role Variables
 |con_memory_reserved|No||Controller memory reservation in MB|
 |con_disk_size|No||Controller disk size in GB|
 |con_ovf_properties|No||Other Controller ovf properties in key value format|
-
-Dependencies
-------------
-
-
 
 Example Playbook
 ----------------
@@ -100,12 +88,6 @@ Example using including role [version parameter is required while including the 
         state: present
         con_datastore: '{{ con_datastore }}'
 ```
-
-License
--------
-
-Apache 2.0
-
 Author Information
 ------------------
 

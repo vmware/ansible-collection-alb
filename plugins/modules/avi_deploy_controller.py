@@ -178,7 +178,7 @@ try:
     from pyVim.task import WaitForTasks
     from pyVmomi import vim, vmodl
     HAS_IMPORT = True
-except ImportError as e:
+except ImportError:
     HAS_IMPORT = False
 
 
@@ -476,7 +476,7 @@ def main():
     )
     if not HAS_IMPORT:
         return module.fail_json(msg=(
-            'Some of the python package is not installed. please check %s' % (e)))
+            'Some of the python package is not installed. please install the requirements from requirements.txt'))
     try:
         si = SmartConnectNoSSL(host=module.params['vcenter_host'],
                                user=module.params['vcenter_user'],
