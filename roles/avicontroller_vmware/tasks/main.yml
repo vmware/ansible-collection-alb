@@ -1,0 +1,51 @@
+---
+# tasks file for avicontroller-vmware
+- name: Check ansible version
+  when:
+    - ansible_version.full is version_compare('2.4', '<')
+  debug: >
+    msg="This role works best with ansible version 2.4 or greater.
+    It is recommended to use the latest ansible version for
+    the best experience."
+
+- name: Avi Controller | VMware | Set Execution Flow
+  set_fact:
+    run_deploy_module: true
+  when:
+    - vcenter_host is defined
+    - vcenter_user is defined
+    - vcenter_password is defined
+    - con_mgmt_network is defined
+    - con_vm_name is defined
+    - con_ova_path is defined
+    - ovftool_path is defined
+
+- name: Avi Vmware | Deploy controller
+  vmware.alb.avi_deploy_controller:
+    state: "{{ state | default('present') }}"
+    ovftool_path: "{{ ovftool_path | default(omit) }}"
+    vcenter_host: "{{ vcenter_host | default(omit) }}"
+    vcenter_user: "{{ vcenter_user | default(omit) }}"
+    vcenter_password: "{{ vcenter_password | default(omit) }}"
+    ssl_verify: "{{ ssl_verify | default(false) }}"
+    con_datacenter: "{{ con_datacenter | default(omit) }}"
+    con_cluster: "{{ con_cluster | default(omit) }}"
+    con_datastore: "{{ con_datastore | default(omit) }}"
+    con_mgmt_network: "{{ con_mgmt_network | default(omit) }}"
+    con_disk_mode: "{{ con_disk_mode | default(omit) }}"
+    con_ova_path: "{{ con_ova_path | default(omit) }}"
+    con_vm_name: "{{ con_vm_name | default(omit) }}"
+    con_power_on: "{{ con_power_on | default(omit) }}"
+    con_vcenter_folder: "{{ con_vcenter_folder | default(omit) }}"
+    con_mgmt_ip: "{{ con_mgmt_ip | default(omit) }}"
+    con_mgmt_mask: "{{ con_mgmt_mask | default(omit) }}"
+    con_default_gw: "{{ con_default_gw | default(omit) }}"
+    con_sysadmin_public_key: "{{ con_sysadmin_public_key | default(omit) }}"
+    con_number_of_cpus: "{{ con_number_of_cpus | default(omit) }}"
+    con_cpu_reserved: "{{ con_cpu_reserved | default(omit) }}"
+    con_memory: "{{ con_memory | default(omit) }}"
+    con_memory_reserved: "{{ con_memory_reserved | default(omit) }}"
+    con_disk_size: "{{ con_disk_size | default(omit) }}"
+    con_ovf_properties: "{{ con_ovf_properties | default(omit) }}"
+  delegate_to: localhost
+  when: run_deploy_module is defined
