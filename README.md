@@ -11,6 +11,10 @@ This collection has been tested against following Ansible versions: **>=2.9.10**
 
 <!--end requires_ansible-->
 
+## Python Support
+
+* Collection supports >= 3.5
+
 ## Installation and Usage
 
 Ansible must be installed
@@ -250,3 +254,6 @@ avi_config:
           # For importing credentials from external file in modules,
           # please use vars_files parameter as shown in previous example
 ```
+
+**Notes**
+Please use Python >= 3.8 if you are using avi_serviceenginegroup module as it has more than 255 arguments
