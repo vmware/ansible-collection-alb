@@ -49,7 +49,7 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 20.1.6.
+            - Field introduced in 21.1.1.
         type: dict
     controller_faults:
         description:

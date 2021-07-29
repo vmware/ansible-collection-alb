@@ -3771,7 +3771,7 @@ Parameters
                   - Allowed values are 1-32.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.3.
+                  - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 2.
@@ -3800,7 +3800,7 @@ Parameters
                   - Allowed values are 1-128.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.3.
+                  - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is mega_bytes.

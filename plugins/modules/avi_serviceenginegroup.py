@@ -1015,7 +1015,7 @@ options:
             - Number of threads to poll for netlink messages excluding the thread for default namespace.
             - Requires se reboot.
             - Allowed values are 1-32.
-            - Field introduced in 20.1.3.
+            - Field introduced in 21.1.1.
             - Default value when not specified in API or module is interpreted by Avi Controller as 2.
         type: int
     netlink_sock_buf_size:
@@ -1023,7 +1023,7 @@ options:
             - Socket buffer size for the netlink sockets.
             - Requires se reboot.
             - Allowed values are 1-128.
-            - Field introduced in 20.1.3.
+            - Field introduced in 21.1.1.
             - Unit is mega_bytes.
             - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
