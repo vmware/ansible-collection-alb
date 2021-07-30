@@ -1,0 +1,6 @@
+---
+avi_credentials:
+  controller: "controller"
+  username: "username"
+  password: "password"
+  api_version: "api_version"

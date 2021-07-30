@@ -1,0 +1,82 @@
+---
+- name: "Create service engine group object"
+  avi_serviceenginegroup:
+    controller: "{{ avi_credentials.controller }}"
+    username: "{{ avi_credentials.username }}"
+    password: "{{ avi_credentials.password }}"
+    api_version: "{{ avi_credentials.api_version }}"
+    name: "Test-Default-Group"
+    tenant_ref: "/api/tenant/?name=admin"
+    cloud_ref: "/api/cloud/?name=Default-Cloud"
+    archive_shm_limit: 8
+    udf_log_throttle: 100
+    ingress_access_data: "SG_INGRESS_ACCESS_ALL"
+    vcpus_per_se: 1
+    license_tier: "ENTERPRISE_18"
+    auto_rebalance: false
+    extra_config_multiplier: 0
+    connection_memory_percentage: 50
+    waf_mempool: true
+    realtime_se_metrics:
+      duration: 0
+      enabled: true
+    non_significant_log_throttle: 100
+    algo: "PLACEMENT_ALGO_DISTRIBUTED"
+  register: result
+- assert:
+    that:
+      - result is changed
+      - result.obj.name == "Test-Default-Group"
+      - not result.old_obj
+      - result.obj.uuid is defined
+
+- name: "Update service engine group object"
+  avi_serviceenginegroup:
+    controller: "{{ avi_credentials.controller }}"
+    username: "{{ avi_credentials.username }}"
+    password: "{{ avi_credentials.password }}"
+    api_version: "{{ avi_credentials.api_version }}"
+    name: "Test-Updated-Group"
+    tenant_ref: "/api/tenant/?name=admin"
+    cloud_ref: "/api/cloud/?name=Default-Cloud"
+    uuid: "{{ result.obj.uuid }}"
+    archive_shm_limit: 8
+    udf_log_throttle: 100
+    ingress_access_data: "SG_INGRESS_ACCESS_ALL"
+    vcpus_per_se: 1
+    license_tier: "ENTERPRISE_18"
+    auto_rebalance: false
+    extra_config_multiplier: 0
+    connection_memory_percentage: 60
+    waf_mempool: true
+    realtime_se_metrics:
+      duration: 0
+      enabled: true
+    non_significant_log_throttle: 80
+    algo: "PLACEMENT_ALGO_DISTRIBUTED"
+  register: updated_result
+- assert:
+    that:
+      - updated_result is changed
+      - updated_result.obj is defined
+      - updated_result.old_obj is defined
+      - updated_result.obj.uuid is defined
+      - updated_result.old_obj.name == "Test-Default-Group"
+      - updated_result.obj.name == "Test-Updated-Group"
+
+
+- name: "Delete SE Group object"
+  avi_serviceenginegroup:
+    controller: "{{ avi_credentials.controller }}"
+    username: "{{ avi_credentials.username }}"
+    password: "{{ avi_credentials.password }}"
+    api_version: "{{ avi_credentials.api_version }}"
+    name: "Test-Updated-Group"
+    uuid: "{{ updated_result.obj.uuid }}"
+    state: "absent"
+  register: delete_result
+- assert:
+    that:
+      - delete_result is changed
+      - delete_result.old_obj.name == "Test-Updated-Group"
+      - not delete_result.obj

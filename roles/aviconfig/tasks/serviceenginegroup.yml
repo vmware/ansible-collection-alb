@@ -131,6 +131,7 @@
     log_disksz: "{{ item.log_disksz | default(omit) }}"
     log_malloc_failure: "{{ item.log_malloc_failure | default(omit) }}"
     log_message_max_file_list_size: "{{ item.log_message_max_file_list_size | default(omit) }}"
+    markers: "{{ item.markers | default(omit) }}"
     max_concurrent_external_hm: "{{ item.max_concurrent_external_hm | default(omit) }}"
     max_cpu_usage: "{{ item.max_cpu_usage | default(omit) }}"
     max_memory_per_mempool: "{{ item.max_memory_per_mempool | default(omit) }}"

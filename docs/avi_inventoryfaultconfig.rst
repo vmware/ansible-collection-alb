@@ -146,7 +146,7 @@ Parameters
                   - Protobuf versioning for config pbs.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.6.
+                  - Field introduced in 21.1.1.
                 </div>
                                             </td>
         </tr>
