@@ -16,6 +16,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     app_signature_config: "{{ item.app_signature_config | default(omit) }}"
     asset_contact: "{{ item.asset_contact | default(omit) }}"
+    case_config: "{{ item.case_config | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     feature_opt_in_status: "{{ item.feature_opt_in_status | default(omit) }}"
     ip_reputation_config: "{{ item.ip_reputation_config | default(omit) }}"
@@ -28,6 +29,7 @@
     use_tls: "{{ item.use_tls | default(omit) }}"
     user_agent_db_config: "{{ item.user_agent_db_config | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
+    waf_config: "{{ item.waf_config | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))

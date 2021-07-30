@@ -58,6 +58,13 @@ options:
             - Information about the default contact for this controller cluster.
             - Field introduced in 20.1.1.
         type: dict
+    case_config:
+        description:
+            - Default values to be used for pulse case management.
+            - Field introduced in 21.1.1.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+        required: true
+        type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -99,9 +106,9 @@ options:
         type: str
     proactive_support_defaults:
         description:
-            - Default values to be used during proactive case creation and techsupport attachment.
+            - This field is deprecated.
+            - Field deprecated in 21.1.1.
             - Field introduced in 20.1.1.
-        required: true
         type: dict
     split_proxy_configuration:
         description:
@@ -136,6 +143,13 @@ options:
         description:
             - Field introduced in 18.2.6.
         type: str
+    waf_config:
+        description:
+            - Default values to be used for pulse waf management.
+            - Field introduced in 21.1.1.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+        required: true
+        type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -183,19 +197,21 @@ def main():
         avi_patch_value=dict(type='str',),
         app_signature_config=dict(type='dict', required=True),
         asset_contact=dict(type='dict',),
+        case_config=dict(type='dict', required=True),
         configpb_attributes=dict(type='dict',),
         feature_opt_in_status=dict(type='dict', required=True),
         ip_reputation_config=dict(type='dict', required=True),
         mode=dict(type='str',),
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
-        proactive_support_defaults=dict(type='dict', required=True),
+        proactive_support_defaults=dict(type='dict',),
         split_proxy_configuration=dict(type='dict',),
         url=dict(type='str',),
         use_split_proxy=dict(type='bool',),
         use_tls=dict(type='bool',),
         user_agent_db_config=dict(type='dict', required=True),
         uuid=dict(type='str',),
+        waf_config=dict(type='dict', required=True),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
