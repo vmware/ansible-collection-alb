@@ -1,5 +1,5 @@
 ---
-# defaults file for aviconfig
+# defaults file for   aviconfig
 # avi_role_config_log_mode will log cloud configuration in an Ansible log file if set to false explicitly in the playbook
 avi_config_state: present
 avi_role_config_log_mode: 'True'
