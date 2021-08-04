@@ -34,14 +34,14 @@ extends_documentation_fragment:
 
 EXAMPLES = """
 # Lookup query for all the objects of a specific type.
-- debug: msg="{{ lookup('avi', avi_credentials=avi_credentials, obj_type='virtualservice') }}"
+- debug: msg="{{ lookup('vmware.alb.avi', avi_credentials=avi_credentials, obj_type='virtualservice') }}"
 # Lookup query for an object with the given name and type.
-- debug: msg="{{ lookup('avi', avi_credentials=avi_credentials, obj_name='vs1', obj_type='virtualservice', wantlist=True) }}"
+- debug: msg="{{ lookup('vmware.alb.avi', avi_credentials=avi_credentials, obj_name='vs1', obj_type='virtualservice', wantlist=True) }}"
 # Lookup query for an object with the given UUID and type.
-- debug: msg="{{ lookup('avi', obj_uuid='virtualservice-5c0e183a-690a-45d8-8d6f-88c30a52550d', obj_type='virtualservice') }}"
+- debug: msg="{{ lookup('vmware.alb.avi', obj_uuid='virtualservice-5c0e183a-690a-45d8-8d6f-88c30a52550d', obj_type='virtualservice') }}"
 # We can replace lookup with query function to always the get the output as list.
 # This is helpful for looping.
-- debug: msg="{{ query('avi', obj_uuid='virtualservice-5c0e183a-690a-45d8-8d6f-88c30a52550d', obj_type='virtualservice') }}"
+- debug: msg="{{ query('vmware.alb.avi', obj_uuid='virtualservice-5c0e183a-690a-45d8-8d6f-88c30a52550d', obj_type='virtualservice') }}"
 """
 
 RETURN = """
@@ -56,10 +56,8 @@ from ansible.module_utils._text import to_native
 from ansible.errors import AnsibleError
 from ansible.plugins.lookup import LookupBase
 from ansible.utils.display import Display
-from ansible_collections.vmware.alb.plugins.module_utils.sdk.avi_api import ApiSession, AviCredentials
-from ansible_collections.vmware.alb.plugins.module_utils.sdk.avi_api import (AviServerError,
-                                                                             ObjectNotFound,
-                                                                             APIError)
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, AviCredentials
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (AviServerError, ObjectNotFound, APIError)
 
 display = Display()
 
