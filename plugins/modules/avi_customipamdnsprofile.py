@@ -64,7 +64,7 @@ options:
         type: list
     script_uri:
         description:
-            - Script uri of form controller //ipamdnsscripts/<file-name>.
+            - Script uri of form controller //ipamdnsscripts/<file-name>, file-name must have a .py extension and conform to pep8 naming convention.
             - Field introduced in 17.1.1.
         required: true
         type: str

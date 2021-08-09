@@ -209,7 +209,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Script uri of form controller //ipamdnsscripts/<file-name>.
+                  - Script uri of form controller //ipamdnsscripts/<file-name>, file-name must have a .py extension and conform to pep8 naming convention.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.1.1.
