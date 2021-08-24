@@ -290,7 +290,7 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Create a VMWare cloud with write access mode
+- name: Create a VMware cloud with write access mode
   vmware.alb.avi_cloud:
     avi_credentials: "{{ avi_credentials }}"
     apic_mode: false

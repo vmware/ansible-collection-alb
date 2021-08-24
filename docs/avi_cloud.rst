@@ -1055,7 +1055,7 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-        - name: Create a VMWare cloud with write access mode
+        - name: Create a VMware cloud with write access mode
           avi_cloud:
             avi_credentials: "{{ avi_credentials }}"
             apic_mode: false

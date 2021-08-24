@@ -1,0 +1,17 @@
+---
+avi_credentials:
+  controller: <<controller>>
+  username: <<username>>
+  password: <<password>>
+  api_version: <<api_version>>
+
+vcenter_host: <<vcenter_host>>
+vcenter_user: <<vcenter_username>>
+vcenter_password: <<vcenter_password>>
+con_datacenter: <<datacenter>>
+con_cluster: <<cluster>>
+con_mgmt_network: <<network>>
+con_vcenter_folder: <<vcenter_folder>>
+ovftool_path: <<ovftool_path>>
+con_ova_path: <<con_ova_path>>
+con_vm_name: <<con_vm_name>>

@@ -40,13 +40,20 @@ ansible-galaxy collection install -r requirements.yml
 
 ALB collection depends upon following third party libraries:
 
-* requests
+- ovftool Please downlod the ovftool from: https://www.vmware.com/support/developer/ovf
+
+### How to install ovftool
+```
+cd /home/user/downloads
+chmod 755 VMware-ovftool-4.4.0-15722219-lin.x86_64.bundle
+sudo ./VMware-ovftool-4.4.0-15722219-lin.x86_64.bundle
+```
 
 ### Installing required libraries
 
 After ALB collection installation we need to install the required python libraries using following command:
 ```
-pip install requests
+pip install -r ~/.ansible/collections/ansible_collections/vmware/alb/requirements.txt
 ```
 
 ### Modules
@@ -86,6 +93,7 @@ Name | Description
 [vmware.alb.avi_controllerproperties](https://github.com/vmware/ansible-collection-alb/blob/21.1.2/docs/avi_controllerproperties.rst)|Module to create update or delete ControllerProperties
 [vmware.alb.avi_controllersite](https://github.com/vmware/ansible-collection-alb/blob/21.1.2/docs/avi_controllersite.rst)|Module to create update or delete ControllerSite
 [vmware.alb.avi_customipamdnsprofile](https://github.com/vmware/ansible-collection-alb/blob/21.1.2/docs/avi_customipamdnsprofile.rst)|Module to create update or delete CustomIpamDnsProfile
+[vmware.alb.avi_deploy_controller](https://github.com/vmware/ansible-collection-alb/blob/21.1.2/docs/avi_deploy_controller.rst)|Module to create update or delete DeployController
 [vmware.alb.avi_dnspolicy](https://github.com/vmware/ansible-collection-alb/blob/21.1.2/docs/avi_dnspolicy.rst)|Module to create update or delete DnsPolicy
 [vmware.alb.avi_dynamicdnsrecord](https://github.com/vmware/ansible-collection-alb/blob/21.1.2/docs/avi_dynamicdnsrecord.rst)|Module to create update or delete DynamicDnsRecord
 [vmware.alb.avi_errorpagebody](https://github.com/vmware/ansible-collection-alb/blob/21.1.2/docs/avi_errorpagebody.rst)|Module to create update or delete ErrorPageBody
