@@ -11,6 +11,13 @@ This collection has been tested against following Ansible versions: **>=2.9.10**
 
 <!--end requires_ansible-->
 
+## Python Support
+
+* Collection supports >= 3.5
+
+**Notes**
+Please use Python >= 3.8 if you are using avi_serviceenginegroup module as it has more than 255 arguments
+
 ## Installation and Usage
 
 Ansible must be installed
