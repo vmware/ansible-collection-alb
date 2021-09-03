@@ -30,6 +30,12 @@ plugins/modules/avi_gslbservice_patch_member.py import-3.8!skip
 plugins/modules/avi_bootstrap_controller.py import-3.8!skip
 plugins/modules/avi_api_fileservice.py import-3.8!skip
 plugins/modules/avi_api_image.py import-3.8!skip
+plugins/modules/avi_deploy_controller.py pep8:E722
+plugins/modules/avi_deploy_controller.py pylint:bare-except
+plugins/modules/avi_deploy_controller.py validate-modules:missing-gplv3-license
+tests/integration/run_tests.sh shebang
+tests/integration/run_tests.sh shellcheck:SC2157
+tests/integration/run_tests.sh shellcheck:SC2154
 plugins/modules/avi_saml_api_session.py validate-modules:doc-type-does-not-match-spec
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py import-3.8!skip

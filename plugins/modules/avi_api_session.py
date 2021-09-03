@@ -178,7 +178,7 @@ def main():
     gparams.update({'include_refs': '', 'include_name': ''})
 
     # API methods not allowed
-    api_get_not_allowed = ["cluster", "gslbsiteops", "server", "nsxt", "vcenter"]
+    api_get_not_allowed = ["cluster", "gslbsiteops", "server", "nsxt", "vcenter", "macro"]
     sub_api_get_not_allowed = ["scaleout", "scalein", "upgrade", "rollback"]
     api_post_not_allowed = ["alert", "fileservice"]
     api_put_not_allowed = ["backup"]
