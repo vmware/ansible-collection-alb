@@ -887,16 +887,41 @@ Examples
         - vmware.alb
       vars:
         avi_credentials:
-          username: "avi_user"
-          password: "avi_password"
-          controller: "192.168.138.18"
-          api_version: "21.1.1"
-      tasks:
-        - name: Example to create WafPolicy object
+          username: "{{ username }}"
+          password: "{{ password }}"
+          controller: "{{ controller }}"
+          api_version: "{{ api_version }}"
+      tasks:        
+        - name: "Create WAF policy"
           avi_wafpolicy:
             avi_credentials: "{{ avi_credentials }}"
-            state: present
-            name: sample_wafpolicy
+            name: "vs1-waf-policy"
+            mode: "WAF_MODE_DETECTION_ONLY"
+            paranoia_level: "WAF_PARANOIA_LEVEL_LOW"
+            failure_mode: "WAF_FAILURE_MODE_OPEN"
+            crs_overrides:
+              - name: "CRS_933_Application_Attack_PHP"
+                enable: true
+            waf_profile_ref: "/api/wafprofile/?name=System-WAF-Profile"
+            waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
+        - name: "Reset WAF CRS"
+          avi_wafpolicy:
+            avi_credentials: "{{ avi_credentials }}"
+            name: "vs1-waf-policy"
+            avi_api_update_method: "patch"
+            avi_api_patch_op: "replace"
+            waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
+            crs_overrides: []
+            waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
+        - name: "Change Paranoia-Level to HIGH"
+          avi_wafpolicy:
+            avi_credentials: "{{ avi_credentials }}"
+            name: "vs1-waf-policy"
+            avi_api_update_method: "patch"
+            avi_api_patch_op: "replace"
+            paranoia_level: "WAF_PARANOIA_LEVEL_HIGH"
+            waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
+
 
 
 Authors

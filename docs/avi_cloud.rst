@@ -632,6 +632,29 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>maintenance_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Cloud is in maintenance mode.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>mesos_configuration</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
