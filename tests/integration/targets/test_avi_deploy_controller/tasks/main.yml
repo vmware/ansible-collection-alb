@@ -1,0 +1,59 @@
+---
+- name: "Avi Controller | VMware | Delete VMware controller if exist"
+  avi_deploy_controller:
+    state: "absent"
+    ovftool_path: "{{ ovftool_path }}"
+    vcenter_host: "{{ vcenter_host }}"
+    vcenter_user: "{{ vcenter_user }}"
+    vcenter_password: "{{ vcenter_password }}"
+    con_datacenter: "{{ con_datacenter }}"
+    con_cluster: "{{ con_cluster }}"
+    con_mgmt_network: "{{ con_mgmt_network }}"
+    con_ova_path: "{{ con_ova_path }}"
+    con_vm_name: "{{ con_vm_name }}"
+    con_power_on: true
+    con_vcenter_folder: "{{ con_vcenter_folder }}"
+  register: result
+- assert:
+    that:
+      - result is not changed
+      - result.msg == "A VM with the name ansible-test-controller not found"
+
+- name: "Avi Controller | VMware | Create Vmware controller"
+  avi_deploy_controller:
+    state: "present"
+    ovftool_path: "{{ ovftool_path }}"
+    vcenter_host: "{{ vcenter_host }}"
+    vcenter_user: "{{ vcenter_user }}"
+    vcenter_password: "{{ vcenter_password }}"
+    con_datacenter: "{{ con_datacenter }}"
+    con_cluster: "{{ con_cluster }}"
+    con_mgmt_network: "{{ con_mgmt_network }}"
+    con_ova_path: "{{ con_ova_path }}"
+    con_vm_name: "{{ con_vm_name }}"
+    con_power_on: true
+    con_vcenter_folder: "{{ con_vcenter_folder }}"
+  register: result
+- assert:
+    that:
+      - result is changed
+
+- name: "Avi Controller | VMware | Delete Vmware controller"
+  avi_deploy_controller:
+    state: "absent"
+    ovftool_path: "{{ ovftool_path }}"
+    vcenter_host: "{{ vcenter_host }}"
+    vcenter_user: "{{ vcenter_user }}"
+    vcenter_password: "{{ vcenter_password }}"
+    con_datacenter: "{{ con_datacenter }}"
+    con_cluster: "{{ con_cluster }}"
+    con_mgmt_network: "{{ con_mgmt_network }}"
+    con_ova_path: "{{ con_ova_path }}"
+    con_vm_name: "{{ con_vm_name }}"
+    con_power_on: true
+    con_vcenter_folder: "{{ con_vcenter_folder }}"
+  register: result
+- assert:
+    that:
+      - result is not changed
+      - result.msg == "A VM with the name ansible-test-controller deleted successfully"

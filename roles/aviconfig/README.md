@@ -44,7 +44,7 @@ This provides location to the role to read the Avi configuration objects. It loa
 
 ```yaml
 
-- name: Avi Application | Setup VMWare Cloud with Write Access
+- name: Avi Application | Setup VMware Cloud with Write Access
   import_role:
     name: aviconfig
   vars:
@@ -57,7 +57,7 @@ Eg.
 
 ```yaml
 
-- name: Avi Application | Setup VMWare Cloud with Write Access
+- name: Avi Application | Setup VMware Cloud with Write Access
   import_role:
     name: aviconfig
   vars:
