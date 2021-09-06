@@ -18,6 +18,7 @@
     cloud_ref: "{{ item.cloud_ref | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     created_by: "{{ item.created_by | default(omit) }}"
+    deactivate_primary_pool_on_down: "{{ item.deactivate_primary_pool_on_down | default(omit) }}"
     deployment_policy_ref: "{{ item.deployment_policy_ref | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     enable_http2: "{{ item.enable_http2 | default(omit) }}"
