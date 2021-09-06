@@ -146,8 +146,8 @@ options:
         type: int
     scheduled_scalings:
         description:
-            - Schedule-based scale-in/out policy.
-            - During schedule intervals, metrics based autoscale is not enabled and number of servers will be solely derived from schedulescale policy.
+            - Scheduled-based scale-in/out policy.
+            - During scheduled intervals, metrics based autoscale is not enabled and number of servers will be solely derived from schedulescale policy.
             - Field introduced in 21.1.1.
             - Maximum of 1 items allowed.
         type: list

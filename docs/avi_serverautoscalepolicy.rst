@@ -522,10 +522,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Schedule-based scale-in/out policy.
+                  - Scheduled-based scale-in/out policy.
                 </div>
                                 <div style="font-size: small">
-                  - During schedule intervals, metrics based autoscale is not enabled and number of servers will be solely derived from schedulescale policy.
+                  - During scheduled intervals, metrics based autoscale is not enabled and number of servers will be solely derived from schedulescale policy.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
