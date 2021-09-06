@@ -65,6 +65,12 @@ options:
         description:
             - Name of the user who created the object.
         type: str
+    deactivate_primary_pool_on_down:
+        description:
+            - Deactivate primary pool for selection when down until it is activated by user via clear poolgroup command.
+            - Field introduced in 20.1.7, 21.1.2.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     deployment_policy_ref:
         description:
             - When setup autoscale manager will automatically promote new pools into production when deployment goals are met.
@@ -197,6 +203,7 @@ def main():
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
+        deactivate_primary_pool_on_down=dict(type='bool',),
         deployment_policy_ref=dict(type='str',),
         description=dict(type='str',),
         enable_http2=dict(type='bool',),
