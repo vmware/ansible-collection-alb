@@ -572,6 +572,31 @@ options:
             - Unit is sec.
             - Default value when not specified in API or module is interpreted by Avi Controller as 120.
         type: int
+    vsphere_ha_detection_timeout:
+        description:
+            - Vsphere ha monitor detection timeout.
+            - If vsphere_ha_enabled is true and the controller is not able to reach the se, placement will wait for this duration for vsphere_ha_inprogress to
+            - be marked true before taking corrective action.
+            - Field introduced in 20.1.7, 21.1.3.
+            - Unit is sec.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 120.
+        type: int
+    vsphere_ha_recovery_timeout:
+        description:
+            - Vsphere ha monitor recovery timeout.
+            - Once vsphere_ha_inprogress is set to true (meaning host failure detected and vsphere ha will recover the service engine), placement will wait for
+            - at least this duration for the se to reconnect to the controller before taking corrective action.
+            - Field introduced in 20.1.7, 21.1.3.
+            - Unit is sec.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 480.
+        type: int
+    vsphere_ha_timer_interval:
+        description:
+            - Vsphere ha monitor timer interval for sending cc_check_se_status to cloud connector.
+            - Field introduced in 20.1.7, 21.1.3.
+            - Unit is sec.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+        type: int
     warmstart_se_reconnect_wait_time:
         description:
             - Unit is sec.
@@ -713,6 +738,9 @@ def main():
         vs_se_ping_fail=dict(type='int',),
         vs_se_vnic_fail=dict(type='int',),
         vs_se_vnic_ip_fail=dict(type='int',),
+        vsphere_ha_detection_timeout=dict(type='int',),
+        vsphere_ha_recovery_timeout=dict(type='int',),
+        vsphere_ha_timer_interval=dict(type='int',),
         warmstart_se_reconnect_wait_time=dict(type='int',),
         warmstart_vs_resync_wait_time=dict(type='int',),
     )

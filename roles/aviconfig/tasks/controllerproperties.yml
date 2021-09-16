@@ -97,6 +97,9 @@
     vs_se_ping_fail: "{{ item.vs_se_ping_fail | default(omit) }}"
     vs_se_vnic_fail: "{{ item.vs_se_vnic_fail | default(omit) }}"
     vs_se_vnic_ip_fail: "{{ item.vs_se_vnic_ip_fail | default(omit) }}"
+    vsphere_ha_detection_timeout: "{{ item.vsphere_ha_detection_timeout | default(omit) }}"
+    vsphere_ha_recovery_timeout: "{{ item.vsphere_ha_recovery_timeout | default(omit) }}"
+    vsphere_ha_timer_interval: "{{ item.vsphere_ha_timer_interval | default(omit) }}"
     warmstart_se_reconnect_wait_time: "{{ item.warmstart_se_reconnect_wait_time | default(omit) }}"
     warmstart_vs_resync_wait_time: "{{ item.warmstart_vs_resync_wait_time | default(omit) }}"
   when:
