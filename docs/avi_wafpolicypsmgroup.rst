@@ -295,9 +295,6 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
                 </div>
-                                <div style="font-size: small">
-                  - Maximum of 16384 items allowed.
-                </div>
                                             </td>
         </tr>
                 <tr>
