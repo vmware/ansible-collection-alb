@@ -89,7 +89,6 @@ options:
             - Positive security model locations.
             - These are used to partition the application name space.
             - Field introduced in 18.2.3.
-            - Maximum of 16384 items allowed.
         type: list
     markers:
         description:

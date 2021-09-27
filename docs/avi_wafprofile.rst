@@ -208,9 +208,6 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 17.2.1.
                 </div>
-                                <div style="font-size: small">
-                  - Maximum of 64 items allowed.
-                </div>
                                             </td>
         </tr>
                 <tr>

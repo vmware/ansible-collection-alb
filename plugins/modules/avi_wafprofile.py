@@ -65,7 +65,6 @@ options:
         description:
             - List of data files used for waf rules.
             - Field introduced in 17.2.1.
-            - Maximum of 64 items allowed.
         type: list
     labels:
         description:
