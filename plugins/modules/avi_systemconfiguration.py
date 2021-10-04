@@ -65,7 +65,7 @@ options:
     default_license_tier:
         description:
             - Specifies the default license tier which would be used by new clouds.
-            - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS.
+            - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, SAAS.
             - Field introduced in 17.2.5.
             - Allowed in basic edition, essentials edition, enterprise edition.
             - Special default for basic edition is basic, essentials edition is essentials, enterprise is enterprise.
