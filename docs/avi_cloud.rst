@@ -582,7 +582,7 @@ Parameters
                   - This field by default inherits the value from system configuration.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS.
+                  - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, SAAS.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.5.
