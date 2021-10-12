@@ -121,7 +121,8 @@ options:
         type: str
     use_split_proxy:
         description:
-            - By default, use system proxy configuration.if true, use split proxy configuration.
+            - By default, pulse uses proxy added in system configuration.
+            - If pulse needs to use a seperate proxy, set this flag to true and configure split proxy configuration.
             - Field introduced in 20.1.1.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
