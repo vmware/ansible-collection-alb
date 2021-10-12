@@ -110,6 +110,12 @@ options:
             - Field deprecated in 21.1.1.
             - Field introduced in 20.1.1.
         type: dict
+    saas_licensing_config:
+        description:
+            - Saas licensing configuration.
+            - Field introduced in 21.1.3.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+        type: dict
     split_proxy_configuration:
         description:
             - Split proxy configuration to connect external pulse services.
@@ -121,7 +127,8 @@ options:
         type: str
     use_split_proxy:
         description:
-            - By default, use system proxy configuration.if true, use split proxy configuration.
+            - By default, pulse uses proxy added in system configuration.
+            - If pulse needs to use a seperate proxy, set this flag to true and configure split proxy configuration.
             - Field introduced in 20.1.1.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -205,6 +212,7 @@ def main():
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
         proactive_support_defaults=dict(type='dict',),
+        saas_licensing_config=dict(type='dict',),
         split_proxy_configuration=dict(type='dict',),
         url=dict(type='str',),
         use_split_proxy=dict(type='bool',),
