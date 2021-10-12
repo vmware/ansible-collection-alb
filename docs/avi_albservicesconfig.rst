@@ -422,7 +422,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - By default, use system proxy configuration.if true, use split proxy configuration.
+                  - By default, pulse uses proxy added in system configuration.
+                </div>
+                                <div style="font-size: small">
+                  - If pulse needs to use a seperate proxy, set this flag to true and configure split proxy configuration.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
