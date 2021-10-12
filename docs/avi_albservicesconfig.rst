@@ -375,6 +375,29 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>saas_licensing_config</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Saas licensing configuration.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in basic edition, essentials edition, enterprise edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>split_proxy_configuration</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -422,7 +445,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - By default, use system proxy configuration.if true, use split proxy configuration.
+                  - By default, pulse uses proxy added in system configuration.
+                </div>
+                                <div style="font-size: small">
+                  - If pulse needs to use a seperate proxy, set this flag to true and configure split proxy configuration.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
