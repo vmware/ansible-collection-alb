@@ -175,6 +175,12 @@ options:
             - It is a reference to an object of type availabilityzone.
             - Field introduced in 20.1.1.
         type: list
+    bgp_peer_monitor_failover_enabled:
+        description:
+            - Enable bgp peer monitoring based failover.
+            - Field introduced in 21.1.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     bgp_state_update_interval:
         description:
             - Bgp peer state update interval.
@@ -2025,6 +2031,7 @@ def main():
         auto_rebalance_interval=dict(type='int',),
         auto_redistribute_active_standby_load=dict(type='bool',),
         availability_zone_refs=dict(type='list',),
+        bgp_peer_monitor_failover_enabled=dict(type='bool',),
         bgp_state_update_interval=dict(type='int',),
         buffer_se=dict(type='int',),
         cloud_ref=dict(type='str',),

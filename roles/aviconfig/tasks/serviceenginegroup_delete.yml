@@ -33,6 +33,7 @@
     auto_rebalance_interval: "{{ item.auto_rebalance_interval | default(omit) }}"
     auto_redistribute_active_standby_load: "{{ item.auto_redistribute_active_standby_load | default(omit) }}"
     availability_zone_refs: "{{ item.availability_zone_refs | default(omit) }}"
+    bgp_peer_monitor_failover_enabled: "{{ item.bgp_peer_monitor_failover_enabled | default(omit) }}"
     bgp_state_update_interval: "{{ item.bgp_state_update_interval | default(omit) }}"
     buffer_se: "{{ item.buffer_se | default(omit) }}"
     cloud_ref: "{{ item.cloud_ref | default(omit) }}"
