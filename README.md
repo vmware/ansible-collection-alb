@@ -169,6 +169,7 @@ Name | Description
 [vmware.alb.avi_virtualservice](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_virtualservice.rst)|Module to create update or delete VirtualService
 [vmware.alb.avi_vrfcontext](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_vrfcontext.rst)|Module to create update or delete VrfContext
 [vmware.alb.avi_vsdatascriptset](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_vsdatascriptset.rst)|Module to create update or delete VSDataScriptSet
+[vmware.alb.avi_vsgs](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_vsgs.rst)|Module to create update or delete VsGs
 [vmware.alb.avi_vsvip](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_vsvip.rst)|Module to create update or delete VsVip
 [vmware.alb.avi_wafapplicationsignatureprovider](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_wafapplicationsignatureprovider.rst)|Module to create update or delete WafApplicationSignatureProvider
 [vmware.alb.avi_wafpolicy](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_wafpolicy.rst)|Module to create update or delete WafPolicy
