@@ -66,6 +66,16 @@ options:
             - It references the controller-patch associated with the uber image.
             - Field introduced in 18.2.8, 20.1.1.
         type: str
+    events:
+        description:
+            - Image events for image upload operation.
+            - Field introduced in 21.1.3.
+        type: list
+    img_state:
+        description:
+            - Status of the image.
+            - Field introduced in 21.1.3.
+        type: dict
     migrations:
         description:
             - This field describes the api migration related information.
@@ -77,6 +87,14 @@ options:
             - Field introduced in 18.2.6.
         required: true
         type: str
+    progress:
+        description:
+            - Image upload progress which holds value between 0-100.
+            - Allowed values are 0-100.
+            - Field introduced in 21.1.3.
+            - Unit is percent.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
     se_info:
         description:
             - Se package details.
@@ -98,14 +116,27 @@ options:
             - Enum options - SYSERR_SUCCESS, SYSERR_FAILURE, SYSERR_OUT_OF_MEMORY, SYSERR_NO_ENT, SYSERR_INVAL, SYSERR_ACCESS, SYSERR_FAULT, SYSERR_IO,
             - SYSERR_TIMEOUT, SYSERR_NOT_SUPPORTED, SYSERR_NOT_READY, SYSERR_UPGRADE_IN_PROGRESS, SYSERR_WARM_START_IN_PROGRESS, SYSERR_TRY_AGAIN,
             - SYSERR_NOT_UPGRADING, SYSERR_PENDING, SYSERR_EVENT_GEN_FAILURE, SYSERR_CONFIG_PARAM_MISSING, SYSERR_RANGE, SYSERR_BAD_REQUEST...
+            - Field deprecated in 21.1.3.
             - Field introduced in 18.2.6.
         type: str
+    tasks_completed:
+        description:
+            - Completed set of tasks for image upload.
+            - Field introduced in 21.1.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
     tenant_ref:
         description:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.6.
         type: str
+    total_tasks:
+        description:
+            - Total number of tasks for image upload.
+            - Field introduced in 21.1.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
     type:
         description:
             - Type of the image patch/system.
@@ -176,13 +207,18 @@ def main():
         controller_info=dict(type='dict',),
         controller_patch_name=dict(type='str',),
         controller_patch_uuid=dict(type='str',),
+        events=dict(type='list',),
+        img_state=dict(type='dict',),
         migrations=dict(type='dict',),
         name=dict(type='str', required=True),
+        progress=dict(type='int',),
         se_info=dict(type='dict',),
         se_patch_name=dict(type='str',),
         se_patch_uuid=dict(type='str',),
         status=dict(type='str',),
+        tasks_completed=dict(type='int',),
         tenant_ref=dict(type='str',),
+        total_tasks=dict(type='int',),
         type=dict(type='str',),
         uber_bundle=dict(type='bool',),
         url=dict(type='str',),

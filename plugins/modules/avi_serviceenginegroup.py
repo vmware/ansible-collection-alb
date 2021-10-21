@@ -885,6 +885,15 @@ options:
             - Allowed values are 0-1000.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10.
         type: int
+    max_skb_frags:
+        description:
+            - Maximum of number of 4 kb pages allocated to the linux kernel gro subsystem for packet coalescing.
+            - This parameter is limited to supported kernels only.
+            - Requires se reboot.
+            - Allowed values are 1-17.
+            - Field introduced in 21.1.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 17.
+        type: int
     max_vs_per_se:
         description:
             - Maximum number of virtual services that can be placed on a single service engine.
@@ -2140,6 +2149,7 @@ def main():
         max_rules_per_lb=dict(type='int',),
         max_scaleout_per_vs=dict(type='int',),
         max_se=dict(type='int',),
+        max_skb_frags=dict(type='int',),
         max_vs_per_se=dict(type='int',),
         mem_reserve=dict(type='bool',),
         memory_for_config_update=dict(type='int',),

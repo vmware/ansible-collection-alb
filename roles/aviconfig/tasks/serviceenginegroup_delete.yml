@@ -142,6 +142,7 @@
     max_rules_per_lb: "{{ item.max_rules_per_lb | default(omit) }}"
     max_scaleout_per_vs: "{{ item.max_scaleout_per_vs | default(omit) }}"
     max_se: "{{ item.max_se | default(omit) }}"
+    max_skb_frags: "{{ item.max_skb_frags | default(omit) }}"
     max_vs_per_se: "{{ item.max_vs_per_se | default(omit) }}"
     mem_reserve: "{{ item.mem_reserve | default(omit) }}"
     memory_for_config_update: "{{ item.memory_for_config_update | default(omit) }}"
