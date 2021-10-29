@@ -140,10 +140,7 @@ Parameters
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Authentication policy settings.
@@ -307,7 +304,7 @@ Parameters
                   - Sso policy type.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - SSO_TYPE_SAML, SSO_TYPE_PINGACCESS, SSO_TYPE_JWT, SSO_TYPE_LDAP.
+                  - Enum options - SSO_TYPE_SAML, SSO_TYPE_PINGACCESS, SSO_TYPE_JWT, SSO_TYPE_LDAP, SSO_TYPE_OAUTH.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.5.

@@ -81,6 +81,11 @@ options:
             - Name of the auth profile.
         required: true
         type: str
+    oauth_profile:
+        description:
+            - Oauth profile - common endpoint information.
+            - Field introduced in 21.1.3.
+        type: dict
     pa_agent_ref:
         description:
             - Pingaccessagent uuid.
@@ -104,7 +109,7 @@ options:
     type:
         description:
             - Type of the auth profile.
-            - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT.
+            - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
         required: true
         type: str
     url:
@@ -190,6 +195,7 @@ def main():
         ldap=dict(type='dict',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
+        oauth_profile=dict(type='dict',),
         pa_agent_ref=dict(type='str',),
         saml=dict(type='dict',),
         tacacs_plus=dict(type='dict',),
