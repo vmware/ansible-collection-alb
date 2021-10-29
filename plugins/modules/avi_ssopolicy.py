@@ -50,7 +50,6 @@ options:
         description:
             - Authentication policy settings.
             - Field introduced in 18.2.1.
-        required: true
         type: dict
     authorization_policy:
         description:
@@ -91,7 +90,7 @@ options:
     type:
         description:
             - Sso policy type.
-            - Enum options - SSO_TYPE_SAML, SSO_TYPE_PINGACCESS, SSO_TYPE_JWT, SSO_TYPE_LDAP.
+            - Enum options - SSO_TYPE_SAML, SSO_TYPE_PINGACCESS, SSO_TYPE_JWT, SSO_TYPE_LDAP, SSO_TYPE_OAUTH.
             - Field introduced in 18.2.5.
             - Default value when not specified in API or module is interpreted by Avi Controller as SSO_TYPE_SAML.
         type: str
@@ -149,7 +148,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        authentication_policy=dict(type='dict', required=True),
+        authentication_policy=dict(type='dict',),
         authorization_policy=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         labels=dict(type='list',),

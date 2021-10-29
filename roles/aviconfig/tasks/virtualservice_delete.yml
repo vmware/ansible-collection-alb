@@ -77,6 +77,7 @@
     network_ref: "{{ item.network_ref | default(omit) }}"
     network_security_policy_ref: "{{ item.network_security_policy_ref | default(omit) }}"
     nsx_securitygroup: "{{ item.nsx_securitygroup | default(omit) }}"
+    oauth_vs_config: "{{ item.oauth_vs_config | default(omit) }}"
     performance_limits: "{{ item.performance_limits | default(omit) }}"
     pool_group_ref: "{{ item.pool_group_ref | default(omit) }}"
     pool_ref: "{{ item.pool_ref | default(omit) }}"
