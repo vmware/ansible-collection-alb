@@ -175,6 +175,13 @@ options:
             - It is a reference to an object of type availabilityzone.
             - Field introduced in 20.1.1.
         type: list
+    baremetal_dispatcher_handles_flows:
+        description:
+            - Control if dispatcher core also handles tcp flows in baremetal se.
+            - Field introduced in 21.1.3.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     bgp_peer_monitor_failover_enabled:
         description:
             - Enable bgp peer monitoring based failover.
@@ -615,11 +622,26 @@ options:
             - Allowed in basic(allowed values- 64) edition, essentials(allowed values- 64) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 64.
         type: int
+    hybrid_rss_mode:
+        description:
+            - Toggles se hybrid only mode of operation in dpdk mode with rss configured;where-in each se datapath instance operates as an independent
+            - standalonehybrid instance performing both dispatcher and proxy function.
+            - Requires reboot.
+            - Field introduced in 21.1.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     hypervisor:
         description:
             - Override default hypervisor.
             - Enum options - DEFAULT, VMWARE_ESX, KVM, VMWARE_VSAN, XEN.
         type: str
+    ignore_docker_mac_change:
+        description:
+            - Ignore docker mac change.
+            - Field introduced in 21.1.3.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     ignore_rtt_threshold:
         description:
             - Ignore rtt samples if it is above threshold.
@@ -1075,6 +1097,14 @@ options:
             - Allowed in basic(allowed values- 0) edition, essentials(allowed values- 0) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
+    num_dispatcher_queues:
+        description:
+            - Number of queues to each dispatcher.
+            - Allowed values are 2-8.
+            - Special values are 0 - 'auto-compute', 1 - 'single-queue'.
+            - Field introduced in 21.1.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+        type: int
     num_flow_cores_sum_changes_to_ignore:
         description:
             - Number of changes in num flow cores sum to ignore.
@@ -1239,6 +1269,13 @@ options:
             - Field introduced in 20.1.3.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
+    se_dp_if_state_poll_interval:
+        description:
+            - Number of jiffies between polling interface state.
+            - Field introduced in 21.1.3.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+        type: int
     se_dp_isolation:
         description:
             - Toggle support to run se datapath instances in isolation on exclusive cpus.
@@ -1316,6 +1353,21 @@ options:
             - poll mode driver 2  don't use dpdk poll mode driver.requires se reboot.
             - Allowed values are 0-2.
             - Field introduced in 18.1.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
+    se_dump_core_on_assert:
+        description:
+            - Enable core dump on assert.
+            - Field introduced in 21.1.3.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    se_emulated_cores:
+        description:
+            - Use this to emulate more/less cpus than is actually available.
+            - One datapath process is started for each core.
+            - Field introduced in 21.1.3.
+            - Allowed in basic(allowed values- 0) edition, essentials(allowed values- 0) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     se_flow_probe_retries:
@@ -1431,6 +1483,14 @@ options:
             - Prefix to use for virtual machine name of service engines.
             - Default value when not specified in API or module is interpreted by Avi Controller as Avi.
         type: str
+    se_packet_buffer_max:
+        description:
+            - Internal use only.
+            - Used to artificially reduce the available number of packet buffers.
+            - Field introduced in 21.1.3.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
     se_pcap_lookahead:
         description:
             - Enables lookahead mode of packet receive in pcap mode.
@@ -2040,6 +2100,7 @@ def main():
         auto_rebalance_interval=dict(type='int',),
         auto_redistribute_active_standby_load=dict(type='bool',),
         availability_zone_refs=dict(type='list',),
+        baremetal_dispatcher_handles_flows=dict(type='bool',),
         bgp_peer_monitor_failover_enabled=dict(type='bool',),
         bgp_state_update_interval=dict(type='int',),
         buffer_se=dict(type='int',),
@@ -2107,7 +2168,9 @@ def main():
         host_gateway_monitor=dict(type='bool',),
         http_rum_console_log=dict(type='bool',),
         http_rum_min_content_length=dict(type='int',),
+        hybrid_rss_mode=dict(type='bool',),
         hypervisor=dict(type='str',),
+        ignore_docker_mac_change=dict(type='bool',),
         ignore_rtt_threshold=dict(type='int',),
         ingress_access_data=dict(type='str',),
         ingress_access_mgmt=dict(type='str',),
@@ -2175,6 +2238,7 @@ def main():
         non_significant_log_throttle=dict(type='int',),
         ns_helper_deq_interval_msec=dict(type='int',),
         num_dispatcher_cores=dict(type='int',),
+        num_dispatcher_queues=dict(type='int',),
         num_flow_cores_sum_changes_to_ignore=dict(type='int',),
         objsync_config=dict(type='dict',),
         objsync_port=dict(type='int',),
@@ -2200,6 +2264,7 @@ def main():
         se_deprovision_delay=dict(type='int',),
         se_dos_profile=dict(type='dict',),
         se_dp_hm_drops=dict(type='int',),
+        se_dp_if_state_poll_interval=dict(type='int',),
         se_dp_isolation=dict(type='bool',),
         se_dp_isolation_num_non_dp_cpus=dict(type='int',),
         se_dp_log_nf_enqueue_percent=dict(type='int',),
@@ -2211,6 +2276,8 @@ def main():
         se_dp_vnic_restart_on_queue_stall_count=dict(type='int',),
         se_dp_vnic_stall_se_restart_window=dict(type='int',),
         se_dpdk_pmd=dict(type='int',),
+        se_dump_core_on_assert=dict(type='bool',),
+        se_emulated_cores=dict(type='int',),
         se_flow_probe_retries=dict(type='int',),
         se_flow_probe_retry_timer=dict(type='int',),
         se_flow_probe_timer=dict(type='int',),
@@ -2227,6 +2294,7 @@ def main():
         se_mp_ring_retry_count=dict(type='int',),
         se_mtu=dict(type='int',),
         se_name_prefix=dict(type='str',),
+        se_packet_buffer_max=dict(type='int',),
         se_pcap_lookahead=dict(type='bool',),
         se_pcap_pkt_count=dict(type='int',),
         se_pcap_pkt_sz=dict(type='int',),

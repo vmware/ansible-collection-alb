@@ -85,7 +85,7 @@ options:
     mode:
         description:
             - Mode helps log collection and upload.
-            - Enum options - SALESFORCE, SYSTEST, MYVMWARE.
+            - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE.
             - Field introduced in 20.1.2.
             - Allowed in basic(allowed values- salesforce,myvmware,systest) edition, essentials(allowed values- salesforce,myvmware,systest) edition,
             - enterprise edition.
@@ -115,6 +115,7 @@ options:
             - Saas licensing configuration.
             - Field introduced in 21.1.3.
             - Allowed in basic edition, essentials edition, enterprise edition.
+        required: true
         type: dict
     split_proxy_configuration:
         description:
@@ -212,7 +213,7 @@ def main():
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
         proactive_support_defaults=dict(type='dict',),
-        saas_licensing_config=dict(type='dict',),
+        saas_licensing_config=dict(type='dict', required=True),
         split_proxy_configuration=dict(type='dict',),
         url=dict(type='str',),
         use_split_proxy=dict(type='bool',),
