@@ -284,7 +284,7 @@ Parameters
                   - Mode helps log collection and upload.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - SALESFORCE, SYSTEST, MYVMWARE.
+                  - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.2.
@@ -382,7 +382,10 @@ Parameters
                 </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Saas licensing configuration.

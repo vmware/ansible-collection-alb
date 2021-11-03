@@ -122,6 +122,7 @@ Name | Description
 [vmware.alb.avi_l4policyset](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_l4policyset.rst)|Module to create update or delete L4PolicySet
 [vmware.alb.avi_labelgroup](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_labelgroup.rst)|Module to create update or delete LabelGroup
 [vmware.alb.avi_licenseledgerdetails](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_licenseledgerdetails.rst)|Module to create update or delete LicenseLedgerDetails
+[vmware.alb.avi_licensestatus](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_licensestatus.rst)|Module to create update or delete LicenseStatus
 [vmware.alb.avi_memorybalancerrequest](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_memorybalancerrequest.rst)|Module to create update or delete MemoryBalancerRequest
 [vmware.alb.avi_microservicegroup](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_microservicegroup.rst)|Module to create update or delete MicroServiceGroup
 [vmware.alb.avi_natpolicy](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_natpolicy.rst)|Module to create update or delete NatPolicy
