@@ -1,0 +1,38 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi StatediffSnapshot | Create or Update StatediffSnapshot
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  vmware.alb.avi_statediffsnapshot:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    gslb_name: "{{ item.gslb_name | default(omit) }}"
+    gslb_uuid: "{{ item.gslb_uuid | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    pool_name: "{{ item.pool_name | default(omit) }}"
+    pool_uuid: "{{ item.pool_uuid | default(omit) }}"
+    post_snapshot: "{{ item.post_snapshot | default(omit) }}"
+    pre_snapshot: "{{ item.pre_snapshot | default(omit) }}"
+    se_group_name: "{{ item.se_group_name | default(omit) }}"
+    se_group_uuid: "{{ item.se_group_uuid | default(omit) }}"
+    se_name: "{{ item.se_name | default(omit) }}"
+    se_uuid: "{{ item.se_uuid | default(omit) }}"
+    snapshot_type: "{{ item.snapshot_type | default(omit) }}"
+    statediff_operation_ref: "{{ item.statediff_operation_ref | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+    vs_name: "{{ item.vs_name | default(omit) }}"
+    vs_uuid: "{{ item.vs_uuid | default(omit) }}"
+  when:
+    - (avi_role_state_mode == "present" and avi_config_state == "present")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.statediffsnapshot | default([]) }}"

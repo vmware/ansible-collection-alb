@@ -677,6 +677,11 @@ options:
             - Iptable rules.
             - Maximum of 128 items allowed.
         type: list
+    kni_allowed_server_ports:
+        description:
+            - Port ranges for any servers running in inband linuxserver clouds.
+            - Field introduced in 21.1.3.
+        type: list
     l7_conns_per_core:
         description:
             - Number of l7 connections that can be cached per core.
@@ -2177,6 +2182,7 @@ def main():
         instance_flavor=dict(type='str',),
         instance_flavor_info=dict(type='dict',),
         iptables=dict(type='list',),
+        kni_allowed_server_ports=dict(type='list',),
         l7_conns_per_core=dict(type='int',),
         l7_resvd_listen_conns_per_core=dict(type='int',),
         labels=dict(type='list',),

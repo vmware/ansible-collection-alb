@@ -250,6 +250,12 @@ options:
             - Start time of upgrade operation.
             - Field introduced in 18.2.6.
         type: str
+    statediff_ref:
+        description:
+            - Record of pre/post snapshot captured for current upgrade operation.
+            - It is a reference to an object of type statediffoperation.
+            - Field introduced in 21.1.3.
+        type: str
     system:
         description:
             - Flag is set only in the cluster if the upgrade is initiated as a system-upgrade.
@@ -377,6 +383,7 @@ def main():
         seg_params=dict(type='dict',),
         seg_status=dict(type='dict',),
         start_time=dict(type='str',),
+        statediff_ref=dict(type='str',),
         system=dict(type='bool',),
         tasks_completed=dict(type='int',),
         tenant_ref=dict(type='str',),

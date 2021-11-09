@@ -50,6 +50,7 @@
     seg_params: "{{ item.seg_params | default(omit) }}"
     seg_status: "{{ item.seg_status | default(omit) }}"
     start_time: "{{ item.start_time | default(omit) }}"
+    statediff_ref: "{{ item.statediff_ref | default(omit) }}"
     system: "{{ item.system | default(omit) }}"
     tasks_completed: "{{ item.tasks_completed | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
