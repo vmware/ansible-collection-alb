@@ -205,6 +205,7 @@ options:
     resolved_crs_groups:
         description:
             - A resolved version of waf_crs_ref with waf_crs_overrides applied.
+            - Field deprecated in 21.1.3.
             - Field introduced in 20.1.6.
         type: list
     tenant_ref:
