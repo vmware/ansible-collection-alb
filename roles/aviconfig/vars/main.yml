@@ -52,6 +52,7 @@ avi_resource_types:
   - vsgs
   - poolgroupdeploymentpolicy
   - memorybalancerrequest
+  - albservicesjob
   - backupconfiguration
   - clusterclouddetails
   - certificatemanagementprofile
