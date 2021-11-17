@@ -140,19 +140,13 @@ Parameters
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Rules for bot classification.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Minimum of 1 items required.
                 </div>
                                             </td>
         </tr>

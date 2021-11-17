@@ -50,8 +50,6 @@ options:
         description:
             - Rules for bot classification.
             - Field introduced in 21.1.1.
-            - Minimum of 1 items required.
-        required: true
         type: list
     name:
         description:
@@ -119,7 +117,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        mapping_rules=dict(type='list', required=True),
+        mapping_rules=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

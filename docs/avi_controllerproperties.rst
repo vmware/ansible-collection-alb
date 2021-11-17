@@ -1408,13 +1408,13 @@ Parameters
                   - The setting is applicable only when byol license is selected.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - MARKETPLACE, IMAGE.
+                  - Enum options - MARKETPLACE, IMAGE_SE.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.1.4, 18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as IMAGE.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as IMAGE_SE.
                 </div>
                                             </td>
         </tr>
