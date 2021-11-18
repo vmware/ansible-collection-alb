@@ -202,6 +202,26 @@ options:
             - Unit is sec.
             - Default value when not specified in API or module is interpreted by Avi Controller as 300.
         type: int
+    detach_ip_retry_interval:
+        description:
+            - Amount of time to wait after last detach ip failure before attempting next detach ip retry.
+            - Field introduced in 21.1.3.
+            - Unit is sec.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 60.
+        type: int
+    detach_ip_retry_limit:
+        description:
+            - Maximum number of detach ip retries.
+            - Field introduced in 21.1.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+        type: int
+    detach_ip_timeout:
+        description:
+            - Time to wait before marking detach ip as failed.
+            - Field introduced in 21.1.3.
+            - Unit is sec.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 300.
+        type: int
     dns_refresh_period:
         description:
             - Period for refresh pool and gslb dns job.
@@ -678,6 +698,9 @@ def main():
         dead_se_detection_timer=dict(type='int',),
         default_minimum_api_timeout=dict(type='int',),
         del_offline_se_after_reboot_delay=dict(type='int',),
+        detach_ip_retry_interval=dict(type='int',),
+        detach_ip_retry_limit=dict(type='int',),
+        detach_ip_timeout=dict(type='int',),
         dns_refresh_period=dict(type='int',),
         dummy=dict(type='int',),
         edit_system_limits=dict(type='bool',),
