@@ -47,6 +47,12 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    app_service_type:
+        description:
+            - Specifies app service type for an application.
+            - Enum options - APP_SERVICE_TYPE_L7_HORIZON, APP_SERVICE_TYPE_L4_BLAST, APP_SERVICE_TYPE_L4_PCOIP.
+            - Field introduced in 21.1.3.
+        type: str
     cloud_config_cksum:
         description:
             - Checksum of application profiles.
@@ -237,6 +243,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        app_service_type=dict(type='str',),
         cloud_config_cksum=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),

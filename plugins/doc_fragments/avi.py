@@ -1,7 +1,12 @@
+############################################################################
+# ========================================================================
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# ========================================================================
+###
+
 # -*- coding: utf-8 -*-
 
 # Avi Version: 16.3.4
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import (absolute_import, division, print_function)

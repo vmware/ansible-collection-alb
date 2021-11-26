@@ -18,6 +18,7 @@
     admin_auth_configuration: "{{ item.admin_auth_configuration | default(omit) }}"
     common_criteria_mode: "{{ item.common_criteria_mode | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    controller_analytics_policy: "{{ item.controller_analytics_policy | default(omit) }}"
     default_license_tier: "{{ item.default_license_tier | default(omit) }}"
     dns_configuration: "{{ item.dns_configuration | default(omit) }}"
     dns_virtualservice_refs: "{{ item.dns_virtualservice_refs | default(omit) }}"

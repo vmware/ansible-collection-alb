@@ -213,6 +213,49 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>duration</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time taken to upload the image in seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>end_time</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Image upload end time.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>events</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -379,6 +422,26 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.8, 20.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>start_time</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Image upload start time.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
                 </div>
                                             </td>
         </tr>

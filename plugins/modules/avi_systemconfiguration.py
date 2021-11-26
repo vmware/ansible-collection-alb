@@ -62,6 +62,12 @@ options:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
         type: dict
+    controller_analytics_policy:
+        description:
+            - Controller metrics event dynamic thresholds can be set here.
+            - Controller_cpu_high and controller_mem_high evets can take configured dynamic thresholds.
+            - Field introduced in 21.1.3.
+        type: dict
     default_license_tier:
         description:
             - Specifies the default license tier which would be used by new clouds.
@@ -209,6 +215,7 @@ def main():
         admin_auth_configuration=dict(type='dict',),
         common_criteria_mode=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
+        controller_analytics_policy=dict(type='dict',),
         default_license_tier=dict(type='str',),
         dns_configuration=dict(type='dict',),
         dns_virtualservice_refs=dict(type='list',),

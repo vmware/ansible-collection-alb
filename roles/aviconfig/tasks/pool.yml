@@ -46,6 +46,7 @@
     graceful_disable_timeout: "{{ item.graceful_disable_timeout | default(omit) }}"
     gslb_sp_enabled: "{{ item.gslb_sp_enabled | default(omit) }}"
     health_monitor_refs: "{{ item.health_monitor_refs | default(omit) }}"
+    horizon_profile: "{{ item.horizon_profile | default(omit) }}"
     host_check_enabled: "{{ item.host_check_enabled | default(omit) }}"
     http2_properties: "{{ item.http2_properties | default(omit) }}"
     ignore_server_port: "{{ item.ignore_server_port | default(omit) }}"
