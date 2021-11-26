@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_botmapping
+module: avi_albservicesjob
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of BotMapping Avi RESTful Object
+short_description: Module for setup of ALBServicesJob Avi RESTful Object
 description:
-    - This module is used to configure BotMapping object
+    - This module is used to configure ALBServicesJob object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,22 +46,50 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    mapping_rules:
+    command:
         description:
-            - Rules for bot classification.
-            - Field introduced in 21.1.1.
-        type: list
+            - The command to be triggered by the albservicesjob.
+            - Field introduced in 21.1.3.
+        required: true
+        type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 21.1.3.
+        type: dict
+    end_time:
+        description:
+            - The time at which the albservicesjob is ended.
+            - Field introduced in 21.1.3.
+        type: dict
     name:
         description:
-            - The name of this mapping.
-            - Field introduced in 21.1.1.
+            - The name of the albservicesjob.
+            - Field introduced in 21.1.3.
         required: true
+        type: str
+    pulse_job_id:
+        description:
+            - A unique identifier for this job entry on the pulse portal.
+            - Field introduced in 21.1.3.
+        type: str
+    start_time:
+        description:
+            - The time at which the albservicesjob is started.
+            - Field introduced in 21.1.3.
+        type: dict
+    status:
+        description:
+            - The status of the albservicesjob.
+            - Enum options - UNDETERMINED, PENDING, IN_PROGRESS, COMPLETED, FAILED.
+            - Field introduced in 21.1.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as PENDING.
         type: str
     tenant_ref:
         description:
-            - The unique identifier of the tenant to which this mapping belongs.
+            - The unique identifier of the tenant to which this albservicesjob belongs.
             - It is a reference to an object of type tenant.
-            - Field introduced in 21.1.1.
+            - Field introduced in 21.1.3.
         type: str
     url:
         description:
@@ -69,8 +97,8 @@ options:
         type: str
     uuid:
         description:
-            - A unique identifier for this mapping.
-            - Field introduced in 21.1.1.
+            - A unique identifier for this albservicesjob entry.
+            - Field introduced in 21.1.3.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -85,16 +113,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create BotMapping object
-  vmware.alb.avi_botmapping:
+- name: Example to create ALBServicesJob object
+  vmware.alb.avi_albservicesjob:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_botmapping
+    name: sample_albservicesjob
 """
 
 RETURN = '''
 obj:
-    description: BotMapping (api/botmapping) object
+    description: ALBServicesJob (api/albservicesjob) object
     returned: success, changed
     type: dict
 '''
@@ -117,8 +145,13 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        mapping_rules=dict(type='list',),
+        command=dict(type='str', required=True),
+        configpb_attributes=dict(type='dict',),
+        end_time=dict(type='dict',),
         name=dict(type='str', required=True),
+        pulse_job_id=dict(type='str',),
+        start_time=dict(type='dict',),
+        status=dict(type='str',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
@@ -130,7 +163,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'botmapping',
+    return avi_ansible_api(module, 'albservicesjob',
                            set())
 
 

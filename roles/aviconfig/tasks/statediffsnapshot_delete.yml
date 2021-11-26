@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi ApplicationProfile | Delete ApplicationProfile
+- name: Avi StatediffSnapshot | Delete StatediffSnapshot
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_applicationprofile:
+  vmware.alb.avi_statediffsnapshot:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,27 +14,27 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    app_service_type: "{{ item.app_service_type | default(omit) }}"
-    cloud_config_cksum: "{{ item.cloud_config_cksum | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    created_by: "{{ item.created_by | default(omit) }}"
-    description: "{{ item.description | default(omit) }}"
-    dns_service_profile: "{{ item.dns_service_profile | default(omit) }}"
-    dos_rl_profile: "{{ item.dos_rl_profile | default(omit) }}"
-    http_profile: "{{ item.http_profile | default(omit) }}"
-    markers: "{{ item.markers | default(omit) }}"
+    gslb_name: "{{ item.gslb_name | default(omit) }}"
+    gslb_uuid: "{{ item.gslb_uuid | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    preserve_client_ip: "{{ item.preserve_client_ip | default(omit) }}"
-    preserve_client_port: "{{ item.preserve_client_port | default(omit) }}"
-    preserve_dest_ip_port: "{{ item.preserve_dest_ip_port | default(omit) }}"
-    sip_service_profile: "{{ item.sip_service_profile | default(omit) }}"
-    tcp_app_profile: "{{ item.tcp_app_profile | default(omit) }}"
+    pool_name: "{{ item.pool_name | default(omit) }}"
+    pool_uuid: "{{ item.pool_uuid | default(omit) }}"
+    post_snapshot: "{{ item.post_snapshot | default(omit) }}"
+    pre_snapshot: "{{ item.pre_snapshot | default(omit) }}"
+    se_group_name: "{{ item.se_group_name | default(omit) }}"
+    se_group_uuid: "{{ item.se_group_uuid | default(omit) }}"
+    se_name: "{{ item.se_name | default(omit) }}"
+    se_uuid: "{{ item.se_uuid | default(omit) }}"
+    snapshot_type: "{{ item.snapshot_type | default(omit) }}"
+    statediff_operation_ref: "{{ item.statediff_operation_ref | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    type: "{{ item.type | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
+    vs_name: "{{ item.vs_name | default(omit) }}"
+    vs_uuid: "{{ item.vs_uuid | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))
     - (avi_config_state == "absent" or avi_role_state_mode == "absent")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.applicationprofile | default([]) }}"
+  with_items: "{{ avi_role_cfg.statediffsnapshot | default([]) }}"

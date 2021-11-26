@@ -66,6 +66,17 @@ options:
             - It references the controller-patch associated with the uber image.
             - Field introduced in 18.2.8, 20.1.1.
         type: str
+    duration:
+        description:
+            - Time taken to upload the image in seconds.
+            - Field introduced in 21.1.3.
+            - Unit is sec.
+        type: int
+    end_time:
+        description:
+            - Image upload end time.
+            - Field introduced in 21.1.3.
+        type: str
     events:
         description:
             - Image events for image upload operation.
@@ -109,6 +120,11 @@ options:
         description:
             - It references the service engine patch associated with the uber image.
             - Field introduced in 18.2.8, 20.1.1.
+        type: str
+    start_time:
+        description:
+            - Image upload start time.
+            - Field introduced in 21.1.3.
         type: str
     status:
         description:
@@ -207,6 +223,8 @@ def main():
         controller_info=dict(type='dict',),
         controller_patch_name=dict(type='str',),
         controller_patch_uuid=dict(type='str',),
+        duration=dict(type='int',),
+        end_time=dict(type='str',),
         events=dict(type='list',),
         img_state=dict(type='dict',),
         migrations=dict(type='dict',),
@@ -215,6 +233,7 @@ def main():
         se_info=dict(type='dict',),
         se_patch_name=dict(type='str',),
         se_patch_uuid=dict(type='str',),
+        start_time=dict(type='str',),
         status=dict(type='str',),
         tasks_completed=dict(type='int',),
         tenant_ref=dict(type='str',),

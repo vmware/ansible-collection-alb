@@ -37,6 +37,7 @@ avi_resource_types:
   - federationcheckpoint
   - gslbgeodbprofile
   - siteversion
+  - statediffoperation
   - image
   - controllerportalregistration
   - dynamicdnsrecord
@@ -51,6 +52,7 @@ avi_resource_types:
   - vsgs
   - poolgroupdeploymentpolicy
   - memorybalancerrequest
+  - albservicesjob
   - backupconfiguration
   - clusterclouddetails
   - certificatemanagementprofile
@@ -66,6 +68,7 @@ avi_resource_types:
   - errorpageprofile
   - testsedatastorelevel2
   - gslb
+  - statediffsnapshot
   - upgradestatusinfo
   - upgradestatussummary
   - scheduler

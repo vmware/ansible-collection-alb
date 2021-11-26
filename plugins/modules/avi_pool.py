@@ -244,6 +244,11 @@ options:
             - It is a reference to an object of type healthmonitor.
             - Maximum of 50 items allowed.
         type: list
+    horizon_profile:
+        description:
+            - Horizon uag configuration.
+            - Field introduced in 21.1.3.
+        type: dict
     host_check_enabled:
         description:
             - Enable common name check for server certificate.
@@ -624,6 +629,7 @@ def main():
         graceful_disable_timeout=dict(type='int',),
         gslb_sp_enabled=dict(type='bool',),
         health_monitor_refs=dict(type='list',),
+        horizon_profile=dict(type='dict',),
         host_check_enabled=dict(type='bool',),
         http2_properties=dict(type='dict',),
         ignore_server_port=dict(type='bool',),

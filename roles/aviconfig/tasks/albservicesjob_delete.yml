@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi Image | Delete Image
+- name: Avi ALBServicesJob | Delete ALBServicesJob
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_image:
+  vmware.alb.avi_albservicesjob:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,31 +14,18 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    cloud_info_values: "{{ item.cloud_info_values | default(omit) }}"
-    controller_info: "{{ item.controller_info | default(omit) }}"
-    controller_patch_name: "{{ item.controller_patch_name | default(omit) }}"
-    controller_patch_uuid: "{{ item.controller_patch_uuid | default(omit) }}"
-    duration: "{{ item.duration | default(omit) }}"
+    command: "{{ item.command | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     end_time: "{{ item.end_time | default(omit) }}"
-    events: "{{ item.events | default(omit) }}"
-    img_state: "{{ item.img_state | default(omit) }}"
-    migrations: "{{ item.migrations | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    progress: "{{ item.progress | default(omit) }}"
-    se_info: "{{ item.se_info | default(omit) }}"
-    se_patch_name: "{{ item.se_patch_name | default(omit) }}"
-    se_patch_uuid: "{{ item.se_patch_uuid | default(omit) }}"
+    pulse_job_id: "{{ item.pulse_job_id | default(omit) }}"
     start_time: "{{ item.start_time | default(omit) }}"
     status: "{{ item.status | default(omit) }}"
-    tasks_completed: "{{ item.tasks_completed | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    total_tasks: "{{ item.total_tasks | default(omit) }}"
-    type: "{{ item.type | default(omit) }}"
-    uber_bundle: "{{ item.uber_bundle | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))
     - (avi_config_state == "absent" or avi_role_state_mode == "absent")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.image | default([]) }}"
+  with_items: "{{ avi_role_cfg.albservicesjob | default([]) }}"

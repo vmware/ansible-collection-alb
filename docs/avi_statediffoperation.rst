@@ -1,11 +1,11 @@
-.. vmware.alb.avi_botmapping:
+.. vmware.alb.avi_statediffoperation:
 
 
 **********************************************
-vmware.alb.avi_botmapping
+vmware.alb.avi_statediffoperation
 **********************************************
 
-**Module for setup of BotMapping Avi RESTful Object**
+**Module for setup of StatediffOperation Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_botmapping
 
 Synopsis
 --------
-- This module is used to configure BotMapping object.
+- This module is used to configure StatediffOperation object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -133,7 +133,27 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>mapping_rules</b>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>events</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">list</span>
@@ -143,10 +163,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Rules for bot classification.
+                  - Info for each statediff event.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 21.1.3.
                 </div>
                                             </td>
         </tr>
@@ -160,16 +180,102 @@ Parameters
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - The name of this mapping.
+                  - Name of statediff operation.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 21.1.3.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>node_uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid of node for statediff operation entry.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>operation</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Type of statediff operation.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - FB_UPGRADE, FB_ROLLBACK, FB_PATCH, FB_ROLLBACK_PATCH.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>phase</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Phase of statediff operation.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - FB_PRE_SNAPSHOT, FB_POST_SNAPSHOT.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>status</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Status of statediff operation.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - FB_INIT, FB_IN_PROGRESS, FB_COMPLETED, FB_FAILED, FB_COMPLETED_WITH_ERRORS.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
                 </div>
                                             </td>
         </tr>
@@ -186,13 +292,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The unique identifier of the tenant to which this mapping belongs.
+                  - Tenant that this object belongs to.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 21.1.3.
                 </div>
                                             </td>
         </tr>
@@ -226,10 +332,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A unique identifier for this mapping.
+                  - Unique identifier for statediff entry.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 21.1.3.
                 </div>
                                             </td>
         </tr>
@@ -253,11 +359,11 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create BotMapping object
-          avi_botmapping:
+        - name: Example to create StatediffOperation object
+          avi_statediffoperation:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_botmapping
+            name: sample_statediffoperation
 
 
 Authors

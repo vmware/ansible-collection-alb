@@ -110,6 +110,7 @@
     instance_flavor: "{{ item.instance_flavor | default(omit) }}"
     instance_flavor_info: "{{ item.instance_flavor_info | default(omit) }}"
     iptables: "{{ item.iptables | default(omit) }}"
+    kni_allowed_server_ports: "{{ item.kni_allowed_server_ports | default(omit) }}"
     l7_conns_per_core: "{{ item.l7_conns_per_core | default(omit) }}"
     l7_resvd_listen_conns_per_core: "{{ item.l7_resvd_listen_conns_per_core | default(omit) }}"
     labels: "{{ item.labels | default(omit) }}"

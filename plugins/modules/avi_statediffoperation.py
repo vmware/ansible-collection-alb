@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_botmapping
+module: avi_statediffoperation
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of BotMapping Avi RESTful Object
+short_description: Module for setup of StatediffOperation Avi RESTful Object
 description:
-    - This module is used to configure BotMapping object
+    - This module is used to configure StatediffOperation object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,22 +46,49 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    mapping_rules:
+    configpb_attributes:
         description:
-            - Rules for bot classification.
+            - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+        type: dict
+    events:
+        description:
+            - Info for each statediff event.
+            - Field introduced in 21.1.3.
         type: list
     name:
         description:
-            - The name of this mapping.
-            - Field introduced in 21.1.1.
-        required: true
+            - Name of statediff operation.
+            - Field introduced in 21.1.3.
+        type: str
+    node_uuid:
+        description:
+            - Uuid of node for statediff operation entry.
+            - Field introduced in 21.1.3.
+        type: str
+    operation:
+        description:
+            - Type of statediff operation.
+            - Enum options - FB_UPGRADE, FB_ROLLBACK, FB_PATCH, FB_ROLLBACK_PATCH.
+            - Field introduced in 21.1.3.
+        type: str
+    phase:
+        description:
+            - Phase of statediff operation.
+            - Enum options - FB_PRE_SNAPSHOT, FB_POST_SNAPSHOT.
+            - Field introduced in 21.1.3.
+        type: str
+    status:
+        description:
+            - Status of statediff operation.
+            - Enum options - FB_INIT, FB_IN_PROGRESS, FB_COMPLETED, FB_FAILED, FB_COMPLETED_WITH_ERRORS.
+            - Field introduced in 21.1.3.
         type: str
     tenant_ref:
         description:
-            - The unique identifier of the tenant to which this mapping belongs.
+            - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
-            - Field introduced in 21.1.1.
+            - Field introduced in 21.1.3.
         type: str
     url:
         description:
@@ -69,8 +96,8 @@ options:
         type: str
     uuid:
         description:
-            - A unique identifier for this mapping.
-            - Field introduced in 21.1.1.
+            - Unique identifier for statediff entry.
+            - Field introduced in 21.1.3.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -85,16 +112,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create BotMapping object
-  vmware.alb.avi_botmapping:
+- name: Example to create StatediffOperation object
+  vmware.alb.avi_statediffoperation:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_botmapping
+    name: sample_statediffoperation
 """
 
 RETURN = '''
 obj:
-    description: BotMapping (api/botmapping) object
+    description: StatediffOperation (api/statediffoperation) object
     returned: success, changed
     type: dict
 '''
@@ -117,8 +144,13 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        mapping_rules=dict(type='list',),
-        name=dict(type='str', required=True),
+        configpb_attributes=dict(type='dict',),
+        events=dict(type='list',),
+        name=dict(type='str',),
+        node_uuid=dict(type='str',),
+        operation=dict(type='str',),
+        phase=dict(type='str',),
+        status=dict(type='str',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
@@ -130,7 +162,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'botmapping',
+    return avi_ansible_api(module, 'statediffoperation',
                            set())
 
 

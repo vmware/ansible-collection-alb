@@ -93,6 +93,16 @@ options:
             - Allowed values are 1-50.
             - Default value when not specified in API or module is interpreted by Avi Controller as 2.
         type: int
+    ftp_monitor:
+        description:
+            - Health monitor for ftp.
+            - Field introduced in 21.1.3.
+        type: dict
+    ftps_monitor:
+        description:
+            - Health monitor for ftps.
+            - Field introduced in 21.1.3.
+        type: dict
     http_monitor:
         description:
             - Healthmonitorhttp settings for healthmonitor.
@@ -120,6 +130,16 @@ options:
             - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    ldap_monitor:
+        description:
+            - Health monitor for ldap.
+            - Field introduced in 21.1.3.
+        type: dict
+    ldaps_monitor:
+        description:
+            - Health monitor for ldaps.
+            - Field introduced in 21.1.3.
+        type: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -205,7 +225,8 @@ options:
             - Type of the health monitor.
             - Enum options - HEALTH_MONITOR_PING, HEALTH_MONITOR_TCP, HEALTH_MONITOR_HTTP, HEALTH_MONITOR_HTTPS, HEALTH_MONITOR_EXTERNAL, HEALTH_MONITOR_UDP,
             - HEALTH_MONITOR_DNS, HEALTH_MONITOR_GSLB, HEALTH_MONITOR_SIP, HEALTH_MONITOR_RADIUS, HEALTH_MONITOR_SMTP, HEALTH_MONITOR_SMTPS,
-            - HEALTH_MONITOR_POP3, HEALTH_MONITOR_POP3S, HEALTH_MONITOR_IMAP, HEALTH_MONITOR_IMAPS.
+            - HEALTH_MONITOR_POP3, HEALTH_MONITOR_POP3S, HEALTH_MONITOR_IMAP, HEALTH_MONITOR_IMAPS, HEALTH_MONITOR_FTP, HEALTH_MONITOR_FTPS,
+            - HEALTH_MONITOR_LDAP, HEALTH_MONITOR_LDAPS.
             - Allowed in basic(allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp,health_monitor_http,health_monitor_https) edition,
             - essentials(allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp) edition, enterprise edition.
         required: true
@@ -284,11 +305,15 @@ def main():
         dns_monitor=dict(type='dict',),
         external_monitor=dict(type='dict',),
         failed_checks=dict(type='int',),
+        ftp_monitor=dict(type='dict',),
+        ftps_monitor=dict(type='dict',),
         http_monitor=dict(type='dict',),
         https_monitor=dict(type='dict',),
         imap_monitor=dict(type='dict',),
         imaps_monitor=dict(type='dict',),
         is_federated=dict(type='bool',),
+        ldap_monitor=dict(type='dict',),
+        ldaps_monitor=dict(type='dict',),
         markers=dict(type='list',),
         monitor_port=dict(type='int',),
         name=dict(type='str', required=True),

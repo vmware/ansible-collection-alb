@@ -739,6 +739,9 @@ Parameters
                   - A resolved version of waf_crs_ref with waf_crs_overrides applied.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 21.1.3.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.6.
                 </div>
                                             </td>
