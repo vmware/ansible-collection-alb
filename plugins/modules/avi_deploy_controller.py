@@ -1,10 +1,4 @@
 #!/usr/bin/python
-############################################################################
-# ========================================================================
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
-# ========================================================================
-###
-
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)

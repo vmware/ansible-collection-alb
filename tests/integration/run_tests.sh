@@ -1,10 +1,4 @@
 #!/bin/bash
-############################################################################
-# ========================================================================
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
-# ========================================================================
-###
-
 sed -i "s#<<api_version>>#$branch_version#g" tests/integration/integration_config.yml
 sed -i "s#<<controller>>#$controller_ip#g" tests/integration/integration_config.yml
 sed -i "s#<<username>>#admin#g" tests/integration/integration_config.yml
