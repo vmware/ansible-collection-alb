@@ -238,10 +238,10 @@ Parameters
                   - Allowed in basic edition, essentials edition, enterprise edition.
                 </div>
                                 <div style="font-size: small">
-                  - Special default for basic edition is basic, essentials edition is essentials, enterprise is enterprise.
+                  - Special default for basic edition is basic, essentials edition is essentials, enterprise is saas.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as ENTERPRISE.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SAAS.
                 </div>
                                             </td>
         </tr>

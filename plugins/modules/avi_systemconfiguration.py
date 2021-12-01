@@ -74,8 +74,8 @@ options:
             - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, SAAS.
             - Field introduced in 17.2.5.
             - Allowed in basic edition, essentials edition, enterprise edition.
-            - Special default for basic edition is basic, essentials edition is essentials, enterprise is enterprise.
-            - Default value when not specified in API or module is interpreted by Avi Controller as ENTERPRISE.
+            - Special default for basic edition is basic, essentials edition is essentials, enterprise is saas.
+            - Default value when not specified in API or module is interpreted by Avi Controller as SAAS.
         type: str
     dns_configuration:
         description:
