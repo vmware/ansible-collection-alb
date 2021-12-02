@@ -49,17 +49,17 @@ jobs:
 
       # Always install galaxy-importer after the unit tests are finished as it is overriding the existing
       # ansible installation. Ref: https://github.com/ansible/ansible/issues/76361
-      - name: Install galaxy-importer
-        run: ANSIBLE_SKIP_CONFLICT_CHECK=${{ env.ANSIBLE_SKIP_CONFLICT_CHECK }} pip install galaxy-importer
+      # - name: Install galaxy-importer
+      #   run: ANSIBLE_SKIP_CONFLICT_CHECK=${{ env.ANSIBLE_SKIP_CONFLICT_CHECK }} pip install galaxy-importer
 
-      - name: Create galaxy-importer directory
-        run: sudo mkdir -p /etc/galaxy-importer
+      # - name: Create galaxy-importer directory
+      #   run: sudo mkdir -p /etc/galaxy-importer
 
-      - name: Create galaxy-importer.cfg
-        run: sudo cp ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb/.github/workflows/galaxy-importer.cfg /etc/galaxy-importer/galaxy-importer.cfg
+      # - name: Create galaxy-importer.cfg
+      #   run: sudo cp ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb/.github/workflows/galaxy-importer.cfg /etc/galaxy-importer/galaxy-importer.cfg
 
-      - name: Run galaxy-importer check
-        run: python -m galaxy_importer.main ${GITHUB_WORKSPACE}/vmware-*.tar.gz | tee ${GITHUB_WORKSPACE}/log.txt
+      # - name: Run galaxy-importer check
+      #   run: python -m galaxy_importer.main ${GITHUB_WORKSPACE}/vmware-*.tar.gz | tee ${GITHUB_WORKSPACE}/log.txt
 
-      - name: Check errors
-        run: if grep -E 'ERROR' ${GITHUB_WORKSPACE}/log.txt; then exit 1; else exit 0; fi
+      # - name: Check errors
+      #   run: if grep -E 'ERROR' ${GITHUB_WORKSPACE}/log.txt; then exit 1; else exit 0; fi
