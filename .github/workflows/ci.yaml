@@ -47,7 +47,6 @@ jobs:
         run: ansible-test sanity --docker -v --color --truncate 0 --python 3.8
         working-directory: ${{ env.HOME }}/.ansible/collections/ansible_collections/vmware/alb
 
-
       # Always install galaxy-importer after the unit tests are finished as it is overriding the existing
       # ansible installation. Ref: https://github.com/ansible/ansible/issues/76361
       - name: Install galaxy-importer
