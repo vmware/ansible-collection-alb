@@ -1889,7 +1889,7 @@ Parameters
                   - The pool or servers specified service port will still be used for health monitoring.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
+                  - Allowed in essentials(allowed values- false) edition, enterprise edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
