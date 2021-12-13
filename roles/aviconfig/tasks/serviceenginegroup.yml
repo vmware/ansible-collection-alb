@@ -52,6 +52,7 @@
     data_network_id: "{{ item.data_network_id | default(omit) }}"
     datascript_timeout: "{{ item.datascript_timeout | default(omit) }}"
     deactivate_ipv6_discovery: "{{ item.deactivate_ipv6_discovery | default(omit) }}"
+    deactivate_kni_filtering_at_dispatcher: "{{ item.deactivate_kni_filtering_at_dispatcher | default(omit) }}"
     dedicated_dispatcher_core: "{{ item.dedicated_dispatcher_core | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     disable_avi_securitygroups: "{{ item.disable_avi_securitygroups | default(omit) }}"
