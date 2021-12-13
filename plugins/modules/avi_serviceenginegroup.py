@@ -286,6 +286,12 @@ options:
             - If activated, ipv6 address and route discovery are deactivated.requires se reboot.
             - Field introduced in 21.1.1.
         type: bool
+    deactivate_kni_filtering_at_dispatcher:
+        description:
+            - Deactivate filtering of packets to kni interface.
+            - To be used under surveillance of avi support.
+            - Field introduced in 21.1.3.
+        type: bool
     dedicated_dispatcher_core:
         description:
             - Dedicate the core that handles packet receive/transmit from the network to just the dispatching function.
@@ -722,7 +728,7 @@ options:
         description:
             - Specifies the license tier which would be used.
             - This field by default inherits the value from cloud.
-            - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, SAAS.
+            - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, ENTERPRISE_WITH_CLOUD_SERVICES.
             - Field introduced in 17.2.5.
         type: str
     license_type:
@@ -2124,6 +2130,7 @@ def main():
         data_network_id=dict(type='str',),
         datascript_timeout=dict(type='int',),
         deactivate_ipv6_discovery=dict(type='bool',),
+        deactivate_kni_filtering_at_dispatcher=dict(type='bool',),
         dedicated_dispatcher_core=dict(type='bool',),
         description=dict(type='str',),
         disable_avi_securitygroups=dict(type='bool',),
