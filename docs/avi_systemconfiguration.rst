@@ -229,7 +229,7 @@ Parameters
                   - Specifies the default license tier which would be used by new clouds.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, SAAS.
+                  - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, ENTERPRISE_WITH_CLOUD_SERVICES.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.5.
@@ -238,10 +238,10 @@ Parameters
                   - Allowed in basic edition, essentials edition, enterprise edition.
                 </div>
                                 <div style="font-size: small">
-                  - Special default for basic edition is basic, essentials edition is essentials, enterprise is saas.
+                  - Special default for basic edition is basic, essentials edition is essentials, enterprise is enterprise_with_cloud_services.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as SAAS.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as ENTERPRISE_WITH_CLOUD_SERVICES.
                 </div>
                                             </td>
         </tr>

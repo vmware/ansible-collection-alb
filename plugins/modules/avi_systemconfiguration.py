@@ -71,11 +71,11 @@ options:
     default_license_tier:
         description:
             - Specifies the default license tier which would be used by new clouds.
-            - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, SAAS.
+            - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, ENTERPRISE_WITH_CLOUD_SERVICES.
             - Field introduced in 17.2.5.
             - Allowed in basic edition, essentials edition, enterprise edition.
-            - Special default for basic edition is basic, essentials edition is essentials, enterprise is saas.
-            - Default value when not specified in API or module is interpreted by Avi Controller as SAAS.
+            - Special default for basic edition is basic, essentials edition is essentials, enterprise is enterprise_with_cloud_services.
+            - Default value when not specified in API or module is interpreted by Avi Controller as ENTERPRISE_WITH_CLOUD_SERVICES.
         type: str
     dns_configuration:
         description:
