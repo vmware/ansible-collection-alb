@@ -286,6 +286,12 @@ options:
             - If activated, ipv6 address and route discovery are deactivated.requires se reboot.
             - Field introduced in 21.1.1.
         type: bool
+    deactivate_kni_filtering_at_dispatcher:
+        description:
+            - Deactivate filtering of packets to kni interface.
+            - To be used under surveillance of avi support.
+            - Field introduced in 21.1.3.
+        type: bool
     dedicated_dispatcher_core:
         description:
             - Dedicate the core that handles packet receive/transmit from the network to just the dispatching function.
@@ -2124,6 +2130,7 @@ def main():
         data_network_id=dict(type='str',),
         datascript_timeout=dict(type='int',),
         deactivate_ipv6_discovery=dict(type='bool',),
+        deactivate_kni_filtering_at_dispatcher=dict(type='bool',),
         dedicated_dispatcher_core=dict(type='bool',),
         description=dict(type='str',),
         disable_avi_securitygroups=dict(type='bool',),
