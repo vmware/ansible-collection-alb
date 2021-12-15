@@ -728,7 +728,7 @@ options:
         description:
             - Specifies the license tier which would be used.
             - This field by default inherits the value from cloud.
-            - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, SAAS.
+            - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, ENTERPRISE_WITH_CLOUD_SERVICES.
             - Field introduced in 17.2.5.
         type: str
     license_type:
