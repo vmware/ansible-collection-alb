@@ -46,11 +46,6 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    configpb_attributes:
-        description:
-            - Protobuf versioning for config pbs.
-            - Field introduced in 21.1.3.
-        type: dict
     events:
         description:
             - Info for each statediff event.
@@ -144,7 +139,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        configpb_attributes=dict(type='dict',),
         events=dict(type='list',),
         name=dict(type='str',),
         node_uuid=dict(type='str',),
