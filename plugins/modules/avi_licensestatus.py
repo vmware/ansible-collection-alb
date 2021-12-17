@@ -51,23 +51,11 @@ options:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.3.
         type: dict
-    name:
-        description:
-            - Name.
-            - Field introduced in 21.1.3.
-        required: true
-        type: str
     saas_status:
         description:
             - Saas licensing status.
             - Field introduced in 21.1.3.
         type: dict
-    tenant_ref:
-        description:
-            - Tenant.
-            - It is a reference to an object of type tenant.
-            - Field introduced in 21.1.3.
-        type: str
     url:
         description:
             - Avi controller URL of the object.
@@ -123,9 +111,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        name=dict(type='str', required=True),
         saas_status=dict(type='dict',),
-        tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
