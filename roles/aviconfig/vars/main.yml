@@ -9,6 +9,7 @@ avi_resource_types:
   - controllerproperties
   - useraccountprofile
   - cloudproperties
+  - licensestatus
   - seproperties
   - tenant
   - cloudconnectoruser
@@ -48,7 +49,6 @@ avi_resource_types:
   - webhook
   - securitymanagerdata
   - cluster
-  - licensestatus
   - vsgs
   - poolgroupdeploymentpolicy
   - memorybalancerrequest
