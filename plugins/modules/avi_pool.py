@@ -505,7 +505,7 @@ options:
     use_service_port:
         description:
             - Do not translate the client's destination port when sending the connection to the server.
-            - The pool or servers specified service port will still be used for health monitoring.
+            - Monitor port needs to be specified for health monitors.
             - Allowed in essentials(allowed values- false) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool

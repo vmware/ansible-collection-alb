@@ -1886,7 +1886,7 @@ Parameters
                   - Do not translate the client's destination port when sending the connection to the server.
                 </div>
                                 <div style="font-size: small">
-                  - The pool or servers specified service port will still be used for health monitoring.
+                  - Monitor port needs to be specified for health monitors.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in essentials(allowed values- false) edition, enterprise edition.
