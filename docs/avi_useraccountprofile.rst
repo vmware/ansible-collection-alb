@@ -247,7 +247,7 @@ Parameters
                   - Allowed values are 3-20.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'unlimited login attempts allowed.'.
+                  - Special values are 0- unlimited login attempts allowed..
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 3.

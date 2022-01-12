@@ -1478,7 +1478,7 @@ Parameters
                   - Allowed values are 0-5000.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'server health score is deactivated'.
+                  - Special values are 0- server health score is deactivated.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.13, 18.1.4.

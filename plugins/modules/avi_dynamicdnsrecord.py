@@ -121,7 +121,7 @@ options:
             - Specifies the number of records returned by the dns service.enter 0 to return all records.
             - Default is 0.
             - Allowed values are 0-20.
-            - Special values are 0- 'return all records'.
+            - Special values are 0- return all records.
             - Field introduced in 20.1.3.
         type: int
     service_locators:

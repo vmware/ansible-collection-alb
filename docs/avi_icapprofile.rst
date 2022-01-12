@@ -441,7 +441,10 @@ Parameters
                   - If this is set to 0, only the http header will be sent to the icap server as a preview.
                 </div>
                                 <div style="font-size: small">
-                  - To disable preview completely, set the enable-preview option to false.
+                  - To disable preview completely, set the enable-preview option to false.if vendor is lastline, recommended preview size is 1000 bytes,minimum
+                </div>
+                                <div style="font-size: small">
+                  - preview size is 10 bytes.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0-5000.

@@ -94,7 +94,7 @@ options:
             - A percent value of total se memory reserved for applicationcaching.
             - This is an se bootup property and requires se restart.requires se reboot.
             - Allowed values are 0 - 100.
-            - Special values are 0- 'disable'.
+            - Special values are 0- disable.
             - Field introduced in 18.2.3.
             - Unit is percent.
             - Allowed in basic(allowed values- 0) edition, essentials(allowed values- 0) edition, enterprise edition.
@@ -105,7 +105,7 @@ options:
         description:
             - The max memory that can be allocated for the app cache.
             - This value will act as an upper bound on the cache size specified in app_cache_percent.
-            - Special values are 0- 'disable'.
+            - Special values are 0- disable.
             - Field introduced in 20.1.1.
             - Unit is gb.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.
@@ -857,7 +857,7 @@ options:
         description:
             - Maximum number of external health monitors that can run concurrently in a service engine.
             - This helps control the cpu and memory use by external health monitors.
-            - Special values are 0- 'value will be internally calculated based on cpu and memory'.
+            - Special values are 0- value will be internally calculated based on cpu and memory.
             - Field introduced in 18.2.7.
         type: int
     max_cpu_usage:
@@ -1112,7 +1112,7 @@ options:
         description:
             - Number of queues to each dispatcher.
             - Allowed values are 2-8.
-            - Special values are 0 - 'auto-compute', 1 - 'single-queue'.
+            - Special values are 0 - auto-compute, 1 - single-queue.
             - Field introduced in 21.1.3.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
@@ -1304,7 +1304,7 @@ options:
             - It is recommended to reserve an even number of cpus for hyper-threaded processors.
             - Requires se reboot.
             - Allowed values are 1-8.
-            - Special values are 0- 'auto'.
+            - Special values are 0- auto.
             - Field introduced in 20.1.4.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
@@ -1538,7 +1538,7 @@ options:
             - May be used in conjunction with the configuration pcap_reinit_threshold.
             - (valid range   15 mins - 12 hours, 0 - disables).
             - Allowed values are 900-43200.
-            - Special values are 0- 'disable'.
+            - Special values are 0- disable.
             - Field introduced in 17.2.13, 18.1.3, 18.2.1.
             - Unit is sec.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -1682,7 +1682,7 @@ options:
             - Configure the frequency in milliseconds of software transmit spillover queue flush when enabled.
             - This is necessary to flush any packets in the spillover queue in the absence of a packet transmit in the normal course of operation.
             - Allowed values are 50-500.
-            - Special values are 0- 'disable'.
+            - Special values are 0- disable.
             - Field introduced in 20.1.1.
             - Unit is milliseconds.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.

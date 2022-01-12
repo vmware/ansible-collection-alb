@@ -373,7 +373,7 @@ options:
         description:
             - Maximum connections per second per client ip.
             - Allowed values are 10-1000.
-            - Special values are 0- 'unlimited'.
+            - Special values are 0- unlimited.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     microservice_ref:
