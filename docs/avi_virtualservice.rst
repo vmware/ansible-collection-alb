@@ -1390,7 +1390,7 @@ Parameters
                   - Allowed values are 10-1000.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'unlimited'.
+                  - Special values are 0- unlimited.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.

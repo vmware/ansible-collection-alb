@@ -422,7 +422,7 @@ Parameters
                   - Allowed values are 0-20.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'return all records'.
+                  - Special values are 0- return all records.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.

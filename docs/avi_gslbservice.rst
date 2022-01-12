@@ -494,7 +494,7 @@ Parameters
                   - Allowed values are 1-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'disable'.
+                  - Special values are 0 - disable.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.4.
@@ -546,7 +546,7 @@ Parameters
                   - Allowed values are 1-20.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'return all ip addresses'.
+                  - Special values are 0- return all ip addresses.
                 </div>
                                             </td>
         </tr>
