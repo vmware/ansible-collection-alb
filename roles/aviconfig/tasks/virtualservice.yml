@@ -115,7 +115,7 @@
     uuid: "{{ item.uuid | default(omit) }}"
     vh_domain_name: "{{ item.vh_domain_name | default(omit) }}"
     vh_matches: "{{ item.vh_matches | default(omit) }}"
-    vh_parent_vs_uuid: "{{ item.vh_parent_vs_uuid | default(omit) }}"
+    vh_parent_vs_ref: "{{ item.vh_parent_vs_ref | default(omit) }}"
     vh_type: "{{ item.vh_type | default(omit) }}"
     vip: "{{ item.vip | default(omit) }}"
     vrf_context_ref: "{{ item.vrf_context_ref | default(omit) }}"

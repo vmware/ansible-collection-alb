@@ -421,7 +421,7 @@ Parameters
                   - Allowed values are 1-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'disable'.
+                  - Special values are 0 - disable.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in basic(allowed values- 0) edition, essentials(allowed values- 0) edition, enterprise edition.

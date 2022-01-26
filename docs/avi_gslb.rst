@@ -310,7 +310,7 @@ Parameters
                   - Allowed values are 60-3600.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'disable'.
+                  - Special values are 0 - disable.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.

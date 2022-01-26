@@ -64,6 +64,12 @@ options:
             - Application specific signatures.
             - Field introduced in 20.1.1.
         type: dict
+    bypass_static_extensions:
+        description:
+            - Enable the functionality to bypass waf for static file extensions.
+            - Field introduced in 22.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     confidence_override:
         description:
             - Configure thresholds for confidence labels.
@@ -315,6 +321,7 @@ def main():
         allow_mode_delegation=dict(type='bool',),
         allowlist=dict(type='dict',),
         application_signatures=dict(type='dict',),
+        bypass_static_extensions=dict(type='bool',),
         confidence_override=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),

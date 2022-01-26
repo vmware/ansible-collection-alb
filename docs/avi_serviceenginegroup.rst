@@ -313,7 +313,7 @@ Parameters
                   - Allowed values are 0 - 100.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'disable'.
+                  - Special values are 0- disable.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
@@ -351,7 +351,7 @@ Parameters
                   - This value will act as an upper bound on the cache size specified in app_cache_percent.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'disable'.
+                  - Special values are 0- disable.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -3187,7 +3187,7 @@ Parameters
                   - This helps control the cpu and memory use by external health monitors.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'value will be internally calculated based on cpu and memory'.
+                  - Special values are 0- value will be internally calculated based on cpu and memory.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.7.
@@ -4127,7 +4127,7 @@ Parameters
                   - Allowed values are 2-8.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'auto-compute', 1 - 'single-queue'.
+                  - Special values are 0 - auto-compute, 1 - single-queue.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
@@ -4843,7 +4843,7 @@ Parameters
                   - Allowed values are 1-8.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'auto'.
+                  - Special values are 0- auto.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.4.
@@ -5710,7 +5710,7 @@ Parameters
                   - Allowed values are 900-43200.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'disable'.
+                  - Special values are 0- disable.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.13, 18.1.3, 18.2.1.
@@ -6242,7 +6242,7 @@ Parameters
                   - Allowed values are 50-500.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'disable'.
+                  - Special values are 0- disable.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.

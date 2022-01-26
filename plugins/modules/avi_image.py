@@ -61,9 +61,10 @@ options:
             - Mandatory controller patch name that is applied along with this base image.
             - Field introduced in 18.2.10, 20.1.1.
         type: str
-    controller_patch_uuid:
+    controller_patch_ref:
         description:
             - It references the controller-patch associated with the uber image.
+            - It is a reference to an object of type image.
             - Field introduced in 18.2.8, 20.1.1.
         type: str
     duration:
@@ -116,9 +117,10 @@ options:
             - Mandatory serviceengine patch name that is applied along with this base image.
             - Field introduced in 18.2.10, 20.1.1.
         type: str
-    se_patch_uuid:
+    se_patch_ref:
         description:
             - It references the service engine patch associated with the uber image.
+            - It is a reference to an object of type image.
             - Field introduced in 18.2.8, 20.1.1.
         type: str
     start_time:
@@ -222,7 +224,7 @@ def main():
         cloud_info_values=dict(type='list',),
         controller_info=dict(type='dict',),
         controller_patch_name=dict(type='str',),
-        controller_patch_uuid=dict(type='str',),
+        controller_patch_ref=dict(type='str',),
         duration=dict(type='int',),
         end_time=dict(type='str',),
         events=dict(type='list',),
@@ -232,7 +234,7 @@ def main():
         progress=dict(type='int',),
         se_info=dict(type='dict',),
         se_patch_name=dict(type='str',),
-        se_patch_uuid=dict(type='str',),
+        se_patch_ref=dict(type='str',),
         start_time=dict(type='str',),
         status=dict(type='str',),
         tasks_completed=dict(type='int',),

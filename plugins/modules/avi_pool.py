@@ -120,7 +120,7 @@ options:
         description:
             - The maximum time-to-first-byte of a server.
             - Allowed values are 1-5000.
-            - Special values are 0 - 'automatic'.
+            - Special values are 0 - automatic.
             - Unit is milliseconds.
             - Allowed in basic(allowed values- 0) edition, essentials(allowed values- 0) edition, enterprise edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -149,7 +149,7 @@ options:
             - Duration for which new connections will be gradually ramped up to a server recently brought online.
             - Useful for lb algorithms that are least connection based.
             - Allowed values are 1-300.
-            - Special values are 0 - 'immediate'.
+            - Special values are 0 - immediate.
             - Unit is min.
             - Allowed in basic(allowed values- 0) edition, essentials(allowed values- 0) edition, enterprise edition.
             - Special default for basic edition is 0, essentials edition is 0, enterprise is 10.
@@ -225,7 +225,7 @@ options:
             - Used to gracefully disable a server.
             - Virtual service waits for the specified time before terminating the existing connections  to the servers that are disabled.
             - Allowed values are 1-7200.
-            - Special values are 0 - 'immediate', -1 - 'infinite'.
+            - Special values are 0 - immediate, -1 - infinite.
             - Unit is min.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
