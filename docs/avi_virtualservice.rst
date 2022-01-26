@@ -1390,7 +1390,7 @@ Parameters
                   - Allowed values are 10-1000.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- 'unlimited'.
+                  - Special values are 0- unlimited.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -2404,7 +2404,7 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>vh_parent_vs_uuid</b>
+                <b>vh_parent_vs_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">str</span>
@@ -2415,6 +2415,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Specifies the virtual service acting as virtual hosting (sni) parent.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type virtualservice.
                 </div>
                                             </td>
         </tr>

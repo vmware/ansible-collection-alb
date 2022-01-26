@@ -416,7 +416,7 @@ Parameters
                   - Allowed values are 1-5000.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'automatic'.
+                  - Special values are 0 - automatic.
                 </div>
                                 <div style="font-size: small">
                   - Unit is milliseconds.
@@ -528,7 +528,7 @@ Parameters
                   - Allowed values are 1-300.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'immediate'.
+                  - Special values are 0 - immediate.
                 </div>
                                 <div style="font-size: small">
                   - Unit is min.
@@ -816,7 +816,7 @@ Parameters
                   - Allowed values are 1-7200.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'immediate', -1 - 'infinite'.
+                  - Special values are 0 - immediate, -1 - infinite.
                 </div>
                                 <div style="font-size: small">
                   - Unit is min.

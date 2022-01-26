@@ -539,7 +539,7 @@ Parameters
                   - Allowed values are 1-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'use server port'.
+                  - Special values are 0 - use server port.
                 </div>
                                             </td>
         </tr>

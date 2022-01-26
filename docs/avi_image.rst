@@ -193,7 +193,7 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>controller_patch_uuid</b>
+                <b>controller_patch_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">str</span>
@@ -204,6 +204,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It references the controller-patch associated with the uber image.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.8, 20.1.1.
@@ -408,7 +411,7 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>se_patch_uuid</b>
+                <b>se_patch_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">str</span>
@@ -419,6 +422,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It references the service engine patch associated with the uber image.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.8, 20.1.1.

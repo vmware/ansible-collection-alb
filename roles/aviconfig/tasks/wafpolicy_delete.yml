@@ -17,6 +17,7 @@
     allow_mode_delegation: "{{ item.allow_mode_delegation | default(omit) }}"
     allowlist: "{{ item.allowlist | default(omit) }}"
     application_signatures: "{{ item.application_signatures | default(omit) }}"
+    bypass_static_extensions: "{{ item.bypass_static_extensions | default(omit) }}"
     confidence_override: "{{ item.confidence_override | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     created_by: "{{ item.created_by | default(omit) }}"

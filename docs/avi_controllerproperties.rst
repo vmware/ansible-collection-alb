@@ -310,7 +310,7 @@ Parameters
                   - Allowed values are 30-120.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'deactivated'.
+                  - Special values are 0 - deactivated.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.11, 20.1.3.
@@ -1212,7 +1212,7 @@ Parameters
                   - Allowed values are 1-1051200.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'disabled'.
+                  - Special values are 0 - disabled.
                 </div>
                                 <div style="font-size: small">
                   - Unit is min.
@@ -2038,7 +2038,7 @@ Parameters
                   - Allowed values are 1-1051200.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - 'disabled'.
+                  - Special values are 0 - disabled.
                 </div>
                                 <div style="font-size: small">
                   - Unit is min.
