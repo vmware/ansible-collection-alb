@@ -634,9 +634,10 @@ options:
             - Host and path match criteria to select this child vs.
             - Field introduced in 20.1.3.
         type: list
-    vh_parent_vs_uuid:
+    vh_parent_vs_ref:
         description:
             - Specifies the virtual service acting as virtual hosting (sni) parent.
+            - It is a reference to an object of type virtualservice.
         type: str
     vh_type:
         description:
@@ -849,7 +850,7 @@ def main():
         uuid=dict(type='str',),
         vh_domain_name=dict(type='list',),
         vh_matches=dict(type='list',),
-        vh_parent_vs_uuid=dict(type='str',),
+        vh_parent_vs_ref=dict(type='str',),
         vh_type=dict(type='str',),
         vip=dict(type='list',),
         vrf_context_ref=dict(type='str',),
