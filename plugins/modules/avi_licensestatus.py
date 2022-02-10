@@ -56,6 +56,11 @@ options:
             - Saas licensing status.
             - Field introduced in 21.1.3.
         type: dict
+    service_update:
+        description:
+            - Pulse license service update.
+            - Field introduced in 21.1.4.
+        type: dict
     url:
         description:
             - Avi controller URL of the object.
@@ -112,6 +117,7 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         saas_status=dict(type='dict',),
+        service_update=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

@@ -16,6 +16,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     saas_status: "{{ item.saas_status | default(omit) }}"
+    service_update: "{{ item.service_update | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)
