@@ -17,6 +17,7 @@
     account_lock_timeout: "{{ item.account_lock_timeout | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     credentials_timeout_threshold: "{{ item.credentials_timeout_threshold | default(omit) }}"
+    login_failure_count_expiry_window: "{{ item.login_failure_count_expiry_window | default(omit) }}"
     max_concurrent_sessions: "{{ item.max_concurrent_sessions | default(omit) }}"
     max_login_failure_count: "{{ item.max_login_failure_count | default(omit) }}"
     max_password_history_count: "{{ item.max_password_history_count | default(omit) }}"
