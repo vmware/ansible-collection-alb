@@ -484,6 +484,19 @@ options:
             - Unit is sec.
             - Default value when not specified in API or module is interpreted by Avi Controller as 300.
         type: int
+    update_dns_entry_retry_limit:
+        description:
+            - Number of times to retry a dns entry update/delete operation.
+            - Field introduced in 21.1.4.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+        type: int
+    update_dns_entry_timeout:
+        description:
+            - Timeout period for a dns entry update/delete operation.
+            - Field introduced in 21.1.4.
+            - Unit is sec.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 120.
+        type: int
     upgrade_dns_ttl:
         description:
             - Time to account for dns ttl during upgrade.
@@ -743,6 +756,8 @@ def main():
         shared_ssl_certificates=dict(type='bool',),
         ssl_certificate_expiry_warning_days=dict(type='list',),
         unresponsive_se_reboot=dict(type='int',),
+        update_dns_entry_retry_limit=dict(type='int',),
+        update_dns_entry_timeout=dict(type='int',),
         upgrade_dns_ttl=dict(type='int',),
         upgrade_fat_se_lease_time=dict(type='int',),
         upgrade_lease_time=dict(type='int',),
