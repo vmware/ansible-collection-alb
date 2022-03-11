@@ -55,7 +55,6 @@ options:
         description:
             - Geo database files.
             - Field introduced in 21.1.1.
-        required: true
         type: list
     is_federated:
         description:
@@ -136,7 +135,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         description=dict(type='str',),
-        files=dict(type='list', required=True),
+        files=dict(type='list',),
         is_federated=dict(type='bool',),
         mappings=dict(type='list',),
         name=dict(type='str', required=True),

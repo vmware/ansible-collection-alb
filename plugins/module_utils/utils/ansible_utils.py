@@ -351,7 +351,7 @@ def get_api_context(module, api_creds):
         return None
 
 
-NO_UUID_OBJ = ['cluster', 'systemconfiguration', 'inventoryfaultconfig']
+NO_UUID_OBJ = ['cluster', 'systemconfiguration']
 SKIP_DELETE_ERROR = ["Cannot delete system default object", "Method \'DELETE\' not allowed"]
 
 

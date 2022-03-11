@@ -66,6 +66,14 @@ options:
             - Unit is days.
             - Default value when not specified in API or module is interpreted by Avi Controller as 180.
         type: int
+    login_failure_count_expiry_window:
+        description:
+            - The configurable time window beyond which we need to pop all the login failure timestamps from the login_failure_timestamps.
+            - Special values are 0 - do not reset login_failure_counts on the basis of time.
+            - Field introduced in 22.1.1.
+            - Unit is min.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
     max_concurrent_sessions:
         description:
             - Maximum number of concurrent sessions allowed.
@@ -147,6 +155,7 @@ def main():
         account_lock_timeout=dict(type='int',),
         configpb_attributes=dict(type='dict',),
         credentials_timeout_threshold=dict(type='int',),
+        login_failure_count_expiry_window=dict(type='int',),
         max_concurrent_sessions=dict(type='int',),
         max_login_failure_count=dict(type='int',),
         max_password_history_count=dict(type='int',),
