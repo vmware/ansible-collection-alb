@@ -181,6 +181,12 @@ options:
             - Field introduced in 20.1.7,21.1.3.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 22.1.1.
+            - Allowed in basic edition, essentials edition, enterprise edition.
+        type: list
     mesos_configuration:
         description:
             - Field deprecated in 18.2.2.
@@ -366,6 +372,7 @@ def main():
         license_type=dict(type='str',),
         linuxserver_configuration=dict(type='dict',),
         maintenance_mode=dict(type='bool',),
+        markers=dict(type='list',),
         mesos_configuration=dict(type='dict',),
         mtu=dict(type='int',),
         name=dict(type='str', required=True),

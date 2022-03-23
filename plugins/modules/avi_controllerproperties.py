@@ -384,6 +384,12 @@ options:
             - Unit is sec.
             - Default value when not specified in API or module is interpreted by Avi Controller as 21600.
         type: int
+    restrict_cloud_read_access:
+        description:
+            - Restrict read access to cloud.
+            - Field introduced in 22.1.1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     safenet_hsm_version:
         description:
             - Version of the safenet package installed on the controller.
@@ -726,6 +732,7 @@ def main():
         process_pki_profile_timeout_period=dict(type='int',),
         query_host_fail=dict(type='int',),
         resmgr_log_caching_period=dict(type='int',),
+        restrict_cloud_read_access=dict(type='bool',),
         safenet_hsm_version=dict(type='str',),
         se_create_timeout=dict(type='int',),
         se_failover_attempt_interval=dict(type='int',),
