@@ -136,9 +136,7 @@ EXAMPLES = """
 - name: Create user authorization profile based on the LDAP
   vmware.alb.avi_authprofile:
     avi_credentials: "{{ avi_credentials }}"
-    http:
-      cache_expiration_time: 5
-      group_member_is_full_dn: false
+   
     ldap:
       base_dn: dc=avi,dc=local
       bind_as_administrator: true

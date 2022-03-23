@@ -172,6 +172,9 @@ Parameters
                   - Field introduced in 18.1.3,18.2.1.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in essentials(allowed values- false) edition, enterprise edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
