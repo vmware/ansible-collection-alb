@@ -66,6 +66,7 @@
     process_pki_profile_timeout_period: "{{ item.process_pki_profile_timeout_period | default(omit) }}"
     query_host_fail: "{{ item.query_host_fail | default(omit) }}"
     resmgr_log_caching_period: "{{ item.resmgr_log_caching_period | default(omit) }}"
+    restrict_cloud_read_access: "{{ item.restrict_cloud_read_access | default(omit) }}"
     safenet_hsm_version: "{{ item.safenet_hsm_version | default(omit) }}"
     se_create_timeout: "{{ item.se_create_timeout | default(omit) }}"
     se_failover_attempt_interval: "{{ item.se_failover_attempt_interval | default(omit) }}"
