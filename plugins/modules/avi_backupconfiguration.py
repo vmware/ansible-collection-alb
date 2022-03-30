@@ -93,6 +93,14 @@ options:
         description:
             - Directory at remote destination with write permission for ssh user.
         type: str
+    remote_file_transfer_protocol:
+        description:
+            - Remote file transfer protocol type.
+            - Enum options - SCP, SFTP.
+            - Field introduced in 22.1.1.
+            - Allowed in basic(allowed values- scp,sftp) edition, enterprise edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as SCP.
+        type: str
     remote_hostname:
         description:
             - Remote destination.
@@ -182,6 +190,7 @@ def main():
         maximum_backups_stored=dict(type='int',),
         name=dict(type='str', required=True),
         remote_directory=dict(type='str',),
+        remote_file_transfer_protocol=dict(type='str',),
         remote_hostname=dict(type='str',),
         save_local=dict(type='bool',),
         ssh_user_ref=dict(type='str',),
