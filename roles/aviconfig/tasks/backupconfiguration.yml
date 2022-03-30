@@ -23,6 +23,7 @@
     maximum_backups_stored: "{{ item.maximum_backups_stored | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     remote_directory: "{{ item.remote_directory | default(omit) }}"
+    remote_file_transfer_protocol: "{{ item.remote_file_transfer_protocol | default(omit) }}"
     remote_hostname: "{{ item.remote_hostname | default(omit) }}"
     save_local: "{{ item.save_local | default(omit) }}"
     ssh_user_ref: "{{ item.ssh_user_ref | default(omit) }}"
