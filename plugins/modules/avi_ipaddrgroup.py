@@ -50,28 +50,34 @@ options:
     addrs:
         description:
             - Configure ip address(es).
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     apic_epg_name:
         description:
             - Populate ip addresses from members of this cisco apic epg.
             - Field deprecated in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     country_codes:
         description:
             - Populate the ip address ranges from the geo database for this country.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     description:
         description:
-            - User defined description for the object.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     ip_ports:
         description:
             - Configure (ip address, port) tuple(s).
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     labels:
         description:
@@ -80,39 +86,47 @@ options:
             - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: list
     marathon_app_name:
         description:
             - Populate ip addresses from tasks of this marathon app.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     marathon_service_port:
         description:
             - Task port associated with marathon service port.
             - If marathon app has multiple service ports, this is required.
             - Else, the first task port is used.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: int
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: list
     name:
         description:
             - Name of the ip address group.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     prefixes:
         description:
             - Configure ip address prefix(es).
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     ranges:
         description:
             - Configure ip address range(s).
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -121,6 +135,7 @@ options:
     uuid:
         description:
             - Uuid of the ip address group.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

@@ -51,16 +51,20 @@ options:
             - Availability zone belongs to cloud.
             - It is a reference to an object of type cloud.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     name:
         description:
             - Availabilty zone where vcenter list belongs to.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -68,6 +72,7 @@ options:
             - Availabilityzone belongs to tenant.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -77,6 +82,7 @@ options:
         description:
             - Availability zone config uuid.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     vcenter_refs:
         description:
@@ -84,6 +90,7 @@ options:
             - It is a reference to an object of type vcenterserver.
             - Field introduced in 20.1.1.
             - Minimum of 1 items required.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: list
 extends_documentation_fragment:

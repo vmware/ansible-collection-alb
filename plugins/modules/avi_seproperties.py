@@ -51,18 +51,20 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     se_agent_properties:
         description:
-            - Seagentproperties settings for seproperties.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     se_bootup_properties:
         description:
-            - Sebootupproperties settings for seproperties.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     se_runtime_properties:
         description:
-            - Seruntimeproperties settings for seproperties.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     url:
         description:
@@ -70,7 +72,7 @@ options:
         type: str
     uuid:
         description:
-            - Unique object identifier of the object.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as default.
         type: str
 extends_documentation_fragment:

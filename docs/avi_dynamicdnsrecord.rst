@@ -158,6 +158,9 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as DNS_RECORD_RESPONSE_ROUND_ROBIN.
                 </div>
                                             </td>
@@ -179,6 +182,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -204,6 +210,9 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
@@ -226,6 +235,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -246,6 +258,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -265,6 +280,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -289,6 +307,9 @@ Parameters
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -312,6 +333,9 @@ Parameters
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -331,6 +355,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -355,6 +382,9 @@ Parameters
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -374,6 +404,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -397,6 +430,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 13 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -427,6 +463,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -449,6 +488,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -473,6 +515,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -492,6 +537,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -515,6 +563,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -544,6 +595,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -582,6 +636,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -607,6 +664,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.

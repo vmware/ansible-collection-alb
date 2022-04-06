@@ -145,6 +145,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -165,6 +168,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -181,6 +187,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -201,6 +210,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -235,6 +247,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

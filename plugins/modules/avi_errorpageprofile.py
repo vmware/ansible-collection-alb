@@ -51,28 +51,34 @@ options:
             - Name of the virtual service which generated the error page.
             - Field deprecated in 18.1.1.
             - Field introduced in 17.2.4.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     company_name:
         description:
             - Name of the company to show in error page.
             - Field deprecated in 18.1.1.
             - Field introduced in 17.2.4.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     error_pages:
         description:
             - Defined error pages for http status codes.
             - Field introduced in 17.2.4.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     host_name:
         description:
             - Fully qualified domain name for which the error page is generated.
             - Field deprecated in 18.1.1.
             - Field introduced in 17.2.4.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     labels:
         description:
@@ -81,22 +87,26 @@ options:
             - Field deprecated in 20.1.5.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: list
     name:
         description:
             - Field introduced in 17.2.4.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 17.2.4.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -105,6 +115,7 @@ options:
     uuid:
         description:
             - Field introduced in 17.2.4.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

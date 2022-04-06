@@ -152,6 +152,9 @@ Parameters
                   - Unit is min.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 30.
                 </div>
                                             </td>
@@ -173,6 +176,12 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
                 </div>
                                             </td>
         </tr>
@@ -196,6 +205,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Unit is days.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 180.
@@ -227,6 +239,9 @@ Parameters
                   - Unit is min.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
@@ -248,6 +263,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - There are unlimited sessions by default.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -276,7 +294,10 @@ Parameters
                   - Allowed values are 3-20.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- unlimited login attempts allowed..
+                  - Special values are 0- unlimited login attempts allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 3.
@@ -302,6 +323,9 @@ Parameters
                   - Default is 4 passwords.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
                 </div>
                                             </td>
@@ -322,7 +346,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the object.
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -356,7 +380,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique object identifier of the object.
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

@@ -52,18 +52,22 @@ options:
             - Lock timeout period (in minutes).
             - Default is 30 minutes.
             - Unit is min.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 30.
         type: int
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     credentials_timeout_threshold:
         description:
             - The time period after which credentials expire.
             - Default is 180 days.
             - Unit is days.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 180.
         type: int
     login_failure_count_expiry_window:
@@ -72,12 +76,14 @@ options:
             - Special values are 0 - do not reset login_failure_counts on the basis of time.
             - Field introduced in 22.1.1.
             - Unit is min.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     max_concurrent_sessions:
         description:
             - Maximum number of concurrent sessions allowed.
             - There are unlimited sessions by default.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     max_login_failure_count:
@@ -85,18 +91,20 @@ options:
             - Number of login attempts before lockout.
             - Default is 3 attempts.
             - Allowed values are 3-20.
-            - Special values are 0- unlimited login attempts allowed..
+            - Special values are 0- unlimited login attempts allowed.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 3.
         type: int
     max_password_history_count:
         description:
             - Maximum number of passwords to be maintained in the password history.
             - Default is 4 passwords.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
     name:
         description:
-            - Name of the object.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     url:
@@ -105,7 +113,7 @@ options:
         type: str
     uuid:
         description:
-            - Unique object identifier of the object.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

@@ -50,28 +50,33 @@ options:
         description:
             - Sha1 checksum of the file.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     compressed:
         description:
             - This field indicates whether the file is gzip-compressed.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     created:
         description:
             - Timestamp of creation for the file.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     description:
         description:
             - Description of the file.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     expires_at:
         description:
             - Timestamp when the file will be no longer needed and can be removed by the system.
             - If this is set, a garbage collector process will try to remove the file after this time.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     is_federated:
         description:
@@ -79,46 +84,54 @@ options:
             - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
             - If the field is set to true, then the object is replicated across the federation.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     name:
         description:
             - Name of the file object.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     path:
         description:
             - Path to the file.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     read_only:
         description:
             - Enforce read-only on the file.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: bool
     restrict_download:
         description:
             - Flag to allow/restrict download of the file.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: bool
     size:
         description:
             - Size of the file.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: int
     tenant_ref:
         description:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Type of the file.
             - Enum options - OTHER_FILE_TYPES, IP_REPUTATION, GEO_DB, TECH_SUPPORT, HSMPACKAGES, IPAMDNSSCRIPTS, CONTROLLER_IMAGE.
             - Field introduced in 20.1.1.
-            - Allowed in basic(allowed values- other_file_types) edition, essentials(allowed values- other_file_types) edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials(allowed values- other_file_types) edition, basic(allowed values- other_file_types)
+            - edition, enterprise with cloud services edition.
         required: true
         type: str
     url:
@@ -129,11 +142,13 @@ options:
         description:
             - Uuid of the file.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     version:
         description:
             - Version of the file.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

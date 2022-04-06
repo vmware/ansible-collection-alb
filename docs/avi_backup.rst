@@ -148,6 +148,9 @@ Parameters
                                 <div style="font-size: small">
                   - It is a reference to an object of type backupconfiguration.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -168,6 +171,9 @@ Parameters
                                                 <div style="font-size: small">
                   - The file name of backup.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -185,6 +191,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Url to download the backup file.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -201,6 +210,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Url to download the backup file.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -222,6 +234,9 @@ Parameters
                                 <div style="font-size: small">
                   - It is a reference to an object of type scheduler.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -239,6 +254,9 @@ Parameters
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -255,6 +273,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Unix timestamp of when the backup file is created.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -288,7 +309,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique object identifier of the object.
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

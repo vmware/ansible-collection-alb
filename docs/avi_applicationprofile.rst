@@ -151,6 +151,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -174,6 +177,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 17.2.14, 18.1.5, 18.2.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -193,6 +199,12 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
                 </div>
                                             </td>
         </tr>
@@ -214,6 +226,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 17.2.14, 18.1.5, 18.2.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -229,7 +244,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - User defined description for the object.
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -248,6 +263,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Specifies various dns service related controls for virtual service.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -265,6 +283,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Specifies various security related controls for virtual service.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -281,6 +302,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Specifies the http application proxy profile parameters.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -303,7 +327,10 @@ Parameters
                   - Field introduced in 20.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
                 </div>
                                             </td>
         </tr>
@@ -325,6 +352,9 @@ Parameters
                                                 <div style="font-size: small">
                   - The name of the application profile.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -344,6 +374,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Not compatible with connection multiplexing.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -369,6 +402,9 @@ Parameters
                   - Field introduced in 17.2.7.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
@@ -392,7 +428,10 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
+                  - Allowed in enterprise with any value edition, essentials(allowed values- false) edition, basic(allowed values- false) edition, enterprise with
+                </div>
+                                <div style="font-size: small">
+                  - cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -418,7 +457,7 @@ Parameters
                   - Field introduced in 17.2.8, 18.1.3, 18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -437,6 +476,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Specifies the tcp application proxy profile parameters.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -453,6 +495,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -481,10 +526,10 @@ Parameters
                   - APPLICATION_PROFILE_TYPE_SSL, APPLICATION_PROFILE_TYPE_SIP.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic(allowed values- application_profile_type_l4,application_profile_type_http) edition, essentials(allowed values-
+                  - Allowed in enterprise with any value edition, essentials(allowed values- application_profile_type_l4) edition, basic(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - application_profile_type_l4) edition, enterprise edition.
+                  - application_profile_type_l4,application_profile_type_http) edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -519,6 +564,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Uuid of the application profile.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

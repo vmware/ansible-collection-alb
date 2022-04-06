@@ -50,83 +50,95 @@ options:
         description:
             - Aws access key id.
             - Field introduced in 18.2.3.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     aws_bucket_id:
         description:
             - Aws bucket.
             - Field introduced in 18.2.3.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     aws_secret_access:
         description:
             - Aws secret access key.
             - Field introduced in 18.2.3.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     backup_file_prefix:
         description:
             - Prefix of the exported configuration file.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     backup_passphrase:
         description:
             - Default passphrase for configuration export and periodic backup.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     maximum_backups_stored:
         description:
             - Rotate the backup files based on this count.
             - Allowed values are 1-20.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
     name:
         description:
             - Name of backup configuration.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     remote_directory:
         description:
             - Directory at remote destination with write permission for ssh user.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     remote_file_transfer_protocol:
         description:
             - Remote file transfer protocol type.
             - Enum options - SCP, SFTP.
             - Field introduced in 22.1.1.
-            - Allowed in basic(allowed values- scp,sftp) edition, enterprise edition.
+            - Allowed in enterprise with any value edition, basic(allowed values- scp,sftp) edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as SCP.
         type: str
     remote_hostname:
         description:
             - Remote destination.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     save_local:
         description:
             - Local backup.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: bool
     ssh_user_ref:
         description:
             - Access credentials for remote destination.
             - It is a reference to an object of type cloudconnectoruser.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     upload_to_remote_host:
         description:
             - Remote backup.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: bool
     upload_to_s3:
         description:
             - Cloud backup.
             - Field introduced in 18.2.3.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: bool
     url:
         description:
@@ -134,7 +146,7 @@ options:
         type: str
     uuid:
         description:
-            - Unique object identifier of the object.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

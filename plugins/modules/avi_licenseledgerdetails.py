@@ -50,16 +50,19 @@ options:
         description:
             - Maintain information about reservation against cookie.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     se_infos:
         description:
             - Maintain information about consumed licenses against se_uuid.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     tier_usages:
         description:
             - License usage per tier.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     url:
         description:
@@ -69,6 +72,7 @@ options:
         description:
             - Uuid for reference.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

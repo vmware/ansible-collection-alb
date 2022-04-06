@@ -50,16 +50,20 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.3.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     saas_status:
         description:
             - Saas licensing status.
             - Field introduced in 21.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: dict
     service_update:
         description:
             - Pulse license service update.
             - Field introduced in 21.1.4.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: dict
     url:
         description:
@@ -69,6 +73,7 @@ options:
         description:
             - Uuid.
             - Field introduced in 21.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
