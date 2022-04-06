@@ -148,6 +148,12 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -163,7 +169,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - User defined description for the object.
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -181,6 +187,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Configure key value in the string group.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -211,6 +220,9 @@ Parameters
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -230,6 +242,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.8.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -255,7 +270,10 @@ Parameters
                   - Field introduced in 20.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
                 </div>
                                             </td>
         </tr>
@@ -277,6 +295,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Name of the string group.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -293,6 +314,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -316,6 +340,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Enum options - SG_TYPE_STRING, SG_TYPE_KEYVAL.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as SG_TYPE_STRING.
@@ -353,6 +380,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Uuid of the string group.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

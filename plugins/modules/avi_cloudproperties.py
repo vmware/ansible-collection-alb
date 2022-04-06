@@ -50,25 +50,31 @@ options:
     cc_props:
         description:
             - Cloudconnector properties.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     cc_vtypes:
         description:
             - Cloud types supported by cloudconnector.
             - Enum options - CLOUD_NONE, CLOUD_VCENTER, CLOUD_OPENSTACK, CLOUD_AWS, CLOUD_VCA, CLOUD_APIC, CLOUD_MESOS, CLOUD_LINUXSERVER, CLOUD_DOCKER_UCP,
             - CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     hyp_props:
         description:
             - Hypervisor properties.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     info:
         description:
             - Properties specific to a cloud type.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     url:
         description:
@@ -76,7 +82,7 @@ options:
         type: str
     uuid:
         description:
-            - Unique object identifier of the object.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

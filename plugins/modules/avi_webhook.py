@@ -50,32 +50,39 @@ options:
         description:
             - Callback url for the webhook.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     description:
         description:
             - Field introduced in 17.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.6.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: list
     name:
         description:
             - The name of the webhook profile.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -85,11 +92,13 @@ options:
         description:
             - Uuid of the webhook profile.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     verification_token:
         description:
             - Verification token sent back with the callback asquery parameters.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

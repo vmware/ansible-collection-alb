@@ -48,73 +48,80 @@ options:
         type: str
     availability_zone:
         description:
-            - Availability_zone of serviceengine.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     cloud_ref:
         description:
             - It is a reference to an object of type cloud.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     container_mode:
         description:
-            - Boolean flag to set container_mode.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     container_type:
         description:
             - Enum options - CONTAINER_TYPE_BRIDGE, CONTAINER_TYPE_HOST, CONTAINER_TYPE_HOST_DPDK.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as CONTAINER_TYPE_HOST.
         type: str
     controller_created:
         description:
-            - Boolean flag to set controller_created.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     controller_ip:
         description:
-            - Controller_ip of serviceengine.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     data_vnics:
         description:
-            - List of vnic.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     enable_state:
         description:
             - Inorder to disable se set this field appropriately.
             - Enum options - SE_STATE_ENABLED, SE_STATE_DISABLED_FOR_PLACEMENT, SE_STATE_DISABLED, SE_STATE_DISABLED_FORCE.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as SE_STATE_ENABLED.
         type: str
     flavor:
         description:
-            - Flavor of serviceengine.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     host_ref:
         description:
             - It is a reference to an object of type vimgrhostruntime.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     hypervisor:
         description:
             - Enum options - DEFAULT, VMWARE_ESX, KVM, VMWARE_VSAN, XEN.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     mgmt_vnic:
         description:
-            - Vnic settings for serviceengine.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     name:
         description:
-            - Name of the object.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as VM name unknown.
         type: str
     resources:
         description:
-            - Seresources settings for serviceengine.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     se_group_ref:
         description:
             - It is a reference to an object of type serviceenginegroup.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -122,7 +129,7 @@ options:
         type: str
     uuid:
         description:
-            - Unique object identifier of the object.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

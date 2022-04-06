@@ -50,37 +50,42 @@ options:
         description:
             - Default values to be used for application signature sync.
             - Field introduced in 20.1.4.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         required: true
         type: dict
     asset_contact:
         description:
             - Information about the default contact for this controller cluster.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     case_config:
         description:
             - Default values to be used for pulse case management.
             - Field introduced in 21.1.1.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         required: true
         type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     feature_opt_in_status:
         description:
             - Information about the portal features opted in for controller.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition, enterprise edition.
         required: true
         type: dict
     ip_reputation_config:
         description:
             - Default values to be used for ip reputation sync.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: dict
     mode:
@@ -88,8 +93,8 @@ options:
             - Mode helps log collection and upload.
             - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE.
             - Field introduced in 20.1.2.
-            - Allowed in basic(allowed values- salesforce,myvmware,systest) edition, essentials(allowed values- salesforce,myvmware,systest) edition,
-            - enterprise edition.
+            - Allowed in enterprise with any value edition, essentials(allowed values- salesforce,myvmware,systest) edition, basic(allowed values-
+            - salesforce,myvmware,systest) edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as MYVMWARE.
         type: str
     polling_interval:
@@ -97,12 +102,14 @@ options:
             - Time interval in minutes.
             - Allowed values are 5-60.
             - Field introduced in 18.2.6.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10.
         type: int
     portal_url:
         description:
             - The fqdn or ip address of the customer portal.
             - Field introduced in 18.2.6.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     proactive_support_defaults:
@@ -110,18 +117,21 @@ options:
             - This field is deprecated.
             - Field deprecated in 21.1.1.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     saas_licensing_config:
         description:
             - Saas licensing configuration.
             - Field introduced in 21.1.3.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         required: true
         type: dict
     split_proxy_configuration:
         description:
             - Split proxy configuration to connect external pulse services.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     url:
         description:
@@ -132,31 +142,34 @@ options:
             - By default, pulse uses proxy added in system configuration.
             - If pulse needs to use a seperate proxy, set this flag to true and configure split proxy configuration.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     use_tls:
         description:
             - Secure the controller to pulse communication over tls.
             - Field introduced in 20.1.3.
-            - Allowed in basic edition, enterprise edition.
+            - Allowed in enterprise with any value edition, basic with any value edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     user_agent_db_config:
         description:
             - Default values to be used for user agent db service.
             - Field introduced in 21.1.1.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         required: true
         type: dict
     uuid:
         description:
             - Field introduced in 18.2.6.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     waf_config:
         description:
             - Default values to be used for pulse waf management.
             - Field introduced in 21.1.1.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in essentials with any value edition, basic with any value edition, enterprise edition, enterprise with cloud services edition.
         required: true
         type: dict
 extends_documentation_fragment:

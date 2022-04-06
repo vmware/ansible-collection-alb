@@ -50,27 +50,33 @@ options:
     app_cookie_persistence_profile:
         description:
             - Specifies the application cookie persistence profile parameters.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     description:
         description:
-            - User defined description for the object.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     hdr_persistence_profile:
         description:
             - Specifies the custom http header persistence profile parameters.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: dict
     http_cookie_persistence_profile:
         description:
             - Specifies the http cookie persistence profile parameters.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     ip_persistence_profile:
         description:
             - Specifies the client ip persistence profile parameters.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     is_federated:
         description:
@@ -78,6 +84,7 @@ options:
             - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
             - If the field is set to true, then the object is replicated across the federation.
             - Field introduced in 17.1.3.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     labels:
@@ -87,16 +94,19 @@ options:
             - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: list
     name:
         description:
             - A user-friendly name for the persistence profile.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     persistence_type:
@@ -104,8 +114,8 @@ options:
             - Method used to persist clients to the same server for a duration of time or a session.
             - Enum options - PERSISTENCE_TYPE_CLIENT_IP_ADDRESS, PERSISTENCE_TYPE_HTTP_COOKIE, PERSISTENCE_TYPE_TLS, PERSISTENCE_TYPE_CLIENT_IPV6_ADDRESS,
             - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE.
-            - Allowed in basic(allowed values- persistence_type_client_ip_address,persistence_type_http_cookie) edition, essentials(allowed values-
-            - persistence_type_client_ip_address,persistence_type_http_cookie) edition, enterprise edition.
+            - Allowed in enterprise with any value edition, essentials(allowed values- persistence_type_client_ip_address,persistence_type_http_cookie)
+            - edition, basic(allowed values- persistence_type_client_ip_address,persistence_type_http_cookie) edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as PERSISTENCE_TYPE_CLIENT_IP_ADDRESS.
         required: true
         type: str
@@ -113,13 +123,14 @@ options:
         description:
             - Specifies behavior when a persistent server has been marked down by a health monitor.
             - Enum options - HM_DOWN_PICK_NEW_SERVER, HM_DOWN_ABORT_CONNECTION, HM_DOWN_CONTINUE_PERSISTENT_SERVER.
-            - Allowed in basic(allowed values- hm_down_pick_new_server) edition, essentials(allowed values- hm_down_pick_new_server) edition, enterprise
-            - edition.
+            - Allowed in enterprise with any value edition, essentials(allowed values- hm_down_pick_new_server) edition, basic(allowed values-
+            - hm_down_pick_new_server) edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as HM_DOWN_PICK_NEW_SERVER.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -128,6 +139,7 @@ options:
     uuid:
         description:
             - Uuid of the persistence profile.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

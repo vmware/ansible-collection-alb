@@ -50,21 +50,26 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - edition.
         type: dict
     controller_limits:
         description:
             - System limits for the entire controller cluster.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     controller_sizes:
         description:
             - Possible controller sizes.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     serviceengine_limits:
         description:
             - System limits that apply to a serviceengine.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: dict
     url:
         description:
@@ -74,6 +79,7 @@ options:
         description:
             - Uuid for the system limits object.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

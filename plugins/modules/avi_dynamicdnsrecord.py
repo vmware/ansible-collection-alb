@@ -53,68 +53,80 @@ options:
             - Default is round-robin.
             - Enum options - DNS_RECORD_RESPONSE_ROUND_ROBIN, DNS_RECORD_RESPONSE_CONSISTENT_HASH.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as DNS_RECORD_RESPONSE_ROUND_ROBIN.
         type: str
     cname:
         description:
             - Canonical name in cname record.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: dict
     delegated:
         description:
             - Configured fqdns are delegated domains (i.e.
             - They represent a zone cut).
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     description:
         description:
             - Details of dns record.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     dns_vs_uuid:
         description:
             - Uuid of the dns vs.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     fqdn:
         description:
             - Fully qualified domain name.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     ip6_address:
         description:
             - Ipv6 address in aaaa record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: list
     ip_address:
         description:
             - Ip address in a record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: list
     metadata:
         description:
             - Internal metadata for the dns record.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     mx_records:
         description:
             - Mx record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: list
     name:
         description:
             - Dynamicdnsrecord name, needed for a top level uuid protobuf, for display in shell.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     ns:
         description:
             - Name server information in ns record.
             - Field introduced in 20.1.3.
             - Maximum of 13 items allowed.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: list
     num_records_in_response:
         description:
@@ -123,29 +135,34 @@ options:
             - Allowed values are 0-20.
             - Special values are 0- return all records.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: int
     service_locators:
         description:
             - Service locator info in srv record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: list
     tenant_ref:
         description:
             - Tenant_uuid from dns vs's tenant_uuid.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     ttl:
         description:
             - Time to live for this dns record.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: int
     txt_records:
         description:
             - Text record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: list
     type:
         description:
@@ -154,6 +171,7 @@ options:
             - DNS_RECORD_TXT, DNS_RECORD_RP, DNS_RECORD_DNSKEY, DNS_RECORD_AAAA, DNS_RECORD_SRV, DNS_RECORD_OPT, DNS_RECORD_RRSIG, DNS_RECORD_AXFR,
             - DNS_RECORD_ANY.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -163,6 +181,7 @@ options:
         description:
             - Uuid of the dns record.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
         type: str
     wildcard_match:
         description:
@@ -170,6 +189,7 @@ options:
             - request.
             - Default is false.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
 extends_documentation_fragment:

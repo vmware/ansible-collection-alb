@@ -145,6 +145,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Specifies the application cookie persistence profile parameters.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -165,6 +168,12 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -180,7 +189,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - User defined description for the object.
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -199,6 +208,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Specifies the custom http header persistence profile parameters.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -216,6 +228,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Specifies the http cookie persistence profile parameters.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -232,6 +247,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Specifies the client ip persistence profile parameters.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -258,6 +276,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -291,6 +312,9 @@ Parameters
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -312,7 +336,10 @@ Parameters
                   - Field introduced in 20.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
                 </div>
                                             </td>
         </tr>
@@ -333,6 +360,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - A user-friendly name for the persistence profile.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -361,10 +391,10 @@ Parameters
                   - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic(allowed values- persistence_type_client_ip_address,persistence_type_http_cookie) edition, essentials(allowed values-
+                  - Allowed in enterprise with any value edition, essentials(allowed values- persistence_type_client_ip_address,persistence_type_http_cookie)
                 </div>
                                 <div style="font-size: small">
-                  - persistence_type_client_ip_address,persistence_type_http_cookie) edition, enterprise edition.
+                  - edition, basic(allowed values- persistence_type_client_ip_address,persistence_type_http_cookie) edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as PERSISTENCE_TYPE_CLIENT_IP_ADDRESS.
@@ -390,10 +420,10 @@ Parameters
                   - Enum options - HM_DOWN_PICK_NEW_SERVER, HM_DOWN_ABORT_CONNECTION, HM_DOWN_CONTINUE_PERSISTENT_SERVER.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic(allowed values- hm_down_pick_new_server) edition, essentials(allowed values- hm_down_pick_new_server) edition, enterprise
+                  - Allowed in enterprise with any value edition, essentials(allowed values- hm_down_pick_new_server) edition, basic(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - edition.
+                  - hm_down_pick_new_server) edition, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as HM_DOWN_PICK_NEW_SERVER.
@@ -414,6 +444,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -448,6 +481,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Uuid of the persistence profile.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

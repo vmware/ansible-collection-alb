@@ -270,6 +270,3 @@ avi_config:
 
 **Notes**
 Please use Python >= 3.8 if you are using avi_serviceenginegroup module as it has more than 255 arguments
-
-## Additional Examples
-Please checkout additional examples at https://github.com/avinetworks/devops/tree/master/ansible. More examples would be added to this repository soon.

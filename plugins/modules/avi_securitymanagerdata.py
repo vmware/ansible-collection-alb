@@ -50,17 +50,20 @@ options:
         description:
             - Information about various applications.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: list
     name:
         description:
             - Virtualservice name.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -70,6 +73,7 @@ options:
         description:
             - Virtualservice uuid.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
