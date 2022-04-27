@@ -286,6 +286,7 @@
     vcenter_datastores_include: "{{ item.vcenter_datastores_include | default(omit) }}"
     vcenter_folder: "{{ item.vcenter_folder | default(omit) }}"
     vcenter_hosts: "{{ item.vcenter_hosts | default(omit) }}"
+    vcenter_parking_vnic_pg: "{{ item.vcenter_parking_vnic_pg | default(omit) }}"
     vcenters: "{{ item.vcenters | default(omit) }}"
     vcpus_per_se: "{{ item.vcpus_per_se | default(omit) }}"
     vip_asg: "{{ item.vip_asg | default(omit) }}"

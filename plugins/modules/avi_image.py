@@ -50,63 +50,63 @@ options:
         description:
             - This field describes the cloud info specific to the base image.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
     controller_info:
         description:
             - Controller package details.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     controller_patch_name:
         description:
             - Mandatory controller patch name that is applied along with this base image.
             - Field introduced in 18.2.10, 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     controller_patch_ref:
         description:
             - It references the controller-patch associated with the uber image.
             - It is a reference to an object of type image.
             - Field introduced in 18.2.8, 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     duration:
         description:
             - Time taken to upload the image in seconds.
             - Field introduced in 21.1.3.
             - Unit is sec.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: int
     end_time:
         description:
             - Image upload end time.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     events:
         description:
             - Image events for image upload operation.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     img_state:
         description:
             - Status of the image.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     migrations:
         description:
             - This field describes the api migration related information.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:
         description:
             - Name of the image.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     progress:
@@ -115,33 +115,33 @@ options:
             - Allowed values are 0-100.
             - Field introduced in 21.1.3.
             - Unit is percent.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     se_info:
         description:
             - Se package details.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     se_patch_name:
         description:
             - Mandatory serviceengine patch name that is applied along with this base image.
             - Field introduced in 18.2.10, 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     se_patch_ref:
         description:
             - It references the service engine patch associated with the uber image.
             - It is a reference to an object of type image.
             - Field introduced in 18.2.8, 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     start_time:
         description:
             - Image upload start time.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     status:
         description:
@@ -151,13 +151,13 @@ options:
             - SYSERR_NOT_UPGRADING, SYSERR_PENDING, SYSERR_EVENT_GEN_FAILURE, SYSERR_CONFIG_PARAM_MISSING, SYSERR_RANGE, SYSERR_BAD_REQUEST...
             - Field deprecated in 21.1.3.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     tasks_completed:
         description:
             - Completed set of tasks for image upload.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     tenant_ref:
@@ -165,13 +165,13 @@ options:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     total_tasks:
         description:
             - Total number of tasks for image upload.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     type:
@@ -179,13 +179,13 @@ options:
             - Type of the image patch/system.
             - Enum options - IMAGE_TYPE_PATCH, IMAGE_TYPE_SYSTEM, IMAGE_TYPE_MUST_CHECK.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     uber_bundle:
         description:
             - Status to check if the image is an uber bundle.
             - Field introduced in 18.2.8, 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     url:
@@ -196,7 +196,7 @@ options:
         description:
             - Uuid of the image.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

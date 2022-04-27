@@ -50,47 +50,47 @@ options:
         description:
             - The command to be triggered by the albservicesjob.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     end_time:
         description:
             - The time at which the albservicesjob is ended.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     name:
         description:
             - The name of the albservicesjob.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: str
     pulse_job_id:
         description:
             - A unique identifier for this job entry on the pulse portal.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     start_time:
         description:
             - The time at which the albservicesjob is started.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     status:
         description:
             - The status of the albservicesjob.
             - Enum options - UNDETERMINED, PENDING, IN_PROGRESS, COMPLETED, FAILED.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as PENDING.
         type: str
     tenant_ref:
@@ -98,7 +98,7 @@ options:
             - The unique identifier of the tenant to which this albservicesjob belongs.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -108,7 +108,7 @@ options:
         description:
             - A unique identifier for this albservicesjob entry.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

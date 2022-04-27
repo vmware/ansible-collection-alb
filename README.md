@@ -78,6 +78,7 @@ Name | Description
 [vmware.alb.avi_api_version](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_api_version.rst)|Module to create update or delete ApiVersion
 [vmware.alb.avi_applicationpersistenceprofile](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_applicationpersistenceprofile.rst)|Module to create update or delete ApplicationPersistenceProfile
 [vmware.alb.avi_applicationprofile](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_applicationprofile.rst)|Module to create update or delete ApplicationProfile
+[vmware.alb.avi_authmappingprofile](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_authmappingprofile.rst)|Module to create update or delete AuthMappingProfile
 [vmware.alb.avi_authprofile](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_authprofile.rst)|Module to create update or delete AuthProfile
 [vmware.alb.avi_autoscalelaunchconfig](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_autoscalelaunchconfig.rst)|Module to create update or delete AutoScaleLaunchConfig
 [vmware.alb.avi_availabilityzone](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_availabilityzone.rst)|Module to create update or delete AvailabilityZone

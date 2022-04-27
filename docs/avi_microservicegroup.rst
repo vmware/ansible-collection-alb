@@ -149,7 +149,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
                 </div>
                                 <div style="font-size: small">
                   - edition.
@@ -172,7 +172,7 @@ Parameters
                   - Creator name.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -189,7 +189,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -212,7 +212,7 @@ Parameters
                   - Name of the microservice group.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -235,7 +235,7 @@ Parameters
                   - It is a reference to an object of type microservice.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -255,7 +255,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -292,7 +292,7 @@ Parameters
                   - Uuid of the microservice group.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

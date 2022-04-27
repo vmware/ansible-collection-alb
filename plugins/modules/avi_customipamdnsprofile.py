@@ -50,34 +50,34 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     name:
         description:
             - Name of the custom ipam dns profile.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     script_params:
         description:
             - Parameters that are always passed to the ipam/dns script.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
     script_uri:
         description:
             - Script uri of form controller //ipamdnsscripts/<file-name>, file-name must have a .py extension and conform to pep8 naming convention.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -86,7 +86,7 @@ options:
     uuid:
         description:
             - Field introduced in 17.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

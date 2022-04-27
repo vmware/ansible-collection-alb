@@ -146,7 +146,7 @@ Parameters
                   - Field deprecated in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -166,7 +166,7 @@ Parameters
                   - Field deprecated in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials(allowed values- false) edition, basic(allowed values- false) edition, enterprise with
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
                 </div>
                                 <div style="font-size: small">
                   - cloud services edition.
@@ -198,7 +198,7 @@ Parameters
                   - Unit is seconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials(allowed values- 60) edition, basic(allowed values- 60) edition, enterprise with cloud
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- 60), basic edition(allowed values- 60), enterprise with cloud
                 </div>
                                 <div style="font-size: small">
                   - services edition.
@@ -221,7 +221,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -241,7 +241,7 @@ Parameters
                   - Field introduced in 17.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -258,7 +258,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -281,7 +281,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
                 </div>
                                 <div style="font-size: small">
                   - edition.
@@ -307,7 +307,7 @@ Parameters
                   - Field introduced in 17.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -327,7 +327,7 @@ Parameters
                   - Select the ip address management scheme.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -353,7 +353,7 @@ Parameters
                   - It is a reference to an object of type ipamdnsproviderprofile.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -382,7 +382,7 @@ Parameters
                   - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials(allowed values- false) edition, basic(allowed values- false) edition, enterprise with
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
                 </div>
                                 <div style="font-size: small">
                   - cloud services edition.
@@ -414,7 +414,7 @@ Parameters
                   - Maximum of 1 items allowed.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -431,7 +431,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -454,7 +454,7 @@ Parameters
                   - It is a reference to an object of type ipamdnsproviderprofile.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -486,7 +486,7 @@ Parameters
                   - It is a reference to an object of type ipamdnsproviderprofile.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -509,7 +509,7 @@ Parameters
                   - Field introduced in 18.2.9, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -532,7 +532,7 @@ Parameters
                   - Use static routes for vip side network resolution during virtualservice placement.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -558,7 +558,7 @@ Parameters
                   - Field introduced in 18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -581,7 +581,7 @@ Parameters
                   - Field introduced in 18.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -607,7 +607,7 @@ Parameters
                   - It is a reference to an object of type ipamdnsproviderprofile.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -636,7 +636,7 @@ Parameters
                   - Field introduced in 17.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -662,7 +662,7 @@ Parameters
                   - Enum options - LIC_BACKEND_SERVERS, LIC_SOCKETS, LIC_CORES, LIC_HOSTS, LIC_SE_BANDWIDTH, LIC_METERED_SE_BANDWIDTH.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -679,7 +679,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -702,7 +702,7 @@ Parameters
                   - Field introduced in 20.1.7,21.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -728,7 +728,7 @@ Parameters
                   - Field introduced in 22.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
                 </div>
                                 <div style="font-size: small">
                   - edition.
@@ -751,7 +751,36 @@ Parameters
                   - Field deprecated in 18.2.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>metrics_polling_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Cloud metrics collector polling interval in seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 300.
                 </div>
                                             </td>
         </tr>
@@ -774,7 +803,7 @@ Parameters
                   - Unit is bytes.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1500.
@@ -797,7 +826,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -823,7 +852,7 @@ Parameters
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -846,7 +875,7 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -869,7 +898,7 @@ Parameters
                   - This prefix can be overridden by the se-group template.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -886,7 +915,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -906,7 +935,7 @@ Parameters
                   - Field deprecated in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -926,7 +955,7 @@ Parameters
                   - Prefer static routes over interface routes during virtualservice placement.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -946,7 +975,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -963,7 +992,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -989,7 +1018,7 @@ Parameters
                   - Field introduced in 18.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -1012,7 +1041,7 @@ Parameters
                   - Field introduced in 17.1.12.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials(allowed values- true) edition, basic(allowed values- true) edition, enterprise with
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- true), basic edition(allowed values- true), enterprise with
                 </div>
                                 <div style="font-size: small">
                   - cloud services edition.
@@ -1038,7 +1067,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -1072,7 +1101,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -1089,7 +1118,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -1106,7 +1135,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -1129,7 +1158,7 @@ Parameters
                   - Field introduced in 20.1.5, 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1161,10 +1190,10 @@ Parameters
                   - CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, essentials(allowed values- cloud_none,cloud_vcenter) edition, basic(allowed values-
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- cloud_none,cloud_vcenter), basic edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - cloud_none,cloud_nsxt) edition, enterprise with cloud services edition.
+                  - cloud_none,cloud_nsxt), enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as CLOUD_NONE.

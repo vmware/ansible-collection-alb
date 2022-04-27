@@ -149,7 +149,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -175,7 +175,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -198,7 +198,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -224,7 +224,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -264,7 +264,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

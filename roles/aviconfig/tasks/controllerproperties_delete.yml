@@ -73,6 +73,7 @@
     se_from_marketplace: "{{ item.se_from_marketplace | default(omit) }}"
     se_offline_del: "{{ item.se_offline_del | default(omit) }}"
     se_spawn_retry_interval: "{{ item.se_spawn_retry_interval | default(omit) }}"
+    se_upgrade_flow_cleanup_timeout: "{{ item.se_upgrade_flow_cleanup_timeout | default(omit) }}"
     se_vnic_cooldown: "{{ item.se_vnic_cooldown | default(omit) }}"
     se_vnic_gc_wait_time: "{{ item.se_vnic_gc_wait_time | default(omit) }}"
     secure_channel_cleanup_timeout: "{{ item.secure_channel_cleanup_timeout | default(omit) }}"

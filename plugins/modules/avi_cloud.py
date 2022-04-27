@@ -50,12 +50,12 @@ options:
     apic_configuration:
         description:
             - Field deprecated in 21.1.1.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     apic_mode:
         description:
             - Field deprecated in 21.1.1.
-            - Allowed in enterprise with any value edition, essentials(allowed values- false) edition, basic(allowed values- false) edition, enterprise with
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
             - cloud services edition.
         type: bool
     autoscale_polling_interval:
@@ -64,47 +64,47 @@ options:
             - Allowed values are 60-3600.
             - Field introduced in 18.2.2.
             - Unit is seconds.
-            - Allowed in enterprise with any value edition, essentials(allowed values- 60) edition, basic(allowed values- 60) edition, enterprise with cloud
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- 60), basic edition(allowed values- 60), enterprise with cloud
             - services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
     aws_configuration:
         description:
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     azure_configuration:
         description:
             - Field introduced in 17.2.1.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     cloudstack_configuration:
         description:
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     custom_tags:
         description:
             - Custom tags for all avi created resources in the cloud infrastructure.
             - Field introduced in 17.1.5.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
     dhcp_enabled:
         description:
             - Select the ip address management scheme.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     dns_provider_ref:
         description:
             - Dns profile for the cloud.
             - It is a reference to an object of type ipamdnsproviderprofile.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     dns_resolution_on_se:
         description:
@@ -112,7 +112,7 @@ options:
             - When this is set, pool member fqdns are instead resolved on service engines in this cloud.
             - This is useful in scenarios where pool member fqdns can only be resolved from service engines and not from the controller.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise with any value edition, essentials(allowed values- false) edition, basic(allowed values- false) edition, enterprise with
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
             - cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -121,17 +121,17 @@ options:
             - Dns resolver for the cloud.
             - Field introduced in 20.1.5.
             - Maximum of 1 items allowed.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     docker_configuration:
         description:
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     east_west_dns_provider_ref:
         description:
             - Dns profile for east-west services.
             - It is a reference to an object of type ipamdnsproviderprofile.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     east_west_ipam_provider_ref:
         description:
@@ -140,39 +140,39 @@ options:
             - For example in aws and gcp, 169.254.0.0/16 is used for storing instance metadata.
             - Hence, it should not be used in this profile.
             - It is a reference to an object of type ipamdnsproviderprofile.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     enable_vip_on_all_interfaces:
         description:
             - Enable vip on all data interfaces for the cloud.
             - Field introduced in 18.2.9, 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     enable_vip_static_routes:
         description:
             - Use static routes for vip side network resolution during virtualservice placement.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     gcp_configuration:
         description:
             - Google cloud platform configuration.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     ip6_autocfg_enabled:
         description:
             - Enable ipv6 auto configuration.
             - Field introduced in 18.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     ipam_provider_ref:
         description:
             - Ipam profile for the cloud.
             - It is a reference to an object of type ipamdnsproviderprofile.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     license_tier:
         description:
@@ -180,48 +180,56 @@ options:
             - This field by default inherits the value from system configuration.
             - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, ENTERPRISE_WITH_CLOUD_SERVICES.
             - Field introduced in 17.2.5.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     license_type:
         description:
             - If no license type is specified then default license enforcement for the cloud type is chosen.
             - The default mappings are container cloud is max ses, openstack and vmware is cores and linux it is sockets.
             - Enum options - LIC_BACKEND_SERVERS, LIC_SOCKETS, LIC_CORES, LIC_HOSTS, LIC_SE_BANDWIDTH, LIC_METERED_SE_BANDWIDTH.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     linuxserver_configuration:
         description:
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     maintenance_mode:
         description:
             - Cloud is in maintenance mode.
             - Field introduced in 20.1.7,21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
     mesos_configuration:
         description:
             - Field deprecated in 18.2.2.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
+    metrics_polling_interval:
+        description:
+            - Cloud metrics collector polling interval in seconds.
+            - Field introduced in 22.1.1.
+            - Unit is seconds.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 300.
+        type: int
     mtu:
         description:
             - Mtu setting for the cloud.
             - Unit is bytes.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1500.
         type: int
     name:
         description:
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     nsx_configuration:
@@ -229,62 +237,62 @@ options:
             - Configuration parameters for nsx manager.
             - Field deprecated in 21.1.1.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     nsxt_configuration:
         description:
             - Nsx-t cloud platform configuration.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
         type: dict
     obj_name_prefix:
         description:
             - Default prefix for all automatically created objects in this cloud.
             - This prefix can be overridden by the se-group template.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     openstack_configuration:
         description:
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     oshiftk8s_configuration:
         description:
             - Field deprecated in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     prefer_static_routes:
         description:
             - Prefer static routes over interface routes during virtualservice placement.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     proxy_configuration:
         description:
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     rancher_configuration:
         description:
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     se_group_template_ref:
         description:
             - The service engine group to use as template.
             - It is a reference to an object of type serviceenginegroup.
             - Field introduced in 18.2.5.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     state_based_dns_registration:
         description:
             - Dns records for vips are added/deleted based on the operational state of the vips.
             - Field introduced in 17.1.12.
-            - Allowed in enterprise with any value edition, essentials(allowed values- true) edition, basic(allowed values- true) edition, enterprise with
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- true), basic edition(allowed values- true), enterprise with
             - cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -292,21 +300,21 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     vca_configuration:
         description:
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     vcenter_configuration:
         description:
-            - Allowed in enterprise with any value edition, essentials edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, enterprise with cloud services edition.
         type: dict
     vmc_deployment:
         description:
             - This deployment is vmware on aws cloud.
             - Field introduced in 20.1.5, 21.1.1.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     vtype:
@@ -314,8 +322,8 @@ options:
             - Cloud type.
             - Enum options - CLOUD_NONE, CLOUD_VCENTER, CLOUD_OPENSTACK, CLOUD_AWS, CLOUD_VCA, CLOUD_APIC, CLOUD_MESOS, CLOUD_LINUXSERVER, CLOUD_DOCKER_UCP,
             - CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT.
-            - Allowed in enterprise with any value edition, essentials(allowed values- cloud_none,cloud_vcenter) edition, basic(allowed values-
-            - cloud_none,cloud_nsxt) edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- cloud_none,cloud_vcenter), basic edition(allowed values-
+            - cloud_none,cloud_nsxt), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as CLOUD_NONE.
         required: true
         type: str
@@ -404,6 +412,7 @@ def main():
         maintenance_mode=dict(type='bool',),
         markers=dict(type='list',),
         mesos_configuration=dict(type='dict',),
+        metrics_polling_interval=dict(type='int',),
         mtu=dict(type='int',),
         name=dict(type='str', required=True),
         nsx_configuration=dict(type='dict',),
