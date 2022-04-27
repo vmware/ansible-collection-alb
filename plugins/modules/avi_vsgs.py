@@ -50,46 +50,46 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     geodb_uuid:
         description:
             - Gslb geodb being associated using this object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     gs_uuid:
         description:
             - Gslb service being associated using this object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     gslb_uuid:
         description:
             - Gslb being associated using this object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     name:
         description:
             - Name of the vs-gs association object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - Tenant.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Type of the vs-gs association object.
             - Enum options - VSGS_TYPE_GSLB, VSGS_TYPE_GS, VSGS_TYPE_GEO_DB.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -99,13 +99,13 @@ options:
         description:
             - Uuid of the vs-gs association object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     vs_uuid:
         description:
             - Virtual service being associated using this object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

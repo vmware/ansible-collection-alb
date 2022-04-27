@@ -52,13 +52,13 @@ options:
             - The federated application persistence associated with gslbservice site persistence functionality.
             - It is a reference to an object of type applicationpersistenceprofile.
             - Field introduced in 17.2.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     controller_health_status_enabled:
@@ -66,44 +66,44 @@ options:
             - Gs member's overall health status is derived based on a combination of controller and datapath health-status inputs.
             - Note that the datapath status is determined by the association of health monitor profiles.
             - Only the controller provided status is determined through this configuration.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     created_by:
         description:
             - Creator name.
             - Field introduced in 17.1.2.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     description:
         description:
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     domain_names:
         description:
             - Fully qualified domain name of the gslb service.
             - Minimum of 1 items required.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
     down_response:
         description:
             - Response to the client query when the gslb service is down.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     enabled:
         description:
             - Enable or disable the gslb service.
             - If the gslb service is enabled, then the vips are sent in the dns responses based on reachability and configured algorithm.
             - If the gslb service is disabled, then the vips are no longer available in the dns response.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     groups:
         description:
             - Select list of pools belonging to this gslb service.
             - Minimum of 1 items required.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
     health_monitor_refs:
@@ -112,7 +112,7 @@ options:
             - Active monitors generate synthetic traffic from dns service engine and to mark a vs up or down based on the response.
             - It is a reference to an object of type healthmonitor.
             - Maximum of 6 items allowed.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
     health_monitor_scope:
         description:
@@ -120,21 +120,21 @@ options:
             - This operational mode is useful to reduce the number of health monitor probes in case of a hybrid scenario.
             - In such a case, avi members can have controller derived status while non-avi members can be probed by via health monitor probes in dataplane.
             - Enum options - GSLB_SERVICE_HEALTH_MONITOR_ALL_MEMBERS, GSLB_SERVICE_HEALTH_MONITOR_ONLY_NON_AVI_MEMBERS.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as GSLB_SERVICE_HEALTH_MONITOR_ALL_MEMBERS.
         type: str
     hm_off:
         description:
             - This field is an internal field and is used in se.
             - Field introduced in 18.2.2.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: bool
     is_federated:
         description:
             - This field indicates that this object is replicated across gslb federation.
             - Field introduced in 17.1.3.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     labels:
@@ -144,13 +144,13 @@ options:
             - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
     min_members:
@@ -159,13 +159,13 @@ options:
             - Allowed values are 1-65535.
             - Special values are 0 - disable.
             - Field introduced in 17.2.4.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     name:
         description:
             - Name for the gslb service.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     num_dns_ip:
@@ -174,41 +174,41 @@ options:
             - Enter 0 to return all ip addresses.
             - Allowed values are 1-20.
             - Special values are 0- return all ip addresses.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: int
     pool_algorithm:
         description:
             - The load balancing algorithm will pick a gslb pool within the gslb service list of available pools.
             - Enum options - GSLB_SERVICE_ALGORITHM_PRIORITY, GSLB_SERVICE_ALGORITHM_GEO.
             - Field introduced in 17.2.3.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as GSLB_SERVICE_ALGORITHM_PRIORITY.
         type: str
     resolve_cname:
         description:
             - This field indicates that for a cname query, respond with resolved cnames in the additional section with a records.
             - Field introduced in 18.2.5.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     site_persistence_enabled:
         description:
             - Enable site-persistence for the gslbservice.
             - Field introduced in 17.2.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     ttl:
         description:
             - Ttl value (in seconds) for records served for this gslb service by the dns service.
             - Allowed values are 0-86400.
             - Unit is sec.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: int
     url:
         description:
@@ -219,13 +219,13 @@ options:
             - Use the client ip subnet from the edns option as source ipaddress for client geo-location and consistent hash algorithm.
             - Default is true.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     uuid:
         description:
             - Uuid of the gslb service.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     wildcard_match:
         description:
@@ -233,7 +233,7 @@ options:
             - request.
             - Default is false.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
 extends_documentation_fragment:

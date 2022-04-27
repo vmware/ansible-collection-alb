@@ -50,14 +50,14 @@ options:
         description:
             - Available application names and the ruleset version, when the rules for an application changed the last time.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     last_check_for_updates_error:
@@ -65,7 +65,7 @@ options:
             - The error message indicating why the last update check failed.
             - Field deprecated in 20.1.3.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: str
     last_failed_check_for_updates:
@@ -73,7 +73,7 @@ options:
             - The last time that we checked for updates but did not get a result because of an error.
             - Field deprecated in 20.1.3.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     last_successful_check_for_updates:
@@ -81,41 +81,41 @@ options:
             - The last time that we checked for updates sucessfully.
             - Field deprecated in 20.1.3.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     name:
         description:
             - Name of application specific ruleset provider.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     ruleset_version:
         description:
             - Version of signatures.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: str
     service_status:
         description:
             - If this object is managed by the application signatures update  service, this field contain the status of this syncronization.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     signatures:
         description:
             - The waf rules.
             - Not visible in the api.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -124,7 +124,7 @@ options:
     uuid:
         description:
             - Field introduced in 20.1.1.
-            - Allowed in enterprise with any value edition, essentials edition, basic edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

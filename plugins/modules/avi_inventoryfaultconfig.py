@@ -50,33 +50,33 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise with any value edition, essentials with any value edition, basic with any value edition, enterprise with cloud services
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     controller_faults:
         description:
             - Configure controller faults.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     name:
         description:
             - Name.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     serviceengine_faults:
         description:
             - Configure serviceengine faults.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - Tenant.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -86,13 +86,13 @@ options:
         description:
             - Uuid auto generated.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     virtualservice_faults:
         description:
             - Configure virtualservice faults.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise with any value edition, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi

@@ -131,10 +131,10 @@ plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemlimits.py import-3.8!skip
 plugins/modules/avi_licenseledgerdetails.py validate-modules:missing-gplv3-license
 plugins/modules/avi_licenseledgerdetails.py import-3.8!skip
-plugins/modules/avi_controllerproperties.py validate-modules:missing-gplv3-license
-plugins/modules/avi_controllerproperties.py import-3.8!skip
 plugins/modules/avi_useraccountprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_useraccountprofile.py import-3.8!skip
+plugins/modules/avi_controllerproperties.py validate-modules:missing-gplv3-license
+plugins/modules/avi_controllerproperties.py import-3.8!skip
 plugins/modules/avi_cloudproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cloudproperties.py import-3.8!skip
 plugins/modules/avi_licensestatus.py validate-modules:missing-gplv3-license
@@ -177,8 +177,6 @@ plugins/modules/avi_protocolparser.py validate-modules:missing-gplv3-license
 plugins/modules/avi_protocolparser.py import-3.8!skip
 plugins/modules/avi_jwtserverprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_jwtserverprofile.py import-3.8!skip
-plugins/modules/avi_wafprofile.py validate-modules:missing-gplv3-license
-plugins/modules/avi_wafprofile.py import-3.8!skip
 plugins/modules/avi_wafapplicationsignatureprovider.py validate-modules:missing-gplv3-license
 plugins/modules/avi_wafapplicationsignatureprovider.py import-3.8!skip
 plugins/modules/avi_errorpagebody.py validate-modules:missing-gplv3-license
@@ -203,10 +201,10 @@ plugins/modules/avi_controllerportalregistration.py validate-modules:missing-gpl
 plugins/modules/avi_controllerportalregistration.py import-3.8!skip
 plugins/modules/avi_dynamicdnsrecord.py validate-modules:missing-gplv3-license
 plugins/modules/avi_dynamicdnsrecord.py import-3.8!skip
-plugins/modules/avi_controllersite.py validate-modules:missing-gplv3-license
-plugins/modules/avi_controllersite.py import-3.8!skip
 plugins/modules/avi_role.py validate-modules:missing-gplv3-license
 plugins/modules/avi_role.py import-3.8!skip
+plugins/modules/avi_controllersite.py validate-modules:missing-gplv3-license
+plugins/modules/avi_controllersite.py import-3.8!skip
 plugins/modules/avi_inventoryfaultconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_inventoryfaultconfig.py import-3.8!skip
 plugins/modules/avi_albservicesfileupload.py validate-modules:missing-gplv3-license
@@ -237,6 +235,8 @@ plugins/modules/avi_analyticsprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_analyticsprofile.py import-3.8!skip
 plugins/modules/avi_wafpolicypsmgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_wafpolicypsmgroup.py import-3.8!skip
+plugins/modules/avi_wafprofile.py validate-modules:missing-gplv3-license
+plugins/modules/avi_wafprofile.py import-3.8!skip
 plugins/modules/avi_botmapping.py validate-modules:missing-gplv3-license
 plugins/modules/avi_botmapping.py import-3.8!skip
 plugins/modules/avi_natpolicy.py validate-modules:missing-gplv3-license
@@ -261,6 +261,8 @@ plugins/modules/avi_upgradestatusinfo.py validate-modules:missing-gplv3-license
 plugins/modules/avi_upgradestatusinfo.py import-3.8!skip
 plugins/modules/avi_upgradestatussummary.py validate-modules:missing-gplv3-license
 plugins/modules/avi_upgradestatussummary.py import-3.8!skip
+plugins/modules/avi_authmappingprofile.py validate-modules:missing-gplv3-license
+plugins/modules/avi_authmappingprofile.py import-3.8!skip
 plugins/modules/avi_scheduler.py validate-modules:missing-gplv3-license
 plugins/modules/avi_scheduler.py import-3.8!skip
 plugins/modules/avi_sslkeyandcertificate.py validate-modules:missing-gplv3-license

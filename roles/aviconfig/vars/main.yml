@@ -6,8 +6,8 @@ avi_resource_types:
   - albservicesconfig
   - systemlimits
   - licenseledgerdetails
-  - controllerproperties
   - useraccountprofile
+  - controllerproperties
   - cloudproperties
   - licensestatus
   - seproperties
@@ -29,7 +29,6 @@ avi_resource_types:
   - securitypolicy
   - protocolparser
   - jwtserverprofile
-  - wafprofile
   - wafapplicationsignatureprovider
   - errorpagebody
   - testsedatastorelevel3
@@ -42,8 +41,8 @@ avi_resource_types:
   - image
   - controllerportalregistration
   - dynamicdnsrecord
-  - controllersite
   - role
+  - controllersite
   - inventoryfaultconfig
   - albservicesfileupload
   - webhook
@@ -59,6 +58,7 @@ avi_resource_types:
   - ipamdnsproviderprofile
   - analyticsprofile
   - wafpolicypsmgroup
+  - wafprofile
   - botmapping
   - natpolicy
   - applicationprofile
@@ -71,6 +71,7 @@ avi_resource_types:
   - statediffsnapshot
   - upgradestatusinfo
   - upgradestatussummary
+  - authmappingprofile
   - scheduler
   - sslkeyandcertificate
   - networksecuritypolicy

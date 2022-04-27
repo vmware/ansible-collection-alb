@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_controllerportalregistration
+module: avi_authmappingprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of ControllerPortalRegistration Avi RESTful Object
+short_description: Module for setup of AuthMappingProfile Avi RESTful Object
 description:
-    - This module is used to configure ControllerPortalRegistration object
+    - This module is used to configure AuthMappingProfile object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,27 +46,48 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    asset:
+    configpb_attributes:
         description:
-            - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Protobuf versioning for config pbs.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
+    description:
+        description:
+            - Description for the authmappingprofile.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
+    mapping_rules:
+        description:
+            - Rules list for tenant or role mapping.
+            - Field introduced in 22.1.1.
+            - Minimum of 1 items required.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        required: true
+        type: list
     name:
         description:
-            - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Name of the authmappingprofile.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: str
-    portal_auth:
-        description:
-            - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
     tenant_ref:
         description:
+            - Description for the tenant of authmappingprofile.
             - It is a reference to an object of type tenant.
-            - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
+    type:
+        description:
+            - Type of the auth profile for which these rules can be linked.
+            - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        required: true
         type: str
     url:
         description:
@@ -74,8 +95,9 @@ options:
         type: str
     uuid:
         description:
-            - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Uuid of the authmappingprofile.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -90,16 +112,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create ControllerPortalRegistration object
-  vmware.alb.avi_controllerportalregistration:
+- name: Example to create AuthMappingProfile object
+  vmware.alb.avi_authmappingprofile:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_controllerportalregistration
+    name: sample_authmappingprofile
 """
 
 RETURN = '''
 obj:
-    description: ControllerPortalRegistration (api/controllerportalregistration) object
+    description: AuthMappingProfile (api/authmappingprofile) object
     returned: success, changed
     type: dict
 '''
@@ -122,10 +144,12 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        asset=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
+        description=dict(type='str',),
+        mapping_rules=dict(type='list', required=True),
         name=dict(type='str', required=True),
-        portal_auth=dict(type='dict',),
         tenant_ref=dict(type='str',),
+        type=dict(type='str', required=True),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
@@ -136,7 +160,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'controllerportalregistration',
+    return avi_ansible_api(module, 'authmappingprofile',
                            set())
 
 
