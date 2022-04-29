@@ -247,7 +247,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Description for the tenant of authmappingprofile.
+                  - Tenant ref for the auth mapping profile.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
