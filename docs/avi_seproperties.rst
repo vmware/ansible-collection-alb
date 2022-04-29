@@ -148,6 +148,12 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -163,7 +169,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Seagentproperties settings for seproperties.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -180,7 +186,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Sebootupproperties settings for seproperties.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -197,7 +203,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Seruntimeproperties settings for seproperties.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -231,7 +237,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique object identifier of the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as default.

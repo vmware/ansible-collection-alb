@@ -60,6 +60,7 @@ options:
             - Allowed values are 0-5.
             - Field introduced in 18.2.3.
             - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     clear_on_max_retries:
@@ -67,31 +68,37 @@ options:
             - Max retries after which the remote site is treated as a fresh start.
             - In fresh start all the configs are downloaded.
             - Allowed values are 1-1024.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 20.
         type: int
     client_ip_addr_group:
         description:
             - Group to specify if the client ip addresses are public or private.
             - Field introduced in 17.1.2.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     description:
         description:
-            - User defined description for the object.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     dns_configs:
         description:
             - Sub domain configuration for the gslb.
             - Gslb service's fqdn must be a match one of these subdomains.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
     enable_config_by_members:
         description:
             - Allows enable/disable of gslbservice pool groups and pool members from the gslb follower members.
             - Field introduced in 20.1.5.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     error_resync_interval:
@@ -102,18 +109,21 @@ options:
             - Special values are 0 - disable.
             - Field introduced in 18.2.3.
             - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 300.
         type: int
     is_federated:
         description:
             - This field indicates that this object is replicated across gslb federation.
             - Field introduced in 17.1.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     leader_cluster_uuid:
         description:
             - Mark this site as leader of gslb configuration.
             - This site is the one among the avi sites.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     maintenance_mode:
@@ -124,23 +134,27 @@ options:
             - upgraded.
             - This configuration programmatically blocks the leader from accepting new gslb configuration when member sites are undergoing upgrade.
             - Field introduced in 17.2.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     name:
         description:
             - Name for the gslb object.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     replication_policy:
         description:
             - Policy for replicating configuration to the active follower sites.
             - Field introduced in 20.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     send_interval:
         description:
             - Frequency with which group members communicate.
             - Allowed values are 1-3600.
             - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 15.
         type: int
     send_interval_prior_to_maintenance_mode:
@@ -151,27 +165,33 @@ options:
             - This internal variable is used to store the original send-interval.
             - Field introduced in 18.2.3.
             - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: int
     sites:
         description:
             - Select avi site member belonging to this gslb.
             - Minimum of 1 items required.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     tenant_scoped:
         description:
             - This field indicates tenant visibility for gs pool member selection across the gslb federated objects.
             - Field introduced in 18.2.12,20.1.4.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     third_party_sites:
         description:
             - Third party site member belonging to this gslb.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
     url:
         description:
@@ -180,11 +200,13 @@ options:
     uuid:
         description:
             - Uuid of the gslb object.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     view_id:
         description:
             - The view-id is used in change-leader mode to differentiate partitioned groups while they have the same gslb namespace.
             - Each partitioned group will be able to operate independently by using the view-id.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
 extends_documentation_fragment:

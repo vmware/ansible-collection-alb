@@ -148,6 +148,12 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -163,7 +169,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - User defined description for the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -181,6 +187,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Http user authentication params.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -205,6 +214,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -221,6 +233,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Ldap server and directory settings.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -243,7 +258,10 @@ Parameters
                   - Field introduced in 20.1.6.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
                 </div>
                                             </td>
         </tr>
@@ -265,6 +283,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Name of the auth profile.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -284,6 +305,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -309,7 +333,7 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -331,6 +355,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 17.2.3.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -348,6 +375,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Tacacs+ settings.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -364,6 +394,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -387,6 +420,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -421,6 +457,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Uuid of the auth profile.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

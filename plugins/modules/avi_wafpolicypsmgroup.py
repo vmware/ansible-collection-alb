@@ -50,16 +50,20 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     description:
         description:
             - Free-text comment about this group.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     enable:
         description:
             - Enable or disable this waf rule group.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     hit_action:
@@ -68,12 +72,14 @@ options:
             - Allowed actions are waf_action_no_op and waf_action_allow_parameter.
             - Enum options - WAF_ACTION_NO_OP, WAF_ACTION_BLOCK, WAF_ACTION_ALLOW_PARAMETER.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as WAF_ACTION_ALLOW_PARAMETER.
         type: str
     is_learning_group:
         description:
             - This field indicates that this group is used for learning.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     labels:
@@ -83,18 +89,21 @@ options:
             - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     locations:
         description:
             - Positive security model locations.
             - These are used to partition the application name space.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: list
     miss_action:
         description:
@@ -102,12 +111,14 @@ options:
             - Allowed actions are waf_action_no_op and waf_action_block.
             - Enum options - WAF_ACTION_NO_OP, WAF_ACTION_BLOCK, WAF_ACTION_ALLOW_PARAMETER.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as WAF_ACTION_NO_OP.
         type: str
     name:
         description:
             - User defined name of the group.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -115,6 +126,7 @@ options:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -124,6 +136,7 @@ options:
         description:
             - Uuid of this object.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

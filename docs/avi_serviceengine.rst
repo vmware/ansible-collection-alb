@@ -143,7 +143,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Availability_zone of serviceengine.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -162,6 +162,9 @@ Parameters
                                                 <div style="font-size: small">
                   - It is a reference to an object of type cloud.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -177,7 +180,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Boolean flag to set container_mode.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -200,6 +203,9 @@ Parameters
                   - Enum options - CONTAINER_TYPE_BRIDGE, CONTAINER_TYPE_HOST, CONTAINER_TYPE_HOST_DPDK.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as CONTAINER_TYPE_HOST.
                 </div>
                                             </td>
@@ -217,7 +223,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Boolean flag to set controller_created.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -237,7 +243,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Controller_ip of serviceengine.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -254,7 +260,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - List of vnic.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -277,6 +283,9 @@ Parameters
                   - Enum options - SE_STATE_ENABLED, SE_STATE_DISABLED_FOR_PLACEMENT, SE_STATE_DISABLED, SE_STATE_DISABLED_FORCE.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as SE_STATE_ENABLED.
                 </div>
                                             </td>
@@ -294,7 +303,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Flavor of serviceengine.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -313,6 +322,9 @@ Parameters
                                                 <div style="font-size: small">
                   - It is a reference to an object of type vimgrhostruntime.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -330,6 +342,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Enum options - DEFAULT, VMWARE_ESX, KVM, VMWARE_VSAN, XEN.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -345,7 +360,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Vnic settings for serviceengine.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -362,7 +377,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as VM name unknown.
@@ -382,7 +397,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Seresources settings for serviceengine.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -401,6 +416,9 @@ Parameters
                                                 <div style="font-size: small">
                   - It is a reference to an object of type serviceenginegroup.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -417,6 +435,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -450,7 +471,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique object identifier of the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

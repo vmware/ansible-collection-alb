@@ -50,16 +50,20 @@ options:
         description:
             - Field introduced in 17.1.1.
             - Maximum of 10 items allowed.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
     cloud_ref:
         description:
             - It is a reference to an object of type cloud.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     labels:
         description:
@@ -68,29 +72,34 @@ options:
             - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: list
     name:
         description:
             - Name for the traffic clone profile.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     preserve_client_ip:
         description:
             - Specifies if client ip needs to be preserved to clone destination.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -100,6 +109,7 @@ options:
         description:
             - Uuid of the traffic clone profile.
             - Field introduced in 17.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

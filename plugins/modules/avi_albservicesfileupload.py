@@ -50,27 +50,33 @@ options:
         description:
             - Salesforce alphanumeric caseid to attach uploaded file to.
             - Field introduced in 18.2.6.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     error:
         description:
             - Error reported during file upload.
             - Field introduced in 18.2.6.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: str
     file_path:
         description:
             - Stores output file path, for upload to aws s3.
             - Field introduced in 18.2.6.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     name:
         description:
             - Field introduced in 18.2.6.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     s3_directory:
         description:
             - Custom aws s3 directory path to upload file.
             - Field introduced in 18.2.6.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     status:
         description:
@@ -79,11 +85,14 @@ options:
             - SYSERR_TIMEOUT, SYSERR_NOT_SUPPORTED, SYSERR_NOT_READY, SYSERR_UPGRADE_IN_PROGRESS, SYSERR_WARM_START_IN_PROGRESS, SYSERR_TRY_AGAIN,
             - SYSERR_NOT_UPGRADING, SYSERR_PENDING, SYSERR_EVENT_GEN_FAILURE, SYSERR_CONFIG_PARAM_MISSING, SYSERR_RANGE, SYSERR_BAD_REQUEST...
             - Field introduced in 18.2.6.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.6.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -91,7 +100,7 @@ options:
         type: str
     uuid:
         description:
-            - Unique object identifier of the object.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

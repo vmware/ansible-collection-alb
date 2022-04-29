@@ -143,7 +143,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Adminauthconfiguration settings for systemconfiguration.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -164,6 +164,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -188,6 +191,12 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -210,6 +219,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -235,10 +247,10 @@ Parameters
                   - Field introduced in 17.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Special default for basic edition is basic, essentials edition is essentials, enterprise is enterprise_with_cloud_services.
+                  - Special default for essentials edition is essentials, basic edition is basic, enterprise is enterprise_with_cloud_services.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as ENTERPRISE_WITH_CLOUD_SERVICES.
@@ -258,7 +270,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Dnsconfiguration settings for systemconfiguration.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -286,6 +298,9 @@ Parameters
                                 <div style="font-size: small">
                   - It is a reference to an object of type virtualservice.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -301,7 +316,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Boolean flag to set docker_mode.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -321,7 +336,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Emailconfiguration settings for systemconfiguration.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -344,7 +359,10 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -370,6 +388,9 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
@@ -387,7 +408,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tenantconfiguration settings for systemconfiguration.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -404,7 +425,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Linuxconfiguration settings for systemconfiguration.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -423,6 +444,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Configure ip access control for controller to restrict open access.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -438,7 +462,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Ntpconfiguration settings for systemconfiguration.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -455,7 +479,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Portalconfiguration settings for systemconfiguration.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -472,7 +496,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Proxyconfiguration settings for systemconfiguration.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -494,6 +518,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 18.1.4, 18.2.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -509,7 +536,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Snmpconfiguration settings for systemconfiguration.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -531,6 +558,9 @@ Parameters
                                 <div style="font-size: small">
                   - If this is not specified, all the default ciphers are allowed.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -550,6 +580,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - If this is not specified, all the default hmacs are allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -583,7 +616,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique object identifier of the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -604,6 +637,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
