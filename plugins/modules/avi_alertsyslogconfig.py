@@ -50,23 +50,29 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     description:
         description:
             - User defined description for alert syslog config.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     name:
         description:
             - A user-friendly name of the syslog notification.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     syslog_servers:
         description:
             - The list of syslog servers.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -74,7 +80,7 @@ options:
         type: str
     uuid:
         description:
-            - Unique object identifier of the object.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

@@ -50,16 +50,20 @@ options:
         description:
             - Authentication policy settings.
             - Field introduced in 18.2.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     authorization_policy:
         description:
             - Authorization policy settings.
             - Field introduced in 18.2.5.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     labels:
         description:
@@ -68,17 +72,20 @@ options:
             - Field deprecated in 20.1.5.
             - Field introduced in 20.1.2.
             - Maximum of 4 items allowed.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: list
     name:
         description:
             - Name of the sso policy.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -86,12 +93,14 @@ options:
             - Uuid of the tenant.
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Sso policy type.
             - Enum options - SSO_TYPE_SAML, SSO_TYPE_PINGACCESS, SSO_TYPE_JWT, SSO_TYPE_LDAP, SSO_TYPE_OAUTH.
             - Field introduced in 18.2.5.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as SSO_TYPE_SAML.
         type: str
     url:
@@ -102,6 +111,7 @@ options:
         description:
             - Uuid of the sso policy.
             - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

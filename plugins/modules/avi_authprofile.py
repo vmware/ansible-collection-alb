@@ -51,65 +51,77 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     description:
         description:
-            - User defined description for the object.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     http:
         description:
             - Http user authentication params.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     jwt_profile_ref:
         description:
             - Jwtserverprofile to be used for authentication.
             - It is a reference to an object of type jwtserverprofile.
             - Field introduced in 20.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     ldap:
         description:
             - Ldap server and directory settings.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.6.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: list
     name:
         description:
             - Name of the auth profile.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     oauth_profile:
         description:
             - Oauth profile - common endpoint information.
             - Field introduced in 21.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     pa_agent_ref:
         description:
             - Pingaccessagent uuid.
             - It is a reference to an object of type pingaccessagent.
             - Field introduced in 18.2.3.
-            - Allowed in basic edition, essentials edition, enterprise edition.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     saml:
         description:
             - Saml settings.
             - Field introduced in 17.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     tacacs_plus:
         description:
             - Tacacs+ settings.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Type of the auth profile.
             - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     url:
@@ -119,6 +131,7 @@ options:
     uuid:
         description:
             - Uuid of the auth profile.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

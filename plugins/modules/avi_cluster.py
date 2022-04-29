@@ -48,23 +48,26 @@ options:
         type: str
     name:
         description:
-            - Name of the object.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     nodes:
         description:
             - Minimum of 1 items required.
             - Maximum of 7 items allowed.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
     rejoin_nodes_automatically:
         description:
             - Re-join cluster nodes automatically in the event one of the node is reset to factory.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -72,12 +75,13 @@ options:
         type: str
     uuid:
         description:
-            - Unique object identifier of the object.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     virtual_ip:
         description:
             - A virtual ip address.
             - This ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi

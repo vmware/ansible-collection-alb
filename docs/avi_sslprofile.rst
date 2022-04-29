@@ -146,6 +146,9 @@ Parameters
                   - Ciphers suites represented as defined by https //www.openssl.org/docs/apps/ciphers.html.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as AES:3DES:RC4.
                 </div>
                                             </td>
@@ -170,6 +173,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Minimum of 1 items required.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -204,19 +210,19 @@ Parameters
                   - TLS_RSA_WITH_3DES_EDE_CBC_SHA, TLS_AES_256_GCM_SHA384...
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic(allowed values-
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,tls_ecdhe_rsa_with_aes_128_gcm_sha256,tls_ecdhe_rsa_with_aes_256_gcm_sha384,tls_ecdhe_ecdsa_with_aes_128_cbc_sha256,tls_ecdhe_ecdsa_with_aes_256_cbc_sha384,tls_ecdhe_rsa_with_aes_128_cbc_sha256,tls_ecdhe_rsa_with_aes_256_cbc_sha384,tls_rsa_with_aes_128_gcm_sha256,tls_rsa_with_aes_256_gcm_sha384,tls_rsa_with_aes_128_cbc_sha256,tls_rsa_with_aes_256_cbc_sha256,tls_ecdhe_ecdsa_with_aes_128_cbc_sha,tls_ecdhe_ecdsa_with_aes_256_cbc_sha,tls_ecdhe_rsa_with_aes_128_cbc_sha,tls_ecdhe_rsa_with_aes_256_cbc_sha,tls_rsa_with_aes_128_cbc_sha,tls_rsa_with_aes_256_cbc_sha,tls_rsa_with_3des_ede_cbc_sha)
+                  - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,tls_ecdhe_rsa_with_aes_128_gcm_sha256,tls_ecdhe_rsa_with_aes_256_gcm_sha384,tls_ecdhe_ecdsa_with_aes_128_cbc_sha256,tls_ecdhe_ecdsa_with_aes_256_cbc_sha384,tls_ecdhe_rsa_with_aes_128_cbc_sha256,tls_ecdhe_rsa_with_aes_256_cbc_sha384,tls_rsa_with_aes_128_gcm_sha256,tls_rsa_with_aes_256_gcm_sha384,tls_rsa_with_aes_128_cbc_sha256,tls_rsa_with_aes_256_cbc_sha256,tls_ecdhe_ecdsa_with_aes_128_cbc_sha,tls_ecdhe_ecdsa_with_aes_256_cbc_sha,tls_ecdhe_rsa_with_aes_128_cbc_sha,tls_ecdhe_rsa_with_aes_256_cbc_sha,tls_rsa_with_aes_128_cbc_sha,tls_rsa_with_aes_256_cbc_sha,tls_rsa_with_3des_ede_cbc_sha),
                 </div>
                                 <div style="font-size: small">
-                  - edition, essentials(allowed values-
+                  - basic edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,tls_ecdhe_rsa_with_aes_128_gcm_sha256,tls_ecdhe_rsa_with_aes_256_gcm_sha384,tls_ecdhe_ecdsa_with_aes_128_cbc_sha256,tls_ecdhe_ecdsa_with_aes_256_cbc_sha384,tls_ecdhe_rsa_with_aes_128_cbc_sha256,tls_ecdhe_rsa_with_aes_256_cbc_sha384,tls_rsa_with_aes_128_gcm_sha256,tls_rsa_with_aes_256_gcm_sha384,tls_rsa_with_aes_128_cbc_sha256,tls_rsa_with_aes_256_cbc_sha256,tls_ecdhe_ecdsa_with_aes_128_cbc_sha,tls_ecdhe_ecdsa_with_aes_256_cbc_sha,tls_ecdhe_rsa_with_aes_128_cbc_sha,tls_ecdhe_rsa_with_aes_256_cbc_sha,tls_rsa_with_aes_128_cbc_sha,tls_rsa_with_aes_256_cbc_sha,tls_rsa_with_3des_ede_cbc_sha)
+                  - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,tls_ecdhe_rsa_with_aes_128_gcm_sha256,tls_ecdhe_rsa_with_aes_256_gcm_sha384,tls_ecdhe_ecdsa_with_aes_128_cbc_sha256,tls_ecdhe_ecdsa_with_aes_256_cbc_sha384,tls_ecdhe_rsa_with_aes_128_cbc_sha256,tls_ecdhe_rsa_with_aes_256_cbc_sha384,tls_rsa_with_aes_128_gcm_sha256,tls_rsa_with_aes_256_gcm_sha384,tls_rsa_with_aes_128_cbc_sha256,tls_rsa_with_aes_256_cbc_sha256,tls_ecdhe_ecdsa_with_aes_128_cbc_sha,tls_ecdhe_ecdsa_with_aes_256_cbc_sha,tls_ecdhe_rsa_with_aes_128_cbc_sha,tls_ecdhe_rsa_with_aes_256_cbc_sha,tls_rsa_with_aes_128_cbc_sha,tls_rsa_with_aes_256_cbc_sha,tls_rsa_with_3des_ede_cbc_sha),
                 </div>
                                 <div style="font-size: small">
-                  - edition, enterprise edition.
+                  - enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -239,10 +245,10 @@ Parameters
                   - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Special default for basic edition is tls_aes_256_gcm_sha384-tls_aes_128_gcm_sha256, essentials edition is
+                  - Special default for essentials edition is tls_aes_256_gcm_sha384-tls_aes_128_gcm_sha256, basic edition is
                 </div>
                                 <div style="font-size: small">
                   - tls_aes_256_gcm_sha384-tls_aes_128_gcm_sha256, enterprise is tls_aes_256_gcm_sha384-tls_chacha20_poly1305_sha256-tls_aes_128_gcm_sha256.
@@ -273,6 +279,12 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -288,7 +300,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - User defined description for the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -309,6 +321,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - At this time, it is not configurable and is set to 2048 bits.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -334,6 +349,9 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as auto.
                 </div>
                                             </td>
@@ -357,7 +375,10 @@ Parameters
                   - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic(allowed values- false) edition, essentials(allowed values- false) edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
+                </div>
+                                <div style="font-size: small">
+                  - cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -378,6 +399,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Enable ssl session re-use.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -411,6 +435,9 @@ Parameters
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -432,7 +459,10 @@ Parameters
                   - Field introduced in 20.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
                 </div>
                                             </td>
         </tr>
@@ -452,7 +482,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -470,6 +500,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Prefer the ssl cipher ordering presented by the client during the ssl handshake over the one specified in the ssl profile.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -490,6 +523,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Send 'close notify' alert message for a clean shutdown of the ssl connection.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -518,6 +554,9 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as auto.
                 </div>
                                             </td>
@@ -535,7 +574,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Sslrating settings for sslprofile.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -558,6 +597,9 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 86400.
                 </div>
                                             </td>
@@ -575,7 +617,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - List of tag.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -593,6 +635,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -616,6 +661,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.8.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as SSL_PROFILE_TYPE_APPLICATION.
@@ -652,7 +700,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique object identifier of the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

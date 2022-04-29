@@ -148,6 +148,9 @@ Parameters
                                 <div style="font-size: small">
                   - It is a reference to an object of type backupconfiguration.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -168,6 +171,12 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -183,7 +192,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Boolean flag to set enabled.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -205,6 +214,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Scheduler end date and time.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -224,6 +236,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0-60.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -248,6 +263,9 @@ Parameters
                                 <div style="font-size: small">
                   - SCHEDULER_FREQUENCY_UNIT_MONTH.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -267,6 +285,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Name of scheduler.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -288,6 +309,9 @@ Parameters
                                 <div style="font-size: small">
                   - Enum options - RUN_MODE_PERIODIC, RUN_MODE_AT, RUN_MODE_NOW.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -307,6 +331,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type alertscriptconfig.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -329,6 +356,9 @@ Parameters
                   - Enum options - SCHEDULER_ACTION_RUN_A_SCRIPT, SCHEDULER_ACTION_BACKUP.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as SCHEDULER_ACTION_BACKUP.
                 </div>
                                             </td>
@@ -348,6 +378,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Scheduler start date and time.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -364,6 +397,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -397,7 +433,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique object identifier of the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

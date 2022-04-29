@@ -151,6 +151,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -171,6 +174,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -190,6 +196,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -214,6 +223,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -234,6 +246,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -253,6 +268,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -277,6 +295,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -296,6 +317,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -317,6 +341,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -336,6 +363,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -357,6 +387,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -376,6 +409,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -397,6 +433,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -416,6 +455,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -440,6 +482,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -459,6 +504,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -497,6 +545,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -516,6 +567,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -539,6 +593,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

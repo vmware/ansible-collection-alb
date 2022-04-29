@@ -146,6 +146,9 @@ Parameters
                   - It will automatically disable old production pools once there is a new production candidate.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
@@ -168,6 +171,12 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -183,7 +192,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - User defined description for the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -207,6 +216,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 300.
@@ -240,6 +252,9 @@ Parameters
                                 <div style="font-size: small">
                   - Maximum of 4 items allowed.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -261,7 +276,10 @@ Parameters
                   - Field introduced in 20.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
                 </div>
                                             </td>
         </tr>
@@ -283,6 +301,9 @@ Parameters
                                                 <div style="font-size: small">
                   - The name of the pool group deployment policy.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -298,7 +319,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - List of pgdeploymentrule.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -319,6 +340,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Enum options - BLUE_GREEN, CANARY.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as BLUE_GREEN.
@@ -347,6 +371,9 @@ Parameters
                   - Unit is ratio.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
                 </div>
                                             </td>
@@ -365,6 +392,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -388,6 +418,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-100.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
@@ -426,6 +459,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Uuid of the pool group deployment policy.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -451,6 +487,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

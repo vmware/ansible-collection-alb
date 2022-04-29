@@ -50,17 +50,21 @@ options:
         description:
             - Ip address or a dns resolvable, fully qualified domain name of the site controller cluster.
             - Field introduced in 18.2.5.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     name:
         description:
             - Name for the site controller cluster.
             - Field introduced in 18.2.5.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     port:
@@ -68,6 +72,7 @@ options:
             - The controller site cluster's rest api port number.
             - Allowed values are 1-65535.
             - Field introduced in 18.2.5.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 443.
         type: int
     tenant_ref:
@@ -75,6 +80,7 @@ options:
             - Reference for the tenant.
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.5.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -84,6 +90,7 @@ options:
         description:
             - Reference for the site controller cluster.
             - Field introduced in 18.2.5.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi

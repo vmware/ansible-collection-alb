@@ -149,7 +149,7 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -172,7 +172,7 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -195,7 +195,7 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -217,6 +217,9 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 17.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -233,6 +236,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Default passphrase for configuration export and periodic backup.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -254,6 +260,12 @@ Parameters
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -273,6 +285,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-20.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
@@ -297,6 +312,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Name of backup configuration.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -313,6 +331,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Directory at remote destination with write permission for ssh user.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -331,6 +352,9 @@ Parameters
                                                 <div style="font-size: small">
                   - Remote destination.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -347,6 +371,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Local backup.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -368,6 +395,9 @@ Parameters
                                 <div style="font-size: small">
                   - It is a reference to an object of type cloudconnectoruser.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -385,6 +415,9 @@ Parameters
                                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
                                             </td>
         </tr>
                 <tr>
@@ -401,6 +434,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Remote backup.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -423,7 +459,7 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic edition, essentials edition, enterprise edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -457,7 +493,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique object identifier of the object.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
