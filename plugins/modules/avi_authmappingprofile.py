@@ -76,7 +76,7 @@ options:
         type: str
     tenant_ref:
         description:
-            - Description for the tenant of authmappingprofile.
+            - Tenant ref for the auth mapping profile.
             - It is a reference to an object of type tenant.
             - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
