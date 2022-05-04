@@ -17,7 +17,6 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     kv: "{{ item.kv | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     longest_match: "{{ item.longest_match | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"

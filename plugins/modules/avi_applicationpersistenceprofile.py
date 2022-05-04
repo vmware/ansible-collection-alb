@@ -87,15 +87,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -207,7 +198,6 @@ def main():
         http_cookie_persistence_profile=dict(type='dict',),
         ip_persistence_profile=dict(type='dict',),
         is_federated=dict(type='bool',),
-        labels=dict(type='list',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         persistence_type=dict(type='str', required=True),

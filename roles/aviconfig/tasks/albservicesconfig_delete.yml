@@ -23,7 +23,6 @@
     mode: "{{ item.mode | default(omit) }}"
     polling_interval: "{{ item.polling_interval | default(omit) }}"
     portal_url: "{{ item.portal_url | default(omit) }}"
-    proactive_support_defaults: "{{ item.proactive_support_defaults | default(omit) }}"
     saas_licensing_config: "{{ item.saas_licensing_config | default(omit) }}"
     split_proxy_configuration: "{{ item.split_proxy_configuration | default(omit) }}"
     use_split_proxy: "{{ item.use_split_proxy | default(omit) }}"

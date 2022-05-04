@@ -88,13 +88,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
-    labels:
-        description:
-            - Key/value labels which can be used for object access policy permission scoping.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 18.2.7, 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -193,7 +186,6 @@ def main():
         dhcp_enabled=dict(type='bool',),
         exclude_discovered_subnets=dict(type='bool',),
         ip6_autocfg_enabled=dict(type='bool',),
-        labels=dict(type='list',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         synced_from_se=dict(type='bool',),

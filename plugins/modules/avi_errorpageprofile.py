@@ -46,20 +46,6 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    app_name:
-        description:
-            - Name of the virtual service which generated the error page.
-            - Field deprecated in 18.1.1.
-            - Field introduced in 17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
-    company_name:
-        description:
-            - Name of the company to show in error page.
-            - Field deprecated in 18.1.1.
-            - Field introduced in 17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -72,22 +58,6 @@ options:
             - Defined error pages for http status codes.
             - Field introduced in 17.2.4.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
-    host_name:
-        description:
-            - Fully qualified domain name for which the error page is generated.
-            - Field deprecated in 18.1.1.
-            - Field introduced in 17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.3.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     markers:
         description:
@@ -162,12 +132,8 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        app_name=dict(type='str',),
-        company_name=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         error_pages=dict(type='list',),
-        host_name=dict(type='str',),
-        labels=dict(type='list',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),

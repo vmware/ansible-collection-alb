@@ -60,30 +60,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
-    last_check_for_updates_error:
-        description:
-            - The error message indicating why the last update check failed.
-            - Field deprecated in 20.1.3.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: str
-    last_failed_check_for_updates:
-        description:
-            - The last time that we checked for updates but did not get a result because of an error.
-            - Field deprecated in 20.1.3.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: dict
-    last_successful_check_for_updates:
-        description:
-            - The last time that we checked for updates sucessfully.
-            - Field deprecated in 20.1.3.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: dict
     name:
         description:
             - Name of application specific ruleset provider.
@@ -173,9 +149,6 @@ def main():
         avi_patch_value=dict(type='str',),
         available_applications=dict(type='list',),
         configpb_attributes=dict(type='dict',),
-        last_check_for_updates_error=dict(type='str',),
-        last_failed_check_for_updates=dict(type='dict',),
-        last_successful_check_for_updates=dict(type='dict',),
         name=dict(type='str',),
         ruleset_version=dict(type='str',),
         service_status=dict(type='dict',),

@@ -89,15 +89,6 @@ options:
             - Field introduced in 20.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -228,7 +219,6 @@ def main():
         dns_info=dict(type='list',),
         east_west_placement=dict(type='bool',),
         ipam_selector=dict(type='dict',),
-        labels=dict(type='list',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),

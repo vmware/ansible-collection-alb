@@ -98,13 +98,6 @@ options:
             - Field introduced in 17.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
-    labels:
-        description:
-            - Key/value labels which can be used for object access policy permission scoping.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 18.2.7, 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
     lldp_enable:
         description:
             - Enable lldp.
@@ -201,7 +194,6 @@ def main():
         description=dict(type='str',),
         gateway_mon=dict(type='list',),
         internal_gateway_monitor=dict(type='dict',),
-        labels=dict(type='list',),
         lldp_enable=dict(type='bool',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),

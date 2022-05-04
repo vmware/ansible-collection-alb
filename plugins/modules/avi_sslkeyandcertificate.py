@@ -137,15 +137,6 @@ options:
             - Passphrase used to encrypt the private key.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -284,7 +275,6 @@ def main():
         key_base64=dict(type='bool',),
         key_params=dict(type='dict',),
         key_passphrase=dict(type='str', no_log=True,),
-        labels=dict(type='list',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         ocsp_config=dict(type='dict',),

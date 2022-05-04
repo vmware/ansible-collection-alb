@@ -17,7 +17,6 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     created_by: "{{ item.created_by | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     rules: "{{ item.rules | default(omit) }}"

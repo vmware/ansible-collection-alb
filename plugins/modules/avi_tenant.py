@@ -93,15 +93,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    suggested_object_labels:
-        description:
-            - Suggestive pool of key value pairs for recommending assignment of labels to objects in the user interface.
-            - Every entry is unique in both key and value.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 256 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
     url:
         description:
             - Avi controller URL of the object.
@@ -168,7 +159,6 @@ def main():
         label_group_refs=dict(type='list',),
         local=dict(type='bool',),
         name=dict(type='str', required=True),
-        suggested_object_labels=dict(type='list',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

@@ -29,7 +29,6 @@
     se_patch_name: "{{ item.se_patch_name | default(omit) }}"
     se_patch_ref: "{{ item.se_patch_ref | default(omit) }}"
     start_time: "{{ item.start_time | default(omit) }}"
-    status: "{{ item.status | default(omit) }}"
     tasks_completed: "{{ item.tasks_completed | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     total_tasks: "{{ item.total_tasks | default(omit) }}"

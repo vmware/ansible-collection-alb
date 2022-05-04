@@ -17,7 +17,6 @@
     clone_servers: "{{ item.clone_servers | default(omit) }}"
     cloud_ref: "{{ item.cloud_ref | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     preserve_client_ip: "{{ item.preserve_client_ip | default(omit) }}"

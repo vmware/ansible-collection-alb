@@ -47,17 +47,6 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    apic_configuration:
-        description:
-            - Field deprecated in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
-    apic_mode:
-        description:
-            - Field deprecated in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-            - cloud services edition.
-        type: bool
     autoscale_polling_interval:
         description:
             - Cloudconnector polling interval in seconds for external autoscale groups, minimum 60 seconds.
@@ -207,11 +196,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-    mesos_configuration:
-        description:
-            - Field deprecated in 18.2.2.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
     metrics_polling_interval:
         description:
             - Cloud metrics collector polling interval in seconds.
@@ -232,13 +216,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    nsx_configuration:
-        description:
-            - Configuration parameters for nsx manager.
-            - Field deprecated in 21.1.1.
-            - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
     nsxt_configuration:
         description:
             - Nsx-t cloud platform configuration.
@@ -254,11 +231,6 @@ options:
     openstack_configuration:
         description:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
-    oshiftk8s_configuration:
-        description:
-            - Field deprecated in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     prefer_static_routes:
         description:
@@ -386,8 +358,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        apic_configuration=dict(type='dict',),
-        apic_mode=dict(type='bool',),
         autoscale_polling_interval=dict(type='int',),
         aws_configuration=dict(type='dict',),
         azure_configuration=dict(type='dict',),
@@ -411,15 +381,12 @@ def main():
         linuxserver_configuration=dict(type='dict',),
         maintenance_mode=dict(type='bool',),
         markers=dict(type='list',),
-        mesos_configuration=dict(type='dict',),
         metrics_polling_interval=dict(type='int',),
         mtu=dict(type='int',),
         name=dict(type='str', required=True),
-        nsx_configuration=dict(type='dict',),
         nsxt_configuration=dict(type='dict',),
         obj_name_prefix=dict(type='str',),
         openstack_configuration=dict(type='dict',),
-        oshiftk8s_configuration=dict(type='dict',),
         prefer_static_routes=dict(type='bool',),
         proxy_configuration=dict(type='dict',),
         rancher_configuration=dict(type='dict',),

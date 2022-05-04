@@ -89,15 +89,6 @@ options:
             - It is a reference to an object of type analyticsprofile.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    apic_contract_graph:
-        description:
-            - The name of the contract/graph associated with the virtual service.
-            - Should be in the <contract name> <graph name> format.
-            - This is applicable only for service integration mode with cisco apic controller.
-            - Field deprecated in 21.1.1.
-            - Field introduced in 17.2.12,18.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
     application_profile_ref:
         description:
             - Enable application layer specific features for the virtual service.
@@ -105,36 +96,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Special default for essentials edition is system-l4-application.
         type: str
-    auto_allocate_floating_ip:
-        description:
-            - Auto-allocate floating/elastic ip from the cloud infrastructure.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
-    auto_allocate_ip:
-        description:
-            - Auto-allocate vip from the provided subnet.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
-    availability_zone:
-        description:
-            - Availability-zone to place the virtual service.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
-    avi_allocated_fip:
-        description:
-            - (internal-use) fip allocated by avi in the cloud infrastructure.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
-    avi_allocated_vip:
-        description:
-            - (internal-use) vip allocated by avi in the cloud infrastructure.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
     azure_availability_set:
         description:
             - (internal-use)applicable for azure only.
@@ -168,12 +129,6 @@ options:
             - cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    client_auth:
-        description:
-            - Http authentication configuration for protected resources.
-            - Field deprecated in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
     close_client_conn_on_config_update:
         description:
             - Close client connection on vs config update.
@@ -235,28 +190,6 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    discovered_network_ref:
-        description:
-            - (internal-use) discovered networks providing reachability for client facing virtual service ip.
-            - This field is deprecated.
-            - It is a reference to an object of type network.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
-    discovered_networks:
-        description:
-            - (internal-use) discovered networks providing reachability for client facing virtual service ip.
-            - This field is used internally by avi, not editable by the user.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
-    discovered_subnet:
-        description:
-            - (internal-use) discovered subnets providing reachability for client facing virtual service ip.
-            - This field is deprecated.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
     dns_info:
         description:
             - Service discovery specific data including fully qualified domain name, type and time-to-live of the dns record.
@@ -308,20 +241,6 @@ options:
             - Field introduced in 17.2.4.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    floating_ip:
-        description:
-            - Floating ip to associate with this virtual service.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
-    floating_subnet_uuid:
-        description:
-            - If auto_allocate_floating_ip is true and more than one floating-ip subnets exist, then the subnet for the floating ip address allocation.
-            - This field is applicable only if the virtualservice belongs to an openstack or aws cloud.
-            - In openstack or aws cloud it is required when auto_allocate_floating_ip is selected.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
     flow_dist:
         description:
             - Criteria for flow distribution among ses.
@@ -368,18 +287,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    ip_address:
-        description:
-            - Ip address of the virtual service.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
-    ipam_network_subnet:
-        description:
-            - Subnet and/or network for allocating virtualservice ip by ipam provider module.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
     jwt_config:
         description:
             - Application-specific config for jwt validation.
@@ -391,15 +298,6 @@ options:
             - L4 policies applied to the data traffic of the virtual service.
             - Field introduced in 17.2.7.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     ldap_vs_config:
         description:
@@ -453,13 +351,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Special default for essentials edition is system-tcp-fast-path.
         type: str
-    network_ref:
-        description:
-            - Manually override the network on which the virtual service is placed.
-            - It is a reference to an object of type network.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
     network_security_policy_ref:
         description:
             - Network security policies for the virtual service.
@@ -493,12 +384,6 @@ options:
         description:
             - The pool is an object that contains destination servers and related attributes such as load-balancing and persistence.
             - It is a reference to an object of type pool.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
-    port_uuid:
-        description:
-            - (internal-use) network port assigned to the virtual service ip address.
-            - Field deprecated in 17.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     remove_listening_port_on_vs_down:
@@ -611,13 +496,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
         type: int
-    sso_policy:
-        description:
-            - Client authentication and authorization policy for the virtualservice.
-            - Field deprecated in 18.2.3.
-            - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
     sso_policy_ref:
         description:
             - The sso policy attached to the virtualservice.
@@ -632,19 +510,6 @@ options:
             - Maximum of 1000 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
-    subnet:
-        description:
-            - Subnet providing reachability for client facing virtual service ip.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
-    subnet_uuid:
-        description:
-            - It represents subnet for the virtual service ip address allocation when auto_allocate_ip is true.it is only applicable in openstack or aws cloud.
-            - This field is required if auto_allocate_ip is true.
-            - Field deprecated in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -850,18 +715,11 @@ def main():
         allow_invalid_client_cert=dict(type='bool',),
         analytics_policy=dict(type='dict',),
         analytics_profile_ref=dict(type='str',),
-        apic_contract_graph=dict(type='str',),
         application_profile_ref=dict(type='str',),
-        auto_allocate_floating_ip=dict(type='bool',),
-        auto_allocate_ip=dict(type='bool',),
-        availability_zone=dict(type='str',),
-        avi_allocated_fip=dict(type='bool',),
-        avi_allocated_vip=dict(type='bool',),
         azure_availability_set=dict(type='str',),
         bgp_peer_labels=dict(type='list',),
         bot_policy_ref=dict(type='str',),
         bulk_sync_kvcache=dict(type='bool',),
-        client_auth=dict(type='dict',),
         close_client_conn_on_config_update=dict(type='bool',),
         cloud_config_cksum=dict(type='str',),
         cloud_ref=dict(type='str',),
@@ -872,9 +730,6 @@ def main():
         created_by=dict(type='str',),
         delay_fairness=dict(type='bool',),
         description=dict(type='str',),
-        discovered_network_ref=dict(type='list',),
-        discovered_networks=dict(type='list',),
-        discovered_subnet=dict(type='list',),
         dns_info=dict(type='list',),
         dns_policies=dict(type='list',),
         east_west_placement=dict(type='bool',),
@@ -883,8 +738,6 @@ def main():
         enable_rhi_snat=dict(type='bool',),
         enabled=dict(type='bool',),
         error_page_profile_ref=dict(type='str',),
-        floating_ip=dict(type='dict',),
-        floating_subnet_uuid=dict(type='str',),
         flow_dist=dict(type='str',),
         flow_label_type=dict(type='str',),
         fqdn=dict(type='str',),
@@ -892,11 +745,8 @@ def main():
         http_policies=dict(type='list',),
         icap_request_profile_refs=dict(type='list',),
         ign_pool_net_reach=dict(type='bool',),
-        ip_address=dict(type='dict',),
-        ipam_network_subnet=dict(type='dict',),
         jwt_config=dict(type='dict',),
         l4_policies=dict(type='list',),
-        labels=dict(type='list',),
         ldap_vs_config=dict(type='dict',),
         limit_doser=dict(type='bool',),
         markers=dict(type='list',),
@@ -905,14 +755,12 @@ def main():
         min_pools_up=dict(type='int',),
         name=dict(type='str', required=True),
         network_profile_ref=dict(type='str',),
-        network_ref=dict(type='str',),
         network_security_policy_ref=dict(type='str',),
         nsx_securitygroup=dict(type='list',),
         oauth_vs_config=dict(type='dict',),
         performance_limits=dict(type='dict',),
         pool_group_ref=dict(type='str',),
         pool_ref=dict(type='str',),
-        port_uuid=dict(type='str',),
         remove_listening_port_on_vs_down=dict(type='bool',),
         requests_rate_limit=dict(type='dict',),
         saml_sp_config=dict(type='dict',),
@@ -930,11 +778,8 @@ def main():
         ssl_profile_ref=dict(type='str',),
         ssl_profile_selectors=dict(type='list',),
         ssl_sess_cache_avg_size=dict(type='int',),
-        sso_policy=dict(type='dict',),
         sso_policy_ref=dict(type='str',),
         static_dns_records=dict(type='list',),
-        subnet=dict(type='dict',),
-        subnet_uuid=dict(type='str',),
         tenant_ref=dict(type='str',),
         test_se_datastore_level_1_ref=dict(type='str',),
         topology_policies=dict(type='list',),

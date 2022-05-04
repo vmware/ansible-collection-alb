@@ -52,12 +52,6 @@ options:
             - Configure ip address(es).
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-    apic_epg_name:
-        description:
-            - Populate ip addresses from members of this cisco apic epg.
-            - Field deprecated in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -78,15 +72,6 @@ options:
         description:
             - Configure (ip address, port) tuple(s).
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     marathon_app_name:
         description:
@@ -195,12 +180,10 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         addrs=dict(type='list',),
-        apic_epg_name=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         country_codes=dict(type='list',),
         description=dict(type='str',),
         ip_ports=dict(type='list',),
-        labels=dict(type='list',),
         marathon_app_name=dict(type='str',),
         marathon_service_port=dict(type='int',),
         markers=dict(type='list',),

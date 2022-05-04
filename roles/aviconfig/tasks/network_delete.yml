@@ -21,7 +21,6 @@
     dhcp_enabled: "{{ item.dhcp_enabled | default(omit) }}"
     exclude_discovered_subnets: "{{ item.exclude_discovered_subnets | default(omit) }}"
     ip6_autocfg_enabled: "{{ item.ip6_autocfg_enabled | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     synced_from_se: "{{ item.synced_from_se | default(omit) }}"

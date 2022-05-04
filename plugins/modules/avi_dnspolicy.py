@@ -72,15 +72,6 @@ options:
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: bool
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -166,7 +157,6 @@ def main():
         created_by=dict(type='str',),
         description=dict(type='str',),
         internal=dict(type='bool',),
-        labels=dict(type='list',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         rule=dict(type='list',),

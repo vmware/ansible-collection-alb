@@ -47,25 +47,6 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    a_pool:
-        description:
-            - Name of container cloud application that constitutes a pool in a a-b pool configuration, if different from vs app.
-            - Field deprecated in 18.1.2.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
-    ab_pool:
-        description:
-            - A/b pool configuration.
-            - Field deprecated in 18.1.2.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
-    ab_priority:
-        description:
-            - Priority of this pool in a a-b pool pair.
-            - Internally used.
-            - Field deprecated in 18.1.2.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: int
     analytics_policy:
         description:
             - Determines analytics settings for the pool.
@@ -78,12 +59,6 @@ options:
             - It is a reference to an object of type analyticsprofile.
             - Field introduced in 18.1.4,18.2.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
-    apic_epg_name:
-        description:
-            - Synchronize cisco apic epg members with pool servers.
-            - Field deprecated in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     append_port:
         description:
@@ -317,15 +292,6 @@ options:
             - It is a reference to an object of type ipaddrgroup.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
     lb_algorithm:
         description:
             - The load balancing algorithm will pick a server within the pool's list of available servers.
@@ -434,12 +400,6 @@ options:
             - Use static routes in vrf configuration when pool servers are not directly connected but routable from the service engine.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-    prst_hdr_name:
-        description:
-            - Header name for custom header persistence.
-            - Field deprecated in 18.1.2.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
     request_queue_depth:
         description:
             - Minimum number of requests to be queued when pool is full.
@@ -483,18 +443,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    server_auto_scale:
-        description:
-            - Server autoscale.
-            - Not used anymore.
-            - Field deprecated in 18.1.2.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
-    server_count:
-        description:
-            - Field deprecated in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: int
     server_disable_type:
         description:
             - Server graceful disable timeout behaviour.
@@ -673,12 +621,8 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        a_pool=dict(type='str',),
-        ab_pool=dict(type='dict',),
-        ab_priority=dict(type='int',),
         analytics_policy=dict(type='dict',),
         analytics_profile_ref=dict(type='str',),
-        apic_epg_name=dict(type='str',),
         append_port=dict(type='str',),
         application_persistence_profile_ref=dict(type='str',),
         autoscale_launch_config_ref=dict(type='str',),
@@ -711,7 +655,6 @@ def main():
         ignore_server_port=dict(type='bool',),
         inline_health_monitor=dict(type='bool',),
         ipaddrgroup_ref=dict(type='str',),
-        labels=dict(type='list',),
         lb_algorithm=dict(type='str',),
         lb_algorithm_consistent_hash_hdr=dict(type='str',),
         lb_algorithm_core_nonaffinity=dict(type='int',),
@@ -727,15 +670,12 @@ def main():
         nsx_securitygroup=dict(type='list',),
         pki_profile_ref=dict(type='str',),
         placement_networks=dict(type='list',),
-        prst_hdr_name=dict(type='str',),
         request_queue_depth=dict(type='int',),
         request_queue_enabled=dict(type='bool',),
         resolve_pool_by_dns=dict(type='bool',),
         rewrite_host_header_to_server_name=dict(type='bool',),
         rewrite_host_header_to_sni=dict(type='bool',),
         routing_pool=dict(type='bool',),
-        server_auto_scale=dict(type='bool',),
-        server_count=dict(type='int',),
         server_disable_type=dict(type='str',),
         server_name=dict(type='str',),
         server_reselect=dict(type='dict',),

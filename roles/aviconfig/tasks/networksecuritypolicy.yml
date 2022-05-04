@@ -21,7 +21,6 @@
     geo_db_ref: "{{ item.geo_db_ref | default(omit) }}"
     internal: "{{ item.internal | default(omit) }}"
     ip_reputation_db_ref: "{{ item.ip_reputation_db_ref | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     rules: "{{ item.rules | default(omit) }}"

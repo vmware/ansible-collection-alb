@@ -21,7 +21,6 @@
     geo_db_ref: "{{ item.geo_db_ref | default(omit) }}"
     ip_reputation_db_ref: "{{ item.ip_reputation_db_ref | default(omit) }}"
     ipgroup_refs: "{{ item.ipgroup_refs | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     pki_profile_refs: "{{ item.pki_profile_refs | default(omit) }}"
