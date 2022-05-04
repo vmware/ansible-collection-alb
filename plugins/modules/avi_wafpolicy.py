@@ -93,14 +93,6 @@ options:
             - Field introduced in 17.2.4.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    crs_groups:
-        description:
-            - This entry is deprecated.
-            - If you want to change the property of a crs group or rule (enabled, mode, exclusions), please use the crs_overrides field instead.
-            - Field deprecated in 20.1.6.
-            - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
     crs_overrides:
         description:
             - Override attributes for crs rules.
@@ -151,22 +143,6 @@ options:
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
-    learning:
-        description:
-            - Configure parameters for waf learning.
-            - Field deprecated in 18.2.3.
-            - Field introduced in 18.1.2.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
     learning_params:
         description:
             - Parameters for tuning application learning.
@@ -235,14 +211,6 @@ options:
             - Field introduced in 17.2.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-    resolved_crs_groups:
-        description:
-            - A resolved version of waf_crs_ref with waf_crs_overrides applied.
-            - Field deprecated in 21.1.3.
-            - Field introduced in 20.1.6.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: list
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -273,14 +241,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    whitelist:
-        description:
-            - A set of rules which describe conditions under which the request will bypass the waf.
-            - This will be executed in the request header phase before any other waf related code.
-            - Field deprecated in 20.1.3.
-            - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -359,7 +319,6 @@ def main():
         confidence_override=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
-        crs_groups=dict(type='list',),
         crs_overrides=dict(type='list',),
         description=dict(type='str',),
         enable_app_learning=dict(type='bool',),
@@ -367,8 +326,6 @@ def main():
         enable_regex_learning=dict(type='bool',),
         failure_mode=dict(type='str',),
         geo_db_ref=dict(type='str',),
-        labels=dict(type='list',),
-        learning=dict(type='dict',),
         learning_params=dict(type='dict',),
         markers=dict(type='list',),
         min_confidence=dict(type='str',),
@@ -378,13 +335,11 @@ def main():
         positive_security_model=dict(type='dict',),
         post_crs_groups=dict(type='list',),
         pre_crs_groups=dict(type='list',),
-        resolved_crs_groups=dict(type='list',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         waf_crs_ref=dict(type='str',),
         waf_profile_ref=dict(type='str', required=True),
-        whitelist=dict(type='dict',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(

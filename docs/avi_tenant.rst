@@ -311,38 +311,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>suggested_object_labels</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Suggestive pool of key value pairs for recommending assignment of labels to objects in the user interface.
-                </div>
-                                <div style="font-size: small">
-                  - Every entry is unique in both key and value.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 20.1.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 256 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

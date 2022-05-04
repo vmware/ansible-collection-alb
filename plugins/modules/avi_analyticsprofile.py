@@ -237,36 +237,6 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    disable_ondemand_metrics:
-        description:
-            - Virtual service (vs) metrics are processed only when there is live data traffic on the vs.
-            - In case, vs is idle for a period of time as specified by ondemand_metrics_idle_timeout then metrics processing is suspended for that vs.
-            - Field deprecated in 20.1.3.
-            - Field introduced in 18.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
-    disable_se_analytics:
-        description:
-            - Disable node (service engine) level analytics forvs metrics.
-            - Field deprecated in 20.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
-    disable_server_analytics:
-        description:
-            - Disable analytics on backend servers.
-            - This may be desired in container environment when there are large number of ephemeral servers.
-            - Additionally, no healthscore of servers is computed when server analytics is disabled.
-            - Field deprecated in 20.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
-    disable_vs_analytics:
-        description:
-            - Disable virtualservice (frontend) analytics.
-            - This flag disables metrics and healthscore for virtualservice.
-            - Field deprecated in 20.1.3.
-            - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: bool
     enable_adaptive_config:
         description:
             - Enable adaptive configuration for optimizing resource usage.
@@ -688,15 +658,6 @@ options:
             - services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.0.
         type: float
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
     latency_audit_props:
         description:
             - Influence the audit of ingress latency and connection establishement time.
@@ -884,10 +845,6 @@ def main():
         conn_server_lossy_total_rexmt_threshold=dict(type='int',),
         conn_server_lossy_zero_win_size_event_threshold=dict(type='int',),
         description=dict(type='str',),
-        disable_ondemand_metrics=dict(type='bool',),
-        disable_se_analytics=dict(type='bool',),
-        disable_server_analytics=dict(type='bool',),
-        disable_vs_analytics=dict(type='bool',),
         enable_adaptive_config=dict(type='bool',),
         enable_advanced_analytics=dict(type='bool',),
         enable_ondemand_metrics=dict(type='bool',),
@@ -942,7 +899,6 @@ def main():
         hs_security_tls12_score=dict(type='float',),
         hs_security_tls13_score=dict(type='float',),
         hs_security_weak_signature_algo_penalty=dict(type='float',),
-        labels=dict(type='list',),
         latency_audit_props=dict(type='dict',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),

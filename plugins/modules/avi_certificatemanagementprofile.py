@@ -79,11 +79,6 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-    script_path:
-        description:
-            - Field deprecated in 20.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -147,7 +142,6 @@ def main():
         name=dict(type='str', required=True),
         run_script_ref=dict(type='str', required=True),
         script_params=dict(type='list',),
-        script_path=dict(type='str',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),

@@ -185,61 +185,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>additional_config_memory</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Indicates the percent of config memory used for config updates.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 0-90.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is percent.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>advertise_backend_networks</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Advertise reach-ability of backend server networks via adc through bgp for default gateway feature.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>aggressive_failure_detection</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1934,81 +1879,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_routing</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable routing for this serviceenginegroup.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_vip_on_all_interfaces</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable vip on all interfaces of se.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 17.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_vmac</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Use virtual mac address for interfaces on which floating interface ips are placed.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ephemeral_portrange_end</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -2101,70 +1971,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>floating_intf_ip</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - If serviceenginegroup is configured for legacy 1+1 active standby ha mode, floating ip's will be advertised only by the active se in the pair.
-                </div>
-                                <div style="font-size: small">
-                  - Virtual services in this group must be disabled/enabled for any changes to the floating ip's to take effect.
-                </div>
-                                <div style="font-size: small">
-                  - Only active se hosting vs tagged with active standby se 1 tag will advertise this floating ip when manual load distribution is enabled.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 32 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>floating_intf_ip_se_2</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - If serviceenginegroup is configured for legacy 1+1 active standby ha mode, floating ip's will be advertised only by the active se in the pair.
-                </div>
-                                <div style="font-size: small">
-                  - Virtual services in this group must be disabled/enabled for any changes to the floating ip's to take effect.
-                </div>
-                                <div style="font-size: small">
-                  - Only active se hosting vs tagged with active standby se 2 tag will advertise this floating ip when manual load distribution is enabled.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 32 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -4108,38 +3914,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>minimum_required_config_memory</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Required available config memory to apply any configuration.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 0-90.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is percent.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>n_log_streaming_threads</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -4182,198 +3956,6 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>nat_flow_tcp_closed_timeout</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Idle timeout in seconds for nat tcp flows in closed state.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-3600.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>nat_flow_tcp_established_timeout</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Idle timeout in seconds for nat tcp flows in established state.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-3600.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>nat_flow_tcp_half_closed_timeout</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Idle timeout in seconds for nat tcp flows in half closed state.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-3600.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>nat_flow_tcp_handshake_timeout</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Idle timeout in seconds for nat tcp flows in handshake state.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-3600.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>nat_flow_udp_noresponse_timeout</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Idle timeout in seconds for nat udp flows in noresponse state.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-3600.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>nat_flow_udp_response_timeout</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Idle timeout in seconds for nat udp flows in response state.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-3600.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
-                </div>
-                                <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
@@ -4692,26 +4274,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>openstack_availability_zone</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Field deprecated in 17.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>openstack_availability_zones</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -4998,29 +4560,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>reboot_on_stop</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Reboot the system if the se is stopped.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -5776,38 +5315,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>se_flow_probe_timer</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Timeout in milliseconds for flow probe entries.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 10-200.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.1.4, 18.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is milliseconds.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_group_analytics_policy</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -5892,32 +5399,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>se_ipc_udp_port</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Udp port for se_dp ipc in docker bridge mode.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 17.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -6438,32 +5919,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>se_remote_punt_udp_port</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Udp port for punted packets in docker bridge mode.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 17.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_rl_prop</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -6478,38 +5933,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>se_routing</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable routing via service engine datapath.
-                </div>
-                                <div style="font-size: small">
-                  - When disabled, routing is done by the linux kernel.
-                </div>
-                                <div style="font-size: small">
-                  - Ip routing needs to be enabled in service engine group for se routing to be effective.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -8361,70 +7784,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>waf_learning_interval</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Frequency with which se publishes waf learning.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-43200.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.3.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is min.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>waf_learning_memory</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Amount of memory reserved on se for waf learning.
-                </div>
-                                <div style="font-size: small">
-                  - This can be atmost 5% of se memory.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.3.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is mb.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

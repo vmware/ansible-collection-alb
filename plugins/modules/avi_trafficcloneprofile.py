@@ -65,15 +65,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -159,7 +150,6 @@ def main():
         clone_servers=dict(type='list',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        labels=dict(type='list',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         preserve_client_ip=dict(type='bool',),

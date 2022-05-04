@@ -2302,32 +2302,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>vs_apic_scaleout_timeout</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Time to wait for the scaled out se to become ready before marking the scaleout done, applies to apic configuration only.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 21.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is sec.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vs_awaiting_se_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

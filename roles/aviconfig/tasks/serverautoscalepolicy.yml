@@ -20,7 +20,6 @@
     intelligent_autoscale: "{{ item.intelligent_autoscale | default(omit) }}"
     intelligent_scalein_margin: "{{ item.intelligent_scalein_margin | default(omit) }}"
     intelligent_scaleout_margin: "{{ item.intelligent_scaleout_margin | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     max_scalein_adjustment_step: "{{ item.max_scalein_adjustment_step | default(omit) }}"
     max_scaleout_adjustment_step: "{{ item.max_scaleout_adjustment_step | default(omit) }}"

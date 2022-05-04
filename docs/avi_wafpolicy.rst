@@ -309,35 +309,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>crs_groups</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - This entry is deprecated.
-                </div>
-                                <div style="font-size: small">
-                  - If you want to change the property of a crs group or rule (enabled, mode, exclusions), please use the crs_overrides field instead.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 20.1.6.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 17.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>crs_overrides</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -517,64 +488,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>labels</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Key value pairs for granular object access control.
-                </div>
-                                <div style="font-size: small">
-                  - Also allows for classification and tagging of similar objects.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 20.1.5.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 4 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>learning</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Configure parameters for waf learning.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 18.2.3.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -830,35 +743,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>resolved_crs_groups</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - A resolved version of waf_crs_ref with waf_crs_overrides applied.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 21.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.6.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -965,35 +849,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>whitelist</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - A set of rules which describe conditions under which the request will bypass the waf.
-                </div>
-                                <div style="font-size: small">
-                  - This will be executed in the request header phase before any other waf related code.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 20.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.

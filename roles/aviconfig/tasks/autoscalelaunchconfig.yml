@@ -17,7 +17,6 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     image_id: "{{ item.image_id | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     mesos: "{{ item.mesos | default(omit) }}"
     name: "{{ item.name | default(omit) }}"

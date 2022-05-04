@@ -22,7 +22,6 @@
     gcp_profile: "{{ item.gcp_profile | default(omit) }}"
     infoblox_profile: "{{ item.infoblox_profile | default(omit) }}"
     internal_profile: "{{ item.internal_profile | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     oci_profile: "{{ item.oci_profile | default(omit) }}"

@@ -24,7 +24,6 @@
     enable_http2: "{{ item.enable_http2 | default(omit) }}"
     fail_action: "{{ item.fail_action | default(omit) }}"
     implicit_priority_labels: "{{ item.implicit_priority_labels | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     members: "{{ item.members | default(omit) }}"
     min_servers: "{{ item.min_servers | default(omit) }}"

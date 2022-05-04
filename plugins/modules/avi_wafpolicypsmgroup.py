@@ -82,15 +82,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    labels:
-        description:
-            - Key value pairs for granular object access control.
-            - Also allows for classification and tagging of similar objects.
-            - Field deprecated in 20.1.5.
-            - Field introduced in 20.1.2.
-            - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
     locations:
         description:
             - Positive security model locations.
@@ -188,7 +179,6 @@ def main():
         enable=dict(type='bool',),
         hit_action=dict(type='str',),
         is_learning_group=dict(type='bool',),
-        labels=dict(type='list',),
         locations=dict(type='list',),
         markers=dict(type='list',),
         miss_action=dict(type='str',),

@@ -19,7 +19,6 @@
     dns_amplification_denyports: "{{ item.dns_amplification_denyports | default(omit) }}"
     dns_attacks: "{{ item.dns_attacks | default(omit) }}"
     dns_policy_index: "{{ item.dns_policy_index | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     network_security_policy_index: "{{ item.network_security_policy_index | default(omit) }}"

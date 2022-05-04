@@ -635,13 +635,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 180.
         type: int
-    vs_apic_scaleout_timeout:
-        description:
-            - Time to wait for the scaled out se to become ready before marking the scaleout done, applies to apic configuration only.
-            - Field deprecated in 21.1.1.
-            - Unit is sec.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: int
     vs_awaiting_se_timeout:
         description:
             - Unit is sec.
@@ -871,7 +864,6 @@ def main():
         user_agent_cache_config=dict(type='dict',),
         uuid=dict(type='str',),
         vnic_op_fail_time=dict(type='int',),
-        vs_apic_scaleout_timeout=dict(type='int',),
         vs_awaiting_se_timeout=dict(type='int',),
         vs_key_rotate_period=dict(type='int',),
         vs_scaleout_ready_check_interval=dict(type='int',),

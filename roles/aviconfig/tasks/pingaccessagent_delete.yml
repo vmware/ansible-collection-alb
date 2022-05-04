@@ -16,7 +16,6 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
-    labels: "{{ item.labels | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     pingaccess_pool_ref: "{{ item.pingaccess_pool_ref | default(omit) }}"

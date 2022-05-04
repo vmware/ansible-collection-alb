@@ -22,7 +22,6 @@
     label_group_refs: "{{ item.label_group_refs | default(omit) }}"
     local: "{{ item.local | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    suggested_object_labels: "{{ item.suggested_object_labels | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)

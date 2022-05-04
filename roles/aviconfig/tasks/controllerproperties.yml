@@ -94,7 +94,6 @@
     user_agent_cache_config: "{{ item.user_agent_cache_config | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     vnic_op_fail_time: "{{ item.vnic_op_fail_time | default(omit) }}"
-    vs_apic_scaleout_timeout: "{{ item.vs_apic_scaleout_timeout | default(omit) }}"
     vs_awaiting_se_timeout: "{{ item.vs_awaiting_se_timeout | default(omit) }}"
     vs_key_rotate_period: "{{ item.vs_key_rotate_period | default(omit) }}"
     vs_scaleout_ready_check_interval: "{{ item.vs_scaleout_ready_check_interval | default(omit) }}"

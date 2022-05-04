@@ -112,13 +112,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    proactive_support_defaults:
-        description:
-            - This field is deprecated.
-            - Field deprecated in 21.1.1.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: dict
     saas_licensing_config:
         description:
             - Saas licensing configuration.
@@ -226,7 +219,6 @@ def main():
         mode=dict(type='str',),
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
-        proactive_support_defaults=dict(type='dict',),
         saas_licensing_config=dict(type='dict', required=True),
         split_proxy_configuration=dict(type='dict',),
         url=dict(type='str',),
