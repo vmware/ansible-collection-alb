@@ -50,7 +50,7 @@ options:
     app_service_type:
         description:
             - Specifies app service type for an application.
-            - Enum options - APP_SERVICE_TYPE_L7_HORIZON, APP_SERVICE_TYPE_L4_BLAST, APP_SERVICE_TYPE_L4_PCOIP.
+            - Enum options - APP_SERVICE_TYPE_L7_HORIZON, APP_SERVICE_TYPE_L4_BLAST, APP_SERVICE_TYPE_L4_PCOIP, APP_SERVICE_TYPE_L4_FTP.
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
