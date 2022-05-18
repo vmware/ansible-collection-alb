@@ -400,6 +400,14 @@ options:
             - Use static routes in vrf configuration when pool servers are not directly connected but routable from the service engine.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+    pool_type:
+        description:
+            - Type or purpose, the pool is to be used for.
+            - Enum options - POOL_TYPE_GENERIC_APP, POOL_TYPE_OAUTH.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as POOL_TYPE_GENERIC_APP.
+        type: str
     request_queue_depth:
         description:
             - Minimum number of requests to be queued when pool is full.
@@ -670,6 +678,7 @@ def main():
         nsx_securitygroup=dict(type='list',),
         pki_profile_ref=dict(type='str',),
         placement_networks=dict(type='list',),
+        pool_type=dict(type='str',),
         request_queue_depth=dict(type='int',),
         request_queue_enabled=dict(type='bool',),
         resolve_pool_by_dns=dict(type='bool',),
