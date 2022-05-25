@@ -41,6 +41,10 @@ options:
             - 'Path for Avi API resource. For example, C(path: virtualservice) will translate to C(api/virtualserivce).'
         required: true
         type: str
+    action:
+        description:
+            - Action to be performed.
+        type: str
     timeout:
         description:
             - Timeout (in seconds) for Avi API calls.
@@ -142,6 +146,7 @@ def main():
                                   'delete']),
         path=dict(type='str', required=True),
         params=dict(type='dict'),
+        action=dict(type='str'),
         data=dict(type='jsonarg'),
         timeout=dict(type='int', default=60)
     )
@@ -164,6 +169,7 @@ def main():
     timeout = int(module.params.get('timeout'))
     # path is a required argument
     path = module.params.get('path', '')
+    action = module.params.get('action', None)
     params = module.params.get('params', None)
     data = module.params.get('data', None)
     # Get the api_version from module.
@@ -198,6 +204,12 @@ def main():
                     not any(path.endswith(uri) for uri in sub_api_get_not_allowed)):
                 rsp = api.get(path, tenant=tenant, tenant_uuid=tenant_uuid,
                               params=gparams, api_version=api_version)
+                if action is not None:
+                    path = path + '/' + action
+
+                    rsp = api.post(path, tenant=tenant, tenant_uuid=tenant_uuid,
+                                   params=gparams, api_version=api_version)
+
                 existing_obj = rsp.json()
                 if using_collection:
                     existing_obj = existing_obj['results'][0]
