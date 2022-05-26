@@ -63,6 +63,7 @@
     nsx_securitygroup: "{{ item.nsx_securitygroup | default(omit) }}"
     pki_profile_ref: "{{ item.pki_profile_ref | default(omit) }}"
     placement_networks: "{{ item.placement_networks | default(omit) }}"
+    pool_type: "{{ item.pool_type | default(omit) }}"
     request_queue_depth: "{{ item.request_queue_depth | default(omit) }}"
     request_queue_enabled: "{{ item.request_queue_enabled | default(omit) }}"
     resolve_pool_by_dns: "{{ item.resolve_pool_by_dns | default(omit) }}"

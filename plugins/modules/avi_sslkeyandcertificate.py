@@ -117,6 +117,13 @@ options:
             - It is a reference to an object of type hardwaresecuritymodulegroup.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
+    import_key_to_hsm:
+        description:
+            - Flag to enable private key import to hsm while importing the certificate.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     key:
         description:
             - Private key.
@@ -271,6 +278,7 @@ def main():
         enckey_name=dict(type='str',),
         format=dict(type='str',),
         hardwaresecuritymodulegroup_ref=dict(type='str',),
+        import_key_to_hsm=dict(type='bool',),
         key=dict(type='str', no_log=True,),
         key_base64=dict(type='bool',),
         key_params=dict(type='dict',),
