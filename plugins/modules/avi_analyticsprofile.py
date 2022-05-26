@@ -660,7 +660,7 @@ options:
         type: float
     latency_audit_props:
         description:
-            - Influence the audit of ingress latency and connection establishement time.
+            - Deprecated in 22.1.1.
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
@@ -718,6 +718,12 @@ options:
             - It is a reference to an object of type tenant.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    time_tracker_props:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     url:
         description:
             - Avi controller URL of the object.
@@ -908,6 +914,7 @@ def main():
         sensitive_log_profile=dict(type='dict',),
         sip_log_depth=dict(type='int',),
         tenant_ref=dict(type='str',),
+        time_tracker_props=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
