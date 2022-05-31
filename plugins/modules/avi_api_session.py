@@ -264,11 +264,19 @@ def main():
 
     if (method == 'put' and changed) or (method != 'put'):
         fn = getattr(api, method)
-        rsp = fn(path, tenant=tenant, tenant_uuid=tenant, timeout=timeout,
-                 params=params, data=data, api_version=api_version)
+        if action is not None:
+            path = path + '/' + action
+
+            rsp = api.post(path, tenant=tenant, tenant_uuid=tenant_uuid,
+                           params=gparams, api_version=api_version)
+        else:
+            rsp = fn(path, tenant=tenant, tenant_uuid=tenant, timeout=timeout,
+                     params=params, data=data, api_version=api_version)
     else:
         rsp = None
+
     if method == 'delete' and rsp.status_code == 404:
+        module.warn('Object to be deleted not found!')
         changed = False
         rsp.status_code = 200
     if method == 'patch' and existing_obj and rsp.status_code < 299:
