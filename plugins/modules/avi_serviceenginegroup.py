@@ -484,6 +484,16 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10.
         type: int
+    dpdk_gro_timeout_interval:
+        description:
+            - The timeout for gro coalescing interval.
+            - 0 indicates non-timer based gro.
+            - Allowed values are 0-900.
+            - Field introduced in 22.1.1.
+            - Unit is microseconds.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 50.
+        type: int
     enable_gratarp_permanent:
         description:
             - Enable gratarp for vip_ip.
@@ -1693,6 +1703,12 @@ options:
             - services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
+    se_time_tracker_props:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     se_tracert_port_range:
         description:
             - Traceroute port range.
@@ -2264,6 +2280,7 @@ def main():
         dp_enq_interval_msec=dict(type='int',),
         dp_hb_frequency=dict(type='int',),
         dp_hb_timeout_count=dict(type='int',),
+        dpdk_gro_timeout_interval=dict(type='int',),
         enable_gratarp_permanent=dict(type='bool',),
         enable_hsm_log=dict(type='bool',),
         enable_hsm_priming=dict(type='bool',),
@@ -2419,6 +2436,7 @@ def main():
         se_sb_dedicated_core=dict(type='bool',),
         se_sb_threads=dict(type='int',),
         se_thread_multiplier=dict(type='int',),
+        se_time_tracker_props=dict(type='dict',),
         se_tracert_port_range=dict(type='dict',),
         se_tunnel_mode=dict(type='int',),
         se_tunnel_udp_port=dict(type='int',),

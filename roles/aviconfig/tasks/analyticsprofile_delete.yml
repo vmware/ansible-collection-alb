@@ -99,6 +99,7 @@
     sensitive_log_profile: "{{ item.sensitive_log_profile | default(omit) }}"
     sip_log_depth: "{{ item.sip_log_depth | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    time_tracker_props: "{{ item.time_tracker_props | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)

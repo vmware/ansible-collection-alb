@@ -201,7 +201,8 @@ options:
             - Cloud metrics collector polling interval in seconds.
             - Field introduced in 22.1.1.
             - Unit is seconds.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 300.
         type: int
     mtu:
@@ -221,6 +222,12 @@ options:
             - Nsx-t cloud platform configuration.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
+        type: dict
+    ntp_configuration:
+        description:
+            - Ntp configuration for the cloud.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     obj_name_prefix:
         description:
@@ -385,6 +392,7 @@ def main():
         mtu=dict(type='int',),
         name=dict(type='str', required=True),
         nsxt_configuration=dict(type='dict',),
+        ntp_configuration=dict(type='dict',),
         obj_name_prefix=dict(type='str',),
         openstack_configuration=dict(type='dict',),
         prefer_static_routes=dict(type='bool',),
