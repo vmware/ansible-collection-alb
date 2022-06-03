@@ -43,8 +43,9 @@ options:
         type: str
     is_resource:
         description:    
-            - Boolean flag to indicate presence of action
+            - Boolean flag to indicate presence of action.
         type: bool
+        default: False
     timeout:
         description:
             - Timeout (in seconds) for Avi API calls.
