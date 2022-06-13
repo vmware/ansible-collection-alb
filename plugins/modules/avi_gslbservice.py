@@ -194,6 +194,13 @@ options:
             - It is a reference to an object of type tenant.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    topology_policy_enabled:
+        description:
+            - When enabled, topology policy rules are used for member selection first.
+            - If no valid member is found using the topology policy rules, configured gslb algorithms for pool selection and member selection are used.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: bool
     ttl:
         description:
             - Ttl value (in seconds) for records served for this gslb service by the dns service.
@@ -293,6 +300,7 @@ def main():
         resolve_cname=dict(type='bool',),
         site_persistence_enabled=dict(type='bool',),
         tenant_ref=dict(type='str',),
+        topology_policy_enabled=dict(type='bool',),
         ttl=dict(type='int',),
         url=dict(type='str',),
         use_edns_client_subnet=dict(type='bool',),

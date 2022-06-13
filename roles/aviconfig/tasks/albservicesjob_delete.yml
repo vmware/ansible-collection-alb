@@ -18,10 +18,14 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     end_time: "{{ item.end_time | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
+    params: "{{ item.params | default(omit) }}"
     pulse_job_id: "{{ item.pulse_job_id | default(omit) }}"
+    pulse_sync_status: "{{ item.pulse_sync_status | default(omit) }}"
+    result: "{{ item.result | default(omit) }}"
     start_time: "{{ item.start_time | default(omit) }}"
     status: "{{ item.status | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    token: "{{ item.token | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)

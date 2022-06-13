@@ -35,6 +35,7 @@
     resolve_cname: "{{ item.resolve_cname | default(omit) }}"
     site_persistence_enabled: "{{ item.site_persistence_enabled | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    topology_policy_enabled: "{{ item.topology_policy_enabled | default(omit) }}"
     ttl: "{{ item.ttl | default(omit) }}"
     use_edns_client_subnet: "{{ item.use_edns_client_subnet | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"

@@ -73,10 +73,28 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: str
+    params:
+        description:
+            - Job params.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
     pulse_job_id:
         description:
             - A unique identifier for this job entry on the pulse portal.
             - Field introduced in 21.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
+    pulse_sync_status:
+        description:
+            - Status of sync to pulse(result uploads/state updates).
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: bool
+    result:
+        description:
+            - Job result.
+            - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     start_time:
@@ -98,6 +116,12 @@ options:
             - The unique identifier of the tenant to which this albservicesjob belongs.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
+    token:
+        description:
+            - Job token.
+            - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
@@ -159,10 +183,14 @@ def main():
         configpb_attributes=dict(type='dict',),
         end_time=dict(type='dict',),
         name=dict(type='str', required=True),
+        params=dict(type='list',),
         pulse_job_id=dict(type='str',),
+        pulse_sync_status=dict(type='bool',),
+        result=dict(type='str',),
         start_time=dict(type='dict',),
         status=dict(type='str',),
         tenant_ref=dict(type='str',),
+        token=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
