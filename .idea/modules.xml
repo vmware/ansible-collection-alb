@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ansible-collection-alb.iml" filepath="$PROJECT_DIR$/.idea/ansible-collection-alb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roles/avise_vmware/.idea/avise_vmware.iml" filepath="$PROJECT_DIR$/roles/avise_vmware/.idea/avise_vmware.iml" />
     </modules>
   </component>
 </project>
