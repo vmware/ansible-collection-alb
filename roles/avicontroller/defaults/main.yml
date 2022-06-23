@@ -1,0 +1,100 @@
+---
+# defaults file for avinetworks.avicontroller
+
+# set the type of deployment
+con_deploy_type: docker
+
+# standard parameters
+con_skip_requirements: false
+
+# parameters for use when deploying as package
+con_package_deploy: false
+con_package_source: controller_docker.tgz
+con_package_dest: /tmp/controller_docker.tgz
+
+# parameters for use when pulling from docker hub or docker repo
+con_docker_repo: ~
+con_docker_repo_user: ~
+con_docker_repo_password: ~
+con_version: 17.2.4-9024-20171127.023607
+con_image: "avinetworks/controller:{{ con_version }}"
+
+# docker deployment parameters
+con_force_deploy: false
+con_fresh_install: false
+con_controller_ip: "{{ ansible_default_ipv4.address }}"
+con_cores: "{{ ansible_processor_cores * ansible_processor_count }}"
+con_memory_gb: "{{ ansible_memtotal_mb // 1024 }}"
+con_destination_disk: "{{ ansible_mounts|sort(reverse=True, attribute='size_total')|map(attribute='mount')|first }}"
+con_disk_path: "{{ con_destination_disk }}/opt/avi/controller/data"
+con_disk_gb: 30
+con_metrics_disk_path: ~
+con_metrics_disk_gb: ~
+con_logs_disk_path: ~
+con_logs_disk_gb: ~
+con_dev_name: ~
+con_setup_json: ~
+con_setup_json_raw: ~
+# If the deploy_type changes we will change the port to match
+# because of the limiatations of openshift we can't use 80 in openshift
+con_portal_http_port: >-
+  {%- if con_deploy_type == 'openshift' -%}9080
+  {%- elif con_deploy_type == 'docker' -%}80
+  {%- else -%}80
+  {%- endif -%}
+# If the deploy_type changes we will change the port to match
+# because of the limiatations of openshift we can't use 443 in openshift
+con_portal_https_port: >-
+  {%- if con_deploy_type == 'openshift' -%}9443
+  {%- elif con_deploy_type == 'docker' -%}443
+  {%- else -%}443
+  {%- endif -%}
+con_sysint_port: 8443
+con_ssh_port: 5098
+con_cli_port: 5054
+con_snmp_port: 161
+
+# Mount variables which are sent to the docker container, these are used in the service templates.
+con_mounts_extras: []
+con_mounts_default:
+  - "/:/hostroot/"
+  - "/dev:/dev"
+  - "/var/run/docker.sock:/var/run/docker.sock"
+  - "{{ (con_deploy_type|lower == 'openshift')| ternary('', '/var/run/fleet.sock:/var/run/fleet.sock') }}"
+  - "{{ con_disk_path }}:/vol/"
+  - "{{ (con_metrics_disk_path == None)|ternary('', con_metrics_disk_path ~ ':/vol_metrics/') }}"
+  - "{{ (con_logs_disk_path == None)|ternary('', con_logs_disk_path ~ ':/vol_logs/') }}"
+con_mounts_all: "{{ con_mounts_extras + con_mounts_default }}"
+con_mounts_string: "{% for mount_var in con_mounts_all|reject('match', '^$') %} -v {{ mount_var }}{% endfor %}"
+
+# Environment variables which are sent to the docker container, these are used in the service templates.
+con_env_variables_extras: []
+con_env_variables_default:
+  - "CONTAINER_NAME=avicontroller"
+  - "MANAGEMENT_IP={{ con_controller_ip|string }}"
+  - "NUM_CPU={{ con_cores }}"
+  - "NUM_MEMG={{ con_memory_gb }}"
+  - "DISK_GB={{ con_disk_gb }}"
+  - "CNTRL_SSH_PORT={{ con_ssh_port }}"
+  - "SYSINT_PORT={{ con_sysint_port }}"
+  - "HTTP_PORT={{ con_portal_http_port }}"
+  - "HTTPS_PORT={{ con_portal_https_port }}"
+  - "{{ (con_metrics_disk_gb == None)|ternary('', 'METRICS_DISK_GB=' + con_metrics_disk_gb|string) }}"
+  - "{{ (con_logs_disk_gb == None)|ternary('', 'LOGS_DISK_GB=' + con_logs_disk_gb|string) }}"
+con_env_variables_all: "{{ con_env_variables_extras + con_env_variables_default }}"
+con_env_variables_string: "{% for env_var in con_env_variables_all|reject('match', '^$') %} -e {{ env_var }}{% endfor %}"
+
+con_ports_list_extras: []
+con_ports_list_default:
+  - "{{ con_ssh_port }}:{{ con_ssh_port }}"
+  - "{{ con_portal_http_port }}:{{ con_portal_http_port }}"
+  - "{{ con_portal_https_port }}:{{ con_portal_https_port }}"
+  - "{{ con_sysint_port }}:{{ con_sysint_port }}"
+  - "{{ con_cli_port }}:{{ con_cli_port }}"
+  - "{{ con_snmp_port }}:{{ con_snmp_port }}/udp"
+con_ports_list_all: "{{ con_ports_list_extras + con_ports_list_default }}"
+con_ports_list_string: "{% for port in con_ports_list_all|reject('match', '^$') %} -p {{ port }}{% endfor %}"
+
+# !!!! BEWARE: This is to completely override everything passed into the service template for the docker run. DON'T EDIT THIS UNLESS YOU KNOW WHAT YOUR DOING!!!!!
+AVI_RUN_PARAMS: "--name=avicontroller{{ con_ports_list_string }} --pids-limit -1 -d --privileged{{ con_env_variables_string }}{{ con_mounts_string }} {{ con_image }}"
+AVI_EXECUTABLE: "/usr/sbin/avicontroller"
