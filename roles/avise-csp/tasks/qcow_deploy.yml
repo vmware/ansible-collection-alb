@@ -1,0 +1,133 @@
+---
+
+- name: Avi SE | CSP | Image deploy | Get CSP version
+  uri:
+    url: "https://{{ se_csp_host }}/api/running/resources/resource/{{ se_csp_platform }}"
+    method: GET
+    user: "{{ se_csp_user }}"
+    password: "{{ se_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: se_csp_resource_rsp.status != 200
+  register: se_csp_resource_rsp
+  delegate_to: localhost
+
+- name: Avi SE | CSP | Image deploy | Set CSP version
+  set_fact:
+    se_csp_resource_info: "{{ se_csp_resource_rsp.content|from_json }}"
+
+- name: Avi SE | CSP | Image deploy | See if the qcow image already exists
+  uri:
+    url: "https://{{ se_csp_host }}/api/operational/repository/image/{{ se_csp_qcow_image_name }}/_operations/get_image"
+    method: POST
+    user: "{{ se_csp_user }}"
+    password: "{{ se_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: false
+  register: se_image_exists
+  delegate_to: localhost
+
+- block:
+  - set_fact:
+      se_image_exists_json: "{{ se_image_exists.content|from_json }}"
+  - debug: msg="Image {{ se_image_exists_json.output.name }} already exists."
+  when: se_image_exists.status == 200 and se_csp_resource_info['resource:resource'].csp_version is version_compare("02.04", "<")
+
+- block:
+  - set_fact:
+      se_image_exists_json: "{{ se_image_exists.content|from_json }}"
+  - debug: msg="Image {{ se_image_exists_json['question_xml:output']['name'] }} already exists."
+  when: se_image_exists.status == 200 and se_csp_resource_info['resource:resource'].csp_version is version_compare("02.04", ">=")
+
+- block:
+    - name: Avi SE | CSP | Image deploy | Set SE image path for controller version < 18.2.6
+      set_fact:
+        se_image_path: "/opt/avi/se_ova"
+      when: se_master_ctl_version is version_compare("18.2.6", "<")
+
+    - block:
+        - name: Avi SE | CSP | Image deploy | Get controller tag
+          avi_api_session:
+            controller: "{{ se_master_ctl_ip }}"
+            username: "{{ se_master_ctl_username }}"
+            password: "{{ se_master_ctl_password }}"
+            api_version: "{{ se_master_ctl_version }}"
+            tenant: admin
+            http_method: get
+            path: "initial-data"
+          register: data_res
+          delegate_to: localhost
+
+        - name: Avi SE | CSP | Image deploy | Set SE image path for controller version >= 18.2.6
+          set_fact:
+            se_image_path: "/host/pkgs/{{ data_res.obj.version.Tag }}"
+
+      when: se_master_ctl_version is version_compare("18.2.6", ">=")
+
+    - name: Avi SE | CSP | Image deploy | Verify qcow exists on controller
+      stat:
+        path: "{{ se_image_path }}/{{ se_csp_qcow_image_file }}"
+      register: se_qcow_status
+    - block:
+        - name:  Avi SE | CSP | Image deploy | generate SE image if not exist on controller
+          delegate_to: localhost
+          avi_api_session:
+            controller: "{{ se_master_ctl_ip }}"
+            username: "{{ se_master_ctl_username }}"
+            password: "{{ se_master_ctl_password }}"
+            api_version: "{{ se_master_ctl_version }}"
+            http_method: post
+            path: 'fileservice/seova'
+            timeout: 600
+            data:
+              file_format: qcow2
+      when: (not se_qcow_status.stat.exists) or (se_csp_qcow_force_mode)
+
+    - name: Check SE file exists on controller
+      stat: path={{ se_image_path }}/{{ se_csp_qcow_image_file }}
+      register: se_image_file
+
+    - name: Copy SE image to new filename
+      command: cp {{ se_image_path }}/{{ se_csp_qcow_image_file }} /tmp/{{ se_csp_qcow_image_name }}
+      when: se_image_file.stat.exists
+
+    - name: Avi SE | CSP | Image deploy | SCP qcow to csp device
+      shell: sshpass -p "{{ se_csp_password }}" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /tmp/{{ se_csp_qcow_image_name }} {{ se_csp_user }}@{{ se_csp_host }}:/osp/repository && rm -rf /tmp/{{ se_csp_qcow_image_name }}
+      register: command_result
+      failed_when: false
+
+    - name: Check SE tmp file exists on controller
+      stat: path=/tmp/{{ se_csp_qcow_image_name }}
+      register: se_tmp_image_file
+
+    - name: Remove tmp SE image
+      command: rm -rf /tmp/{{ se_csp_qcow_image_name }}
+      when: se_tmp_image_file.stat.exists
+
+    - name: Avi SE | CSP | Image deploy | Verify the qcow image copied successfully
+      uri:
+        url: "https://{{ se_csp_host }}/api/operational/repository/image/{{ se_csp_qcow_image_name }}/_operations/get_image"
+        method: POST
+        user: "{{ se_csp_user }}"
+        password: "{{ se_csp_password }}"
+        force_basic_auth: yes
+        headers:
+          Accept: '*/*'
+        validate_certs: false
+        return_content: true
+        status_code: 200, 204
+      register: se_image_verify
+      delegate_to: localhost
+
+    - name: Avi SE | CSP | Image deploy | Fail if SCP verification faild
+      fail:
+        msg: "SCP to CSP host failed {{ command_result }}"
+      when: se_image_verify.status != 200 and se_image_verify.status != 204
+  when: se_image_exists.status != 200
