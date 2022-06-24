@@ -1276,9 +1276,6 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
-                </div>
                                             </td>
         </tr>
                 <tr>
@@ -2113,6 +2110,35 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>grpc_channel_connect_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timeout in seconds that se waits for a grpc channel to connect to server, before it retries.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 5-45.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 15.
                 </div>
                                             </td>
         </tr>
@@ -4209,10 +4235,7 @@ Parameters
                   - Number of queues to each dispatcher.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 2-8.
-                </div>
-                                <div style="font-size: small">
-                  - Special values are 0 - auto-compute, 1 - single-queue.
+                  - Allowed values are 1-2.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
