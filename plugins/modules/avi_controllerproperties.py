@@ -300,6 +300,12 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    false_positive_learning_config:
+        description:
+            - False positive learning configuration.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     fatal_error_lease_time:
         description:
             - Unit is sec.
@@ -487,7 +493,7 @@ options:
             - Field introduced in 22.1.1.
             - Unit is sec.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 30.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 90.
         type: int
     se_vnic_cooldown:
         description:
@@ -817,6 +823,7 @@ def main():
         enable_memory_balancer=dict(type='bool',),
         enable_per_process_stop=dict(type='bool',),
         enable_resmgr_log_cache_print=dict(type='bool',),
+        false_positive_learning_config=dict(type='dict',),
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),

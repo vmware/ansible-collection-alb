@@ -140,6 +140,7 @@ Name | Description
 [vmware.alb.avi_poolgroupdeploymentpolicy](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_poolgroupdeploymentpolicy.rst)|Module to create update or delete PoolGroupDeploymentPolicy
 [vmware.alb.avi_prioritylabels](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_prioritylabels.rst)|Module to create update or delete PriorityLabels
 [vmware.alb.avi_protocolparser](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_protocolparser.rst)|Module to create update or delete ProtocolParser
+[vmware.alb.avi_pulse_registration](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_pulse_registration.rst)|Module to create update or delete PulseRegistration
 [vmware.alb.avi_role](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_role.rst)|Module to create update or delete Role
 [vmware.alb.avi_saml_api_session](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_saml_api_session.rst)|Module to create update or delete SamlApiSession
 [vmware.alb.avi_scheduler](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_scheduler.rst)|Module to create update or delete Scheduler
