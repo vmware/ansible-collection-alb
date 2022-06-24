@@ -357,7 +357,6 @@ options:
             - Gro is on by default on nics that do not support lro (large receive offload) or do not gain performance boost from lro.
             - Field introduced in 17.2.5, 18.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     disable_se_memory_check:
         description:
@@ -588,6 +587,14 @@ options:
             - Unit is min.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+        type: int
+    grpc_channel_connect_timeout:
+        description:
+            - Timeout in seconds that se waits for a grpc channel to connect to server, before it retries.
+            - Allowed values are 5-45.
+            - Field introduced in 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 15.
         type: int
     ha_mode:
         description:
@@ -2295,6 +2302,7 @@ def main():
         free_list_size=dict(type='int',),
         gcp_config=dict(type='dict',),
         gratarp_permanent_periodicity=dict(type='int',),
+        grpc_channel_connect_timeout=dict(type='int',),
         ha_mode=dict(type='str',),
         handle_per_pkt_attack=dict(type='bool',),
         hardwaresecuritymodulegroup_ref=dict(type='str',),
