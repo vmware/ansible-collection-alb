@@ -4235,10 +4235,7 @@ Parameters
                   - Number of queues to each dispatcher.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 2-8.
-                </div>
-                                <div style="font-size: small">
-                  - Special values are 0 - auto-compute, 1 - single-queue.
+                  - Allowed values are 1-2.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
