@@ -51,24 +51,29 @@ These are only marked required, for when you are using CSP Deployment.
 ---
 - hosts: csp_devices
   gather_facts: false
-  roles:
-    - role: avinetworks.avicontroller_csp
-      con_deploy_type: csp
-      con_csp_user: admin
-      con_csp_password: password
-      con_csp_qcow_image_file: avi-controller.qcow2
-      con_csp_mgmt_ip: 10.128.2.20
-      con_csp_mgmt_mask: 255.255.255.0
-      con_csp_default_gw: 10.128.2.1
-      con_csp_service_name: avi-controller
-      con_csp_memory_gb: 32
-      con_csp_num_cpu: 16
-      con_csp_vnics:
-        - nic: '0'
-          type: access
-          tagged: 'false'
-          network_name: enp1s0f0
-      con_csp_bond_ifs: '1,2'
+  collections:
+    - vmware.alb
+  tasks:
+    - name: Deploy Avi Controller csp
+      import_role:
+        name: avicontroller_csp
+      vars:
+        con_deploy_type: csp
+        con_csp_user: admin
+        con_csp_password: password
+        con_csp_qcow_image_file: avi-controller.qcow2
+        con_csp_mgmt_ip: 10.128.2.20
+        con_csp_mgmt_mask: 255.255.255.0
+        con_csp_default_gw: 10.128.2.1
+        con_csp_service_name: avi-controller
+        con_csp_memory_gb: 32
+        con_csp_num_cpu: 16
+        con_csp_vnics:
+          - nic: '0'
+            type: access
+            tagged: 'false'
+            network_name: enp1s0f0
+        con_csp_bond_ifs: '1,2'
 ```
 
 ## License
