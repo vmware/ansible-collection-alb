@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi BackupConfiguration | Create or Update BackupConfiguration
+- name: Avi WebappUT | Create or Update WebappUT
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_backupconfiguration:
+  vmware.alb.avi_webapput:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,24 +14,16 @@
     api_context: "{{ avi_api_context | default(omit) }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    aws_access_key: "{{ item.aws_access_key | default(omit) }}"
-    aws_bucket_id: "{{ item.aws_bucket_id | default(omit) }}"
-    aws_bucket_region: "{{ item.aws_bucket_region | default(omit) }}"
-    aws_secret_access: "{{ item.aws_secret_access | default(omit) }}"
-    backup_file_prefix: "{{ item.backup_file_prefix | default(omit) }}"
-    backup_passphrase: "{{ item.backup_passphrase | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    maximum_backups_stored: "{{ item.maximum_backups_stored | default(omit) }}"
+    mandatory_test: "{{ item.mandatory_test | default(omit) }}"
+    mandatory_tests: "{{ item.mandatory_tests | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    remote_directory: "{{ item.remote_directory | default(omit) }}"
-    remote_hostname: "{{ item.remote_hostname | default(omit) }}"
-    save_local: "{{ item.save_local | default(omit) }}"
-    ssh_user_ref: "{{ item.ssh_user_ref | default(omit) }}"
+    string_length_test: "{{ item.string_length_test | default(omit) }}"
+    string_length_tests: "{{ item.string_length_tests | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    upload_to_remote_host: "{{ item.upload_to_remote_host | default(omit) }}"
-    upload_to_s3: "{{ item.upload_to_s3 | default(omit) }}"
+    test_string: "{{ item.test_string | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.backupconfiguration | default([]) }}"
+  with_items: "{{ avi_role_cfg.webapput | default([]) }}"
