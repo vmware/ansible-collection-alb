@@ -49,52 +49,52 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 22.1.1.
+            - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
     mandatory_test:
         description:
             - Optional message for nested f_mandatory test cases defined at level0.
-            - Field introduced in 21.1.5, 22.1.3.
+            - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     mandatory_tests:
         description:
             - Repeated message for nested f_mandatory test cases-level1.
-            - Field introduced in 21.1.5, 22.1.3.
+            - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     name:
         description:
             - Name of the webapput object-level0.
-            - Field introduced in 21.1.5, 22.1.3.
+            - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: str
     string_length_test:
         description:
             - Optional message for nested  max string length test cases.
-            - Field introduced in 21.1.5, 22.1.3.
+            - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     string_length_tests:
         description:
             - Repeated message for nested  max string length test cases.
-            - Field introduced in 21.1.5, 22.1.3.
+            - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
     tenant_ref:
         description:
             - Tenant of the webapput object-level0.
             - It is a reference to an object of type tenant.
-            - Field introduced in 21.1.5, 22.1.3.
+            - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     test_string:
         description:
             - The maximum string length.
-            - Field introduced in 21.1.5, 22.1.3.
+            - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
@@ -104,7 +104,7 @@ options:
     uuid:
         description:
             - Uuid of the webapput object-level0.
-            - Field introduced in 21.1.5, 22.1.3.
+            - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
