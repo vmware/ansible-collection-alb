@@ -399,10 +399,10 @@ Parameters
                   - For generation of the jwt_token paste the related link in Incognito window to prevent IdP from considering any existing valid login session
                 </div>
                                 <div style="font-size: small">
-                  - If your controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ctrllogin
+                  - If controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ctrllogin
                 </div>
                                 <div style="font-size: small">
-                  - If your controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ccctrllogin
+                  - If controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ccctrllogin
                 </div>
                                 <div style="font-size: small">
                   - jwt_token is valid for 365 days.

@@ -20,7 +20,7 @@ author: Patnala Chandana (@chandanapatnala) <cpatnala@vmware.com>
 
 short_description: Avi API Module for pulse registration
 description:
-    - This module can be used for registering with optins or deregistering the controller with pulse. 
+    - This module can be used for registering with optins or deregistering the controller with pulse.
 options:
     state:
         description:
@@ -32,8 +32,8 @@ options:
         description:
             - Token which is used to login to pulse from controller for the specific user.
             - For generation of the jwt_token paste the related link in Incognito window to prevent IdP from considering any existing valid login session
-            - If your controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ctrllogin
-            - If your controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ccctrllogin
+            - If controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ctrllogin
+            - If controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ccctrllogin
             - jwt_token is valid for 365 days.
         required: true
         type: str
@@ -211,7 +211,7 @@ def main():
     )
     argument_specs = dict(
         state=dict(default='present', choices=['absent', 'present']),
-        jwt_token=dict(type='str', required=True,no_log=True),
+        jwt_token=dict(type='str', required=True, no_log=True),
         name=dict(required=True, type='str'),
         params=dict(type='dict'),
         description=dict(type='str', required=True),
@@ -271,17 +271,17 @@ def main():
     reg = True
 
     if state == 'present':
-        #registration
+        # registration
         path = "albservices/status"
         resp = api.get(path, tenant=tenant, tenant_uuid=tenant_uuid, api_version=api_version)
         existing_obj = resp
         if not(check_mode) and resp.json().get("connectivity_status") == "ALBSERVICES_DISCONNECTED":
-            headers = {'Content-Type': 'application/json', 'Authorization':'Basic YWRtaW46YWRtaW4='}
-            data = {"jwt_token":jwt_token}
+            headers = {'Content-Type': 'application/json', 'Authorization': 'Basic YWRtaW46YWRtaW4='}
+            data = {"jwt_token": jwt_token}
             path = "portal/refresh-access-token"
             rsp = api.post(path, api_version=api_version, headers=headers, data=data)
             if rsp.status_code > 300:
-                return module.fail_json(msg='Failed: %s' %rsp.text)
+                return module.fail_json(msg='Failed: %s' % rsp.text)
             else:
                 changed = True
                 time.sleep(10)
@@ -289,15 +289,15 @@ def main():
         if resp.json().get("registration_status") == "ALBSERVICES_DEREGISTERED":
             if not check_mode:
                 path = "albservices/register"
-                data = {"name":name, "description":description, "email":email,
-                       "account_id":account_id}
+                data = {"name":name, "description": description, "email": email,
+                        "account_id": account_id}
                 rsp = api.post(path, data=data)
                 changed = True
                 time.sleep(5)
             else:
-                    # No need to process any further.
-                    rsp = AviCheckModeResponse(obj=existing_obj)
-                    changed = True
+                # No need to process any further.
+                rsp = AviCheckModeResponse(obj=existing_obj)
+                changed = True
 
         if resp.json().get("registration_status") == "ALBSERVICES_REGISTERED":
             changed = False
@@ -358,7 +358,7 @@ def main():
             return module.exit_json(changed=changed, msg='Registered successfully')
 
     else:
-        #deregistration
+        # deregistration
         reg = True
         path = "albservices/status"
         resp = api.get(path, tenant=tenant, tenant_uuid=tenant_uuid,
@@ -367,21 +367,21 @@ def main():
         if resp.json().get("registration_status") == "ALBSERVICES_REGISTERED":
             if not check_mode:
                 path = "albservices/register"
-                data = {"status":'Obsolete'}
+                data = {"status": "Obsolete"}
                 rsp = api.put(path, data=data)
                 changed = True
             else:
                 rsp = AviCheckModeResponse(obj=existing_obj)
                 changed = True
 
-        if resp.json().get("registration_status")=="ALBSERVICES_DEREGISTERED":
+        if resp.json().get("registration_status") == "ALBSERVICES_DEREGISTERED":
             changed = False
             reg = False
         if reg and rsp.status_code > 300:
             return module.fail_json(msg='Failed: %s' % rsp.text)
         else:
             return module.exit_json(
-                    changed=changed, msg="Deregistered successfully")
+                changed=changed, msg="Deregistered successfully")
 
 if __name__ == '__main__':
     main()
