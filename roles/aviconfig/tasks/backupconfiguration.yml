@@ -16,6 +16,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     aws_access_key: "{{ item.aws_access_key | default(omit) }}"
     aws_bucket_id: "{{ item.aws_bucket_id | default(omit) }}"
+    aws_bucket_region: "{{ item.aws_bucket_region | default(omit) }}"
     aws_secret_access: "{{ item.aws_secret_access | default(omit) }}"
     backup_file_prefix: "{{ item.backup_file_prefix | default(omit) }}"
     backup_passphrase: "{{ item.backup_passphrase | default(omit) }}"
