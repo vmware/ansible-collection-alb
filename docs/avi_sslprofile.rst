@@ -143,7 +143,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Ciphers suites represented as defined by https //www.openssl.org/docs/apps/ciphers.html.
+                  - Ciphers suites represented as defined by https //www.openssl.org/docs/man1.1.1/man1/ciphers.html.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -239,7 +239,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tls 1.3 ciphers suites represented as defined by u(https //www.openssl.org/docs/manmaster/man1/ciphers.html).
+                  - Tls 1.3 ciphers suites represented as defined by u(https //www.openssl.org/docs/man1.1.1/man1/ciphers.html).
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
