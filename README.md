@@ -181,6 +181,7 @@ Name | Description
 [vmware.alb.avi_wafpolicy](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_wafpolicy.rst)|Module to create update or delete WafPolicy
 [vmware.alb.avi_wafpolicypsmgroup](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_wafpolicypsmgroup.rst)|Module to create update or delete WafPolicyPSMGroup
 [vmware.alb.avi_wafprofile](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_wafprofile.rst)|Module to create update or delete WafProfile
+[vmware.alb.avi_webapput](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_webapput.rst)|Module to create update or delete WebappUT
 [vmware.alb.avi_webhook](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_webhook.rst)|Module to create update or delete Webhook
 <!--end collection content-->
 
