@@ -41,6 +41,11 @@ options:
             - 'Path for Avi API resource. For example, C(path: virtualservice) will translate to C(api/virtualserivce).'
         required: true
         type: str
+    is_resource:
+        description:    
+            - Boolean flag to indicate presence of action.
+        type: bool
+        default: False
     timeout:
         description:
             - Timeout (in seconds) for Avi API calls.
@@ -123,6 +128,7 @@ import json
 import time
 from ansible.module_utils.basic import AnsibleModule
 from copy import deepcopy
+import os
 
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
@@ -142,6 +148,7 @@ def main():
                                   'delete']),
         path=dict(type='str', required=True),
         params=dict(type='dict'),
+        is_resource=dict(type='bool', default=False),
         data=dict(type='jsonarg'),
         timeout=dict(type='int', default=60)
     )
@@ -164,6 +171,7 @@ def main():
     timeout = int(module.params.get('timeout'))
     # path is a required argument
     path = module.params.get('path', '')
+    is_resource = module.params.get('is_resource', False)
     params = module.params.get('params', None)
     data = module.params.get('data', None)
     # Get the api_version from module.
@@ -183,7 +191,7 @@ def main():
     api_post_not_allowed = ["alert", "fileservice"]
     api_put_not_allowed = ["backup"]
 
-    if method == 'post' and not any(path.startswith(uri) for uri in api_post_not_allowed):
+    if method == 'post' and not any(path.startswith(uri) for uri in api_post_not_allowed) and not(is_resource):
         # TODO: Above condition should be updated after AV-38981 is fixed
         # need to check if object already exists. In that case
         # change the method to be put
@@ -209,8 +217,9 @@ def main():
                     and not any(path.endswith(uri) for uri in
                                 sub_api_get_not_allowed)):
                 # object is present
-                method = 'put'
-                path += '/' + existing_obj['uuid']
+                if not(is_resource):
+                    method = 'put'
+                    path += '/' + existing_obj['uuid']
 
     if method == 'put' and not any(path.startswith(uri) for uri in api_put_not_allowed):
         # put can happen with when full path is specified or it is put + post
@@ -253,10 +262,12 @@ def main():
     if (method == 'put' and changed) or (method != 'put'):
         fn = getattr(api, method)
         rsp = fn(path, tenant=tenant, tenant_uuid=tenant, timeout=timeout,
-                 params=params, data=data, api_version=api_version)
+                     params=params, data=data, api_version=api_version)
     else:
         rsp = None
+
     if method == 'delete' and rsp.status_code == 404:
+        module.warn('Object to be deleted not found!')
         changed = False
         rsp.status_code = 200
     if method == 'patch' and existing_obj and rsp.status_code < 299:
@@ -272,6 +283,10 @@ def main():
                       params=gparams, api_version=api_version)
         new_obj = rsp.json()
         changed = not avi_obj_cmp(new_obj, existing_obj)
+    if os.path.basename(os.path.normpath(path)) == 'forcedelete' and rsp.status_code == 404:
+        module.warn('Object to be force deleted not found!')
+        changed = False
+        rsp.status_code = 200
     if rsp is None:
         return module.exit_json(changed=changed, obj=existing_obj)
     return ansible_return(module, rsp, changed, req=data)
