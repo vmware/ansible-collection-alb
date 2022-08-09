@@ -1,0 +1,127 @@
+---
+
+- name: Avi SE | CSP | Service deploy | CSP resource info
+  debug: msg="{{se_csp_resource_info['resource:resource']}}"
+
+- name: Avi SE | CSP | Service deploy | Check if service already exists
+  uri:
+    url: "https://{{ se_csp_host }}/api/running/services/service/{{ se_csp_service_name }}"
+    method: GET
+    timeout: 120
+    user: "{{ se_csp_user }}"
+    password: "{{ se_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: false
+  register: se_csp_service_exists
+  delegate_to: localhost
+
+- block:
+    - set_fact:
+        se_csp_service_exists_json: "{{ se_csp_service_exists.content|from_json }}"
+    - name: Avi SE | CSP | Service deploy | Check existing service
+      debug: msg="Service {{ se_csp_service_exists_json['vsb:service'].name }} already exists."
+  when: se_csp_service_exists.status == 200
+
+- block:
+  - name: Avi SE | CSP | Service deploy | Create CSP service info
+    set_fact:
+      se_csp_service_info:
+        disk_size: "{{ se_csp_disk_size|int }}"
+        disk_type: "{{ se_csp_disk_type | default('virtio')}}"
+        name: "{{ se_csp_service_name }}"
+        power: "on"
+        iso_name: "{{ se_csp_qcow_image_name }}"
+        day0_filename: "{{ se_csp_metafile_name }}"
+        numcpu: "{{ se_csp_num_cpu|int }}"
+        memory: "{{ se_csp_memory_mb|int }}"
+        vnics:
+          vnic:
+            "{{ se_csp_vnics }}"
+    delegate_to: localhost
+
+  - name: Avi SE | CSP | Service deploy | Update service info for CSP > 2.2.4
+    set_fact:
+      se_csp_service_info: "{{se_csp_service_info | combine({'disk-resize': true})}}"
+    when:
+      - se_csp_resource_info['resource:resource'].csp_version is version_compare("02.02.04.00", ">=")
+
+  - name: Avi SE | CSP | Service deploy | Using service info
+    debug: msg="{{se_csp_service_info}}"
+
+  - name: Avi SE | CSP | Service deploy | Create the service
+    uri:
+      url: "https://{{ se_csp_host }}/api/running/services/"
+      method: POST
+      timeout: 120
+      user: "{{ se_csp_user }}"
+      password: "{{ se_csp_password }}"
+      force_basic_auth: yes
+      headers:
+        Accept: '*/*'
+      validate_certs: false
+      body_format: json
+      body:
+        service: "{{ se_csp_service_info }}"
+      return_content: true
+      status_code: 200, 201, 409
+    register: se_csp_service
+    until: se_csp_service.status in [200, 201, 409]
+    retries: 20
+    delay: 10
+    changed_when: se_csp_service.status in [200, 201]
+    delegate_to: localhost
+
+  - name: Avi SE | CSP | Service deploy | Verify SE service exists
+    avi_api_session:
+      controller: "{{ se_master_ctl_ip }}"
+      username: "{{ se_master_ctl_username }}"
+      password: "{{ se_master_ctl_password }}"
+      tenant: "{{ se_tenant }}"
+      http_method: get
+      path: serviceengine
+      api_version: "{{ se_master_ctl_version }}"
+      params:
+        name: "{{ se_csp_mgmt_ip }}"
+        skip_default: true
+    retries: 120
+    delay: 10
+    register: se_obj
+    until: se_obj.obj.count == 1
+    delegate_to: localhost
+  when: se_csp_service_exists.status != 200
+
+- block:
+  - name: Avi SE | CSP | Service deploy | Verify SE connected to controller
+    avi_api_session:
+      controller: "{{ se_master_ctl_ip }}"
+      username: "{{ se_master_ctl_username }}"
+      password: "{{ se_master_ctl_password }}"
+      tenant: "{{ se_tenant }}"
+      http_method: get
+      path: serviceengine
+      api_version: "{{ se_master_ctl_version }}"
+      params:
+        name: "{{ se_csp_mgmt_ip }}"
+        skip_default: true
+    retries: 120
+    delay: 5
+    register: se_obj
+    until: se_obj.obj.results[0].se_connected == true
+    delegate_to: localhost
+
+- block:
+  - name: Avi SE | CSP | Service deploy | Configure vnic ips
+    avi_update_se_data_vnics:
+      controller: "{{ se_master_ctl_ip }}"
+      username: "{{ se_master_ctl_username }}"
+      password: "{{ se_master_ctl_password }}"
+      api_version: "{{ se_master_ctl_version }}"
+      se_name: "{{ se_csp_mgmt_ip }}"
+      tenant: "{{ se_tenant }}"
+      data_vnics_config: "{{ se_csp_vnics_config }}"
+    delegate_to: localhost
+  when: se_csp_vnics_config
