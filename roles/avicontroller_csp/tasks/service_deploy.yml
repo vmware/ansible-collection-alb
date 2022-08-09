@@ -1,0 +1,92 @@
+---
+- name: Avi Controller | CSP | Service deploy | Get CSP version
+  uri:
+    url: "https://{{ inventory_hostname }}/api/running/resources/resource/{{ con_csp_platform }}"
+    method: GET
+    user: "{{ con_csp_user }}"
+    password: "{{ con_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: con_csp_resource_rsp.status != 200
+  register: con_csp_resource_rsp
+  delegate_to: localhost
+
+- name: Avi Controller | CSP | Service deploy | Set CSP version
+  set_fact:
+    con_csp_resource_info: "{{ con_csp_resource_rsp.content|from_json }}"
+  when: con_csp_resource_rsp.status == 200
+
+- name: Avi Controller | CSP | Service deploy | CSP resource info
+  debug: msg="{{ con_csp_resource_info['resource:resource'] }}"
+
+- name: Avi Controller | CSP | Service deploy | Check if service already exists
+  uri:
+    url: "https://{{ inventory_hostname }}/api/running/services/service/{{ con_csp_service_name }}"
+    method: GET
+    user: "{{ con_csp_user }}"
+    password: "{{ con_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: false
+  register: con_csp_service_exists
+  delegate_to: localhost
+
+- block:
+    - name: Avi Controller | CSP | Service deploy | Get image exists content
+      set_fact:
+        con_csp_service_exists_json: "{{ con_csp_service_exists.content|from_json }}"
+    - debug: msg="Service {{ con_csp_service_exists_json['vsb:service'].name }} already exists."
+  when: con_csp_service_exists.status == 200
+
+- block:
+    - name: Avi Controller | CSP | Service deploy | Create CSP service info
+      set_fact:
+        con_csp_service_info:
+          disk_size: "{{ con_csp_disk_size|int }}"
+          disk_type: "{{ con_csp_disk_type|default('virtio') }}"
+          name: "{{ con_csp_service_name }}"
+          power: 'on'
+          iso_name: "{{ con_csp_qcow_image_name }}"
+          day0_filename: "{{ con_csp_metafile_name }}"
+          numcpu: "{{ con_csp_num_cpu|int }}"
+          memory: "{{ con_csp_memory_mb|int }}"
+          vnics:
+            vnic:
+              "{{ con_csp_vnics }}"
+
+    - name: Avi Controller | CSP | Service deploy | Update service info for CSP > 2.2.4
+      set_fact:
+        con_csp_service_info: "{{ con_csp_service_info|combine({'disk-resize': true}) }}"
+      when:
+        - con_csp_resource_info['resource:resource'].csp_version >= "02.02.04.00"
+
+    - name: Avi Controller | CSP | Service deploy | Using service info
+      debug: msg="{{ con_csp_service_info }}"
+
+    - name: Avi Controller | CSP | Service deploy | Create the service
+      uri:
+        url: "https://{{ inventory_hostname }}/api/running/services/"
+        method: POST
+        timeout: 120
+        user: "{{ con_csp_user }}"
+        password: "{{ con_csp_password }}"
+        force_basic_auth: yes
+        headers:
+          Accept: '*/*'
+        validate_certs: false
+        body_format: json
+        body:
+          service: "{{ con_csp_service_info }}"
+        return_content: true
+      register: con_csp_service
+      failed_when: con_csp_service.status != 201
+      changed_when: con_csp_service.status == 201
+      delegate_to: localhost
+  when:
+    - con_csp_service_exists.status != 200
