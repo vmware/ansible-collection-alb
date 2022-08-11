@@ -480,7 +480,7 @@ options:
             - Field introduced in 21.1.5.
             - Unit is sec.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 30.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 90.
         type: int
     se_vnic_cooldown:
         description:

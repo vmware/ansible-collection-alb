@@ -58,6 +58,12 @@ options:
             - Field introduced in 18.2.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
+    aws_bucket_region:
+        description:
+            - The name of the aws region associated with the bucket.
+            - Field introduced in 21.1.5.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     aws_secret_access:
         description:
             - Aws secret access key.
@@ -187,6 +193,7 @@ def main():
         avi_patch_value=dict(type='str',),
         aws_access_key=dict(type='str', no_log=True,),
         aws_bucket_id=dict(type='str',),
+        aws_bucket_region=dict(type='str',),
         aws_secret_access=dict(type='str', no_log=True,),
         backup_file_prefix=dict(type='str',),
         backup_passphrase=dict(type='str', no_log=True,),

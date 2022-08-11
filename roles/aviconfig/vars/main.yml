@@ -12,6 +12,7 @@ avi_resource_types:
   - licensestatus
   - seproperties
   - tenant
+  - webapput
   - cloudconnectoruser
   - hardwaresecuritymodulegroup
   - alertscriptconfig

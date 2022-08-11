@@ -326,6 +326,13 @@ options:
             - Maximum of 4 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+    lb_algo_rr_per_se:
+        description:
+            - Do round robin load load balancing at se level instead of the default per core load balancing.
+            - Field introduced in 21.1.5.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     lb_algorithm:
         description:
             - The load balancing algorithm will pick a server within the pool's list of available servers.
@@ -712,6 +719,7 @@ def main():
         inline_health_monitor=dict(type='bool',),
         ipaddrgroup_ref=dict(type='str',),
         labels=dict(type='list',),
+        lb_algo_rr_per_se=dict(type='bool',),
         lb_algorithm=dict(type='str',),
         lb_algorithm_consistent_hash_hdr=dict(type='str',),
         lb_algorithm_core_nonaffinity=dict(type='int',),
