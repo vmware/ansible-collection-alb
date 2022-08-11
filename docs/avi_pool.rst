@@ -1165,6 +1165,32 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>lb_algo_rr_per_se</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Do round robin load load balancing at se level instead of the default per core load balancing.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>lb_algorithm</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
