@@ -1,17 +1,18 @@
 #!/usr/bin/python
 # module_check: supported
 
+# Avi Version: 17.1.1
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-
+import time
+from ansible.module_utils.basic import AnsibleModule
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
-
 
 DOCUMENTATION = '''
 ---
@@ -67,80 +68,86 @@ options:
         default: present
         choices: ["absent", "present"]
         type: str
-    portal_url:
-        description:
-            - The url of the portal which is set to production url.
-        default: 'https://portal.avipulse.vmware.com'
     enable_cleanup_of_attached_files:
         description:
             - Enable to clean up the attached files.
+        type: bool
         default: False
-        choices: [True, False]
     enable_appsignature_sync:
         description:
             - Enable to receive application specific signature updates.
+        type: bool
         default: False
-        choices: [True, False]
     enable_ip_reputation:
         description:
             - Enable to receive IP reputation updates.
+        type: bool
         default: False
-        choices: [True, False]
     enable_pulse_case_management:
         description:
             - Enable for pulse case management.
+        type: bool
         default: False
-        choices: [True, False]
     enable_pulse_waf_management:
         description:
             - Enable to receive WAF CRS updates.
+        type: bool
         default: False
-        choices: [True, False]
     enable_user_agent_db_sync:
         description:
             - Enable to receive bot management updates.
+        type: bool
         default: False
-        choices: [True, False]
     use_tls:
         description:
             - Enable to allow secure end to end communication between controller and NSX alb services.
+        type: bool
         default: False
-        choices: [True, False]
     waf_config:
         description:
             - Dictionary which is used to set the default values to be used for WAF management.
+        suboptions:
+            waf_spec:
+                description:
+                    - Dictionary defining enable_waf_signatures_notifications ,enable_auto_download_waf_signatures.
+                suboptions:
+                    enable_waf_signatures_notifications:
+                        description:
+                            - Enable event notifications when new WAF signatures/CRS versions are available.
+                        type: bool
+                        default: False
+                    enable_auto_download_waf_signatures:
+                        description:
+                            - Enable to automatically download new WAF signatures/CRS version to the controller.
+                        type: bool
+                        default: False
+                type: dict
         type: dict
     case_config:
         description:
             - Dictionary which is used to set the default values to be used for pulse case management.
+        suboptions:
+            case_spec:
+                description:
+                    - Dictionary defining enable_auto_case_creation_on_controller_failure ,enable_auto_case_creation_on_se_failure.
+                suboptions:
+                    enable_auto_case_creation_on_controller_failure:
+                        description:
+                            - Enable pro-active support case creation when a controller failure occurs.
+                        type: bool
+                        default: False
+                    enable_auto_case_creation_on_se_failure:
+                        description:
+                            - Enable pro-active support case creation when a service engine failure occurs.
+                        type: bool
+                        default: False
+                type: dict
         type: dict
-    enable_auto_case_creation_on_controller_failure:
-        description:
-            - Enable pro-active support case creation when a controller failure occurs.
-        default: False
-        choices: [True, False]
-    enable_auto_case_creation_on_se_failure:
-        description:
-            - Enable pro-active support case creation when a service engine failure occurs.
-        default: False
-        choices: [True, False]
-    enable_auto_download_waf_signatures:
-        description:
-            - Enable to automatically download new WAF signatures/CRS version to the controller.
-        default: False
-        choices: [True, False]
-    enable_waf_signatures_notifications:
-        description:
-            - Enable event notifications when new WAF signatures/CRS versions are available.
-        default: False
-        choices: [True, False]
-    
-    
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
-EXAMPLES = '''
+EXAMPLES = """
 - hosts: localhost
   collections:
     - vmware.alb
@@ -152,10 +159,10 @@ EXAMPLES = '''
       api_version: "{{ api_version }}"
   tasks:
     - name: Pulse registration or deregistration
-            vmware.alb.avi_pulse_registration:
-              avi_credentials: "{{ avi_credentials }}"
+      vmware.alb.avi_pulse_registration:
+        avi_credentials: "{{ avi_credentials }}"
         state: present
-        jwt_token: 
+        jwt_token: "{{ jwt_token }}"
         name: 'AviPulse'
         description: 'Registration and deregistration'
         email: 'user@gmail.com'
@@ -175,19 +182,14 @@ EXAMPLES = '''
     - name: Sleep for 7 seconds and continue with play
       wait_for:
         timeout: 7
-      delegate_to: localhost                                                  
-'''
+      delegate_to: localhost
+"""
 RETURN = '''
 obj:
     description: Avi REST resource
     returned: success, changed
     type: dict
 '''
-
-import os
-import time
-from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
         avi_common_argument_spec, AviCheckModeResponse, ansible_return, avi_obj_cmp,
@@ -201,12 +203,12 @@ except ImportError:
 
 def main():
     case_spec = dict(
-        enable_auto_case_creation_on_controller_failure=dict(default='False', choices=['True', 'False']),
-        enable_auto_case_creation_on_se_failure=dict(default='False', choices=['True', 'False'])
+        enable_auto_case_creation_on_controller_failure=dict(type='bool', default=False),
+        enable_auto_case_creation_on_se_failure=dict(type='bool', default=False)
     )
     waf_spec = dict(
-        enable_auto_download_waf_signatures=dict(default='False', choices=['True', 'False']),
-        enable_waf_signatures_notifications=dict(default='False', choices=['True', 'False'])
+        enable_auto_download_waf_signatures=dict(type='bool', default=False),
+        enable_waf_signatures_notifications=dict(type='bool', default=False)
 
     )
     argument_specs = dict(
@@ -218,13 +220,13 @@ def main():
         email=dict(type='str', required=True),
         account_id=dict(type='str', required=True),
         optins=dict(default='present', choices=['absent', 'present']),
-        enable_cleanup_of_attached_files=dict(default='False', choices=['True', 'False']),
-        enable_appsignature_sync=dict(default='False', choices=['True', 'False']),
-        enable_ip_reputation=dict(default='False', choices=['True', 'False']),
-        enable_pulse_case_management=dict(default='False', choices=['True', 'False']),
-        enable_pulse_waf_management=dict(default='False', choices=['True', 'False']),
-        enable_user_agent_db_sync=dict(default='False', choices=['True', 'False']),
-        use_tls=dict(default='False', choices=['True', 'False']),
+        enable_cleanup_of_attached_files=dict(type='bool', default=False),
+        enable_appsignature_sync=dict(type='bool', default=False),
+        enable_ip_reputation=dict(type='bool', default=False),
+        enable_pulse_case_management=dict(type='bool', default=False),
+        enable_pulse_waf_management=dict(type='bool', default=False),
+        enable_user_agent_db_sync=dict(type='bool', default=False),
+        use_tls=dict(type='bool', default=False),
         waf_config=dict(type='dict', options=waf_spec),
         case_config=dict(type='dict', options=case_spec)
     )
@@ -275,7 +277,7 @@ def main():
         path = "albservices/status"
         resp = api.get(path, tenant=tenant, tenant_uuid=tenant_uuid, api_version=api_version)
         existing_obj = resp
-        if not(check_mode) and resp.json().get("connectivity_status") == "ALBSERVICES_DISCONNECTED":
+        if not (check_mode) and resp.json().get("connectivity_status") == "ALBSERVICES_DISCONNECTED":
             headers = {'Content-Type': 'application/json', 'Authorization': 'Basic YWRtaW46YWRtaW4='}
             data = {"jwt_token": jwt_token}
             path = "portal/refresh-access-token"
@@ -289,7 +291,7 @@ def main():
         if resp.json().get("registration_status") == "ALBSERVICES_DEREGISTERED":
             if not check_mode:
                 path = "albservices/register"
-                data = {"name":name, "description": description, "email": email,
+                data = {"name": name, "description": description, "email": email,
                         "account_id": account_id}
                 rsp = api.post(path, data=data)
                 changed = True
@@ -304,14 +306,13 @@ def main():
             reg = False
 
         if reg and rsp.status_code > 300:
-            return module.fail_json(msg='Failed: %s' %rsp.text)
+            return module.fail_json(msg='Failed: %s' % rsp.text)
         else:
-            if  optins == 'present':
-                if enable_pulse_case_management == 'False' and (enable_auto_case_creation_on_se_failure or
-                enable_auto_case_creation_on_controller_failure):
+            if optins == 'present':
+                if enable_pulse_case_management is False and (enable_auto_case_creation_on_se_failure or enable_auto_case_creation_on_controller_failure):
                     return module.fail_json(msg='Unable to enable the options as enable_pulse_case_management is not enabled.')
 
-                if enable_pulse_waf_management == 'False' and (enable_auto_download_waf_signatures or enable_waf_signatures_notifications):
+                if enable_pulse_waf_management is False and (enable_auto_download_waf_signatures or enable_waf_signatures_notifications):
                     return module.fail_json(msg='Unable to enable the options as enable_pulse_waf_management is not enabled.')
                 path = "albservicesconfig"
                 response = api.get(path, tenant=tenant, tenant_uuid=tenant_uuid,
@@ -352,11 +353,10 @@ def main():
                     if not check_mode:
                         rsp = api.put(path, data=data)
                         changed = True
-                    else:                                                                                                                           
+                    else:
                         rsp = AviCheckModeResponse(obj=existing_obj)
                         changed = True
             return module.exit_json(changed=changed, msg='Registered successfully')
-
     else:
         # deregistration
         reg = True
@@ -382,6 +382,7 @@ def main():
         else:
             return module.exit_json(
                 changed=changed, msg="Deregistered successfully")
+
 
 if __name__ == '__main__':
     main()

@@ -672,12 +672,12 @@ Examples
               username: "admin"
               password: "something"
               controller: "192.168.15.18"
-              api_version: "21.1.1"  
+              api_version: "21.1.1"
           tasks:
             - name: Example to create SystemConfiguration object
               vmware.alb.avi_systemconfiguration:
                 avi_credentials: "{{ avi_credentials }}"
-                state: present                                                                                               
+                state: present
                 welcome_workflow_complete: True
                 dns_configuration:
                   search_domain: ''

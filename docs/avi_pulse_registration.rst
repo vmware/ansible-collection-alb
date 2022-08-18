@@ -213,7 +213,7 @@ Parameters
                 <b>enable_appsignature_sync</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple"></span>
+                    <span style="color: purple">bool</span>
                 </div>
             </td>
             <td>
@@ -227,61 +227,10 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_auto_case_creation_on_controller_failure</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple"></span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable pro-active support case creation when a controller failure occurs.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_auto_case_creation_on_se_failure</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple"></span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable pro-active support case creation when a service engine failure occurs.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_auto_download_waf_signatures</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple"></span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable to automatically download new WAF signatures/CRS version to the controller.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_cleanup_of_attached_files</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple"></span>
+                    <span style="color: purple">bool</span>
                 </div>
             </td>
             <td>
@@ -298,7 +247,7 @@ Parameters
                 <b>enable_ip_reputation</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple"></span>
+                    <span style="color: purple">bool</span>
                 </div>
             </td>
             <td>
@@ -315,7 +264,7 @@ Parameters
                 <b>enable_pulse_case_management</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple"></span>
+                    <span style="color: purple">bool</span>
                 </div>
             </td>
             <td>
@@ -332,7 +281,7 @@ Parameters
                 <b>enable_pulse_waf_management</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple"></span>
+                    <span style="color: purple">bool</span>
                 </div>
             </td>
             <td>
@@ -349,7 +298,7 @@ Parameters
                 <b>enable_user_agent_db_sync</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple"></span>
+                    <span style="color: purple">bool</span>
                 </div>
             </td>
             <td>
@@ -357,23 +306,6 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Enable to receive bot management updates.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_waf_signatures_notifications</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple"></span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable event notifications when new WAF signatures/CRS versions are available.
                 </div>
                                             </td>
         </tr>
@@ -466,27 +398,10 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>portal_url</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple"></span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - The url of the portal which is set to production url.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>use_tls</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple"></span>
+                    <span style="color: purple">bool</span>
                 </div>
             </td>
             <td>
