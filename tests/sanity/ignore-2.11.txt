@@ -131,6 +131,7 @@ plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py import-3.8!skip
 plugins/modules/avi_albservicesconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesconfig.py import-3.8!skip
+plugins/modules/avi_pulse_registration.py import-3.8!skip
 plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemlimits.py import-3.8!skip
 plugins/modules/avi_licenseledgerdetails.py validate-modules:missing-gplv3-license
