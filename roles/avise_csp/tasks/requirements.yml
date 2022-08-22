@@ -1,0 +1,38 @@
+---
+- name: Avi SE | CSP | Requirements | Check variables
+  assert:
+    that:
+      - "{{ item }} != None"
+    msg: "{{ item }} must be provided"
+  with_items:
+    - se_csp_user
+    - se_csp_password
+    - se_csp_qcow_image_file
+    - se_csp_qcow_image_name
+    - se_csp_mgmt_ip
+    - se_csp_mgmt_mask
+    - se_csp_default_gw
+    - se_master_ctl_ip
+    - se_csp_disk_size
+    - se_csp_service_name
+    - se_csp_num_cpu
+    - se_csp_memory_gb
+  when: not se_skip_requirements
+
+- name: Avi SE | CSP | Requirements | Validate Sizing
+  assert:
+    that:
+      - "{{ item.expr }}"
+    msg: "{{ item.msg }}"
+  with_items:
+    - expr: se_csp_num_cpu|int >= 1
+      msg: "Must have 1 or more CPU"
+    - expr: se_csp_memory_gb|int >= 1
+      msg: "Must have 1GB or more memory"
+    - expr: se_csp_disk_size|int >= 10
+      msg: "Must have 10GB or more disk size"
+  when: not se_skip_requirements
+
+- name: Avi SE | CSP | Requirements | SSHPass Check on Controller
+  command: which sshpass
+  changed_when: false
