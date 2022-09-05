@@ -126,12 +126,6 @@ obj:
 import json
 import atexit
 try:
-    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
-    from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-        ApiSession, AviCredentials)
-
     import requests
     import time
     from pyVim.connect import SmartConnectNoSSL, Disconnect
@@ -143,7 +137,6 @@ try:
     from __main__ import display
 except ImportError:
     from ansible.utils.display import Display
-
 try:
     from pkg_resources import parse_version
     import avi.sdk
@@ -160,7 +153,8 @@ try:
 except ImportError:
     HAS_AVI = False
 from ansible.module_utils.basic import AnsibleModule
-display = Display()
+
+
 def get_vm_by_name(si, vm_name):
     '''
     Get vm instance by name
