@@ -231,13 +231,12 @@ try:
     import os
     import time
     from pyVim.connect import SmartConnectNoSSL, Disconnect
-    from ansible.module_utils.basic import AnsibleModule
     from pyVmomi import vim, vmodl
     HAS_IMPORT = True
 except ImportError:
     HAS_IMPORT = False
 
-
+from ansible.module_utils.basic import AnsibleModule
 __author__ = 'shubhamavi'
 
 

@@ -125,11 +125,21 @@ obj:
 
 import json
 from ansible.module_utils.basic import AnsibleModule
-import time
-import requests
 import atexit
-from pyVim.connect import SmartConnectNoSSL, Disconnect
-from pyVmomi import vim
+try:
+    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
+        avi_common_argument_spec, ansible_return, avi_obj_cmp,
+        cleanup_absent_fields)
+    from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
+        ApiSession, AviCredentials)
+
+    import requests
+    import time
+    from pyVim.connect import SmartConnectNoSSL, Disconnect
+    from pyVmomi import vim
+    HAS_IMPORT = True
+except ImportError:
+    HAS_IMPORT = False
 try:
     from __main__ import display
 except ImportError:
