@@ -36,9 +36,11 @@ plugins/modules/avi_deploy_controller.py validate-modules:missing-gplv3-license
 tests/integration/run_tests.sh shebang
 tests/integration/run_tests.sh shellcheck:SC2157
 tests/integration/run_tests.sh shellcheck:SC2154
+plugins/modules/avi_albservicesjob.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_alertsyslogconfig.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_analyticsprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_applicationpersistenceprofile.py validate-modules:parameter-list-no-elements
+plugins/modules/avi_authmappingprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_autoscalelaunchconfig.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_availabilityzone.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_botipreputationtypemapping.py validate-modules:parameter-list-no-elements
@@ -333,3 +335,8 @@ plugins/modules/avi_virtualservice.py import-3.8!skip
 plugins/module_utils/avi_api.py import-3.8!skip
 plugins/module_utils/saml_avi_api.py import-3.8!skip
 plugins/module_utils/utils/ansible_utils.py import-3.8!skip
+plugins/modules/avi_pulse_registration.py import-3.8!skip
+plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
+plugins/modules/avi_webapput.py validate-modules:parameter-list-no-elements
+plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
+plugins/modules/verify_se.py validate-modules:missing-gplv3-license
