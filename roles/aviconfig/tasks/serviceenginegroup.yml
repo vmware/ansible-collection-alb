@@ -160,6 +160,8 @@
     ngx_free_connection_stack: "{{ item.ngx_free_connection_stack | default(omit) }}"
     non_significant_log_throttle: "{{ item.non_significant_log_throttle | default(omit) }}"
     ns_helper_deq_interval_msec: "{{ item.ns_helper_deq_interval_msec | default(omit) }}"
+    ntp_sync_fail_event: "{{ item.ntp_sync_fail_event | default(omit) }}"
+    ntp_sync_status_interval: "{{ item.ntp_sync_status_interval | default(omit) }}"
     num_dispatcher_cores: "{{ item.num_dispatcher_cores | default(omit) }}"
     num_dispatcher_queues: "{{ item.num_dispatcher_queues | default(omit) }}"
     num_flow_cores_sum_changes_to_ignore: "{{ item.num_flow_cores_sum_changes_to_ignore | default(omit) }}"
