@@ -37,6 +37,7 @@ options:
         description:
             - ovftool sslverify option.
         required: false
+        default: false
         type: bool
     state:
         description:
@@ -68,13 +69,13 @@ options:
         description:
             - Key-Value object for specifying OVF network names.
         required: false
-        type: str
+        type: dict
     se_vmw_disk_mode:
         description:
             - Deployment disk mode.
         required: false
         default: thin
-        type: dict
+        type: str
     se_vmw_ova_path:
         description:
             - Relative or absolute location of the SE ova (includes ova filename). If specified the OVA file will not be downloaded..
@@ -88,7 +89,7 @@ options:
     se_vmw_power_on:
         description:
             - VM to be powered on after provisioning.
-        required: true
+        required: false
         default: true
         type: bool
     se_vmw_vcenter_folder:
@@ -166,13 +167,6 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
-  vars:
-    avi_credentials:
-      username: "admin"
-      password: "something"
-      controller: "192.168.15.18"
-      api_version: "21.1.1"
 
 - name: Avi SE | VMware | Deploy SE VM
   deploy_se:
