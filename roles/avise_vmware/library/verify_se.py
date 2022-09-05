@@ -1,5 +1,6 @@
 #!/usr/bin/python
-
+from __future__ import (absolute_import, division, print_function)
+__metaclass__ = type
 import json
 from ansible.module_utils.basic import AnsibleModule
 import time
@@ -17,7 +18,7 @@ try:
     from pkg_resources import parse_version
     import avi.sdk
     from avi.sdk.avi_api import (ApiSession, ObjectNotFound, APIError, ApiResponse,
-                             avi_timedelta, sessionDict)
+                                 avi_timedelta, sessionDict)
 
     sdk_version = getattr(avi.sdk, '__version__', None)
     if ((sdk_version is None) or
@@ -28,7 +29,6 @@ try:
     HAS_AVI = True
 except ImportError:
     HAS_AVI = False
-
 
 
 def get_vm_by_name(si, vm_name):
@@ -62,6 +62,7 @@ def get_vm_ip_by_network(target_vm, network):
                     ip_address = adr.ipAddress
                     break
     return ip_address
+
 
 def main():
     module = AnsibleModule(
@@ -98,8 +99,8 @@ def main():
     if module.params.get('se_vmw_mgmt_ip', None):
         se_mgmt_ip = module.params['se_vmw_mgmt_ip']
     elif module.params.get("se_vmw_ovf_networks", None):
-        #If there is no  se_vmw_mgmt_ip provided and only se_vmw_ovf_networks is available then
-        #get the SE VM instance to find DHCP IP
+        # If there is no  se_vmw_mgmt_ip provided and only se_vmw_ovf_networks is available then
+        # get the SE VM instance to find DHCP IP
         ovf_networks = module.params.get("se_vmw_ovf_networks")
         if "Management" in ovf_networks:
             mgmt_network = ovf_networks["Management"]
@@ -132,24 +133,23 @@ def main():
     }
 
     interval = 5
-    retries = module.params.get("max_se_up_wait")/interval
+    retries = module.params.get("max_se_up_wait") / interval
     initial_interval = 10
     step = 0
     time.sleep(initial_interval)
     while step < retries:
         if mgmt_network and not se_mgmt_ip:
-            #try to get the mgmt IP(DHCP as no se_vmw_mgmt_ip provided) for the SE if it's not present
-            #If no IP found try to get the SE from controller by its name for current iteration
+            # try to get the mgmt IP(DHCP as no se_vmw_mgmt_ip provided) for the SE if it's not present
+            # If no IP found try to get the SE from controller by its name for current iteration
             se_mgmt_ip = get_vm_ip_by_network(se_vm, mgmt_network)
         rsp = api.get(path, tenant=module.params['se_tenant'],
-                            params=gparams, api_version=module.params['se_master_ctl_version'])
+                      params=gparams, api_version=module.params['se_master_ctl_version'])
         rsp_data = rsp.json()
         for item in rsp_data['results']:
             if (item['name'] == se_vm_name or item['name'] == se_mgmt_ip) and item['se_connected']:
                 my_deployed_se = item
                 break
-
-        if my_deployed_se != None:
+        if my_deployed_se is not None:
             mymsg = 'Service Engine \'%s\' is deployed and is connected to the Controller %s' % (
                 my_deployed_se['name'], module.params['se_master_ctl_ip'])
             return module.exit_json(changed=True, msg=(mymsg), se_details=my_deployed_se)
@@ -157,6 +157,7 @@ def main():
         step += 1
 
     return module.fail_json(msg='Could not verify SE connection to the controller!')
+
 
 if __name__ == "__main__":
     main()

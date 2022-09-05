@@ -1,5 +1,6 @@
 #!/usr/bin/python
-
+from __future__ import (absolute_import, division, print_function)
+__metaclass__ = type
 import atexit
 import json
 try:
@@ -18,8 +19,7 @@ __author__ = 'shubhamavi'
 
 
 def is_vm_exist(si, cl, vm_name):
-    container = si.content.viewManager.CreateContainerView(
-         cl, [vim.VirtualMachine], True)
+    container = si.content.viewManager.CreateContainerView(cl, [vim.VirtualMachine], True)
     for managed_object_ref in container.view:
         if managed_object_ref.name == vm_name:
             return True
@@ -117,9 +117,11 @@ def get_ds(dc, name, inst_type='datacenter'):
         try:
             if ds.name == name:
                 return ds
-        except:  # Ignore datastores that have issues
+        except Exception as e:  # Ignore datastores that have issues
+            # pylint: disable=bare-except
             pass
     raise Exception("Failed to find %s on %s %s" % (name, inst_type, dc.name))
+
 
 def get_host(cl, name):
     """
@@ -129,9 +131,10 @@ def get_host(cl, name):
         try:
             if host.name == name:
                 return host
-        except: # Ignore hosts that have issues
+        except Exception as e:  # Ignore hosts that have issues
             pass
     raise Exception("Failed to find %s host on cluster %s" % (name, cl.name))
+
 
 def get_sysadmin_key(keypath):
     if os.path.exists(keypath):
@@ -153,7 +156,7 @@ def get_largest_free_ds(cl):
             if free_space > largest_free and ds.summary.accessible:
                 largest_free = free_space
                 largest = ds
-        except:  # Ignore datastores that have issues
+        except Exception as e:  # Ignore datastores that have issues
             pass
     if largest is None:
         raise Exception('Failed to find any free datastores on %s' % cl.name)
@@ -243,7 +246,7 @@ def is_resize_disk(module):
 
 def is_reconfigure_vm(module):
     return (is_update_cpu(module) or is_update_memory(module) or
-            is_reserve_memory(module)or is_reserve_cpu(module) or
+            is_reserve_memory(module) or is_reserve_cpu(module) or
             is_resize_disk(module))
 
 
@@ -423,13 +426,10 @@ def main():
         '--datastore=%s' % ds.name,
         '--name=%s' % module.params['se_vmw_vm_name']
     ])
-
-    if ('se_vmw_ovf_networks' in module.params.keys() and
-            module.params['se_vmw_ovf_networks'] is not None):
-            d = module.params['se_vmw_ovf_networks']
-            for key, network_item in d.items():
-                command_tokens.append('--net:%s=%s' % (key, network_item))
-    
+    if ('se_vmw_ovf_networks' in module.params.keys() and module.params['se_vmw_ovf_networks'] is not None):
+        d = module.params['se_vmw_ovf_networks']
+        for key, network_item in d.items():
+            command_tokens.append('--net:%s=%s' % (key, network_item))
     command_tokens.extend([
         '--prop:%s=%s' % ('AVICNTRL', module.params['se_master_ctl_ip']),
         '--prop:%s=%s' % ('AVICNTRL_AUTHTOKEN', module.params['se_auth_token']),
