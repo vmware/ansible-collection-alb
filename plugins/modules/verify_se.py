@@ -84,19 +84,9 @@ options:
         required: false
         default: 600
         type: int
-extends_documentation_fragment:
-    - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
-  vars:
-    avi_credentials:
-      username: "admin"
-      password: "something"
-      controller: "192.168.15.18"
-      api_version: "21.1.1"
-
 - name: Avi SE | Verify SE Deployment
   verify_se:
     se_master_ctl_ip: '{{ se_master_ctl_ip }}'

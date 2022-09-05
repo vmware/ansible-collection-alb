@@ -78,7 +78,7 @@ options:
         type: str
     se_vmw_ova_path:
         description:
-            - Relative or absolute location of the SE ova (includes ova filename). If specified the OVA file will not be downloaded..
+            - Relative or absolute location of the SE ova (includes ova filename). If specified the OVA file will not be downloaded.
         required: true
         type: str
     se_vmw_vm_name:
@@ -129,7 +129,7 @@ options:
         type: str
     se_master_ctl_ip:
         description:
-            - The IP address of the controller..
+            - The IP address of the controller.
         required: true
         type: str
     se_vmw_number_of_cpus:
@@ -162,8 +162,6 @@ options:
             - Other Controller ovf properties in key value format.
         required: false
         type: dict
-extends_documentation_fragment:
-    - vmware.alb.avi
 '''
 
 EXAMPLES = """
