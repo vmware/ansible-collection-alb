@@ -220,12 +220,22 @@ try:
     from urllib import quote
 except ImportError:
     from urllib.parse import quote
-import os
-import requests
-import time
-from pyVim.connect import SmartConnectNoSSL, Disconnect
-from ansible.module_utils.basic import AnsibleModule
-from pyVmomi import vim, vmodl
+try:
+    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
+        avi_common_argument_spec, ansible_return, avi_obj_cmp,
+        cleanup_absent_fields)
+    from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
+        ApiSession, AviCredentials)
+
+    import requests
+    import os
+    import time
+    from pyVim.connect import SmartConnectNoSSL, Disconnect
+    from ansible.module_utils.basic import AnsibleModule
+    from pyVmomi import vim, vmodl
+    HAS_IMPORT = True
+except ImportError:
+    HAS_IMPORT = False
 
 
 __author__ = 'shubhamavi'
