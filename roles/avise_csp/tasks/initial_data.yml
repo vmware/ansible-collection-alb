@@ -46,4 +46,3 @@
   when: se_csp_qcow_image_name == None
 
 - debug: msg="You are running Controller verison {{ se_master_ctl_version }}-{{ ctl_build }}"
-
