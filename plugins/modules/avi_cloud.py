@@ -200,11 +200,26 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 21.1.6.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: list
     mesos_configuration:
         description:
             - Field deprecated in 18.2.2.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
+    metrics_polling_interval:
+        description:
+            - Cloud metrics collector polling interval in seconds.
+            - Field introduced in 21.1.6.
+            - Unit is seconds.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 300.
+        type: int
     mtu:
         description:
             - Mtu setting for the cloud.
@@ -395,7 +410,9 @@ def main():
         license_type=dict(type='str',),
         linuxserver_configuration=dict(type='dict',),
         maintenance_mode=dict(type='bool',),
+        markers=dict(type='list',),
         mesos_configuration=dict(type='dict',),
+        metrics_polling_interval=dict(type='int',),
         mtu=dict(type='int',),
         name=dict(type='str', required=True),
         nsx_configuration=dict(type='dict',),
