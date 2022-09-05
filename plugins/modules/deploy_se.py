@@ -8,7 +8,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: deploy_se
-author: shubhamavi
+author: shubhamavi (@shubhamavi) <shubhamavi@vmware.com>
 short_description: Module for deploying se
 description:
     - This module is used to deploy an se
@@ -204,7 +204,6 @@ EXAMPLES = """
     se_vmw_memory_reserved: '{{ se_vmw_memory_reserved }}'
     se_vmw_disk_size: '{{ se_vmw_disk_size }}'
     se_vmw_ovf_properties: '{{ se_vmw_ovf_properties }}'
-  
 """
 
 RETURN = '''
@@ -509,7 +508,7 @@ def main():
         return module.fail_json(
             msg='exception while connecting to vCenter, login failure, '
                 'check username and password')
-    except  ts.exceptions.ConnectionError:
+    except requests.exceptions.ConnectionError:
         return module.fail_json(
             msg='exception while connecting to vCenter, check hostname, '
                 'FQDN or IP')

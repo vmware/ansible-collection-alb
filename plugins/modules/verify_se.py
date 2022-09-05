@@ -8,7 +8,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: verify_se
-author: shubhamavi
+author: shubhamavi (@shubhamavi) <shubhamavi@vmware.com>
 short_description: Module for verifying se is connected to controller
 description:
     - This module is used to verify that the se is connected to controller
@@ -60,9 +60,9 @@ options:
         type: str
     se_vmw_ovf_networks:
         description:
-            - 
+            - Key-Value object for specifying OVF network names.
         required: false
-        type: str
+        type: dict
     vcenter_host:
         description:
             - Key-Value object for specifying OVF network names.
@@ -113,7 +113,6 @@ EXAMPLES = """
     vcenter_user: '{{ vcenter_user }}'
     vcenter_password: '{{ vcenter_password }}'
     max_se_up_wait: '{{ max_se_up_wait }}'
-     
 """
 
 RETURN = '''
