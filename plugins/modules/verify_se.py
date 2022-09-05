@@ -1,6 +1,129 @@
 #!/usr/bin/python
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
+
+DOCUMENTATION = '''
+---
+module: verify_se
+author: shubhamavi
+short_description: Module for verifying se is connected to controller
+description:
+    - This module is used to verify that the se is connected to controller
+options:
+    se_master_ctl_ip:
+        description:
+            - The IP address of the controller.
+        required: true
+        type: str
+    se_master_ctl_username:
+        description:
+            - The username to login into controller api.
+        required: true
+        type: str
+    se_master_ctl_password:
+        description:
+            -The passowrd to login into the controller api.
+        required: true
+        type: str
+    se_master_ctl_version:
+        description:
+            - The version of the controller.
+        required: true
+        type: str
+    se_cloud_name:
+        description:
+            - Name of cloud the SE should auto-register with.
+        required: true
+        type: str
+    se_group_name:
+        description:
+            - Name of SE group the SE should reside in.
+        required: true
+        type: str
+    se_tenant:
+        description:
+            - Name of se_tenant the SE should auto-register with.
+        required: true
+        type: str
+    se_vmw_vm_name:
+        description:
+            - Name of a controller VM on VMWare.
+        required: true
+        type: str
+    se_vmw_mgmt_ip:
+        description:
+            - Static IP for the controller.
+        required: false
+        type: str
+    se_vmw_ovf_networks:
+        description:
+            - 
+        required: false
+        type: str
+    vcenter_host:
+        description:
+            - Key-Value object for specifying OVF network names.
+        required: true
+        type: str
+    vcenter_user:
+        description:
+            - VMWare user name.
+        required: true
+        type: str
+    vcenter_password:
+        description:
+            - VMWare password.
+        required: true
+        type: str
+    max_se_up_wait:
+        description:
+            - max time to wait for the se to come up.
+        required: false
+        default: 600
+        type: int
+extends_documentation_fragment:
+    - vmware.alb.avi
+'''
+
+EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Avi SE | Verify SE Deployment
+  verify_se:
+    se_master_ctl_ip: '{{ se_master_ctl_ip }}'
+    se_master_ctl_username: '{{ se_master_ctl_username }}'
+    se_master_ctl_password: '{{ se_master_ctl_password }}'
+    se_master_ctl_version: '{{ se_master_ctl_version }}'
+    se_cloud_name: '{{ se_cloud_name }}'
+    se_group_name: '{{ se_group_name }}'
+    se_tenant: '{{ se_tenant }}'
+    se_vmw_vm_name: '{{ se_vmw_vm_name }}'
+    se_vmw_mgmt_ip: '{{ se_vmw_mgmt_ip }}'
+    se_vmw_ovf_networks: '{{ se_vmw_ovf_networks }}'
+    vcenter_host: '{{ vcenter_host }}'
+    vcenter_user: '{{ vcenter_user }}'
+    vcenter_password: '{{ vcenter_password }}'
+    max_se_up_wait: '{{ max_se_up_wait }}'
+     
+"""
+
+RETURN = '''
+obj:
+    description: Deployed and verified SE object
+    returned: success, changed
+    type: dict
+'''
+
+
 import json
 from ansible.module_utils.basic import AnsibleModule
 import time

@@ -1,6 +1,220 @@
 #!/usr/bin/python
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
+
+DOCUMENTATION = '''
+---
+module: deploy_se
+author: shubhamavi
+short_description: Module for deploying se
+description:
+    - This module is used to deploy an se
+options:
+    ovftool_path:
+        description:
+            - The path of ovftool.
+        required: true
+        type: str
+    vcenter_host:
+        description:
+            - VMWare host IP.
+        required: true
+        type: str
+    vcenter_user:
+        description:
+            - VMWare user name.
+        required: true
+        type: str
+    vcenter_password:
+        description:
+            - VMWare password.
+        required: true
+        type: str
+    ssl_verify:
+        description:
+            - ovftool sslverify option.
+        required: false
+        type: bool
+    state:
+        description:
+            - The state that should be applied on the entity.
+        required: false
+        default: present
+        type: str
+    se_vmw_host:
+        description:
+            - Name of VMWare host.
+        required: false
+        type: str
+    se_vmw_datacenter:
+        description:
+            - Name of VMWare datacenter.
+        required: false
+        type: str
+    se_vmw_cluster:
+        description:
+            - Name of a cluster in the datacenter.
+        required: false
+        type: str
+    se_vmw_datastore:
+        description:
+            - Name of datastore on which VM to be deployed.
+        required: false
+        type: str
+    se_vmw_ovf_networks:
+        description:
+            - Key-Value object for specifying OVF network names.
+        required: false
+        type: str
+    se_vmw_disk_mode:
+        description:
+            - Deployment disk mode.
+        required: false
+        default: thin
+        type: dict
+    se_vmw_ova_path:
+        description:
+            - Relative or absolute location of the SE ova (includes ova filename). If specified the OVA file will not be downloaded..
+        required: true
+        type: str
+    se_vmw_vm_name:
+        description:
+            - Name of a controller VM on VMWare.
+        required: true
+        type: str
+    se_vmw_power_on:
+        description:
+            - VM to be powered on after provisioning.
+        required: true
+        default: true
+        type: bool
+    se_vmw_vcenter_folder:
+        description:
+            - Folder path to deploy VM.
+        required: false
+        type: str
+    se_vmw_mgmt_ip:
+        description:
+            - Static IP for the controller.
+        required: false
+        type: str
+    se_vmw_mgmt_mask:
+        description:
+            - Management IP Mask.
+        required: false
+        type: str
+    se_vmw_default_gw:
+        description:
+            - Default gateway of management network.
+        required: false
+        type: str
+    se_vmw_sysadmin_public_key:
+        description:
+            - Public key file path.
+        required: false
+        type: str
+    se_auth_token:
+        description:
+            - If defined it will be the token used to register the service engine to the controller.
+        required: true
+        type: str
+    se_cluster_uuid:
+        description:
+            - If defined it will be the cluster UUID used to register the service engine to the controller.
+        required: true
+        type: str
+    se_master_ctl_ip:
+        description:
+            - The IP address of the controller..
+        required: true
+        type: str
+    se_vmw_number_of_cpus:
+        description:
+            - Number of CPUs for controller.
+        required: false
+        type: int
+    se_vmw_cpu_reserved:
+        description:
+            - CPU reservation in megahertz.
+        required: false
+        type: int
+    se_vmw_memory:
+        description:
+            - Controller memory in MB.
+        required: false
+        type: int
+    se_vmw_memory_reserved:
+        description:
+            - Controller memory reservation in MB.
+        required: false
+        type: int
+    se_vmw_disk_size:
+        description:
+            - Controller disk size in GB.
+        required: false
+        type: int
+    se_vmw_ovf_properties:
+        description:
+            - Other Controller ovf properties in key value format.
+        required: false
+        type: dict
+extends_documentation_fragment:
+    - vmware.alb.avi
+'''
+
+EXAMPLES = """
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- name: Avi SE | VMware | Deploy SE VM
+  deploy_se:
+    ovftool_path: '{{ ovftool_path }}'
+    vcenter_host: '{{ vcenter_host }}'
+    vcenter_user: '{{ vcenter_user }}'
+    vcenter_password: '{{ vcenter_password }}'
+    ssl_verify: '{{ ssl_verify }}'
+    state: '{{ state }}'
+    se_vmw_datacenter: '{{ se_vmw_datacenter }}'
+    se_vmw_cluster: '{{ se_vmw_cluster }}'
+    se_vmw_datastore: '{{ se_vmw_datastore }}'
+    se_vmw_ovf_networks: '{{ se_vmw_ovf_networks }}'
+    se_vmw_disk_mode: '{{ se_vmw_disk_mode }}'
+    se_vmw_ova_path: '{{ se_vmw_ova_path }}'
+    se_vmw_vm_name: '{{ se_vmw_vm_name }}'
+    se_vmw_power_on: '{{ se_vmw_power_on }}'
+    se_vmw_vcenter_folder: '{{ se_vmw_vcenter_folder }}'
+    se_vmw_mgmt_ip: '{{ se_vmw_mgmt_ip }}'
+    se_vmw_mgmt_mask: '{{ se_vmw_mgmt_mask }}'
+    se_vmw_default_gw: '{{ se_vmw_default_gw }}'
+    se_vmw_sysadmin_public_key: '{{ se_vmw_sysadmin_public_key }}'
+    se_auth_token: '{{ se_auth_token }}'
+    se_cluster_uuid: '{{ se_cluster_uuid }}'
+    se_master_ctl_ip: '{{ se_master_ctl_ip }}'
+    se_vmw_number_of_cpus: '{{ se_vmw_number_of_cpus }}'
+    se_vmw_cpu_reserved: '{{ se_vmw_cpu_reserved }}'
+    se_vmw_memory: '{{ se_vmw_memory }}'
+    se_vmw_memory_reserved: '{{ se_vmw_memory_reserved }}'
+    se_vmw_disk_size: '{{ se_vmw_disk_size }}'
+    se_vmw_ovf_properties: '{{ se_vmw_ovf_properties }}'
+  
+"""
+
+RETURN = '''
+obj:
+    description: Deployed SE object
+    returned: success, changed
+    type: dict
+'''
+
+
 import atexit
 import json
 try:
@@ -295,7 +509,7 @@ def main():
         return module.fail_json(
             msg='exception while connecting to vCenter, login failure, '
                 'check username and password')
-    except requests.exceptions.ConnectionError:
+    except  ts.exceptions.ConnectionError:
         return module.fail_json(
             msg='exception while connecting to vCenter, check hostname, '
                 'FQDN or IP')
