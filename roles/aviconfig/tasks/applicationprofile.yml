@@ -22,6 +22,7 @@
     dns_service_profile: "{{ item.dns_service_profile | default(omit) }}"
     dos_rl_profile: "{{ item.dos_rl_profile | default(omit) }}"
     http_profile: "{{ item.http_profile | default(omit) }}"
+    l4_ssl_profile: "{{ item.l4_ssl_profile | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     preserve_client_ip: "{{ item.preserve_client_ip | default(omit) }}"

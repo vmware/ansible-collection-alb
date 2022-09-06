@@ -93,6 +93,12 @@ options:
             - Specifies the http application proxy profile parameters.
             - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
         type: dict
+    l4_ssl_profile:
+        description:
+            - Specifies various l4 ssl service related controls for virtual service.
+            - Field introduced in 22.1.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -267,6 +273,7 @@ def main():
         dns_service_profile=dict(type='dict',),
         dos_rl_profile=dict(type='dict',),
         http_profile=dict(type='dict',),
+        l4_ssl_profile=dict(type='dict',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         preserve_client_ip=dict(type='bool',),
