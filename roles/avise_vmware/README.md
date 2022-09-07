@@ -1,6 +1,5 @@
 # avinetworks.avise_vmware
 
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-avinetworks.avise__vmware-blue.svg)](https://galaxy.ansible.com/avinetworks/avise_vmware/)
 
 Using this module you are able to install the Avi Vantage Service Engine, to your system. However, minimum requirements must be met. Please visit the Avi SE Requirements webpage: https://kb.avinetworks.com/docs/latest/system-requirements-hardware/
 
