@@ -1,0 +1,82 @@
+---
+
+- name: Avi Controller | CSP | Metafile deploy | Get CSP version
+  uri:
+    url: "https://{{ inventory_hostname }}/api/running/resources/resource/{{ con_csp_platform }}"
+    method: GET
+    user: "{{ con_csp_user }}"
+    password: "{{ con_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: con_csp_resource_rsp.status != 200
+  register: con_csp_resource_rsp
+  delegate_to: localhost
+
+- name: Avi Controller | CSP | Metafile deploy | Set CSP version
+  set_fact:
+    con_csp_resource_info: "{{ con_csp_resource_rsp.content|from_json }}"
+
+- name: Avi Controller | CSP | Image deploy | See if the qcow image already exists
+  uri:
+    url: "https://{{ inventory_hostname }}/api/operational/repository/image/{{ con_csp_qcow_image_name }}/_operations/get_image"
+    method: POST
+    user: "{{ con_csp_user }}"
+    password: "{{ con_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: false
+  register: con_image_exists
+  delegate_to: localhost
+
+- block:
+    - name: Avi Controller | CSP | Image deploy | Get image exists content
+      set_fact:
+        con_image_exists_json: "{{ con_image_exists.content|from_json }}"
+
+    - debug: msg="Image {{ con_image_exists_json.output.name }} already exists."
+      when: con_csp_resource_info['resource:resource'].csp_version < "02.04"
+
+    - debug: msg="Image {{ con_image_exists_json['question_xml:output']['name'] }} already exists."
+      when: con_csp_resource_info['resource:resource'].csp_version >= "02.04"
+
+  when: con_image_exists.status == 200
+
+- block:
+    - name: Avi Controller | CSP | Image deploy | Verify qcow exists locally
+      stat:
+        path: "{{ con_csp_qcow_image_file }}"
+      delegate_to: localhost
+      register: con_qcow_status
+      failed_when: not con_qcow_status.stat.exists
+    - name: Avi Controller | CSP | Image deploy | SCP qcow to csp device
+      shell: >-
+        sshpass -p {{ con_csp_password }} scp -o StrictHostKeyChecking=no {{ con_csp_qcow_image_file }}
+        {{ con_csp_user }}@{{ inventory_hostname }}:/osp/repository
+      register: command_result
+      failed_when: false
+      delegate_to: localhost
+    - name: Avi Controller | CSP | Image deploy | Verify the qcow image copied successfully
+      uri:
+        url: "https://{{ inventory_hostname }}/api/operational/repository/image/{{ con_csp_qcow_image_name }}/_operations/get_image"
+        method: POST
+        user: "{{ con_csp_user }}"
+        password: "{{ con_csp_password }}"
+        force_basic_auth: yes
+        headers:
+          Accept: '*/*'
+        validate_certs: false
+        return_content: true
+        status_code: 200, 204
+      register: con_image_verify
+      delegate_to: localhost
+    - name: Avi Controller | CSP | Image deploy | Fail if SCP verification faild
+      fail:
+        msg: "SCP to CSP host failed {{ command_result }}"
+      when: con_image_verify.status != 200 and con_image_verify.status != 204
+  when: con_image_exists.status != 200
