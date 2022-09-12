@@ -1,0 +1,14 @@
+[Unit]
+Description=AVICONTROLLER
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+
+ExecStart=/usr/sbin/avicontroller start
+ExecStop=/usr/sbin/avicontroller stop
+
+[Install]
+WantedBy=multi-user.target

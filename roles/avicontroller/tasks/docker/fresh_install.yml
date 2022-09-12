@@ -1,0 +1,16 @@
+---
+- name: Avi Controller | Requirements | systemd | Check the avicontroller service exist
+  stat: path=/etc/systemd/system/avicontroller.service
+  register: service_status
+
+- name: Avi Controller | Requirements | systemd | Stop the avicontroller service for fresh install
+  systemd: daemon_reload=yes name=avicontroller enabled=no state=stopped
+  when: ansible_service_mgr == 'systemd' and service_status.stat.exists
+
+- name: Avi Controller | Requirements | Clean directories for fresh install
+  file: path="{{ item }}" state=absent
+  when: item != None
+  with_items:
+    - "{{ con_disk_path }}"
+    - "{{ con_metrics_disk_path }}"
+    - "{{ con_logs_disk_path }}"
