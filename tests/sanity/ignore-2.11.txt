@@ -34,6 +34,7 @@ plugins/modules/avi_api_image.py import-3.8!skip
 plugins/modules/avi_deploy_controller.py pep8:E722
 plugins/modules/avi_deploy_controller.py pylint:bare-except
 plugins/modules/avi_deploy_controller.py validate-modules:missing-gplv3-license
+roles/avicontroller/templates/avicontroller.j2 shebang
 tests/integration/run_tests.sh shebang
 tests/integration/run_tests.sh shellcheck:SC2157
 tests/integration/run_tests.sh shellcheck:SC2154
