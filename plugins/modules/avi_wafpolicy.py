@@ -211,6 +211,13 @@ options:
             - Field introduced in 17.2.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+    required_data_files:
+        description:
+            - The data files and types referred in this waf policy.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: list
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -335,6 +342,7 @@ def main():
         positive_security_model=dict(type='dict',),
         post_crs_groups=dict(type='list',),
         pre_crs_groups=dict(type='list',),
+        required_data_files=dict(type='list',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
