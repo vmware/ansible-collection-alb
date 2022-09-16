@@ -1,0 +1,14 @@
+---
+- name: Prepare
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install requirements for module
+      ansible.builtin.pip:
+        name:
+          - requests==2.25.1
+          - pyVmomi==7.0.2
+          - pyVim==3.0.2
+          - pyyaml
+          - yamllint
+      become: true

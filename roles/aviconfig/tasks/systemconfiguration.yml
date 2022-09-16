@@ -42,6 +42,8 @@
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
     - (update_sysconfig_dns_vs_ref | default(True))
   with_items: "{{ avi_role_cfg.systemconfiguration | default([]) }}"
+  tags:
+    - molecule-idempotence-notest
 
 - name: Avi SystemConfiguration | Update SystemConfiguration without DNS VS reference
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -83,3 +85,5 @@
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
     - (not update_sysconfig_dns_vs_ref | default(True))
   with_items: "{{ avi_role_cfg.systemconfiguration | default([]) }}"
+  tags:
+    - molecule-idempotence-notest
