@@ -1,0 +1,9 @@
+---
+# Default docker image pull from the Docker Hub.
+
+- name: Avi Controller | Docker | Load the image from Docker Hub
+  shell: "docker pull {{ con_image }}"
+  register: con_load_docker_hub
+  changed_when: "'Status: Image is up to date' not in con_load_docker_hub.stdout"
+  notify: Avi Controller | Services | Restart the avicontroller service
+  when: not con_docker_match.stdout or con_version == "latest"

@@ -265,3 +265,4 @@ plugins/modules/avi_albservicesjob.py validate-modules:parameter-list-no-element
 plugins/modules/avi_authmappingprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
+roles/avicontroller/templates/avicontroller.j2 shebang

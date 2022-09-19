@@ -1,0 +1,8 @@
+---
+# handlers for avinetworks.avicontroller
+- name: Avi Controller | Services | systemd | Daemon reload
+  systemd: daemon_reload=yes name=avicontroller
+  when: ansible_version.full is version_compare('2.2', '>=')
+
+- name: Avi Controller | Services | Restart the avicontroller service
+  service: name=avicontroller enabled=yes state=restarted

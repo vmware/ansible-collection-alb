@@ -1,0 +1,7 @@
+---
+skip_list:
+  - 305
+  - 306
+  - 208
+  - 106
+use_default_rules: true
