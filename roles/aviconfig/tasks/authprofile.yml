@@ -32,3 +32,5 @@
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
   with_items: "{{ avi_role_cfg.authprofile | default([]) }}"
+  tags:
+    - molecule-idempotence-notest

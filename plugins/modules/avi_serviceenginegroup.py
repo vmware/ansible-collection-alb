@@ -321,7 +321,6 @@ options:
             - Dedicate the core that handles packet receive/transmit from the network to just the dispatching function.
             - Don't use it for tcp/ip and ssl functions.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     description:
         description:
@@ -1154,6 +1153,27 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+        type: int
+    ntp_sync_fail_event:
+        description:
+            - Toggle se ntp synchronization failure events generation.
+            - Disabled by default.
+            - Field introduced in 22.1.2.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    ntp_sync_status_interval:
+        description:
+            - Configures the interval at which se synchronization status with ntp server(s) is verified.
+            - A value of zero disables se ntp synchronization status validation.
+            - Allowed values are 120-900.
+            - Special values are 0- disable.
+            - Field introduced in 22.1.2.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     num_dispatcher_cores:
         description:
@@ -2375,6 +2395,8 @@ def main():
         ngx_free_connection_stack=dict(type='bool',),
         non_significant_log_throttle=dict(type='int',),
         ns_helper_deq_interval_msec=dict(type='int',),
+        ntp_sync_fail_event=dict(type='bool',),
+        ntp_sync_status_interval=dict(type='int',),
         num_dispatcher_cores=dict(type='int',),
         num_dispatcher_queues=dict(type='int',),
         num_flow_cores_sum_changes_to_ignore=dict(type='int',),

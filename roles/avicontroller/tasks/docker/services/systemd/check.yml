@@ -1,5 +1,0 @@
----
-- name: Avi Controller | Check if Avi Controller installed
-  stat:
-    path: /etc/systemd/system/avicontroller.service
-  register: avi_installed

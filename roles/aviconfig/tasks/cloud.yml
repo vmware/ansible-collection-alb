@@ -56,6 +56,8 @@
   when:
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
   with_items: "{{ avi_role_cfg.cloud | default([]) }}"
+  tags:
+    - molecule-idempotence-notest
 
 - name: Fetch cloud status
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -147,3 +149,5 @@
     - item.state | default('present') == avi_role_state_mode
     - item.vtype == "CLOUD_VCENTER"
     - item.state | default("present") == "present"
+  tags:
+    - molecule-idempotence-notest
