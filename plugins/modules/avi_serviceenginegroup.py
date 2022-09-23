@@ -321,7 +321,6 @@ options:
             - Dedicate the core that handles packet receive/transmit from the network to just the dispatching function.
             - Don't use it for tcp/ip and ssl functions.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     description:
         description:
