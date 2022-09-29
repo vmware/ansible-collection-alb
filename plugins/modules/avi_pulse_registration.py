@@ -106,21 +106,16 @@ options:
         description:
             - Dictionary which is used to set the default values to be used for WAF management.
         suboptions:
-            waf_spec:
+            enable_waf_signatures_notifications:
                 description:
-                    - Dictionary defining enable_waf_signatures_notifications ,enable_auto_download_waf_signatures.
-                suboptions:
-                    enable_waf_signatures_notifications:
-                        description:
-                            - Enable event notifications when new WAF signatures/CRS versions are available.
-                        type: bool
-                        default: False
-                    enable_auto_download_waf_signatures:
-                        description:
-                            - Enable to automatically download new WAF signatures/CRS version to the controller.
-                        type: bool
-                        default: False
-                type: dict
+                    - Enable event notifications when new WAF signatures/CRS versions are available.
+                type: bool
+                default: False
+            enable_auto_download_waf_signatures:
+                description:
+                    - Enable to automatically download new WAF signatures/CRS version to the controller.
+                type: bool
+                default: False
         type: dict
     case_config:
         description:
@@ -137,6 +132,7 @@ options:
                 type: bool
                 default: False
         type: dict
+ 
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
