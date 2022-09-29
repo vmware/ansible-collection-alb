@@ -132,7 +132,6 @@ options:
                 type: bool
                 default: False
         type: dict
- 
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
