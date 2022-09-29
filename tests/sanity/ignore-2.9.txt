@@ -259,6 +259,7 @@ plugins/module_utils/utils/ansible_utils.py import-3.8!skip
 plugins/modules/avi_pulse_registration.py import-3.8!skip
 plugins/modules/avi_webapput.py validate-modules:missing-gplv3-license
 plugins/modules/avi_webapput.py import-3.8!skip
+tests/unit/modules/test_avi_pool.py import-3.8!skip
 plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_webapput.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_albservicesjob.py validate-modules:parameter-list-no-elements
