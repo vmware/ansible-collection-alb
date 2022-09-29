@@ -5,8 +5,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-import time
-from ansible.module_utils.basic import AnsibleModule
+
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
@@ -127,21 +126,16 @@ options:
         description:
             - Dictionary which is used to set the default values to be used for pulse case management.
         suboptions:
-            case_spec:
+            enable_auto_case_creation_on_controller_failure:
                 description:
-                    - Dictionary defining enable_auto_case_creation_on_controller_failure ,enable_auto_case_creation_on_se_failure.
-                suboptions:
-                    enable_auto_case_creation_on_controller_failure:
-                        description:
-                            - Enable pro-active support case creation when a controller failure occurs.
-                        type: bool
-                        default: False
-                    enable_auto_case_creation_on_se_failure:
-                        description:
-                            - Enable pro-active support case creation when a service engine failure occurs.
-                        type: bool
-                        default: False
-                type: dict
+                    - Enable pro-active support case creation when a controller failure occurs.
+                type: bool
+                default: False
+            enable_auto_case_creation_on_se_failure:
+                description:
+                    - Enable pro-active support case creation when a service engine failure occurs.
+                type: bool
+                default: False
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -190,6 +184,8 @@ obj:
     returned: success, changed
     type: dict
 '''
+import time
+from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
         avi_common_argument_spec, AviCheckModeResponse, ansible_return, avi_obj_cmp,
