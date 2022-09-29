@@ -341,3 +341,4 @@ plugins/modules/avi_webapput.py validate-modules:parameter-list-no-elements
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
 roles/avicontroller/templates/avicontroller.j2 shebang
+tests/unit/modules/test_avi_pool.py pylint!skip
