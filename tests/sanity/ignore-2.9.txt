@@ -57,6 +57,8 @@ plugins/modules/avi_seproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_seproperties.py import-3.8!skip
 plugins/modules/avi_tenant.py validate-modules:missing-gplv3-license
 plugins/modules/avi_tenant.py import-3.8!skip
+plugins/modules/avi_webapput.py validate-modules:missing-gplv3-license
+plugins/modules/avi_webapput.py import-3.8!skip
 plugins/modules/avi_cloudconnectoruser.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cloudconnectoruser.py import-3.8!skip
 plugins/modules/avi_hardwaresecuritymodulegroup.py validate-modules:missing-gplv3-license
@@ -254,10 +256,3 @@ plugins/modules/avi_virtualservice.py import-3.8!skip
 plugins/module_utils/avi_api.py import-3.8!skip
 plugins/module_utils/saml_avi_api.py import-3.8!skip
 plugins/module_utils/utils/ansible_utils.py import-3.8!skip
-plugins/modules/avi_webapput.py validate-modules:missing-gplv3-license
-plugins/modules/avi_webapput.py import-3.8!skip
-plugins/modules/avi_webapput.py validate-modules:parameter-list-no-elements
-plugins/modules/avi_albservicesjob.py validate-modules:parameter-list-no-elements
-plugins/modules/avi_authmappingprofile.py validate-modules:parameter-list-no-elements
-plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
-plugins/modules/verify_se.py validate-modules:missing-gplv3-license

@@ -1,3 +1,0 @@
----
-- name: Avi Controller | Docker | Deployment
-  include: ../docker/main.yml
