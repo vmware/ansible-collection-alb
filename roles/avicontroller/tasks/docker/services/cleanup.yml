@@ -1,0 +1,33 @@
+---
+- name: Avi Controller | Docker | Cleanup | Get our desired docker image id.
+  shell: "docker images -q {{ con_image }}"
+  changed_when: false
+  register: con_docker_image
+
+- name: Avi Controller | Docker | Cleanup | Get list of running avicontroller containers
+  shell: "docker ps -q -f name=avicontroller"
+  changed_when: false
+  register: con_running_con_containers
+
+- name: Avi Controller | Docker | Cleanup | Check if desired version is already running.
+  shell: "docker ps -q -f ancestor={{ con_docker_image.stdout }}"
+  changed_when: false
+  register: con_desired_running
+
+- name: Avi Controller | Docker | Cleanup | Stop and Remove the container if it's not the desired version.
+  shell: "docker stop {{ item }} && docker rm -f {{ item }}"
+  notify: Avi Controller | Services | Restart the avicontroller service
+  when:
+    - item not in con_desired_running.stdout_lines
+  with_items:
+    - "{{ con_running_con_containers.stdout_lines }}"
+
+- name: Avi Controller | Docker | Cleanup | Get list of non-matched controller images.
+  shell: "docker images | grep -v REPOSITORY | grep -v {{ con_version }} | grep avinetworks/controller | awk '{print $3}'"
+  changed_when: false
+  register: con_non_matched_images
+
+- name: Avi Controller | Docker | Cleanup | Remove non-matched controller images.
+  shell: "docker rmi -f {{ con_non_matched_images.stdout_lines|join(' ') }}"
+  changed_when: false
+  when: con_non_matched_images.stdout

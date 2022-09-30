@@ -1,0 +1,54 @@
+---
+- name: Avi Controller | Services | systemd | Check if Avi Controller installed
+  include: "services/systemd/check.yml"
+  when: ansible_service_mgr == "systemd"
+
+- block:
+    - name: Avi Controller | Check minimum requirements
+      include: con_requirements.yml
+
+    - name: Avi Controller | Perform specific os tasks
+      include: "{{ item }}"
+      with_first_found:
+        - os/{{ ansible_distribution|lower }}.yml
+        - os/default.yml
+
+    - name: Avi Controller | Perform specific os family tasks
+      include: "{{ item }}"
+      with_first_found:
+        - family/{{ ansible_os_family|lower }}.yml
+        - family/default.yml
+
+    - name: Avi Controller | Copy setup.json to controller
+      copy: src="{{ con_setup_json }}" dest="{{ con_disk_path }}/setup.json"
+      when: con_setup_json != None
+
+    - name: Avi Controller | Copy setup.json to controller
+      copy: content="{{ con_setup_json_raw | to_json }}\n" dest="{{ con_disk_path }}/setup.json"
+      when: con_setup_json_raw != None
+
+    # We must do this step first just in case we need to override defaults from the supplied package
+    - name: Avi Controller | Docker | Package Deploy
+      include: package_deploy.yml
+      when: con_package_deploy
+
+    - name: Avi Controller | Docker | Check if specified image already exists.
+      shell: "docker images -q {{ con_image }}"
+      changed_when: false
+      register: con_docker_match
+
+    - block:
+        - name: Avi Controller | Docker | Docker Hub
+          include: docker_hub.yml
+          when: con_docker_repo == None
+        - name: Avi Controller | Docker | Custom Repo
+          include: custom_repo.yml
+          when: con_docker_repo != None
+      when: not con_package_deploy
+
+    - name: Avi Controller | Docker | Cleanup
+      include: services/cleanup.yml
+
+    - name: Avi Controller | Docker | Install the Avi Controller services
+      include: services/install.yml
+  when: not avi_installed.stat.exists or con_force_deploy or con_fresh_install

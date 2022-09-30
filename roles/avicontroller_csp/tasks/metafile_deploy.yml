@@ -1,0 +1,63 @@
+---
+- name: Avi Controller | CSP | Metafile deploy | Get CSP version
+  uri:
+    url: "https://{{ inventory_hostname }}/api/running/resources/resource/{{ con_csp_platform }}"
+    method: GET
+    user: "{{ con_csp_user }}"
+    password: "{{ con_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: con_csp_resource_rsp.status != 200
+  register: con_csp_resource_rsp
+  delegate_to: localhost
+
+- name: Avi Controller | CSP | Metafile deploy | Set CSP version
+  set_fact:
+    con_csp_resource_info: "{{ con_csp_resource_rsp.content|from_json }}"
+
+- name: Avi Controller | CSP | Metafile deploy | See if the metafile already exists
+  uri:
+    url: "https://{{ inventory_hostname }}/api/operational/repository/image/{{ con_csp_metafile_name }}/_operations/get_image"
+    method: POST
+    user: "{{ con_csp_user }}"
+    password: "{{ con_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: false
+  register: con_csp_metafile_exists
+  delegate_to: localhost
+
+- block:
+
+    - name: Avi Controller | CSP | Metafile deploy | Get metafile exists content
+      set_fact:
+        con_csp_metafile_exists_json: "{{ con_csp_metafile_exists.content|from_json }}"
+
+    - debug: msg="Metafile {{ con_csp_metafile_exists_json['question_xml:output']['name'] }} already exists."
+      when: con_csp_resource_info['resource:resource'].csp_version >= "02.04"
+
+    - debug: msg="Metafile {{ con_csp_metafile_exists_json.output.name }} already exists."
+      when: con_csp_resource_info['resource:resource'].csp_version < "02.04"
+
+  when: con_csp_metafile_exists.status == 200
+
+- block:
+    - name: Avi Controller | CSP | Metafile deploy | Create metafile content
+      template:
+        src: avi_meta_controller.j2
+        dest: /tmp/{{ con_csp_metafile_name }}
+      delegate_to: localhost
+      register: con_avi_metafile
+    - name: Avi Controller | CSP | Metafile deploy | Deploy metafile {{ con_csp_metafile_name }} to the CSP device
+      shell: >-
+        sshpass -p {{ con_csp_password }} scp -o StrictHostKeyChecking=no /tmp/{{ con_csp_metafile_name }}
+        {{ con_csp_user }}@{{ inventory_hostname }}:/osp/repository
+      delegate_to: localhost
+      failed_when: false
+  when: con_csp_metafile_exists.status != 200

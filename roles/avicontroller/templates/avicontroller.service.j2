@@ -1,0 +1,14 @@
+[Unit]
+Description=AviCONTROLLER
+Requires=proc-sys-fs-binfmt_misc.mount
+
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+
+ExecStart={{ AVI_EXECUTABLE }} start
+ExecStop={{ AVI_EXECUTABLE }} stop
+
+[Install]
+WantedBy=multi-user.target

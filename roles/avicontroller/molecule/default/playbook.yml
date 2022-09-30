@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  roles:
+    - role: avinetworks.docker
+    - role: avinetworks.avicontroller

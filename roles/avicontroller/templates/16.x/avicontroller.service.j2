@@ -1,0 +1,18 @@
+[Unit]
+Description=Avi Controller Service
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+
+ExecStartPre=-/usr/bin/docker rm -f avicontroller
+ExecStartPre=/usr/bin/docker run {{ con_docker_run_params }}
+ExecStart=/usr/bin/docker wait avicontroller
+ExecStop=-/usr/bin/docker stop avicontroller
+ExecStop=-/bin/bash -c "ip addr del $(ip addr | grep {{ con_dev_name }}:1 | awk '{print $2}') dev {{ con_dev_name }}"
+ExecStopPost=-/usr/bin/docker rm -f avicontroller
+
+[Install]
+WantedBy=multi-user.target

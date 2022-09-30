@@ -1,0 +1,48 @@
+---
+# Check connection establishment with AVI Controller
+
+- name: Avi SE | Initial Data | Check if required login vars are defined
+  assert:
+    that:
+      - item != None
+  with_items:
+    - se_master_ctl_ip
+    - se_master_ctl_username
+    - se_master_ctl_password
+    - se_tenant
+
+- name: Avi SE | Initial Data | Get Controller information
+  avi_api_session:
+    controller: "{{ se_master_ctl_ip }}"
+    username: "{{ se_master_ctl_username }}"
+    password: "{{ se_master_ctl_password }}"
+    tenant: "{{ se_tenant }}"
+    http_method: get
+    path: "initial-data"
+  register: initial_data
+  delegate_to: localhost
+
+- name: Avi SE | Initial Data | Get Controller cluster status
+  uri:
+    url: "https://{{ se_master_ctl_ip }}/api/cluster/status"
+    validate_certs: no
+  register: cluster_status
+  delegate_to: localhost
+
+- name: Avi SE | Initial Data | Set Controller version information
+  set_fact:
+    ctl_build: "{{ initial_data.obj.version.build }}"
+    se_master_ctl_version: "{{ initial_data.obj.version.Version }}"
+  when: initial_data
+
+- name: Avi SE | Initial Data | Set Controller Cluster UUID information
+  set_fact:
+    cluster_uuid_snap: "{{ cluster_status.json.node_info.cluster_uuid.split('-')[1] }}"
+  when: cluster_status and se_csp_qcow_image_name == None
+
+- name: Avi SE | Set SE qcow2 filename
+  set_fact:
+    se_csp_qcow_image_name: se-{{ se_master_ctl_version }}-{{ ctl_build }}-{{ cluster_uuid_snap }}.qcow2
+  when: se_csp_qcow_image_name == None
+
+- debug: msg="You are running Controller verison {{ se_master_ctl_version }}-{{ ctl_build }}"
