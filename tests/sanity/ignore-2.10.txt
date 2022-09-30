@@ -335,8 +335,6 @@ plugins/modules/avi_virtualservice.py import-3.8!skip
 plugins/module_utils/avi_api.py import-3.8!skip
 plugins/module_utils/saml_avi_api.py import-3.8!skip
 plugins/module_utils/utils/ansible_utils.py import-3.8!skip
-plugins/modules/avi_pulse_registration.py import-3.8!skip
-plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_webapput.py validate-modules:parameter-list-no-elements
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
