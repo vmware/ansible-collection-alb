@@ -1,0 +1,7 @@
+#cloud-config
+# Hostname management
+preserve_hostname: False
+hostname: {{ kvm_vm_hostname }}
+# Configure where output will go
+output:
+all: ">> /var/log/cloud-init.log"

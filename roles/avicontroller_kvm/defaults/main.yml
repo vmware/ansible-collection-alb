@@ -1,0 +1,23 @@
+---
+# defaults file for playbooks/roles/kvm-vm
+kvm_host_ip: "{{ inventory_hostname }}"
+kvm_vm_hostname: ~
+kvm_host_username: "{{ ansible_ssh_user }}"
+kvm_host_password: "{{ ansible_ssh_pass }}"
+#kvm_vm_base_img: ~
+kvm_vm_vcpus: "8"
+kvm_vm_ram: "24576"
+kvm_vm_os_disk_size: "100"
+kvm_pinning: true
+ctrl_mgmt_ip: ~
+ctrl_mgmt_mask: ~
+ctrl_default_gw: ~
+
+kvm_network_type: "direct"
+kvm_network_source_mode: "bridge"
+kvm_network_model: "virtio"
+
+state: "create"
+kvm_force_mode: true
+kvm_host_mgmt_intf: ~
+CI_ISO: /var/lib/libvirt/images/{{ kvm_vm_hostname }}-cidata.iso
