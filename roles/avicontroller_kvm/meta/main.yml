@@ -1,0 +1,27 @@
+galaxy_info:
+  role_name: avicontroller-kvm
+  author: Avi Networks
+  description: Deploy's the AVI Vantage Controller on KVM
+  company: Avi Networks
+  issue_tracker_url: https://github.com/avinetworks/ansible-role-avicontroller-kvm/issues
+  license: Apache-2.0
+  min_ansible_version: 2.4.0
+  github_branch: master
+  platforms:
+  - name: EL
+    versions:
+    - 6
+    - 7
+  - name: Ubuntu
+    versions:
+    - precise
+    - trusty
+    - xenial
+  galaxy_tags:
+    - avi
+    - controller
+    - loadbalancer
+    - avinetworks
+    - avicontroller
+    - kvm
+dependencies: []

@@ -1,0 +1,8 @@
+---
+- name: "Avi Controller | KVM | Deploy VM"
+  include: deploy_controller.yml
+  when: state == "create"
+
+- name: "Avi Controller | KVM | Destroy VM"
+  include: teardown_kvm_vm.yml
+  when: state == "delete"
