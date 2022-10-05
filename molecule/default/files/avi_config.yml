@@ -1004,7 +1004,6 @@ avi_config:
 #      se_dp_if_state_poll_interval: 10
 #      baremetal_dispatcher_handles_flows: false
 
-
 #  gslbgeodbprofile:
 #    - name: test-profile
 #      tenant_ref: '/api/tenant?name=admin'

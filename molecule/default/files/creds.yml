@@ -10,9 +10,7 @@ avi_credentials:
 #export USERNAME="admin"
 #export PASSWORD="password"
 #export API_VERSION="22.1.2"
-
 # VMware cloud credentials
 #export VCENTER_URL="11.102.12.13"
 #export VCENTER_USERNAME="aviuser12"
 #export VCENTER_PASSWORD='password'
-

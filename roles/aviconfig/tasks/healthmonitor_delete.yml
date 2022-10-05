@@ -38,6 +38,7 @@
     pop3s_monitor: "{{ item.pop3s_monitor | default(omit) }}"
     radius_monitor: "{{ item.radius_monitor | default(omit) }}"
     receive_timeout: "{{ item.receive_timeout | default(omit) }}"
+    sctp_monitor: "{{ item.sctp_monitor | default(omit) }}"
     send_interval: "{{ item.send_interval | default(omit) }}"
     sip_monitor: "{{ item.sip_monitor | default(omit) }}"
     smtp_monitor: "{{ item.smtp_monitor | default(omit) }}"

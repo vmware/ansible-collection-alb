@@ -1,0 +1,65 @@
+---
+# defaults file for avise-csp
+
+se_skip_requirements: false
+
+# se_autoregister parameters
+se_autoregister: true
+se_auth_token: ~
+se_master_ctl_ip: ~
+se_master_ctl_username: ~
+se_master_ctl_password: ~
+se_master_ctl_version: 17.2.12
+se_cloud_name: Default-Cloud
+se_tenant: admin
+
+se_csp_user: ~
+se_csp_password: ~
+se_csp_qcow_image_file: se.qcow2
+se_csp_qcow_image_name: ~
+se_csp_qcow_force_mode: false
+se_csp_mgmt_ip: ~
+se_csp_mgmt_mask: ~
+se_csp_default_gw: ~
+se_csp_tenant_uuid: ~
+se_csp_disk_size: ~
+se_csp_disk_type: virtio
+se_csp_platform: csp-2100
+se_csp_service_name: avi-se
+se_csp_metafile_name: avi_meta_{{ se_csp_service_name }}.yml
+se_csp_num_cpu: ~
+se_csp_memory_gb: ~
+se_csp_memory_mb: "{{ se_csp_memory_gb|int * 1024 }}"
+se_csp_vnics:
+  - nic: "0"
+    type: access
+    tagged: "false"
+    network_name: enp1s0f0
+  - nic: 1
+    type: passthrough
+    passthrough_mode: sriov
+    vlan: 200
+    network_name: enp7s0f0
+  - nic: 2
+    type: passthrough
+    passthrough_mode: sriov
+    vlan: 201
+    network_name: enp7s0f1
+se_csp_vnics_config: ~
+se_csp_meta_config: {}
+se_csp_meta_options:
+  AVICNTRL: "{{ se_master_ctl_ip }}"
+  AVICNTRL_AUTHTOKEN: "{{ se_auth_token }}"
+  avi.mgmt-ip.SE: "{{ se_csp_mgmt_ip | default(None) }}"
+  avi.mgmt-mask.SE: "{{ se_csp_mgmt_mask | default(None) }}"
+  avi.default-gw.SE: "{{ se_csp_default_gw | default(None) }}"
+  avi.bond-ifs.SE: "{{ se_csp_bond_ifs | default(None) }}"
+  avi.bond-mode.SE: "{{ se_csp_bond_mode | default(None) }}"
+  avi.asm-ip.SE: "{{ se_csp_asm_ip | default(None) }}"
+  avi.asm-mask.SE: "{{ se_csp_asm_mask | default(None) }}"
+  avi.asm-static-routes.SE: "{{ se_csp_asm_static_routes | default(None) }}"
+  avi.asm-vnic-id.SE: "{{ se_csp_asm_vnic_id | default(None) }}"
+  avi.hsm-ip.SE: "{{ se_csp_hsm_ip | default(None) }}"
+  avi.hsm-mask.SE: "{{ se_csp_hsm_mask | default(None) }}"
+  avi.hsm-static-routes.SE: "{{ se_csp_hsm_static_routes | default(None) }}"
+  avi.hsm-vnic-id.SE: "{{ se_csp_hsm_vnic_id | default(None) }}"

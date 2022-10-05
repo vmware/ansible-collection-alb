@@ -1,0 +1,6 @@
+{% for key,value in con_csp_meta_options.iteritems() %}
+{% if value != '' %}
+{% set myvalue = con_csp_meta_config.update({ key: value }) %}
+{% endif %}
+{% endfor %}
+{{ con_csp_meta_config | to_nice_yaml }}

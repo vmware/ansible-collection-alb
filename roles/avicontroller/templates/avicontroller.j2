@@ -1,0 +1,164 @@
+#!/bin/bash
+
+## Usage: avicontroller [options] ARG1
+## Description: This script manages and provides manage of the Avi Controller service.
+## docker is alias to the container platform i.e to either docker or podman
+
+container=avicontroller
+logfile="/var/log/${container}.log"
+
+write_log() {
+  echo $1 2>&1 | tee -a ${logfile}
+}
+
+populate_container_platform()
+{
+  # Default container platform is docker
+  cont_plat="docker"
+  cont_plat_sock="/var/run/docker.sock"
+
+  # Possible values for $distribution which we support
+  # "ubuntu" (or) "ol" (or) "rhel" (or) "centos"
+  distribution=$(grep "^ID=" /etc/os-release | cut -d"=" -f2 | sed 's/"//g')
+
+  # Possible known values for $version which we support
+  # On Ubuntu:
+  #   version = "16.04" (or) "18.04" (or) "20.04"
+  # On RHEL / OL / CENTOS:
+  #   version = "7.*" (or) "8.*"
+  version=$(grep "^VERSION_ID=" /etc/os-release | cut -d"=" -f2 | sed 's/"//g')
+
+  # cont_plat is podman only on OL / RHEL / CENTOS 8.*
+  if [[ $distribution == "ol" || $distribution == "centos" || $distribution == "rhel" ]]; then
+    if [[ $version =~ 8.* ]]; then
+      cont_plat="podman"
+      cont_plat_sock="/run/podman/podman.sock"
+    fi
+  fi
+  write_log "[`date`] Setting cont_plat to $cont_plat as distribution=$distribution ($version)"
+}
+
+wait_till_service_starts()
+{
+  service=$1
+  write_log "[`date`] Waiting to check if ${service}.service is active"
+  while [[ $(systemctl is-active ${service}.service) != "active" ]]
+  do
+    sleep 1
+  done
+  write_log "[`date`] ${service}.service is active"
+}
+
+container_running() {
+  ${cont_plat} ps -f name=${container} | grep -q ${container}
+}
+
+container_exists() {
+  ${cont_plat} ps -a -f name=${container} | grep -q ${container}
+}
+
+start_container() {
+  write_log "[`date`] Starting the ${container} container"
+  ${cont_plat} run ${controller_docker_run_params}
+  if [ $? -eq 0 ]; then
+    write_log "[`date`] Service ${container} running..."
+  else
+    write_log "[`date`] Failed to start the ${container} container"
+    exit 1
+  fi
+}
+
+stop_container() {
+  ${cont_plat} stop ${container}
+  if [ $? -eq 0 ]; then
+    write_log "[`date`] Stopped the ${container} container"
+  else
+    exit 1
+  fi
+}
+
+remove_container() {
+  write_log "[`date`] Removing existing ${container} container"
+  ${cont_plat} rm -f ${container}
+  if [ $? -eq 0 ]; then
+    write_log "[`date`] Removed existing ${container} container"
+  else
+    write_log "[`date`] Failed to remove existing ${container} container"
+  fi
+}
+
+prestart() {
+  # Clean up any running or existing avicontroller containers
+  write_log "[`date`] Performing ${container} pre-start step."
+  remove_container
+  start_container
+}
+
+start() {
+  prestart
+  ${cont_plat} wait ${container}
+}
+
+stop() {
+  # Stopping the docker/podman process if running
+  controller_pid=`${cont_plat} inspect $container | grep '\"Pid\"' | awk '{print $2}' | sed s/,//`
+  stop_var="fstrim /proc/$controller_pid/root"
+  ${stop_var}
+  write_log "[`date`] Freed the blocks of ${controller_pid}..."
+  if container_running; then
+    write_log "[`date`] Service ${container} stopping..."
+    stop_container
+  else
+    write_log "[`date`] Service ${container} already stopped"
+  fi
+  poststop
+}
+
+poststop() {
+  if $(ip addr | grep -q {{ AVICONTROLLER_DEV_NAME }}:avivip); then
+    /bin/bash -c "ip addr del $(ip addr | grep {{ AVICONTROLLER_DEV_NAME }}:avivip | awk '{print $2}') dev {{ AVICONTROLLER_DEV_NAME }}"
+    if [ $? -eq 0 ]; then
+      write_log "[`date`] Successfuly removed the cluster vip interface."
+    fi
+  elif $(ip addr | grep -q {{ AVICONTROLLER_DEV_NAME }}:1); then
+    /bin/bash -c "ip addr del $(ip addr | grep {{ AVICONTROLLER_DEV_NAME }}:1 | awk '{print $2}') dev {{ AVICONTROLLER_DEV_NAME }}"
+    if [ $? -eq 0 ]; then
+      write_log "[`date`] Successfuly removed the cluster vip interface."
+    fi
+  fi
+
+  if container_exists; then
+    remove_container
+  fi
+}
+
+restart() {
+  stop
+  start
+}
+
+reload() {
+  restart
+}
+
+status() {
+  if container_running; then
+    echo "${container} running..."
+  else
+    echo "${container} stopped"
+  fi
+}
+
+
+case "$1" in
+  start|stop|status|restart|reload)
+    populate_container_platform
+    wait_till_service_starts ${cont_plat}
+    controller_docker_run_params="{{ AVI_RUN_PARAMS }}"
+    $1
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|status|restart|reload}"
+    exit 2
+esac
+exit $?
