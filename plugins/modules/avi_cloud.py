@@ -217,7 +217,8 @@ options:
             - Cloud metrics collector polling interval in seconds.
             - Field introduced in 21.1.6.
             - Unit is seconds.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 300.
         type: int
     mtu:
