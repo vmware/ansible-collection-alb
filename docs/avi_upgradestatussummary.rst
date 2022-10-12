@@ -466,7 +466,10 @@ Parameters
                   - Upgrade operations requested.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME.
+                  - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME, EVAL_UPGRADE, EVAL_PATCH, EVAL_ROLLBACK, EVAL_ROLLBACKPATCH,
+                </div>
+                                <div style="font-size: small">
+                  - EVAL_SEGROUP_RESUME.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.

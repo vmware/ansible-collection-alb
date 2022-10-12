@@ -1,0 +1,79 @@
+---
+
+- name: "Avi Controller | KVM | Validate Requirements"
+  include: requirements.yml
+
+- name: "Avi Controller | KVM | Check pinning support on host"
+  fail:
+    msg: "Pinning is not supportable for the os version {{ hostvars[inventory_hostname].ansible_distribution_version }}"
+  when: 'hostvars[inventory_hostname].ansible_distribution_version | float == 16.04 and kvm_pinning'
+
+- name: "Avi Controller | KVM | Set the location of cloud image"
+  set_fact:
+    IMAGE: "/var/lib/libvirt/images/{{ kvm_vm_hostname }}.qcow2"
+
+- name: "Avi Controller | KVM | Copy {{ kvm_vm_base_img }} file into /var/lib/libvirt/images/ on KVM host"
+  copy:
+    src: "{{ kvm_vm_base_img }}"
+    dest: "{{ IMAGE }}"
+    remote_src: "no"
+    owner: "root"
+  when: kvm_vm_base_img is defined
+
+- name: "Avi Controller | KVM | Create directory {{ kvm_vm_hostname }} on KVM host"
+  file:
+    path: /root/{{ kvm_vm_hostname }}
+    state: directory
+
+- name: "Avi Controller | KVM | Generate meta-data config file for VM on KVM host"
+  template:
+    src: avi_meta-data-controller.j2
+    dest: /root/{{ kvm_vm_hostname }}/avi_meta-data
+
+- name: "Avi Controller | KVM | Generate user-data config file for VM on KVM host"
+  template:
+    src: user-data.j2
+    dest: /root/{{ kvm_vm_hostname }}/user-data
+
+- name: "Avi Controller | KVM | Set the location of USER DATA file"
+  set_fact:
+    AVI_USER_DATA: /root/{{ kvm_vm_hostname }}/user-data
+
+- name: "Avi Controller | KVM | Set the location of META DATA file"
+  set_fact:
+    AVI_META_DATA: /root/{{ kvm_vm_hostname }}/avi_meta-data
+
+- name: "Avi Controller | KVM | Create CD-ROM ISO with cloud-init config"
+  command: >
+    genisoimage -output {{ CI_ISO }} -volid cidata -joliet -r {{ AVI_USER_DATA }} {{ AVI_META_DATA }}
+
+- name: "Avi Controller | KVM | Deploy Controller | Run if os_version is greater than 17.04 OR OS is CentOS AND pinning is True"
+  command: >
+    virt-install --import --name {{ kvm_vm_hostname }} --ram {{ kvm_vm_ram }} --vcpus {{ kvm_vm_vcpus }} --disk {{ IMAGE }},format=qcow2,bus=virtio,size={{ kvm_vm_os_disk_size }} --disk {{ CI_ISO }},device=cdrom --network type={{ kvm_network_type }},source={{ kvm_host_mgmt_intf }},source_mode={{ kvm_network_source_mode }},model={{ kvm_network_model }} --os-type=linux --os-variant=ubuntu16.04 --cpuset=auto --noautoconsole
+  register: vm_xml_content
+  when: 'hostvars[inventory_hostname].ansible_distribution_version | float >= 17.04 or hostvars[inventory_hostname].ansible_distribution == "CentOS" and kvm_pinning'
+
+- name: "Avi Controller | KVM | Deploy Controller | Run if pinning is False"
+  command: >
+    virt-install --import --name {{ kvm_vm_hostname }} --ram {{ kvm_vm_ram }} --vcpus {{ kvm_vm_vcpus }} --disk {{ IMAGE }},format=qcow2,bus=virtio,size={{ kvm_vm_os_disk_size }} --disk {{ CI_ISO }},device=cdrom --network type={{ kvm_network_type }},source={{ kvm_host_mgmt_intf }},source_mode={{ kvm_network_source_mode }},model={{ kvm_network_model }} --os-type=linux --os-variant=ubuntu16.04 --noautoconsole
+  when: not kvm_pinning
+
+- name: "Avi Controller | KVM | Eject CDROM"
+  command: >
+    virsh change-media {{ kvm_vm_hostname }} hda --eject --config
+
+- name: "Avi Controller | KVM | Remove CI_ISO and Host files."
+  command: "rm -rf {{ CI_ISO }} /root/{{ kvm_vm_hostname }}"
+
+# Validate if controller is up and running
+- name: "Avi Controller | KVM | Validate controller is up"
+  uri:
+    url: 'https://{{ ctrl_mgmt_ip }}/#!/login'
+    validate_certs: no
+  retries: 120
+  delay: 30
+  register: ctrl_status
+  until: ctrl_status.status == 200
+  ignore_errors: yes
+  delegate_to: localhost
+  

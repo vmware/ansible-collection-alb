@@ -44,6 +44,7 @@
     previous_patch_version: "{{ item.previous_patch_version | default(omit) }}"
     previous_version: "{{ item.previous_version | default(omit) }}"
     progress: "{{ item.progress | default(omit) }}"
+    reason: "{{ item.reason | default(omit) }}"
     se_patch_image_path: "{{ item.se_patch_image_path | default(omit) }}"
     se_patch_image_ref: "{{ item.se_patch_image_ref | default(omit) }}"
     se_upgrade_events: "{{ item.se_upgrade_events | default(omit) }}"
@@ -57,6 +58,7 @@
     total_tasks: "{{ item.total_tasks | default(omit) }}"
     upgrade_events: "{{ item.upgrade_events | default(omit) }}"
     upgrade_ops: "{{ item.upgrade_ops | default(omit) }}"
+    upgrade_readiness: "{{ item.upgrade_readiness | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     version: "{{ item.version | default(omit) }}"
   when:

@@ -247,6 +247,12 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
+    reason:
+        description:
+            - Descriptive reason for the upgrade state.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     se_patch_image_path:
         description:
             - Image path of se patch image.(required in case of reimage and upgrade + patch).
@@ -327,10 +333,17 @@ options:
     upgrade_ops:
         description:
             - Upgrade operations requested.
-            - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME.
+            - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME, EVAL_UPGRADE, EVAL_PATCH, EVAL_ROLLBACK, EVAL_ROLLBACKPATCH,
+            - EVAL_SEGROUP_RESUME.
             - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    upgrade_readiness:
+        description:
+            - Upgrade readiness check execution detail.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     url:
         description:
             - Avi controller URL of the object.
@@ -422,6 +435,7 @@ def main():
         previous_patch_version=dict(type='str',),
         previous_version=dict(type='str',),
         progress=dict(type='int',),
+        reason=dict(type='str',),
         se_patch_image_path=dict(type='str',),
         se_patch_image_ref=dict(type='str',),
         se_upgrade_events=dict(type='list',),
@@ -435,6 +449,7 @@ def main():
         total_tasks=dict(type='int',),
         upgrade_events=dict(type='list',),
         upgrade_ops=dict(type='str',),
+        upgrade_readiness=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         version=dict(type='str',),
