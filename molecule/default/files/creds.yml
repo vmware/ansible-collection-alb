@@ -1,0 +1,16 @@
+---
+avi_credentials:
+  controller: "{{ lookup('env', 'CONTROLLER') }}"
+  username: "{{ lookup('env', 'USERNAME') }}"
+  password: "{{ lookup('env', 'PASSWORD') }}"
+  api_version: "{{ lookup('env', 'API_VERSION') }}"
+
+# Controller credentials
+#export CONTROLLER="11.102.86.13"
+#export USERNAME="admin"
+#export PASSWORD="password"
+#export API_VERSION="22.1.2"
+# VMware cloud credentials
+#export VCENTER_URL="11.102.12.13"
+#export VCENTER_USERNAME="aviuser12"
+#export VCENTER_PASSWORD='password'

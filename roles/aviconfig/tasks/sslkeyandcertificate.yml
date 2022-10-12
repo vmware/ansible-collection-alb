@@ -44,6 +44,8 @@
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
     - (not item.certificate.self_signed or item.certificate.certificate is defined)
   register: ssl_certs
+  tags:
+    - molecule-idempotence-notest
 
 
 - name: check certs
@@ -68,6 +70,8 @@
     - item.1.certificate.self_signed
     - item.1.certificate.certificate is undefined
     - not check_certs.results[item.0].stat.exists
+  tags:
+    - molecule-idempotence-notest
 
 - name: Avi SSLKeyAndCertificate | Add self signed certificates
   set_fact:
@@ -89,6 +93,8 @@
   when:
     - item.certificate.self_signed
     - item.certificate.certificate is undefined
+  tags:
+    - molecule-idempotence-notest
 
 - name: Avi SSLKeyAndCertificate | Create / Update self signed certs
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -132,3 +138,5 @@
   when:
     - item.ansible_facts is defined
     - (item.ansible_facts.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  tags:
+    - molecule-idempotence-notest

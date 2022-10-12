@@ -715,6 +715,29 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>sctp_monitor</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Health monitor for sctp.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>send_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -901,7 +924,7 @@ Parameters
                   - HEALTH_MONITOR_POP3, HEALTH_MONITOR_POP3S, HEALTH_MONITOR_IMAP, HEALTH_MONITOR_IMAPS, HEALTH_MONITOR_FTP, HEALTH_MONITOR_FTPS,
                 </div>
                                 <div style="font-size: small">
-                  - HEALTH_MONITOR_LDAP, HEALTH_MONITOR_LDAPS.
+                  - HEALTH_MONITOR_LDAP, HEALTH_MONITOR_LDAPS...
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials edition(allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp),

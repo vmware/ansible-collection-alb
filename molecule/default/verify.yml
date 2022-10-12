@@ -1,0 +1,28 @@
+---
+- name: Verify
+  hosts: all
+  vars:
+    role_under_test: "aviconfig"
+  collections:
+   - vmware.alb
+
+  tasks:
+  - name: Test loading vars example
+    import_role:
+      name: "{{ role_under_test }}"
+    vars:
+      avi_config_file: files/config.yml
+      avi_creds_file: files/creds.yml
+
+  - name: Test avi_config passing
+    import_role:
+      name: "{{ role_under_test }}"
+    vars:
+      avi_config: {}
+
+  - name: Test avi_config_state
+    import_role:
+      name: "{{ role_under_test }}"
+    vars:
+      avi_config: {}
+      avi_config_state: absent

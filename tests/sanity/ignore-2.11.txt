@@ -20,7 +20,6 @@ plugins/modules/avi_gslbservice_patch_member.py validate-modules:missing-gplv3-l
 plugins/modules/avi_bootstrap_controller.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_fileservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_image.py validate-modules:missing-gplv3-license
-plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_version.py import-3.8!skip
 plugins/modules/avi_api_session.py import-3.8!skip
 plugins/modules/avi_user.py import-3.8!skip
@@ -34,15 +33,19 @@ plugins/modules/avi_api_image.py import-3.8!skip
 plugins/modules/avi_deploy_controller.py pep8:E722
 plugins/modules/avi_deploy_controller.py pylint:bare-except
 plugins/modules/avi_deploy_controller.py validate-modules:missing-gplv3-license
-roles/avicontroller/templates/avicontroller.j2 shebang
 tests/integration/run_tests.sh shebang
 tests/integration/run_tests.sh shellcheck:SC2157
 tests/integration/run_tests.sh shellcheck:SC2154
-plugins/modules/avi_albservicesjob.py validate-modules:parameter-list-no-elements
+plugins/modules/avi_pulse_registration.py import-3.8!skip
+plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
+plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
+plugins/modules/verify_se.py validate-modules:missing-gplv3-license
+roles/avicontroller/templates/avicontroller.j2 shebang
+molecule/default/files/avi_config.yml line-endings
+tests/unit/modules/test_avi_pool.py pylint!skip
 plugins/modules/avi_alertsyslogconfig.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_analyticsprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_applicationpersistenceprofile.py validate-modules:parameter-list-no-elements
-plugins/modules/avi_authmappingprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_autoscalelaunchconfig.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_availabilityzone.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_botipreputationtypemapping.py validate-modules:parameter-list-no-elements
@@ -114,9 +117,11 @@ plugins/modules/avi_healthmonitor.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_applicationprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_serviceenginegroup.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_authprofile.py validate-modules:parameter-list-no-elements
-plugins/modules/avi_webapput.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_webhook.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_statediffoperation.py validate-modules:parameter-list-no-elements
+plugins/modules/avi_webapput.py validate-modules:parameter-list-no-elements
+plugins/modules/avi_albservicesjob.py validate-modules:parameter-list-no-elements
+plugins/modules/avi_authmappingprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_saml_api_session.py validate-modules:doc-type-does-not-match-spec
 plugins/modules/avi_webhook.py validate-modules:no-log-needed
 plugins/modules/avi_virtualservice.py validate-modules:no-log-needed
@@ -132,7 +137,6 @@ plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py import-3.8!skip
 plugins/modules/avi_albservicesconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesconfig.py import-3.8!skip
-plugins/modules/avi_pulse_registration.py import-3.8!skip
 plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemlimits.py import-3.8!skip
 plugins/modules/avi_licenseledgerdetails.py validate-modules:missing-gplv3-license
@@ -349,5 +353,3 @@ plugins/lookup/avi.py import-3.8!skip
 plugins/module_utils/avi_api.py import-3.8!skip
 plugins/module_utils/saml_avi_api.py import-3.8!skip
 plugins/module_utils/utils/ansible_utils.py import-3.8!skip
-plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
-plugins/modules/verify_se.py validate-modules:missing-gplv3-license

@@ -201,6 +201,12 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
+    sctp_monitor:
+        description:
+            - Health monitor for sctp.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     send_interval:
         description:
             - Frequency, in seconds, that monitors are sent to a server.
@@ -249,7 +255,7 @@ options:
             - Enum options - HEALTH_MONITOR_PING, HEALTH_MONITOR_TCP, HEALTH_MONITOR_HTTP, HEALTH_MONITOR_HTTPS, HEALTH_MONITOR_EXTERNAL, HEALTH_MONITOR_UDP,
             - HEALTH_MONITOR_DNS, HEALTH_MONITOR_GSLB, HEALTH_MONITOR_SIP, HEALTH_MONITOR_RADIUS, HEALTH_MONITOR_SMTP, HEALTH_MONITOR_SMTPS,
             - HEALTH_MONITOR_POP3, HEALTH_MONITOR_POP3S, HEALTH_MONITOR_IMAP, HEALTH_MONITOR_IMAPS, HEALTH_MONITOR_FTP, HEALTH_MONITOR_FTPS,
-            - HEALTH_MONITOR_LDAP, HEALTH_MONITOR_LDAPS.
+            - HEALTH_MONITOR_LDAP, HEALTH_MONITOR_LDAPS...
             - Allowed in enterprise edition with any value, essentials edition(allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp),
             - basic edition(allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp,health_monitor_http,health_monitor_https), enterprise with
             - cloud services edition.
@@ -346,6 +352,7 @@ def main():
         pop3s_monitor=dict(type='dict',),
         radius_monitor=dict(type='dict',),
         receive_timeout=dict(type='int',),
+        sctp_monitor=dict(type='dict',),
         send_interval=dict(type='int',),
         sip_monitor=dict(type='dict',),
         smtp_monitor=dict(type='dict',),
