@@ -1,0 +1,22 @@
+---
+- name: Checks for blocking SE
+  include: check_cloud.yml
+
+- name: Reboot the avise service in systemd
+  service: name=avise enabled=yes state=restarted
+  when: ansible_service_mgr == "systemd"
+  become: true
+
+- name: Reboot the avise service in non-systemd
+  service: name=avise_watcher enabled=yes state=restarted
+  when: ansible_service_mgr != "systemd"
+  become: true
+
+- block:
+  - name: Fetch log file
+    fetch: src=/tmp/log dest=/tmp/log
+
+  - name: Delete log file
+    file: path=/tmp/log state=absent
+  become: true
+  ignore_errors: yes

@@ -1,0 +1,26 @@
+---
+- name: Checks for blocking SE
+  include: check_cloud.yml
+
+- name: Check if Avi SE is running in systemd
+  command: "systemctl status avise"
+  when: ansible_service_mgr == "systemd"
+  register: result
+  failed_when: result.rc > 0
+  changed_when: false
+  become: true
+
+- name: Check if Avi SE is running in non-systemd
+  command: "service avise_watcher status"
+  when: ansible_service_mgr != "systemd"
+  register: result
+  failed_when: result.rc > 0
+  changed_when: false
+  become: true
+
+- name: Check if se_agent is running
+  shell: "ps -aef | grep se_agent | grep -v grep | wc -l"
+  register: result
+  failed_when: result.stdout|int != 1
+  changed_when: false
+  become: true

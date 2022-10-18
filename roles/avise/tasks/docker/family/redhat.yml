@@ -1,0 +1,4 @@
+---
+# Disable and stop firewalld as it will break the SE
+- name: Avi SE | Prepare | Disable and stop Firewalld
+  service: name="firewalld" state="stopped" enabled="no"
