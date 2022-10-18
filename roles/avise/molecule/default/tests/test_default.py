@@ -3,7 +3,8 @@
 # Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential
 # ========================================================================
 ###
-
+from __future__ import (absolute_import, division, print_function)
+__metaclass__ = type
 import os
 
 import testinfra.utils.ansible_runner

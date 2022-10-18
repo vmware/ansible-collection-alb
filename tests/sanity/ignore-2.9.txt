@@ -263,3 +263,5 @@ plugins/modules/avi_virtualservice.py import-3.8!skip
 plugins/module_utils/avi_api.py import-3.8!skip
 plugins/module_utils/saml_avi_api.py import-3.8!skip
 plugins/module_utils/utils/ansible_utils.py import-3.8!skip
+roles/avise/templates/avise.j2 shebang
+roles/avise/templates/avise_service.j2 shebang
