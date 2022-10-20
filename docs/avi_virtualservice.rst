@@ -2153,7 +2153,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Host and path match criteria to select this child vs.
+                  - Match criteria to select this child vs.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.

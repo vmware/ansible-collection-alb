@@ -22,6 +22,8 @@
     nw_name: "{{ item.nw_name | default(omit) }}"
     nw_ref: "{{ item.nw_ref | default(omit) }}"
     opaque_network_id: "{{ item.opaque_network_id | default(omit) }}"
+    origin_id: "{{ item.origin_id | default(omit) }}"
+    security_only_nsxt: "{{ item.security_only_nsxt | default(omit) }}"
     segment_gw: "{{ item.segment_gw | default(omit) }}"
     segment_gw6: "{{ item.segment_gw6 | default(omit) }}"
     segment_id: "{{ item.segment_id | default(omit) }}"

@@ -211,6 +211,38 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>auto_update_crs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If this flag is set, the system will try to keep the crs version used in this policy up-to-date.
+                </div>
+                                <div style="font-size: small">
+                  - If a newer crs object is available on this controller, the system will issue the crs upgrade process for this waf policy.
+                </div>
+                                <div style="font-size: small">
+                  - It will not update polices if the current crs version is crs-version-not-applicable.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>bypass_static_extensions</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -786,6 +818,44 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>updated_crs_rules_in_detection_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - While updating crs, the system will make sure that new rules are added in detection mode.
+                </div>
+                                <div style="font-size: small">
+                  - It only has an effect if the policy is in enforcement mode.
+                </div>
+                                <div style="font-size: small">
+                  - In this case, the update will set new rules into detection mode by adding crs_overrides for the new rules.
+                </div>
+                                <div style="font-size: small">
+                  - If this flag is not set or if the policy mode is detection, rules will be added without new crs_overrides.
+                </div>
+                                <div style="font-size: small">
+                  - This option is used for the auto_update_crs workflow as well as for the ui based crs update workflow.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
         </tr>

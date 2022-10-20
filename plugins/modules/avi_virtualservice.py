@@ -584,7 +584,7 @@ options:
         type: list
     vh_matches:
         description:
-            - Host and path match criteria to select this child vs.
+            - Match criteria to select this child vs.
             - Field introduced in 20.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
