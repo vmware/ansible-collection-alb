@@ -67,6 +67,15 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
+    auto_update_crs:
+        description:
+            - If this flag is set, the system will try to keep the crs version used in this policy up-to-date.
+            - If a newer crs object is available on this controller, the system will issue the crs upgrade process for this waf policy.
+            - It will not update polices if the current crs version is crs-version-not-applicable.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     bypass_static_extensions:
         description:
             - Enable the functionality to bypass waf for static file extensions.
@@ -224,6 +233,17 @@ options:
             - Field introduced in 17.2.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    updated_crs_rules_in_detection_mode:
+        description:
+            - While updating crs, the system will make sure that new rules are added in detection mode.
+            - It only has an effect if the policy is in enforcement mode.
+            - In this case, the update will set new rules into detection mode by adding crs_overrides for the new rules.
+            - If this flag is not set or if the policy mode is detection, rules will be added without new crs_overrides.
+            - This option is used for the auto_update_crs workflow as well as for the ui based crs update workflow.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     url:
         description:
             - Avi controller URL of the object.
@@ -322,6 +342,7 @@ def main():
         allow_mode_delegation=dict(type='bool',),
         allowlist=dict(type='dict',),
         application_signatures=dict(type='dict',),
+        auto_update_crs=dict(type='bool',),
         bypass_static_extensions=dict(type='bool',),
         confidence_override=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
@@ -344,6 +365,7 @@ def main():
         pre_crs_groups=dict(type='list',),
         required_data_files=dict(type='list',),
         tenant_ref=dict(type='str',),
+        updated_crs_rules_in_detection_mode=dict(type='bool',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         waf_crs_ref=dict(type='str',),
