@@ -625,7 +625,7 @@ def main():
                     module.params['con_vm_name']))
 
     if (module.params['con_ova_path'].startswith('http')):
-        if (requests.head(module.params['con_ova_path']).status_code != 200):
+        if (requests.head(module.params['con_ova_path'], verify=module.params['ssl_verify']).status_code != 200):
             module.fail_json(msg='Controller OVA not found or readable from specified URL path')
     else:
         if (not os.path.isfile(module.params['con_ova_path']) or
