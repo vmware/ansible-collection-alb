@@ -27,6 +27,7 @@
     format: "{{ item.format | default(omit) }}"
     hardwaresecuritymodulegroup_ref: "{{ item.hardwaresecuritymodulegroup_ref | default(omit) }}"
     import_key_to_hsm: "{{ item.import_key_to_hsm | default(omit) }}"
+    is_federated: "{{ item.is_federated | default(omit) }}"
     key: "{{ item.key | default(omit) }}"
     key_base64: "{{ item.key_base64 | default(omit) }}"
     key_params: "{{ item.key_params | default(omit) }}"
