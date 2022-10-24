@@ -24,6 +24,7 @@
     ec_named_curve: "{{ item.ec_named_curve | default(omit) }}"
     enable_early_data: "{{ item.enable_early_data | default(omit) }}"
     enable_ssl_session_reuse: "{{ item.enable_ssl_session_reuse | default(omit) }}"
+    is_federated: "{{ item.is_federated | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     prefer_client_cipher_ordering: "{{ item.prefer_client_cipher_ordering | default(omit) }}"

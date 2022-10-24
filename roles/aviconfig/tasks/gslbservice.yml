@@ -31,6 +31,7 @@
     min_members: "{{ item.min_members | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     num_dns_ip: "{{ item.num_dns_ip | default(omit) }}"
+    pki_profile_ref: "{{ item.pki_profile_ref | default(omit) }}"
     pool_algorithm: "{{ item.pool_algorithm | default(omit) }}"
     resolve_cname: "{{ item.resolve_cname | default(omit) }}"
     site_persistence_enabled: "{{ item.site_persistence_enabled | default(omit) }}"

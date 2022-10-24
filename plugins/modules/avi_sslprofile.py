@@ -123,6 +123,13 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    is_federated:
+        description:
+            - It specifies whether the object has to be replicated to the gslb followers.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -281,6 +288,7 @@ def main():
         ec_named_curve=dict(type='str',),
         enable_early_data=dict(type='bool',),
         enable_ssl_session_reuse=dict(type='bool',),
+        is_federated=dict(type='bool',),
         markers=dict(type='list',),
         name=dict(type='str', required=True),
         prefer_client_cipher_ordering=dict(type='bool',),

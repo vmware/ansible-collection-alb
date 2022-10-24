@@ -167,6 +167,13 @@ options:
             - Special values are 0- return all ip addresses.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: int
+    pki_profile_ref:
+        description:
+            - Pki profile associated with the gslb service.
+            - It is a reference to an object of type pkiprofile.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     pool_algorithm:
         description:
             - The load balancing algorithm will pick a gslb pool within the gslb service list of available pools.
@@ -296,6 +303,7 @@ def main():
         min_members=dict(type='int',),
         name=dict(type='str', required=True),
         num_dns_ip=dict(type='int',),
+        pki_profile_ref=dict(type='str',),
         pool_algorithm=dict(type='str',),
         resolve_cname=dict(type='bool',),
         site_persistence_enabled=dict(type='bool',),

@@ -124,6 +124,13 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    is_federated:
+        description:
+            - It specifies whether the object has to be replicated to the gslb followers.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     key:
         description:
             - Private key.
@@ -279,6 +286,7 @@ def main():
         format=dict(type='str',),
         hardwaresecuritymodulegroup_ref=dict(type='str',),
         import_key_to_hsm=dict(type='bool',),
+        is_federated=dict(type='bool',),
         key=dict(type='str', no_log=True,),
         key_base64=dict(type='bool',),
         key_params=dict(type='dict',),
