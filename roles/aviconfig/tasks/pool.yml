@@ -78,6 +78,7 @@
     servers: "{{ item.servers | default(omit) }}"
     service_metadata: "{{ item.service_metadata | default(omit) }}"
     sni_enabled: "{{ item.sni_enabled | default(omit) }}"
+    sp_gs_info: "{{ item.sp_gs_info | default(omit) }}"
     ssl_key_and_certificate_ref: "{{ item.ssl_key_and_certificate_ref | default(omit) }}"
     ssl_profile_ref: "{{ item.ssl_profile_ref | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
