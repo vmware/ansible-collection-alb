@@ -510,6 +510,13 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    sp_gs_info:
+        description:
+            - Gslb service associated with the site persistence pool.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: dict
     ssl_key_and_certificate_ref:
         description:
             - Service engines will present a client ssl certificate to the server.
@@ -700,6 +707,7 @@ def main():
         servers=dict(type='list',),
         service_metadata=dict(type='str',),
         sni_enabled=dict(type='bool',),
+        sp_gs_info=dict(type='dict',),
         ssl_key_and_certificate_ref=dict(type='str',),
         ssl_profile_ref=dict(type='str',),
         tenant_ref=dict(type='str',),
