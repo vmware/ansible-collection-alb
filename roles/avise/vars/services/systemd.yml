@@ -1,0 +1,2 @@
+---
+service_file: /etc/systemd/system/avise.service

@@ -1,0 +1,56 @@
+---
+# autoregistration tasks file for avinetworks.avise
+# these tasks will automatically register the service engine to the controller
+
+- name: Avi SE | Autoregistration | Check if required login vars are defined
+  assert:
+    that:
+      - item != None
+  with_items:
+    - se_leader_ctl_ip
+    - se_leader_ctl_username
+    - se_leader_ctl_password
+
+- name: Avi SE | Autoregistration | Get Controller information
+  uri:
+    url: "https://{{ se_leader_ctl_ip }}/api/initial-data"
+    validate_certs: no
+  register: controller_initial_data
+  delegate_to: localhost
+
+- name: Avi SE | Autoregistration | Set Controller version information
+  set_fact:
+    controller_api_version: "{{ controller_initial_data.json.version.Version }}"
+  when: controller_initial_data
+
+- debug: msg="You are running Controller verison {{ controller_api_version }}"
+
+- name: Avi SE | Autoregistration | Get the cloud uuid from se_cloud_name
+  avi_api_session:
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
+    tenant: "{{ se_tenant }}"
+    api_version: "{{ controller_api_version }}"
+    http_method: get
+    path: "cloud?name={{ se_cloud_name }}"
+  register: se_cloud_data
+  delegate_to: localhost
+
+- name: Avi SE | Autoregistration | Get a token from the Avi Controller
+  avi_api_session:
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
+    tenant: "{{ se_tenant }}"
+    api_version: "{{ controller_api_version }}"
+    http_method: get
+    path: securetoken-generate?cloud_uuid={{ se_cloud_data.obj.results[0].uuid}}
+  register: se_authtoken
+  delegate_to: localhost
+
+- name: Avi SE | Autoregistration | Append the token to the docker environment variables.
+  set_fact:
+    se_auth_token: "{{ se_authtoken.obj.auth_token }}"
+
+- debug: msg="Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }}"

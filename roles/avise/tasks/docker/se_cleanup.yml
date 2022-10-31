@@ -1,0 +1,90 @@
+---
+- name: Checks for blocking SE
+  include: check_cloud.yml
+  when: se_action == "cleanup"
+
+- block:
+  - name: Avi SE | Docker | Cleanup | Stop avise_watcher service
+    service: name=avise_watcher enabled=no state=stopped
+  - name: remove avise file
+    file: path=/usr/sbin/avise state=absent
+  - name: remove avise service file
+    file: path=/etc/init.d/avise state=absent
+  - name: remove avise_watcher.sh
+    file: path=/etc/init.d/avise_watcher.sh state=absent
+  - name: remove avise_watcher
+    file: path=/etc/init.d/avise_watcher state=absent
+  - name: Avi SE | Services | init.d | Deploying avise_watcher rc links
+    file: path={{ item }} state=absent
+    with_items:
+      - /etc/rc0.d/K99avise_watcher
+      - /etc/rc1.d/K99avise_watcher
+      - /etc/rc2.d/S99avise_watcher
+      - /etc/rc3.d/S99avise_watcher
+      - /etc/rc4.d/S99avise_watcher
+      - /etc/rc5.d/S99avise_watcher
+      - /etc/rc6.d/K99avise_watcher
+  when:
+    - ansible_service_mgr != "systemd"
+  ignore_errors: yes
+  become: true
+
+- block:
+  - name: Cleanup avise service
+    service: name=avise enabled=no state=stopped
+  - name: remove avise file
+    file: path=/usr/sbin/avise state=absent
+  - name: remove service file
+    file: path=/etc/systemd/system/avise.service state=absent
+  when:
+    - ansible_service_mgr == "systemd"
+  ignore_errors: yes
+  become: true
+
+- block:
+  - name: Cleanup avihost service
+    service: name=avihost enabled=no state=stopped
+  - name: remove avihost server file
+    file: path=/usr/sbin/avi_host_server.py state=absent
+  - name: remove service file
+    file: path=/etc/systemd/system/avihost.service state=absent
+  - name: remove service script file
+    file: path=/etc/systemd/system/avihost_service_script.sh state=absent
+  when: ansible_service_mgr == "systemd" and se_action == "cleanup"
+  ignore_errors: yes
+  become: true
+
+- block:
+  - name: Get list of running se containers
+    command: "{{ se_deploy_type }} ps -q -f name=avise"
+    changed_when: false
+    register: se_running_containers
+  - name: Stop and Remove the containers
+    shell: "{{ se_deploy_type }} stop {{ item }} && {{ se_deploy_type }} rm -f {{ item }}"
+    with_items:
+      - "{{ se_running_containers.stdout_lines }}"
+  - name: Get list of docker images
+    shell: "{{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | awk '{print $3}'"
+    changed_when: false
+    register: docker_images
+    when: se_action == "cleanup"
+  - name: remove the images
+    command: "{{ se_deploy_type }} rmi -f {{ item }}"
+    with_items:
+      - "{{ docker_images.stdout_lines }}"
+    when: se_action == "cleanup"
+  become: true
+
+- block:
+  - name: Clean up other files
+    file: path={{ se_package_dest }} state=absent
+    ignore_errors: yes
+  become: true
+
+- name: Clean up se files
+  file: path="{{ item.split(':') | map('regex_search','(.*)opt/avi/se/(.*)') | select('string') | first }}" state=absent
+  with_items:
+    - "{{ se_existing_run_params.split() | map('regex_search','(.*)opt/avi/se/(.*)') | select('string') | list }}"
+  when: se_existing_run_params is defined and se_existing_ver is defined and se_existing_ver == se_version
+  ignore_errors: yes
+  become: true

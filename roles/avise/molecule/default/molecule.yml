@@ -1,0 +1,33 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+  options:
+    config-file: molecule/default/.yamllint
+platforms:
+  - name: ${MOLECULE_DISTRO:-ubuntu_bionic}
+    image: ${MOLECULE_DISTRO:-ubuntu:bionic}
+    privileged: true
+    service_manager: ${MOLECULE_SERVICE_MANAGER:-systemd}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    command: ${MOLECULE_COMMAND:-"/lib/systemd/systemd"}
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+    options:
+      x:
+        - ANSIBLE0006
+        - ANSIBLE0010
+  playbooks:
+    converge: ${MOLECULE_PLAYBOOK:-playbook.yml}
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

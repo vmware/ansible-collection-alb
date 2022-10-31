@@ -1,0 +1,26 @@
+---
+- name: Cleanup avihost service
+  service: name=avihost enabled=no state=stopped
+  become: true
+  ignore_errors: yes
+
+- name: Copy Avi Host script to remote machine
+  copy:
+    src: "systemd/avi_host_server.py"
+    dest: /usr/sbin/avi_host_server.py
+    mode: 0755
+  become: true
+
+- name: systemd | Deploy the avihost service
+  copy:
+    src: "systemd/avihost.service"
+    dest: /etc/systemd/system/avihost.service
+    mode: 0644
+  become: true
+
+- name: systemd | Deploy the avihost service script
+  copy:
+    src: "systemd/avihost_service_script.sh"
+    dest: /etc/systemd/system/avihost_service_script.sh
+    mode: 0755
+  become: true

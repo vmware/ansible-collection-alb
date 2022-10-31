@@ -1,0 +1,47 @@
+---
+- name: set service file in systemd
+  set_fact:
+    service_file: /etc/systemd/system/avise.service
+  when: ansible_service_mgr == "systemd"
+
+- name: set service file in non-systemd
+  set_fact:
+    service_file: /etc/init.d/avise
+  when: ansible_service_mgr != "systemd"
+
+- name: Check for exisitng avise service file
+  stat: path={{ service_file }}
+  register: se_service_file
+
+- block:
+  - name: Read existing service's docker run configuration < 17.2.x
+    shell: "cat {{ service_file }} | sed -n -e 's/^.*docker run //p'"
+    register: out
+    when: se_deploy_type == "docker"
+  - name: Read existing service's podman run configuration < 17.2.x
+    shell: "cat {{ service_file }} | sed -n -e 's/^.*podman run //p'"
+    register: out
+    when: se_deploy_type == "podman"
+  - name: check for existance of cloud uuid
+    shell: "echo {{ out.stdout }} | grep CLOUD_UUID="
+    register: res
+    ignore_errors: yes
+  - name: set se existing run params
+    set_fact:
+      se_existing_run_params: "{{ out.stdout }}"
+    when: out.stdout is defined and res.stdout is defined and res.stdout != ""
+  when: se_service_file.stat.exists
+
+- block:
+  - name: Check for existing docker run params file for 17.2.x
+    stat: path=/usr/sbin/avise
+    register: param_file
+  - name: Read docker run params
+    shell: cat /usr/sbin/avise | sed -n -e 's/^\s*se_docker_run_params=//p' | tr -d '"'
+    register: out
+    when: param_file.stat.exists
+  - name: set se existing run params
+    set_fact:
+      se_existing_run_params: "{{ out.stdout }}"
+    when: out.stdout is defined
+  when: se_existing_run_params is not defined

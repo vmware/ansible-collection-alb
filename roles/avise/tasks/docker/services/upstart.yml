@@ -1,0 +1,5 @@
+---
+- name: Avi SE | Services | upstart | Deploy the avise service
+  copy: src=upstart/avise.conf dest=/etc/init/avise.conf mode=0644
+  become: true
+  notify: Avi SE | Services | Restart the avise service

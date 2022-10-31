@@ -1,0 +1,13 @@
+---
+- name: Set container env for non-systemd
+  set_fact:
+    se_env_variables_extras: "{{ se_env_variables_extras + ['NON_SYSTEMD=1'] }}"
+  when: ansible_service_mgr != "systemd"
+
+- name: Copy template to remote machine
+  template: src="{{ se_service_files_path }}avise.j2" dest=/usr/sbin/avise mode=0755
+  become: true
+  notify: Avi SE | Services | Restart the avise service
+
+- name: Include the corresponding service
+  include: "{{ ansible_service_mgr }}/install.yml"
