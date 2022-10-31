@@ -1,0 +1,3 @@
+---
+- src: avinetworks.docker
+- src: avinetworks.avisdk

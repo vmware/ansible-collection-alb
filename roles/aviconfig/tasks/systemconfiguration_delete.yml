@@ -27,6 +27,8 @@
     enable_cors: "{{ item.enable_cors | default(omit) }}"
     fips_mode: "{{ item.fips_mode | default(omit) }}"
     global_tenant_config: "{{ item.global_tenant_config | default(omit) }}"
+    host_key_algorithm_exclude: "{{ item.host_key_algorithm_exclude | default(omit) }}"
+    kex_algorithm_exclude: "{{ item.kex_algorithm_exclude | default(omit) }}"
     linux_configuration: "{{ item.linux_configuration | default(omit) }}"
     mgmt_ip_access_control: "{{ item.mgmt_ip_access_control | default(omit) }}"
     portal_configuration: "{{ item.portal_configuration | default(omit) }}"

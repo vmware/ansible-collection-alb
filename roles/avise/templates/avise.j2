@@ -1,0 +1,220 @@
+#!/bin/bash
+
+#***************************************************************************
+# ------------------------------------------------------------------------
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# ------------------------------------------------------------------------
+#
+
+## Usage: avise [options] ARG1
+## Description: This script manages and provides manage of the Avi SE services.
+
+# Set common variables
+container=avise
+logfile="/var/log/${container}.log"
+cidfile="/var/run/${container}.cid"
+
+write_log() {
+  echo $1 2>&1 | tee -a ${logfile}
+}
+
+populate_container_platform()
+{
+  # Figure out the container platform we are operating on
+  # Could be docker / podman at runtime, with the default set to "docker"
+
+  # Default container platform is docker
+  cont_plat="docker"
+  cont_plat_sock="/var/run/docker.sock"
+
+  # Possible values for $distribution which we support
+  # "ubuntu" (or) "ol" (or) "rhel" (or) "centos"
+  distribution=$(grep "^ID=" /etc/os-release | cut -d"=" -f2 | sed 's/"//g')
+
+  # Possible known values for $version which we support
+  # On Ubuntu:
+  #   version = "16.04" (or) "18.04" (or) "20.04"
+  # On RHEL / OL / CENTOS:
+  #   version = "7.*" (or) "8.*"
+  version=$(grep "^VERSION_ID=" /etc/os-release | cut -d"=" -f2 | sed 's/"//g')
+
+  # cont_plat is podman only on OL / RHEL / CENTOS 8.*
+  if [[ $distribution == "ol" || $distribution == "centos" || $distribution == "rhel" ]]; then
+    if [[ $version =~ ^8.* ]]; then
+      cont_plat="podman"
+      cont_plat_sock="/run/podman/podman.sock"
+    fi
+  fi
+  write_log "[`date`] Setting cont_plat to $cont_plat as distribution=$distribution ($version)"
+}
+
+wait_till_service_starts()
+{
+  # A utility function to make sure the service of interest is up and active
+  # The function is blocking in nature
+  # Params:
+  # $1 - service of interest. Ex: docker
+  service=$1
+  count=0
+  write_log "[`date`] Waiting to check if ${service} is active"
+  while [[ $(systemctl is-active ${service}) != "active" ]] && [[ $count -lt 3 ]]
+  do
+    systemctl start ${service}
+    rc=$?
+    write_log "[`date`] rc of systemctl start ${service} is: $rc"
+    count=`expr $count + 1`
+    sleep 5
+  done
+  if [[ $(systemctl is-active ${service}) == "active" ]]; then
+    write_log "[`date`] ${service} is active"
+  else
+    write_log "[`date`] ${service} is still not active, exiting..."
+    exit 1
+  fi
+}
+
+container_running() {
+  ${cont_plat} ps -f name=${container} | grep -q ${container}
+}
+
+container_exists() {
+  ${cont_plat} ps -a -f name=${container} | grep -q ${container}
+}
+
+start_container() {
+  write_log "[`date`] Starting the ${container} container"
+  write_log "[`date`] Using se_docker_run_params=${se_docker_run_params}"
+  ${cont_plat} run ${se_docker_run_params}
+  if [ $? -eq 0 ]; then
+    write_log "[`date`] Service ${container} running..."
+  else
+    write_log "[`date`] Failed to start the ${container} container"
+    exit 1
+  fi
+}
+
+stop_container() {
+  ${cont_plat} exec -t ${container} systemctl stop se_shutdown
+  ${cont_plat} stop -t 10 ${container}
+  ret_code=$?
+  if [ $ret_code -eq 0 ]; then
+    write_log "[`date`] Stopped the ${container} container"
+  else
+    write_log "[`date`] Error in stopping container. Exited with code=$ret_code"
+    exit 1
+  fi
+}
+
+remove_container() {
+  write_log "[`date`] Removing existing ${container} container"
+  /usr/bin/${cont_plat} rm -f ${container}
+  if [ $? -eq 0 ]; then
+    write_log "[`date`] Removed existing ${container} container"
+  else
+    write_log "[`date`] Failed to remove existing ${container} container"
+  fi
+}
+
+load_image() {
+  se_image=`echo ${se_docker_run_params} | awk '{ print $NF }'`
+  write_log "[`date`] se_image : ${se_image}"
+  if [ `podman images -q ${se_image} | wc -l` == 0 ]; then
+    #This code path is only supposed to hit in case of RHEL 7 to RHEL 8 OS upgrade.
+    #Docker is needed in running state until the images are loaded in podman
+    wait_till_service_starts docker
+    write_log "[`date`] Please wait for few mins while se_image is getting pulled"
+    podman pull docker-daemon:${se_image}
+    rc=$?
+    write_log "[`date`] rc of podman pull docker-daemon:${se_image} is: $rc"
+    if [[ $rc -ne 0 ]]; then
+      exit $rc
+    fi
+  fi
+}
+
+prestart() {
+  write_log "[`date`] Performing ${container} pre-start step."
+  remove_container
+  if [ ! -e /run/xtables.lock ]; then
+    touch /run/xtables.lock
+    rc=$?
+    if [ "$rc" != "0" ]; then
+      echo "failed to create /run/xtables.lock, container won't be started! rc: $rc"
+      exit 1
+    fi
+  fi
+  if [ $cont_plat == "podman" ]; then
+      load_image
+  fi
+  iptables -w 30 -N avi_tmp || true
+  iptables -w 30 -X avi_tmp || true
+  {% if se_dpdk %}{{ se_dpdk_pre }}{% endif %}
+  systemctl daemon-reload || :
+  systemctl restart avihost.service || :
+  wait_till_service_starts avihost
+  start_container
+}
+start() {
+  prestart
+  /usr/bin/${cont_plat} wait ${container}
+}
+
+stop() {
+  # Stopping the docker/podman process if running
+  se_pid=`${cont_plat} inspect $container | grep '\"Pid\"' | awk '{print $2}' | sed s/,//`
+  stop_var="fstrim /proc/$se_pid/root"
+  ${stop_var}
+  write_log "[`date`] Freed the blocks of ${se_pid}..."
+  if container_running; then
+    write_log "[`date`] Service ${container} stopping..."
+    stop_container
+  else
+    write_log "[`date`] Service ${container} already stopped"
+  fi
+  poststop
+}
+
+poststop() {
+  if container_exists; then
+    remove_container
+  fi
+  {% if se_dpdk %}{{ se_dpdk_post }}{% endif %}
+  # Stopping avihost.service if running
+  systemctl stop avihost.service || :
+}
+
+restart() {
+  stop
+  start
+}
+
+reload() {
+  restart
+}
+
+status() {
+  if container_running; then
+    echo "${container} running..."
+  else
+    echo "${container} stopped"
+  fi
+}
+
+case "$1" in
+  start|stop|status|restart|reload)
+    populate_container_platform
+    if [ $cont_plat == "podman" ]; then
+      wait_till_service_starts podman.socket
+    else
+      wait_till_service_starts ${cont_plat}
+    fi
+# AV-135987 - Don't indent, causing regex parsing issue in controller
+se_docker_run_params="{{ AVI_RUN_PARAMS }}"
+    $1
+    ;;
+  *)
+    echo $"Usage: $0 {start|stop|status|restart|reload}"
+    exit 2
+esac
+
+exit $?

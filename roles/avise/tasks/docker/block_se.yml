@@ -1,0 +1,22 @@
+---
+- block:
+  - name: Block SE creation on controller host when inband and dpdk enabled
+    stat: path=/etc/systemd/system/avicontroller.service
+    register: st
+
+  - name: Get management IP
+    shell: "cat /etc/systemd/system/avicontroller.service | grep MANAGEMENT_IP="
+    register: res
+    when: st.stat.exists
+    ignore_errors: yes
+    changed_when: false
+
+  - name: Set error message
+    set_fact:
+      error_string: "Cannot create ServiceEngine with both inband management and DPDK enabled, since AVI controller is running on the host"
+  - include: error.yml
+    when: (res.rc is defined ) and (res.rc == 0)
+  when: se_dpdk and se_inband_mgmt
+
+- name: Checks for blocking SE
+  include: check_cloud.yml

@@ -121,6 +121,20 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
+    host_key_algorithm_exclude:
+        description:
+            - Users can specify comma separated list of deprecated host key algorithm.if nothing is specified, all known algorithms provided by openssh will be
+            - supported.this change could only apply on the controller node.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: str
+    kex_algorithm_exclude:
+        description:
+            - Users can specify comma separated list of deprecated key exchange algorithm.if nothing is specified, all known algorithms provided by openssh
+            - will be supported.this change could only apply on the controller node.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: str
     linux_configuration:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -251,6 +265,8 @@ def main():
         enable_cors=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
+        host_key_algorithm_exclude=dict(type='str',),
+        kex_algorithm_exclude=dict(type='str',),
         linux_configuration=dict(type='dict',),
         mgmt_ip_access_control=dict(type='dict',),
         ntp_configuration=dict(type='dict',),

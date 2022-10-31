@@ -1,0 +1,36 @@
+# ansible-playbook se_with_autoregister_true.yml -i 10.70.160.54, --ask-pass --ask-become-pass -e "controller_ip=10.70.160.51 controller_username=admin controller_password=AviNetworks123!" -u root
+
+- hosts: all
+  sudo: yes
+  gather_facts: no
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python-simplejson
+
+- hosts: all
+  become: yes
+  pre_tasks:
+    - name: Enable ipv4 forwarding
+      sysctl: name="net.ipv4.ip_forward" value=1 sysctl_set=yes state=present reload=yes
+    - name: Deactivate and stop Firewalld
+      service: name="firewalld" state="stopped" enabled="no"
+      when: ansible_distribution == "Redhat"
+    - name: Get Controller information
+      uri:
+        url: "https://{{ se_leader_ctl_ip }}/api/initial-data"
+        validate_certs: no
+      register: controller_initial_data
+      delegate_to: localhost
+  roles:
+    - role: avinetworks.avisdk
+    - role: avinetworks.docker
+    - role: avinetworks.avise
+      se_version: "{{ controller_initial_data.json.version.Tag }}"
+      se_leader_ctl_ip: "{{ controller_ip }}"
+      se_leader_ctl_username: "{{ controller_username }}"
+      se_leader_ctl_password: "{{ controller_password }}"
+      se_cloud_name: "{{ cloud_name }}"
+      se_tenant: "{{ tenant_name }}"
+      se_cores: 4
+      se_memory_gb: 8
+      se_disk_gb: 12

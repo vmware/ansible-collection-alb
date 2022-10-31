@@ -1,0 +1,286 @@
+---
+- name: Avi SE | Perform Autoregistration
+  include: autoregistration.yml
+  when: not lsc_mode
+
+- name: Avi SE | Set SE Image Name
+  set_fact:
+    se_image: "avinetworks/se:{{ se_version }}"
+  when: se_version is defined
+
+- name: Checks for blocking SE creation
+  include: block_se.yml
+
+- name: Set facts
+  set_fact:
+    se_max_cores: "{{ ansible_processor_vcpus }}"
+    se_ansible_memtotal_gb: "{{ ansible_memtotal_mb / 1024 }}"
+    se_cores: "{{ s_cores }}"
+    se_dest_disk: "{{ se_destination_disk }}"
+    se_memory_gb: "{{ s_memory_gb }}"
+    docker_size_req: "{{ 5 * 1024 * 1024 }}"
+    se_used_sysdisk: "{{ 0 }}"
+    se_used_logsdisk: "{{ 0 }}"
+
+- name: Include docker checks
+  include: docker_checks.yml
+
+- name: Include disk checks
+  include: disk_checks.yml
+
+- block:
+  - name: Check if AVI SE is running in systemd
+    command: systemctl status avise
+    register: result
+    changed_when: false
+    ignore_errors: yes
+  - name: Check if AVI SE is the same version
+    shell: "{{ se_deploy_type }} ps | grep avise | grep -i {{ se_version }} | wc -l"
+    register: output
+    when: result.rc == 0
+    changed_when: false
+    ignore_errors: yes
+  - name: SE is already running, exiting
+    set_fact:
+      error_string: "running"
+    when: (output.stdout is defined) and (output.stdout == "1") and (not se_force)
+  - include: error.yml
+    when: (output.stdout is defined) and (output.stdout == "1") and (not se_force)
+  when: ansible_service_mgr == "systemd"
+  become: true
+
+- block:
+  - name: Check if AVI SE is running in non-systemd
+    command: service avise status
+    register: result
+    changed_when: false
+    ignore_errors: yes
+  - name: Check if AVI SE is the same version
+    shell: "{{ se_deploy_type }} ps | grep avise | grep -i {{ se_version }} | wc -l"
+    register: output
+    when: result.rc == 0
+    changed_when: false
+    ignore_errors: yes
+  - name: SE is already running, exiting
+    set_fact:
+      error_string: "running"
+    when: (output.stdout is defined) and (output.stdout == "1") and (not se_force)
+  - include: error.yml
+    when: (output.stdout is defined) and (output.stdout == "1") and (not se_force)
+  when: ansible_service_mgr != "systemd"
+  become: true
+
+- name: Clean up the existing SE if any
+  include: se_cleanup.yml
+
+- name: Set se cores if all
+  set_fact:
+    se_cores: "{{ se_max_cores }}"
+  when: (se_cores|int == 0) or (se_cores|int > se_max_cores|int)
+
+- block:
+  - name: Set se memory in GB
+    set_fact:
+      se_ansible_memtotal_gb: "{{ se_ansible_memtotal_gb|float - 2 }}"
+
+  - name: set se reset to 1 if it is undefined
+    set_fact:
+      se_reset: 1
+  when: (se_reset is undefined) and (se_ansible_memtotal_gb|float > 120) and ((se_memory_gb|int == 0) or (se_memory_gb|int > se_ansible_memtotal_gb|float))
+
+- block:
+  - name: Set se memory in GB
+    set_fact:
+      se_ansible_memtotal_gb: "{{ se_ansible_memtotal_gb|float - 1 }}"
+
+  - name: set se reset to 1 if it is undefined
+    set_fact:
+      se_reset: 1
+  when: (se_reset is undefined) and (se_ansible_memtotal_gb|float > 64) and ((se_memory_gb|int == 0) or (se_memory_gb|int > se_ansible_memtotal_gb|float))
+
+- block:
+  - name: Set se memory in GB
+    set_fact:
+      se_ansible_memtotal_gb: "{{ (se_ansible_memtotal_gb|float * 1024 - 512) / 1024 }}"
+
+  - name: set se reset to 1 if it is undefined
+    set_fact:
+      se_reset: 1
+  when: (se_reset is undefined) and (se_ansible_memtotal_gb|float > 32) and ((se_memory_gb|int == 0) or (se_memory_gb|int > se_ansible_memtotal_gb|float))
+
+- block:
+  - name: Set se memory in GB
+    set_fact:
+      se_ansible_memtotal_gb: "{{ (se_ansible_memtotal_gb|float * 1024 - 256) / 1024 }}"
+  - name: set se reset to 1 if it is undefined
+    set_fact:
+      se_reset: 1
+  when: (se_reset is undefined) and (se_ansible_memtotal_gb|float > 8) and ((se_memory_gb|int == 0) or (se_memory_gb|int > se_ansible_memtotal_gb|float))
+
+- block:
+  - name: Set se memory in GB
+    set_fact:
+      se_ansible_memtotal_gb: "{{ (se_ansible_memtotal_gb|float * 1024 - 64) / 1024 }}"
+
+  - name: set se reset to 1 if it is undefined
+    set_fact:
+      se_reset: 1
+  when: (se_reset is undefined) and (se_ansible_memtotal_gb|float > 4) and ((se_memory_gb|int == 0) or (se_memory_gb|int > se_ansible_memtotal_gb|float))
+
+- block:
+  - name: Set se memory in GB
+    set_fact:
+      se_ansible_memtotal_gb: "{{ (se_ansible_memtotal_gb|float * 1024 - 32) / 1024 }}"
+
+  - name: set se reset to 1 if it is undefined
+    set_fact:
+      se_reset: 1
+  when: (se_reset is undefined) and (se_ansible_memtotal_gb|float > 2) and ((se_memory_gb|int == 0) or (se_memory_gb|int > se_ansible_memtotal_gb|float))
+
+- name: Set se memory if all
+  set_fact:
+    se_memory_gb: "{{ se_ansible_memtotal_gb }}"
+  when: (se_memory_gb|int == 0) or (se_memory_gb|int > se_ansible_memtotal_gb|float)
+
+- name:  Check if avicontroller present on same host
+  shell: "{{ se_deploy_type }} ps | grep avicontroller | wc -l"
+  register: result
+  changed_when: false
+  become: true
+
+- block:
+  - name: if avicontroller present, get value for cpu
+    shell: "{{ se_deploy_type }} exec avicontroller env | grep NUM_CPU | wc -l"
+    register: c_cpu
+  - name: if avicontroller present, get value for memory
+    shell: "{{ se_deploy_type }} exec avicontroller env | grep NUM_CPU | sed -e 's/=/ /g' | awk '{print $2}'"
+    register: temp
+    when: c_cpu.stdout|int == 1
+  - name: Set cpu for controller
+    set_fact:
+      controller_cpu: "{{ temp.stdout }}"
+  - name: check existense of NUM_MEMG env variable inside controller
+    shell: "{{ se_deploy_type }} exec avicontroller env | grep NUM_MEMG | wc -l"
+    register: c_mem
+  - name: Get controller memory
+    shell: "{{ se_deploy_type }} exec avicontroller env | grep NUM_MEMG | sed -e 's/=/ /g' | awk '{print $2}'"
+    register: temp
+    when: c_mem.stdout|int == 1
+  - name: Set controller memory
+    set_fact:
+      controller_mem: "{{ temp.stdout }}"
+  - name: Set cores
+    set_fact:
+      se_cores: "{{ se_max_cores|int - controller_cpu|int }}"
+    when: (se_cores|int + controller_cpu|int) > se_max_cores|int
+  - name: check se cores greater than 0
+    assert:
+      that:
+        - "se_cores|int > 0"
+  - name: Set memory in gb
+    set_fact:
+      se_memory_gb: "{{ se_ansible_memtotal_gb|float - controller_mem|int }}"
+    when: (se_memory_gb|int + controller_mem|int) > se_ansible_memtotal_gb|float
+  when: result.stdout|int == 1
+  become: true
+
+- name: Reset SE cores only when user configures CPU to ALL and hyper threading enabled
+  set_fact:
+    se_cores: "{{ se_cores|int / ansible_processor_threads_per_core }}"
+  when: (s_cores|int == 0) and (ansible_processor_threads_per_core > 1)
+
+- name: Set se cores
+  set_fact:
+    se_cores: 128
+  when: se_cores|int > 128
+
+- name: Set se memory in gb if greater that 256
+  set_fact:
+    se_memory_gb: 256
+  when: se_memory_gb|int > 256
+
+- name: Set se memory in GB
+  set_fact:
+    se_memory_mb: "{{ se_memory_gb|float * 1024 }}"
+
+- block:
+  - name: Set error message
+    set_fact:
+      error_string: "ServiceEngine needs minimum 1GB per core, available cores {{ se_cores }} and available memory {{ se_memory_gb }} GB"
+  - name: Include error.yml file
+    include: error.yml
+  when: se_memory_gb|int < se_cores|int
+
+- name: Validate Parameters
+  assert:
+    that:
+      - "se_leader_ctl_ip != None"
+      - "ansible_memtotal_mb|int >= 1024"
+      - "se_memory_gb|int <= se_ansible_memtotal_gb|int"
+      - "se_memory_gb|int >= se_cores|int"
+      - "se_max_cores|int >= 1"
+      - "se_cores|int <= se_max_cores|int"
+  when: not se_skip_requirements
+
+- name: Check docker supports cpu-period
+  shell: "{{ se_deploy_type }} run --help | grep cpu-period"
+  register: res
+  ignore_errors: yes
+
+- name: Set cpu constraint
+  set_fact:
+    cpu_constraint: "--cpu-period=100000 --cpu-quota={{ se_cores|int * 100000 }}"
+  when: (res.rc is defined ) and (res.rc == 0)
+
+- block:
+  - name: Clean directories for service engine
+    file: path="{{ item }}" state=absent
+    when: item != None
+    with_items:
+      - "{{ se_disk_path }}"
+      - "{{ se_logs_disk_path }}"
+  - name: Create directories for service engine
+    file: path="{{ item }}" state=directory
+    when: item != None
+    with_items:
+      - "{{ se_disk_path }}"
+      - "{{ se_logs_disk_path }}"
+  when: (se_existing_ver is undefined) or (se_existing_ver == se_version)
+  become: true
+
+- name: Get the netstat output
+  shell: netstat -tunlp | grep -vE 'Active|Foreign'
+  register: ns_res
+  become: true
+  ignore_errors: yes
+
+- block:
+  - name: Check ports in use or not for range 5000-5100 except 5098 and 5054
+    shell: echo '{{ ns_res.stdout }}' | awk '{print $4}' | grep -w {{ item }}
+    when: item|int != 5054 and item|int != 5098
+    with_sequence: start=5000 end=5099
+    register: port_res
+    ignore_errors: yes
+  when: ns_res.rc is defined and ns_res.rc == 0
+
+- name: Set failed port
+  set_fact:
+    failed_port: "{{ item.item }}"
+  when: item.rc is defined and item.rc == 0 and error is undefined
+  with_items:
+      - "{{ port_res.results }}"
+
+- block:
+    - name: Fetch the process name
+      shell: echo '{{ ns_res.stdout }}' | grep -w {{ failed_port }} | awk '{print $NF}'
+      register: proc_res
+    - name: Set error string to display user
+      set_fact:
+          error_string: "Cannot create ServiceEngine as port {{ failed_port }} is in use by process {{ proc_res.stdout }} on this host"
+      when: proc_res.stdout is defined
+    - include: error.yml
+  when: failed_port is defined
+
+- name: Avi Host service checks
+  include: avihost.yml
+  when: ansible_service_mgr == "systemd"
