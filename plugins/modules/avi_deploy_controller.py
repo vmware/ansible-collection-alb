@@ -181,10 +181,10 @@ try:
     from pyVim.connect import SmartConnectNoSSL, Disconnect
     from pyVim.task import WaitForTasks
     from pyVmomi import vim, vmodl
+    from ansible_collections.vmware.alb.plugins.module_utils.secondary_interface import add_nic
     HAS_IMPORT = True
 except ImportError:
     HAS_IMPORT = False
-from ansible_collections.vmware.alb.plugins.module_utils.secondary_interface import add_nic
 
 
 def is_vm_exist(si, cl, vm_name):
