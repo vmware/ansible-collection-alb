@@ -1,4 +1,11 @@
-from pyVmomi import vim, vmodl
+# Copyright 2022 VMware, Inc.
+# SPDX-License-Identifier: Apache License 2.0
+
+from __future__ import (absolute_import, division, print_function)
+__metaclass__ = type
+from pyVmomi import vim
+
+
 def add_nic(vm, network_name):
     spec = vim.vm.ConfigSpec()
     nic_changes = []

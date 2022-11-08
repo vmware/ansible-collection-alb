@@ -186,6 +186,8 @@ except ImportError:
     HAS_IMPORT = False
 
 from ansible_collections.vmware.alb.plugins.module_utils.secondary_interface import add_nic
+
+
 def is_vm_exist(si, cl, vm_name):
     container = si.content.viewManager.CreateContainerView(cl, [vim.VirtualMachine], True)
     for managed_object_ref in container.view:
