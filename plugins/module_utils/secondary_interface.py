@@ -7,7 +7,10 @@
 
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
-from pyVmomi import vim
+try:
+    from pyVmomi import vim
+except ImportError:
+    raise Exception('Import failed')
 
 
 def add_nic(vm, network_name):
