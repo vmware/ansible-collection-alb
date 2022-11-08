@@ -1,4 +1,8 @@
-# Copyright 2022 VMware, Inc.
+############################################################################
+# ========================================================================
+# Copyright 2022 VMware, Inc.  All rights reserved. VMware Confidential
+# ========================================================================
+###
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,7 +18,7 @@ def add_nic(vm, network_name):
     nic_spec.device = vim.vm.device.VirtualE1000()
     nic_spec.device.deviceInfo = vim.Description()
     nic_spec.device.backing = \
-    vim.vm.device.VirtualEthernetCard.NetworkBackingInfo()
+        vim.vm.device.VirtualEthernetCard.NetworkBackingInfo()
     nic_spec.device.backing.useAutoDetect = False
     nic_spec.device.backing.deviceName = network_name
     nic_spec.device.connectable = vim.vm.device.VirtualDevice.ConnectInfo()
@@ -27,4 +31,3 @@ def add_nic(vm, network_name):
     nic_changes.append(nic_spec)
     spec.deviceChange = nic_changes
     vm.ReconfigVM_Task(spec=spec)
-    print("NIC CARD ADDED")

@@ -184,7 +184,6 @@ try:
     HAS_IMPORT = True
 except ImportError:
     HAS_IMPORT = False
-
 from ansible_collections.vmware.alb.plugins.module_utils.secondary_interface import add_nic
 
 
