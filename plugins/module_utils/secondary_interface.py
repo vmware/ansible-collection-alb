@@ -7,17 +7,11 @@
 
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
-try:
-    import sys
-    from pyVmomi import vim
-    HAS_IMPORT = True
-except ImportError:
-    HAS_IMPORT = False
+
+from pyVmomi import vim
 
 
 def add_nic(vm, network_name):
-    if not HAS_IMPORT:
-        sys.exit("Import failed")
     spec = vim.vm.ConfigSpec()
     nic_changes = []
     nic_spec = vim.vm.device.VirtualDeviceSpec()
