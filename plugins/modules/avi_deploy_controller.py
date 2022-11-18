@@ -62,6 +62,11 @@ options:
             - Name of the object.
         required: true
         type: str
+    con_secondary_mgmt_network:
+        description:
+            - Optional secondary interface.
+        required: false
+        type: str
     con_disk_mode:
         description:
             - Type of disk mode.
@@ -176,6 +181,7 @@ try:
     from pyVim.connect import SmartConnectNoSSL, Disconnect
     from pyVim.task import WaitForTasks
     from pyVmomi import vim, vmodl
+    from ansible_collections.vmware.alb.plugins.module_utils.secondary_interface import add_nic
     HAS_IMPORT = True
 except ImportError:
     HAS_IMPORT = False
@@ -450,6 +456,7 @@ def main():
             con_cluster=dict(required=False, type='str'),
             con_datastore=dict(required=False, type='str'),
             con_mgmt_network=dict(required=True, type='str'),
+            con_secondary_mgmt_network=dict(required=False, type='str'),
             con_disk_mode=dict(required=False, type='str', default='thin',
                                choices=['thin', 'thick', 'eagerzeroedthick']),
             con_ova_path=dict(required=True, type='str'),
@@ -756,6 +763,10 @@ def main():
             timeout -= interval
     else:
         controller_ip = module.params['con_mgmt_ip']
+
+    if module.params['con_secondary_mgmt_network']:
+        vm = get_vm_by_name(si, module.params['con_vm_name'])
+        add_nic(vm, module.params['con_secondary_mgmt_network'])
 
     # Wait for controller tcontroller_waito come up for given con_wait_time
     if controller_ip:
