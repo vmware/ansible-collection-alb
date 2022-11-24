@@ -2156,6 +2156,12 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
+    vcenter_parking_vnic_pg:
+        description:
+            - Parking port group to be used by 9 vnics at the time of se creation.
+            - Field introduced in 21.1.6.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     vcenters:
         description:
             - Vcenter information for scoping at host/cluster level.
@@ -2650,6 +2656,7 @@ def main():
         vcenter_datastores_include=dict(type='bool',),
         vcenter_folder=dict(type='str',),
         vcenter_hosts=dict(type='dict',),
+        vcenter_parking_vnic_pg=dict(type='str',),
         vcenters=dict(type='list',),
         vcpus_per_se=dict(type='int',),
         vip_asg=dict(type='dict',),
