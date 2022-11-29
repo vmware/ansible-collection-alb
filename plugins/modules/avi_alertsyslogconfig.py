@@ -134,7 +134,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         name=dict(type='str', required=True),
-        syslog_servers=dict(type='list',),
+        syslog_servers=dict(type='list', elements='str'),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),

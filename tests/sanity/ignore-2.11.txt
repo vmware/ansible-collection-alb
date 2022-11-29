@@ -45,7 +45,7 @@ roles/avise/templates/avise.j2 shebang
 roles/avise/templates/avise_service.j2 shebang
 molecule/default/files/avi_config.yml line-endings
 tests/unit/modules/test_avi_pool.py pylint!skip
-plugins/modules/avi_alertsyslogconfig.py validate-modules:parameter-list-no-elements
+
 plugins/modules/avi_analyticsprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_applicationpersistenceprofile.py validate-modules:parameter-list-no-elements
 plugins/modules/avi_autoscalelaunchconfig.py validate-modules:parameter-list-no-elements
