@@ -69,6 +69,7 @@ options:
             - The list of syslog servers.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
