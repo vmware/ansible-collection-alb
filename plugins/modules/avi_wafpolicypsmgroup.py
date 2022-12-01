@@ -89,6 +89,7 @@ options:
             - Field introduced in 18.2.3.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -96,6 +97,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     miss_action:
         description:
             - If a rule in this group does not match the match_value pattern, this action will be executed.
@@ -179,8 +181,8 @@ def main():
         enable=dict(type='bool',),
         hit_action=dict(type='str',),
         is_learning_group=dict(type='bool',),
-        locations=dict(type='list',),
-        markers=dict(type='list',),
+        locations=dict(type='list', elements='dict',),
+        markers=dict(type='list', elements='dict',),
         miss_action=dict(type='str',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),

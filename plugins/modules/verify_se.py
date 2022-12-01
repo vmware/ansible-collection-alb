@@ -13,22 +13,22 @@ short_description: Module for verifying se is connected to controller
 description:
     - This module is used to verify that the se is connected to controller
 options:
-    se_master_ctl_ip:
+    se_leader_ctl_ip:
         description:
             - The IP address of the controller.
         required: true
         type: str
-    se_master_ctl_username:
+    se_leader_ctl_username:
         description:
             - The username to login into controller api.
         required: true
         type: str
-    se_master_ctl_password:
+    se_leader_ctl_password:
         description:
             -The passowrd to login into the controller api.
         required: true
         type: str
-    se_master_ctl_version:
+    se_leader_ctl_version:
         description:
             - The version of the controller.
         required: true
@@ -89,10 +89,10 @@ options:
 EXAMPLES = """
 - name: Avi SE | Verify SE Deployment
   verify_se:
-    se_master_ctl_ip: '{{ se_master_ctl_ip }}'
-    se_master_ctl_username: '{{ se_master_ctl_username }}'
-    se_master_ctl_password: '{{ se_master_ctl_password }}'
-    se_master_ctl_version: '{{ se_master_ctl_version }}'
+    se_leader_ctl_ip: '{{ se_leader_ctl_ip }}'
+    se_leader_ctl_username: '{{ se_leader_ctl_username }}'
+    se_leader_ctl_password: '{{ se_leader_ctl_password }}'
+    se_leader_ctl_version: '{{ se_leader_ctl_version }}'
     se_cloud_name: '{{ se_cloud_name }}'
     se_group_name: '{{ se_group_name }}'
     se_tenant: '{{ se_tenant }}'
@@ -178,10 +178,10 @@ def get_vm_ip_by_network(target_vm, network):
 def main():
     module = AnsibleModule(
         argument_spec=dict(
-            se_master_ctl_ip=dict(required=True, type='str'),
-            se_master_ctl_username=dict(required=True, type='str'),
-            se_master_ctl_password=dict(required=True, type='str', no_log=True),
-            se_master_ctl_version=dict(required=True, type='str'),
+            se_leader_ctl_ip=dict(required=True, type='str'),
+            se_leader_ctl_username=dict(required=True, type='str'),
+            se_leader_ctl_password=dict(required=True, type='str', no_log=True),
+            se_leader_ctl_version=dict(required=True, type='str'),
             se_cloud_name=dict(required=True, type='str'),
             se_group_name=dict(required=True, type='str'),
             se_tenant=dict(required=True, type='str'),
@@ -233,9 +233,9 @@ def main():
                 module.fail_json(msg='No Vm with name %s found' % se_vm)
 
     api = ApiSession.get_session(
-        module.params['se_master_ctl_ip'],
-        module.params['se_master_ctl_username'],
-        password=module.params['se_master_ctl_password'],
+        module.params['se_leader_ctl_ip'],
+        module.params['se_leader_ctl_username'],
+        password=module.params['se_leader_ctl_password'],
         tenant=module.params['se_tenant'])
 
     path = 'serviceengine'
@@ -254,7 +254,7 @@ def main():
             # If no IP found try to get the SE from controller by its name for current iteration
             se_mgmt_ip = get_vm_ip_by_network(se_vm, mgmt_network)
         rsp = api.get(path, tenant=module.params['se_tenant'],
-                      params=gparams, api_version=module.params['se_master_ctl_version'])
+                      params=gparams, api_version=module.params['se_leader_ctl_version'])
         rsp_data = rsp.json()
         for item in rsp_data['results']:
             if (item['name'] == se_vm_name or item['name'] == se_mgmt_ip) and item['se_connected']:
@@ -262,7 +262,7 @@ def main():
                 break
         if my_deployed_se is not None:
             mymsg = 'Service Engine \'%s\' is deployed and is connected to the Controller %s' % (
-                my_deployed_se['name'], module.params['se_master_ctl_ip'])
+                my_deployed_se['name'], module.params['se_leader_ctl_ip'])
             return module.exit_json(changed=True, msg=(mymsg), se_details=my_deployed_se)
         time.sleep(interval)
         step += 1

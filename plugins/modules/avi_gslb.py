@@ -94,6 +94,7 @@ options:
             - Gslb service's fqdn must be a match one of these subdomains.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     enable_config_by_members:
         description:
             - Allows enable/disable of gslbservice pool groups and pool members from the gslb follower members.
@@ -175,6 +176,7 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
+        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -193,6 +195,7 @@ options:
             - Field introduced in 17.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     url:
         description:
             - Avi controller URL of the object.
@@ -430,7 +433,7 @@ def main():
         client_ip_addr_group=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
-        dns_configs=dict(type='list',),
+        dns_configs=dict(type='list', elements='dict',),
         enable_config_by_members=dict(type='bool',),
         error_resync_interval=dict(type='int',),
         is_federated=dict(type='bool',),
@@ -440,10 +443,10 @@ def main():
         replication_policy=dict(type='dict',),
         send_interval=dict(type='int',),
         send_interval_prior_to_maintenance_mode=dict(type='int',),
-        sites=dict(type='list', required=True),
+        sites=dict(type='list', elements='dict', required=True),
         tenant_ref=dict(type='str',),
         tenant_scoped=dict(type='bool',),
-        third_party_sites=dict(type='list',),
+        third_party_sites=dict(type='list', elements='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         view_id=dict(type='int',),

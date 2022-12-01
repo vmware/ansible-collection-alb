@@ -79,6 +79,7 @@ options:
             - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     pulse_job_id:
         description:
             - A unique identifier for this job entry on the pulse portal.
@@ -183,7 +184,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         end_time=dict(type='dict',),
         name=dict(type='str', required=True),
-        params=dict(type='list',),
+        params=dict(type='list', elements='dict',),
         pulse_job_id=dict(type='str',),
         pulse_sync_status=dict(type='bool',),
         result=dict(type='str',),

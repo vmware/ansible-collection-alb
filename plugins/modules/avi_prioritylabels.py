@@ -68,6 +68,7 @@ options:
             - Equivalent priority labels in descending order.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -75,6 +76,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - The name of the priority labels.
@@ -143,8 +145,8 @@ def main():
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
-        equivalent_labels=dict(type='list',),
-        markers=dict(type='list',),
+        equivalent_labels=dict(type='list', elements='dict',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

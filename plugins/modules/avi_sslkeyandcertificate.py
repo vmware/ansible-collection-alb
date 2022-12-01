@@ -52,6 +52,7 @@ options:
             - Ca certificates in certificate chain.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     certificate:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -85,6 +86,7 @@ options:
             - Dynamic parameters needed for certificate management profile.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     enable_ocsp_stapling:
         description:
             - Enables ocsp stapling.
@@ -158,6 +160,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -188,6 +191,7 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     ocsp_response_info:
         description:
             - Information related to ocsp response.
@@ -273,13 +277,13 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        ca_certs=dict(type='list',),
+        ca_certs=dict(type='list', elements='dict',),
         certificate=dict(type='dict', required=True),
         certificate_base64=dict(type='bool',),
         certificate_management_profile_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
-        dynamic_params=dict(type='list',),
+        dynamic_params=dict(type='list', elements='dict',),
         enable_ocsp_stapling=dict(type='bool',),
         enckey_base64=dict(type='str',),
         enckey_name=dict(type='str',),
@@ -291,11 +295,11 @@ def main():
         key_base64=dict(type='bool',),
         key_params=dict(type='dict',),
         key_passphrase=dict(type='str', no_log=True,),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         ocsp_config=dict(type='dict',),
         ocsp_error_status=dict(type='str',),
-        ocsp_responder_url_list_from_certs=dict(type='list',),
+        ocsp_responder_url_list_from_certs=dict(type='list', elements='str',),
         ocsp_response_info=dict(type='dict',),
         status=dict(type='str',),
         tenant_ref=dict(type='str',),

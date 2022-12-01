@@ -108,6 +108,7 @@ options:
             - Field introduced in 20.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     description:
         description:
             - Field introduced in 17.2.1.
@@ -165,6 +166,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     min_confidence:
         description:
             - Minimum confidence label required for auto rule updates.
@@ -213,6 +215,7 @@ options:
             - Field introduced in 17.2.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     pre_crs_groups:
         description:
             - Waf rules are categorized in to groups based on their characterization.
@@ -220,6 +223,7 @@ options:
             - Field introduced in 17.2.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     required_data_files:
         description:
             - The data files and types referred in this waf policy.
@@ -227,6 +231,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -347,7 +352,7 @@ def main():
         confidence_override=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
-        crs_overrides=dict(type='list',),
+        crs_overrides=dict(type='list', elements='dict',),
         description=dict(type='str',),
         enable_app_learning=dict(type='bool',),
         enable_auto_rule_updates=dict(type='bool',),
@@ -355,15 +360,15 @@ def main():
         failure_mode=dict(type='str',),
         geo_db_ref=dict(type='str',),
         learning_params=dict(type='dict',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         min_confidence=dict(type='str',),
         mode=dict(type='str',),
         name=dict(type='str', required=True),
         paranoia_level=dict(type='str',),
         positive_security_model=dict(type='dict',),
-        post_crs_groups=dict(type='list',),
-        pre_crs_groups=dict(type='list',),
-        required_data_files=dict(type='list',),
+        post_crs_groups=dict(type='list', elements='dict',),
+        pre_crs_groups=dict(type='list', elements='dict',),
+        required_data_files=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         updated_crs_rules_in_detection_mode=dict(type='bool',),
         url=dict(type='str',),

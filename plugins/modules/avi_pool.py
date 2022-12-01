@@ -90,6 +90,7 @@ options:
             - Network ids for the launch configuration.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     autoscale_policy_ref:
         description:
             - Reference to server autoscale policy.
@@ -184,6 +185,7 @@ options:
             - It is performed only when common name check host_check_enabled is enabled.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     east_west:
         description:
             - Inherited config from virtualservice.
@@ -211,6 +213,7 @@ options:
             - Field introduced in 17.1.2.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     fail_action:
         description:
             - Enable an action - close connection, http redirect or local http response - when a pool failure happens.
@@ -251,6 +254,7 @@ options:
             - Maximum of 50 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     horizon_profile:
         description:
             - Horizon uag configuration.
@@ -350,6 +354,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     max_concurrent_connections_per_server:
         description:
             - The maximum number of concurrent connections allowed to each server within the pool.
@@ -388,12 +393,14 @@ options:
             - This field is used internally by avi, not editable by the user.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     nsx_securitygroup:
         description:
             - A list of nsx groups where the servers for the pool are created.
             - Field introduced in 17.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     pki_profile_ref:
         description:
             - Avi will validate the ssl certificate present by a server against the selected pki profile.
@@ -407,6 +414,7 @@ options:
             - Use static routes in vrf configuration when pool servers are not directly connected but routable from the service engine.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     pool_type:
         description:
             - Type or purpose, the pool is to be used for.
@@ -495,6 +503,7 @@ options:
             - Maximum of 5000 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     service_metadata:
         description:
             - Metadata pertaining to the service provided by this pool.
@@ -648,7 +657,7 @@ def main():
         append_port=dict(type='str',),
         application_persistence_profile_ref=dict(type='str',),
         autoscale_launch_config_ref=dict(type='str',),
-        autoscale_networks=dict(type='list',),
+        autoscale_networks=dict(type='list', elements='str',),
         autoscale_policy_ref=dict(type='str',),
         capacity_estimation=dict(type='bool',),
         capacity_estimation_ttfb_thresh=dict(type='int',),
@@ -661,16 +670,16 @@ def main():
         default_server_port=dict(type='int',),
         delete_server_on_dns_refresh=dict(type='bool',),
         description=dict(type='str',),
-        domain_name=dict(type='list',),
+        domain_name=dict(type='list', elements='str',),
         east_west=dict(type='bool',),
         enable_http2=dict(type='bool',),
         enabled=dict(type='bool',),
-        external_autoscale_groups=dict(type='list',),
+        external_autoscale_groups=dict(type='list', elements='str',),
         fail_action=dict(type='dict',),
         fewest_tasks_feedback_delay=dict(type='int',),
         graceful_disable_timeout=dict(type='int',),
         gslb_sp_enabled=dict(type='bool',),
-        health_monitor_refs=dict(type='list',),
+        health_monitor_refs=dict(type='list', elements='str',),
         horizon_profile=dict(type='dict',),
         host_check_enabled=dict(type='bool',),
         http2_properties=dict(type='dict',),
@@ -683,16 +692,16 @@ def main():
         lb_algorithm_core_nonaffinity=dict(type='int',),
         lb_algorithm_hash=dict(type='str',),
         lookup_server_by_name=dict(type='bool',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         max_concurrent_connections_per_server=dict(type='int',),
         max_conn_rate_per_server=dict(type='dict',),
         min_health_monitors_up=dict(type='int',),
         min_servers_up=dict(type='int',),
         name=dict(type='str', required=True),
-        networks=dict(type='list',),
-        nsx_securitygroup=dict(type='list',),
+        networks=dict(type='list', elements='dict',),
+        nsx_securitygroup=dict(type='list', elements='str',),
         pki_profile_ref=dict(type='str',),
-        placement_networks=dict(type='list',),
+        placement_networks=dict(type='list', elements='dict',),
         pool_type=dict(type='str',),
         request_queue_depth=dict(type='int',),
         request_queue_enabled=dict(type='bool',),
@@ -704,7 +713,7 @@ def main():
         server_name=dict(type='str',),
         server_reselect=dict(type='dict',),
         server_timeout=dict(type='int',),
-        servers=dict(type='list',),
+        servers=dict(type='list', elements='dict',),
         service_metadata=dict(type='str',),
         sni_enabled=dict(type='bool',),
         sp_gs_info=dict(type='dict',),

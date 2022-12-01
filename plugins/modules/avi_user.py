@@ -48,6 +48,7 @@ options:
         description:
             - Access settings (write, read, or no access) for each type of resource within Vantage.
         type: list
+        elements: dict
     is_superuser:
         description:
             - If the user will need to have the same privileges as the admin account, set it to true.
@@ -154,7 +155,7 @@ def main():
         name=dict(type='str', required=True),
         obj_username=dict(type='str', required=True),
         obj_password=dict(type='str', required=True, no_log=True),
-        access=dict(type='list',),
+        access=dict(type='list', elements='dict',),
         email=dict(type='str',),
         is_superuser=dict(type='bool',),
         is_active=dict(type='bool',),
