@@ -4,7 +4,6 @@
 # Avi Version: 17.1.1
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
- frommmmmmmmmmmmmm templateeeeeeeeee
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
