@@ -44,14 +44,14 @@
     se_vmw_vcenter_folder: '{{ se_vmw_vcenter_folder }}'
     se_auth_token: '{{ se_auth_token }}'
     se_cluster_uuid: '{{ se_cluster_uuid }}'
-    se_master_ctl_ip: '{{ se_master_ctl_ip }}'
+    se_leader_ctl_ip: '{{ se_leader_ctl_ip }}'
   delegate_to: localhost
 
 - name: Avi SE | VMware | Service destroy | Verify SE disconnection
   avi_api_session:
-    controller: "{{ se_master_ctl_ip }}"
-    username: "{{ se_master_ctl_username }}"
-    password: "{{ se_master_ctl_password }}"
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
     http_method: get
     path: serviceengine
     params:
@@ -65,10 +65,10 @@
 
 - name:  Avi SE | VMware | Service destroy | Delete SE from controller
   avi_serviceengine:
-    controller: '{{ se_master_ctl_ip }}'
-    username: '{{ se_master_ctl_username }}'
-    password: '{{ se_master_ctl_password }}'
-    api_version: '{{ se_master_ctl_version }}'
+    controller: '{{ se_leader_ctl_ip }}'
+    username: '{{ se_leader_ctl_username }}'
+    password: '{{ se_leader_ctl_password }}'
+    api_version: '{{ se_leader_ctl_version }}'
     name: "{{ se_vm_name }}"
     state: "absent"
   delegate_to: localhost

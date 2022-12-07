@@ -328,6 +328,30 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1440.
         type: int
+    gslb_purge_batch_size:
+        description:
+            - Batch size for the vs_mgr to perform datastrorecleanup during a gslb purge.
+            - Allowed values are 50-200.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 50.
+        type: int
+    gslb_purge_rpc_batch_size:
+        description:
+            - Batch size for the gslb portal to execute the purgerpc for object types.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1000.
+        type: int
+    gslb_purge_sleep_time_ms:
+        description:
+            - Sleep time in the vs_mgr during a federatedpurge rpc call.
+            - Allowed values are 100-150.
+            - Field introduced in 22.1.3.
+            - Unit is milliseconds.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 100.
+        type: int
     max_dead_se_in_grp:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -407,6 +431,16 @@ options:
             - Field introduced in 16.4.6,17.1.2.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    postgres_vacuum_period:
+        description:
+            - Period for which postgres vacuum are executed.
+            - Allowed values are 30-40320.
+            - Special values are 0 - deactivated.
+            - Field introduced in 22.1.3.
+            - Unit is min.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 20160.
+        type: int
     process_locked_useraccounts_timeout_period:
         description:
             - Period for process locked user accounts job.
@@ -827,6 +861,9 @@ def main():
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),
+        gslb_purge_batch_size=dict(type='int',),
+        gslb_purge_rpc_batch_size=dict(type='int',),
+        gslb_purge_sleep_time_ms=dict(type='int',),
         max_dead_se_in_grp=dict(type='int',),
         max_pcap_per_tenant=dict(type='int',),
         max_se_spawn_interval_delay=dict(type='int',),
@@ -838,6 +875,7 @@ def main():
         portal_request_burst_limit=dict(type='int',),
         portal_request_rate_limit=dict(type='int',),
         portal_token=dict(type='str', no_log=True,),
+        postgres_vacuum_period=dict(type='int',),
         process_locked_useraccounts_timeout_period=dict(type='int',),
         process_pki_profile_timeout_period=dict(type='int',),
         query_host_fail=dict(type='int',),

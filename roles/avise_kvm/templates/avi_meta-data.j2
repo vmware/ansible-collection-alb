@@ -1,0 +1,8 @@
+AVICNTRL: {{ se_kvm_ctrl_ip }}
+AVICNTRL_AUTHTOKEN: {{ se_auth_token }}
+avi.mgmt-ip.SE: {{ se_kvm_mgmt_ip }}
+avi.mgmt-mask.SE: {{ se_kvm_mgmt_mask }}
+avi.default-gw.SE: {{ se_kvm_default_gw }}
+{% if se_bond_seq is defined %}
+avi.bond-ifs.SE: {{ se_bond_seq }}
+{% endif %}

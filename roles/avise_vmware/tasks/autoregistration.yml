@@ -7,18 +7,18 @@
     that:
       - item != None
   with_items:
-    - se_master_ctl_ip
-    - se_master_ctl_username
-    - se_master_ctl_password
-    - se_master_ctl_version
+    - se_leader_ctl_ip
+    - se_leader_ctl_username
+    - se_leader_ctl_password
+    - se_leader_ctl_version
 
 - name: Avi SE | Autoregistration | Get the cloud uuid from se_cloud_name
   avi_api_session:
-    controller: "{{ se_master_ctl_ip }}"
-    username: "{{ se_master_ctl_username }}"
-    password: "{{ se_master_ctl_password }}"
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
     tenant: "{{ se_tenant }}"
-    api_version: "{{ se_master_ctl_version }}"
+    api_version: "{{ se_leader_ctl_version }}"
     http_method: get
     path: "cloud?name={{ se_cloud_name }}"
   register: se_cloud_data
@@ -26,11 +26,11 @@
 
 - name: Avi SE | Autoregistration | Get the cluster uuid from /api/cluster/status
   avi_api_session:
-    controller: "{{ se_master_ctl_ip }}"
-    username: "{{ se_master_ctl_username }}"
-    password: "{{ se_master_ctl_password }}"
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
     tenant: "{{ se_tenant }}"
-    api_version: "{{ se_master_ctl_version }}"
+    api_version: "{{ se_leader_ctl_version }}"
     http_method: get
     path: "cluster/status"
   register: se_cluster_data
@@ -38,11 +38,11 @@
 
 - name: Avi SE | Autoregistration | Get a token from the Avi Controller
   avi_api_session:
-    controller: "{{ se_master_ctl_ip }}"
-    username: "{{ se_master_ctl_username }}"
-    password: "{{ se_master_ctl_password }}"
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
     tenant: "{{ se_tenant }}"
-    api_version: "{{ se_master_ctl_version }}"
+    api_version: "{{ se_leader_ctl_version }}"
     http_method: get
     path: securetoken-generate?cloud_uuid={{ se_cloud_data.obj.results[0].uuid}}
   register: se_authtoken
@@ -54,5 +54,5 @@
     se_cluster_uuid: "{{ se_cluster_data.obj.node_info.cluster_uuid }}"
 
 - debug: |
-    msg="Recieved Authentication {{ se_auth_token }} from {{ se_master_ctl_ip }} for 
+    msg="Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }} for 
     cluster {{ se_cluster_uuid }}"
