@@ -127,7 +127,7 @@ options:
             - If defined it will be the cluster UUID used to register the service engine to the controller.
         required: true
         type: str
-    se_master_ctl_ip:
+    se_leader_ctl_ip:
         description:
             - The IP address of the controller.
         required: true
@@ -189,7 +189,7 @@ EXAMPLES = """
     se_vmw_sysadmin_public_key: '{{ se_vmw_sysadmin_public_key }}'
     se_auth_token: '{{ se_auth_token }}'
     se_cluster_uuid: '{{ se_cluster_uuid }}'
-    se_master_ctl_ip: '{{ se_master_ctl_ip }}'
+    se_leader_ctl_ip: '{{ se_leader_ctl_ip }}'
     se_vmw_number_of_cpus: '{{ se_vmw_number_of_cpus }}'
     se_vmw_cpu_reserved: '{{ se_vmw_cpu_reserved }}'
     se_vmw_memory: '{{ se_vmw_memory }}'
@@ -483,7 +483,7 @@ def main():
             se_vmw_sysadmin_public_key=dict(required=False, type='str'),
             se_auth_token=dict(required=True, type='str'),
             se_cluster_uuid=dict(required=True, type='str'),
-            se_master_ctl_ip=dict(required=True, type='str'),
+            se_leader_ctl_ip=dict(required=True, type='str'),
             se_vmw_number_of_cpus=dict(required=False, type='int'),
             se_vmw_cpu_reserved=dict(required=False, type='int'),
             se_vmw_memory=dict(required=False, type='int'),
@@ -639,7 +639,7 @@ def main():
         for key, network_item in d.items():
             command_tokens.append('--net:%s=%s' % (key, network_item))
     command_tokens.extend([
-        '--prop:%s=%s' % ('AVICNTRL', module.params['se_master_ctl_ip']),
+        '--prop:%s=%s' % ('AVICNTRL', module.params['se_leader_ctl_ip']),
         '--prop:%s=%s' % ('AVICNTRL_AUTHTOKEN', module.params['se_auth_token']),
         '--prop:%s=%s' % ('AVICNTRL_CLUSTERUUID', module.params['se_cluster_uuid'])
     ])

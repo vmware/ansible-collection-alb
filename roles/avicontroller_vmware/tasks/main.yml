@@ -32,6 +32,8 @@
     con_cluster: "{{ con_cluster | default(omit) }}"
     con_datastore: "{{ con_datastore | default(omit) }}"
     con_mgmt_network: "{{ con_mgmt_network | default(omit) }}"
+    con_secondary_mgmt_network: "{{ con_secondary_mgmt_network | default(omit) }}"
+    con_esx_host: "{{ con_esx_host | default(omit) }}"
     con_disk_mode: "{{ con_disk_mode | default(omit) }}"
     con_ova_path: "{{ con_ova_path | default(omit) }}"
     con_vm_name: "{{ con_vm_name | default(omit) }}"

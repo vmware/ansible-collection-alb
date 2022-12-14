@@ -10,10 +10,10 @@
 - block:
     - name:  Avi SE | VMware | Image deploy | Genarate SE image if not exist on controller
       avi_api_session:
-        controller: '{{ se_master_ctl_ip }}'
-        username: '{{ se_master_ctl_username }}'
-        password: '{{ se_master_ctl_password }}'
-        api_version: '{{ se_master_ctl_version }}'
+        controller: '{{ se_leader_ctl_ip }}'
+        username: '{{ se_leader_ctl_username }}'
+        password: '{{ se_leader_ctl_password }}'
+        api_version: '{{ se_leader_ctl_version }}'
         http_method: post
         path: 'fileservice/seova'
         timeout: 600
@@ -33,10 +33,10 @@
 
 - name: Avi SE | VMware | Image Deploy | Get SE image on Local
   avi_api_fileservice:
-    controller: '{{ se_master_ctl_ip }}'
-    username: '{{ se_master_ctl_username }}'
-    password: '{{ se_master_ctl_password }}'
-    api_version: '{{ se_master_ctl_version }}'
+    controller: '{{ se_leader_ctl_ip }}'
+    username: '{{ se_leader_ctl_username }}'
+    password: '{{ se_leader_ctl_password }}'
+    api_version: '{{ se_leader_ctl_version }}'
     upload: false
     path: seova
     file_path: '{{ se_vmw_ova_download_path }}/{{ se_vmw_ova_image_name }}'

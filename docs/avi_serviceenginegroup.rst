@@ -4694,6 +4694,41 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>replay_vrf_routes_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Routes in vrf are replayed at the specified interval.
+                </div>
+                                <div style="font-size: small">
+                  - This should be increased if there are large number of routes.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-3000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is milliseconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1000.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>resync_time_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -5691,19 +5726,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable or disable large receive optimization for vnics.
-                </div>
-                                <div style="font-size: small">
-                  - Requires se reboot.
+                  - Enable or disable large receive optimization for vnics.supported on vmxnet3.requires se reboot.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
         </tr>
@@ -7097,6 +7126,35 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Avi controller URL of the object.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>use_dp_util_for_scaleout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If enabled, the datapath cpu utilization is consulted by the auto scale-out logic.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
         </tr>

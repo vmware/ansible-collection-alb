@@ -27,9 +27,9 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
 | `se_autoregister` | No | `true` | Autoregister the service engine to the specified controller. |
 | `se_auth_token` | No | `None`|  If defined it will be the token used to register the service engine to the controller |
 | `se_cluster_uuid` | No | `None`|  If defined it will be the cluster UUID used to register the service engine to the controller |
-| `se_master_ctl_ip` | Yes | `None` | The IP address of the controller. |
-| `se_master_ctl_username` | No | `None` | The username to login into controller api. |
-| `se_master_ctl_password` | No | `None` | The passowrd to login into the controller api. |
+| `se_leader_ctl_ip` | Yes | `None` | The IP address of the controller. |
+| `se_leader_ctl_username` | No | `None` | The username to login into controller api. |
+| `se_leader_ctl_password` | No | `None` | The passowrd to login into the controller api. |
 | `se_tenant` | No | `admin` | Name of se_tenant the SE should auto-register with. |
 | `se_cloud_name` | No | `Default-Cloud` | Name of cloud the SE should auto-register with. |
 | `se_group_name` | No | `Default-Group` | Name of SE group the SE should reside in. |
@@ -83,9 +83,9 @@ These are only marked required, for when you are using VMware Deployment.
       include_role:
         name: avise_vmware
       vars:
-        se_master_ctl_ip: '{{ controller_ip }}'
-        se_master_ctl_username: '{{ controller_username }}'
-        se_master_ctl_password: '{{ controller_password }}'
+        se_leader_ctl_ip: '{{ controller_ip }}'
+        se_leader_ctl_username: '{{ controller_username }}'
+        se_leader_ctl_password: '{{ controller_password }}'
         se_cloud_name: Default-Cloud
         ovftool_path: /usr/bin/
         vcenter_host: '{{ vcenter_host }}'
@@ -127,9 +127,9 @@ These are only marked required, for when you are using VMware Deployment.
       include_role:
         name: avise_vmware
       vars:
-        se_master_ctl_ip: '{{ controllers.0.mgmt_ip }}'
-        se_master_ctl_username: '{{ avi_username }}'
-        se_master_ctl_password: '{{ avi_password }}'
+        se_leader_ctl_ip: '{{ controllers.0.mgmt_ip }}'
+        se_leader_ctl_username: '{{ avi_username }}'
+        se_leader_ctl_password: '{{ avi_password }}'
         se_cloud_name: '{{ cloud_name }}'
         se_group_name: '{{ seg_name }}'
         ovftool_path: /usr/bin/
@@ -178,9 +178,9 @@ These are only marked required, for when you are using VMware Deployment.
       include_role:
         name: avise_vmware
       vars:
-        se_master_ctl_ip: '{{ controller_ip }}'
-        se_master_ctl_username: '{{ controller_username }}'
-        se_master_ctl_password: '{{ controller_password }}'
+        se_leader_ctl_ip: '{{ controller_ip }}'
+        se_leader_ctl_username: '{{ controller_username }}'
+        se_leader_ctl_password: '{{ controller_password }}'
         se_cloud_name: Default-Cloud
         ovftool_path: /usr/bin/
         vcenter_host: '{{ vcenter_host }}'
