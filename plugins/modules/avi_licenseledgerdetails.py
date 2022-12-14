@@ -52,18 +52,21 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     se_infos:
         description:
             - Maintain information about consumed licenses against se_uuid.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     tier_usages:
         description:
             - License usage per tier.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     url:
         description:
             - Avi controller URL of the object.
@@ -119,9 +122,9 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        escrow_infos=dict(type='list',),
-        se_infos=dict(type='list',),
-        tier_usages=dict(type='list',),
+        escrow_infos=dict(type='list', elements='dict',),
+        se_infos=dict(type='list', elements='dict',),
+        tier_usages=dict(type='list', elements='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

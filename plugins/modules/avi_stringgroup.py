@@ -63,6 +63,7 @@ options:
             - Configure key value in the string group.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     longest_match:
         description:
             - Enable the longest match, default is the shortest match.
@@ -77,6 +78,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Name of the string group.
@@ -163,9 +165,9 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
-        kv=dict(type='list',),
+        kv=dict(type='list', elements='dict',),
         longest_match=dict(type='bool',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         type=dict(type='str', required=True),

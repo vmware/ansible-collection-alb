@@ -100,6 +100,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Name for the ipam/dns provider profile.
@@ -217,7 +218,7 @@ def main():
         gcp_profile=dict(type='dict',),
         infoblox_profile=dict(type='dict',),
         internal_profile=dict(type='dict',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         oci_profile=dict(type='dict',),
         openstack_profile=dict(type='dict',),

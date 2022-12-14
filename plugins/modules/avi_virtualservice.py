@@ -112,6 +112,7 @@ options:
             - Maximum of 128 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     bot_policy_ref:
         description:
             - Bot detection policy for the virtual service.
@@ -197,12 +198,14 @@ options:
             - Maximum of 1000 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     dns_policies:
         description:
             - Dns policies applied on the dns traffic of the virtual service.
             - Field introduced in 17.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     east_west_placement:
         description:
             - Force placement on all se's in service group (mesos mode only).
@@ -273,6 +276,7 @@ options:
             - Http policies applied on the data traffic of the virtual service.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     icap_request_profile_refs:
         description:
             - The config settings for the icap server when checking the http request.
@@ -281,6 +285,7 @@ options:
             - Maximum of 1 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     ign_pool_net_reach:
         description:
             - Ignore pool servers network reachability constraints for virtual service placement.
@@ -299,6 +304,7 @@ options:
             - Field introduced in 17.2.7.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     ldap_vs_config:
         description:
             - Application-specific ldap config.
@@ -318,6 +324,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     max_cps_per_client:
         description:
             - Maximum connections per second per client ip.
@@ -363,6 +370,7 @@ options:
             - Field introduced in 17.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     oauth_vs_config:
         description:
             - Virtualservice specific oauth config.
@@ -444,12 +452,14 @@ options:
             - Select pool based on destination port.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     services:
         description:
             - List of services defined for this virtual service.
             - Maximum of 2048 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     sideband_profile:
         description:
             - Sideband configuration to be used for this virtualservice.it can be used for sending traffic to sideband vips for external inspection etc.
@@ -461,6 +471,7 @@ options:
             - Maximum of 32 items allowed.
             - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     sp_pool_refs:
         description:
             - Gslb pools used to manage site-persistence functionality.
@@ -471,12 +482,14 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: str
     ssl_key_and_certificate_refs:
         description:
             - Select or create one or two certificates, ec and/or rsa, that will be presented to ssl/tls terminated connections.
             - It is a reference to an object of type sslkeyandcertificate.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     ssl_profile_ref:
         description:
             - Determines the set of ssl versions and ciphers to accept for ssl/tls terminated connections.
@@ -489,6 +502,7 @@ options:
             - Field introduced in 18.2.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     ssl_sess_cache_avg_size:
         description:
             - Expected number of ssl session cache entries (may be exceeded).
@@ -510,6 +524,7 @@ options:
             - Maximum of 1000 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -528,6 +543,7 @@ options:
             - Field introduced in 18.2.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     traffic_clone_profile_ref:
         description:
             - Server network or list of servers for cloning traffic.
@@ -582,12 +598,14 @@ options:
             - If this is a match, the parent vs will forward the connection to this child vs.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     vh_matches:
         description:
             - Match criteria to select this child vs.
             - Field introduced in 20.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     vh_parent_vs_ref:
         description:
             - Specifies the virtual service acting as virtual hosting (sni) parent.
@@ -610,6 +628,7 @@ options:
             - Field introduced in 17.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     vrf_context_ref:
         description:
             - Virtual routing context that the virtual service is bound to.
@@ -622,6 +641,7 @@ options:
             - Datascripts applied on the data traffic of the virtual service.
             - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     vsvip_cloud_config_cksum:
         description:
             - Checksum of cloud configuration for vsvip.
@@ -717,7 +737,7 @@ def main():
         analytics_profile_ref=dict(type='str',),
         application_profile_ref=dict(type='str',),
         azure_availability_set=dict(type='str',),
-        bgp_peer_labels=dict(type='list',),
+        bgp_peer_labels=dict(type='list', elements='str',),
         bot_policy_ref=dict(type='str',),
         bulk_sync_kvcache=dict(type='bool',),
         close_client_conn_on_config_update=dict(type='bool',),
@@ -730,8 +750,8 @@ def main():
         created_by=dict(type='str',),
         delay_fairness=dict(type='bool',),
         description=dict(type='str',),
-        dns_info=dict(type='list',),
-        dns_policies=dict(type='list',),
+        dns_info=dict(type='list', elements='dict',),
+        dns_policies=dict(type='list', elements='dict',),
         east_west_placement=dict(type='bool',),
         enable_autogw=dict(type='bool',),
         enable_rhi=dict(type='bool',),
@@ -742,21 +762,21 @@ def main():
         flow_label_type=dict(type='str',),
         fqdn=dict(type='str',),
         host_name_xlate=dict(type='str',),
-        http_policies=dict(type='list',),
-        icap_request_profile_refs=dict(type='list',),
+        http_policies=dict(type='list', elements='dict',),
+        icap_request_profile_refs=dict(type='list', elements='str',),
         ign_pool_net_reach=dict(type='bool',),
         jwt_config=dict(type='dict',),
-        l4_policies=dict(type='list',),
+        l4_policies=dict(type='list', elements='dict',),
         ldap_vs_config=dict(type='dict',),
         limit_doser=dict(type='bool',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         max_cps_per_client=dict(type='int',),
         microservice_ref=dict(type='str',),
         min_pools_up=dict(type='int',),
         name=dict(type='str', required=True),
         network_profile_ref=dict(type='str',),
         network_security_policy_ref=dict(type='str',),
-        nsx_securitygroup=dict(type='list',),
+        nsx_securitygroup=dict(type='list', elements='str',),
         oauth_vs_config=dict(type='dict',),
         performance_limits=dict(type='dict',),
         pool_group_ref=dict(type='str',),
@@ -769,20 +789,20 @@ def main():
         security_policy_ref=dict(type='str',),
         server_network_profile_ref=dict(type='str',),
         service_metadata=dict(type='str',),
-        service_pool_select=dict(type='list',),
-        services=dict(type='list',),
+        service_pool_select=dict(type='list', elements='dict',),
+        services=dict(type='list', elements='dict',),
         sideband_profile=dict(type='dict',),
-        snat_ip=dict(type='list',),
-        sp_pool_refs=dict(type='list',),
-        ssl_key_and_certificate_refs=dict(type='list',),
+        snat_ip=dict(type='list', elements='dict',),
+        sp_pool_refs=dict(type='list', elements='str',),
+        ssl_key_and_certificate_refs=dict(type='list', elements='str',),
         ssl_profile_ref=dict(type='str',),
-        ssl_profile_selectors=dict(type='list',),
+        ssl_profile_selectors=dict(type='list', elements='dict',),
         ssl_sess_cache_avg_size=dict(type='int',),
         sso_policy_ref=dict(type='str',),
-        static_dns_records=dict(type='list',),
+        static_dns_records=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         test_se_datastore_level_1_ref=dict(type='str',),
-        topology_policies=dict(type='list',),
+        topology_policies=dict(type='list', elements='dict',),
         traffic_clone_profile_ref=dict(type='str',),
         traffic_enabled=dict(type='bool',),
         type=dict(type='str',),
@@ -790,13 +810,13 @@ def main():
         use_bridge_ip_as_vip=dict(type='bool',),
         use_vip_as_snat=dict(type='bool',),
         uuid=dict(type='str',),
-        vh_domain_name=dict(type='list',),
-        vh_matches=dict(type='list',),
+        vh_domain_name=dict(type='list', elements='str',),
+        vh_matches=dict(type='list', elements='dict',),
         vh_parent_vs_ref=dict(type='str',),
         vh_type=dict(type='str',),
-        vip=dict(type='list',),
+        vip=dict(type='list', elements='dict',),
         vrf_context_ref=dict(type='str',),
-        vs_datascripts=dict(type='list',),
+        vs_datascripts=dict(type='list', elements='dict',),
         vsvip_cloud_config_cksum=dict(type='str',),
         vsvip_ref=dict(type='str',),
         waf_policy_ref=dict(type='str',),

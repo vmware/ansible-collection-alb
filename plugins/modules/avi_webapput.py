@@ -65,6 +65,7 @@ options:
             - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     name:
         description:
             - Name of the webapput object-level0.
@@ -84,6 +85,7 @@ options:
             - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     tenant_ref:
         description:
             - Tenant of the webapput object-level0.
@@ -154,10 +156,10 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         mandatory_test=dict(type='dict',),
-        mandatory_tests=dict(type='list',),
+        mandatory_tests=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         string_length_test=dict(type='dict',),
-        string_length_tests=dict(type='list',),
+        string_length_tests=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         test_string=dict(type='str',),
         url=dict(type='str',),

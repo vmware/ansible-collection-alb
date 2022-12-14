@@ -315,6 +315,7 @@ options:
             - Error connections or responses impacts health score, are included as significant logs, and may be classified as part of a dos attack.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: int
     exclude_invalid_dns_domain_as_error:
         description:
             - Exclude dns queries to domains outside the domains configured in the dns application profile from the list of errors.
@@ -387,6 +388,7 @@ options:
             - Field introduced in 17.2.13, 18.1.5, 18.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: int
     exclude_stale_ocsp_responses_as_error:
         description:
             - Exclude the stale ocsp certificate status responses from the list of errors.
@@ -671,6 +673,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - The name of the analytics profile.
@@ -691,12 +694,14 @@ options:
             - List of http status code ranges to be excluded from being classified as an error.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     resp_code_block:
         description:
             - Block of http response codes to be excluded from being classified as an error.
             - Enum options - AP_HTTP_RSP_4XX, AP_HTTP_RSP_5XX.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     sensitive_log_profile:
         description:
             - Rules applied to the http application log for filtering sensitive information.
@@ -860,7 +865,7 @@ def main():
         exclude_client_close_before_request_as_error=dict(type='bool',),
         exclude_dns_policy_drop_as_significant=dict(type='bool',),
         exclude_gs_down_as_error=dict(type='bool',),
-        exclude_http_error_codes=dict(type='list',),
+        exclude_http_error_codes=dict(type='list', elements='int',),
         exclude_invalid_dns_domain_as_error=dict(type='bool',),
         exclude_invalid_dns_query_as_error=dict(type='bool',),
         exclude_issuer_revoked_ocsp_responses_as_error=dict(type='bool',),
@@ -870,7 +875,7 @@ def main():
         exclude_revoked_ocsp_responses_as_error=dict(type='bool',),
         exclude_server_dns_error_as_error=dict(type='bool',),
         exclude_server_tcp_reset_as_error=dict(type='bool',),
-        exclude_sip_error_codes=dict(type='list',),
+        exclude_sip_error_codes=dict(type='list', elements='int',),
         exclude_stale_ocsp_responses_as_error=dict(type='bool',),
         exclude_syn_retransmit_as_error=dict(type='bool',),
         exclude_tcp_reset_as_error=dict(type='bool',),
@@ -906,11 +911,11 @@ def main():
         hs_security_tls13_score=dict(type='float',),
         hs_security_weak_signature_algo_penalty=dict(type='float',),
         latency_audit_props=dict(type='dict',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         ondemand_metrics_idle_timeout=dict(type='int',),
-        ranges=dict(type='list',),
-        resp_code_block=dict(type='list',),
+        ranges=dict(type='list', elements='dict',),
+        resp_code_block=dict(type='list', elements='str',),
         sensitive_log_profile=dict(type='dict',),
         sip_log_depth=dict(type='int',),
         tenant_ref=dict(type='str',),

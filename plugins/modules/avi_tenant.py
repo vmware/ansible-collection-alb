@@ -83,6 +83,7 @@ options:
             - Field introduced in 20.1.5.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     local:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -156,7 +157,7 @@ def main():
         created_by=dict(type='str',),
         description=dict(type='str',),
         enforce_label_group=dict(type='bool',),
-        label_group_refs=dict(type='list',),
+        label_group_refs=dict(type='list', elements='str',),
         local=dict(type='bool',),
         name=dict(type='str', required=True),
         url=dict(type='str',),

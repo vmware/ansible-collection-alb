@@ -362,7 +362,7 @@ Parameters
                   - The status of the albservicesjob.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - UNDETERMINED, PENDING, IN_PROGRESS, COMPLETED, FAILED.
+                  - Enum options - UNDETERMINED, PENDING, IN_PROGRESS, COMPLETED, FAILED, NOT_ENABLED.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.

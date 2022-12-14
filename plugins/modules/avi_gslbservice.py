@@ -86,6 +86,7 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
+        elements: str
     down_response:
         description:
             - Response to the client query when the gslb service is down.
@@ -106,6 +107,7 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
+        elements: dict
     health_monitor_refs:
         description:
             - Verify vs health by applying one or more health monitors.
@@ -114,6 +116,7 @@ options:
             - Maximum of 6 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     health_monitor_scope:
         description:
             - Health monitor probe can be executed for all the members or it can be executed only for third-party members.
@@ -144,6 +147,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     min_members:
         description:
             - The minimum number of members to distribute traffic to.
@@ -291,15 +295,15 @@ def main():
         controller_health_status_enabled=dict(type='bool',),
         created_by=dict(type='str',),
         description=dict(type='str',),
-        domain_names=dict(type='list', required=True),
+        domain_names=dict(type='list', elements='str', required=True),
         down_response=dict(type='dict',),
         enabled=dict(type='bool',),
-        groups=dict(type='list', required=True),
-        health_monitor_refs=dict(type='list',),
+        groups=dict(type='list', elements='dict', required=True),
+        health_monitor_refs=dict(type='list', elements='str',),
         health_monitor_scope=dict(type='str',),
         hm_off=dict(type='bool',),
         is_federated=dict(type='bool',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         min_members=dict(type='int',),
         name=dict(type='str', required=True),
         num_dns_ip=dict(type='int',),
