@@ -108,6 +108,7 @@ options:
             - Field introduced in 20.1.4.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     image_path:
         description:
             - Image path of current base image.
@@ -175,6 +176,7 @@ options:
             - Field introduced in 18.2.8, 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     patch_reboot:
         description:
             - Flag for patch op with reboot.
@@ -223,6 +225,7 @@ options:
             - Field introduced in 18.2.8, 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     previous_patch_version:
         description:
             - Previous patch version applied to this node.example  base-image was 18.2.6 with a patch 6p1.
@@ -272,6 +275,7 @@ options:
             - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     seg_params:
         description:
             - Se_patch may be different from the controller_patch.
@@ -330,6 +334,7 @@ options:
             - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     upgrade_ops:
         description:
             - Upgrade operations requested.
@@ -414,7 +419,7 @@ def main():
         end_time=dict(type='str',),
         enqueue_time=dict(type='str',),
         fips_mode=dict(type='bool',),
-        history=dict(type='list',),
+        history=dict(type='list', elements='dict',),
         image_path=dict(type='str',),
         image_ref=dict(type='str',),
         name=dict(type='str',),
@@ -424,21 +429,21 @@ def main():
         params=dict(type='dict',),
         patch_image_path=dict(type='str',),
         patch_image_ref=dict(type='str',),
-        patch_list=dict(type='list',),
+        patch_list=dict(type='list', elements='dict',),
         patch_reboot=dict(type='bool',),
         patch_version=dict(type='str',),
         prev_image_path=dict(type='str',),
         prev_patch_image_path=dict(type='str',),
         previous_image_ref=dict(type='str',),
         previous_patch_image_ref=dict(type='str',),
-        previous_patch_list=dict(type='list',),
+        previous_patch_list=dict(type='list', elements='dict',),
         previous_patch_version=dict(type='str',),
         previous_version=dict(type='str',),
         progress=dict(type='int',),
         reason=dict(type='str',),
         se_patch_image_path=dict(type='str',),
         se_patch_image_ref=dict(type='str',),
-        se_upgrade_events=dict(type='list',),
+        se_upgrade_events=dict(type='list', elements='dict',),
         seg_params=dict(type='dict',),
         seg_status=dict(type='dict',),
         start_time=dict(type='str',),
@@ -447,7 +452,7 @@ def main():
         tasks_completed=dict(type='int',),
         tenant_ref=dict(type='str',),
         total_tasks=dict(type='int',),
-        upgrade_events=dict(type='list',),
+        upgrade_events=dict(type='list', elements='dict',),
         upgrade_ops=dict(type='str',),
         upgrade_readiness=dict(type='dict',),
         url=dict(type='str',),

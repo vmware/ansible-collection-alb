@@ -106,6 +106,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - The name of the application profile.
@@ -274,7 +275,7 @@ def main():
         dos_rl_profile=dict(type='dict',),
         http_profile=dict(type='dict',),
         l4_ssl_profile=dict(type='dict',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         preserve_client_ip=dict(type='bool',),
         preserve_client_port=dict(type='bool',),

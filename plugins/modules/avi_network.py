@@ -53,6 +53,7 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     cloud_ref:
         description:
             - It is a reference to an object of type cloud.
@@ -69,6 +70,7 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     dhcp_enabled:
         description:
             - Select the ip address management scheme for this network.
@@ -95,6 +97,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -179,14 +182,14 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        attrs=dict(type='list',),
+        attrs=dict(type='list', elements='dict',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        configured_subnets=dict(type='list',),
+        configured_subnets=dict(type='list', elements='dict',),
         dhcp_enabled=dict(type='bool',),
         exclude_discovered_subnets=dict(type='bool',),
         ip6_autocfg_enabled=dict(type='bool',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         synced_from_se=dict(type='bool',),
         tenant_ref=dict(type='str',),

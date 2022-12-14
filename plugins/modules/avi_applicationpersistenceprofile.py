@@ -94,6 +94,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - A user-friendly name for the persistence profile.
@@ -198,7 +199,7 @@ def main():
         http_cookie_persistence_profile=dict(type='dict',),
         ip_persistence_profile=dict(type='dict',),
         is_federated=dict(type='bool',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         persistence_type=dict(type='str', required=True),
         server_hm_down_recovery=dict(type='str',),

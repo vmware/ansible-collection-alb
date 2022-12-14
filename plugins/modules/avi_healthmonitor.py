@@ -159,6 +159,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     monitor_port:
         description:
             - Use this port instead of the port defined for the server in the pool.
@@ -345,7 +346,7 @@ def main():
         is_federated=dict(type='bool',),
         ldap_monitor=dict(type='dict',),
         ldaps_monitor=dict(type='dict',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         monitor_port=dict(type='int',),
         name=dict(type='str', required=True),
         pop3_monitor=dict(type='dict',),

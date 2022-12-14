@@ -97,6 +97,14 @@ options:
             - salesforce,myvmware,systest), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as MYVMWARE.
         type: str
+    operations_config:
+        description:
+            - Operations configuration.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        required: true
+        type: dict
     polling_interval:
         description:
             - Time interval in minutes.
@@ -217,6 +225,7 @@ def main():
         feature_opt_in_status=dict(type='dict', required=True),
         ip_reputation_config=dict(type='dict', required=True),
         mode=dict(type='str',),
+        operations_config=dict(type='dict', required=True),
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
         saas_licensing_config=dict(type='dict', required=True),

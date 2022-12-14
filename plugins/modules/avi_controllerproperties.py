@@ -598,6 +598,7 @@ options:
             - Unit is days.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: int
     unresponsive_se_reboot:
         description:
             - Unit is sec.
@@ -897,7 +898,7 @@ def main():
         seupgrade_fabric_pool_size=dict(type='int',),
         seupgrade_segroup_min_dead_timeout=dict(type='int',),
         shared_ssl_certificates=dict(type='bool',),
-        ssl_certificate_expiry_warning_days=dict(type='list',),
+        ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
         update_dns_entry_timeout=dict(type='int',),
