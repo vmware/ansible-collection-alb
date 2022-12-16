@@ -55,7 +55,7 @@ options:
         type: dict
     mandatory_test:
         description:
-            - Optional message for nested f_mandatory test cases defined at level0.
+            - Optional message for nested f_mandatory test cases defined at level1.
             - Field introduced in 21.1.5, 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
@@ -73,6 +73,19 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: str
+    sensitive_test:
+        description:
+            - Optional message for nested f_sensitive test cases defined at level1.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
+    sensitive_tests:
+        description:
+            - Repeated message for nested f_sensitive test cases-level1.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
     string_length_test:
         description:
             - Optional message for nested  max string length test cases.
@@ -91,6 +104,13 @@ options:
             - Tenant of the webapput object-level0.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.5, 22.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
+    test_sensitive_string:
+        description:
+            - The string for sensitive (secret) field.
+            - Object-level0.
+            - Field introduced in 22.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     test_string:
@@ -158,9 +178,12 @@ def main():
         mandatory_test=dict(type='dict',),
         mandatory_tests=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
+        sensitive_test=dict(type='dict',),
+        sensitive_tests=dict(type='list', elements='dict',),
         string_length_test=dict(type='dict',),
         string_length_tests=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
+        test_sensitive_string=dict(type='str', no_log=True,),
         test_string=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
@@ -173,7 +196,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'webapput',
-                           set())
+                           ['test_sensitive_string'])
 
 
 if __name__ == '__main__':
