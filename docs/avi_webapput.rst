@@ -169,7 +169,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Optional message for nested f_mandatory test cases defined at level0.
+                  - Optional message for nested f_mandatory test cases defined at level1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.5, 22.1.1.
@@ -222,6 +222,52 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.5, 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>sensitive_test</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Optional message for nested f_sensitive test cases defined at level1.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>sensitive_tests</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Repeated message for nested f_sensitive test cases-level1.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -294,6 +340,32 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.5, 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>test_sensitive_string</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The string for sensitive (secret) field.
+                </div>
+                                <div style="font-size: small">
+                  - Object-level0.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
