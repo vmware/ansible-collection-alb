@@ -331,14 +331,7 @@ options:
     gslb_purge_batch_size:
         description:
             - Batch size for the vs_mgr to perform datastrorecleanup during a gslb purge.
-            - Allowed values are 50-200.
-            - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 50.
-        type: int
-    gslb_purge_rpc_batch_size:
-        description:
-            - Batch size for the gslb portal to execute the purgerpc for object types.
+            - Allowed values are 50-1200.
             - Field introduced in 22.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1000.
@@ -346,11 +339,11 @@ options:
     gslb_purge_sleep_time_ms:
         description:
             - Sleep time in the vs_mgr during a federatedpurge rpc call.
-            - Allowed values are 100-150.
+            - Allowed values are 50-100.
             - Field introduced in 22.1.3.
             - Unit is milliseconds.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 100.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 50.
         type: int
     max_dead_se_in_grp:
         description:
@@ -863,7 +856,6 @@ def main():
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),
         gslb_purge_batch_size=dict(type='int',),
-        gslb_purge_rpc_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
         max_dead_se_in_grp=dict(type='int',),
         max_pcap_per_tenant=dict(type='int',),

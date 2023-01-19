@@ -1179,33 +1179,7 @@ Parameters
                   - Batch size for the vs_mgr to perform datastrorecleanup during a gslb purge.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 50-200.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 50.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>gslb_purge_rpc_batch_size</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Batch size for the gslb portal to execute the purgerpc for object types.
+                  - Allowed values are 50-1200.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.3.
@@ -1234,7 +1208,7 @@ Parameters
                   - Sleep time in the vs_mgr during a federatedpurge rpc call.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 100-150.
+                  - Allowed values are 50-100.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.3.
@@ -1246,7 +1220,7 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 100.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 50.
                 </div>
                                             </td>
         </tr>

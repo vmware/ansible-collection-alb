@@ -35,6 +35,7 @@ avi_resource_types:
   - testsedatastorelevel3
   - botipreputationtypemapping
   - botconfigconsolidator
+  - tenantsystemconfiguration
   - federationcheckpoint
   - gslbgeodbprofile
   - siteversion

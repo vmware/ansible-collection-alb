@@ -7873,7 +7873,7 @@ Parameters
                   - For example, for bgp, some time is needed for route advertisement.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 0-20.
+                  - Allowed values are 0-300.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.1.5,18.2.1.
