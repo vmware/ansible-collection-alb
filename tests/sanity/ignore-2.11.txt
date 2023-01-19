@@ -122,6 +122,8 @@ plugins/modules/avi_botipreputationtypemapping.py validate-modules:missing-gplv3
 plugins/modules/avi_botipreputationtypemapping.py import-3.8!skip
 plugins/modules/avi_botconfigconsolidator.py validate-modules:missing-gplv3-license
 plugins/modules/avi_botconfigconsolidator.py import-3.8!skip
+plugins/modules/avi_tenantsystemconfiguration.py validate-modules:missing-gplv3-license
+plugins/modules/avi_tenantsystemconfiguration.py import-3.8!skip
 plugins/modules/avi_federationcheckpoint.py validate-modules:missing-gplv3-license
 plugins/modules/avi_federationcheckpoint.py import-3.8!skip
 plugins/modules/avi_gslbgeodbprofile.py validate-modules:missing-gplv3-license

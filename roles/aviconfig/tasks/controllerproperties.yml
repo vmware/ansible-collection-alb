@@ -53,7 +53,6 @@
     federated_datastore_cleanup_duration: "{{ item.federated_datastore_cleanup_duration | default(omit) }}"
     file_object_cleanup_period: "{{ item.file_object_cleanup_period | default(omit) }}"
     gslb_purge_batch_size: "{{ item.gslb_purge_batch_size | default(omit) }}"
-    gslb_purge_rpc_batch_size: "{{ item.gslb_purge_rpc_batch_size | default(omit) }}"
     gslb_purge_sleep_time_ms: "{{ item.gslb_purge_sleep_time_ms | default(omit) }}"
     max_dead_se_in_grp: "{{ item.max_dead_se_in_grp | default(omit) }}"
     max_pcap_per_tenant: "{{ item.max_pcap_per_tenant | default(omit) }}"

@@ -16,7 +16,7 @@ def add_nic(vm, network_name):
     nic_changes = []
     nic_spec = vim.vm.device.VirtualDeviceSpec()
     nic_spec.operation = vim.vm.device.VirtualDeviceSpec.Operation.add
-    nic_spec.device = vim.vm.device.VirtualE1000()
+    nic_spec.device = vim.vm.device.VirtualVmxnet3()
     nic_spec.device.deviceInfo = vim.Description()
     nic_spec.device.backing = \
         vim.vm.device.VirtualEthernetCard.NetworkBackingInfo()
