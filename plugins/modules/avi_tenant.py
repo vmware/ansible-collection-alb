@@ -47,6 +47,13 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    attrs:
+        description:
+            - Key/value tenant attributes.
+            - Field introduced in 23.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
     config_settings:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -152,6 +159,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        attrs=dict(type='list', elements='dict',),
         config_settings=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
