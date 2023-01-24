@@ -84,4 +84,3 @@
     state: "{{ state | default('present') }}"
   delegate_to: localhost
   when: network_name is defined
-
