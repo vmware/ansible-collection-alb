@@ -82,6 +82,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Name of the auth profile.
@@ -204,7 +205,7 @@ def main():
         http=dict(type='dict',),
         jwt_profile_ref=dict(type='str',),
         ldap=dict(type='dict',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         oauth_profile=dict(type='dict',),
         pa_agent_ref=dict(type='str',),

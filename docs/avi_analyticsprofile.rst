@@ -2581,7 +2581,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Protobuf versioning for config pbs.
+                  - Se connection establishment latency tracking configuration.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.1.

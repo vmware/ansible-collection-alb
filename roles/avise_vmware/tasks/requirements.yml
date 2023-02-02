@@ -5,9 +5,9 @@
       - "{{ item }} != None"
     msg: "{{ item }} must be provided"
   with_items:
-    - se_master_ctl_ip
-    - se_master_ctl_username
-    - se_master_ctl_password
+    - se_leader_ctl_ip
+    - se_leader_ctl_username
+    - se_leader_ctl_password
     - se_vmw_disk_size
     - se_vmw_vm_name
     - se_vmw_number_of_cpus

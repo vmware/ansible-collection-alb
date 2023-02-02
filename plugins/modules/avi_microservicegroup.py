@@ -74,6 +74,7 @@ options:
             - It is a reference to an object of type microservice.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -138,7 +139,7 @@ def main():
         created_by=dict(type='str',),
         description=dict(type='str',),
         name=dict(type='str', required=True),
-        service_refs=dict(type='list',),
+        service_refs=dict(type='list', elements='str',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),

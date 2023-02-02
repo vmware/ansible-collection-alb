@@ -32,6 +32,7 @@ options:
               For more details you can refer to swagger specs https://{controller_ip}/swagger/
               From above link you can find configurable fields under data_vnics property of a service engine.
         type: list
+        elements: dict
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -110,7 +111,7 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        data_vnics_config=dict(type='list', ),
+        data_vnics_config=dict(type='list', elements='dict',),
         se_name=dict(type='str', required=True),
     )
     argument_specs.update(avi_common_argument_spec())

@@ -1,0 +1,11 @@
+---
+- name: "Avi SE | KVM | Destroy SE VM"
+  command: "virsh destroy {{ kvm_vm_hostname }}"
+  register: virsh_destroy_results
+  changed_when: '"destroyed" in virsh_destroy_results.stdout'
+  ignore_errors: true
+
+- name: "Avi SE | KVM | Undefine SE VM"
+  command: "virsh undefine {{ kvm_vm_hostname }}"
+  register: virsh_undefine_results
+  changed_when: '"undefined" in virsh_undefine_results.stdout'

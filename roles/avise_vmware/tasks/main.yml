@@ -36,11 +36,11 @@
 
     - name: Avi SE | Verify non default se group is available
       avi_api_session:
-        controller: "{{ se_master_ctl_ip }}"
-        username: "{{ se_master_ctl_username }}"
-        password: "{{ se_master_ctl_password }}"
+        controller: "{{ se_leader_ctl_ip }}"
+        username: "{{ se_leader_ctl_username }}"
+        password: "{{ se_leader_ctl_password }}"
         tenant: "{{ se_tenant }}"
-        api_version: "{{ se_master_ctl_version }}"
+        api_version: "{{ se_leader_ctl_version }}"
         http_method: get
         path: "serviceenginegroup/?name={{ se_group_name }}"
       register: se_group_data
@@ -71,7 +71,7 @@
         se_vmw_sysadmin_public_key: '{{ se_vmw_sysadmin_public_key }}'
         se_auth_token: '{{ se_auth_token }}'
         se_cluster_uuid: '{{ se_cluster_uuid }}'
-        se_master_ctl_ip: '{{ se_master_ctl_ip }}'
+        se_leader_ctl_ip: '{{ se_leader_ctl_ip }}'
         se_vmw_number_of_cpus: '{{ se_vmw_number_of_cpus }}'
         se_vmw_cpu_reserved: '{{ se_vmw_cpu_reserved }}'
         se_vmw_memory: '{{ se_vmw_memory }}'
@@ -82,10 +82,10 @@
 
     - name: Avi SE | Verify SE Deployment
       verify_se:
-        se_master_ctl_ip: '{{ se_master_ctl_ip }}'
-        se_master_ctl_username: '{{ se_master_ctl_username }}'
-        se_master_ctl_password: '{{ se_master_ctl_password }}'
-        se_master_ctl_version: '{{ se_master_ctl_version }}'
+        se_leader_ctl_ip: '{{ se_leader_ctl_ip }}'
+        se_leader_ctl_username: '{{ se_leader_ctl_username }}'
+        se_leader_ctl_password: '{{ se_leader_ctl_password }}'
+        se_leader_ctl_version: '{{ se_leader_ctl_version }}'
         se_cloud_name: '{{ se_cloud_name }}'
         se_group_name: '{{ se_group_name }}'
         se_tenant: '{{ se_tenant }}'
@@ -103,11 +103,11 @@
 
     - name: Avi SE | Attach SE to SE group
       avi_api_session:
-        controller: "{{ se_master_ctl_ip }}"
-        username: "{{ se_master_ctl_username }}"
-        password: "{{ se_master_ctl_password }}"
+        controller: "{{ se_leader_ctl_ip }}"
+        username: "{{ se_leader_ctl_username }}"
+        password: "{{ se_leader_ctl_password }}"
         tenant: "{{ se_tenant }}"
-        api_version: "{{ se_master_ctl_version }}"
+        api_version: "{{ se_leader_ctl_version }}"
         http_method: patch
         data:
           add:

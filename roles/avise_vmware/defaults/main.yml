@@ -5,9 +5,9 @@ se_skip_requirements: false
 # se_autoregister parameters
 se_autoregister: true
 se_auth_token: ~
-se_master_ctl_ip: ~
-se_master_ctl_username: ~
-se_master_ctl_password: ~
+se_leader_ctl_ip: ~
+se_leader_ctl_username: ~
+se_leader_ctl_password: ~
 se_tenant: admin
 se_cloud_name: Default-Cloud
 se_group_name: Default-Group

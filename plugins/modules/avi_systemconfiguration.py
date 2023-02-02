@@ -93,6 +93,7 @@ options:
             - It is a reference to an object of type virtualservice.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     docker_mode:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -172,12 +173,14 @@ options:
             - If this is not specified, all the default ciphers are allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     ssh_hmacs:
         description:
             - Allowed hmac list for ssh to the management interface on the controller and service engines.
             - If this is not specified, all the default hmacs are allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     url:
         description:
             - Avi controller URL of the object.
@@ -259,7 +262,7 @@ def main():
         controller_analytics_policy=dict(type='dict',),
         default_license_tier=dict(type='str',),
         dns_configuration=dict(type='dict',),
-        dns_virtualservice_refs=dict(type='list',),
+        dns_virtualservice_refs=dict(type='list', elements='str',),
         docker_mode=dict(type='bool',),
         email_configuration=dict(type='dict',),
         enable_cors=dict(type='bool',),
@@ -274,8 +277,8 @@ def main():
         proxy_configuration=dict(type='dict',),
         secure_channel_configuration=dict(type='dict',),
         snmp_configuration=dict(type='dict',),
-        ssh_ciphers=dict(type='list',),
-        ssh_hmacs=dict(type='list',),
+        ssh_ciphers=dict(type='list', elements='str',),
+        ssh_hmacs=dict(type='list', elements='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         welcome_workflow_complete=dict(type='bool',),

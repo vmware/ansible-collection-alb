@@ -69,6 +69,7 @@ options:
             - The list of syslog servers.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -134,7 +135,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         name=dict(type='str', required=True),
-        syslog_servers=dict(type='list',),
+        syslog_servers=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
