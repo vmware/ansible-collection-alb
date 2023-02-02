@@ -1750,7 +1750,7 @@ options:
         type: int
     se_time_tracker_props:
         description:
-            - Protobuf versioning for config pbs.
+            - Time tracker properties for latency audit.
             - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.

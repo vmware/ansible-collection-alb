@@ -725,7 +725,7 @@ options:
         type: str
     time_tracker_props:
         description:
-            - Protobuf versioning for config pbs.
+            - Time tracker properties for connection establishment audit.
             - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict

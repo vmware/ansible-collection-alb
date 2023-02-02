@@ -2581,7 +2581,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Protobuf versioning for config pbs.
+                  - Time tracker properties for connection establishment audit.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.1.
