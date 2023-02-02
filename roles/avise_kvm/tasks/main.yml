@@ -1,0 +1,8 @@
+---
+- name: "Avi SE | KVM | Deploy VM | When state = present"
+  include: deploy_se.yml
+  when: state == "create"
+
+- name: "Avi SE | KVM | Destroy VM | When state = absent"
+  include: teardown_kvm_vm.yml
+  when: state == "delete"

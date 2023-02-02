@@ -99,7 +99,7 @@ options:
             - Avi API context that includes current session ID and CSRF Token.
             - This allows user to perform single login and re-use the session.
         type: dict
-    avi_disable_session_cache_as_fact:
+    avi_deactivate_session_cache_as_fact:
         description:
             - It disables avi session information to be cached as a fact.
         type: bool

@@ -60,6 +60,7 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
+        elements: dict
     cipher_enums:
         description:
             - Enum options - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
@@ -74,6 +75,7 @@ options:
             - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,tls_ecdhe_rsa_with_aes_128_gcm_sha256,tls_ecdhe_rsa_with_aes_256_gcm_sha384,tls_ecdhe_ecdsa_with_aes_128_cbc_sha256,tls_ecdhe_ecdsa_with_aes_256_cbc_sha384,tls_ecdhe_rsa_with_aes_128_cbc_sha256,tls_ecdhe_rsa_with_aes_256_cbc_sha384,tls_rsa_with_aes_128_gcm_sha256,tls_rsa_with_aes_256_gcm_sha384,tls_rsa_with_aes_128_cbc_sha256,tls_rsa_with_aes_256_cbc_sha256,tls_ecdhe_ecdsa_with_aes_128_cbc_sha,tls_ecdhe_ecdsa_with_aes_256_cbc_sha,tls_ecdhe_rsa_with_aes_128_cbc_sha,tls_ecdhe_rsa_with_aes_256_cbc_sha,tls_rsa_with_aes_128_cbc_sha,tls_rsa_with_aes_256_cbc_sha,tls_rsa_with_3des_ede_cbc_sha),
             - enterprise with cloud services edition.
         type: list
+        elements: str
     ciphersuites:
         description:
             - Tls 1.3 ciphers suites represented as defined by u(https //www.openssl.org/docs/man1.1.1/man1/ciphers.html).
@@ -137,6 +139,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -177,6 +180,7 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -279,8 +283,8 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         accepted_ciphers=dict(type='str',),
-        accepted_versions=dict(type='list', required=True),
-        cipher_enums=dict(type='list',),
+        accepted_versions=dict(type='list', elements='dict', required=True),
+        cipher_enums=dict(type='list', elements='str',),
         ciphersuites=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
@@ -289,14 +293,14 @@ def main():
         enable_early_data=dict(type='bool',),
         enable_ssl_session_reuse=dict(type='bool',),
         is_federated=dict(type='bool',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         prefer_client_cipher_ordering=dict(type='bool',),
         send_close_notify=dict(type='bool',),
         signature_algorithm=dict(type='str',),
         ssl_rating=dict(type='dict',),
         ssl_session_timeout=dict(type='int',),
-        tags=dict(type='list',),
+        tags=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         type=dict(type='str',),
         url=dict(type='str',),

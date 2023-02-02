@@ -58,6 +58,7 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
+        elements: dict
     rejoin_nodes_automatically:
         description:
             - Re-join cluster nodes automatically in the event one of the node is reset to factory.
@@ -129,7 +130,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         name=dict(type='str', required=True),
-        nodes=dict(type='list', required=True),
+        nodes=dict(type='list', elements='dict', required=True),
         rejoin_nodes_automatically=dict(type='bool',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

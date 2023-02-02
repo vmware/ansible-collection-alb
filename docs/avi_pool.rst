@@ -2071,7 +2071,7 @@ Parameters
                   - This is used to provide the isolation of the set of networks the pool is attached to.
                 </div>
                                 <div style="font-size: small">
-                  - The pool inherits the virtual routing conext of the virtual service, and this field is used only internally, and is set by pb-transform.
+                  - The pool inherits the virtual routing context of the virtual service, and this field is used only internally, and is set by pb-transform.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type vrfcontext.

@@ -150,6 +150,7 @@ options:
             - Field introduced in 17.2.4.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: int
     auto_rebalance_criteria:
         description:
             - Set of criteria for se auto rebalance.
@@ -157,6 +158,7 @@ options:
             - Field introduced in 17.2.3.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     auto_rebalance_interval:
         description:
             - Frequency of rebalance, if 'auto rebalance' is enabled.
@@ -179,6 +181,7 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     baremetal_dispatcher_handles_flows:
         description:
             - Control if dispatcher core also handles tcp flows in baremetal se.
@@ -276,18 +279,21 @@ options:
             - Field introduced in 17.1.3.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     custom_securitygroups_mgmt:
         description:
             - Custom security groups to be associated with management vnic for se instances in openstack and aws clouds.
             - Field introduced in 17.1.3.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     custom_tag:
         description:
             - Custom tag will be used to create the tags for se instance in aws.
             - Note this is not the same as the prefix for se name.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     data_network_id:
         description:
             - Subnet used to spin up the data nic for service engines, used only for azure cloud.
@@ -742,12 +748,14 @@ options:
             - Maximum of 128 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     kni_allowed_server_ports:
         description:
             - Port ranges for any servers running in inband linuxserver clouds.
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     l7_conns_per_core:
         description:
             - Number of l7 connections that can be cached per core.
@@ -769,6 +777,7 @@ options:
             - Maximum of 1 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     lbaction_num_requests_to_dispatch:
         description:
             - Number of requests to dispatch from the request.
@@ -939,6 +948,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     max_concurrent_external_hm:
         description:
             - Maximum number of external health monitors that can run concurrently in a service engine.
@@ -1221,6 +1231,7 @@ options:
             - Maximum of 5 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     openstack_mgmt_network_name:
         description:
             - Avi management network name.
@@ -1294,6 +1305,16 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    replay_vrf_routes_interval:
+        description:
+            - Routes in vrf are replayed at the specified interval.
+            - This should be increased if there are large number of routes.
+            - Allowed values are 0-3000.
+            - Field introduced in 22.1.3.
+            - Unit is milliseconds.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1000.
+        type: int
     resync_time_interval:
         description:
             - Time interval to re-sync se's time with wall clock time.
@@ -1570,11 +1591,9 @@ options:
         type: bool
     se_lro:
         description:
-            - Enable or disable large receive optimization for vnics.
-            - Requires se reboot.
+            - Enable or disable large receive optimization for vnics.supported on vmxnet3.requires se reboot.
             - Field introduced in 18.2.5.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     se_mp_ring_retry_count:
         description:
@@ -1731,7 +1750,7 @@ options:
         type: int
     se_time_tracker_props:
         description:
-            - Protobuf versioning for config pbs.
+            - Se per-packet latency tracking configuration.
             - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
@@ -1859,6 +1878,7 @@ options:
             - Maximum of 128 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     service_ip_subnets:
         description:
             - Subnets assigned to the se group.
@@ -1867,6 +1887,7 @@ options:
             - Maximum of 128 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     shm_minimum_config_memory:
         description:
             - Minimum required shared memory to apply any configuration.
@@ -1962,6 +1983,14 @@ options:
         description:
             - Avi controller URL of the object.
         type: str
+    use_dp_util_for_scaleout:
+        description:
+            - If enabled, the datapath cpu utilization is consulted by the auto scale-out logic.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     use_hyperthreaded_cores:
         description:
             - Enables the use of hyper-threaded cores on se.
@@ -2025,6 +2054,7 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     vcenter_datastores_include:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -2052,6 +2082,7 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     vcpus_per_se:
         description:
             - Number of vcpus for each of the service engine virtual machines.
@@ -2261,11 +2292,11 @@ def main():
         async_ssl=dict(type='bool',),
         async_ssl_threads=dict(type='int',),
         auto_rebalance=dict(type='bool',),
-        auto_rebalance_capacity_per_se=dict(type='list',),
-        auto_rebalance_criteria=dict(type='list',),
+        auto_rebalance_capacity_per_se=dict(type='list', elements='int',),
+        auto_rebalance_criteria=dict(type='list', elements='str',),
         auto_rebalance_interval=dict(type='int',),
         auto_redistribute_active_standby_load=dict(type='bool',),
-        availability_zone_refs=dict(type='list',),
+        availability_zone_refs=dict(type='list', elements='str',),
         baremetal_dispatcher_handles_flows=dict(type='bool',),
         bgp_peer_monitor_failover_enabled=dict(type='bool',),
         bgp_state_update_interval=dict(type='int',),
@@ -2279,9 +2310,9 @@ def main():
         core_shm_app_learning=dict(type='bool',),
         cpu_reserve=dict(type='bool',),
         cpu_socket_affinity=dict(type='bool',),
-        custom_securitygroups_data=dict(type='list',),
-        custom_securitygroups_mgmt=dict(type='list',),
-        custom_tag=dict(type='list',),
+        custom_securitygroups_data=dict(type='list', elements='str',),
+        custom_securitygroups_mgmt=dict(type='list', elements='str',),
+        custom_tag=dict(type='list', elements='dict',),
         data_network_id=dict(type='str',),
         datascript_timeout=dict(type='int',),
         deactivate_ipv6_discovery=dict(type='bool',),
@@ -2340,11 +2371,11 @@ def main():
         ingress_access_mgmt=dict(type='str',),
         instance_flavor=dict(type='str',),
         instance_flavor_info=dict(type='dict',),
-        iptables=dict(type='list',),
-        kni_allowed_server_ports=dict(type='list',),
+        iptables=dict(type='list', elements='dict',),
+        kni_allowed_server_ports=dict(type='list', elements='dict',),
         l7_conns_per_core=dict(type='int',),
         l7_resvd_listen_conns_per_core=dict(type='int',),
-        labels=dict(type='list',),
+        labels=dict(type='list', elements='dict',),
         lbaction_num_requests_to_dispatch=dict(type='int',),
         lbaction_rq_per_request_max_retries=dict(type='int',),
         least_load_core_selection=dict(type='bool',),
@@ -2367,7 +2398,7 @@ def main():
         log_disksz=dict(type='int',),
         log_malloc_failure=dict(type='bool',),
         log_message_max_file_list_size=dict(type='int',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         max_concurrent_external_hm=dict(type='int',),
         max_cpu_usage=dict(type='int',),
         max_memory_per_mempool=dict(type='int',),
@@ -2402,7 +2433,7 @@ def main():
         num_flow_cores_sum_changes_to_ignore=dict(type='int',),
         objsync_config=dict(type='dict',),
         objsync_port=dict(type='int',),
-        openstack_availability_zones=dict(type='list',),
+        openstack_availability_zones=dict(type='list', elements='str',),
         openstack_mgmt_network_name=dict(type='str',),
         openstack_mgmt_network_uuid=dict(type='str',),
         os_reserved_memory=dict(type='int',),
@@ -2413,6 +2444,7 @@ def main():
         placement_mode=dict(type='str',),
         realtime_se_metrics=dict(type='dict',),
         reboot_on_panic=dict(type='bool',),
+        replay_vrf_routes_interval=dict(type='int',),
         resync_time_interval=dict(type='int',),
         sdb_flush_interval=dict(type='int',),
         sdb_pipeline_size=dict(type='int',),
@@ -2480,8 +2512,8 @@ def main():
         se_vs_hb_max_vs_in_pkt=dict(type='int',),
         self_se_election=dict(type='bool',),
         send_se_ready_timeout=dict(type='int',),
-        service_ip6_subnets=dict(type='list',),
-        service_ip_subnets=dict(type='list',),
+        service_ip6_subnets=dict(type='list', elements='dict',),
+        service_ip_subnets=dict(type='list', elements='dict',),
         shm_minimum_config_memory=dict(type='int',),
         significant_log_throttle=dict(type='int',),
         ssl_preprocess_sni_hostname=dict(type='bool',),
@@ -2494,6 +2526,7 @@ def main():
         upstream_read_timeout=dict(type='int',),
         upstream_send_timeout=dict(type='int',),
         url=dict(type='str',),
+        use_dp_util_for_scaleout=dict(type='bool',),
         use_hyperthreaded_cores=dict(type='bool',),
         use_legacy_netlink=dict(type='bool',),
         use_objsync=dict(type='bool',),
@@ -2503,12 +2536,12 @@ def main():
         uuid=dict(type='str',),
         vcenter_clusters=dict(type='dict',),
         vcenter_datastore_mode=dict(type='str',),
-        vcenter_datastores=dict(type='list',),
+        vcenter_datastores=dict(type='list', elements='dict',),
         vcenter_datastores_include=dict(type='bool',),
         vcenter_folder=dict(type='str',),
         vcenter_hosts=dict(type='dict',),
         vcenter_parking_vnic_pg=dict(type='str',),
-        vcenters=dict(type='list',),
+        vcenters=dict(type='list', elements='dict',),
         vcpus_per_se=dict(type='int',),
         vip_asg=dict(type='dict',),
         vnic_dhcp_ip_check_interval=dict(type='int',),

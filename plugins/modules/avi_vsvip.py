@@ -54,6 +54,7 @@ options:
             - Maximum of 128 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     cloud_ref:
         description:
             - It is a reference to an object of type cloud.
@@ -74,6 +75,7 @@ options:
             - Maximum of 1000 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     east_west_placement:
         description:
             - Force placement on all service engines in the service engine group (container clouds only).
@@ -96,6 +98,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Name for the vsvip object.
@@ -139,6 +142,7 @@ options:
             - Field introduced in 17.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     vrf_context_ref:
         description:
             - Virtual routing context that the virtual service is bound to.
@@ -213,20 +217,20 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        bgp_peer_labels=dict(type='list',),
+        bgp_peer_labels=dict(type='list', elements='str',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        dns_info=dict(type='list',),
+        dns_info=dict(type='list', elements='dict',),
         east_west_placement=dict(type='bool',),
         ipam_selector=dict(type='dict',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         tier1_lr=dict(type='str',),
         url=dict(type='str',),
         use_standard_alb=dict(type='bool',),
         uuid=dict(type='str',),
-        vip=dict(type='list',),
+        vip=dict(type='list', elements='dict',),
         vrf_context_ref=dict(type='str',),
         vsvip_cloud_config_cksum=dict(type='str',),
     )

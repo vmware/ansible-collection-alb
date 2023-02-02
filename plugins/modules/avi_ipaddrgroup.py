@@ -52,6 +52,7 @@ options:
             - Configure ip address(es).
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -64,6 +65,7 @@ options:
             - Populate the ip address ranges from the geo database for this country.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     description:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -73,6 +75,7 @@ options:
             - Configure (ip address, port) tuple(s).
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     marathon_app_name:
         description:
             - Populate ip addresses from tasks of this marathon app.
@@ -92,6 +95,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Name of the ip address group.
@@ -103,11 +107,13 @@ options:
             - Configure ip address prefix(es).
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     ranges:
         description:
             - Configure ip address range(s).
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -179,17 +185,17 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        addrs=dict(type='list',),
+        addrs=dict(type='list', elements='dict',),
         configpb_attributes=dict(type='dict',),
-        country_codes=dict(type='list',),
+        country_codes=dict(type='list', elements='str',),
         description=dict(type='str',),
-        ip_ports=dict(type='list',),
+        ip_ports=dict(type='list', elements='dict',),
         marathon_app_name=dict(type='str',),
         marathon_service_port=dict(type='int',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
-        prefixes=dict(type='list',),
-        ranges=dict(type='list',),
+        prefixes=dict(type='list', elements='dict',),
+        ranges=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
