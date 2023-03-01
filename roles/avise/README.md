@@ -26,9 +26,9 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
 |----------|----------|---------|----------|
 | `se_autoregister` | No | `true` | Autoregister the service engine to the specified controller. |
 | `se_auth_token` | No | `None`|  If defined it will be the token used to register the service engine to the controller |
-| `se_master_ctl_ip` | No | `None` | The IP address of the controller. |
-| `se_master_ctl_username` | No | `None` | The username to login into controller api. <br>**Not required when `se_autoregister: false`** |
-| `se_master_ctl_password` | No | `None` | The passowrd to login into the controller api. <br>**Not required when `se_autoregister: false`** |
+| `se_leader_ctl_ip` | No | `None` | The IP address of the controller. |
+| `se_leader_ctl_username` | No | `None` | The username to login into controller api. <br>**Not required when `se_autoregister: false`** |
+| `se_leader_ctl_password` | No | `None` | The passowrd to login into the controller api. <br>**Not required when `se_autoregister: false`** |
 | `se_cloud_name` | No | `Default-Cloud` | Name of cloud the SE should auto-register with. |
 | `se_tenant` | No | `admin` | Name of se_tenant the SE should auto-register with. |
 | `segroup_uuid` | No | `None` | Uuid of segroup_uuid the SE should auto-register with. |
@@ -82,9 +82,9 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
       include_role:
         name: avise
       vars:
-        se_master_ctl_ip: 10.10.27.101
-        se_master_ctl_username: admin
-        se_master_ctl_password: avi123
+        se_leader_ctl_ip: 10.10.27.101
+        se_leader_ctl_username: admin
+        se_leader_ctl_password: avi123
         se_disk_gb: 60
         se_cores: 4
         se_memory_gb: 12
@@ -101,9 +101,9 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
       include_role:
         name: avise
       vars:
-        se_master_ctl_ip: 10.10.27.101
-        se_master_ctl_username: admin
-        se_master_ctl_password: avi123
+        se_leader_ctl_ip: 10.10.27.101
+        se_leader_ctl_username: admin
+        se_leader_ctl_password: avi123
 ```
 
 ### Example without Auto-registration
@@ -117,7 +117,7 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
       include_role:
         name: avise
       vars:
-        se_master_ctl_ip: 10.10.27.101
+        se_leader_ctl_ip: 10.10.27.101
         se_auth_token: "{{ se_auth_token }}"
 ```
 
