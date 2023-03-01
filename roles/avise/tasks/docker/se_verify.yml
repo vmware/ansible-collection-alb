@@ -1,0 +1,4 @@
+---
+- name: Verify SSH connectivity to SE hosts
+  ping:
+  become: true

@@ -1,0 +1,18 @@
+#***************************************************************************
+# ------------------------------------------------------------------------
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# ------------------------------------------------------------------------
+#
+
+[Unit]
+Description=Avi SE Service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+
+ExecStart={{ AVI_EXECUTABLE }} start
+ExecStop={{ AVI_EXECUTABLE }} stop
+
+[Install]
+WantedBy=multi-user.target

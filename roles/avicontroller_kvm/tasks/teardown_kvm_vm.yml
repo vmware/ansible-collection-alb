@@ -1,0 +1,12 @@
+---
+# tasks file for playbooks/roles/kvm
+- name: "Avi Controller | KVM | Destroy Controller VM"
+  command: "virsh destroy {{ kvm_vm_hostname }}"
+  register: virsh_destroy_results
+  changed_when: '"destroyed" in virsh_destroy_results.stdout'
+  ignore_errors: true
+
+- name: "Avi Controller | KVM | Undefine Controller VM"
+  command: "virsh undefine {{ kvm_vm_hostname }}"
+  register: virsh_undefine_results
+  changed_when: '"undefined" in virsh_undefine_results.stdout'

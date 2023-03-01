@@ -1,0 +1,98 @@
+---
+# Variable defaults file for avinetworks.avise
+
+# set the type of deployment
+se_deploy_type: docker
+se_action: start
+se_force: true
+lsc_mode: false
+# standard parameters
+se_skip_requirements: false
+
+# se_autoregister parameters
+se_autoregister: true
+se_leader_ctl_ip: ~
+se_cloud_name: Default-Cloud
+se_tenant: admin
+
+# parameters for use when deploying as package
+se_package_deploy: false
+se_package_source: se_docker.tgz
+se_package_dest: ~/se_docker.tgz
+
+# parameters for use when pulling from docker hub or docker repo
+se_docker_repo: ~
+se_docker_repo_user: ~
+se_docker_repo_password: ~
+se_version: latest
+se_image: "avinetworks/se:{{ se_version }}"
+### docker deployment parameters ###
+se_fresh_install: false
+se_inband_mgmt: false
+se_cores: "{{ ansible_processor_vcpus }}"
+se_memory_gb: "{{ ansible_memtotal_mb / 1024 }}"
+se_destination_disk: ~
+se_destination_log_disk: ~
+se_disk_path: ~
+se_disk_gb: 10
+se_logs_disk_path: ~
+se_logs_disk_gb: 5
+
+# If se_dpdk set to true, will configure host for DPDK
+se_dpdk: false
+se_dpdk_klms_file: dpdk_klms.tar.gz
+se_dpdk_supported_nics: "82599|82598|X540|X710|XL710"
+se_dpdk_pre: ~
+se_dpdk_post: ~
+
+# Set default values
+s_disk_gb: "{{ se_disk_gb | default(omit)}}"
+s_cores: "{{ se_cores | default(omit)}}"
+s_memory_gb: "{{ se_memory_gb | default(omit)}}"
+s_logs_disk_gb: "{{ se_logs_disk_gb | default(omit)}}"
+se_uuid: ~
+se_group_name: "Default-Group"
+sysint_port: 8443
+ssh_port: 22
+
+# Mount variables which are sent to the docker container, these are used in the service templates.
+se_mounts_extras: []
+se_mounts_default:
+  - "/mnt:/mnt"
+  - "/dev:/dev"
+  - "/etc/sysconfig/network-scripts:/etc/sysconfig/network-scripts"
+  - "/:/hostroot/"
+  - "/etc/hostname:/etc/host_hostname"
+  - "/etc/localtime:/etc/localtime"
+  - "{{ '' if (se_disk_path == None) else (se_disk_path ~ ':/vol/') }}"
+  - "{{ '' if (se_logs_disk_path == None) else (se_logs_disk_path ~ ':/vol_logs/') }}"
+  - "${cont_plat_sock}:/var/run/docker.sock"
+se_mounts_all: "{{ se_mounts_extras + se_mounts_default}}"
+se_mounts_string: "{% for mount_var in se_mounts_all|reject('match', '^$') %} -v {{ mount_var }}{% endfor %}"
+
+# Environment variables which are sent to the docker container, these are used in the service templates.
+se_env_variables_extras: []
+se_env_variables_default:
+  - "CONTAINER_NAME=avise"
+  - "CONTROLLERIP={{ se_leader_ctl_ip | string }}"
+  - "UUID={{ se_uuid | string }}"
+  - "CLOUD_UUID={{ cloud_uuid | string }}"
+  - "CLOUD_NAME={{ se_cloud_name | string }}"
+  - "AVICOOKIE={{ se_auth_token | string }}"
+  - "NTHREADS={{ se_cores|int }}"
+  - "SYSINT_PORT={{ sysint_port|int }}"
+  - "CNTRL_SSH_PORT={{ ssh_port|int }}"
+  - "SEMEMMB={{ se_memory_mb|int }}"
+  - "{{ ('SE_INBAND_MGMT=true') if se_inband_mgmt else ('SE_INBAND_MGMT=false') }}"
+  - "{{ ('DOCKERNETWORKMODE=HOST_DPDK') if se_dpdk  else ('DOCKERNETWORKMODE=HOST') }}"
+  - "{{ '' if (se_disk_gb < 0) else ('DISKSZ=' + ( se_disk_gb|int * 1024 )|string) }}"
+  - "{{ '' if (se_logs_disk_gb < 0) else ('LOG_DISKSZ=' + ( se_logs_disk_gb|int * 1024 )|string) }}"
+  - "{{ '' if (segroup_uuid|string == None|string) else ('SEGROUP_UUID=' + segroup_uuid|string) }}"
+se_env_variables_all: "{{ se_env_variables_extras + se_env_variables_default }}"
+se_env_variables_string: "{% for env_var in se_env_variables_all|reject('match', '^$') %} -e {{ env_var }}{% endfor %}"
+cpu_constraint: ""
+
+# !!!! BEWARE: This is to completely override everything passed into the service template for the docker run. DON'T EDIT THIS UNLESS YOU KNOW WHAT YOUR DOING!!!!!
+AVI_RUN_PARAMS: "--name=avise --pids-limit -1 -v /run/xtables.lock:/run/xtables.lock -m {{ se_memory_mb|int }}m {{ cpu_constraint }} -d{{ se_env_variables_string }} --net=host{{ se_mounts_string }} --privileged=true {{ se_image }}"
+AVI_EXECUTABLE: "/usr/sbin/avise"
+se_service_files_path: ""

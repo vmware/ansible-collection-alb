@@ -1,0 +1,58 @@
+---
+# Check connection establishment with AVI Controller
+
+- name: Avi SE | VMware | Initial Data | Check if required login vars are defined
+  assert:
+    that:
+      - item != None
+  with_items:
+    - se_leader_ctl_ip
+    - se_leader_ctl_username
+    - se_leader_ctl_password
+
+
+- name: Avi SE | Initial Data | Get Controller information
+  vmware.alb.avi_api_session:
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
+    http_method: get
+    path: 'initial-data'                                                                                                                                    
+  register: initial_data
+
+- name: Avi SE | VMware | Initial Data | Set Controller version information
+  set_fact:
+    ctl_build: "{{ initial_data.json.version.build }}"
+    se_leader_ctl_version: "{{ initial_data.json.version.Version }}"
+  when: initial_data
+
+- name: Avi SE | VMware | Initial Data | Set SE image path for controller version < 18.2.6
+  set_fact:
+    se_image_path: "/opt/avi/se_ova"
+  when: se_leader_ctl_version < "18.2.6"
+
+- name: Avi SE | CSP | Image deploy | Set SE image path for controller version >= 18.2.6
+  set_fact:
+    se_image_path: "/host/pkgs/{{ initial_data.json.version.Tag }}"
+  when: se_leader_ctl_version >= "18.2.6"
+
+- name: Avi SE | VMware | Initial Data | Get Controller cluster status
+  vmware.alb.avi_api_session:
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
+    http_method: get
+    path: 'cluster/status'
+  register: cluster_status
+
+- name: Avi SE | VMware | Initial Data | Set Controller Cluster UUID information
+  set_fact:
+    cluster_uuid_snap: "{{ cluster_status.json.node_info.cluster_uuid.split('-')[1] }}"
+  when: cluster_status and se_vmw_ova_image_name == None
+
+- name: Avi SE | VMware | Set SE ova image name
+  set_fact:
+    se_vmw_ova_image_name: se-{{ se_leader_ctl_version }}-{{ ctl_build }}{{ cluster_uuid_snap }}.ova
+  when: se_vmw_ova_image_name == None
+
+- debug: msg="You are running Controller verison {{ se_leader_ctl_version }}-{{ ctl_build }}"

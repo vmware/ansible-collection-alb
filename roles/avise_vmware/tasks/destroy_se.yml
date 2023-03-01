@@ -1,0 +1,74 @@
+---
+- name: Avi SE | VMware | Find VM Folder
+  vmware_guest_find:
+    hostname: "{{ vcenter_host }}"
+    username: "{{ vcenter_user }}"
+    password: "{{ vcenter_password }}"
+    validate_certs: False
+    name: "{{ se_vmw_vm_name }}"
+  delegate_to: localhost
+  register: vm_facts
+
+- name: Avi SE | VMware | Get VM Info
+  vmware_vm_info:
+    hostname: '{{ vcenter_host }}'
+    username: '{{ vcenter_user }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: False
+    folder: "{{ vm_facts.folders[0] }}"
+  delegate_to: localhost
+  register: vm_info
+
+- set_fact:
+    se_vm_name: "{{ item.ip_address }}"
+  with_items:
+    - "{{ vm_info.virtual_machines | json_query(query) }}"
+  vars:
+    query: "[?guest_name=='{{ se_vmw_vm_name }}']"
+
+- name: Avi SE | VMware | Destroy SE VM
+  deploy_se:
+    ovftool_path: '{{ ovftool_path }}'
+    vcenter_host: '{{ vcenter_host }}'
+    vcenter_user: '{{ vcenter_user }}'
+    vcenter_password: '{{ vcenter_password }}'
+    ssl_verify: '{{ ssl_verify }}'
+    state: '{{ state }}'
+    se_vmw_datacenter: '{{ se_vmw_datacenter }}'
+    se_vmw_cluster: '{{ se_vmw_cluster }}'
+    se_vmw_datastore: '{{ se_vmw_datastore }}'
+    se_vmw_ovf_networks: '{{ se_vmw_ovf_networks }}'
+    se_vmw_ova_path: '{{ se_vmw_ova_path }}'
+    se_vmw_vm_name: '{{ se_vmw_vm_name }}'
+    se_vmw_power_on: '{{ se_vmw_power_on }}'
+    se_vmw_vcenter_folder: '{{ se_vmw_vcenter_folder }}'
+    se_auth_token: '{{ se_auth_token }}'
+    se_cluster_uuid: '{{ se_cluster_uuid }}'
+    se_leader_ctl_ip: '{{ se_leader_ctl_ip }}'
+  delegate_to: localhost
+
+- name: Avi SE | VMware | Service destroy | Verify SE disconnection
+  avi_api_session:
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
+    http_method: get
+    path: serviceengine
+    params:
+      name: "{{ se_vm_name }}"
+      skip_default: true
+  retries: 120
+  delay: 5
+  register: se_obj
+  until: se_obj.obj.results[0].se_connected == false
+  delegate_to: localhost
+
+- name:  Avi SE | VMware | Service destroy | Delete SE from controller
+  avi_serviceengine:
+    controller: '{{ se_leader_ctl_ip }}'
+    username: '{{ se_leader_ctl_username }}'
+    password: '{{ se_leader_ctl_password }}'
+    api_version: '{{ se_leader_ctl_version }}'
+    name: "{{ se_vm_name }}"
+    state: "absent"
+  delegate_to: localhost

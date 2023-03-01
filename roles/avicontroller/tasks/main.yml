@@ -1,0 +1,11 @@
+---
+# tasks file for avinetworks.avicontroller
+- name: Check ansible version
+  when:
+    - ansible_version.full is version_compare('2.4', '<')
+  debug: >
+    msg="This role works best with ansible version 2.4 or greater.
+    It is recommended to use the latest ansible version for the best experience."
+
+- name: Avi Controller | Deployment
+  include: "{{ con_deploy_type|lower }}/main.yml"

@@ -1,0 +1,29 @@
+---
+- name: Avi SE | VMware | Requirements | Check variables
+  assert:
+    that:
+      - "{{ item }} != None"
+    msg: "{{ item }} must be provided"
+  with_items:
+    - se_leader_ctl_ip
+    - se_leader_ctl_username
+    - se_leader_ctl_password
+    - se_vmw_disk_size
+    - se_vmw_vm_name
+    - se_vmw_number_of_cpus
+    - se_vmw_memory
+  when: not se_skip_requirements
+
+- name: Avi SE | VMware | Requirements | Validate Sizing
+  assert:
+    that:
+      - "{{ item.expr }}"
+    msg: "{{ item.msg }}"
+  with_items:
+    - expr: se_vmw_number_of_cpus|int >= 1
+      msg: "Must have 1 or more CPU"
+    - expr: se_vmw_memory|int >= 1024
+      msg: "Must have 1024MB or more memory"
+    - expr: se_vmw_disk_size|int >= 10
+      msg: "Must have 10GB or more disk size"
+  when: not se_skip_requirements

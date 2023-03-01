@@ -1,0 +1,28 @@
+# Deployment using CSP. This does require you to download the QCOW from the Avi customer portal.
+# Using the relative, or absolute location of the file will allow you to upload, and configure the CSP service.
+#
+
+- name: Check ansible version
+  when:
+    - ansible_version.full is version_compare('2.4', '<')
+  debug: msg="This role works best with ansible version 2.4 or greater. It is recommended to use the latest ansible version for the best experience."
+
+- name: Avi SE | Set facts
+  set_fact:
+    se_autoregister: false
+  when: se_auth_token != None
+
+- name: Avi SE | CSP | Initial Data
+  include: initial_data.yml
+
+- name: Avi SE | CSP | Requirements
+  include: requirements.yml
+
+- name: Avi SE | CSP | Image deploy
+  include: qcow_deploy.yml
+
+- name: Avi SE | CSP | Metafile deploy
+  include: metafile_deploy.yml
+
+- name: Avi SE | CSP | Service deploy
+  include: service_deploy.yml

@@ -1,0 +1,41 @@
+---
+- name: Avi SE | CSP | Metafile deploy | See if the metafile already exists
+  uri:
+    url: "https://{{ se_csp_host }}/api/operational/repository/image/{{ se_csp_metafile_name }}/_operations/get_image"
+    method: POST
+    user: "{{ se_csp_user }}"
+    password: "{{ se_csp_password }}"
+    force_basic_auth: yes
+    headers:
+      Accept: '*/*'
+    validate_certs: false
+    return_content: true
+  failed_when: false
+  register: se_avi_metafile_exists
+  delegate_to: localhost
+
+- debug: msg="Metafile {{ se_avi_metafile_exists_json.output.name }} already exists."
+  vars:
+    se_avi_metafile_exists_json: "{{ se_avi_metafile_exists.content|from_json }}"
+  when: se_avi_metafile_exists.status == 200 and se_csp_resource_info['resource:resource'].csp_version is version_compare("02.04", "<")
+
+- debug: msg="Metafile {{ se_avi_metafile_exists_json['question_xml:output']['name'] }} already exists."
+  vars:
+    se_avi_metafile_exists_json: "{{ se_avi_metafile_exists.content|from_json }}"
+  when: se_avi_metafile_exists.status == 200 and se_csp_resource_info['resource:resource'].csp_version is version_compare("02.04", ">=")
+
+- block:
+    - name: Avi SE | CSP | Metafile deploy | Autoregistration
+      include: ../autoregistration.yml
+      when: se_autoregister
+    - name: Avi SE | CSP | Metafile deploy | Create metafile content
+      template:
+        src: avi_meta_se.j2
+        dest: /tmp/{{ se_csp_metafile_name }}
+      delegate_to: localhost
+      register: se_avi_metafile
+    - name: Avi SE | CSP | Metafile deploy | Deploy metafile {{ se_csp_metafile_name }} to the CSP device
+      shell: sshpass -p {{ se_csp_password }} scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /tmp/{{ se_csp_metafile_name }} {{ se_csp_user }}@{{ se_csp_host }}:/osp/repository
+      delegate_to: localhost
+      failed_when: false
+  when: se_avi_metafile_exists.status != 200

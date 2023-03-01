@@ -1,0 +1,29 @@
+---
+- name: Read existing docker run params
+  include: docker_run.yml
+
+- block:
+  - name: Read existing cloud uuid
+    shell: "echo {{ se_existing_run_params }} | sed -e 's/CLOUD_UUID=/\\n/g' | awk 'FNR == 2 {print $1}'"
+    register: c_uuid
+  - name: Read existing controller IP
+    shell: "echo {{ se_existing_run_params }} | sed -e 's/CONTROLLERIP=/\\n/g' | awk 'FNR == 2 {print $1}'"
+    register: cip
+  - name: Read existing cloud name
+    shell: "echo {{ se_existing_run_params }} | sed -e 's/CLOUD_NAME=/\\n/g' | awk 'FNR == 2 {print $1}'"
+    register: cname
+  when: se_existing_run_params is defined
+
+- block:
+  - name: Check the cloud uuids
+    set_fact:
+      error_string: "Cannot create ServiceEngine since it is running on Cloud '{{ cname.stdout }}' on Controller '{{ cip.stdout }}'"
+  - include: error.yml
+  when: >
+    se_service_file.stat.exists and c_uuid.stdout is defined and cname.stdout is defined and cip.stdout is defined
+    and c_uuid.stdout|string != cloud_uuid|string
+
+- name: Read existing SE version
+  set_fact:
+      se_existing_ver: "{{ se_existing_run_params.split(':') | last }}"
+  when: se_existing_run_params is defined

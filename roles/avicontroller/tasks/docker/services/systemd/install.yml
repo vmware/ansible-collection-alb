@@ -1,0 +1,10 @@
+---
+- name: Avi Controller | Services | systemd | Deploy the avicontroller service
+  template:
+    src: avicontroller.service.j2
+    dest: /etc/systemd/system/avicontroller.service
+    mode: 0644
+  register: avicontroller_service
+  notify:
+    - Avi Controller | Services | systemd | Daemon reload
+    - Avi Controller | Services | Restart the avicontroller service

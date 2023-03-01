@@ -1,0 +1,37 @@
+---
+# defaults file for avinetworks.avicontroller-csp
+
+# parameters for the CSP deployment
+con_skip_requirements: false
+con_csp_user: ~
+con_csp_password: ~
+con_csp_qcow_image_file: controller.qcow
+con_csp_qcow_image_name: "{{ con_csp_qcow_image_file|basename }}"
+con_csp_mgmt_ip: ~
+con_csp_mgmt_mask: ~
+con_csp_default_gw: ~
+con_csp_disk_size: ~
+con_csp_disk_type: virtio
+con_csp_service_name: avi-controller
+con_csp_metafile_name: avi_meta_{{ con_csp_service_name }}.yml
+con_csp_num_cpu: ~
+con_csp_memory_gb: ~
+con_csp_memory_mb: "{{ con_csp_memory_gb|int * 1024 }}"
+con_csp_platform: csp-2100
+con_csp_compat_version: 02.02.04.00
+con_csp_vnics:
+  - nic: '0'
+    type: access
+    tagged: 'false'
+    network_name: enp1s0f0
+con_csp_meta_config: {}
+con_csp_meta_options:
+  avi.mgmt-ip.CONTROLLER: "{{ con_csp_mgmt_ip | default(None) }}"
+  avi.default-gw.CONTROLLER: "{{ con_csp_default_gw | default(None) }}"
+  avi.mgmt-mask.CONTROLLER: "{{ con_csp_mgmt_mask | default(None) }}"
+  avi.hsm-ip.CONTROLLER: "{{ con_csp_hsm_ip | default(None) }}"
+  avi.hsm-mask.CONTROLLER: "{{ con_csp_hsm_mask | default(None) }}"
+  avi.hsm-static-routes.CONTROLLER: "{{ con_csp_hsm_static_routes | default(None) }}"
+  avi.hsm-vnic-id.CONTROLLER: "{{ con_csp_hsm_vnic_id | default(None) }}"
+  avi.bond-ifs.CONTROLLER: "{{ con_csp_bond_ifs | default(None) }}"
+  avi.bond-mode.CONTROLLER: "{{ con_csp_bond_mode | default(None) }}"

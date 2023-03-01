@@ -1,0 +1,52 @@
+---
+# Manage getting ova image from controller to local to be used by ovftool for deployment on 
+# VMware Cloud
+
+
+- name: Avi SE | VMware | Image deploy | Verify ova exists on controller
+  stat: path={{ se_image_path }}/{{ se_vmw_ova_image_file }}
+  register: se_ova_status
+
+- block:
+    - name:  Avi SE | VMware | Image deploy | Genarate SE image if not exist on controller
+      avi_api_session:
+        controller: '{{ se_leader_ctl_ip }}'
+        username: '{{ se_leader_ctl_username }}'
+        password: '{{ se_leader_ctl_password }}'
+        api_version: '{{ se_leader_ctl_version }}'
+        http_method: post
+        path: 'fileservice/seova'
+        timeout: 600
+        data:
+          file_format: ova
+      delegate_to: localhost
+  when: (not se_ova_status.stat.exists) or (se_vmw_ova_force_mode)
+
+- name: Avi SE | VMware | Verify SE image on Controller
+  stat: path={{ se_image_path }}/{{ se_vmw_ova_image_file }}
+  register: se_ova_status
+
+- name: Avi SE | VMware | Verify SE image on Local
+  stat: path={{ se_vmw_ova_download_path }}/{{ se_vmw_ova_image_name }}
+  register: se_ova_local_status
+  delegate_to: localhost
+
+- name: Avi SE | VMware | Image Deploy | Get SE image on Local
+  avi_api_fileservice:
+    controller: '{{ se_leader_ctl_ip }}'
+    username: '{{ se_leader_ctl_username }}'
+    password: '{{ se_leader_ctl_password }}'
+    api_version: '{{ se_leader_ctl_version }}'
+    upload: false
+    path: seova
+    file_path: '{{ se_vmw_ova_download_path }}/{{ se_vmw_ova_image_name }}'
+  delegate_to: localhost
+  when: not se_ova_local_status.stat.exists
+
+- name: Avi SE | VMware | Verify SE image on Local
+  block:
+    - stat: path={{ se_vmw_ova_download_path }}/{{ se_vmw_ova_image_name }}
+      register: se_ova_local_status
+    - set_fact: se_vmw_ova_path={{ se_ova_local_status.stat.path }}
+    - debug: msg='{{ se_vmw_ova_path }}'
+  delegate_to: localhost
