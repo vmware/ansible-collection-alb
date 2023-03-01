@@ -1,0 +1,7 @@
+---
+# tasks file for avinetworks.avise
+
+# This task will appropriately start the selected type of deployment.
+# It was added to prevent mass "skipped" messages when deploying Avi.
+- name: Avi SE | Deployment
+  include: docker/main.yml

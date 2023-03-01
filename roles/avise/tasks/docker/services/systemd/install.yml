@@ -1,0 +1,21 @@
+---
+- name: systemd | Deploy the avise service
+  template:
+    src: "{{ se_service_files_path }}avise_service.j2"
+    dest: /etc/systemd/system/avise.service
+    mode: 0644
+  become: true
+  notify:
+    - Avi SE | Services | systemd | Daemon reload
+    - Avi SE | Services | Restart the avise service
+
+- name: restorecon avise SELinux context to systemd_unit_file_t
+  command: "restorecon /etc/systemd/system/avise.service -F"
+  register: result
+  failed_when: result.rc > 0
+  become: true
+  ignore_errors: yes
+
+  notify:
+    - Avi SE | Services | systemd | Daemon reload
+    - Avi SE | Services | Restart the avise service

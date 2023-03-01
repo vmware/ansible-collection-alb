@@ -1,0 +1,45 @@
+---
+# defaults file for avise_vmware
+se_skip_requirements: false
+
+# se_autoregister parameters
+se_autoregister: true
+se_auth_token: ~
+se_leader_ctl_ip: ~
+se_leader_ctl_username: ~
+se_leader_ctl_password: ~
+se_tenant: admin
+se_cloud_name: Default-Cloud
+se_group_name: Default-Group
+
+se_vmw_ova_force_mode: false
+se_vmw_ova_image_file: se.ova
+se_vmw_ova_image_name: ~
+se_vmw_ova_path: ~
+
+ovftool_path: /usr/bin/
+vcenter_host: ~
+vcenter_user: ~
+vcenter_password: ~
+ssl_verify: false
+state: "present"
+se_vmw_datacenter: ~
+se_vmw_cluster: ~
+se_vmw_datastore: ~
+se_vmw_ovf_networks: ~
+se_vmw_disk_mode: thin
+se_vmw_vm_name: ~
+se_vmw_power_on: ~
+se_vmw_vcenter_folder: ~
+se_vmw_mgmt_ip: ~
+se_vmw_mgmt_mask: ~
+se_vmw_default_gw: ~
+se_vmw_sysadmin_public_key: ~
+se_vmw_number_of_cpus: ~
+se_vmw_cpu_reserved: ~
+se_vmw_memory: ~
+se_vmw_memory_reserved: ~
+se_vmw_disk_size: 15
+se_vmw_ovf_properties: ~
+se_vmw_ova_download_path: .
+se_vmw_host: ~

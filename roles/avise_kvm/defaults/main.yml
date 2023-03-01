@@ -1,0 +1,31 @@
+---
+# defaults file for playbooks/roles/kvm-vm
+kvm_host_ip: "{{ inventory_hostname }}"
+kvm_vm_hostname: ~
+kvm_host_username: "{{ ansible_ssh_user }}"
+kvm_host_password: "{{ ansible_ssh_pass }}"
+# kvm_vm_base_img: ~
+kvm_vm_vcpus: "2"
+kvm_vm_ram: "2048"
+kvm_vm_os_disk_size: "20"
+
+se_kvm_ctrl_ip: ~
+se_kvm_ctrl_username: ~
+se_kvm_ctrl_password: ~
+se_kvm_ctrl_version: ~
+
+se_kvm_mgmt_ip: ~
+se_kvm_mgmt_mask: ~
+se_kvm_default_gw: ~
+se_bond_seq: ~
+se_kvm_vnics_config: ~
+se_tenant: "admin"
+se_image_gen_timeout: 700
+
+kvm_host_mgmt_intf: ~
+kvm_pinning: true
+kvm_force_mode: true
+state: "create"
+kvm_virt_intf_name: ~
+kvm_total_num_vfs: ~
+ci_iso: /var/lib/libvirt/images/{{ kvm_vm_hostname }}-cidata.iso

@@ -1,0 +1,43 @@
+---
+- name: "Avi Controller | KVM | Requirements | Check variables"
+  assert:
+    that:
+      - "{{ item }} != None"
+    msg: "{{ item }} must be provided"
+  with_items:
+    - kvm_host_ip
+    - kvm_vm_base_img
+    - kvm_vm_hostname
+    - kvm_host_username
+    - kvm_host_password
+    - ctrl_mgmt_ip
+    - ctrl_mgmt_mask
+    - ctrl_default_gw
+    - kvm_host_mgmt_intf
+
+- name: "Avi Controller | KVM | Get all VM's list from KVM host"
+  virt:
+    command: list_vms
+  register: vm_information
+
+- name: "Avi Controller | KVM | Check VM {{ kvm_vm_hostname }} exist or not"
+  debug:
+    msg: "VM with name {{ kvm_vm_hostname }} already exist."
+  when: 'kvm_vm_hostname in vm_information.list_vms'
+
+- name: "Avi Controller | KVM | Destroying the existing VM"
+  command: virsh destroy {{ kvm_vm_hostname }}
+  when: 'kvm_vm_hostname in vm_information.list_vms and kvm_force_mode'
+
+- name: "Avi Controller | KVM | Undefining the existing VM"
+  command: virsh undefine {{ kvm_vm_hostname }}
+  when: 'kvm_vm_hostname in vm_information.list_vms and kvm_force_mode'
+
+- name: "Avi Controller | KVM | Exit the execution"
+  fail:
+    msg: "Not overwriting {{ kvm_vm_hostname }}. Exiting..."
+  when: 'kvm_vm_hostname in vm_information.list_vms and not kvm_force_mode'
+
+- name: "Avi Controller | KVM | Removing the existing VM data and qcow2"
+  command: "rm -rf /root/{{ kvm_vm_hostname }} /var/lib/libvirt/images/{{ kvm_vm_hostname }}.qcow2"
+  when: 'kvm_vm_hostname in vm_information.list_vms and kvm_force_mode'

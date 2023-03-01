@@ -1,0 +1,135 @@
+---
+# autoregistration tasks file for avinetworks.avise
+# these tasks will automatically register the service engine to the controller
+
+- name: Avi SE | Autoregistration | Get Controller information
+  uri:
+    url: "https://{{ se_leader_ctl_ip }}/api/initial-data"
+    validate_certs: no
+  register: controller_initial_data
+  delegate_to: localhost
+
+- name: Avi SE | Autoregistration | Set Controller version information
+  set_fact:
+    controller_api_version: "{{ controller_initial_data.json.version.Version }}"
+  when: controller_initial_data
+
+- debug: msg="You are running Controller verison {{ controller_api_version }}"
+
+- name: Avi SE | VMware | Initial Data | Set SE image path for controller version < 18.2.6
+  set_fact:
+    se_image_path: "/opt/avi/se_ova"
+  when: controller_api_version < "18.2.6"
+
+- name: Avi SE | CSP | Image deploy | Set SE image path for controller version >= 18.2.6
+  set_fact:
+    se_image_path: "/host/pkgs/{{ controller_initial_data.json.version.Tag }}"
+  when: controller_api_version >= "18.2.6"
+
+- name: Avi SE | Autoregistration | Set se_version
+  set_fact:
+    se_version: "{{ controller_initial_data.json.version.Tag }}"
+  when: se_version is undefined or se_version == "latest"
+
+- name: Avi SE | Set SE Image Name
+  set_fact:
+    se_image: "avinetworks/se:{{ se_version }}"
+  when: se_version is defined
+
+- name: Avi SE | Autoregistration | Get the cloud uuid from se_cloud_name
+  avi_api_session:
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
+    tenant: "{{ se_tenant }}"
+    api_version: "{{ controller_api_version }}"
+    http_method: get
+    path: "cloud?name={{ se_cloud_name }}"
+  register: se_cloud_data
+  when: cloud_uuid is undefined
+  delegate_to: localhost
+
+- name: Avi SE | Autoregistration | Get a token from the Avi Controller
+  avi_api_session:
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
+    tenant: "{{ se_tenant }}"
+    api_version: "{{ controller_api_version }}"
+    http_method: get
+    path: securetoken-generate?cloud_uuid={{ se_cloud_data.obj.results[0].uuid }}
+  register: se_authtoken
+  when: se_auth_token is undefined
+  delegate_to: localhost
+
+- name: "Avi SE | Autoregistration | Append the token to the docker environment variables."
+  set_fact:
+    se_auth_token: "{{ se_authtoken.obj.auth_token }}"
+  when: se_auth_token is undefined
+
+- debug: msg="Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }}"
+
+- name: Avi SE | Autoregistration | Get a se group uuid of {{ se_group_name }} from the Avi Controller
+  avi_api_session:
+    controller: "{{ se_leader_ctl_ip }}"
+    username: "{{ se_leader_ctl_username }}"
+    password: "{{ se_leader_ctl_password }}"
+    tenant: "{{ se_tenant }}"
+    api_version: "{{ controller_api_version }}"
+    http_method: get
+    path: "serviceenginegroup?name={{ se_group_name }}"
+  register: se_group_uuid
+  when: segroup_uuid is undefined
+  delegate_to: localhost
+
+- name: Set cloud uuid
+  set_fact:
+    cloud_uuid: "{{ se_cloud_data.obj.results[0].uuid }}"
+  when: cloud_uuid is undefined and se_cloud_data is defined
+
+- name: Set se group uuid
+  set_fact:
+    segroup_uuid: "{{ se_group_uuid.obj.results[0].uuid }}"
+  when: segroup_uuid is undefined and se_group_uuid is defined
+
+- name: Avi SE | Check se_docker.tgz exit or not
+  stat:
+      path: "{{ se_package_source }}"
+  register: file_details
+
+- debug:
+      msg: "Se_docker.tgz exist"
+  when: file_details.stat.exists
+
+- block:
+  - debug:
+        msg: "se_docker.tgz doesn't exist"
+
+  - name: Avi SE | Check se_docker.tgz is exist or not on the controller
+    shell: >
+      sshpass -p "{{ se_leader_ctl_password }}" ssh -t "{{ se_leader_ctl_username }}"@"{{ se_leader_ctl_ip }}"
+      'echo "{{ se_leader_ctl_password }}" | sudo -S ls -1 "{{ se_image_path }}" | grep se_docker.tgz | wc -l'
+    register: file_exist
+
+  - name: Avi SE | Autoregistration | Generate se_docker.tgz on the controller
+    shell: >
+      sshpass -p "{{ se_leader_ctl_password }}" ssh -t -o ConnectTimeout=54000 "{{ se_leader_ctl_username }}"@"{{ se_leader_ctl_ip }}"
+      'echo "{{ se_leader_ctl_password }}" | sudo -S python3 /opt/avi/bootstrap/generate_se_docker.py'
+    when: (file_exist.stdout == "0") and (se_leader_ctl_password is defined) and controller_api_version < "18.2.6"
+
+  - name: Avi SE | Autoregistration | Generate se_docker.tgz on the controller
+    shell: >
+      sshpass -p "{{ se_leader_ctl_password }}" ssh -t -o ConnectTimeout=54000 "{{ se_leader_ctl_username }}"@"{{ se_leader_ctl_ip }}"
+      'echo "{{ se_leader_ctl_password }}" | sudo -S python3 /opt/avi/bootstrap/generate_se_docker.py -sdp "{{ se_image_path }}" -sd "{{ se_image_path }}"'
+    when: (file_exist.stdout == "0") and (se_leader_ctl_password is defined) and controller_api_version >= "18.2.6"
+
+  - name: Avi SE | Copy Generated se_docker.tgz to tmp
+    shell: >
+      sshpass -p "{{ se_leader_ctl_password }}" ssh -t "{{ se_leader_ctl_username }}"@"{{ se_leader_ctl_ip }}"
+      'echo "{{ se_leader_ctl_password }}" | sudo -S cp "{{ se_image_path }}/se_docker.tgz" /tmp'
+
+  - name: Avi SE | Copy se_docker.tgz file from controller
+    shell: >
+      sshpass -p "{{ se_leader_ctl_password }}" scp "{{ se_leader_ctl_username }}"@"{{ se_leader_ctl_ip }}":/tmp/se_docker.tgz
+      "{{ se_package_source }}"
+  when: (not file_details.stat.exists) and (se_leader_ctl_password is defined)

@@ -1,0 +1,36 @@
+---
+- name: Checking minimum requirements
+  include: requirements.yml
+
+- name: Avi SE | Docker | Check if specified image already exists.
+  shell: "{{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l"
+  changed_when: false
+  register: se_docker_match
+  become: true
+
+- block:
+  - name: Copy SE image
+    copy: src={{ se_package_source }} dest={{ se_package_dest }}
+  - name: Load docker image
+    command: "{{ se_deploy_type }} load -i {{ se_package_dest }}"
+  when: se_docker_match.stdout|int != 1
+  become: true
+
+- block:
+  - name: Enable Podman Socket
+    command: "systemctl enable podman.socket"
+  when: se_deploy_type == "podman"
+  become: true
+
+- block:
+  - name: Start Podman Socket
+    command: "systemctl start podman.socket"
+  when: se_deploy_type == "podman"
+  become: true
+
+- name: Avi SE | Install DPDK
+  include: dpdk.yml
+  when: se_dpdk
+
+- name: Avi SE | Install the Avi SE service
+  include: services/install.yml

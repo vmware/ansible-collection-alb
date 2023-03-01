@@ -1,0 +1,106 @@
+---
+# check system against minimum requirements
+- name: Avi Controller | Requirements | Check for docker
+  command: "which docker"
+  register: docker
+  changed_when: false
+
+- name: Avi Controller | Requirements | Get docker version
+  shell: "docker -v | cut -d ' ' -f 3 | cut -d ',' -f 1"
+  register: docker_version
+  changed_when: false
+
+- name: Avi Controller | Requirements | Check docker version
+  assert:
+    that:
+      - docker_version.stdout is version_compare('1.10.2', '>=')
+
+- name: Avi Controller | Requirements | Verify con_version not "latest"
+  assert:
+    that:
+      - con_version != "latest"
+
+- block:
+    - name: Avi Controller | Requirements | Get the management device name | ip addr
+      shell: "ip addr show | grep {{ con_controller_ip }} | awk '{print $NF}'"
+      register: con_mgmt_device
+      changed_when: false
+    - name: Avi Controller | Requirements | Set the management device name | ip addr
+      set_fact:
+        con_dev_name: "{{ con_mgmt_device.stdout }}"
+        AVICONTROLLER_DEV_NAME: "{{ con_mgmt_device.stdout }}"
+  when: con_dev_name == None
+
+- name: Avi Controller | Requirements | Set max_cores and memory limits of environment
+  set_fact:
+    con_max_cores: "{{ ansible_processor_cores * ansible_processor_count * ansible_processor_threads_per_core }}"
+    con_ansible_memtotal_gb: "{{ ansible_memtotal_mb // 1024 }}"
+
+- name: Avi Controller | Requirements | Get Ansible processor info
+  debug:
+    msg: >-
+      con_max_cores {{ con_max_cores }}
+      ansible processor cores {{ ansible_processor_cores }}
+      count {{ ansible_processor_count }}
+      threads {{ ansible_processor_threads_per_core }}
+  when: not con_skip_requirements
+
+- name: Avi Controller | Requirements | Validate Parameters
+  assert:
+    that:
+      - "ansible_memtotal_mb >= 12288"
+      - "con_memory_gb|int <= con_ansible_memtotal_gb|int"
+      - "con_max_cores|int >= 4"
+      - "con_cores|int <= con_max_cores|int"
+  when: not con_skip_requirements
+
+- name: Avi Controller | Requirements | Fresh install steps
+  include: fresh_install.yml
+  when: con_fresh_install
+
+- name: Avi Controller | Requirements | Create directories for controller
+  file: path="{{ item }}" state=directory mode=0755
+  when: item != None
+  with_items:
+    - "{{ con_disk_path }}"
+    - "{{ con_metrics_disk_path }}"
+    - "{{ con_logs_disk_path }}"
+
+- name: Avi Controller | Requirements | Get disk space on controller disk path
+  shell: "df {{ con_disk_path }} -BG | grep -iv Used | awk '{print $4}' | sed s/G//g"
+  changed_when: false
+  register: con_disk_path_space
+  when: con_disk_path != None
+
+- name: Avi Controller | Requirements | Get disk space on controller logs disk path
+  shell: "df {{ con_logs_disk_path }} -BG | grep -iv Used | awk '{print $4}' | sed s/G//g"
+  changed_when: false
+  register: con_logs_disk_path_space
+  when: con_logs_disk_path != None
+
+- name: Avi Controller | Requirements | Get disk space on controller metrics disk path
+  shell: "df {{ con_metrics_disk_path }} -BG | grep -iv Used | awk '{print $4}' | sed s/G//g"
+  changed_when: false
+  register: con_metrics_disk_path_space
+  when: con_metrics_disk_path != None
+
+- block:
+    - name: Avi Controller | Requirements | Check if there is enough space for controller disk path
+      assert:
+        that:
+          - con_disk_gb != None
+          - con_disk_path_space.stdout|int > con_disk_gb|int
+      when: con_disk_path != None
+    - name: Avi Controller | Requirements | Check if there is enough space for controller metrics disk path
+      assert:
+        that:
+          - con_metrics_disk_gb != None
+          - con_metrics_disk_path_space.stdout|int > con_metrics_disk_gb|int
+      when: con_metrics_disk_path != None
+    - name: Avi Controller | Requirements | Check if there is enough space for controller logs disk path
+      assert:
+        that:
+          - con_logs_disk_gb != None
+          - con_logs_disk_path_space.stdout|int > con_logs_disk_gb|int
+      when: con_logs_disk_path != None
+  when: not con_skip_requirements
