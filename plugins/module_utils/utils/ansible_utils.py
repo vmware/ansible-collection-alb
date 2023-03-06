@@ -389,7 +389,7 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
     api_context = get_api_context(module, api_creds)
     idp_class = api_creds.idp_class
     idp = get_idp_class(idp_class)
-    if not idp:
+    if idp_class and not idp:
         msg = "IDP {0} not supported yet.".format(idp_class)
         return module.fail_json(msg=msg)
     if api_context:
