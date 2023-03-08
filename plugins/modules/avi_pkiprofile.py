@@ -47,6 +47,15 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    allow_pki_errors:
+        description:
+            - Exempt errors during certificate verification.
+            - Enum options - ALLOW_EXPIRED_CRL, ALLOW_ALL_ERRORS.
+            - Field introduced in 22.1.4.
+            - Maximum of 1 items allowed.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: str
     ca_certs:
         description:
             - List of certificate authorities (root and intermediate) trusted that is used for certificate validation.
@@ -175,6 +184,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        allow_pki_errors=dict(type='list', elements='str',),
         ca_certs=dict(type='list', elements='dict',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
