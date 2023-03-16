@@ -5,7 +5,7 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-from avi.sdk.avi_api import ApiSession, \
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, \
     sessionDict, APIError, AviCredentials
 import os
 import sys
