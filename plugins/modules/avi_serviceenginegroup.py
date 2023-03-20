@@ -2179,6 +2179,28 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 600.
         type: int
+    vs_se_primary_switchover_additional_wait_time:
+        description:
+            - Wait time for primary switchover ready notification after flows are completed.
+            - In certain deployments, there may be an additional delay to accept traffic.
+            - For example, for bgp, some time is needed for route advertisement.
+            - Allowed values are 0-300.
+            - Field introduced in 30.2.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
+    vs_se_scalein_additional_wait_time:
+        description:
+            - Wait time for sending scalein ready notification after flows are completed.
+            - In certain deployments, there may be an additional delay to accept traffic.
+            - For example, for bgp, some time is needed for route advertisement.
+            - Allowed values are 0-300.
+            - Field introduced in 30.2.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
     vs_se_scaleout_additional_wait_time:
         description:
             - Wait time for sending scaleout ready notification after virtual service is marked up.
@@ -2554,6 +2576,8 @@ def main():
         vs_scalein_timeout=dict(type='int',),
         vs_scalein_timeout_for_upgrade=dict(type='int',),
         vs_scaleout_timeout=dict(type='int',),
+        vs_se_primary_switchover_additional_wait_time=dict(type='int',),
+        vs_se_scalein_additional_wait_time=dict(type='int',),
         vs_se_scaleout_additional_wait_time=dict(type='int',),
         vs_se_scaleout_ready_timeout=dict(type='int',),
         vs_switchover_timeout=dict(type='int',),
