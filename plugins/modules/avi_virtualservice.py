@@ -105,6 +105,23 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: str
+    bgp_local_preference:
+        description:
+            - Local_pref to be used for vsvip advertised.
+            - Applicable only over ibgp.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: int
+    bgp_num_as_path_prepend:
+        description:
+            - Number of times the local as should be prepended additionally to vsvip.
+            - Applicable only over ebgp.
+            - Allowed values are 1-10.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: int
     bgp_peer_labels:
         description:
             - Select bgp peers, using peer label, for vsvip advertisement.
@@ -737,6 +754,8 @@ def main():
         analytics_profile_ref=dict(type='str',),
         application_profile_ref=dict(type='str',),
         azure_availability_set=dict(type='str',),
+        bgp_local_preference=dict(type='int',),
+        bgp_num_as_path_prepend=dict(type='int',),
         bgp_peer_labels=dict(type='list', elements='str',),
         bot_policy_ref=dict(type='str',),
         bulk_sync_kvcache=dict(type='bool',),

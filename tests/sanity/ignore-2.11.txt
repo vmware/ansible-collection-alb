@@ -5,6 +5,8 @@ plugins/modules/avi_sslprofile.py pep8:E501
 plugins/module_utils/avi_api.py pylint!skip
 plugins/module_utils/saml_avi_api.py pylint!skip
 plugins/module_utils/utils/ansible_utils.py pylint!skip
+plugins/module_utils/avi_api.py import-3.8!skip
+plugins/module_utils/csp_avi_api.py import-3.8!skip
 plugins/modules/avi_sslkeyandcertificate.py compile-2.6
 plugins/modules/avi_gslb.py compile-2.6
 plugins/modules/avi_controllerproperties.py compile-2.6

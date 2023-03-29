@@ -345,6 +345,13 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 50.
         type: int
+    ignore_vrf_in_networksubnetlist:
+        description:
+            - Ignore the vrf_context filter for /networksubnetlist api.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     max_dead_se_in_grp:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -857,6 +864,7 @@ def main():
         file_object_cleanup_period=dict(type='int',),
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
+        ignore_vrf_in_networksubnetlist=dict(type='bool',),
         max_dead_se_in_grp=dict(type='int',),
         max_pcap_per_tenant=dict(type='int',),
         max_se_spawn_interval_delay=dict(type='int',),

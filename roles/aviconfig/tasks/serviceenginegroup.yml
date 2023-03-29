@@ -287,6 +287,8 @@
     vs_scalein_timeout: "{{ item.vs_scalein_timeout | default(omit) }}"
     vs_scalein_timeout_for_upgrade: "{{ item.vs_scalein_timeout_for_upgrade | default(omit) }}"
     vs_scaleout_timeout: "{{ item.vs_scaleout_timeout | default(omit) }}"
+    vs_se_primary_switchover_additional_wait_time: "{{ item.vs_se_primary_switchover_additional_wait_time | default(omit) }}"
+    vs_se_scalein_additional_wait_time: "{{ item.vs_se_scalein_additional_wait_time | default(omit) }}"
     vs_se_scaleout_additional_wait_time: "{{ item.vs_se_scaleout_additional_wait_time | default(omit) }}"
     vs_se_scaleout_ready_timeout: "{{ item.vs_se_scaleout_ready_timeout | default(omit) }}"
     vs_switchover_timeout: "{{ item.vs_switchover_timeout | default(omit) }}"
