@@ -2073,7 +2073,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Pool size used for all fabric commands during se upgrade.
+                  - The pool size is used to control the number of concurrent segroup upgrades.
+                </div>
+                                <div style="font-size: small">
+                  - This field value takes affect upon controller warm reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 2-20.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.

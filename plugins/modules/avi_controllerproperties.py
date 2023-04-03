@@ -574,7 +574,9 @@ options:
         type: int
     seupgrade_fabric_pool_size:
         description:
-            - Pool size used for all fabric commands during se upgrade.
+            - The pool size is used to control the number of concurrent segroup upgrades.
+            - This field value takes affect upon controller warm reboot.
+            - Allowed values are 2-20.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 20.
         type: int
