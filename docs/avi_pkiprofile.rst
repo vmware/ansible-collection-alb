@@ -149,7 +149,7 @@ Parameters
                   - Enum options - ALLOW_EXPIRED_CRL, ALLOW_ALL_ERRORS.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.4.
+                  - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 1 items allowed.
