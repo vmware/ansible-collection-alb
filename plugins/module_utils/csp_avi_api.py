@@ -80,8 +80,8 @@ class CSPApiSession(ApiSession):
                 return
             # Check for bad request and invalid credentials response code
             elif rsp.status_code in [401, 403]:
-                logger.error('Status Code %s msg %s', (
-                    rsp.status_code, rsp.text))
+                logger.error('Status Code %s msg %s',
+                             rsp.status_code, rsp.text)
                 err = APIError('Failed: %s Status Code %s msg %s', (
                     rsp.url, rsp.status_code, rsp.text), rsp)
                 raise err
@@ -103,8 +103,8 @@ class CSPApiSession(ApiSession):
         self.num_session_retries += 1
         if self.num_session_retries > self.max_session_retries:
             self.num_session_retries = 0
-            logger.error("giving up after %d retries connection failure %s", (
-                self.max_session_retries, True))
+            logger.error("giving up after %d retries connection failure %s",
+                         self.max_session_retries, True)
             raise err
         self.generate_access_token()
         return
