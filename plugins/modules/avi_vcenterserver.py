@@ -65,7 +65,6 @@ options:
             - Vcenter template to create service engine.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        required: true
         type: dict
     name:
         description:
@@ -97,14 +96,12 @@ options:
             - It is a reference to an object of type cloudconnectoruser.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        required: true
         type: str
     vcenter_url:
         description:
             - Vcenter hostname or ip address.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        required: true
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -153,13 +150,13 @@ def main():
         avi_patch_value=dict(type='str',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        content_lib=dict(type='dict', required=True),
+        content_lib=dict(type='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
-        vcenter_credentials_ref=dict(type='str', required=True),
-        vcenter_url=dict(type='str', required=True),
+        vcenter_credentials_ref=dict(type='str',),
+        vcenter_url=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
