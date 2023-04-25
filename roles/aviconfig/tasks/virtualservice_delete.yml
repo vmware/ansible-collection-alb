@@ -42,6 +42,7 @@
     enable_autogw: "{{ item.enable_autogw | default(omit) }}"
     enable_rhi: "{{ item.enable_rhi | default(omit) }}"
     enable_rhi_snat: "{{ item.enable_rhi_snat | default(omit) }}"
+    enable_session: "{{ item.enable_session | default(omit) }}"
     enabled: "{{ item.enabled | default(omit) }}"
     error_page_profile_ref: "{{ item.error_page_profile_ref | default(omit) }}"
     flow_dist: "{{ item.flow_dist | default(omit) }}"

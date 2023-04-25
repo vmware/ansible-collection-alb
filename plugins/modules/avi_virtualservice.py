@@ -248,6 +248,14 @@ options:
             - Enable route health injection for source nat'ted floating ip address using the bgp config in the vrf context.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: bool
+    enable_session:
+        description:
+            - Enable http sessions for this virtual service.
+            - If enabled, a session cookie will be added to http responses and persistent key-value store will be activated.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     enabled:
         description:
             - Enable or disable the virtual service.
@@ -775,6 +783,7 @@ def main():
         enable_autogw=dict(type='bool',),
         enable_rhi=dict(type='bool',),
         enable_rhi_snat=dict(type='bool',),
+        enable_session=dict(type='bool',),
         enabled=dict(type='bool',),
         error_page_profile_ref=dict(type='str',),
         flow_dist=dict(type='str',),
