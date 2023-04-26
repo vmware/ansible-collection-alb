@@ -195,7 +195,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The time at which the albservicesjob is ended.
+                  - Time at which the albservicesjob ended.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
@@ -267,7 +267,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A unique identifier for this job entry on the pulse portal.
+                  - A unique identifier for this job entry on the pulse cloud services.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
@@ -290,7 +290,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Status of sync to pulse(result uploads/state updates).
+                  - Status of sync to pulse cloud services(result uploads/state updates).
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.1.
@@ -336,7 +336,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The time at which the albservicesjob is started.
+                  - Time at which the albservicesjob started.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.

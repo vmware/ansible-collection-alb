@@ -264,7 +264,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Captures status for file upload.
+                  - Status of file upload.
                 </div>
                                 <div style="font-size: small">
                   - Enum options - SYSERR_SUCCESS, SYSERR_FAILURE, SYSERR_OUT_OF_MEMORY, SYSERR_NO_ENT, SYSERR_INVAL, SYSERR_ACCESS, SYSERR_FAULT, SYSERR_IO,
