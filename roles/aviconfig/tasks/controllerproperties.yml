@@ -54,6 +54,7 @@
     file_object_cleanup_period: "{{ item.file_object_cleanup_period | default(omit) }}"
     gslb_purge_batch_size: "{{ item.gslb_purge_batch_size | default(omit) }}"
     gslb_purge_sleep_time_ms: "{{ item.gslb_purge_sleep_time_ms | default(omit) }}"
+    ignore_vrf_in_networksubnetlist: "{{ item.ignore_vrf_in_networksubnetlist | default(omit) }}"
     max_dead_se_in_grp: "{{ item.max_dead_se_in_grp | default(omit) }}"
     max_pcap_per_tenant: "{{ item.max_pcap_per_tenant | default(omit) }}"
     max_se_spawn_interval_delay: "{{ item.max_se_spawn_interval_delay | default(omit) }}"

@@ -146,7 +146,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default values to be used for application signature sync.
+                  - Default values for application signature sync.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.4.
@@ -172,7 +172,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Information about the default contact for this controller cluster.
+                  - Default contact for this controller cluster.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -198,7 +198,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default values to be used for pulse case management.
+                  - Default values for case management.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -253,7 +253,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Information about the portal features opted in for controller.
+                  - Features opt-in for pulse cloud services.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -392,7 +392,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The fqdn or ip address of the customer portal.
+                  - The fqdn or ip address of the pulse cloud services.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
@@ -444,7 +444,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Split proxy configuration to connect external pulse services.
+                  - Split proxy configuration to connect external pulse cloud services.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -484,10 +484,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - By default, pulse uses proxy added in system configuration.
+                  - By default, pulse cloud services uses proxy added in system configuration.
                 </div>
                                 <div style="font-size: small">
-                  - If pulse needs to use a seperate proxy, set this flag to true and configure split proxy configuration.
+                  - If it should use a separate proxy, set this flag to true and configure split proxy configuration.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -513,7 +513,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Secure the controller to pulse communication over tls.
+                  - Secure the controller to pulse cloud services communication over tls.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
@@ -542,7 +542,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default values to be used for user agent db service.
+                  - Default values for user agent db service.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -591,7 +591,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default values to be used for pulse waf management.
+                  - Default values for waf management.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
