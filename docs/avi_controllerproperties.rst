@@ -1227,6 +1227,32 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ignore_vrf_in_networksubnetlist</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ignore the vrf_context filter for /networksubnetlist api.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.4.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_dead_se_in_grp</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -2047,7 +2073,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Pool size used for all fabric commands during se upgrade.
+                  - The pool size is used to control the number of concurrent segroup upgrades.
+                </div>
+                                <div style="font-size: small">
+                  - This field value takes affect upon controller warm reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 2-20.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.

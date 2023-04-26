@@ -345,6 +345,13 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 50.
         type: int
+    ignore_vrf_in_networksubnetlist:
+        description:
+            - Ignore the vrf_context filter for /networksubnetlist api.
+            - Field introduced in 22.1.4.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     max_dead_se_in_grp:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -567,7 +574,9 @@ options:
         type: int
     seupgrade_fabric_pool_size:
         description:
-            - Pool size used for all fabric commands during se upgrade.
+            - The pool size is used to control the number of concurrent segroup upgrades.
+            - This field value takes affect upon controller warm reboot.
+            - Allowed values are 2-20.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 20.
         type: int
@@ -857,6 +866,7 @@ def main():
         file_object_cleanup_period=dict(type='int',),
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
+        ignore_vrf_in_networksubnetlist=dict(type='bool',),
         max_dead_se_in_grp=dict(type='int',),
         max_pcap_per_tenant=dict(type='int',),
         max_se_spawn_interval_delay=dict(type='int',),

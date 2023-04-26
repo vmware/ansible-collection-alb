@@ -6,10 +6,10 @@ se_skip_requirements: false
 # se_autoregister parameters
 se_autoregister: true
 se_auth_token: ~
-se_master_ctl_ip: ~
-se_master_ctl_username: ~
-se_master_ctl_password: ~
-se_master_ctl_version: 17.2.12
+se_leader_ctl_ip: ~
+se_leader_ctl_username: ~
+se_leader_ctl_password: ~
+se_leader_ctl_version: 17.2.12
 se_cloud_name: Default-Cloud
 se_tenant: admin
 
@@ -48,7 +48,7 @@ se_csp_vnics:
 se_csp_vnics_config: ~
 se_csp_meta_config: {}
 se_csp_meta_options:
-  AVICNTRL: "{{ se_master_ctl_ip }}"
+  AVICNTRL: "{{ se_leader_ctl_ip }}"
   AVICNTRL_AUTHTOKEN: "{{ se_auth_token }}"
   avi.mgmt-ip.SE: "{{ se_csp_mgmt_ip | default(None) }}"
   avi.mgmt-mask.SE: "{{ se_csp_mgmt_mask | default(None) }}"

@@ -77,13 +77,13 @@
 
   - name: Avi SE | CSP | Service deploy | Verify SE service exists
     avi_api_session:
-      controller: "{{ se_master_ctl_ip }}"
-      username: "{{ se_master_ctl_username }}"
-      password: "{{ se_master_ctl_password }}"
+      controller: "{{ se_leader_ctl_ip }}"
+      username: "{{ se_leader_ctl_username }}"
+      password: "{{ se_leader_ctl_password }}"
       tenant: "{{ se_tenant }}"
       http_method: get
       path: serviceengine
-      api_version: "{{ se_master_ctl_version }}"
+      api_version: "{{ se_leader_ctl_version }}"
       params:
         name: "{{ se_csp_mgmt_ip }}"
         skip_default: true
@@ -97,13 +97,13 @@
 - block:
   - name: Avi SE | CSP | Service deploy | Verify SE connected to controller
     avi_api_session:
-      controller: "{{ se_master_ctl_ip }}"
-      username: "{{ se_master_ctl_username }}"
-      password: "{{ se_master_ctl_password }}"
+      controller: "{{ se_leader_ctl_ip }}"
+      username: "{{ se_leader_ctl_username }}"
+      password: "{{ se_leader_ctl_password }}"
       tenant: "{{ se_tenant }}"
       http_method: get
       path: serviceengine
-      api_version: "{{ se_master_ctl_version }}"
+      api_version: "{{ se_leader_ctl_version }}"
       params:
         name: "{{ se_csp_mgmt_ip }}"
         skip_default: true
@@ -116,10 +116,10 @@
 - block:
   - name: Avi SE | CSP | Service deploy | Configure vnic ips
     avi_update_se_data_vnics:
-      controller: "{{ se_master_ctl_ip }}"
-      username: "{{ se_master_ctl_username }}"
-      password: "{{ se_master_ctl_password }}"
-      api_version: "{{ se_master_ctl_version }}"
+      controller: "{{ se_leader_ctl_ip }}"
+      username: "{{ se_leader_ctl_username }}"
+      password: "{{ se_leader_ctl_password }}"
+      api_version: "{{ se_leader_ctl_version }}"
       se_name: "{{ se_csp_mgmt_ip }}"
       tenant: "{{ se_tenant }}"
       data_vnics_config: "{{ se_csp_vnics_config }}"
