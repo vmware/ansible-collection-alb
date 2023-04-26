@@ -25,9 +25,9 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
 |----------|----------|---------|----------|
 | `se_autoregister` | No | `true` | Autoregister the service engine to the specified controller. |
 | `se_auth_token` | No | `None`|  If defined it will be the token used to register the service engine to the controller |
-| `se_master_ctl_ip` | No | `None` | The IP address of the controller. |
-| `se_master_ctl_username` | No | `None` | The username to login into controller api. <br>**Not required when `se_autoregister: false`** |
-| `se_master_ctl_password` | No | `None` | The passowrd to login into the controller api. <br>**Not required when `se_autoregister: false`** |
+| `se_leader_ctl_ip` | No | `None` | The IP address of the controller. |
+| `se_leader_ctl_username` | No | `None` | The username to login into controller api. <br>**Not required when `se_autoregister: false`** |
+| `se_leader_ctl_password` | No | `None` | The passowrd to login into the controller api. <br>**Not required when `se_autoregister: false`** |
 | `se_cloud_name` | No | `Default-Cloud` | Name of cloud the SE should auto-register with. |
 | `se_tenant` | No | `admin` | Name of se_tenant the SE should auto-register with. |
 
@@ -77,9 +77,9 @@ These are only marked required, for when you are using CSP Deployment.
       vars:
         se_csp_user: admin
         se_csp_password: password
-        se_master_ctl_ip: 10.128.2.20
-        se_master_ctl_username: admin
-        se_master_ctl_password: password
+        se_leader_ctl_ip: 10.128.2.20
+        se_leader_ctl_username: admin
+        se_leader_ctl_password: password
         se_csp_qcow_image_file: avi-se.qcow2
         se_csp_mgmt_ip: 10.128.2.20
         se_csp_mgmt_mask: 255.255.255.0
@@ -125,7 +125,7 @@ These are only marked required, for when you are using CSP Deployment.
         se_tenant: admin
         se_csp_user: admin
         se_csp_password: password
-        se_master_ctl_ip: 10.128.2.20
+        se_leader_ctl_ip: 10.128.2.20
         se_csp_qcow_image_file: avi-se.qcow2 #please put relative/direct location of qcow image
         se_csp_mgmt_ip: 10.128.2.20
         se_csp_mgmt_mask: 255.255.255.0
