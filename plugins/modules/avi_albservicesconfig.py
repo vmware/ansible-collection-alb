@@ -97,6 +97,12 @@ options:
             - salesforce,myvmware,systest), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as MYVMWARE.
         type: str
+    name:
+        description:
+            - Name of the albservicesconfig object.
+            - Field introduced in 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     operations_config:
         description:
             - Operations configuration.
@@ -134,6 +140,13 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
+    tenant_ref:
+        description:
+            - Tenant uuid associated with the object.
+            - It is a reference to an object of type tenant.
+            - Field introduced in 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     url:
         description:
             - Avi controller URL of the object.
@@ -225,11 +238,13 @@ def main():
         feature_opt_in_status=dict(type='dict', required=True),
         ip_reputation_config=dict(type='dict', required=True),
         mode=dict(type='str',),
+        name=dict(type='str',),
         operations_config=dict(type='dict', required=True),
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
         saas_licensing_config=dict(type='dict', required=True),
         split_proxy_configuration=dict(type='dict',),
+        tenant_ref=dict(type='str',),
         url=dict(type='str',),
         use_split_proxy=dict(type='bool',),
         use_tls=dict(type='bool',),
