@@ -34,6 +34,7 @@
     connections_rate_limit: "{{ item.connections_rate_limit | default(omit) }}"
     content_rewrite: "{{ item.content_rewrite | default(omit) }}"
     created_by: "{{ item.created_by | default(omit) }}"
+    csrf_policy_ref: "{{ item.csrf_policy_ref | default(omit) }}"
     delay_fairness: "{{ item.delay_fairness | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     dns_info: "{{ item.dns_info | default(omit) }}"

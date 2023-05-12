@@ -196,6 +196,13 @@ options:
             - Creator name.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    csrf_policy_ref:
+        description:
+            - Csrf protection policy for the virtual service.
+            - It is a reference to an object of type csrfpolicy.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     delay_fairness:
         description:
             - Select the algorithm for qos fairness.
@@ -775,6 +782,7 @@ def main():
         connections_rate_limit=dict(type='dict',),
         content_rewrite=dict(type='dict',),
         created_by=dict(type='str',),
+        csrf_policy_ref=dict(type='str',),
         delay_fairness=dict(type='bool',),
         description=dict(type='str',),
         dns_info=dict(type='list', elements='dict',),
