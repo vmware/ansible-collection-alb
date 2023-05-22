@@ -167,6 +167,8 @@ plugins/modules/avi_wafprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_wafprofile.py import-3.8!skip
 plugins/modules/avi_botmapping.py validate-modules:missing-gplv3-license
 plugins/modules/avi_botmapping.py import-3.8!skip
+plugins/modules/avi_csrfpolicy.py validate-modules:missing-gplv3-license
+plugins/modules/avi_csrfpolicy.py import-3.8!skip
 plugins/modules/avi_natpolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_natpolicy.py import-3.8!skip
 plugins/modules/avi_applicationprofile.py validate-modules:missing-gplv3-license

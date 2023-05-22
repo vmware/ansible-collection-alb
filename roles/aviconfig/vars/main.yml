@@ -62,6 +62,7 @@ avi_resource_types:
   - wafpolicypsmgroup
   - wafprofile
   - botmapping
+  - csrfpolicy
   - natpolicy
   - applicationprofile
   - microservicegroup

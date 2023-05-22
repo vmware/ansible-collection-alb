@@ -98,6 +98,7 @@ Name | Description
 [vmware.alb.avi_controllerportalregistration](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_controllerportalregistration.rst)|Module to create update or delete ControllerPortalRegistration
 [vmware.alb.avi_controllerproperties](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_controllerproperties.rst)|Module to create update or delete ControllerProperties
 [vmware.alb.avi_controllersite](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_controllersite.rst)|Module to create update or delete ControllerSite
+[vmware.alb.avi_csrfpolicy](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_csrfpolicy.rst)|Module to create update or delete CSRFPolicy
 [vmware.alb.avi_customipamdnsprofile](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_customipamdnsprofile.rst)|Module to create update or delete CustomIpamDnsProfile
 [vmware.alb.avi_deploy_controller](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_deploy_controller.rst)|Module to create update or delete DeployController
 [vmware.alb.avi_dnspolicy](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_dnspolicy.rst)|Module to create update or delete DnsPolicy
