@@ -351,13 +351,13 @@ Parameters
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Operations configuration.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 30.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.3.
