@@ -97,13 +97,19 @@ options:
             - salesforce,myvmware,systest), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as MYVMWARE.
         type: str
+    name:
+        description:
+            - Name of the albservicesconfig object.
+            - Field introduced in 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     operations_config:
         description:
             - Operations configuration.
+            - Field deprecated in 30.1.1.
             - Field introduced in 22.1.3.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
-        required: true
         type: dict
     polling_interval:
         description:
@@ -134,6 +140,13 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
+    tenant_ref:
+        description:
+            - Tenant uuid associated with the object.
+            - It is a reference to an object of type tenant.
+            - Field introduced in 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     url:
         description:
             - Avi controller URL of the object.
@@ -225,11 +238,13 @@ def main():
         feature_opt_in_status=dict(type='dict', required=True),
         ip_reputation_config=dict(type='dict', required=True),
         mode=dict(type='str',),
-        operations_config=dict(type='dict', required=True),
+        name=dict(type='str',),
+        operations_config=dict(type='dict',),
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
         saas_licensing_config=dict(type='dict', required=True),
         split_proxy_configuration=dict(type='dict',),
+        tenant_ref=dict(type='str',),
         url=dict(type='str',),
         use_split_proxy=dict(type='bool',),
         use_tls=dict(type='bool',),

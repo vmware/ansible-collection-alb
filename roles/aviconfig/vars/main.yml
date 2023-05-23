@@ -3,7 +3,6 @@
 ---
 avi_resource_types:
   - labelgroup
-  - albservicesconfig
   - systemlimits
   - licenseledgerdetails
   - useraccountprofile
@@ -38,6 +37,7 @@ avi_resource_types:
   - tenantsystemconfiguration
   - federationcheckpoint
   - gslbgeodbprofile
+  - albservicesconfig
   - siteversion
   - statediffoperation
   - image

@@ -50,8 +50,6 @@ plugins/modules/avi_saml_api_session.py validate-modules:doc-type-does-not-match
 plugins/modules/avi_bootstrap_controller.py validate-modules:doc-required-mismatch
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py import-3.8!skip
-plugins/modules/avi_albservicesconfig.py validate-modules:missing-gplv3-license
-plugins/modules/avi_albservicesconfig.py import-3.8!skip
 plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemlimits.py import-3.8!skip
 plugins/modules/avi_licenseledgerdetails.py validate-modules:missing-gplv3-license
@@ -120,6 +118,8 @@ plugins/modules/avi_federationcheckpoint.py validate-modules:missing-gplv3-licen
 plugins/modules/avi_federationcheckpoint.py import-3.8!skip
 plugins/modules/avi_gslbgeodbprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbgeodbprofile.py import-3.8!skip
+plugins/modules/avi_albservicesconfig.py validate-modules:missing-gplv3-license
+plugins/modules/avi_albservicesconfig.py import-3.8!skip
 plugins/modules/avi_siteversion.py validate-modules:missing-gplv3-license
 plugins/modules/avi_siteversion.py import-3.8!skip
 plugins/modules/avi_statediffoperation.py validate-modules:missing-gplv3-license

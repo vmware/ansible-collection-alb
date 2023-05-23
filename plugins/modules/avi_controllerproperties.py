@@ -563,6 +563,14 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
+    seupgrade_copy_buffer_size:
+        description:
+            - This parameter defines the buffer size during se image downloads in a segroup.
+            - It is used to pace the se downloads so that controller network/cpu bandwidth is a bounded operation.
+            - Field introduced in 22.1.4, 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 128.
+        type: int
     seupgrade_copy_pool_size:
         description:
             - This parameter defines the number of simultaneous se image downloads in a segroup.
@@ -896,6 +904,7 @@ def main():
         secure_channel_cleanup_timeout=dict(type='int',),
         secure_channel_controller_token_timeout=dict(type='int',),
         secure_channel_se_token_timeout=dict(type='int',),
+        seupgrade_copy_buffer_size=dict(type='int',),
         seupgrade_copy_pool_size=dict(type='int',),
         seupgrade_fabric_pool_size=dict(type='int',),
         seupgrade_segroup_min_dead_timeout=dict(type='int',),
