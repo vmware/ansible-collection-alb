@@ -101,7 +101,8 @@ options:
         description:
             - Name of the albservicesconfig object.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: str
     operations_config:
         description:
