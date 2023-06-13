@@ -328,30 +328,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1440.
         type: int
-    gslb_purge_batch_size:
-        description:
-            - Batch size for the vs_mgr to perform datastrorecleanup during a gslb purge.
-            - Allowed values are 50-1200.
-            - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 1000.
-        type: int
-    gslb_purge_sleep_time_ms:
-        description:
-            - Sleep time in the vs_mgr during a federatedpurge rpc call.
-            - Allowed values are 50-100.
-            - Field introduced in 22.1.3.
-            - Unit is milliseconds.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 50.
-        type: int
-    ignore_vrf_in_networksubnetlist:
-        description:
-            - Ignore the vrf_context filter for /networksubnetlist api.
-            - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     max_dead_se_in_grp:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -431,16 +407,6 @@ options:
             - Field introduced in 16.4.6,17.1.2.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    postgres_vacuum_period:
-        description:
-            - Period for which postgres vacuum are executed.
-            - Allowed values are 30-40320.
-            - Special values are 0 - deactivated.
-            - Field introduced in 22.1.3.
-            - Unit is min.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 20160.
-        type: int
     process_locked_useraccounts_timeout_period:
         description:
             - Period for process locked user accounts job.
@@ -563,14 +529,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
-    seupgrade_copy_buffer_size:
-        description:
-            - This parameter defines the buffer size during se image downloads in a segroup.
-            - It is used to pace the se downloads so that controller network/cpu bandwidth is a bounded operation.
-            - Field introduced in 22.1.4, 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 128.
-        type: int
     seupgrade_copy_pool_size:
         description:
             - This parameter defines the number of simultaneous se image downloads in a segroup.
@@ -582,9 +540,7 @@ options:
         type: int
     seupgrade_fabric_pool_size:
         description:
-            - The pool size is used to control the number of concurrent segroup upgrades.
-            - This field value takes affect upon controller warm reboot.
-            - Allowed values are 2-20.
+            - Pool size used for all fabric commands during se upgrade.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 20.
         type: int
@@ -608,7 +564,6 @@ options:
             - Unit is days.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: int
     unresponsive_se_reboot:
         description:
             - Unit is sec.
@@ -872,9 +827,6 @@ def main():
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),
-        gslb_purge_batch_size=dict(type='int',),
-        gslb_purge_sleep_time_ms=dict(type='int',),
-        ignore_vrf_in_networksubnetlist=dict(type='bool',),
         max_dead_se_in_grp=dict(type='int',),
         max_pcap_per_tenant=dict(type='int',),
         max_se_spawn_interval_delay=dict(type='int',),
@@ -886,7 +838,6 @@ def main():
         portal_request_burst_limit=dict(type='int',),
         portal_request_rate_limit=dict(type='int',),
         portal_token=dict(type='str', no_log=True,),
-        postgres_vacuum_period=dict(type='int',),
         process_locked_useraccounts_timeout_period=dict(type='int',),
         process_pki_profile_timeout_period=dict(type='int',),
         query_host_fail=dict(type='int',),
@@ -904,12 +855,11 @@ def main():
         secure_channel_cleanup_timeout=dict(type='int',),
         secure_channel_controller_token_timeout=dict(type='int',),
         secure_channel_se_token_timeout=dict(type='int',),
-        seupgrade_copy_buffer_size=dict(type='int',),
         seupgrade_copy_pool_size=dict(type='int',),
         seupgrade_fabric_pool_size=dict(type='int',),
         seupgrade_segroup_min_dead_timeout=dict(type='int',),
         shared_ssl_certificates=dict(type='bool',),
-        ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
+        ssl_certificate_expiry_warning_days=dict(type='list',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
         update_dns_entry_timeout=dict(type='int',),

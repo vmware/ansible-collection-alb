@@ -53,7 +53,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -88,7 +87,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -149,12 +147,12 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        available_applications=dict(type='list', elements='dict',),
+        available_applications=dict(type='list',),
         configpb_attributes=dict(type='dict',),
         name=dict(type='str',),
         ruleset_version=dict(type='str',),
         service_status=dict(type='dict',),
-        signatures=dict(type='list', elements='dict',),
+        signatures=dict(type='list',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),

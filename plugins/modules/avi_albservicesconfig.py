@@ -48,7 +48,7 @@ options:
         type: str
     app_signature_config:
         description:
-            - Default values for application signature sync.
+            - Default values to be used for application signature sync.
             - Field introduced in 20.1.4.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
@@ -56,13 +56,13 @@ options:
         type: dict
     asset_contact:
         description:
-            - Default contact for this controller cluster.
+            - Information about the default contact for this controller cluster.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
     case_config:
         description:
-            - Default values for case management.
+            - Default values to be used for pulse case management.
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
@@ -77,7 +77,7 @@ options:
         type: dict
     feature_opt_in_status:
         description:
-            - Features opt-in for pulse cloud services.
+            - Information about the portal features opted in for controller.
             - Field introduced in 20.1.1.
         required: true
         type: dict
@@ -97,21 +97,6 @@ options:
             - salesforce,myvmware,systest), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as MYVMWARE.
         type: str
-    name:
-        description:
-            - Name of the albservicesconfig object.
-            - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: str
-    operations_config:
-        description:
-            - Operations configuration.
-            - Field deprecated in 30.1.1.
-            - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: dict
     polling_interval:
         description:
             - Time interval in minutes.
@@ -122,7 +107,7 @@ options:
         type: int
     portal_url:
         description:
-            - The fqdn or ip address of the pulse cloud services.
+            - The fqdn or ip address of the customer portal.
             - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
@@ -137,40 +122,32 @@ options:
         type: dict
     split_proxy_configuration:
         description:
-            - Split proxy configuration to connect external pulse cloud services.
+            - Split proxy configuration to connect external pulse services.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
-    tenant_ref:
-        description:
-            - Tenant uuid associated with the object.
-            - It is a reference to an object of type tenant.
-            - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: str
     url:
         description:
             - Avi controller URL of the object.
         type: str
     use_split_proxy:
         description:
-            - By default, pulse cloud services uses proxy added in system configuration.
-            - If it should use a separate proxy, set this flag to true and configure split proxy configuration.
+            - By default, pulse uses proxy added in system configuration.
+            - If pulse needs to use a seperate proxy, set this flag to true and configure split proxy configuration.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     use_tls:
         description:
-            - Secure the controller to pulse cloud services communication over tls.
+            - Secure the controller to pulse communication over tls.
             - Field introduced in 20.1.3.
             - Allowed in enterprise edition with any value, basic edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     user_agent_db_config:
         description:
-            - Default values for user agent db service.
+            - Default values to be used for user agent db service.
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
@@ -183,7 +160,7 @@ options:
         type: str
     waf_config:
         description:
-            - Default values for waf management.
+            - Default values to be used for pulse waf management.
             - Field introduced in 21.1.1.
             - Allowed in essentials edition with any value, basic edition with any value, enterprise, enterprise with cloud services edition.
         required: true
@@ -240,13 +217,10 @@ def main():
         feature_opt_in_status=dict(type='dict', required=True),
         ip_reputation_config=dict(type='dict', required=True),
         mode=dict(type='str',),
-        name=dict(type='str',),
-        operations_config=dict(type='dict',),
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
         saas_licensing_config=dict(type='dict', required=True),
         split_proxy_configuration=dict(type='dict',),
-        tenant_ref=dict(type='str',),
         url=dict(type='str',),
         use_split_proxy=dict(type='bool',),
         use_tls=dict(type='bool',),
