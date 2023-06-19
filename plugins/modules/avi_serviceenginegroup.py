@@ -634,13 +634,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
-    kni_allowed_server_ports:
-        description:
-            - Port ranges for any servers running in inband linuxserver clouds.
-            - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
-        elements: dict
     l7_conns_per_core:
         description:
             - Number of l7 connections that can be cached per core.
@@ -1190,16 +1183,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 150.
         type: int
-    max_skb_frags:
-        description:
-            - Maximum of number of 4 kb pages allocated to the linux kernel gro subsystem for packet coalescing.
-            - This parameter is limited to supported kernels only.
-            - Requires se reboot.
-            - Allowed values are 1-17.
-            - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 17.
-        type: int
     memory_for_config_update:
         description:
             - Indicates the percent of memory reserved for config updates.
@@ -1261,32 +1244,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
-    netlink_poller_threads:
-        description:
-            - Number of threads to poll for netlink messages excluding the thread for default namespace.
-            - Requires se reboot.
-            - Allowed values are 1-32.
-            - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 2.
-        type: int
-    netlink_sock_buf_size:
-        description:
-            - Socket buffer size for the netlink sockets.
-            - Requires se reboot.
-            - Allowed values are 1-128.
-            - Field introduced in 21.1.1.
-            - Unit is mega_bytes.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
-        type: int
-    ngx_free_connection_stack:
-        description:
-            - Free the connection stack.
-            - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     ns_helper_deq_interval_msec:
         description:
             - Dequeue interval for receive queue from ns helper.
@@ -1336,12 +1293,6 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
-    num_flow_cores_sum_changes_to_ignore:
-        description:
-            - Number of changes in num flow cores sum to ignore.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 8.
-        type: int
     objsync_config:
         description:
             - Configuration knobs for interse object distribution.
@@ -1381,26 +1332,6 @@ options:
             - Unit is mb.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
-        type: int
-    pcap_tx_mode:
-        description:
-            - Determines the pcap transmit mode of operation.
-            - Requires se reboot.
-            - Enum options - PCAP_TX_AUTO, PCAP_TX_SOCKET, PCAP_TX_RING.
-            - Field introduced in 18.2.8, 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as PCAP_TX_AUTO.
-        type: str
-    pcap_tx_ring_rd_balancing_factor:
-        description:
-            - In pcap mode, reserve a configured portion of tx ring resources for itself and the remaining portion for the rx ring to achieve better balance in
-            - terms of queue depth.
-            - Requires se reboot.
-            - Allowed values are 10-100.
-            - Field introduced in 20.1.3.
-            - Unit is percent.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 10.
         type: int
     per_vs_admission_control:
         description:
@@ -1537,6 +1468,144 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 90.
         type: int
+    se_dpdk_pmd:
+        description:
+            - Determines if dpdk pool mode driver should be used or not   0  automatically determine based on hypervisor/nic type 1  unconditionally use dpdk
+            - poll mode driver 2  don't use dpdk poll mode driver.requires se reboot.
+            - Allowed values are 0-2.
+            - Field introduced in 18.1.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
+    se_emulated_cores:
+        description:
+            - Use this to emulate more/less cpus than is actually available.
+            - One datapath process is started for each core.
+            - Field introduced in 21.1.3.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- 0), basic edition(allowed values- 0), enterprise with cloud
+            - services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
+    se_hyperthreaded_mode:
+        description:
+            - Controls the distribution of se data path processes on cpus which support hyper-threading.
+            - Requires hyper-threading to be enabled at host level.
+            - Requires se reboot.
+            - For more details please refer to se placement kb.
+            - Enum options - SE_CPU_HT_AUTO, SE_CPU_HT_SPARSE_DISPATCHER_PRIORITY, SE_CPU_HT_SPARSE_PROXY_PRIORITY, SE_CPU_HT_PACKED_CORES.
+            - Field introduced in 20.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as SE_CPU_HT_AUTO.
+        type: str
+    se_lro:
+        description:
+            - Enable or disable large receive optimization for vnics.supported on vmxnet3.requires se reboot.
+            - Field introduced in 18.2.5.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: bool
+    se_mtu:
+        description:
+            - Mtu for the vnics of ses in the se group.
+            - Allowed values are 512-9000.
+            - Field introduced in 18.2.8, 20.1.1.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: int
+    se_use_dpdk:
+        description:
+            - Determines if dpdk library should be used or not   0  automatically determine based on hypervisor type 1  use dpdk if pcap is not enabled 2
+            - don't use dpdk.
+            - Allowed values are 0-2.
+            - Field introduced in 18.1.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
+    use_dp_util_for_scaleout:
+        description:
+            - If enabled, the datapath cpu utilization is consulted by the auto scale-out logic.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    use_objsync:
+        description:
+            - Enable interse objsyc distribution framework.
+            - Field introduced in 20.1.3.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    use_standard_alb:
+        description:
+            - Use standard sku azure load balancer.
+            - By default cloud level flag is set.
+            - If not set, it inherits/uses the use_standard_alb flag from the cloud.
+            - Field introduced in 18.2.3.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: bool
+    user_agent_cache_config:
+        description:
+            - Configuration for user-agent cache used in bot management.
+            - Field introduced in 21.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
+    vs_host_redundancy:
+        description:
+            - Ensure primary and secondary service engines are deployed on different physical hosts.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- true), basic edition(allowed values- true), enterprise with
+            - cloud services edition.
+            - Special default for essentials edition is true, basic edition is true, enterprise is true.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    vs_scalein_timeout:
+        description:
+            - Time to wait for the scaled in se to drain existing flows before marking the scalein done.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 30.
+        type: int
+    vs_scalein_timeout_for_upgrade:
+        description:
+            - During se upgrade, time to wait for the scaled-in se to drain existing flows before marking the scalein done.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 30.
+        type: int
+    vs_scaleout_timeout:
+        description:
+            - Time to wait for the scaled out se to become ready before marking the scaleout done.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 600.
+        type: int
+    vs_se_scaleout_additional_wait_time:
+        description:
+            - Wait time for sending scaleout ready notification after virtual service is marked up.
+            - In certain deployments, there may be an additional delay to accept traffic.
+            - For example, for bgp, some time is needed for route advertisement.
+            - Allowed values are 0-300.
+            - Field introduced in 18.1.5,18.2.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
+    vs_se_scaleout_ready_timeout:
+        description:
+            - Timeout in seconds for service engine to sendscaleout ready notification of a virtual service.
+            - Allowed values are 0-90.
+            - Field introduced in 18.1.5,18.2.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 60.
+        type: int
+    vs_switchover_timeout:
+        description:
+            - During se upgrade in a legacy active/standby segroup, time to wait for the new primary se to accept flows before marking the switchover done.
+            - Field introduced in 17.2.13,18.1.4,18.2.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 300.
+        type: int
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -1663,7 +1732,6 @@ def main():
     ingress_access_mgmt=dict(type='str',),
     instance_flavor_info=dict(type='dict',),
     iptables=dict(type='list', elements='dict',),
-    kni_allowed_server_ports=dict(type='list', elements='dict',),
     l7_conns_per_core=dict(type='int',),
     l7_resvd_listen_conns_per_core=dict(type='int',),
     labels=dict(type='list', elements='dict',),
@@ -1731,7 +1799,7 @@ def main():
     cpu_reserve=dict(type='bool',),
     mem_reserve=dict(type='bool',),
     tenant_ref=dict(type='str',),
-    gcp_config=dict(type='dict',)
+    gcp_config=dict(type='dict',),
     markers=dict(type='list', elements='dict',),
     max_concurrent_external_hm=dict(type='int',),
     max_cpu_usage=dict(type='int',),
@@ -1739,7 +1807,6 @@ def main():
     max_public_ips_per_lb=dict(type='int',),
     max_queues_per_vnic=dict(type='int',),
     max_rules_per_lb=dict(type='int',),
-    max_skb_frags=dict(type='int',),
     memory_for_config_update=dict(type='int',),
     mgmt_network_ref=dict(type='str',),
     mgmt_subnet=dict(type='dict',),
@@ -1748,23 +1815,17 @@ def main():
     min_se=dict(type='int',),
     minimum_connection_memory=dict(type='int',),
     n_log_streaming_threads=dict(type='int',),
-    netlink_poller_threads=dict(type='int',),
-    netlink_sock_buf_size=dict(type='int',),
-    ngx_free_connection_stack=dict(type='bool',),
     ns_helper_deq_interval_msec=dict(type='int',),
     ntp_sync_fail_event=dict(type='bool',),
     ntp_sync_status_interval=dict(type='int',),
     num_dispatcher_cores=dict(type='int',),
     num_dispatcher_queues=dict(type='int',),
-    num_flow_cores_sum_changes_to_ignore=dict(type='int',),
     objsync_config=dict(type='dict',),
     objsync_port=dict(type='int',),
     openstack_availability_zones=dict(type='list', elements='str',),
     openstack_mgmt_network_name=dict(type='str',),
     openstack_mgmt_network_uuid=dict(type='str',),
     os_reserved_memory=dict(type='int',),
-    pcap_tx_mode=dict(type='str',),
-    pcap_tx_ring_rd_balancing_factor=dict(type='int',),
     per_vs_admission_control=dict(type='bool',),
     placement_mode=dict(type='str',),
     reboot_on_panic=dict(type='bool',),
@@ -1781,6 +1842,23 @@ def main():
     se_dp_isolation_num_non_dp_cpus=dict(type='int',),
     se_dp_log_nf_enqueue_percent=dict(type='int',),
     se_dp_log_udf_enqueue_percent=dict(type='int',),
+    se_dpdk_pmd = dict(type='int', ),
+    se_emulated_cores=dict(type='int', ),
+    se_hyperthreaded_mode=dict(type='str', ),
+    se_lro=dict(type='bool', ),
+    se_mtu=dict(type='int', ),
+    se_use_dpdk=dict(type='int', ),
+    use_dp_util_for_scaleout=dict(type='bool', ),
+    use_objsync=dict(type='bool', ),
+    use_standard_alb=dict(type='bool', ),
+    user_agent_cache_config=dict(type='dict', ),
+    vs_host_redundancy=dict(type='bool', ),
+    vs_scalein_timeout=dict(type='int', ),
+    vs_scalein_timeout_for_upgrade=dict(type='int', ),
+    vs_scaleout_timeout=dict(type='int', ),
+    vs_se_scaleout_additional_wait_time=dict(type='int', ),
+    vs_se_scaleout_ready_timeout=dict(type='int', ),
+    vs_switchover_timeout=dict(type='int', ),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
