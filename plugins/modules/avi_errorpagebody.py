@@ -75,7 +75,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     name:
         description:
             - Field introduced in 17.2.4.
@@ -145,7 +144,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         error_page_body=dict(type='str', required=True),
         format=dict(type='str',),
-        markers=dict(type='list', elements='dict',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

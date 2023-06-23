@@ -87,7 +87,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     name:
         description:
             - The name of the security policy.
@@ -189,7 +188,7 @@ def main():
         dns_amplification_denyports=dict(type='dict',),
         dns_attacks=dict(type='dict',),
         dns_policy_index=dict(type='int',),
-        markers=dict(type='list', elements='dict',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         network_security_policy_index=dict(type='int',),
         oper_mode=dict(type='str',),

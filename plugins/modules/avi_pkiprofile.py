@@ -52,7 +52,6 @@ options:
             - List of certificate authorities (root and intermediate) trusted that is used for certificate validation.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -76,7 +75,6 @@ options:
             - Certificate revocation lists.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     ignore_peer_chain:
         description:
             - When enabled, avi will not trust intermediate and root certs presented by a client.
@@ -102,7 +100,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     name:
         description:
             - Name of the pki profile.
@@ -175,14 +172,14 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        ca_certs=dict(type='list', elements='dict',),
+        ca_certs=dict(type='list',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         crl_check=dict(type='bool',),
-        crls=dict(type='list', elements='dict',),
+        crls=dict(type='list',),
         ignore_peer_chain=dict(type='bool',),
         is_federated=dict(type='bool',),
-        markers=dict(type='list', elements='dict',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

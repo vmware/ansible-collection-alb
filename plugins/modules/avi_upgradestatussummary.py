@@ -134,8 +134,7 @@ options:
     upgrade_ops:
         description:
             - Upgrade operations requested.
-            - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME, EVAL_UPGRADE, EVAL_PATCH, EVAL_ROLLBACK, EVAL_ROLLBACKPATCH,
-            - EVAL_SEGROUP_RESUME.
+            - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME.
             - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
