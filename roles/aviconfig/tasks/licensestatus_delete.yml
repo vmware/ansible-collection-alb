@@ -17,6 +17,7 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     saas_status: "{{ item.saas_status | default(omit) }}"
     service_update: "{{ item.service_update | default(omit) }}"
+    tenant_uuid: "{{ item.tenant_uuid | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)
