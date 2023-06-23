@@ -2,4 +2,3 @@ requests==2.25.1
 pyVmomi==7.0.2
 pyVim==3.0.2
 beautifulsoup4==4.12.2
-bs4==0.0.1
