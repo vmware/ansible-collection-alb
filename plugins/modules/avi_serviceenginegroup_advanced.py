@@ -1,17 +1,19 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 # module_check: supported
 
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
+from __future__ import absolute_import, division, print_function
 
-
-from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
-
-ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
-                    'supported_by': 'community'}
-DOCUMENTATION = '''
+ANSIBLE_METADATA = {
+    "metadata_version": "1.1",
+    "status": ["preview"],
+    "supported_by": "community",
+}
+DOCUMENTATION = """
 ---
 module: avi_serviceenginegroup_advanced
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -685,7 +687,7 @@ options:
         type: int
 extends_documentation_fragment:
     - vmware.alb.avi
-'''
+"""
 
 EXAMPLES = """
 - hosts: localhost
@@ -703,232 +705,298 @@ EXAMPLES = """
         avi_credentials: "{{ avi_credentials }}"
         name: sample_serviceenginegroup
 """
-RETURN = '''
+RETURN = """
 obj:
     description: ServiceEngineGroup (api/serviceenginegroup) object
     returned: success, changed
     type: dict
-'''
+"""
 
 from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, avi_obj_cmp, ansible_return, purge_optional_fields, AviCheckModeResponse)
+        avi_common_argument_spec,
+        avi_obj_cmp,
+        ansible_return,
+        purge_optional_fields,
+        AviCheckModeResponse,
+    )
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-	    ApiSession, AviCredentials, ObjectNotFound)
+        ApiSession,
+        AviCredentials,
+        ObjectNotFound,
+    )
     import yaml
     from copy import deepcopy
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
+
+
 def main():
     argument_specs = dict(
-        name=dict(type='str', required=True),
-        uuid=dict(type='str',),
-        avi_api_update_method=dict(default='put',
-                                   choices=['put', 'patch']),
-        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
-        avi_patch_path=dict(type='str',),
-        avi_patch_value=dict(type='str',),
-        configpb_attributes=dict(type='dict', ),
-        kni_allowed_server_ports=dict(type='list', elements='dict', ),
-        max_skb_frags=dict(type='int', ),
-        netlink_poller_threads=dict(type='int', ),
-        netlink_sock_buf_size=dict(type='int', ),
-        ngx_free_connection_stack=dict(type='bool', ),
-        num_flow_cores_sum_changes_to_ignore=dict(type='int', ),
-        pcap_tx_mode=dict(type='str', ),
-        pcap_tx_ring_rd_balancing_factor=dict(type='int', ),
-        se_dp_max_hb_version=dict(type='int',),
-        se_dp_vnic_queue_stall_event_sleep=dict(type='int',),
-        se_dp_vnic_queue_stall_threshold=dict(type='int',),
-        se_dp_vnic_queue_stall_timeout=dict(type='int',),
-        se_dp_vnic_restart_on_queue_stall_count=dict(type='int',),
-        se_dp_vnic_stall_se_restart_window=dict(type='int',),
-        se_dump_core_on_assert=dict(type='bool',),
-        se_flow_probe_retries=dict(type='int',),
-        se_flow_probe_retry_timer=dict(type='int',),
-        se_group_analytics_policy=dict(type='dict',),
-        se_ip_encap_ipc=dict(type='int',),
-        se_kni_burst_factor=dict(type='int',),
-        se_l3_encap_ipc=dict(type='int',),
-        se_log_buffer_app_blocking_dequeue=dict(type='bool',),
-        se_log_buffer_conn_blocking_dequeue=dict(type='bool',),
-        se_log_buffer_events_blocking_dequeue=dict(type='bool',),
-        se_mp_ring_retry_count=dict(type='int',),
-        se_packet_buffer_max=dict(type='int',),
-        se_pcap_lookahead=dict(type='bool',),
-        se_pcap_pkt_count=dict(type='int',),
-        se_pcap_pkt_sz=dict(type='int',),
-        se_pcap_qdisc_bypass=dict(type='bool',),
-        se_pcap_reinit_frequency=dict(type='int',),
-        se_pcap_reinit_threshold=dict(type='int',),
-        se_probe_port=dict(type='int',),
-        se_rl_prop=dict(type='dict',),
-        se_rum_sampling_nav_interval=dict(type='int',),
-        se_rum_sampling_nav_percent=dict(type='int',),
-        se_rum_sampling_res_interval=dict(type='int',),
-        se_rum_sampling_res_percent=dict(type='int',),
-        se_sb_dedicated_core=dict(type='bool',),
-        se_sb_threads=dict(type='int',),
-        se_thread_multiplier=dict(type='int',),
-        se_time_tracker_props=dict(type='dict',),
-        se_tracert_port_range=dict(type='dict',),
-        se_tunnel_mode=dict(type='int',),
-        se_tunnel_udp_port=dict(type='int',),
-        se_tx_batch_size=dict(type='int',),
-        se_txq_threshold=dict(type='int',),
-        se_udp_encap_ipc=dict(type='int',),
-        se_vnic_tx_sw_queue_flush_frequency=dict(type='int',),
-        se_vnic_tx_sw_queue_size=dict(type='int',),
-        se_vs_hb_max_pkts_in_batch=dict(type='int',),
-        se_vs_hb_max_vs_in_pkt=dict(type='int',),
-        send_se_ready_timeout=dict(type='int',),
-        service_ip6_subnets=dict(type='list', elements='dict',),
-        service_ip_subnets=dict(type='list', elements='dict',),
-        shm_minimum_config_memory=dict(type='int',),
-        ssl_preprocess_sni_hostname=dict(type='bool',),
-        ssl_sess_cache_per_vs=dict(type='int',),
-        transient_shared_memory_max=dict(type='int',),
-        upstream_connect_timeout=dict(type='int',),
-        upstream_connpool_enable=dict(type='bool',),
-        upstream_read_timeout=dict(type='int',),
-        upstream_send_timeout=dict(type='int',),
-        url=dict(type='str',),
-        use_legacy_netlink=dict(type='bool',),
-        user_defined_metric_age=dict(type='int',),
-        vip_asg=dict(type='dict',),
-        vnic_dhcp_ip_check_interval=dict(type='int',),
-        vnic_dhcp_ip_max_retries=dict(type='int',),
-        vnic_ip_delete_interval=dict(type='int',),
-        vnic_probe_interval=dict(type='int',),
-        vnic_rpc_retry_interval=dict(type='int',),
-        vnicdb_cmd_history_size=dict(type='int',),
-        vss_placement=dict(type='dict',),
-        vss_placement_enabled=dict(type='bool',),
-        waf_mempool=dict(type='bool',),
-        waf_mempool_size=dict(type='int',),
+        name=dict(type="str", required=True),
+        uuid=dict(type="str"),
+        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
+        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
+        avi_patch_path=dict(type="str"),
+        avi_patch_value=dict(type="str"),
+        configpb_attributes=dict(type="dict"),
+        kni_allowed_server_ports=dict(type="list", elements="dict"),
+        max_skb_frags=dict(type="int"),
+        netlink_poller_threads=dict(type="int"),
+        netlink_sock_buf_size=dict(type="int"),
+        ngx_free_connection_stack=dict(type="bool"),
+        num_flow_cores_sum_changes_to_ignore=dict(type="int"),
+        pcap_tx_mode=dict(type="str"),
+        pcap_tx_ring_rd_balancing_factor=dict(type="int"),
+        se_dp_max_hb_version=dict(type="int"),
+        se_dp_vnic_queue_stall_event_sleep=dict(type="int"),
+        se_dp_vnic_queue_stall_threshold=dict(type="int"),
+        se_dp_vnic_queue_stall_timeout=dict(type="int"),
+        se_dp_vnic_restart_on_queue_stall_count=dict(type="int"),
+        se_dp_vnic_stall_se_restart_window=dict(type="int"),
+        se_dump_core_on_assert=dict(type="bool"),
+        se_flow_probe_retries=dict(type="int"),
+        se_flow_probe_retry_timer=dict(type="int"),
+        se_group_analytics_policy=dict(type="dict"),
+        se_ip_encap_ipc=dict(type="int"),
+        se_kni_burst_factor=dict(type="int"),
+        se_l3_encap_ipc=dict(type="int"),
+        se_log_buffer_app_blocking_dequeue=dict(type="bool"),
+        se_log_buffer_conn_blocking_dequeue=dict(type="bool"),
+        se_log_buffer_events_blocking_dequeue=dict(type="bool"),
+        se_mp_ring_retry_count=dict(type="int"),
+        se_packet_buffer_max=dict(type="int"),
+        se_pcap_lookahead=dict(type="bool"),
+        se_pcap_pkt_count=dict(type="int"),
+        se_pcap_pkt_sz=dict(type="int"),
+        se_pcap_qdisc_bypass=dict(type="bool"),
+        se_pcap_reinit_frequency=dict(type="int"),
+        se_pcap_reinit_threshold=dict(type="int"),
+        se_probe_port=dict(type="int"),
+        se_rl_prop=dict(type="dict"),
+        se_rum_sampling_nav_interval=dict(type="int"),
+        se_rum_sampling_nav_percent=dict(type="int"),
+        se_rum_sampling_res_interval=dict(type="int"),
+        se_rum_sampling_res_percent=dict(type="int"),
+        se_sb_dedicated_core=dict(type="bool"),
+        se_sb_threads=dict(type="int"),
+        se_thread_multiplier=dict(type="int"),
+        se_time_tracker_props=dict(type="dict"),
+        se_tracert_port_range=dict(type="dict"),
+        se_tunnel_mode=dict(type="int"),
+        se_tunnel_udp_port=dict(type="int"),
+        se_tx_batch_size=dict(type="int"),
+        se_txq_threshold=dict(type="int"),
+        se_udp_encap_ipc=dict(type="int"),
+        se_vnic_tx_sw_queue_flush_frequency=dict(type="int"),
+        se_vnic_tx_sw_queue_size=dict(type="int"),
+        se_vs_hb_max_pkts_in_batch=dict(type="int"),
+        se_vs_hb_max_vs_in_pkt=dict(type="int"),
+        send_se_ready_timeout=dict(type="int"),
+        service_ip6_subnets=dict(type="list", elements="dict"),
+        service_ip_subnets=dict(type="list", elements="dict"),
+        shm_minimum_config_memory=dict(type="int"),
+        ssl_preprocess_sni_hostname=dict(type="bool"),
+        ssl_sess_cache_per_vs=dict(type="int"),
+        transient_shared_memory_max=dict(type="int"),
+        upstream_connect_timeout=dict(type="int"),
+        upstream_connpool_enable=dict(type="bool"),
+        upstream_read_timeout=dict(type="int"),
+        upstream_send_timeout=dict(type="int"),
+        url=dict(type="str"),
+        use_legacy_netlink=dict(type="bool"),
+        user_defined_metric_age=dict(type="int"),
+        vip_asg=dict(type="dict"),
+        vnic_dhcp_ip_check_interval=dict(type="int"),
+        vnic_dhcp_ip_max_retries=dict(type="int"),
+        vnic_ip_delete_interval=dict(type="int"),
+        vnic_probe_interval=dict(type="int"),
+        vnic_rpc_retry_interval=dict(type="int"),
+        vnicdb_cmd_history_size=dict(type="int"),
+        vss_placement=dict(type="dict"),
+        vss_placement_enabled=dict(type="bool"),
+        waf_mempool=dict(type="bool"),
+        waf_mempool_size=dict(type="int"),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(
-        argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(msg=(
-            'Python requests package is not installed. '
-            'For installation instructions, visit https://pypi.org/project/requests.'))
-    changed=False
-    avi_patch_op = module.params['avi_api_patch_op']
-    uuid= module.params.get('uuid', None)
-    obj_type='serviceenginegroup'
-    obj_path = '%s/%s' % (obj_type, uuid)
+        return module.fail_json(
+            msg="Python requests package is not installed. For installation instructions, visit https://pypi.org/project/requests."
+        )
+    changed = False
+    avi_patch_op = module.params["avi_api_patch_op"]
+    uuid = module.params.get("uuid", None)
+    obj_type = "serviceenginegroup"
+    obj_path = "%s/%s" % (obj_type, uuid)
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)
     api = ApiSession.get_session(
-        api_creds.controller, api_creds.username,
-        password=api_creds.password, timeout=api_creds.timeout,
-        tenant=api_creds.tenant, tenant_uuid=api_creds.tenant_uuid,
-        token=api_creds.token, port=api_creds.port)
+        api_creds.controller,
+        api_creds.username,
+        password=api_creds.password,
+        timeout=api_creds.timeout,
+        tenant=api_creds.tenant,
+        tenant_uuid=api_creds.tenant_uuid,
+        token=api_creds.token,
+        port=api_creds.port,
+    )
+
     # Get the api version.
     # avi_update_method = module.params.get('avi_api_update_method', 'put')
-    avi_patch_op = module.params.get('avi_api_patch_op', 'add')
-    avi_patch_path = module.params.get('avi_patch_path')
-    avi_patch_value = module.params.get('avi_patch_value', None)
+
+    avi_patch_op = module.params.get("avi_api_patch_op", "add")
+    avi_patch_path = module.params.get("avi_patch_path")
+    avi_patch_value = module.params.get("avi_patch_value", None)
     api_version = api_creds.api_version
-    name = module.params.get('name', None)
+    name = module.params.get("name", None)
+
     # Added Support to get uuid
+
     check_mode = module.check_mode
-    if uuid and obj_type :
-        obj_path = '%s/%s' % (obj_type, uuid)
+    if uuid and obj_type:
+        obj_path = "%s/%s" % (obj_type, uuid)
     else:
-        obj_path = '%s/' % obj_type
+        obj_path = "%s/" % obj_type
     obj = deepcopy(module.params)
-    tenant = obj.pop('tenant', '')
-    tenant_uuid = obj.pop('tenant_uuid', '')
+    tenant = obj.pop("tenant", "")
+    tenant_uuid = obj.pop("tenant_uuid", "")
+
     # obj.pop('cloud_ref', None)
 
-    POP_FIELDS = ['state', 'controller', 'username', 'password', 'api_version',
-            'avi_credentials', 'avi_api_update_method', 'avi_api_patch_op', 'avi_patch_path',
-            'avi_patch_value', 'api_context', 'tenant', 'tenant_uuid', 'avi_deactivate_session_cache_as_fact']
+    POP_FIELDS = [
+        "state",
+        "controller",
+        "username",
+        "password",
+        "api_version",
+        "avi_credentials",
+        "avi_api_update_method",
+        "avi_api_patch_op",
+        "avi_patch_path",
+        "avi_patch_value",
+        "api_context",
+        "tenant",
+        "tenant_uuid",
+        "avi_deactivate_session_cache_as_fact",
+    ]
 
     for k in POP_FIELDS:
         obj.pop(k, None)
         purge_optional_fields(obj, module)
 
     if uuid:
+
         # Get the object based on uuid.
+
         try:
             existing_obj = api.get(
-                obj_path, tenant=tenant, tenant_uuid=tenant_uuid,
-                params={'include_refs': '', 'include_name': ''},
-                api_version=api_version)
+                obj_path,
+                tenant=tenant,
+                tenant_uuid=tenant_uuid,
+                params={"include_refs": "", "include_name": ""},
+                api_version=api_version,
+            )
             existing_obj = existing_obj.json()
         except ObjectNotFound:
             existing_obj = None
     elif name:
-        params = {'include_refs': '', 'include_name': ''}
-        if obj.get('cloud_ref', None):
+        params = {"include_refs": "", "include_name": ""}
+        if obj.get("cloud_ref", None):
+
             # this is the case when gets have to be scoped with cloud
-            cloud = obj['cloud_ref'].split('name=')[1]
-            params['cloud_ref.name'] = cloud
+
+            cloud = obj["cloud_ref"].split("name=")[1]
+            params["cloud_ref.name"] = cloud
         existing_obj = api.get_object_by_name(
-            obj_type, name, tenant=tenant, tenant_uuid=tenant_uuid,
-            params=params, api_version=api_version)
+            obj_type,
+            name,
+            tenant=tenant,
+            tenant_uuid=tenant_uuid,
+            params=params,
+            api_version=api_version,
+        )
 
         # Need to check if tenant_ref was provided and the object returned
         # is actually in admin tenant.
-        if existing_obj and 'tenant_ref' in obj and 'tenant_ref' in existing_obj and obj['tenant_ref']!=None:
 
-            existing_obj_tenant = existing_obj['tenant_ref'].split('#')[1]
-            obj_tenant = obj['tenant_ref'].split('name=')[1]
+        if (existing_obj and "tenant_ref" in obj and "tenant_ref" in existing_obj and obj["tenant_ref"] is not None):
+            existing_obj_tenant = existing_obj["tenant_ref"].split("#")[1]
+            obj_tenant = obj["tenant_ref"].split("name=")[1]
             if obj_tenant != existing_obj_tenant:
                 existing_obj = None
     else:
+
         # added api version to avi api call.
-        existing_obj = api.get(obj_path, tenant=tenant, tenant_uuid=tenant_uuid,
-                            params={'include_refs': '', 'include_name': ''},
-                            api_version=api_version).json()
+
+        existing_obj = api.get(
+            obj_path,
+            tenant=tenant,
+            tenant_uuid=tenant_uuid,
+            params={"include_refs": "", "include_name": ""},
+            api_version=api_version,
+        ).json()
     rsp = None
     req = None
     if existing_obj:
+
         # this is case of modify as object exists. should find out
         # if changed is true or not
 
         if name is not None:
-            obj_uuid = existing_obj['uuid']
-            obj_path = '%s/%s' % (obj_type, obj_uuid)
+            obj_uuid = existing_obj["uuid"]
+            obj_path = "%s/%s" % (obj_type, obj_uuid)
         changed = not avi_obj_cmp(obj, existing_obj)
-        print("changed",changed)
         if check_mode:
+
             # No need to process any further.
+
             rsp = AviCheckModeResponse(obj=existing_obj)
         else:
             if changed:
-                obj.pop('name', None)
+                obj.pop("name", None)
                 patch_data = {}
                 if avi_patch_path:
                     if avi_patch_value:
                         avi_patch_value = yaml.load(avi_patch_value)
                     patch_data = {
-                        "json_patch": [{
-                            "op": avi_patch_op,
-                            "path": avi_patch_path,
-                            "value": avi_patch_value
-                        }]
+                        "json_patch": [
+                            {
+                                "op": avi_patch_op,
+                                "path": avi_patch_path,
+                                "value": avi_patch_value,
+                            }
+                        ]
                     }
                 else:
+
                     patch_data.update({avi_patch_op: obj})
                 try:
                     rsp = api.patch(
-                        obj_path, data=patch_data, tenant=tenant,
-                        tenant_uuid=tenant_uuid, api_version=api_version)
+                        obj_path,
+                        data=patch_data,
+                        tenant=tenant,
+                        tenant_uuid=tenant_uuid,
+                        api_version=api_version,
+                    )
                     obj = rsp.json()
                     changed = not avi_obj_cmp(obj, existing_obj)
                 except ObjectNotFound:
                     changed = False
                     rsp = None
 
-    return ansible_return(module, rsp, changed, req, existing_obj=existing_obj,
-                      api_context=api.get_context())
+    return ansible_return(
+        module,
+        rsp,
+        changed,
+        req,
+        existing_obj=existing_obj,
+        api_context=api.get_context(),
+    )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
