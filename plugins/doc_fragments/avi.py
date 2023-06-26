@@ -100,7 +100,7 @@ options:
             csp_token:
                 description:
                   - Saas controller password
-            type: str
+                type: str
             idp_class:
                 description:
                   - Specifies whether it is an Avi controller or Saas controller
