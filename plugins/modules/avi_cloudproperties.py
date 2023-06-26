@@ -59,7 +59,6 @@ options:
             - CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -72,13 +71,11 @@ options:
             - Hypervisor properties.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     info:
         description:
             - Properties specific to a cloud type.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     url:
         description:
             - Avi controller URL of the object.
@@ -133,10 +130,10 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         cc_props=dict(type='dict',),
-        cc_vtypes=dict(type='list', elements='str',),
+        cc_vtypes=dict(type='list',),
         configpb_attributes=dict(type='dict',),
-        hyp_props=dict(type='list', elements='dict',),
-        info=dict(type='list', elements='dict',),
+        hyp_props=dict(type='list',),
+        info=dict(type='list',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

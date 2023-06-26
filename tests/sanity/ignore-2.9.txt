@@ -5,6 +5,7 @@ plugins/modules/avi_sslprofile.py pep8:E501
 plugins/module_utils/avi_api.py pylint!skip
 plugins/module_utils/saml_avi_api.py pylint!skip
 plugins/module_utils/utils/ansible_utils.py pylint!skip
+plugins/module_utils/csp_avi_api.py import-3.8!skip
 plugins/modules/avi_sslkeyandcertificate.py compile-2.6
 plugins/modules/avi_gslb.py compile-2.6
 plugins/modules/avi_controllerproperties.py compile-2.6
@@ -45,11 +46,12 @@ roles/avise/templates/avise.j2 shebang
 roles/avise/templates/avise_service.j2 shebang
 molecule/default/files/avi_config.yml line-endings
 tests/unit/modules/test_avi_pool.py pylint!skip
+plugins/modules/avi_albservicesjob.py validate-modules:no-log-needed
+plugins/modules/avi_systemconfiguration.py validate-modules:no-log-needed
+plugins/modules/deploy_se.py validate-modules:no-log-needed
 plugins/modules/avi_saml_api_session.py validate-modules:doc-type-does-not-match-spec
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py import-3.8!skip
-plugins/modules/avi_albservicesconfig.py validate-modules:missing-gplv3-license
-plugins/modules/avi_albservicesconfig.py import-3.8!skip
 plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemlimits.py import-3.8!skip
 plugins/modules/avi_licenseledgerdetails.py validate-modules:missing-gplv3-license
@@ -118,6 +120,8 @@ plugins/modules/avi_federationcheckpoint.py validate-modules:missing-gplv3-licen
 plugins/modules/avi_federationcheckpoint.py import-3.8!skip
 plugins/modules/avi_gslbgeodbprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbgeodbprofile.py import-3.8!skip
+plugins/modules/avi_albservicesconfig.py validate-modules:missing-gplv3-license
+plugins/modules/avi_albservicesconfig.py import-3.8!skip
 plugins/modules/avi_siteversion.py validate-modules:missing-gplv3-license
 plugins/modules/avi_siteversion.py import-3.8!skip
 plugins/modules/avi_statediffoperation.py validate-modules:missing-gplv3-license
