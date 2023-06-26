@@ -715,12 +715,7 @@ obj:
 from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_obj_cmp,
-        ansible_return,
-        purge_optional_fields,
-        AviCheckModeResponse,
-    )
+        avi_common_argument_spec, avi_ansible_api, ansible_return)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession,
         AviCredentials,
