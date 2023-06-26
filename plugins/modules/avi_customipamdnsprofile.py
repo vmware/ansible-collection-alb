@@ -66,7 +66,6 @@ options:
             - Field introduced in 17.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     script_uri:
         description:
             - Script uri of form controller //ipamdnsscripts/<file-name>, file-name must have a .py extension and conform to pep8 naming convention.
@@ -136,7 +135,7 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
-        script_params=dict(type='list', elements='dict',),
+        script_params=dict(type='list',),
         script_uri=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

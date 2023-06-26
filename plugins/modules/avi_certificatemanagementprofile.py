@@ -61,7 +61,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     name:
         description:
             - Name of the pki profile.
@@ -80,7 +79,6 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -140,10 +138,10 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        markers=dict(type='list', elements='dict',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         run_script_ref=dict(type='str', required=True),
-        script_params=dict(type='list', elements='dict',),
+        script_params=dict(type='list',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),

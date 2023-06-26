@@ -52,7 +52,6 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     controller_info:
         description:
             - Controller package details.
@@ -91,7 +90,6 @@ options:
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
-        elements: dict
     img_state:
         description:
             - Status of the image.
@@ -235,13 +233,13 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        cloud_info_values=dict(type='list', elements='dict',),
+        cloud_info_values=dict(type='list',),
         controller_info=dict(type='dict',),
         controller_patch_name=dict(type='str',),
         controller_patch_ref=dict(type='str',),
         duration=dict(type='int',),
         end_time=dict(type='str',),
-        events=dict(type='list', elements='dict',),
+        events=dict(type='list',),
         img_state=dict(type='dict',),
         migrations=dict(type='dict',),
         name=dict(type='str', required=True),

@@ -70,7 +70,6 @@ options:
             - Maximum of 4 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
-        elements: dict
     name:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -80,7 +79,6 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -141,9 +139,9 @@ def main():
         avi_patch_value=dict(type='str',),
         allow_unlabelled_access=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
-        filters=dict(type='list', elements='dict',),
+        filters=dict(type='list',),
         name=dict(type='str', required=True),
-        privileges=dict(type='list', elements='dict',),
+        privileges=dict(type='list',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
