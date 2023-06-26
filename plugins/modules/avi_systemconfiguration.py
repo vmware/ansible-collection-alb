@@ -93,7 +93,6 @@ options:
             - It is a reference to an object of type virtualservice.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
-        elements: str
     docker_mode:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -122,20 +121,6 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
-    host_key_algorithm_exclude:
-        description:
-            - Users can specify comma separated list of deprecated host key algorithm.if nothing is specified, all known algorithms provided by openssh will be
-            - supported.this change could only apply on the controller node.
-            - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
-    kex_algorithm_exclude:
-        description:
-            - Users can specify comma separated list of deprecated key exchange algorithm.if nothing is specified, all known algorithms provided by openssh
-            - will be supported.this change could only apply on the controller node.
-            - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
     linux_configuration:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -173,14 +158,12 @@ options:
             - If this is not specified, all the default ciphers are allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: str
     ssh_hmacs:
         description:
             - Allowed hmac list for ssh to the management interface on the controller and service engines.
             - If this is not specified, all the default hmacs are allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: str
     url:
         description:
             - Avi controller URL of the object.
@@ -262,14 +245,12 @@ def main():
         controller_analytics_policy=dict(type='dict',),
         default_license_tier=dict(type='str',),
         dns_configuration=dict(type='dict',),
-        dns_virtualservice_refs=dict(type='list', elements='str',),
+        dns_virtualservice_refs=dict(type='list',),
         docker_mode=dict(type='bool',),
         email_configuration=dict(type='dict',),
         enable_cors=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
-        host_key_algorithm_exclude=dict(type='str',),
-        kex_algorithm_exclude=dict(type='str',),
         linux_configuration=dict(type='dict',),
         mgmt_ip_access_control=dict(type='dict',),
         ntp_configuration=dict(type='dict',),
@@ -277,8 +258,8 @@ def main():
         proxy_configuration=dict(type='dict',),
         secure_channel_configuration=dict(type='dict',),
         snmp_configuration=dict(type='dict',),
-        ssh_ciphers=dict(type='list', elements='str',),
-        ssh_hmacs=dict(type='list', elements='str',),
+        ssh_ciphers=dict(type='list',),
+        ssh_hmacs=dict(type='list',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         welcome_workflow_complete=dict(type='bool',),

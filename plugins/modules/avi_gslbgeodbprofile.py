@@ -68,7 +68,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
-        elements: dict
     is_federated:
         description:
             - This field indicates that this object is replicated across gslb federation.
@@ -83,7 +82,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     name:
         description:
             - A user-friendly name for the geodb profile.
@@ -154,9 +152,9 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
-        entries=dict(type='list', elements='dict', required=True),
+        entries=dict(type='list', required=True),
         is_federated=dict(type='bool',),
-        markers=dict(type='list', elements='dict',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
