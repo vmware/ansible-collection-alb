@@ -224,6 +224,12 @@ Parameters
                   - In compact placement, virtual services are placed on existing ses until max_vs_per_se limit is reached.
                 </div>
                                 <div style="font-size: small">
+                  - In distributed placement, virtual services are placed on new ses until max_se limit is reached.
+                </div>
+                                <div style="font-size: small">
+                  - Once this limit is reached, virtual services are placed on ses with least load.
+                </div>
+                                <div style="font-size: small">
                   - Enum options - PLACEMENT_ALGO_PACKED, PLACEMENT_ALGO_DISTRIBUTED.
                 </div>
                                 <div style="font-size: small">

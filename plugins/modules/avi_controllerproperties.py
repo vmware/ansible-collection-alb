@@ -569,7 +569,7 @@ options:
             - It is used to pace the se downloads so that controller network/cpu bandwidth is a bounded operation.
             - Field introduced in 22.1.4.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 128.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 512.
         type: int
     seupgrade_copy_pool_size:
         description:
