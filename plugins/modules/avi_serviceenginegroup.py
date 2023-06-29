@@ -1858,7 +1858,7 @@ def main():
         vs_se_scaleout_additional_wait_time=dict(type='int'),
         vs_se_scaleout_ready_timeout=dict(type='int'),
         vs_switchover_timeout=dict(type='int'),
-    )
+        )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs,
                            supports_check_mode=True)
