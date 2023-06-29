@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi ALBServicesConfig | Delete ALBServicesConfig
+- name: Avi CSRFPolicy | Delete CSRFPolicy
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_albservicesconfig:
+  vmware.alb.avi_csrfpolicy:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,28 +14,17 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    app_signature_config: "{{ item.app_signature_config | default(omit) }}"
-    asset_contact: "{{ item.asset_contact | default(omit) }}"
-    case_config: "{{ item.case_config | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    feature_opt_in_status: "{{ item.feature_opt_in_status | default(omit) }}"
-    ip_reputation_config: "{{ item.ip_reputation_config | default(omit) }}"
-    mode: "{{ item.mode | default(omit) }}"
+    cookie_name: "{{ item.cookie_name | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    operations_config: "{{ item.operations_config | default(omit) }}"
-    polling_interval: "{{ item.polling_interval | default(omit) }}"
-    portal_url: "{{ item.portal_url | default(omit) }}"
-    saas_licensing_config: "{{ item.saas_licensing_config | default(omit) }}"
-    split_proxy_configuration: "{{ item.split_proxy_configuration | default(omit) }}"
+    rules: "{{ item.rules | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    use_split_proxy: "{{ item.use_split_proxy | default(omit) }}"
-    use_tls: "{{ item.use_tls | default(omit) }}"
-    user_agent_db_config: "{{ item.user_agent_db_config | default(omit) }}"
+    token_validity_time_min: "{{ item.token_validity_time_min | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
-    waf_config: "{{ item.waf_config | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))
     - (avi_config_state == "absent" or avi_role_state_mode == "absent")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.albservicesconfig | default([]) }}"
+  with_items: "{{ avi_role_cfg.csrfpolicy | default([]) }}"

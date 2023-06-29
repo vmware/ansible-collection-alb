@@ -59,7 +59,6 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: str
     dhcp_enabled:
         description:
             - Ip address management scheme for this segment associated network.
@@ -73,7 +72,6 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: str
     name:
         description:
             - Segment object name.
@@ -99,19 +97,6 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    origin_id:
-        description:
-            - Origin id applicable to security only cloud.
-            - Field introduced in 22.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
-    security_only_nsxt:
-        description:
-            - Nsxt segment belongs to security only cloud.
-            - Field introduced in 22.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     segment_gw:
         description:
             - Segment gateway.
@@ -177,7 +162,6 @@ options:
             - Field introduced in 20.1.5.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
-        elements: str
     vrf_context_ref:
         description:
             - Corresponding vrf context object in avi.
@@ -231,15 +215,13 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         cloud_ref=dict(type='str',),
-        dhcp6_ranges=dict(type='list', elements='str',),
+        dhcp6_ranges=dict(type='list',),
         dhcp_enabled=dict(type='bool',),
-        dhcp_ranges=dict(type='list', elements='str',),
+        dhcp_ranges=dict(type='list',),
         name=dict(type='str',),
         nw_name=dict(type='str',),
         nw_ref=dict(type='str',),
         opaque_network_id=dict(type='str',),
-        origin_id=dict(type='str',),
-        security_only_nsxt=dict(type='bool',),
         segment_gw=dict(type='str',),
         segment_gw6=dict(type='str',),
         segment_id=dict(type='str',),
@@ -250,7 +232,7 @@ def main():
         tier1_id=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
-        vlan_ids=dict(type='list', elements='str',),
+        vlan_ids=dict(type='list',),
         vrf_context_ref=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())

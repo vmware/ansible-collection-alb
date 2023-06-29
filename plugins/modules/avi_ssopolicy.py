@@ -72,7 +72,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     name:
         description:
             - Name of the sso policy.
@@ -153,7 +152,7 @@ def main():
         authentication_policy=dict(type='dict',),
         authorization_policy=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
-        markers=dict(type='list', elements='dict',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         type=dict(type='str',),

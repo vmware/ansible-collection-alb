@@ -54,7 +54,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     bfd_profile:
         description:
             - Bfd configuration profile.
@@ -93,7 +92,6 @@ options:
             - Configure ping based heartbeat check for gateway in service engines of vrf.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
-        elements: dict
     internal_gateway_monitor:
         description:
             - Configure ping based heartbeat check for all default gateways in service engines of vrf.
@@ -115,7 +113,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
-        elements: dict
     name:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -125,7 +122,6 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     system_default:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -189,19 +185,19 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        attrs=dict(type='list', elements='dict',),
+        attrs=dict(type='list',),
         bfd_profile=dict(type='dict',),
         bgp_profile=dict(type='dict',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         debugvrfcontext=dict(type='dict',),
         description=dict(type='str',),
-        gateway_mon=dict(type='list', elements='dict',),
+        gateway_mon=dict(type='list',),
         internal_gateway_monitor=dict(type='dict',),
         lldp_enable=dict(type='bool',),
-        markers=dict(type='list', elements='dict',),
+        markers=dict(type='list',),
         name=dict(type='str', required=True),
-        static_routes=dict(type='list', elements='dict',),
+        static_routes=dict(type='list',),
         system_default=dict(type='bool',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

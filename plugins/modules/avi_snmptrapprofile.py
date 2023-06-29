@@ -69,7 +69,6 @@ options:
             - The ip address or hostname of the snmp trap destination server.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: dict
     url:
         description:
             - Avi controller URL of the object.
@@ -127,7 +126,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
-        trap_servers=dict(type='list', elements='dict',),
+        trap_servers=dict(type='list',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

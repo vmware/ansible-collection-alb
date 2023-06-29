@@ -70,7 +70,6 @@ options:
             - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
-        elements: str
     url:
         description:
             - Avi controller URL of the object.
@@ -127,7 +126,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
-        test_se_datastore_level_3_refs=dict(type='list', elements='str',),
+        test_se_datastore_level_3_refs=dict(type='list',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

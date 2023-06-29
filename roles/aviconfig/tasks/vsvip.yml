@@ -14,6 +14,8 @@
     api_context: "{{ avi_api_context | default(omit) }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    bgp_local_preference: "{{ item.bgp_local_preference | default(omit) }}"
+    bgp_num_as_path_prepend: "{{ item.bgp_num_as_path_prepend | default(omit) }}"
     bgp_peer_labels: "{{ item.bgp_peer_labels | default(omit) }}"
     cloud_ref: "{{ item.cloud_ref | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
