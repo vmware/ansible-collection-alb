@@ -59,7 +59,6 @@ options:
             - Field introduced in 20.1.5.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
-        elements: dict
     name:
         description:
             - Name of the label group.
@@ -123,7 +122,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        labels=dict(type='list', elements='dict',),
+        labels=dict(type='list',),
         name=dict(type='str', required=True),
         url=dict(type='str',),
         uuid=dict(type='str',),
