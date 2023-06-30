@@ -67,6 +67,7 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: list
+        elements: dict
     name:
         description:
             - Name of the authmappingprofile.
@@ -146,7 +147,7 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
-        mapping_rules=dict(type='list', required=True),
+        mapping_rules=dict(type='list', elements='dict', required=True),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         type=dict(type='str', required=True),

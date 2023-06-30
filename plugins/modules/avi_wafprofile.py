@@ -71,6 +71,7 @@ options:
             - Field introduced in 17.2.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -78,6 +79,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Field introduced in 17.2.1.
@@ -147,8 +149,8 @@ def main():
         config=dict(type='dict', required=True),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
-        files=dict(type='list',),
-        markers=dict(type='list',),
+        files=dict(type='list', elements='dict',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

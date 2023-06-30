@@ -62,7 +62,7 @@ options:
         type: dict
     end_time:
         description:
-            - The time at which the albservicesjob is ended.
+            - Time at which the albservicesjob ended.
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
@@ -79,15 +79,16 @@ options:
             - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     pulse_job_id:
         description:
-            - A unique identifier for this job entry on the pulse portal.
+            - A unique identifier for this job entry on the pulse cloud services.
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     pulse_sync_status:
         description:
-            - Status of sync to pulse(result uploads/state updates).
+            - Status of sync to pulse cloud services(result uploads/state updates).
             - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: bool
@@ -99,14 +100,14 @@ options:
         type: str
     start_time:
         description:
-            - The time at which the albservicesjob is started.
+            - Time at which the albservicesjob started.
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     status:
         description:
             - The status of the albservicesjob.
-            - Enum options - UNDETERMINED, PENDING, IN_PROGRESS, COMPLETED, FAILED.
+            - Enum options - UNDETERMINED, PENDING, IN_PROGRESS, COMPLETED, FAILED, NOT_ENABLED.
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as PENDING.
@@ -183,7 +184,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         end_time=dict(type='dict',),
         name=dict(type='str', required=True),
-        params=dict(type='list',),
+        params=dict(type='list', elements='dict',),
         pulse_job_id=dict(type='str',),
         pulse_sync_status=dict(type='bool',),
         result=dict(type='str',),

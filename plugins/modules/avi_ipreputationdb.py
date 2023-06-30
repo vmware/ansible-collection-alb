@@ -54,6 +54,7 @@ options:
             - Maximum of 1 items allowed.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -74,6 +75,7 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -81,6 +83,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Ip reputation db name.
@@ -171,11 +174,11 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        base_file_refs=dict(type='list',),
+        base_file_refs=dict(type='list', elements='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
-        incremental_file_refs=dict(type='list',),
-        markers=dict(type='list',),
+        incremental_file_refs=dict(type='list', elements='str',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         service_status=dict(type='dict',),
         tenant_ref=dict(type='str',),
