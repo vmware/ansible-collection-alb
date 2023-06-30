@@ -65,6 +65,12 @@ options:
             - Field introduced in 21.1.4.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
+    tenant_uuid:
+        description:
+            - Tenant uuid.
+            - Field introduced in 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     url:
         description:
             - Avi controller URL of the object.
@@ -123,6 +129,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         saas_status=dict(type='dict',),
         service_update=dict(type='dict',),
+        tenant_uuid=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

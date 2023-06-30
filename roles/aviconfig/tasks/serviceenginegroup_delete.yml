@@ -4,6 +4,7 @@
 - name: Avi ServiceEngineGroup | Delete ServiceEngineGroup
   no_log: "False"
   vmware.alb.avi_serviceenginegroup:
+
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -12,6 +13,7 @@
     api_version: "{{ api_version | default(omit) }}"
     avi_credentials: "{{ avi_credentials | default(omit) }}"
     api_context: "{{ avi_api_context | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
     avi_api_update_method: "{{ avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     aggressive_failure_detection: "{{ item.aggressive_failure_detection | default(omit) }}"
@@ -173,7 +175,6 @@
     min_se: "{{ item.min_se | default(omit) }}"
     minimum_connection_memory: "{{ item.minimum_connection_memory | default(omit) }}"
     n_log_streaming_threads: "{{ item.n_log_streaming_threads | default(omit) }}"
-    name: "{{ item.name | default(omit) }}"
     ns_helper_deq_interval_msec: "{{ item.ns_helper_deq_interval_msec | default(omit) }}"
     num_dispatcher_cores: "{{ item.num_dispatcher_cores | default(omit) }}"
     num_dispatcher_queues: "{{ item.num_dispatcher_queues | default(omit) }}"

@@ -58,6 +58,7 @@ options:
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     is_federated:
         description:
             - This field indicates that this object is replicated across gslb federation.
@@ -72,6 +73,7 @@ options:
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     name:
         description:
             - Geo database name.
@@ -142,9 +144,9 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         description=dict(type='str',),
-        files=dict(type='list',),
+        files=dict(type='list', elements='dict',),
         is_federated=dict(type='bool',),
-        mappings=dict(type='list',),
+        mappings=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
