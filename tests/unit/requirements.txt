@@ -1,2 +1,2 @@
 mock
-beautifulsoup4==4.12.2
+beautifulsoup4==4.9.3
