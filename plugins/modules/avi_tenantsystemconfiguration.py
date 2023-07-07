@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_licenseledgerdetails
+module: avi_tenantsystemconfiguration
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of LicenseLedgerDetails Avi RESTful Object
+short_description: Module for setup of TenantSystemConfiguration Avi RESTful Object
 description:
-    - This module is used to configure LicenseLedgerDetails object
+    - This module is used to configure TenantSystemConfiguration object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,36 +46,44 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    escrow_infos:
+    configpb_attributes:
         description:
-            - Maintain information about reservation against cookie.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
-        elements: dict
-    se_infos:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 23.1.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: dict
+    dns_virtualservice_refs:
         description:
-            - Maintain information about consumed licenses against se_uuid.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Dns virtual services hosting fqdn records for applications configured within this tenant.
+            - It is a reference to an object of type virtualservice.
+            - Field introduced in 23.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
-        elements: dict
-    tier_usages:
+        elements: str
+    name:
         description:
-            - License usage per tier.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: list
-        elements: dict
+            - Name of the tenant system configuration object.
+            - Field introduced in 23.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        required: true
+        type: str
+    tenant_ref:
+        description:
+            - Unique identifier of the tenant that this object belongs to.
+            - It is a reference to an object of type tenant.
+            - Field introduced in 23.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     url:
         description:
             - Avi controller URL of the object.
         type: str
     uuid:
         description:
-            - Uuid for reference.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Tenant system configuration uuid.
+            - Field introduced in 23.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -90,16 +98,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create LicenseLedgerDetails object
-  vmware.alb.avi_licenseledgerdetails:
+- name: Example to create TenantSystemConfiguration object
+  vmware.alb.avi_tenantsystemconfiguration:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_licenseledgerdetails
+    name: sample_tenantsystemconfiguration
 """
 
 RETURN = '''
 obj:
-    description: LicenseLedgerDetails (api/licenseledgerdetails) object
+    description: TenantSystemConfiguration (api/tenantsystemconfiguration) object
     returned: success, changed
     type: dict
 '''
@@ -122,9 +130,10 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        escrow_infos=dict(type='list', elements='dict',),
-        se_infos=dict(type='list', elements='dict',),
-        tier_usages=dict(type='list', elements='dict',),
+        configpb_attributes=dict(type='dict',),
+        dns_virtualservice_refs=dict(type='list', elements='str',),
+        name=dict(type='str', required=True),
+        tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
@@ -135,7 +144,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'licenseledgerdetails',
+    return avi_ansible_api(module, 'tenantsystemconfiguration',
                            set())
 
 

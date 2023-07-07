@@ -65,6 +65,7 @@ options:
             - Datascripts to execute.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     description:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -89,6 +90,7 @@ options:
             - It is a reference to an object of type ipaddrgroup.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -96,6 +98,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Name for the virtual service datascript collection.
@@ -109,18 +112,21 @@ options:
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     pool_group_refs:
         description:
             - Uuid of pool groups that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type poolgroup.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     pool_refs:
         description:
             - Uuid of pools that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type pool.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     protocol_parser_refs:
         description:
             - List of protocol parsers that could be referred by vsdatascriptset objects.
@@ -128,6 +134,7 @@ options:
             - Field introduced in 18.2.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     rate_limiters:
         description:
             - The rate limit definitions needed for this datascript.
@@ -135,6 +142,7 @@ options:
             - Field introduced in 18.2.9.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     ssl_key_certificate_refs:
         description:
             - Uuids of sslkeyandcertificate objects that could be referred by vsdatascriptset objects.
@@ -142,6 +150,7 @@ options:
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     ssl_profile_refs:
         description:
             - Uuids of sslprofile objects that could be referred by vsdatascriptset objects.
@@ -149,12 +158,14 @@ options:
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     string_group_refs:
         description:
             - Uuid of string groups that could be referred by vsdatascriptset objects.
             - It is a reference to an object of type stringgroup.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -216,21 +227,21 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
-        datascript=dict(type='list',),
+        datascript=dict(type='list', elements='dict',),
         description=dict(type='str',),
         geo_db_ref=dict(type='str',),
         ip_reputation_db_ref=dict(type='str',),
-        ipgroup_refs=dict(type='list',),
-        markers=dict(type='list',),
+        ipgroup_refs=dict(type='list', elements='str',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
-        pki_profile_refs=dict(type='list',),
-        pool_group_refs=dict(type='list',),
-        pool_refs=dict(type='list',),
-        protocol_parser_refs=dict(type='list',),
-        rate_limiters=dict(type='list',),
-        ssl_key_certificate_refs=dict(type='list',),
-        ssl_profile_refs=dict(type='list',),
-        string_group_refs=dict(type='list',),
+        pki_profile_refs=dict(type='list', elements='str',),
+        pool_group_refs=dict(type='list', elements='str',),
+        pool_refs=dict(type='list', elements='str',),
+        protocol_parser_refs=dict(type='list', elements='str',),
+        rate_limiters=dict(type='list', elements='dict',),
+        ssl_key_certificate_refs=dict(type='list', elements='str',),
+        ssl_profile_refs=dict(type='list', elements='str',),
+        string_group_refs=dict(type='list', elements='str',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),

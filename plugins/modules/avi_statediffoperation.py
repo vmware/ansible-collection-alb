@@ -52,6 +52,7 @@ options:
             - Field introduced in 21.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     name:
         description:
             - Name of statediff operation.
@@ -147,7 +148,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        events=dict(type='list',),
+        events=dict(type='list', elements='dict',),
         name=dict(type='str',),
         node_uuid=dict(type='str',),
         operation=dict(type='str',),

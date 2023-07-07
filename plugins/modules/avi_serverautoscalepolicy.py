@@ -94,6 +94,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     max_scalein_adjustment_step:
         description:
             - Maximum number of servers to scale-in simultaneously.
@@ -131,6 +132,7 @@ options:
             - It is a reference to an object of type alertconfig.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     scalein_cooldown:
         description:
             - Cooldown period during which no new scale-in is triggered to allow previous scale-in to successfully complete.
@@ -144,6 +146,7 @@ options:
             - It is a reference to an object of type alertconfig.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: str
     scaleout_cooldown:
         description:
             - Cooldown period during which no new scale-out is triggered to allow previous scale-out to successfully complete.
@@ -159,6 +162,7 @@ options:
             - Maximum of 1 items allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
+        elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -229,17 +233,17 @@ def main():
         intelligent_autoscale=dict(type='bool',),
         intelligent_scalein_margin=dict(type='int',),
         intelligent_scaleout_margin=dict(type='int',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
         max_scalein_adjustment_step=dict(type='int',),
         max_scaleout_adjustment_step=dict(type='int',),
         max_size=dict(type='int',),
         min_size=dict(type='int',),
         name=dict(type='str', required=True),
-        scalein_alertconfig_refs=dict(type='list',),
+        scalein_alertconfig_refs=dict(type='list', elements='str',),
         scalein_cooldown=dict(type='int',),
-        scaleout_alertconfig_refs=dict(type='list',),
+        scaleout_alertconfig_refs=dict(type='list', elements='str',),
         scaleout_cooldown=dict(type='int',),
-        scheduled_scalings=dict(type='list',),
+        scheduled_scalings=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         use_predicted_load=dict(type='bool',),

@@ -91,10 +91,9 @@ options:
     enable_http2:
         description:
             - Enable http/2 for traffic from virtualservice to all the backend servers in all the pools configured under this poolgroup.
+            - Field deprecated in 30.2.1.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-            - cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: bool
     fail_action:
         description:
@@ -116,11 +115,13 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     members:
         description:
             - List of pool group members object of type poolgroupmember.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     min_servers:
         description:
             - The minimum number of servers to distribute traffic to.
@@ -220,8 +221,8 @@ def main():
         enable_http2=dict(type='bool',),
         fail_action=dict(type='dict',),
         implicit_priority_labels=dict(type='bool',),
-        markers=dict(type='list',),
-        members=dict(type='list',),
+        markers=dict(type='list', elements='dict',),
+        members=dict(type='list', elements='dict',),
         min_servers=dict(type='int',),
         name=dict(type='str', required=True),
         priority_labels_ref=dict(type='str',),

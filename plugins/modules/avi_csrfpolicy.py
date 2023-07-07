@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_errorpagebody
+module: avi_csrfpolicy
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of ErrorPageBody Avi RESTful Object
+short_description: Module for setup of CSRFPolicy Avi RESTful Object
 description:
-    - This module is used to configure ErrorPageBody object
+    - This module is used to configure CSRFPolicy object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -49,53 +49,67 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 21.1.1.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
-    error_page_body:
+    cookie_name:
         description:
-            - Error page body sent to client when match.
-            - Field introduced in 17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        required: true
+            - Name of the cookie to be used for csrf token.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as X-CSRF-TOKEN.
         type: str
-    format:
+    description:
         description:
-            - Format of an error page body html or json.
-            - Enum options - ERROR_PAGE_FORMAT_HTML, ERROR_PAGE_FORMAT_JSON.
-            - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as ERROR_PAGE_FORMAT_HTML.
+            - Human-readable description of this csrf protection policy.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
-    markers:
-        description:
-            - List of labels to be used for granular rbac.
-            - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: list
-        elements: dict
     name:
         description:
-            - Field introduced in 17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - The name of this csrf protection policy.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         required: true
         type: str
+    rules:
+        description:
+            - Rules to control which requests undergo csrf protection.if the client's request doesn't match with any rules matchtarget, bypass_csrf action is
+            - applied.
+            - Field introduced in 30.2.1.
+            - Minimum of 1 items required.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        required: true
+        type: list
+        elements: dict
     tenant_ref:
         description:
+            - The unique identifier of the tenant to which this policy belongs.
             - It is a reference to an object of type tenant.
-            - Field introduced in 17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
+    token_validity_time_min:
+        description:
+            - Csrf token is rotated when this time expires.
+            - Tokens will be acceptable for twice the token_validity_time time.
+            - Allowed values are 10-1440.
+            - Special values are 0- unlimited.
+            - Field introduced in 30.2.1.
+            - Unit is min.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 360.
+        type: int
     url:
         description:
             - Avi controller URL of the object.
         type: str
     uuid:
         description:
-            - Field introduced in 17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - A unique identifier to this csrf protection policy.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -110,16 +124,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create ErrorPageBody object
-  vmware.alb.avi_errorpagebody:
+- name: Example to create CSRFPolicy object
+  vmware.alb.avi_csrfpolicy:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_errorpagebody
+    name: sample_csrfpolicy
 """
 
 RETURN = '''
 obj:
-    description: ErrorPageBody (api/errorpagebody) object
+    description: CSRFPolicy (api/csrfpolicy) object
     returned: success, changed
     type: dict
 '''
@@ -143,11 +157,12 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        error_page_body=dict(type='str', required=True),
-        format=dict(type='str',),
-        markers=dict(type='list', elements='dict',),
+        cookie_name=dict(type='str',),
+        description=dict(type='str',),
         name=dict(type='str', required=True),
+        rules=dict(type='list', elements='dict', required=True),
         tenant_ref=dict(type='str',),
+        token_validity_time_min=dict(type='int',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
@@ -158,7 +173,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'errorpagebody',
+    return avi_ansible_api(module, 'csrfpolicy',
                            set())
 
 

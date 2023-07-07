@@ -4,7 +4,7 @@
 - name: Avi ServiceEngineGroup | Create or Update ServiceEngineGroup
   no_log: "False"
   vmware.alb.avi_serviceenginegroup:
-    controller: "{{ avi_controller | default(omit) }}"
+
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -175,7 +175,6 @@
     min_se: "{{ item.min_se | default(omit) }}"
     minimum_connection_memory: "{{ item.minimum_connection_memory | default(omit) }}"
     n_log_streaming_threads: "{{ item.n_log_streaming_threads | default(omit) }}"
-    name: "{{ item.name | default(omit) }}"
     ns_helper_deq_interval_msec: "{{ item.ns_helper_deq_interval_msec | default(omit) }}"
     num_dispatcher_cores: "{{ item.num_dispatcher_cores | default(omit) }}"
     num_dispatcher_queues: "{{ item.num_dispatcher_queues | default(omit) }}"

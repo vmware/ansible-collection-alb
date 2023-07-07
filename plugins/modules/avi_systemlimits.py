@@ -65,6 +65,7 @@ options:
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
+        elements: dict
     serviceengine_limits:
         description:
             - System limits that apply to a serviceengine.
@@ -128,7 +129,7 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         controller_limits=dict(type='dict',),
-        controller_sizes=dict(type='list',),
+        controller_sizes=dict(type='list', elements='dict',),
         serviceengine_limits=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),

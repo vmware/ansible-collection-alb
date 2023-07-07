@@ -4,7 +4,7 @@
 - name: Avi ServiceEngineGroup | Update ServiceEngineGroup with advanced fields
   no_log: "False"
   vmware.alb.avi_serviceenginegroup_advanced:
-    controller: "{{ avi_controller | default(omit) }}"
+
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
