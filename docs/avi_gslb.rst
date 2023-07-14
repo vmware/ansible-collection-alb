@@ -609,7 +609,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - This field indicates tenant visibility for gs pool member selection across the gslb federated objects.
+                  - This field indicates tenant visibility for gs pool member selection across the gslb federated objects.tenant scope can be set only during the
+                </div>
+                                <div style="font-size: small">
+                  - gslb create and cannot be changed once it is set.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.12,20.1.4.

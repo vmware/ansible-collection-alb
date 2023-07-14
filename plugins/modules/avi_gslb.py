@@ -184,7 +184,8 @@ options:
         type: str
     tenant_scoped:
         description:
-            - This field indicates tenant visibility for gs pool member selection across the gslb federated objects.
+            - This field indicates tenant visibility for gs pool member selection across the gslb federated objects.tenant scope can be set only during the
+            - gslb create and cannot be changed once it is set.
             - Field introduced in 18.2.12,20.1.4.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
