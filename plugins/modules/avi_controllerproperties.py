@@ -602,6 +602,21 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    skopeo_retry_interval:
+        description:
+            - Time interval (in seconds) between retires for skopeo commands.
+            - Field introduced in 30.1.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
+    skopeo_retry_limit:
+        description:
+            - Number of times to try skopeo commands for remote image registries.
+            - Field introduced in 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+        type: int
     ssl_certificate_expiry_warning_days:
         description:
             - Number of days for ssl certificate expiry warning.
@@ -917,6 +932,8 @@ def main():
         seupgrade_fabric_pool_size=dict(type='int',),
         seupgrade_segroup_min_dead_timeout=dict(type='int',),
         shared_ssl_certificates=dict(type='bool',),
+        skopeo_retry_interval=dict(type='int',),
+        skopeo_retry_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
