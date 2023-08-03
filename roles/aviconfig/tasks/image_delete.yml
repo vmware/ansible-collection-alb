@@ -21,6 +21,7 @@
     duration: "{{ item.duration | default(omit) }}"
     end_time: "{{ item.end_time | default(omit) }}"
     events: "{{ item.events | default(omit) }}"
+    fips_mode_transition_applicable: "{{ item.fips_mode_transition_applicable | default(omit) }}"
     img_state: "{{ item.img_state | default(omit) }}"
     migrations: "{{ item.migrations | default(omit) }}"
     name: "{{ item.name | default(omit) }}"

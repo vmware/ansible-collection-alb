@@ -304,16 +304,13 @@ Parameters
                   - Enable http/2 for traffic from virtualservice to all the backend servers in all the pools configured under this poolgroup.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 30.2.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

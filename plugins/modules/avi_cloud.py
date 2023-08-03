@@ -256,6 +256,13 @@ options:
         description:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
+    resolve_fqdn_to_ipv6:
+        description:
+            - Resolve ipv6 address for pool member fqdns.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     se_group_template_ref:
         description:
             - The service engine group to use as template.
@@ -401,6 +408,7 @@ def main():
         prefer_static_routes=dict(type='bool',),
         proxy_configuration=dict(type='dict',),
         rancher_configuration=dict(type='dict',),
+        resolve_fqdn_to_ipv6=dict(type='bool',),
         se_group_template_ref=dict(type='str',),
         state_based_dns_registration=dict(type='bool',),
         tenant_ref=dict(type='str',),

@@ -191,7 +191,7 @@ options:
             - Field introduced in 20.1.3.
             - Unit is min.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 30.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 525600.
         type: int
     crashed_se_reboot:
         description:
@@ -345,6 +345,13 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 50.
         type: int
+    ignore_vrf_in_networksubnetlist:
+        description:
+            - Ignore the vrf_context filter for /networksubnetlist api.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     max_dead_se_in_grp:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -556,6 +563,14 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
+    seupgrade_copy_buffer_size:
+        description:
+            - This parameter defines the buffer size during se image downloads in a segroup.
+            - It is used to pace the se downloads so that controller network/cpu bandwidth is a bounded operation.
+            - Field introduced in 22.1.4.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 512.
+        type: int
     seupgrade_copy_pool_size:
         description:
             - This parameter defines the number of simultaneous se image downloads in a segroup.
@@ -567,7 +582,9 @@ options:
         type: int
     seupgrade_fabric_pool_size:
         description:
-            - Pool size used for all fabric commands during se upgrade.
+            - The pool size is used to control the number of concurrent segroup upgrades.
+            - This field value takes affect upon controller warm reboot.
+            - Allowed values are 2-20.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 20.
         type: int
@@ -585,6 +602,21 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    skopeo_retry_interval:
+        description:
+            - Time interval (in seconds) between retires for skopeo commands.
+            - Field introduced in 30.1.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
+    skopeo_retry_limit:
+        description:
+            - Number of times to try skopeo commands for remote image registries.
+            - Field introduced in 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+        type: int
     ssl_certificate_expiry_warning_days:
         description:
             - Number of days for ssl certificate expiry warning.
@@ -705,6 +737,14 @@ options:
             - Unit is sec.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 480.
+        type: int
+    vs_se_bootup_fail_patch:
+        description:
+            - Wait for longer for patch ses to boot up.
+            - Field introduced in 30.2.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 600.
         type: int
     vs_se_create_fail:
         description:
@@ -857,6 +897,7 @@ def main():
         file_object_cleanup_period=dict(type='int',),
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
+        ignore_vrf_in_networksubnetlist=dict(type='bool',),
         max_dead_se_in_grp=dict(type='int',),
         max_pcap_per_tenant=dict(type='int',),
         max_se_spawn_interval_delay=dict(type='int',),
@@ -886,10 +927,13 @@ def main():
         secure_channel_cleanup_timeout=dict(type='int',),
         secure_channel_controller_token_timeout=dict(type='int',),
         secure_channel_se_token_timeout=dict(type='int',),
+        seupgrade_copy_buffer_size=dict(type='int',),
         seupgrade_copy_pool_size=dict(type='int',),
         seupgrade_fabric_pool_size=dict(type='int',),
         seupgrade_segroup_min_dead_timeout=dict(type='int',),
         shared_ssl_certificates=dict(type='bool',),
+        skopeo_retry_interval=dict(type='int',),
+        skopeo_retry_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
@@ -907,6 +951,7 @@ def main():
         vs_scaleout_ready_check_interval=dict(type='int',),
         vs_se_attach_ip_fail=dict(type='int',),
         vs_se_bootup_fail=dict(type='int',),
+        vs_se_bootup_fail_patch=dict(type='int',),
         vs_se_create_fail=dict(type='int',),
         vs_se_ping_fail=dict(type='int',),
         vs_se_vnic_fail=dict(type='int',),

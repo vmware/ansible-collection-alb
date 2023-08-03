@@ -1,7 +1,6 @@
 authors:
-- Gaurav Rastogi <grastogi@vmware.com>
-- Sandeep Bandi <sabandi@vmware.com>
-- Amol Shinde <samol@vmware.com>
+- Anurag Palsule <apalsule@vmware.com>
+- Parikshit Manur <parikshitm@vmware.com>
 description: VMware Advanced Load Balancer (formerly Avi) Ansible Collection
 issues: https://github.com/vmware/ansible-collection-alb/issues
 license_file: LICENSE
@@ -19,4 +18,4 @@ tags:
 - load
 - balancer
 - sdk
-version: 23.1.1
+version: 30.2.1

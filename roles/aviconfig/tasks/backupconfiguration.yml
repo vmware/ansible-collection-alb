@@ -26,6 +26,7 @@
     remote_directory: "{{ item.remote_directory | default(omit) }}"
     remote_file_transfer_protocol: "{{ item.remote_file_transfer_protocol | default(omit) }}"
     remote_hostname: "{{ item.remote_hostname | default(omit) }}"
+    s3_bucket_folder: "{{ item.s3_bucket_folder | default(omit) }}"
     save_local: "{{ item.save_local | default(omit) }}"
     ssh_user_ref: "{{ item.ssh_user_ref | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
