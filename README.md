@@ -148,6 +148,7 @@ Name | Description
 [vmware.alb.avi_securitypolicy](https://github.com/vmware/ansible-collection-alb/blob/30.1.1/docs/avi_securitypolicy.rst)|Module to create update or delete SecurityPolicy
 [vmware.alb.avi_seproperties](https://github.com/vmware/ansible-collection-alb/blob/30.1.1/docs/avi_seproperties.rst)|Module to create update or delete SeProperties
 [vmware.alb.avi_serverautoscalepolicy](https://github.com/vmware/ansible-collection-alb/blob/30.1.1/docs/avi_serverautoscalepolicy.rst)|Module to create update or delete ServerAutoScalePolicy
+[vmware.alb.avi_serviceauthprofile](https://github.com/vmware/ansible-collection-alb/blob/30.1.1/docs/avi_serviceauthprofile.rst)|Module to create update or delete ServiceAuthProfile
 [vmware.alb.avi_serviceengine](https://github.com/vmware/ansible-collection-alb/blob/30.1.1/docs/avi_serviceengine.rst)|Module to create update or delete ServiceEngine
 [vmware.alb.avi_serviceenginegroup](https://github.com/vmware/ansible-collection-alb/blob/30.1.1/docs/avi_serviceenginegroup.rst)|Module to create update or delete Serviceenginegroup
 [vmware.alb.avi_serviceenginegroup](https://github.com/vmware/ansible-collection-alb/blob/30.1.1/docs/avi_serviceenginegroup.rst)|Module to create update or delete ServiceEngineGroup

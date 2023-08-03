@@ -143,6 +143,8 @@ plugins/modules/avi_dynamicdnsrecord.py validate-modules:missing-gplv3-license
 plugins/modules/avi_dynamicdnsrecord.py import-3.8!skip
 plugins/modules/avi_role.py validate-modules:missing-gplv3-license
 plugins/modules/avi_role.py import-3.8!skip
+plugins/modules/avi_serviceauthprofile.py validate-modules:missing-gplv3-license
+plugins/modules/avi_serviceauthprofile.py import-3.8!skip
 plugins/modules/avi_controllersite.py validate-modules:missing-gplv3-license
 plugins/modules/avi_controllersite.py import-3.8!skip
 plugins/modules/avi_inventoryfaultconfig.py validate-modules:missing-gplv3-license
