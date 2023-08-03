@@ -617,6 +617,14 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 3.
         type: int
+    soft_min_mem_per_se_limit:
+        description:
+            - Soft limit on the minimum se memory that an se needs to have on se register.
+            - Field introduced in 30.1.1.
+            - Unit is mb.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1900.
+        type: int
     ssl_certificate_expiry_warning_days:
         description:
             - Number of days for ssl certificate expiry warning.
@@ -926,6 +934,7 @@ def main():
         shared_ssl_certificates=dict(type='bool',),
         skopeo_retry_interval=dict(type='int',),
         skopeo_retry_limit=dict(type='int',),
+        soft_min_mem_per_se_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
