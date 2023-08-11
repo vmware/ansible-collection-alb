@@ -328,6 +328,13 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1440.
         type: int
+    file_reference_mappings:
+        description:
+            - List of mapping for file reference and their absolute path.
+            - Field introduced in 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
     gslb_purge_batch_size:
         description:
             - Batch size for the vs_mgr to perform datastrorecleanup during a gslb purge.
@@ -348,7 +355,7 @@ options:
     ignore_vrf_in_networksubnetlist:
         description:
             - Ignore the vrf_context filter for /networksubnetlist api.
-            - Field introduced in 30.1.1.
+            - Field introduced in 22.1.4.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -895,6 +902,7 @@ def main():
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),
+        file_reference_mappings=dict(type='list', elements='dict',),
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
         ignore_vrf_in_networksubnetlist=dict(type='bool',),
