@@ -504,6 +504,14 @@ options:
             - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    snat_ip6_addresses:
+        description:
+            - Ipv6 address for se snat.
+            - Field introduced in 30.2.1.
+            - Maximum of 32 items allowed.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
     sp_pool_refs:
         description:
             - Gslb pools used to manage site-persistence functionality.
@@ -829,6 +837,7 @@ def main():
         services=dict(type='list', elements='dict',),
         sideband_profile=dict(type='dict',),
         snat_ip=dict(type='list', elements='dict',),
+        snat_ip6_addresses=dict(type='list', elements='dict',),
         sp_pool_refs=dict(type='list', elements='str',),
         ssl_key_and_certificate_refs=dict(type='list', elements='str',),
         ssl_profile_ref=dict(type='str',),

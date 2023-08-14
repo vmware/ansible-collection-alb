@@ -81,6 +81,7 @@
     services: "{{ item.services | default(omit) }}"
     sideband_profile: "{{ item.sideband_profile | default(omit) }}"
     snat_ip: "{{ item.snat_ip | default(omit) }}"
+    snat_ip6_addresses: "{{ item.snat_ip6_addresses | default(omit) }}"
     sp_pool_refs: "{{ item.sp_pool_refs | default(omit) }}"
     ssl_key_and_certificate_refs: "{{ item.ssl_key_and_certificate_refs | default(omit) }}"
     ssl_profile_ref: "{{ item.ssl_profile_ref | default(omit) }}"

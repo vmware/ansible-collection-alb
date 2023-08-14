@@ -328,6 +328,13 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1440.
         type: int
+    file_reference_mappings:
+        description:
+            - List of mapping for file reference and their absolute path.
+            - Field introduced in 30.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
     gslb_purge_batch_size:
         description:
             - Batch size for the vs_mgr to perform datastrorecleanup during a gslb purge.
@@ -348,7 +355,7 @@ options:
     ignore_vrf_in_networksubnetlist:
         description:
             - Ignore the vrf_context filter for /networksubnetlist api.
-            - Field introduced in 30.2.1.
+            - Field introduced in 22.1.4.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -616,6 +623,14 @@ options:
             - Field introduced in 30.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+        type: int
+    soft_min_mem_per_se_limit:
+        description:
+            - Soft limit on the minimum se memory that an se needs to have on se register.
+            - Field introduced in 30.1.1.
+            - Unit is mb.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1900.
         type: int
     ssl_certificate_expiry_warning_days:
         description:
@@ -895,6 +910,7 @@ def main():
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),
+        file_reference_mappings=dict(type='list', elements='dict',),
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
         ignore_vrf_in_networksubnetlist=dict(type='bool',),
@@ -934,6 +950,7 @@ def main():
         shared_ssl_certificates=dict(type='bool',),
         skopeo_retry_interval=dict(type='int',),
         skopeo_retry_limit=dict(type='int',),
+        soft_min_mem_per_se_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
