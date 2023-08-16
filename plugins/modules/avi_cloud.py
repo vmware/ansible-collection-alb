@@ -202,7 +202,7 @@ options:
     metrics_polling_interval:
         description:
             - Cloud metrics collector polling interval in seconds.
-            - Field introduced in 22.1.1.
+            - Field introduced in 21.1.6.
             - Unit is seconds.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
