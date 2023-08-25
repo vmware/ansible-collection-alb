@@ -708,7 +708,7 @@ Parameters
                   - Cloud metrics collector polling interval in seconds.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - Field introduced in 21.1.6.
                 </div>
                                 <div style="font-size: small">
                   - Unit is seconds.
