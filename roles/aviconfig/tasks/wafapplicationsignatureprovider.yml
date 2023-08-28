@@ -16,6 +16,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     available_applications: "{{ item.available_applications | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    filter_rules_on_import: "{{ item.filter_rules_on_import | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     ruleset_version: "{{ item.ruleset_version | default(omit) }}"
     service_status: "{{ item.service_status | default(omit) }}"

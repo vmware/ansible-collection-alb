@@ -61,6 +61,16 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
+    filter_rules_on_import:
+        description:
+            - If this is set to false, all provided rules are imported when updating this object.
+            - If this is set to true, only newer rules are considered for import.
+            - Newer rules are rules where the rule id is not in the range of 2,000,000 to 2,080,000 or where the rule has a tag with a cve from 2013 or newer.
+            - All other rules are ignored on rule import.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     name:
         description:
             - Name of application specific ruleset provider.
@@ -76,7 +86,7 @@ options:
         type: str
     service_status:
         description:
-            - If this object is managed by the application signatures update  service, this field contain the status of this syncronization.
+            - If this object is managed by the application signatures update service, this field contain the status of this syncronization.
             - Field introduced in 20.1.3.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
@@ -151,6 +161,7 @@ def main():
         avi_patch_value=dict(type='str',),
         available_applications=dict(type='list', elements='dict',),
         configpb_attributes=dict(type='dict',),
+        filter_rules_on_import=dict(type='bool',),
         name=dict(type='str',),
         ruleset_version=dict(type='str',),
         service_status=dict(type='dict',),
