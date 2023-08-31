@@ -146,7 +146,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default values for application signature sync.
+                  - Default values to be used for application signature sync.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.4.
@@ -172,7 +172,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default contact for this controller cluster.
+                  - Information about the default contact for this controller cluster.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -198,7 +198,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default values for case management.
+                  - Default values to be used for pulse case management.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -253,7 +253,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Features opt-in for pulse cloud services.
+                  - Information about the portal features opted in for controller.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -321,32 +321,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>name</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Name of the albservicesconfig object.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 30.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>operations_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -354,13 +328,13 @@ Parameters
                 </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Operations configuration.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 30.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.3.
@@ -418,7 +392,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The fqdn or ip address of the pulse cloud services.
+                  - The fqdn or ip address of the customer portal.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
@@ -470,42 +444,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Split proxy configuration to connect external pulse cloud services.
+                  - Split proxy configuration to connect external pulse services.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>tenant_ref</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Tenant uuid associated with the object.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type tenant.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 30.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
                 </div>
                                             </td>
         </tr>
@@ -539,10 +484,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - By default, pulse cloud services uses proxy added in system configuration.
+                  - By default, pulse uses proxy added in system configuration.
                 </div>
                                 <div style="font-size: small">
-                  - If it should use a separate proxy, set this flag to true and configure split proxy configuration.
+                  - If pulse needs to use a seperate proxy, set this flag to true and configure split proxy configuration.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -568,7 +513,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Secure the controller to pulse cloud services communication over tls.
+                  - Secure the controller to pulse communication over tls.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
@@ -597,7 +542,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default values for user agent db service.
+                  - Default values to be used for user agent db service.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -646,7 +591,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default values for waf management.
+                  - Default values to be used for pulse waf management.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.

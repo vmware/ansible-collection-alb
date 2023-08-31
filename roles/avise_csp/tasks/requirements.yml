@@ -12,7 +12,7 @@
     - se_csp_mgmt_ip
     - se_csp_mgmt_mask
     - se_csp_default_gw
-    - se_master_ctl_ip
+    - se_leader_ctl_ip
     - se_csp_disk_size
     - se_csp_service_name
     - se_csp_num_cpu

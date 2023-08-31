@@ -725,7 +725,7 @@ options:
         type: str
     time_tracker_props:
         description:
-            - Time tracker properties for connection establishment audit.
+            - Se connection establishment latency tracking configuration.
             - Field introduced in 22.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict

@@ -93,18 +93,6 @@ options:
                 description:
                   - Avi controller API csrftoken to reuse existing session with session id
                 type: str
-            csp_host:
-                description:
-                  - CSP host for Saas controller
-                type: str
-            csp_token:
-                description:
-                  - Saas controller password
-                type: str
-            idp_class:
-                description:
-                  - Specifies whether it is an Avi controller or Saas controller
-                type: str
         type: dict
     api_context:
         description:

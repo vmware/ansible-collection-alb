@@ -2581,7 +2581,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Time tracker properties for connection establishment audit.
+                  - Se connection establishment latency tracking configuration.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.1.

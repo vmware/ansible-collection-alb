@@ -119,12 +119,6 @@ options:
             - Remote destination.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    s3_bucket_folder:
-        description:
-            - The folder name in s3 bucket where backup will be stored.
-            - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
     save_local:
         description:
             - Local backup.
@@ -217,7 +211,6 @@ def main():
         remote_directory=dict(type='str',),
         remote_file_transfer_protocol=dict(type='str',),
         remote_hostname=dict(type='str',),
-        s3_bucket_folder=dict(type='str',),
         save_local=dict(type='bool',),
         ssh_user_ref=dict(type='str',),
         tenant_ref=dict(type='str',),

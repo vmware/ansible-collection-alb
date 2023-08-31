@@ -50,15 +50,15 @@
     - name: Avi SE | CSP | Image deploy | Set SE image path for controller version < 18.2.6
       set_fact:
         se_image_path: "/opt/avi/se_ova"
-      when: se_master_ctl_version is version_compare("18.2.6", "<")
+      when: se_leader_ctl_version is version_compare("18.2.6", "<")
 
     - block:
         - name: Avi SE | CSP | Image deploy | Get controller tag
           avi_api_session:
-            controller: "{{ se_master_ctl_ip }}"
-            username: "{{ se_master_ctl_username }}"
-            password: "{{ se_master_ctl_password }}"
-            api_version: "{{ se_master_ctl_version }}"
+            controller: "{{ se_leader_ctl_ip }}"
+            username: "{{ se_leader_ctl_username }}"
+            password: "{{ se_leader_ctl_password }}"
+            api_version: "{{ se_leader_ctl_version }}"
             tenant: admin
             http_method: get
             path: "initial-data"
@@ -69,7 +69,7 @@
           set_fact:
             se_image_path: "/host/pkgs/{{ data_res.obj.version.Tag }}"
 
-      when: se_master_ctl_version is version_compare("18.2.6", ">=")
+      when: se_leader_ctl_version is version_compare("18.2.6", ">=")
 
     - name: Avi SE | CSP | Image deploy | Verify qcow exists on controller
       stat:
@@ -79,10 +79,10 @@
         - name:  Avi SE | CSP | Image deploy | generate SE image if not exist on controller
           delegate_to: localhost
           avi_api_session:
-            controller: "{{ se_master_ctl_ip }}"
-            username: "{{ se_master_ctl_username }}"
-            password: "{{ se_master_ctl_password }}"
-            api_version: "{{ se_master_ctl_version }}"
+            controller: "{{ se_leader_ctl_ip }}"
+            username: "{{ se_leader_ctl_username }}"
+            password: "{{ se_leader_ctl_password }}"
+            api_version: "{{ se_leader_ctl_version }}"
             http_method: post
             path: 'fileservice/seova'
             timeout: 600

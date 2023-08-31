@@ -1,4 +1,4 @@
-# vmware.alb.avise
+# avinetworks.avise
 
 This readme covers the advanced features of this role. These notes are for advanced users or customizing this role to use in unique environments including Development environments. Please use the following with extreme caution.
 

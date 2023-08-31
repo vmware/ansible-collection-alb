@@ -3,6 +3,7 @@
 ---
 avi_resource_types:
   - labelgroup
+  - albservicesconfig
   - systemlimits
   - licenseledgerdetails
   - useraccountprofile
@@ -34,17 +35,14 @@ avi_resource_types:
   - testsedatastorelevel3
   - botipreputationtypemapping
   - botconfigconsolidator
-  - tenantsystemconfiguration
   - federationcheckpoint
   - gslbgeodbprofile
-  - albservicesconfig
   - siteversion
   - statediffoperation
   - image
   - controllerportalregistration
   - dynamicdnsrecord
   - role
-  - serviceauthprofile
   - controllersite
   - inventoryfaultconfig
   - albservicesfileupload
@@ -63,7 +61,6 @@ avi_resource_types:
   - wafpolicypsmgroup
   - wafprofile
   - botmapping
-  - csrfpolicy
   - natpolicy
   - applicationprofile
   - microservicegroup
@@ -97,7 +94,6 @@ avi_resource_types:
   - serverautoscalepolicy
   - network
   - serviceenginegroup
-  - serviceenginegroup_advanced
   - pool
   - trafficcloneprofile
   - vsvip

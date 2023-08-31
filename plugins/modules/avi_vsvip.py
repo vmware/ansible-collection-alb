@@ -47,21 +47,6 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    bgp_local_preference:
-        description:
-            - Local_pref to be used for vsvip advertised.
-            - Applicable only over ibgp.
-            - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: int
-    bgp_num_as_path_prepend:
-        description:
-            - Number of times the local as should be prepended additionally to vsvip.
-            - Applicable only over ebgp.
-            - Allowed values are 1-10.
-            - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: int
     bgp_peer_labels:
         description:
             - Select bgp peers, using peer label, for vsvip advertisement.
@@ -232,8 +217,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        bgp_local_preference=dict(type='int',),
-        bgp_num_as_path_prepend=dict(type='int',),
         bgp_peer_labels=dict(type='list', elements='str',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),

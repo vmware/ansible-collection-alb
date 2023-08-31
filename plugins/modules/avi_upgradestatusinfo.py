@@ -202,12 +202,6 @@ options:
             - Field introduced in 18.2.10, 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    prev_remote_image_ref:
-        description:
-            - Remote image reference of previous base image.
-            - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
     previous_image_ref:
         description:
             - Image uuid for identifying previous base image.example  base-image was 18.2.5 and an upgrade was done to 18.2.6, then this field will indicate
@@ -260,12 +254,6 @@ options:
         description:
             - Descriptive reason for the upgrade state.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
-    remote_image_ref:
-        description:
-            - Remote image reference of current base image.
-            - Field introduced in 30.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     se_patch_image_path:
@@ -446,7 +434,6 @@ def main():
         patch_version=dict(type='str',),
         prev_image_path=dict(type='str',),
         prev_patch_image_path=dict(type='str',),
-        prev_remote_image_ref=dict(type='str',),
         previous_image_ref=dict(type='str',),
         previous_patch_image_ref=dict(type='str',),
         previous_patch_list=dict(type='list', elements='dict',),
@@ -454,7 +441,6 @@ def main():
         previous_version=dict(type='str',),
         progress=dict(type='int',),
         reason=dict(type='str',),
-        remote_image_ref=dict(type='str',),
         se_patch_image_path=dict(type='str',),
         se_patch_image_ref=dict(type='str',),
         se_upgrade_events=dict(type='list', elements='dict',),
