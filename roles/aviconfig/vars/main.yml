@@ -19,13 +19,12 @@ avi_resource_types:
   - networkprofile
   - stringgroup
   - ipaddrgroup
-  - pkiprofile
+  - fileobject
   - sslprofile
   - applicationpersistenceprofile
   - alertemailconfig
   - snmptrapprofile
   - autoscalelaunchconfig
-  - fileobject
   - securitypolicy
   - protocolparser
   - jwtserverprofile
@@ -65,10 +64,10 @@ avi_resource_types:
   - botmapping
   - csrfpolicy
   - natpolicy
-  - applicationprofile
-  - microservicegroup
+  - pkiprofile
   - ipreputationdb
   - geodb
+  - microservicegroup
   - errorpageprofile
   - testsedatastorelevel2
   - gslb
@@ -78,9 +77,10 @@ avi_resource_types:
   - authmappingprofile
   - scheduler
   - sslkeyandcertificate
-  - networksecuritypolicy
+  - applicationprofile
   - wafpolicy
   - botdetectionpolicy
+  - networksecuritypolicy
   - testsedatastorelevel1
   - backup
   - cloud
