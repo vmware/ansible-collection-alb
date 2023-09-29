@@ -64,6 +64,12 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
+    sender_hostname:
+        description:
+            - User defined sender hostname in syslog message.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     syslog_servers:
         description:
             - The list of syslog servers.
@@ -135,6 +141,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         name=dict(type='str', required=True),
+        sender_hostname=dict(type='str',),
         syslog_servers=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
