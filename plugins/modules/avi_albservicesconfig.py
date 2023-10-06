@@ -135,11 +135,23 @@ options:
             - edition.
         required: true
         type: dict
+    session_config:
+        description:
+            - Session configuration data.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     split_proxy_configuration:
         description:
             - Split proxy configuration to connect external pulse cloud services.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: dict
+    tenant_config:
+        description:
+            - Tenant based configuration data.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
@@ -245,7 +257,9 @@ def main():
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
         saas_licensing_config=dict(type='dict', required=True),
+        session_config=dict(type='dict',),
         split_proxy_configuration=dict(type='dict',),
+        tenant_config=dict(type='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         use_split_proxy=dict(type='bool',),
