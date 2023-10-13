@@ -139,7 +139,8 @@ options:
         description:
             - Session configuration data.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     split_proxy_configuration:
         description:
@@ -151,7 +152,8 @@ options:
         description:
             - Tenant based configuration data.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     tenant_ref:
         description:
