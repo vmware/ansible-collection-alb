@@ -75,12 +75,11 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
 ```
 
 - hosts: service_engines
-  gather_facts: false
   collections:
     - vmware.alb
   tasks:
-    - name: Deploy Avi dockersied SE
-      import_role:
+    - name: Create a dockersied se
+      include_role:
         name: avise
       vars:
         se_leader_ctl_ip: 10.10.27.101
@@ -95,12 +94,11 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
 ```
 
 - hosts: service_engines
-  gather_facts: false
   collections:
     - vmware.alb
   tasks:
-    - name: Deploy Avi dockersied SE
-      import_role:
+    - name: Create a dockersied se
+      include_role:
         name: avise
       vars:
         se_leader_ctl_ip: 10.10.27.101
@@ -112,13 +110,12 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
 ```
 
 - hosts: all
-  gather_facts: false
   collections:
     - vmware.alb
   tasks:
-    - name: Deploy Avi dockersied SE
-      import_role:
-        name: avicontroller_csp
+    - name: Create a dockersied se
+      include_role:
+        name: avise
       vars:
         se_leader_ctl_ip: 10.10.27.101
         se_auth_token: "{{ se_auth_token }}"

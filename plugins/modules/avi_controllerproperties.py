@@ -156,6 +156,15 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
+    cloud_discovery_interval:
+        description:
+            - Time in minutes to wait between consecutive cloud discovery cycles.
+            - Allowed values are 1-1440.
+            - Field introduced in 22.1.5.
+            - Unit is min.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
     cloud_reconcile:
         description:
             - Enable/disable periodic reconcile for all the clouds.
@@ -163,6 +172,15 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    cloud_reconcile_interval:
+        description:
+            - Time in minutes to wait between consecutive cloud reconcile cycles.
+            - Allowed values are 1-1440.
+            - Field introduced in 22.1.5.
+            - Unit is min.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
     cluster_ip_gratuitous_arp_period:
         description:
             - Period for cluster ip gratuitous arp job.
@@ -191,7 +209,7 @@ options:
             - Field introduced in 20.1.3.
             - Unit is min.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 525600.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 30.
         type: int
     crashed_se_reboot:
         description:
@@ -348,7 +366,7 @@ options:
     ignore_vrf_in_networksubnetlist:
         description:
             - Ignore the vrf_context filter for /networksubnetlist api.
-            - Field introduced in 30.2.1.
+            - Field introduced in 22.1.4.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -602,21 +620,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    skopeo_retry_interval:
-        description:
-            - Time interval (in seconds) between retires for skopeo commands.
-            - Field introduced in 30.1.1.
-            - Unit is sec.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
-        type: int
-    skopeo_retry_limit:
-        description:
-            - Number of times to try skopeo commands for remote image registries.
-            - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
-        type: int
     ssl_certificate_expiry_warning_days:
         description:
             - Number of days for ssl certificate expiry warning.
@@ -737,14 +740,6 @@ options:
             - Unit is sec.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 480.
-        type: int
-    vs_se_bootup_fail_patch:
-        description:
-            - Wait for longer for patch ses to boot up.
-            - Field introduced in 30.2.1.
-            - Unit is sec.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 600.
         type: int
     vs_se_create_fail:
         description:
@@ -872,7 +867,9 @@ def main():
         check_vsvip_fqdn_syntax=dict(type='bool',),
         cleanup_expired_authtoken_timeout_period=dict(type='int',),
         cleanup_sessions_timeout_period=dict(type='int',),
+        cloud_discovery_interval=dict(type='int',),
         cloud_reconcile=dict(type='bool',),
+        cloud_reconcile_interval=dict(type='int',),
         cluster_ip_gratuitous_arp_period=dict(type='int',),
         configpb_attributes=dict(type='dict',),
         consistency_check_timeout_period=dict(type='int',),
@@ -932,8 +929,6 @@ def main():
         seupgrade_fabric_pool_size=dict(type='int',),
         seupgrade_segroup_min_dead_timeout=dict(type='int',),
         shared_ssl_certificates=dict(type='bool',),
-        skopeo_retry_interval=dict(type='int',),
-        skopeo_retry_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
@@ -951,7 +946,6 @@ def main():
         vs_scaleout_ready_check_interval=dict(type='int',),
         vs_se_attach_ip_fail=dict(type='int',),
         vs_se_bootup_fail=dict(type='int',),
-        vs_se_bootup_fail_patch=dict(type='int',),
         vs_se_create_fail=dict(type='int',),
         vs_se_ping_fail=dict(type='int',),
         vs_se_vnic_fail=dict(type='int',),

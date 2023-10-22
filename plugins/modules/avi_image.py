@@ -92,13 +92,6 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: dict
-    fips_mode_transition_applicable:
-        description:
-            - Specifies whether fips mode can be enabled on this image.
-            - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
-        type: bool
     img_state:
         description:
             - Status of the image.
@@ -249,7 +242,6 @@ def main():
         duration=dict(type='int',),
         end_time=dict(type='str',),
         events=dict(type='list', elements='dict',),
-        fips_mode_transition_applicable=dict(type='bool',),
         img_state=dict(type='dict',),
         migrations=dict(type='dict',),
         name=dict(type='str', required=True),
