@@ -86,6 +86,12 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: dict
+    skip_optional_check_tests:
+        description:
+            - Optional bool for nested skip_optional_check test cases-level1.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: bool
     string_length_test:
         description:
             - Optional message for nested  max string length test cases.
@@ -180,6 +186,7 @@ def main():
         name=dict(type='str', required=True),
         sensitive_test=dict(type='dict',),
         sensitive_tests=dict(type='list', elements='dict',),
+        skip_optional_check_tests=dict(type='bool',),
         string_length_test=dict(type='dict',),
         string_length_tests=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),

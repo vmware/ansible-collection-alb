@@ -358,6 +358,9 @@ Parameters
                   - Decide what should happen if there is a problem with the icap server like communication timeout, protocol error, pool error, etc.
                 </div>
                                 <div style="font-size: small">
+                  - If the icap server responds with 4xx-5xx error code the configured fail action is performed.
+                </div>
+                                <div style="font-size: small">
                   - If this is set to fail open, the request will continue, but will create a significant log entry.
                 </div>
                                 <div style="font-size: small">
