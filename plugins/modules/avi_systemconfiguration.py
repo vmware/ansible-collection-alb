@@ -157,6 +157,20 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
+    rekey_time_limit:
+        description:
+            - Users can specify and update the time limit of rekeylimit in sshd_config.if nothing is specified, the default setting will be none.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as none.
+        type: str
+    rekey_volume_limit:
+        description:
+            - Users can specify and update the size/volume limit of rekeylimit in sshd_config.if nothing is specified, the default setting will be default.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as default.
+        type: str
     secure_channel_configuration:
         description:
             - Configure secure channel properties.
@@ -275,6 +289,8 @@ def main():
         ntp_configuration=dict(type='dict',),
         portal_configuration=dict(type='dict',),
         proxy_configuration=dict(type='dict',),
+        rekey_time_limit=dict(type='str',),
+        rekey_volume_limit=dict(type='str',),
         secure_channel_configuration=dict(type='dict',),
         snmp_configuration=dict(type='dict',),
         ssh_ciphers=dict(type='list', elements='str',),
