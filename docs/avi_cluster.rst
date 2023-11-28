@@ -266,13 +266,39 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A virtual ip address.
+                  - A v4 virtual ip address.
                 </div>
                                 <div style="font-size: small">
-                  - This ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
+                  - This v4 ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>virtual_ip6</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - A v6 virtual ip address.
+                </div>
+                                <div style="font-size: small">
+                  - This v6 ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

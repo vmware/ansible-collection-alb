@@ -20,6 +20,7 @@
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     virtual_ip: "{{ item.virtual_ip | default(omit) }}"
+    virtual_ip6: "{{ item.virtual_ip6 | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))
