@@ -156,6 +156,15 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
+    cloud_discovery_interval:
+        description:
+            - Time in minutes to wait between consecutive cloud discovery cycles.
+            - Allowed values are 1-1440.
+            - Field introduced in 30.2.1.
+            - Unit is min.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
     cloud_reconcile:
         description:
             - Enable/disable periodic reconcile for all the clouds.
@@ -163,6 +172,15 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    cloud_reconcile_interval:
+        description:
+            - Time in minutes to wait between consecutive cloud reconcile cycles.
+            - Allowed values are 1-1440.
+            - Field introduced in 30.2.1.
+            - Unit is min.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
     cluster_ip_gratuitous_arp_period:
         description:
             - Period for cluster ip gratuitous arp job.
@@ -887,7 +905,9 @@ def main():
         check_vsvip_fqdn_syntax=dict(type='bool',),
         cleanup_expired_authtoken_timeout_period=dict(type='int',),
         cleanup_sessions_timeout_period=dict(type='int',),
+        cloud_discovery_interval=dict(type='int',),
         cloud_reconcile=dict(type='bool',),
+        cloud_reconcile_interval=dict(type='int',),
         cluster_ip_gratuitous_arp_period=dict(type='int',),
         configpb_attributes=dict(type='dict',),
         consistency_check_timeout_period=dict(type='int',),
