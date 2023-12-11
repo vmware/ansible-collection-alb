@@ -437,6 +437,15 @@ options:
             - Rate limit the incoming requests to this virtual service.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
+    revoke_vip_route:
+        description:
+            - Revoke the advertisement of virtual service via the cloud if it is marked down by health monitor.
+            - Supported for nsxt clouds only.this setting takes effect for future virtual service flaps.
+            - To advertise current vses that are down, please disable and re-enable the virtual service.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     saml_sp_config:
         description:
             - Application-specific saml config.
@@ -827,6 +836,7 @@ def main():
         pool_ref=dict(type='str',),
         remove_listening_port_on_vs_down=dict(type='bool',),
         requests_rate_limit=dict(type='dict',),
+        revoke_vip_route=dict(type='bool',),
         saml_sp_config=dict(type='dict',),
         scaleout_ecmp=dict(type='bool',),
         se_group_ref=dict(type='str',),

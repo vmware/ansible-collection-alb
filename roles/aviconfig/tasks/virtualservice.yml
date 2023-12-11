@@ -71,6 +71,7 @@
     pool_ref: "{{ item.pool_ref | default(omit) }}"
     remove_listening_port_on_vs_down: "{{ item.remove_listening_port_on_vs_down | default(omit) }}"
     requests_rate_limit: "{{ item.requests_rate_limit | default(omit) }}"
+    revoke_vip_route: "{{ item.revoke_vip_route | default(omit) }}"
     saml_sp_config: "{{ item.saml_sp_config | default(omit) }}"
     scaleout_ecmp: "{{ item.scaleout_ecmp | default(omit) }}"
     se_group_ref: "{{ item.se_group_ref | default(omit) }}"
