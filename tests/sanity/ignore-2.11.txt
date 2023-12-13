@@ -155,6 +155,8 @@ plugins/modules/avi_securitymanagerdata.py validate-modules:missing-gplv3-licens
 plugins/modules/avi_securitymanagerdata.py import-3.8!skip
 plugins/modules/avi_cluster.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cluster.py import-3.8!skip
+plugins/modules/avi_albservicesfiledownload.py validate-modules:missing-gplv3-license
+plugins/modules/avi_albservicesfiledownload.py import-3.8!skip
 plugins/modules/avi_vsgs.py validate-modules:missing-gplv3-license
 plugins/modules/avi_vsgs.py import-3.8!skip
 plugins/modules/avi_poolgroupdeploymentpolicy.py validate-modules:missing-gplv3-license

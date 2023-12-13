@@ -65,6 +65,7 @@ Name | Description
 --- | ---
 [vmware.alb.avi_actiongroupconfig](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_actiongroupconfig.rst)|Module to create update or delete ActionGroupConfig
 [vmware.alb.avi_albservicesconfig](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_albservicesconfig.rst)|Module to create update or delete ALBServicesConfig
+[vmware.alb.avi_albservicesfiledownload](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_albservicesfiledownload.rst)|Module to create update or delete ALBServicesFileDownload
 [vmware.alb.avi_albservicesfileupload](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_albservicesfileupload.rst)|Module to create update or delete ALBServicesFileUpload
 [vmware.alb.avi_albservicesjob](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_albservicesjob.rst)|Module to create update or delete ALBServicesJob
 [vmware.alb.avi_alertconfig](https://github.com/vmware/ansible-collection-alb/blob/eng/docs/avi_alertconfig.rst)|Module to create update or delete AlertConfig

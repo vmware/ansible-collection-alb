@@ -50,6 +50,7 @@ avi_resource_types:
   - webhook
   - securitymanagerdata
   - cluster
+  - albservicesfiledownload
   - vsgs
   - poolgroupdeploymentpolicy
   - memorybalancerrequest
