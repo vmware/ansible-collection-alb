@@ -20,6 +20,7 @@
     name: "{{ item.name | default(omit) }}"
     sensitive_test: "{{ item.sensitive_test | default(omit) }}"
     sensitive_tests: "{{ item.sensitive_tests | default(omit) }}"
+    skip_optional_check_tests: "{{ item.skip_optional_check_tests | default(omit) }}"
     string_length_test: "{{ item.string_length_test | default(omit) }}"
     string_length_tests: "{{ item.string_length_tests | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"

@@ -146,7 +146,7 @@ Parameters
                   - Key/value tenant attributes.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 23.1.1.
+                  - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
