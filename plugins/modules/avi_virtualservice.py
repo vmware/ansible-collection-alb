@@ -105,23 +105,6 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: str
-    bgp_local_preference:
-        description:
-            - Local_pref to be used for vsvip advertised.
-            - Applicable only over ibgp.
-            - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: int
-    bgp_num_as_path_prepend:
-        description:
-            - Number of times the local as should be prepended additionally to vsvip.
-            - Applicable only over ebgp.
-            - Allowed values are 1-10.
-            - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: int
     bgp_peer_labels:
         description:
             - Select bgp peers, using peer label, for vsvip advertisement.
@@ -196,13 +179,6 @@ options:
             - Creator name.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    csrf_policy_ref:
-        description:
-            - Csrf protection policy for the virtual service.
-            - It is a reference to an object of type csrfpolicy.
-            - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
     delay_fairness:
         description:
             - Select the algorithm for qos fairness.
@@ -254,14 +230,6 @@ options:
         description:
             - Enable route health injection for source nat'ted floating ip address using the bgp config in the vrf context.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: bool
-    enable_session:
-        description:
-            - Enable http sessions for this virtual service.
-            - If enabled, a session cookie will be added to http responses and persistent key-value store will be activated.
-            - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     enabled:
         description:
@@ -769,8 +737,6 @@ def main():
         analytics_profile_ref=dict(type='str',),
         application_profile_ref=dict(type='str',),
         azure_availability_set=dict(type='str',),
-        bgp_local_preference=dict(type='int',),
-        bgp_num_as_path_prepend=dict(type='int',),
         bgp_peer_labels=dict(type='list', elements='str',),
         bot_policy_ref=dict(type='str',),
         bulk_sync_kvcache=dict(type='bool',),
@@ -782,7 +748,6 @@ def main():
         connections_rate_limit=dict(type='dict',),
         content_rewrite=dict(type='dict',),
         created_by=dict(type='str',),
-        csrf_policy_ref=dict(type='str',),
         delay_fairness=dict(type='bool',),
         description=dict(type='str',),
         dns_info=dict(type='list', elements='dict',),
@@ -791,7 +756,6 @@ def main():
         enable_autogw=dict(type='bool',),
         enable_rhi=dict(type='bool',),
         enable_rhi_snat=dict(type='bool',),
-        enable_session=dict(type='bool',),
         enabled=dict(type='bool',),
         error_page_profile_ref=dict(type='str',),
         flow_dist=dict(type='str',),
