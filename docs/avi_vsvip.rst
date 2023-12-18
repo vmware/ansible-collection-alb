@@ -276,6 +276,9 @@ Parameters
                   - Service discovery specific data including fully qualified domain name, type and time-to-live of the dns record.
                 </div>
                                 <div style="font-size: small">
+                  - This takes effect only if dns profile isassociated with cloud.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
