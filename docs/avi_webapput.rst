@@ -159,6 +159,110 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>default_first_int</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Default uint64 field.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>default_second_int</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Default int64 field.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 2.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>default_string</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Default string field.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as default string.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>default_third_int</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Default int32 field.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>mandatory_test</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

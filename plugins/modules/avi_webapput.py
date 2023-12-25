@@ -53,6 +53,34 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
+    default_first_int:
+        description:
+            - Default uint64 field.
+            - Field introduced in 30.1.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+        type: int
+    default_second_int:
+        description:
+            - Default int64 field.
+            - Field introduced in 30.1.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 2.
+        type: int
+    default_string:
+        description:
+            - Default string field.
+            - Field introduced in 30.1.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as default string.
+        type: str
+    default_third_int:
+        description:
+            - Default int32 field.
+            - Field introduced in 30.1.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+        type: int
     mandatory_test:
         description:
             - Optional message for nested f_mandatory test cases defined at level1.
@@ -181,6 +209,10 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
+        default_first_int=dict(type='int',),
+        default_second_int=dict(type='int',),
+        default_string=dict(type='str',),
+        default_third_int=dict(type='int',),
         mandatory_test=dict(type='dict',),
         mandatory_tests=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
