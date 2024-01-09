@@ -112,6 +112,12 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as PENDING.
         type: str
+    status_update_time:
+        description:
+            - Time at which the status of albservicesjob updated.
+            - Field introduced in 22.1.6.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     tenant_ref:
         description:
             - The unique identifier of the tenant to which this albservicesjob belongs.
@@ -190,6 +196,7 @@ def main():
         result=dict(type='str',),
         start_time=dict(type='dict',),
         status=dict(type='str',),
+        status_update_time=dict(type='dict',),
         tenant_ref=dict(type='str',),
         token=dict(type='str',),
         url=dict(type='str',),

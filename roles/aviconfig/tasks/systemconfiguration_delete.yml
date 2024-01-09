@@ -33,6 +33,7 @@
     mgmt_ip_access_control: "{{ item.mgmt_ip_access_control | default(omit) }}"
     portal_configuration: "{{ item.portal_configuration | default(omit) }}"
     proxy_configuration: "{{ item.proxy_configuration | default(omit) }}"
+    sddcmanager_fqdn: "{{ item.sddcmanager_fqdn | default(omit) }}"
     secure_channel_configuration: "{{ item.secure_channel_configuration | default(omit) }}"
     snmp_configuration: "{{ item.snmp_configuration | default(omit) }}"
     ssh_ciphers: "{{ item.ssh_ciphers | default(omit) }}"
