@@ -52,6 +52,13 @@ options:
             - Field introduced in 21.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
+    client_behavior_detector:
+        description:
+            - The client behavior configuration used in this policy.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        required: true
+        type: dict
     description:
         description:
             - Human-readable description of this bot detection policy.
@@ -181,6 +188,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         allow_list=dict(type='dict',),
+        client_behavior_detector=dict(type='dict', required=True),
         description=dict(type='str',),
         ip_location_detector=dict(type='dict', required=True),
         ip_reputation_detector=dict(type='dict', required=True),
