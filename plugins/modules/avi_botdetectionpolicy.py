@@ -57,7 +57,6 @@ options:
             - The client behavior configuration used in this policy.
             - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        required: true
         type: dict
     description:
         description:
@@ -188,7 +187,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         allow_list=dict(type='dict',),
-        client_behavior_detector=dict(type='dict', required=True),
+        client_behavior_detector=dict(type='dict',),
         description=dict(type='str',),
         ip_location_detector=dict(type='dict', required=True),
         ip_reputation_detector=dict(type='dict', required=True),
