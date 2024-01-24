@@ -2260,6 +2260,44 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>system_report_limit</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of systemreports retained in the system.
+                </div>
+                                <div style="font-size: small">
+                  - Once the number of system reports exceed this threshold, the oldest systemreport will be removed and the latest one retained.
+                </div>
+                                <div style="font-size: small">
+                  - I.e.
+                </div>
+                                <div style="font-size: small">
+                  - The systemreport will be rotated and the reports don't exceed the threshold.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 5-50.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>unresponsive_se_reboot</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

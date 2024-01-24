@@ -41,6 +41,7 @@ avi_resource_types:
   - statediffoperation
   - image
   - controllerportalregistration
+  - systemreport
   - dynamicdnsrecord
   - role
   - controllersite
