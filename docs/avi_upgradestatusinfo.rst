@@ -1262,7 +1262,7 @@ Parameters
                   - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME, EVAL_UPGRADE, EVAL_PATCH, EVAL_ROLLBACK, EVAL_ROLLBACKPATCH,
                 </div>
                                 <div style="font-size: small">
-                  - EVAL_SEGROUP_RESUME.
+                  - EVAL_SEGROUP_RESUME, EVAL_RESTORE, RESTORE.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
