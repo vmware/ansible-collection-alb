@@ -657,6 +657,17 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: int
+    system_report_limit:
+        description:
+            - Number of systemreports retained in the system.
+            - Once the number of system reports exceed this threshold, the oldest systemreport will be removed and the latest one retained.
+            - I.e.
+            - The systemreport will be rotated and the reports don't exceed the threshold.
+            - Allowed values are 5-50.
+            - Field introduced in 22.1.6, 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+        type: int
     unresponsive_se_reboot:
         description:
             - Unit is sec.
@@ -972,6 +983,7 @@ def main():
         skopeo_retry_limit=dict(type='int',),
         soft_min_mem_per_se_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
+        system_report_limit=dict(type='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
         update_dns_entry_timeout=dict(type='int',),

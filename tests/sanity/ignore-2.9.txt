@@ -127,6 +127,8 @@ plugins/modules/avi_image.py validate-modules:missing-gplv3-license
 plugins/modules/avi_image.py import-3.8!skip
 plugins/modules/avi_controllerportalregistration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_controllerportalregistration.py import-3.8!skip
+plugins/modules/avi_systemreport.py validate-modules:missing-gplv3-license
+plugins/modules/avi_systemreport.py import-3.8!skip
 plugins/modules/avi_dynamicdnsrecord.py validate-modules:missing-gplv3-license
 plugins/modules/avi_dynamicdnsrecord.py import-3.8!skip
 plugins/modules/avi_role.py validate-modules:missing-gplv3-license
