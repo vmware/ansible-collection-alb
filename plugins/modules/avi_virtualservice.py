@@ -135,6 +135,7 @@ options:
             - Bot detection policy for the virtual service.
             - It is a reference to an object of type botdetectionpolicy.
             - Field introduced in 21.1.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     bulk_sync_kvcache:
         description:
