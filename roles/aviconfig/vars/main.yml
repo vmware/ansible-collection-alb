@@ -106,7 +106,6 @@ avi_resource_types:
   - serviceengine
   - networkservice
   - poolgroup
-  - pingaccessagent
   - httppolicyset
   - dnspolicy
   - vsdatascriptset

@@ -256,8 +256,6 @@ plugins/modules/avi_networkservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_networkservice.py import-3.8!skip
 plugins/modules/avi_poolgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_poolgroup.py import-3.8!skip
-plugins/modules/avi_pingaccessagent.py validate-modules:missing-gplv3-license
-plugins/modules/avi_pingaccessagent.py import-3.8!skip
 plugins/modules/avi_httppolicyset.py validate-modules:missing-gplv3-license
 plugins/modules/avi_httppolicyset.py import-3.8!skip
 plugins/modules/avi_dnspolicy.py validate-modules:missing-gplv3-license
