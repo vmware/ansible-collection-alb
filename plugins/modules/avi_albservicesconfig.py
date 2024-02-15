@@ -91,7 +91,7 @@ options:
     mode:
         description:
             - Mode helps log collection and upload.
-            - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE.
+            - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE, BROADCOM.
             - Field introduced in 20.1.2.
             - Allowed in enterprise edition with any value, essentials edition(allowed values- salesforce,myvmware,systest), basic edition(allowed values-
             - salesforce,myvmware,systest), enterprise with cloud services edition.

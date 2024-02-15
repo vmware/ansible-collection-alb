@@ -302,7 +302,7 @@ Parameters
                   - Mode helps log collection and upload.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE.
+                  - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE, BROADCOM.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.2.
