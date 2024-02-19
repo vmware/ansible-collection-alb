@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_albservicesjob
+module: avi_systemreport
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of ALBServicesJob Avi RESTful Object
+short_description: Module for setup of SystemReport Avi RESTful Object
 description:
-    - This module is used to configure ALBServicesJob object
+    - This module is used to configure SystemReport object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,89 +46,80 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    command:
+    archive_ref:
         description:
-            - The command to be triggered by the albservicesjob.
-            - Field introduced in 21.1.3.
+            - Relative path to the report archive file on filesystem.the archive includes exported system configuration and current object as json.
+            - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        required: true
         type: str
-    configpb_attributes:
+    controller_patch_image_ref:
         description:
-            - Protobuf versioning for config pbs.
-            - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: dict
-    end_time:
-        description:
-            - The time at which the albservicesjob is ended.
-            - Field introduced in 21.1.3.
+            - Controller patch image associated with the report.
+            - It is a reference to an object of type image.
+            - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
-    name:
-        description:
-            - The name of the albservicesjob.
-            - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        required: true
         type: str
-    params:
+    downloadable:
         description:
-            - Job params.
-            - Field introduced in 22.1.1.
+            - Indicates whether this report is downloadable as an archive.
+            - Field introduced in 22.1.6.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    events:
+        description:
+            - List of events associated with the report.
+            - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: dict
-    pulse_job_id:
+    image_ref:
         description:
-            - A unique identifier for this job entry on the pulse portal.
-            - Field introduced in 21.1.3.
+            - System image associated with the report.
+            - It is a reference to an object of type image.
+            - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
-    pulse_sync_status:
+    name:
         description:
-            - Status of sync to pulse(result uploads/state updates).
-            - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: bool
-    result:
-        description:
-            - Job result.
-            - Field introduced in 22.1.1.
+            - Name of the report dervied from operation in a readable format.
+            - Ex  upgrade_system_1a5c.
+            - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
-    start_time:
+    obj_state:
         description:
-            - The time at which the albservicesjob is started.
-            - Field introduced in 21.1.3.
+            - Report state combines all applicable states.
+            - Ex  readiness_reports.system_readiness.state.
+            - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
-    status:
+    readiness_reports:
         description:
-            - The status of the albservicesjob.
-            - Enum options - UNDETERMINED, PENDING, IN_PROGRESS, COMPLETED, FAILED, NOT_ENABLED.
-            - Field introduced in 21.1.3.
+            - Readiness state of the system.
+            - Ex  upgrade pre-check results.
+            - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as PENDING.
-        type: str
-    status_update_time:
+        type: list
+        elements: dict
+    se_patch_image_ref:
         description:
-            - Time at which the status of albservicesjob updated.
+            - Se patch image associated with the report.
+            - It is a reference to an object of type image.
+            - Field introduced in 22.1.6.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
+    summary:
+        description:
+            - Summary of the report.
             - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
-            - The unique identifier of the tenant to which this albservicesjob belongs.
+            - Tenant uuid associated with the object.
             - It is a reference to an object of type tenant.
-            - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
-    token:
-        description:
-            - Job token.
-            - Field introduced in 22.1.1.
+            - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
@@ -137,8 +128,8 @@ options:
         type: str
     uuid:
         description:
-            - A unique identifier for this albservicesjob entry.
-            - Field introduced in 21.1.3.
+            - Uuid identifier for the report.
+            - Field introduced in 22.1.6.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -154,16 +145,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create ALBServicesJob object
-  vmware.alb.avi_albservicesjob:
+- name: Example to create SystemReport object
+  vmware.alb.avi_systemreport:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_albservicesjob
+    name: sample_systemreport
 """
 
 RETURN = '''
 obj:
-    description: ALBServicesJob (api/albservicesjob) object
+    description: SystemReport (api/systemreport) object
     returned: success, changed
     type: dict
 '''
@@ -186,19 +177,17 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        command=dict(type='str', required=True),
-        configpb_attributes=dict(type='dict',),
-        end_time=dict(type='dict',),
-        name=dict(type='str', required=True),
-        params=dict(type='list', elements='dict',),
-        pulse_job_id=dict(type='str',),
-        pulse_sync_status=dict(type='bool',),
-        result=dict(type='str',),
-        start_time=dict(type='dict',),
-        status=dict(type='str',),
-        status_update_time=dict(type='dict',),
+        archive_ref=dict(type='str',),
+        controller_patch_image_ref=dict(type='str',),
+        downloadable=dict(type='bool',),
+        events=dict(type='list', elements='dict',),
+        image_ref=dict(type='str',),
+        name=dict(type='str',),
+        obj_state=dict(type='dict',),
+        readiness_reports=dict(type='list', elements='dict',),
+        se_patch_image_ref=dict(type='str',),
+        summary=dict(type='dict',),
         tenant_ref=dict(type='str',),
-        token=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
@@ -209,7 +198,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'albservicesjob',
+    return avi_ansible_api(module, 'systemreport',
                            set())
 
 

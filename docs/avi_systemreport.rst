@@ -1,11 +1,11 @@
-.. vmware.alb.avi_albservicesjob:
+.. vmware.alb.avi_systemreport:
 
 
 **********************************************
-vmware.alb.avi_albservicesjob
+vmware.alb.avi_systemreport
 **********************************************
 
-**Module for setup of ALBServicesJob Avi RESTful Object**
+**Module for setup of SystemReport Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_albservicesjob
 
 Synopsis
 --------
-- This module is used to configure ALBServicesJob object.
+- This module is used to configure SystemReport object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -133,23 +133,20 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>command</b>
+                <b>archive_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">str</span>
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - The command to be triggered by the albservicesjob.
+                  - Relative path to the report archive file on filesystem.the archive includes exported system configuration and current object as json.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.3.
+                  - Field introduced in 22.1.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -159,46 +156,98 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>configpb_attributes</b>
+                <b>controller_patch_image_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
+                    <span style="color: purple">str</span>
                 </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Protobuf versioning for config pbs.
+                  - Controller patch image associated with the report.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.3.
+                  - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                  - Field introduced in 22.1.6.
                 </div>
                                 <div style="font-size: small">
-                  - edition.
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>end_time</b>
+                <b>downloadable</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
+                    <span style="color: purple">bool</span>
                 </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The time at which the albservicesjob is ended.
+                  - Indicates whether this report is downloadable as an archive.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.3.
+                  - Field introduced in 22.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>events</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of events associated with the report.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>image_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - System image associated with the report.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type image.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -215,16 +264,16 @@ Parameters
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - The name of the albservicesjob.
+                  - Name of the report dervied from operation in a readable format.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.3.
+                  - Ex  upgrade_system_1a5c.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -234,7 +283,33 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>params</b>
+                <b>obj_state</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Report state combines all applicable states.
+                </div>
+                                <div style="font-size: small">
+                  - Ex  readiness_reports.system_readiness.state.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>readiness_reports</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">list</span>
@@ -244,10 +319,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Job params.
+                  - Readiness state of the system.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - Ex  upgrade pre-check results.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -257,7 +335,7 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>pulse_job_id</b>
+                <b>se_patch_image_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">str</span>
@@ -267,33 +345,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A unique identifier for this job entry on the pulse portal.
+                  - Se patch image associated with the report.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.3.
+                  - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>pulse_sync_status</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Status of sync to pulse(result uploads/state updates).
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - Field introduced in 22.1.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -303,30 +361,7 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>result</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Job result.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>start_time</b>
+                <b>summary</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">dict</span>
@@ -336,59 +371,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The time at which the albservicesjob is started.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 21.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>status</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - The status of the albservicesjob.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - UNDETERMINED, PENDING, IN_PROGRESS, COMPLETED, FAILED, NOT_ENABLED.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 21.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as PENDING.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>status_update_time</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Time at which the status of albservicesjob updated.
+                  - Summary of the report.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.6.
@@ -411,36 +394,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The unique identifier of the tenant to which this albservicesjob belongs.
+                  - Tenant uuid associated with the object.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>token</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Job token.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - Field introduced in 22.1.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -477,10 +437,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - A unique identifier for this albservicesjob entry.
+                  - Uuid identifier for the report.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.3.
+                  - Field introduced in 22.1.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -507,11 +467,11 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create ALBServicesJob object
-          avi_albservicesjob:
+        - name: Example to create SystemReport object
+          avi_systemreport:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_albservicesjob
+            name: sample_systemreport
 
 
 Authors

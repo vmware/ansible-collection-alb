@@ -157,6 +157,12 @@ options:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: dict
+    sddcmanager_fqdn:
+        description:
+            - Fqdn of sddc manager in vcf responsible for management of this alb controller cluster.
+            - Field introduced in 22.1.6.
+            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: str
     secure_channel_configuration:
         description:
             - Configure secure channel properties.
@@ -275,6 +281,7 @@ def main():
         ntp_configuration=dict(type='dict',),
         portal_configuration=dict(type='dict',),
         proxy_configuration=dict(type='dict',),
+        sddcmanager_fqdn=dict(type='str',),
         secure_channel_configuration=dict(type='dict',),
         snmp_configuration=dict(type='dict',),
         ssh_ciphers=dict(type='list', elements='str',),
