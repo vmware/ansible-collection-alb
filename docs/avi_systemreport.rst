@@ -267,7 +267,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the report dervied from operation in a readable format.
+                  - Name of the report derived from operation in a readable format.
                 </div>
                                 <div style="font-size: small">
                   - Ex  upgrade_system_1a5c.

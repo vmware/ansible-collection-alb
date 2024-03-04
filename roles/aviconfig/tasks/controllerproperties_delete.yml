@@ -96,6 +96,7 @@
     skopeo_retry_limit: "{{ item.skopeo_retry_limit | default(omit) }}"
     soft_min_mem_per_se_limit: "{{ item.soft_min_mem_per_se_limit | default(omit) }}"
     ssl_certificate_expiry_warning_days: "{{ item.ssl_certificate_expiry_warning_days | default(omit) }}"
+    system_report_cleanup_interval: "{{ item.system_report_cleanup_interval | default(omit) }}"
     system_report_limit: "{{ item.system_report_limit | default(omit) }}"
     unresponsive_se_reboot: "{{ item.unresponsive_se_reboot | default(omit) }}"
     update_dns_entry_retry_limit: "{{ item.update_dns_entry_retry_limit | default(omit) }}"

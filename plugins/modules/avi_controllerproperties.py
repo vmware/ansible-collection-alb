@@ -657,6 +657,16 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: int
+    system_report_cleanup_interval:
+        description:
+            - Time in minutes to wait between cleanup of systemreports.
+            - Allowed values are 15-300.
+            - Field introduced in 22.1.6, 30.2.1.
+            - Unit is min.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 60.
+        type: int
     system_report_limit:
         description:
             - Number of systemreports retained in the system.
@@ -665,7 +675,8 @@ options:
             - The systemreport will be rotated and the reports don't exceed the threshold.
             - Allowed values are 5-50.
             - Field introduced in 22.1.6, 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10.
         type: int
     unresponsive_se_reboot:
@@ -983,6 +994,7 @@ def main():
         skopeo_retry_limit=dict(type='int',),
         soft_min_mem_per_se_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
+        system_report_cleanup_interval=dict(type='int',),
         system_report_limit=dict(type='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),

@@ -82,7 +82,7 @@ options:
         type: str
     name:
         description:
-            - Name of the report dervied from operation in a readable format.
+            - Name of the report derived from operation in a readable format.
             - Ex  upgrade_system_1a5c.
             - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
