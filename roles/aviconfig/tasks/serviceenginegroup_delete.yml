@@ -184,6 +184,7 @@
     sdb_pipeline_size: "{{ item.sdb_pipeline_size | default(omit) }}"
     sdb_scan_count: "{{ item.sdb_scan_count | default(omit) }}"
     se_bandwidth_type: "{{ item.se_bandwidth_type | default(omit) }}"
+    se_debug_trace_sz: "{{ item.se_debug_trace_sz | default(omit) }}"
     se_delayed_flow_delete: "{{ item.se_delayed_flow_delete | default(omit) }}"
     se_deprovision_delay: "{{ item.se_deprovision_delay | default(omit) }}"
     se_dos_profile: "{{ item.se_dos_profile | default(omit) }}"

@@ -4895,6 +4895,41 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_debug_trace_sz</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Use to cap the size of debug ring min(se_debug_trace_sz, num_dispatcher_cores).
+                </div>
+                                <div style="font-size: small">
+                  - Only applicable to > 8g systems.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1,2,4,8.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 8.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_delayed_flow_delete</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

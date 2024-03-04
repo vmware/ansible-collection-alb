@@ -1362,6 +1362,16 @@ options:
             - Allowed in enterprise edition with any value, essentials edition(allowed values- se_bandwidth_unlimited), basic edition(allowed values-
             - se_bandwidth_unlimited), enterprise with cloud services edition.
         type: str
+    se_debug_trace_sz:
+        description:
+            - Use to cap the size of debug ring min(se_debug_trace_sz, num_dispatcher_cores).
+            - Only applicable to > 8g systems.
+            - Requires se reboot.
+            - Allowed values are 1,2,4,8.
+            - Field introduced in 22.1.6.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 8.
+        type: int
     se_delayed_flow_delete:
         description:
             - Delay the cleanup of flowtable entry.
@@ -2452,6 +2462,7 @@ def main():
         sdb_pipeline_size=dict(type='int',),
         sdb_scan_count=dict(type='int',),
         se_bandwidth_type=dict(type='str',),
+        se_debug_trace_sz=dict(type='int',),
         se_delayed_flow_delete=dict(type='bool',),
         se_deprovision_delay=dict(type='int',),
         se_dos_profile=dict(type='dict',),
