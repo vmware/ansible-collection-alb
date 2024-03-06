@@ -81,6 +81,14 @@ options:
             - Field introduced in 20.1.1.
         required: true
         type: dict
+    inventory_config:
+        description:
+            - Inventory configurations for pulse cloud services.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        required: true
+        type: dict
     ip_reputation_config:
         description:
             - Default values to be used for ip reputation sync.
@@ -252,6 +260,7 @@ def main():
         case_config=dict(type='dict', required=True),
         configpb_attributes=dict(type='dict',),
         feature_opt_in_status=dict(type='dict', required=True),
+        inventory_config=dict(type='dict', required=True),
         ip_reputation_config=dict(type='dict', required=True),
         mode=dict(type='str',),
         name=dict(type='str',),

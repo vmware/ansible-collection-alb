@@ -19,6 +19,7 @@
     case_config: "{{ item.case_config | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     feature_opt_in_status: "{{ item.feature_opt_in_status | default(omit) }}"
+    inventory_config: "{{ item.inventory_config | default(omit) }}"
     ip_reputation_config: "{{ item.ip_reputation_config | default(omit) }}"
     mode: "{{ item.mode | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
