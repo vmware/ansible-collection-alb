@@ -327,6 +327,10 @@ def main():
                 data[("feature_opt_in_status")]["enable_pulse_case_management"] = enable_pulse_case_management
                 data[("feature_opt_in_status")]["enable_pulse_waf_management"] = enable_pulse_waf_management
                 data[("feature_opt_in_status")]["enable_user_agent_db_sync"] = enable_user_agent_db_sync
+                data[("tenant_config")] = dict()
+                data[("tenant_config")]["heartbeat_interval"] = 3
+                data[("tenant_config")]["token_refresh_interval"] = 57
+                data[("tenant_config")]["license_escrow_interval"] = 60
                 data["ip_reputation_config"] = dict()
                 data[("ip_reputation_config")]["ip_reputation_file_object_expiry_duration"] = 3
                 data[("ip_reputation_config")]["ip_reputation_sync_interval"] = 60

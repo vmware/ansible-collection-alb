@@ -70,6 +70,12 @@ options:
             - It is a reference to an object of type tenant.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    timeout:
+        description:
+            - Controlscript excution timeout.
+            - Field introduced in 22.1.6.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: int
     url:
         description:
             - Avi controller URL of the object.
@@ -128,6 +134,7 @@ def main():
         configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
+        timeout=dict(type='int',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

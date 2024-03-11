@@ -330,6 +330,9 @@ Parameters
                   - It is a reference to an object of type pingaccessagent.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 30.2.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
@@ -422,7 +425,13 @@ Parameters
                   - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values-
+                </div>
+                                <div style="font-size: small">
+                  - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth), basic edition(allowed values-
+                </div>
+                                <div style="font-size: small">
+                  - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth), enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>

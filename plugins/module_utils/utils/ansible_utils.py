@@ -12,6 +12,7 @@ import os
 import re
 import sys
 import yaml
+import time
 import logging
 from copy import deepcopy
 from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, avi_sdk_syslog_logger, \
@@ -165,8 +166,9 @@ RE_REF_MATCH = re.compile(r'^/api/[\w/]+\?name\=[\w*]+[^#<>]*$')
 # if HTTP ref match then strip out the #name
 # HTTP_REF_MATCH = re.compile('https://[\w.0-9:-]+/api/[\w/\?.#&-]*$')
 HTTP_REF_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.+')
+HTTP_REF_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.+')
 HTTP_REF_W_NAME_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.*#.+')
-
+HTTP_REF_W_NAME_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.*#.+')
 
 def ref_n_str_cmp(x, y):
     """
@@ -207,10 +209,10 @@ def ref_n_str_cmp(x, y):
     elif HTTP_REF_MATCH.match(x):
         x = x.rsplit('#', 1)[0]
         y = y.rsplit('#', 1)[0]
-    elif RE_REF_MATCH.match(y):
+    elif RE_REF_MATCH.match(y) or HTTP_REF_MATCH_IPV6.match(y):
         y = y.split('name=')[1]
 
-    if HTTP_REF_W_NAME_MATCH.match(y):
+    if HTTP_REF_W_NAME_MATCH.match(y) or HTTP_REF_W_NAME_MATCH_IPV6.match(y):
         path = y.split('api/', 1)[1]
         # Fetching name or uuid from path /xxxx_xx/xx/xx_x/uuid_or_name
         uuid_or_name = path.split('/')[-1]
@@ -355,7 +357,7 @@ def get_api_context(module, api_creds):
 
 NO_UUID_OBJ = ['cluster', 'systemconfiguration', 'inventoryfaultconfig']
 SKIP_DELETE_ERROR = ["Cannot delete system default object", "Method \'DELETE\' not allowed"]
-
+BUFFER_DELAY = 120
 
 def get_idp_class(idp):
     """
@@ -501,6 +503,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
         changed = False
         err = False
         if not check_mode and existing_obj:
+            if obj_type == "serviceenginegroup":
+                se_deprovision_delay = existing_obj.get("se_deprovision_delay")
+                time.sleep((se_deprovision_delay * 60) + BUFFER_DELAY)
             try:
                 if name is not None:
                     # added api version to avi api call.

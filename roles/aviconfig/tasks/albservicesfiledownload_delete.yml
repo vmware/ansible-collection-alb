@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi ALBServicesJob | Delete ALBServicesJob
+- name: Avi ALBServicesFileDownload | Delete ALBServicesFileDownload
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_albservicesjob:
+  vmware.alb.avi_albservicesfiledownload:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,23 +14,19 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    command: "{{ item.command | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    end_time: "{{ item.end_time | default(omit) }}"
+    destination_dir: "{{ item.destination_dir | default(omit) }}"
+    file_type: "{{ item.file_type | default(omit) }}"
+    file_uri: "{{ item.file_uri | default(omit) }}"
+    message: "{{ item.message | default(omit) }}"
+    metadata: "{{ item.metadata | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    params: "{{ item.params | default(omit) }}"
-    pulse_job_id: "{{ item.pulse_job_id | default(omit) }}"
-    pulse_sync_status: "{{ item.pulse_sync_status | default(omit) }}"
-    result: "{{ item.result | default(omit) }}"
-    start_time: "{{ item.start_time | default(omit) }}"
     status: "{{ item.status | default(omit) }}"
-    status_update_time: "{{ item.status_update_time | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    token: "{{ item.token | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))
     - (avi_config_state == "absent" or avi_role_state_mode == "absent")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.albservicesjob | default([]) }}"
+  with_items: "{{ avi_role_cfg.albservicesfiledownload | default([]) }}"

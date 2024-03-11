@@ -128,7 +128,7 @@ options:
     type:
         description:
             - Type of the file.
-            - Enum options - OTHER_FILE_TYPES, IP_REPUTATION, GEO_DB, TECH_SUPPORT, HSMPACKAGES, IPAMDNSSCRIPTS, CONTROLLER_IMAGE.
+            - Enum options - OTHER_FILE_TYPES, IP_REPUTATION, GEO_DB, TECH_SUPPORT, HSMPACKAGES, IPAMDNSSCRIPTS, CONTROLLER_IMAGE, CRL_DATA.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials edition(allowed values- other_file_types), basic edition(allowed values-
             - other_file_types), enterprise with cloud services edition.

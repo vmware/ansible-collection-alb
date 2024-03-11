@@ -446,7 +446,7 @@ Parameters
                   - Type of the file.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - OTHER_FILE_TYPES, IP_REPUTATION, GEO_DB, TECH_SUPPORT, HSMPACKAGES, IPAMDNSSCRIPTS, CONTROLLER_IMAGE.
+                  - Enum options - OTHER_FILE_TYPES, IP_REPUTATION, GEO_DB, TECH_SUPPORT, HSMPACKAGES, IPAMDNSSCRIPTS, CONTROLLER_IMAGE, CRL_DATA.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.

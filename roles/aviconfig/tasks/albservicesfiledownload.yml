@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi BotDetectionPolicy | Create or Update BotDetectionPolicy
+- name: Avi ALBServicesFileDownload | Create or Update ALBServicesFileDownload
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_botdetectionpolicy:
+  vmware.alb.avi_albservicesfiledownload:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,20 +14,17 @@
     api_context: "{{ avi_api_context | default(omit) }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    allow_list: "{{ item.allow_list | default(omit) }}"
-    client_behavior_detector: "{{ item.client_behavior_detector | default(omit) }}"
-    description: "{{ item.description | default(omit) }}"
-    ip_location_detector: "{{ item.ip_location_detector | default(omit) }}"
-    ip_reputation_detector: "{{ item.ip_reputation_detector | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    destination_dir: "{{ item.destination_dir | default(omit) }}"
+    file_type: "{{ item.file_type | default(omit) }}"
+    file_uri: "{{ item.file_uri | default(omit) }}"
+    message: "{{ item.message | default(omit) }}"
+    metadata: "{{ item.metadata | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    system_bot_mapping_ref: "{{ item.system_bot_mapping_ref | default(omit) }}"
-    system_consolidator_ref: "{{ item.system_consolidator_ref | default(omit) }}"
+    status: "{{ item.status | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    user_agent_detector: "{{ item.user_agent_detector | default(omit) }}"
-    user_bot_mapping_ref: "{{ item.user_bot_mapping_ref | default(omit) }}"
-    user_consolidator_ref: "{{ item.user_consolidator_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.botdetectionpolicy | default([]) }}"
+  with_items: "{{ avi_role_cfg.albservicesfiledownload | default([]) }}"
