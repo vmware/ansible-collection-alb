@@ -95,6 +95,7 @@ avi_resource_types:
   - serverautoscalepolicy
   - network
   - serviceenginegroup
+  - serviceenginegroup_advanced
   - pool
   - trafficcloneprofile
   - vsvip
