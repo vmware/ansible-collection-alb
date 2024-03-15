@@ -353,6 +353,18 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: dict
+    fileobject_max_file_versions:
+        description:
+            - This is the max number of file versions that will be retained for a file referenced by the local fileobject.
+            - Subsequent uploads of file will result in the file rotation of the older version and the latest version retained.
+            - Example  when a file upload is done for the first time, there will be a v1 version.
+            - Subsequent uploads will get mapped to v1, v2 and v3 versions.
+            - On the fourth upload of the file, the v1 will be file rotated and v2, v3 and v4 will be retained.
+            - Allowed values are 1-5.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+        type: int
     gslb_purge_batch_size:
         description:
             - Batch size for the vs_mgr to perform datastrorecleanup during a gslb purge.
@@ -953,6 +965,7 @@ def main():
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),
         file_reference_mappings=dict(type='list', elements='dict',),
+        fileobject_max_file_versions=dict(type='int',),
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
         ignore_vrf_in_networksubnetlist=dict(type='bool',),
