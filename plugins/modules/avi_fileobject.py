@@ -59,12 +59,25 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: dict
     created:
         description:
             - Timestamp of creation for the file.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
+    crl_info:
+        description:
+            - This field contains certificate revocation list metadata.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     description:
         description:
             - Description of the file.
@@ -128,7 +141,7 @@ options:
     type:
         description:
             - Type of the file.
-            - Enum options - OTHER_FILE_TYPES, IP_REPUTATION, GEO_DB, TECH_SUPPORT, HSMPACKAGES, IPAMDNSSCRIPTS, CONTROLLER_IMAGE.
+            - Enum options - OTHER_FILE_TYPES, IP_REPUTATION, GEO_DB, TECH_SUPPORT, HSMPACKAGES, IPAMDNSSCRIPTS, CONTROLLER_IMAGE, CRL_DATA.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials edition(allowed values- other_file_types), basic edition(allowed values-
             - other_file_types), enterprise with cloud services edition.
@@ -197,7 +210,9 @@ def main():
         avi_patch_value=dict(type='str',),
         checksum=dict(type='str',),
         compressed=dict(type='bool',),
+        configpb_attributes=dict(type='dict',),
         created=dict(type='str',),
+        crl_info=dict(type='dict',),
         description=dict(type='str',),
         expires_at=dict(type='str',),
         is_federated=dict(type='bool',),

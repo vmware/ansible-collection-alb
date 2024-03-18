@@ -81,6 +81,14 @@ options:
             - Field introduced in 20.1.1.
         required: true
         type: dict
+    inventory_config:
+        description:
+            - Inventory configurations for pulse cloud services.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        required: true
+        type: dict
     ip_reputation_config:
         description:
             - Default values to be used for ip reputation sync.
@@ -91,7 +99,7 @@ options:
     mode:
         description:
             - Mode helps log collection and upload.
-            - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE.
+            - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE, BROADCOM.
             - Field introduced in 20.1.2.
             - Allowed in enterprise edition with any value, essentials edition(allowed values- salesforce,myvmware,systest), basic edition(allowed values-
             - salesforce,myvmware,systest), enterprise with cloud services edition.
@@ -135,11 +143,25 @@ options:
             - edition.
         required: true
         type: dict
+    session_config:
+        description:
+            - Session configuration data.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: dict
     split_proxy_configuration:
         description:
             - Split proxy configuration to connect external pulse cloud services.
             - Field introduced in 20.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: dict
+    tenant_config:
+        description:
+            - Tenant based configuration data.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
         type: dict
     tenant_ref:
         description:
@@ -238,6 +260,7 @@ def main():
         case_config=dict(type='dict', required=True),
         configpb_attributes=dict(type='dict',),
         feature_opt_in_status=dict(type='dict', required=True),
+        inventory_config=dict(type='dict', required=True),
         ip_reputation_config=dict(type='dict', required=True),
         mode=dict(type='str',),
         name=dict(type='str',),
@@ -245,7 +268,9 @@ def main():
         polling_interval=dict(type='int',),
         portal_url=dict(type='str', required=True),
         saas_licensing_config=dict(type='dict', required=True),
+        session_config=dict(type='dict',),
         split_proxy_configuration=dict(type='dict',),
+        tenant_config=dict(type='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         use_split_proxy=dict(type='bool',),

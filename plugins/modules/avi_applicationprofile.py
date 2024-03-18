@@ -125,7 +125,6 @@ options:
             - Specifies if we need to preserve client port while preserving client ip for backend connections.
             - Field introduced in 17.2.7.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     preserve_dest_ip_port:
         description:

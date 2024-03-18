@@ -27,6 +27,7 @@
     hypervisor: "{{ item.hypervisor | default(omit) }}"
     mgmt_vnic: "{{ item.mgmt_vnic | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
+    nsxt_no_hotplug: "{{ item.nsxt_no_hotplug | default(omit) }}"
     resources: "{{ item.resources | default(omit) }}"
     se_group_ref: "{{ item.se_group_ref | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"

@@ -208,6 +208,20 @@ options:
             - edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 300.
         type: int
+    mgmt_ip_v4_enabled:
+        description:
+            - Enable ipv4 on the management interface of the serviceengine.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    mgmt_ip_v6_enabled:
+        description:
+            - Enable ipv6 on the management interface of the serviceengine.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     mtu:
         description:
             - Mtu setting for the cloud.
@@ -399,6 +413,8 @@ def main():
         maintenance_mode=dict(type='bool',),
         markers=dict(type='list', elements='dict',),
         metrics_polling_interval=dict(type='int',),
+        mgmt_ip_v4_enabled=dict(type='bool',),
+        mgmt_ip_v6_enabled=dict(type='bool',),
         mtu=dict(type='int',),
         name=dict(type='str', required=True),
         nsxt_configuration=dict(type='dict',),

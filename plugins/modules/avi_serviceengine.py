@@ -110,6 +110,12 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as VM name unknown.
         type: str
+    nsxt_no_hotplug:
+        description:
+            - If set to true, controller does not hotplugg the vnics.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: bool
     resources:
         description:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -190,6 +196,7 @@ def main():
         hypervisor=dict(type='str',),
         mgmt_vnic=dict(type='dict',),
         name=dict(type='str',),
+        nsxt_no_hotplug=dict(type='bool',),
         resources=dict(type='dict',),
         se_group_ref=dict(type='str',),
         tenant_ref=dict(type='str',),

@@ -302,7 +302,10 @@ Parameters
                   - Field introduced in 18.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition(allowed values- sso_type_saml, sso_type_jwt,
+                </div>
+                                <div style="font-size: small">
+                  - sso_type_ldap, sso_type_oauth), enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as SSO_TYPE_SAML.

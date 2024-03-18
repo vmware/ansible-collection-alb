@@ -17,6 +17,7 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
+    sender_hostname: "{{ item.sender_hostname | default(omit) }}"
     syslog_servers: "{{ item.syslog_servers | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"

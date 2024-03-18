@@ -350,6 +350,47 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>fileobject_max_file_versions</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This is the max number of file versions that will be retained for a file referenced by the federated fileobject.
+                </div>
+                                <div style="font-size: small">
+                  - Subsequent uploads of file will result in the file rotation of the older version and the latest version retained.
+                </div>
+                                <div style="font-size: small">
+                  - Example  when a file upload is done for the first time, there will be a v1 version.
+                </div>
+                                <div style="font-size: small">
+                  - Subsequent uploads will get mapped to v1, v2 and v3 versions.
+                </div>
+                                <div style="font-size: small">
+                  - On the fourth upload of the file, the v1 will be file rotated and v2, v3 and v4 will be retained.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-5.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>is_federated</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

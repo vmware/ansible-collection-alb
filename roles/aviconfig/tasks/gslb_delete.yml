@@ -22,6 +22,7 @@
     dns_configs: "{{ item.dns_configs | default(omit) }}"
     enable_config_by_members: "{{ item.enable_config_by_members | default(omit) }}"
     error_resync_interval: "{{ item.error_resync_interval | default(omit) }}"
+    fileobject_max_file_versions: "{{ item.fileobject_max_file_versions | default(omit) }}"
     is_federated: "{{ item.is_federated | default(omit) }}"
     leader_cluster_uuid: "{{ item.leader_cluster_uuid | default(omit) }}"
     maintenance_mode: "{{ item.maintenance_mode | default(omit) }}"

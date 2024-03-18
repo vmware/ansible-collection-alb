@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_wafapplicationsignatureprovider
+module: avi_albservicesfiledownload
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of WafApplicationSignatureProvider Avi RESTful Object
+short_description: Module for setup of ALBServicesFileDownload Avi RESTful Object
 description:
-    - This module is used to configure WafApplicationSignatureProvider object
+    - This module is used to configure ALBServicesFileDownload object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,64 +46,71 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    available_applications:
-        description:
-            - Available application names and the ruleset version, when the rules for an application changed the last time.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: list
-        elements: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 21.1.1.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
-    filter_rules_on_import:
+    destination_dir:
         description:
-            - If this is set to false, all provided rules are imported when updating this object.
-            - If this is set to true, only newer rules are considered for import.
-            - Newer rules are rules where the rule id is not in the range of 2,000,000 to 2,080,000 or where the rule has a tag with a cve from 2013 or newer.
-            - All other rules are ignored on rule import.
+            - Destination of the file to be saved.
             - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
-        type: bool
+        required: true
+        type: str
+    file_type:
+        description:
+            - Software / crs/ inventory.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        required: true
+        type: str
+    file_uri:
+        description:
+            - File uri on the cloud bucket.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        required: true
+        type: str
+    message:
+        description:
+            - Download's success / failure message.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: str
+    metadata:
+        description:
+            - Metadata of the file from pulse.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+            - edition.
+        type: dict
     name:
         description:
-            - Name of application specific ruleset provider.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-        type: str
-    ruleset_version:
-        description:
-            - Version of signatures.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
-        type: str
-    service_status:
-        description:
-            - If this object is managed by the application signatures update service, this field contain the status of this syncronization.
-            - Field introduced in 20.1.3.
+            - The name of the file with which it is saved to the disk.
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
-    signatures:
+        required: true
+        type: str
+    status:
         description:
-            - The waf rules.
-            - Not visible in the api.
-            - Field introduced in 20.1.1.
+            - Status of file download.
+            - Enum options - SYSERR_SUCCESS, SYSERR_FAILURE, SYSERR_OUT_OF_MEMORY, SYSERR_NO_ENT, SYSERR_INVAL, SYSERR_ACCESS, SYSERR_FAULT, SYSERR_IO,
+            - SYSERR_TIMEOUT, SYSERR_NOT_SUPPORTED, SYSERR_NOT_READY, SYSERR_UPGRADE_IN_PROGRESS, SYSERR_WARM_START_IN_PROGRESS, SYSERR_TRY_AGAIN,
+            - SYSERR_NOT_UPGRADING, SYSERR_PENDING, SYSERR_EVENT_GEN_FAILURE, SYSERR_CONFIG_PARAM_MISSING, SYSERR_RANGE, SYSERR_BAD_REQUEST...
+            - Field introduced in 30.2.1.
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
-        type: list
-        elements: dict
+        type: str
     tenant_ref:
         description:
+            - Tenant uuid associated with the object.
             - It is a reference to an object of type tenant.
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -111,8 +118,9 @@ options:
         type: str
     uuid:
         description:
-            - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Unique id of the object.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -127,16 +135,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create WafApplicationSignatureProvider object
-  vmware.alb.avi_wafapplicationsignatureprovider:
+- name: Example to create ALBServicesFileDownload object
+  vmware.alb.avi_albservicesfiledownload:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_wafapplicationsignatureprovider
+    name: sample_albservicesfiledownload
 """
 
 RETURN = '''
 obj:
-    description: WafApplicationSignatureProvider (api/wafapplicationsignatureprovider) object
+    description: ALBServicesFileDownload (api/albservicesfiledownload) object
     returned: success, changed
     type: dict
 '''
@@ -159,13 +167,14 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        available_applications=dict(type='list', elements='dict',),
         configpb_attributes=dict(type='dict',),
-        filter_rules_on_import=dict(type='bool',),
-        name=dict(type='str',),
-        ruleset_version=dict(type='str',),
-        service_status=dict(type='dict',),
-        signatures=dict(type='list', elements='dict',),
+        destination_dir=dict(type='str', required=True),
+        file_type=dict(type='str', required=True),
+        file_uri=dict(type='str', required=True),
+        message=dict(type='str',),
+        metadata=dict(type='dict',),
+        name=dict(type='str', required=True),
+        status=dict(type='str',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
@@ -177,7 +186,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'wafapplicationsignatureprovider',
+    return avi_ansible_api(module, 'albservicesfiledownload',
                            set())
 
 

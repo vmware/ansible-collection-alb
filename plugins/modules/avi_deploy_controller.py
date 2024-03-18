@@ -89,16 +89,38 @@ options:
         type: str
     con_mgmt_ip:
         description:
-            - Static IP address.
+            - Static IPV4 address.
+        type: str
+    con_mgmt_ip_v6:
+        description:
+            - Static IPV6 address.
         type: str
     con_mgmt_mask:
         description:
             - Static netmask required for con_mgmt_ip.
         type: str
+    con_mgmt_mask_v6:
+        description:
+            - Static netmask required for con_mgmt_ip_v6.
+        type: str
     con_default_gw:
         description:
             - Getway for the con_mgmt_ip.
         type: str
+    con_default_gw_v6:
+        description:
+            - Getway for the con_mgmt_ip_v6.
+        type: str
+    con_mgmt_ip_v4_enable:
+        description:
+            - Flag to spin up IPV4 controller.
+        default: true
+        type: bool
+    con_mgmt_ip_v6_enable:
+        description:
+            - Flag to spin up IPV6 controller.
+        default: false
+        type: bool
     con_sysadmin_public_key:
         description:
             - File path of sysadmin public key file.
@@ -173,7 +195,8 @@ try:
     import os
     import requests
     import time
-    from pyVim.connect import SmartConnectNoSSL, Disconnect
+    import ipaddress
+    from pyVim.connect import SmartConnect, Disconnect
     from pyVim.task import WaitForTasks
     from pyVmomi import vim, vmodl
     HAS_IMPORT = True
@@ -405,6 +428,15 @@ def is_reconfigure_vm(module):
             is_resize_disk(module))
 
 
+def is_ipv6_address(controller_ip):
+    IPV6 = 6
+    try:
+        ip = ipaddress.ip_address(controller_ip)
+        return ip.version == IPV6
+    except ValueError as ve:
+        return False
+
+
 def controller_wait(controller_ip, round_wait=10, wait_time=3600):
     """
     It waits for controller to come up for a given wait_time (default 1 hour).
@@ -412,7 +444,11 @@ def controller_wait(controller_ip, round_wait=10, wait_time=3600):
     """
     count = 0
     max_count = wait_time / round_wait
-    path = "https://" + str(controller_ip) + "/api/cluster/runtime"
+    is_ipv6 = is_ipv6_address(controller_ip)
+    if is_ipv6:
+        path = "https://[" + str(controller_ip) + "]/api/cluster/runtime"
+    else:
+        path = "https://" + str(controller_ip) + "/api/cluster/runtime"
     ctrl_status = False
     r = None
     while True:
@@ -457,8 +493,13 @@ def main():
             con_power_on=dict(required=False, type='bool', default=True),
             con_vcenter_folder=dict(required=False, type='str'),
             con_mgmt_ip=dict(required=False, type='str'),
+            con_mgmt_ip_v6=dict(required=False, type='str'),
             con_mgmt_mask=dict(required=False, type='str'),
+            con_mgmt_mask_v6=dict(required=False, type='str'),
             con_default_gw=dict(required=False, type='str'),
+            con_default_gw_v6=dict(required=False, type='str'),
+            con_mgmt_ip_v4_enable=dict(required=False, type='bool', default=True),
+            con_mgmt_ip_v6_enable=dict(required=False, type='bool', default=False),
             con_sysadmin_public_key=dict(required=False, type='str'),
             con_number_of_cpus=dict(required=False, type='int'),
             con_cpu_reserved=dict(required=False, type='int'),
@@ -477,9 +518,10 @@ def main():
         return module.fail_json(msg=(
             'Some of the python package is not installed. please install the requirements from requirements.txt'))
     try:
-        si = SmartConnectNoSSL(host=module.params['vcenter_host'],
-                               user=module.params['vcenter_user'],
-                               pwd=module.params['vcenter_password'])
+        si = SmartConnect(disableSslCertValidation=True,
+                          host=module.params['vcenter_host'],
+                          user=module.params['vcenter_user'],
+                          pwd=module.params['vcenter_password'])
         atexit.register(Disconnect, si)
     except vim.fault.InvalidLogin:
         return module.fail_json(
@@ -557,10 +599,16 @@ def main():
             if ds.name not in ds_names:
                 module.fail_json(msg='VM datastore cant be modified')
 
-        if module.params.get('con_mgmt_ip', None):
+        if module.params.get('con_mgmt_ip', None) and not module.params['con_mgmt_ip_v6_enable']:
             ip_addresses = get_vm_ips(vm)
             if (ip_addresses and
                     not module.params['con_mgmt_ip'] in ip_addresses):
+                module.fail_json(msg='VM static ip address cant be modified')
+
+        if module.params.get('con_mgmt_ip_v6', None) and module.params['con_mgmt_ip_v6_enable']:
+            ip_addresses = get_vm_ips(vm)
+            if (ip_addresses and
+                    not module.params['con_mgmt_ip_v6'] in ip_addresses):
                 module.fail_json(msg='VM static ip address cant be modified')
 
         if is_reconfigure_vm(module):
@@ -625,7 +673,7 @@ def main():
                     module.params['con_vm_name']))
 
     if (module.params['con_ova_path'].startswith('http')):
-        if (requests.head(module.params['con_ova_path']).status_code != 200):
+        if (requests.head(module.params['con_ova_path'], verify=module.params['ssl_verify']).status_code != 200):
             module.fail_json(msg='Controller OVA not found or readable from specified URL path')
     else:
         if (not os.path.isfile(module.params['con_ova_path']) or
@@ -636,9 +684,14 @@ def main():
     ova_file = module.params['con_ova_path']
     quoted_vcenter_user = quote(module.params['vcenter_user'])
     quoted_vcenter_pass = quote(module.params['vcenter_password'])
-    vi_string = 'vi://%s:%s@%s' % (
-        quoted_vcenter_user, quoted_vcenter_pass,
-        module.params['vcenter_host'])
+    if is_ipv6_address(module.params['vcenter_host']):
+        vi_string = 'vi://%s:%s@[%s]' % (
+            quoted_vcenter_user, quoted_vcenter_pass,
+            module.params['vcenter_host'])
+    else:
+        vi_string = 'vi://%s:%s@%s' % (
+            quoted_vcenter_user, quoted_vcenter_pass,
+            module.params['vcenter_host'])
     vi_string += '/%s%s/%s' % (dc.name, compile_folder_path_for_object(cl),
                                cl.name)
     command_tokens = [ovftool_exec]
@@ -674,17 +727,37 @@ def main():
         command_tokens.append(
             '--network=%s' % module.params['con_mgmt_network'])
 
-    if module.params.get('con_mgmt_ip', None):
+    if module.params.get('con_mgmt_ip_v6', None):
+        command_tokens.append('--prop:%s=%s' % (
+            'avi.mgmt-ip-v6.CONTROLLER', module.params['con_mgmt_ip_v6']))
+
+    if module.params.get('con_mgmt_ip', None) and not module.params['con_mgmt_ip_v6_enable']:
         command_tokens.append('--prop:%s=%s' % (
             'avi.mgmt-ip.CONTROLLER', module.params['con_mgmt_ip']))
 
-    if module.params.get('con_mgmt_mask', None):
+    if module.params.get('con_mgmt_mask_v6', None):
+        command_tokens.append('--prop:%s=%s' % (
+            'avi.mgmt-mask-v6.CONTROLLER', module.params['con_mgmt_mask_v6']))
+
+    if module.params.get('con_mgmt_mask', None) and not module.params['con_mgmt_ip_v6_enable']:
         command_tokens.append('--prop:%s=%s' % (
             'avi.mgmt-mask.CONTROLLER', module.params['con_mgmt_mask']))
 
-    if module.params.get('con_default_gw', None):
+    if module.params.get('con_default_gw_v6', None):
+        command_tokens.append('--prop:%s=%s' % (
+            'avi.default-gw-v6.CONTROLLER', module.params['con_default_gw_v6']))
+
+    if module.params.get('con_default_gw', None) and not module.params['con_mgmt_ip_v6_enable']:
         command_tokens.append('--prop:%s=%s' % (
             'avi.default-gw.CONTROLLER', module.params['con_default_gw']))
+
+    if module.params.get('con_mgmt_ip_v6_enable', None):
+        command_tokens.append('--prop:%s=%s' % (
+            'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
+
+    if module.params.get('con_mgmt_ip_v4_enable', None) and not module.params['con_mgmt_ip_v6_enable']:
+        command_tokens.append('--prop:%s=%s' % (
+            'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
     if module.params.get('con_sysadmin_public_key', None):
         command_tokens.append('--prop:%s=%s' % (
@@ -743,7 +816,7 @@ def main():
     if not vm:
         vm = get_vm_by_name(si, module.params['con_vm_name'])
 
-    if not module.params['con_mgmt_ip']:
+    if not module.params['con_mgmt_ip'] and not module.params['con_mgmt_ip_v6']:
         interval = 15
         timeout = 300
         controller_ip = None
@@ -754,6 +827,8 @@ def main():
                 break
             time.sleep(interval)
             timeout -= interval
+    elif module.params['con_mgmt_ip_v6_enable']:
+        controller_ip = module.params['con_mgmt_ip_v6']
     else:
         controller_ip = module.params['con_mgmt_ip']
 

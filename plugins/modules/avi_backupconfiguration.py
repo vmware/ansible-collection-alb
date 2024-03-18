@@ -78,7 +78,8 @@ options:
         type: str
     backup_passphrase:
         description:
-            - Default passphrase for configuration export and periodic backup.
+            - Default passphrase to encrypt sensitive fields for configuration export and periodic backup.
+            - The same passphrase must be provided to import the configuration.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:

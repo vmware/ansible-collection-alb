@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_botdetectionpolicy
+module: avi_systemreport
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of BotDetectionPolicy Avi RESTful Object
+short_description: Module for setup of SystemReport Avi RESTful Object
 description:
-    - This module is used to configure BotDetectionPolicy object
+    - This module is used to configure SystemReport object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,99 +46,90 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    allow_list:
+    archive_ref:
         description:
-            - Allow the user to skip botmanagement for selected requests.
-            - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
-    client_behavior_detector:
-        description:
-            - The client behavior configuration used in this policy.
-            - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
-    description:
-        description:
-            - Human-readable description of this bot detection policy.
-            - Field introduced in 21.1.1.
+            - Relative path to the report archive file on filesystem.the archive includes exported system configuration and current object as json.
+            - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
-    ip_location_detector:
+    controller_patch_image_ref:
         description:
-            - The ip location configuration used in this policy.
-            - Field introduced in 21.1.1.
+            - Controller patch image associated with the report.
+            - It is a reference to an object of type image.
+            - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        required: true
-        type: dict
-    ip_reputation_detector:
+        type: str
+    downloadable:
         description:
-            - The ip reputation configuration used in this policy.
-            - Field introduced in 21.1.1.
+            - Indicates whether this report is downloadable as an archive.
+            - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        required: true
-        type: dict
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    events:
+        description:
+            - List of events associated with the report.
+            - Field introduced in 22.1.6, 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    image_ref:
+        description:
+            - System image associated with the report.
+            - It is a reference to an object of type image.
+            - Field introduced in 22.1.6, 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: str
     name:
         description:
-            - The name of this bot detection policy.
-            - Field introduced in 21.1.1.
+            - Name of the report derived from operation in a readable format.
+            - Ex  upgrade_system_1a5c.
+            - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        required: true
         type: str
-    system_bot_mapping_ref:
+    obj_state:
         description:
-            - System-defined rules for classification.
-            - It is a reference to an object of type botmapping.
-            - Field introduced in 21.1.1.
+            - Report state combines all applicable states.
+            - Ex  readiness_reports.system_readiness.state.
+            - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
-    system_consolidator_ref:
+        type: dict
+    readiness_reports:
         description:
-            - The installation provides an updated ruleset for consolidating the results of different decider phases.
-            - It is a reference to an object of type botconfigconsolidator.
-            - Field introduced in 21.1.1.
+            - Readiness state of the system.
+            - Ex  upgrade pre-check results.
+            - Field introduced in 22.1.6, 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    se_patch_image_ref:
+        description:
+            - Se patch image associated with the report.
+            - It is a reference to an object of type image.
+            - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
+    summary:
+        description:
+            - Summary of the report.
+            - Field introduced in 22.1.6, 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: dict
     tenant_ref:
         description:
-            - The unique identifier of the tenant to which this policy belongs.
+            - Tenant uuid associated with the object.
             - It is a reference to an object of type tenant.
-            - Field introduced in 21.1.1.
+            - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     url:
         description:
             - Avi controller URL of the object.
         type: str
-    user_agent_detector:
-        description:
-            - The user-agent configuration used in this policy.
-            - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        required: true
-        type: dict
-    user_bot_mapping_ref:
-        description:
-            - User-defined rules for classification.
-            - These are applied before the system classification rules.
-            - If a rule matches, processing terminates and the system-defined rules will not run.
-            - It is a reference to an object of type botmapping.
-            - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
-    user_consolidator_ref:
-        description:
-            - The user-provided ruleset for consolidating the results of different decider phases.
-            - This runs before the system consolidator.
-            - If it successfully sets a consolidation, the system consolidator will not change it.
-            - It is a reference to an object of type botconfigconsolidator.
-            - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: str
     uuid:
         description:
-            - A unique identifier to this bot detection policy.
-            - Field introduced in 21.1.1.
+            - Uuid identifier for the report.
+            - Field introduced in 22.1.6, 30.2.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -154,16 +145,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create BotDetectionPolicy object
-  vmware.alb.avi_botdetectionpolicy:
+- name: Example to create SystemReport object
+  vmware.alb.avi_systemreport:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_botdetectionpolicy
+    name: sample_systemreport
 """
 
 RETURN = '''
 obj:
-    description: BotDetectionPolicy (api/botdetectionpolicy) object
+    description: SystemReport (api/systemreport) object
     returned: success, changed
     type: dict
 '''
@@ -186,19 +177,18 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        allow_list=dict(type='dict',),
-        client_behavior_detector=dict(type='dict',),
-        description=dict(type='str',),
-        ip_location_detector=dict(type='dict', required=True),
-        ip_reputation_detector=dict(type='dict', required=True),
-        name=dict(type='str', required=True),
-        system_bot_mapping_ref=dict(type='str',),
-        system_consolidator_ref=dict(type='str',),
+        archive_ref=dict(type='str',),
+        controller_patch_image_ref=dict(type='str',),
+        downloadable=dict(type='bool',),
+        events=dict(type='list', elements='dict',),
+        image_ref=dict(type='str',),
+        name=dict(type='str',),
+        obj_state=dict(type='dict',),
+        readiness_reports=dict(type='list', elements='dict',),
+        se_patch_image_ref=dict(type='str',),
+        summary=dict(type='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
-        user_agent_detector=dict(type='dict', required=True),
-        user_bot_mapping_ref=dict(type='str',),
-        user_consolidator_ref=dict(type='str',),
         uuid=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
@@ -208,7 +198,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'botdetectionpolicy',
+    return avi_ansible_api(module, 'systemreport',
                            set())
 
 

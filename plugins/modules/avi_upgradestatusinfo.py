@@ -321,6 +321,14 @@ options:
             - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: bool
+    system_report_refs:
+        description:
+            - Tracks the list of reports created for node.
+            - It is a reference to an object of type systemreport.
+            - Field introduced in 22.1.6, 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: list
+        elements: str
     tasks_completed:
         description:
             - Completed set of tasks in the upgrade operation.
@@ -351,7 +359,7 @@ options:
         description:
             - Upgrade operations requested.
             - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME, EVAL_UPGRADE, EVAL_PATCH, EVAL_ROLLBACK, EVAL_ROLLBACKPATCH,
-            - EVAL_SEGROUP_RESUME.
+            - EVAL_SEGROUP_RESUME, EVAL_RESTORE, RESTORE.
             - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
@@ -463,6 +471,7 @@ def main():
         start_time=dict(type='str',),
         statediff_ref=dict(type='str',),
         system=dict(type='bool',),
+        system_report_refs=dict(type='list', elements='str',),
         tasks_completed=dict(type='int',),
         tenant_ref=dict(type='str',),
         total_tasks=dict(type='int',),
