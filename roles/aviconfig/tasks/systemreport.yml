@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi PingAccessAgent | Create or Update PingAccessAgent
+- name: Avi SystemReport | Create or Update SystemReport
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_pingaccessagent:
+  vmware.alb.avi_systemreport:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,16 +14,19 @@
     api_context: "{{ avi_api_context | default(omit) }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    description: "{{ item.description | default(omit) }}"
-    markers: "{{ item.markers | default(omit) }}"
+    archive_ref: "{{ item.archive_ref | default(omit) }}"
+    controller_patch_image_ref: "{{ item.controller_patch_image_ref | default(omit) }}"
+    downloadable: "{{ item.downloadable | default(omit) }}"
+    events: "{{ item.events | default(omit) }}"
+    image_ref: "{{ item.image_ref | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    pingaccess_pool_ref: "{{ item.pingaccess_pool_ref | default(omit) }}"
-    primary_server: "{{ item.primary_server | default(omit) }}"
-    properties_file_data: "{{ item.properties_file_data | default(omit) }}"
+    obj_state: "{{ item.obj_state | default(omit) }}"
+    readiness_reports: "{{ item.readiness_reports | default(omit) }}"
+    se_patch_image_ref: "{{ item.se_patch_image_ref | default(omit) }}"
+    summary: "{{ item.summary | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.pingaccessagent | default([]) }}"
+  with_items: "{{ avi_role_cfg.systemreport | default([]) }}"

@@ -19,13 +19,12 @@ avi_resource_types:
   - networkprofile
   - stringgroup
   - ipaddrgroup
-  - pkiprofile
+  - fileobject
   - sslprofile
   - applicationpersistenceprofile
   - alertemailconfig
   - snmptrapprofile
   - autoscalelaunchconfig
-  - fileobject
   - securitypolicy
   - protocolparser
   - jwtserverprofile
@@ -42,6 +41,7 @@ avi_resource_types:
   - statediffoperation
   - image
   - controllerportalregistration
+  - systemreport
   - dynamicdnsrecord
   - role
   - serviceauthprofile
@@ -51,6 +51,7 @@ avi_resource_types:
   - webhook
   - securitymanagerdata
   - cluster
+  - albservicesfiledownload
   - vsgs
   - poolgroupdeploymentpolicy
   - memorybalancerrequest
@@ -65,10 +66,10 @@ avi_resource_types:
   - botmapping
   - csrfpolicy
   - natpolicy
-  - applicationprofile
-  - microservicegroup
+  - pkiprofile
   - ipreputationdb
   - geodb
+  - microservicegroup
   - errorpageprofile
   - testsedatastorelevel2
   - gslb
@@ -78,9 +79,10 @@ avi_resource_types:
   - authmappingprofile
   - scheduler
   - sslkeyandcertificate
-  - networksecuritypolicy
+  - applicationprofile
   - wafpolicy
   - botdetectionpolicy
+  - networksecuritypolicy
   - testsedatastorelevel1
   - backup
   - cloud
@@ -104,7 +106,6 @@ avi_resource_types:
   - serviceengine
   - networkservice
   - poolgroup
-  - pingaccessagent
   - httppolicyset
   - dnspolicy
   - vsdatascriptset

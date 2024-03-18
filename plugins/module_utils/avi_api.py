@@ -9,6 +9,9 @@ import copy
 import json
 import logging
 import time
+import ipaddress
+import socket
+
 if sys.version_info < (3, 5):
     from urlparse import urlparse
 else:
@@ -209,7 +212,7 @@ class ApiSession(Session):
     SHARED_USER_HDRS = ['X-CSRFToken', 'Session-Id', 'Referer', 'Content-Type']
     MAX_API_RETRIES = 3
     CSP_HOST = 'console.cloud.vmware.com'
-
+    IPV6 = 6
     def __init__(self, controller_ip=None, username=None, password=None,
                  token=None, tenant=None, tenant_uuid=None, verify=False,
                  port=None, timeout=60, api_version=None,
@@ -271,23 +274,31 @@ class ApiSession(Session):
             else int(max_api_retries))
         # Refer Notes 01 and 02
         k_port = port if port else 443
+
         if self.avi_credentials.controller.startswith('http'):
             k_port = 80 if not self.avi_credentials.port else k_port
-            if self.avi_credentials.port is None or \
-                    self.avi_credentials.port == 80:
-                self.prefix = self.avi_credentials.controller
-            else:
+            self.prefix = self.avi_credentials.controller
+            if port and int(port) not in (80, 443):
                 self.prefix = '{x}:{y}'.format(
                     x=self.avi_credentials.controller,
                     y=self.avi_credentials.port)
         else:
-            if port is None or port == 443:
-                self.prefix = 'https://{x}'.format(
-                    x=self.avi_credentials.controller)
+            protocol = 'https'
+            is_ipv6 = self.is_ipv6_address(self.avi_credentials.controller)
+
+            # Determine if a port is specified
+            port = int(port) if port and int(port) not in (80, 443) else None
+
+            # Check if the IP address is IPv6
+            if is_ipv6:
+                self.prefix = '{}://[{}]'.format(protocol, self.avi_credentials.controller)
             else:
-                self.prefix = 'https://{x}:{y}'.format(
-                    x=self.avi_credentials.controller,
-                    y=self.avi_credentials.port)
+                self.prefix = '{}://{}'.format(protocol, self.avi_credentials.controller)
+
+            # Include the port in the prefix if specified
+            if port:
+                self.prefix += ':{}'.format(port)
+
         self.timeout = timeout
         self.key = '%s:%s:%s' % (self.avi_credentials.controller,
                                  self.avi_credentials.username, k_port)
@@ -1119,4 +1130,13 @@ class ApiSession(Session):
         logger.debug("Removed session for : %s", self.key)
         sessionDict.pop(self.key, None)
         return
+
+    def is_ipv6_address(self, controller_ip):
+        try:
+            logger.info('Verifing IPV6 Controller IP %s', controller_ip)
+            ip = ipaddress.ip_address(controller_ip)
+            return ip.version == self.IPV6
+        except ValueError as ve:
+            logger.warning('Invalid Controller IP6 Address: %s - %s', controller_ip, ve)
+            return False
 # End of file

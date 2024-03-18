@@ -238,6 +238,16 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
+    graceful_hm_down_disable_timeout:
+        description:
+            - Time interval for gracefully closing the connections on server, when health monitoring marks the server down.
+            - Allowed values are 1-432000.
+            - Special values are 0 - immediate, -1 - infinite.
+            - Field introduced in 30.2.1.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as -1.
+        type: int
     gslb_sp_enabled:
         description:
             - Indicates if the pool is a site-persistence pool.
@@ -678,6 +688,7 @@ def main():
         fail_action=dict(type='dict',),
         fewest_tasks_feedback_delay=dict(type='int',),
         graceful_disable_timeout=dict(type='int',),
+        graceful_hm_down_disable_timeout=dict(type='int',),
         gslb_sp_enabled=dict(type='bool',),
         health_monitor_refs=dict(type='list', elements='str',),
         horizon_profile=dict(type='dict',),

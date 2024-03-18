@@ -258,7 +258,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Default passphrase for configuration export and periodic backup.
+                  - Default passphrase to encrypt sensitive fields for configuration export and periodic backup.
+                </div>
+                                <div style="font-size: small">
+                  - The same passphrase must be provided to import the configuration.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.

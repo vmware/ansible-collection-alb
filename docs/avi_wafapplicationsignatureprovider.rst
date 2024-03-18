@@ -185,6 +185,41 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>filter_rules_on_import</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">bool</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If this is set to false, all provided rules are imported when updating this object.
+                </div>
+                                <div style="font-size: small">
+                  - If this is set to true, only newer rules are considered for import.
+                </div>
+                                <div style="font-size: small">
+                  - Newer rules are rules where the rule id is not in the range of 2,000,000 to 2,080,000 or where the rule has a tag with a cve from 2013 or newer.
+                </div>
+                                <div style="font-size: small">
+                  - All other rules are ignored on rule import.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+            <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -244,7 +279,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - If this object is managed by the application signatures update  service, this field contain the status of this syncronization.
+                  - If this object is managed by the application signatures update service, this field contain the status of this syncronization.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.

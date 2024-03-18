@@ -53,6 +53,34 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: dict
+    default_first_int:
+        description:
+            - Default uint64 field.
+            - Field introduced in 30.1.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+        type: int
+    default_second_int:
+        description:
+            - Default int64 field.
+            - Field introduced in 30.1.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 2.
+        type: int
+    default_string:
+        description:
+            - Default string field.
+            - Field introduced in 30.1.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as default string.
+        type: str
+    default_third_int:
+        description:
+            - Default int32 field.
+            - Field introduced in 30.1.2.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+        type: int
     mandatory_test:
         description:
             - Optional message for nested f_mandatory test cases defined at level1.
@@ -86,6 +114,12 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: dict
+    skip_optional_check_tests:
+        description:
+            - Optional bool for nested skip_optional_check test cases-level1.
+            - Field introduced in 22.1.3.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+        type: bool
     string_length_test:
         description:
             - Optional message for nested  max string length test cases.
@@ -175,11 +209,16 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
+        default_first_int=dict(type='int',),
+        default_second_int=dict(type='int',),
+        default_string=dict(type='str',),
+        default_third_int=dict(type='int',),
         mandatory_test=dict(type='dict',),
         mandatory_tests=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         sensitive_test=dict(type='dict',),
         sensitive_tests=dict(type='list', elements='dict',),
+        skip_optional_check_tests=dict(type='bool',),
         string_length_test=dict(type='dict',),
         string_length_tests=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),

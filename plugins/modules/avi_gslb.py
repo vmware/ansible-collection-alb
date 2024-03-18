@@ -113,6 +113,18 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 300.
         type: int
+    fileobject_max_file_versions:
+        description:
+            - This is the max number of file versions that will be retained for a file referenced by the federated fileobject.
+            - Subsequent uploads of file will result in the file rotation of the older version and the latest version retained.
+            - Example  when a file upload is done for the first time, there will be a v1 version.
+            - Subsequent uploads will get mapped to v1, v2 and v3 versions.
+            - On the fourth upload of the file, the v1 will be file rotated and v2, v3 and v4 will be retained.
+            - Allowed values are 1-5.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+        type: int
     is_federated:
         description:
             - This field indicates that this object is replicated across gslb federation.
@@ -437,6 +449,7 @@ def main():
         dns_configs=dict(type='list', elements='dict',),
         enable_config_by_members=dict(type='bool',),
         error_resync_interval=dict(type='int',),
+        fileobject_max_file_versions=dict(type='int',),
         is_federated=dict(type='bool',),
         leader_cluster_uuid=dict(type='str', required=True),
         maintenance_mode=dict(type='bool',),

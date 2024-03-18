@@ -40,6 +40,7 @@
     fail_action: "{{ item.fail_action | default(omit) }}"
     fewest_tasks_feedback_delay: "{{ item.fewest_tasks_feedback_delay | default(omit) }}"
     graceful_disable_timeout: "{{ item.graceful_disable_timeout | default(omit) }}"
+    graceful_hm_down_disable_timeout: "{{ item.graceful_hm_down_disable_timeout | default(omit) }}"
     gslb_sp_enabled: "{{ item.gslb_sp_enabled | default(omit) }}"
     health_monitor_refs: "{{ item.health_monitor_refs | default(omit) }}"
     horizon_profile: "{{ item.horizon_profile | default(omit) }}"

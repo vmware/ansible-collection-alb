@@ -50,7 +50,7 @@ options:
     attrs:
         description:
             - Key/value tenant attributes.
-            - Field introduced in 23.1.1.
+            - Field introduced in 30.1.1.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: list
         elements: dict

@@ -55,6 +55,7 @@
     start_time: "{{ item.start_time | default(omit) }}"
     statediff_ref: "{{ item.statediff_ref | default(omit) }}"
     system: "{{ item.system | default(omit) }}"
+    system_report_refs: "{{ item.system_report_refs | default(omit) }}"
     tasks_completed: "{{ item.tasks_completed | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     total_tasks: "{{ item.total_tasks | default(omit) }}"

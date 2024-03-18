@@ -80,9 +80,16 @@ options:
         type: str
     virtual_ip:
         description:
-            - A virtual ip address.
-            - This ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
+            - A v4 virtual ip address.
+            - This v4 ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+        type: dict
+    virtual_ip6:
+        description:
+            - A v6 virtual ip address.
+            - This v6 ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
+            - Field introduced in 30.2.1.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -136,6 +143,7 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
         virtual_ip=dict(type='dict',),
+        virtual_ip6=dict(type='dict',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
