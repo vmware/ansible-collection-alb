@@ -753,7 +753,7 @@ def main():
         command_tokens.append('--prop:%s=%s' % (
             'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
 
-    if module.params.get('con_mgmt_ip_v4_enable', None) and not module.params['con_mgmt_ip_v6_enable']:
+    if module.params.get('con_mgmt_ip_v4_enable', None):
         command_tokens.append('--prop:%s=%s' % (
             'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
