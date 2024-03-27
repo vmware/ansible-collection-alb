@@ -346,13 +346,6 @@ options:
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1440.
         type: int
-    file_reference_mappings:
-        description:
-            - List of mapping for file reference and their absolute path.
-            - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: list
-        elements: dict
     fileobject_max_file_versions:
         description:
             - This is the max number of file versions that will be retained for a file referenced by the local fileobject.
@@ -964,7 +957,6 @@ def main():
         fatal_error_lease_time=dict(type='int',),
         federated_datastore_cleanup_duration=dict(type='int',),
         file_object_cleanup_period=dict(type='int',),
-        file_reference_mappings=dict(type='list', elements='dict',),
         fileobject_max_file_versions=dict(type='int',),
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
