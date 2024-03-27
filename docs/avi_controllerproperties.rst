@@ -1230,29 +1230,6 @@ Parameters
                 <tr>
             <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>file_reference_mappings</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - List of mapping for file reference and their absolute path.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 30.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>fileobject_max_file_versions</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

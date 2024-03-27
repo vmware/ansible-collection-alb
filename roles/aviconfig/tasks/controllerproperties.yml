@@ -54,7 +54,6 @@
     fatal_error_lease_time: "{{ item.fatal_error_lease_time | default(omit) }}"
     federated_datastore_cleanup_duration: "{{ item.federated_datastore_cleanup_duration | default(omit) }}"
     file_object_cleanup_period: "{{ item.file_object_cleanup_period | default(omit) }}"
-    file_reference_mappings: "{{ item.file_reference_mappings | default(omit) }}"
     fileobject_max_file_versions: "{{ item.fileobject_max_file_versions | default(omit) }}"
     gslb_purge_batch_size: "{{ item.gslb_purge_batch_size | default(omit) }}"
     gslb_purge_sleep_time_ms: "{{ item.gslb_purge_sleep_time_ms | default(omit) }}"
