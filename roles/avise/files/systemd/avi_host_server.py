@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 ############################################################################
 # ========================================================================
 # Copyright 2024 VMware, Inc. All rights reserved. VMware Confidential
@@ -50,7 +51,7 @@ log_file = "/var/log/avi_host.log"
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 # 20MB file limit for logging
-handler = RotatingFileHandler(log_file, maxBytes=20*1024*1024, backupCount=1)
+handler = RotatingFileHandler(log_file, maxBytes=20 * 1024 * 1024, backupCount=1)
 formatter = logging.Formatter("%(asctime)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
@@ -116,7 +117,7 @@ def create_uds_socket():
             logger.error(
                 "Failed to unlink domain stream socket: %s", exception)
             raise Exception(
-                "Failed to unlink domain stream socket: %s", exception)
+                "Failed to unlink domain stream socket: {}".format(exception))
 
     # Create a UDS socket
     try:
@@ -126,7 +127,7 @@ def create_uds_socket():
         sock.listen(1)
         logger.info("Listening on %s", SERVER_ADDRESS)
         return sock
-    except:
+    except Exception as ex:
         exception = traceback.format_exc()
         logger.error("socket listen failed: %s", exception)
         raise Exception("socket listen failed: {}".format(exception))
