@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/sh
 ############################################################################
 # ========================================================================
 # Copyright 2024 VMware, Inc. All rights reserved. VMware Confidential
@@ -7,7 +7,7 @@
 
 start()
 {
-    if [[ -f /opt/avitest_python_version ]]; then
+    if [ -f /opt/avitest_python_version ]; then
         # For testing against python2 and python3
         version=$(cat /opt/avitest_python_version)
     else
@@ -18,8 +18,8 @@ start()
         command -v python3 >/dev/null 2>&1 && version='3'
     fi
 
-    if [[ $version != '0' ]]; then
-        exec python$version /usr/sbin/avi_host_server.py
+    if [ "$version" != '0' ]; then
+        exec python"$version" /usr/sbin/avi_host_server.py
     else
         echo "Unable to find any installed python"
         exit 1

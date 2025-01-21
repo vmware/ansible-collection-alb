@@ -59,6 +59,7 @@ plugins/modules/verify_se.py validate-modules:missing-gplv3-license
 roles/avicontroller/templates/avicontroller.j2 shebang
 roles/avise/templates/avise.j2 shebang
 roles/avise/templates/avise_service.j2 shebang
+roles/avise/files/systemd/avihost.service shebang
 molecule/default/files/avi_config.yml line-endings
 tests/unit/modules/test_avi_pool.py pylint!skip
 roles/avise/files/systemd/install.py pylint!skip
@@ -412,3 +413,4 @@ plugins/modules/avi_upgradeprofile.py import-3.10!skip
 plugins/modules/avi_tenantsystemconfiguration.py validate-modules:import-error
 plugins/modules/avi_tenantsystemconfiguration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_bootstrap_controller.py validate-modules:no-default-for-required-parameter
+plugins/modules/avi_csrfpolicy.py yamllint!skip
