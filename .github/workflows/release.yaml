@@ -9,10 +9,10 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
+      - name: Set up Python 3.10.16
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: 3.10.16
       - name: Install ansible-base to deploy collection
         run: pip install ansible-base
       - name: Build and Deploy Collection
