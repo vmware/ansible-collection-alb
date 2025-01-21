@@ -6,6 +6,8 @@
 
 
 from __future__ import (absolute_import, division, print_function)
+from copy import deepcopy
+from ansible.module_utils.basic import AnsibleModule
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
@@ -107,8 +109,6 @@ obj:
     type: dict
 '''
 
-from ansible.module_utils.basic import AnsibleModule
-from copy import deepcopy
 
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
@@ -124,7 +124,8 @@ except ImportError:
 def delete_member(module, check_mode, api, tenant, tenant_uuid,
                   existing_obj, data, api_version):
     members = data.get('group', {}).get('members', [])
-    patched_member_ids = set([m['ip']['addr'] for m in members if 'fqdn' not in m])
+    patched_member_ids = set([m['ip']['addr']
+                             for m in members if 'fqdn' not in m])
     patched_member_fqdns = set([m['fqdn'] for m in members if 'fqdn' in m])
 
     changed = False
@@ -134,8 +135,10 @@ def delete_member(module, check_mode, api, tenant, tenant_uuid,
         groups = [group for group in existing_obj.get('groups', [])
                   if group['name'] == data['group']['name']]
         if groups:
-            changed = any((m['ip']['addr'] in patched_member_ids) for m in groups[0].get('members', []) if 'fqdn' not in m)
-            changed = changed or any((m['fqdn'] in patched_member_fqdns) for m in groups[0].get('members', []) if 'fqdn' in m)
+            changed = any((m['ip']['addr'] in patched_member_ids)
+                          for m in groups[0].get('members', []) if 'fqdn' not in m)
+            changed = changed or any((m['fqdn'] in patched_member_fqdns)
+                                     for m in groups[0].get('members', []) if 'fqdn' in m)
     if check_mode or not changed:
         return changed, rsp
     # should not come here if not found

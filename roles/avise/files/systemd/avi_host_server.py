@@ -39,19 +39,17 @@ Having said that, we upgrade avihost and related items, whenever SE is getting u
 """
 
 import socket
-import sys
 import os
 import subprocess
-import signal
 import logging
 import traceback
 import re
 from logging.handlers import RotatingFileHandler
 
-log_file="/var/log/avi_host.log"
-logger=logging.getLogger()
+log_file = "/var/log/avi_host.log"
+logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
-#20MB file limit for logging
+# 20MB file limit for logging
 handler = RotatingFileHandler(log_file, maxBytes=20*1024*1024, backupCount=1)
 formatter = logging.Formatter("%(asctime)s - %(message)s")
 handler.setFormatter(formatter)
@@ -60,30 +58,34 @@ logger.addHandler(handler)
 SERVER_ADDRESS = '/root/se_domain_socket'
 CURRENT_VERSION = "v1"
 
+
 def send_response(conn, version, returncode, output, error):
     # Send the response back to the client
 
     output, error = output.strip(), error.strip()
 
     if version == CURRENT_VERSION:
-        conn.sendall("#version:{}#ret:{}#aviout:".format(CURRENT_VERSION, returncode).encode("utf-8"))
+        conn.sendall("#version:{}#ret:{}#aviout:".format(
+            CURRENT_VERSION, returncode).encode("utf-8"))
         conn.sendall(output)
         conn.sendall("#avierror:".encode("utf-8"))
         conn.sendall(error)
         conn.sendall("#avidone#".encode("utf-8"))
-        logger.debug("Sent response for {}".format(CURRENT_VERSION))
+        logger.debug("Sent response for %s", CURRENT_VERSION)
         return
 
     # Legacy handling of o/p and error differently
     if returncode:
-        logger.error("command execution failed {} {}".format(error, returncode))
+        logger.error(
+            "command execution failed %s %s", error, returncode)
         conn.sendall(error)
         conn.sendall("#ret:{}#avierror#".format(returncode).encode("utf-8"))
     else:
-        logger.debug("command output {}".format(output))
+        logger.debug("command output %s", output)
         conn.sendall(output)
         conn.sendall("#avidone#".encode("utf-8"))
     logger.debug("Sent response for Legacy version")
+
 
 def block_and_recv(conn):
     # Receive the data in small chunks and retransmit it
@@ -91,7 +93,7 @@ def block_and_recv(conn):
     while True:
         data = conn.recv(64)
         input_str = input_str + data.decode("utf-8")
-        logger.debug("input_str={}".format(input_str))
+        logger.debug("input_str=%s", input_str)
         if "#avicmddone#" in input_str:
             split_list = re.split("#version:|#cmd:|#avicmddone#", input_str)
             if len(split_list) == 2:
@@ -103,6 +105,7 @@ def block_and_recv(conn):
                 # split_list = ["", "<command>", "<version_tag>", ""]
                 return split_list[1:-1]
 
+
 def create_uds_socket():
     # Make sure the socket does not already exist
     try:
@@ -110,8 +113,10 @@ def create_uds_socket():
     except OSError as error:
         if os.path.exists(SERVER_ADDRESS):
             exception = traceback.format_exc()
-            logger.error("Failed to unlink domain stream socket: {}".format(exception))
-            raise Exception("Failed to unlink domain stream socket: {}".format(exception))
+            logger.error(
+                "Failed to unlink domain stream socket: %s", exception)
+            raise Exception(
+                "Failed to unlink domain stream socket: %s", exception)
 
     # Create a UDS socket
     try:
@@ -123,8 +128,9 @@ def create_uds_socket():
         return sock
     except:
         exception = traceback.format_exc()
-        logger.error("socket listen failed: {}".format(exception))
+        logger.error("socket listen failed: %s", exception)
         raise Exception("socket listen failed: {}".format(exception))
+
 
 def run():
     sock = create_uds_socket()
@@ -150,7 +156,8 @@ def run():
 
             # Empty command, send error response
             if not command:
-                send_response(conn, version, 255, b"", b"Received empty command")
+                send_response(conn, version, 255, b"",
+                              b"Received empty command")
                 continue
 
             # AVI induced crash (A way to restart the service)
@@ -164,9 +171,10 @@ def run():
                 continue
 
             # Execute command with timeout of 120 seconds and send response for other commands
-            logger.debug("received command {}".format(command))
+            logger.debug("received command %s", command)
             command = "timeout 120 " + command
-            op = subprocess.Popen(command, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+            op = subprocess.Popen(
+                command, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
             output, error = op.communicate()
             returncode = op.returncode
             send_response(conn, version, returncode, output, error)
@@ -175,13 +183,14 @@ def run():
         # raise another exception and let the process crash
         except Exception as ex:
             exception = traceback.format_exc()
-            logger.error("Exception hit: {}".format(exception))
+            logger.error("Exception hit: %s", exception)
             send_response(conn, version, 255, b"", exception.encode("utf-8"))
             raise Exception("Exception hit: {}".format(exception))
 
         # Clean up the connection
         finally:
             conn.close()
+
 
 if __name__ == "__main__":
     run()

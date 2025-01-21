@@ -5,6 +5,8 @@
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
+from ansible.module_utils.basic import AnsibleModule
+import time
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
@@ -71,8 +73,6 @@ obj:
     type: dict
 '''
 
-import time
-from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import avi_common_argument_spec
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
@@ -93,7 +93,8 @@ def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600):
     count = 0
     max_count = wait_time / round_wait
     ctrl_port = port if port else 80
-    path = "http://{1}:{2}{3}".format(controller_ip, ctrl_port, "/api/cluster/runtime")
+    path = "http://{1}:{2}{3}".format(controller_ip,
+                                      ctrl_port, "/api/cluster/runtime")
     ctrl_status = False
     while True:
         if count >= max_count:
@@ -146,13 +147,16 @@ def main():
                 password=new_password, timeout=api_creds.timeout,
                 tenant=api_creds.tenant, tenant_uuid=api_creds.tenant_uuid,
                 token=api_creds.token, port=api_creds.port)
-            module.exit_json(msg="Already initialized controller password with a given password.", changed=False)
+            module.exit_json(
+                msg="Already initialized controller password with a given password.", changed=False)
         except Exception as e:
             pass
     cmd = "ssh -o \"StrictHostKeyChecking no\" -t -i " + key_pair + " admin@" + \
           api_creds.controller + " \"ls /opt/avi/scripts/initialize_admin_user.py && echo -e '" + \
-          api_creds.controller + "\\n" + new_password + "' | sudo /opt/avi/scripts/initialize_admin_user.py\""
-    process = subprocess.Popen(cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE, shell=True)
+          api_creds.controller + "\\n" + new_password + \
+        "' | sudo /opt/avi/scripts/initialize_admin_user.py\""
+    process = subprocess.Popen(
+        cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE, shell=True)
     stdout, stderr = process.communicate()
     cmd_status = process.returncode
     if cmd_status == 0:

@@ -61,6 +61,7 @@ roles/avise/templates/avise.j2 shebang
 roles/avise/templates/avise_service.j2 shebang
 molecule/default/files/avi_config.yml line-endings
 tests/unit/modules/test_avi_pool.py pylint!skip
+roles/avise/files/systemd/install.py pylint!skip
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py validate-modules:import-error
 plugins/modules/avi_labelgroup.py import-3.10!skip
@@ -401,6 +402,13 @@ plugins/modules/avi_taskjournal.py import-3.10!skip
 plugins/modules/avi_taskjournal.py validate-modules:import-error
 plugins/modules/avi_taskjournal.py validate-modules:missing-gplv3-license
 plugins/modules/avi_tenantsystemconfiguration.py import-3.10!skip
+plugins/modules/avi_gslbcrmruntime.py import-3.10!skip
+plugins/modules/avi_gslbhsmruntime.py import-3.10!skip
+plugins/modules/avi_gslbsmruntime.py import-3.10!skip
+plugins/modules/avi_localworkerfdsversion.py import-3.10!skip
+plugins/modules/avi_retentionpolicy.py import-3.10!skip
+plugins/modules/avi_trustedhostprofile.py import-3.10!skip
+plugins/modules/avi_upgradeprofile.py import-3.10!skip
 plugins/modules/avi_tenantsystemconfiguration.py validate-modules:import-error
 plugins/modules/avi_tenantsystemconfiguration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_bootstrap_controller.py validate-modules:no-default-for-required-parameter

@@ -6,6 +6,8 @@
 
 
 from __future__ import (absolute_import, division, print_function)
+from ansible.module_utils.basic import AnsibleModule
+import os
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
@@ -59,8 +61,6 @@ obj:
     type: dict
 '''
 
-import os
-from ansible.module_utils.basic import AnsibleModule
 
 try:
     from requests_toolbelt import MultipartEncoder

@@ -6,6 +6,7 @@
 
 
 from __future__ import (absolute_import, division, print_function)
+from ansible.module_utils.basic import AnsibleModule
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
@@ -93,13 +94,11 @@ obj:
     type: dict
 '''
 
-from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
         avi_common_argument_spec, ansible_return)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
-    from pkg_resources import parse_version
     from requests import ConnectionError
     from ssl import SSLError
     from requests.exceptions import ChunkedEncodingError
