@@ -6,9 +6,6 @@
 
 
 from __future__ import (absolute_import, division, print_function)
-from ansible.module_utils.basic import AnsibleModule
-import os
-import json
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
@@ -93,6 +90,9 @@ obj:
     type: dict
 '''
 
+import json
+import os
+from ansible.module_utils.basic import AnsibleModule
 
 try:
     from requests_toolbelt import MultipartEncoder
@@ -160,8 +160,7 @@ def main():
             uri = 'controller://upgrade_pkgs'
             path = 'fileservice/uploads'
         else:
-            uri = 'controller://%s' % module.params.get(
-                'path', '').split('?')[0]
+            uri = 'controller://%s' % module.params.get('path', '').split('?')[0]
         changed = False
         file_uri = 'fileservice?uri=%s' % uri
         rsp = api.post(file_uri, tenant=tenant, tenant_uuid=tenant_uuid,

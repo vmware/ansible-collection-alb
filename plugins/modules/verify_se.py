@@ -1,7 +1,5 @@
 #!/usr/bin/python
 from __future__ import (absolute_import, division, print_function)
-from ansible.module_utils.basic import AnsibleModule
-import atexit
 __metaclass__ = type
 ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
@@ -115,6 +113,7 @@ obj:
 '''
 
 
+import atexit
 try:
     import requests
     import time
@@ -138,6 +137,7 @@ try:
     HAS_AVI = True
 except ImportError:
     HAS_AVI = False
+from ansible.module_utils.basic import AnsibleModule
 
 
 def get_vm_by_name(si, vm_name):
@@ -178,8 +178,7 @@ def main():
         argument_spec=dict(
             se_leader_ctl_ip=dict(required=True, type='str'),
             se_leader_ctl_username=dict(required=True, type='str'),
-            se_leader_ctl_password=dict(
-                required=True, type='str', no_log=True),
+            se_leader_ctl_password=dict(required=True, type='str', no_log=True),
             se_leader_ctl_version=dict(required=True, type='str'),
             se_cloud_name=dict(required=True, type='str'),
             se_group_name=dict(required=True, type='str'),
