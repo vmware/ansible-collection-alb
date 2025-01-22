@@ -62,6 +62,11 @@ options:
             - Name of the object.
         required: true
         type: str
+    con_esx_host:
+        description:
+            - Optional selection of the host.
+        required: false
+        type: str
     con_disk_mode:
         description:
             - Type of disk mode.
@@ -205,7 +210,8 @@ except ImportError:
 
 
 def is_vm_exist(si, cl, vm_name):
-    container = si.content.viewManager.CreateContainerView(cl, [vim.VirtualMachine], True)
+    container = si.content.viewManager.CreateContainerView(
+        cl, [vim.VirtualMachine], True)
     for managed_object_ref in container.view:
         if managed_object_ref.name == vm_name:
             return True
@@ -309,7 +315,8 @@ def get_sysadmin_key(keypath):
         with open(keypath, 'r') as keyfile:
             data = keyfile.read().rstrip('\n')
             return data
-    raise Exception('Failed to find sysadmin public key file at %s\n' % keypath)
+    raise Exception(
+        'Failed to find sysadmin public key file at %s\n' % keypath)
 
 
 def get_largest_free_ds(cl):
@@ -481,11 +488,13 @@ def main():
             vcenter_user=dict(required=True, type='str'),
             vcenter_password=dict(required=True, type='str', no_log=True),
             ssl_verify=dict(required=False, type='bool', default=False),
-            state=dict(required=False, type='str', default='present', choices=['absent', 'present']),
+            state=dict(required=False, type='str', default='present',
+                       choices=['absent', 'present']),
             con_datacenter=dict(required=False, type='str'),
             con_cluster=dict(required=False, type='str'),
             con_datastore=dict(required=False, type='str'),
             con_mgmt_network=dict(required=True, type='str'),
+            con_esx_host=dict(required=False, type='str'),
             con_disk_mode=dict(required=False, type='str', default='thin',
                                choices=['thin', 'thick', 'eagerzeroedthick']),
             con_ova_path=dict(required=True, type='str'),
@@ -498,8 +507,10 @@ def main():
             con_mgmt_mask_v6=dict(required=False, type='str'),
             con_default_gw=dict(required=False, type='str'),
             con_default_gw_v6=dict(required=False, type='str'),
-            con_mgmt_ip_v4_enable=dict(required=False, type='bool', default=True),
-            con_mgmt_ip_v6_enable=dict(required=False, type='bool', default=False),
+            con_mgmt_ip_v4_enable=dict(
+                required=False, type='bool', default=True),
+            con_mgmt_ip_v6_enable=dict(
+                required=False, type='bool', default=False),
             con_sysadmin_public_key=dict(required=False, type='str'),
             con_number_of_cpus=dict(required=False, type='int'),
             con_cpu_reserved=dict(required=False, type='int'),
@@ -571,7 +582,8 @@ def main():
     if is_vm_exist(si, cl, module.params['con_vm_name']):
         vm = get_vm_by_name(si, module.params['con_vm_name'])
         vm_path = compile_folder_path_for_object(vm)
-        folder = get_folder_by_path(si, dc, module.params['con_vcenter_folder'])
+        folder = get_folder_by_path(
+            si, dc, module.params['con_vcenter_folder'])
         folder_path = compile_folder_path_for_object(folder)
         changed = False
         if vm_path != folder_path:
@@ -674,7 +686,8 @@ def main():
 
     if (module.params['con_ova_path'].startswith('http')):
         if (requests.head(module.params['con_ova_path'], verify=module.params['ssl_verify']).status_code != 200):
-            module.fail_json(msg='Controller OVA not found or readable from specified URL path')
+            module.fail_json(
+                msg='Controller OVA not found or readable from specified URL path')
     else:
         if (not os.path.isfile(module.params['con_ova_path']) or
                 not os.access(module.params['con_ova_path'], os.R_OK)):
@@ -751,13 +764,11 @@ def main():
         command_tokens.append('--prop:%s=%s' % (
             'avi.default-gw.CONTROLLER', module.params['con_default_gw']))
 
-    if module.params.get('con_mgmt_ip_v6_enable', None):
-        command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
+    command_tokens.append('--prop:%s=%s' % (
+        'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
 
-    if module.params.get('con_mgmt_ip_v4_enable', None) and not module.params['con_mgmt_ip_v6_enable']:
-        command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
+    command_tokens.append('--prop:%s=%s' % (
+        'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
     if module.params.get('con_sysadmin_public_key', None):
         command_tokens.append('--prop:%s=%s' % (
@@ -775,6 +786,8 @@ def main():
         command_tokens.append(
             '--vmFolder=%s' % module.params['con_vcenter_folder'])
 
+    if module.params.get('con_esx_host', None):
+        vi_string += '/%s' % (module.params['con_esx_host'])
     command_tokens.extend([ova_file, vi_string])
     ova_tool_result = module.run_command(command_tokens)
 
@@ -821,7 +834,8 @@ def main():
         timeout = 300
         controller_ip = None
         while timeout > 0:
-            controller_ip = get_vm_ip_by_network(vm, module.params['con_mgmt_network'])
+            controller_ip = get_vm_ip_by_network(
+                vm, module.params['con_mgmt_network'])
             if controller_ip:
                 controller_ip = controller_ip[0]
                 break

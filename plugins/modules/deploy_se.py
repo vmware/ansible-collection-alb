@@ -205,9 +205,8 @@ obj:
     type: dict
 '''
 
-
+from ansible.module_utils.basic import AnsibleModule
 import atexit
-import json
 try:
     from urllib import quote
 except ImportError:
@@ -215,19 +214,18 @@ except ImportError:
 try:
     import requests
     import os
-    import time
     from pyVim.connect import SmartConnectNoSSL, Disconnect
     from pyVmomi import vim, vmodl
     HAS_IMPORT = True
 except ImportError:
     HAS_IMPORT = False
 
-from ansible.module_utils.basic import AnsibleModule
 __author__ = 'shubhamavi'
 
 
 def is_vm_exist(si, cl, vm_name):
-    container = si.content.viewManager.CreateContainerView(cl, [vim.VirtualMachine], True)
+    container = si.content.viewManager.CreateContainerView(
+        cl, [vim.VirtualMachine], True)
     for managed_object_ref in container.view:
         if managed_object_ref.name == vm_name:
             return True
@@ -349,7 +347,8 @@ def get_sysadmin_key(keypath):
         with open(keypath, 'r') as keyfile:
             data = keyfile.read().rstrip('\n')
             return data
-    raise Exception('Failed to find sysadmin public key file at %s\n' % keypath)
+    raise Exception(
+        'Failed to find sysadmin public key file at %s\n' % keypath)
 
 
 def get_largest_free_ds(cl):
@@ -556,7 +555,8 @@ def main():
     if is_vm_exist(si, cl, module.params['se_vmw_vm_name']):
         vm = get_vm_by_name(si, module.params['se_vmw_vm_name'])
         vm_path = compile_folder_path_for_object(vm)
-        folder = get_folder_by_path(si, dc, module.params['se_vmw_vcenter_folder'])
+        folder = get_folder_by_path(
+            si, dc, module.params['se_vmw_vcenter_folder'])
         folder_path = compile_folder_path_for_object(folder)
         changed = False
         if vm_path != folder_path:
@@ -602,7 +602,8 @@ def main():
     ova_file = module.params['se_vmw_ova_path']
     if (module.params['se_vmw_ova_path'].startswith('http')):
         if (requests.head(module.params['se_vmw_ova_path']).status_code != 200):
-            module.fail_json(msg='SE OVA not found or readable from specified URL path')
+            module.fail_json(
+                msg='SE OVA not found or readable from specified URL path')
     if (not os.path.isfile(ova_file) or
             not os.access(ova_file, os.R_OK)):
         module.fail_json(msg='SE OVA not found or not readable')
@@ -640,8 +641,10 @@ def main():
             command_tokens.append('--net:%s=%s' % (key, network_item))
     command_tokens.extend([
         '--prop:%s=%s' % ('AVICNTRL', module.params['se_leader_ctl_ip']),
-        '--prop:%s=%s' % ('AVICNTRL_AUTHTOKEN', module.params['se_auth_token']),
-        '--prop:%s=%s' % ('AVICNTRL_CLUSTERUUID', module.params['se_cluster_uuid'])
+        '--prop:%s=%s' % ('AVICNTRL_AUTHTOKEN',
+                          module.params['se_auth_token']),
+        '--prop:%s=%s' % ('AVICNTRL_CLUSTERUUID',
+                          module.params['se_cluster_uuid'])
     ])
 
     if module.params.get('se_vmw_mgmt_ip', None):

@@ -10,7 +10,6 @@ import json
 import logging
 import time
 import ipaddress
-import socket
 
 if sys.version_info < (3, 5):
     from urlparse import urlparse
@@ -100,6 +99,7 @@ class ApiResponse(Response):
     routines
         1. obj: returns dictionary of Avi Object
     """
+
     def __init__(self, rsp):
         super(ApiResponse, self).__init__()
         for k, v in list(rsp.__dict__.items()):
@@ -149,7 +149,7 @@ class AviCredentials(object):
     controller = ''
     username = ''
     password = ''
-    api_version = '18.2.6'
+    api_version = '20.1.1'
     tenant = None
     tenant_uuid = None
     token = None
@@ -157,6 +157,8 @@ class AviCredentials(object):
     timeout = 300
     session_id = None
     csrftoken = None
+    ssl_cert = None
+    ssl_key = None
     idp_class = None
     csp_host = None
     csp_token = None
@@ -181,7 +183,7 @@ class AviCredentials(object):
         if m.params['password']:
             self.password = m.params['password']
         if (m.params['api_version'] and
-                (m.params['api_version'] != '18.2.6')):
+                (m.params['api_version'] != '20.1.1')):
             self.api_version = m.params['api_version']
         if m.params['tenant']:
             self.tenant = m.params['tenant']
@@ -191,6 +193,10 @@ class AviCredentials(object):
             self.session_id = m.params['session_id']
         if m.params.get('csrftoken'):
             self.csrftoken = m.params['csrftoken']
+        if m.params.get('ssl_cert'):
+            self.ssl_cert = m.params['ssl_cert']
+        if m.params.get('ssl_key'):
+            self.ssl_key = m.params['ssl_key']
 
     def __str__(self):
         return 'controller %s user %s api %s tenant %s' % (
@@ -219,7 +225,7 @@ class ApiSession(Session):
                  port=None, timeout=60, api_version=None,
                  retry_conxn_errors=True, data_log=False,
                  avi_credentials=None, session_id=None, csrftoken=None,
-                 lazy_authentication=False, max_api_retries=None, csp_host=CSP_HOST, csp_token=None, user_hdrs={}):
+                 lazy_authentication=False, max_api_retries=None, csp_host=CSP_HOST, csp_token=None, user_hdrs={}, ssl_cert=None, ssl_key=None):
         """
          ApiSession takes ownership of avi_credentials and may update the
          information inside it.
@@ -258,7 +264,7 @@ class ApiSession(Session):
                 password=password, api_version=api_version,
                 tenant=tenant, tenant_uuid=tenant_uuid,
                 token=token, port=port, timeout=timeout,
-                session_id=session_id, csp_host=csp_host, csp_token=csp_token, csrftoken=csrftoken)
+                session_id=session_id, csp_host=csp_host, csp_token=csp_token, csrftoken=csrftoken, ssl_cert=ssl_cert, ssl_key=ssl_key)
         else:
             self.avi_credentials = avi_credentials
         self.headers = {}
@@ -292,9 +298,11 @@ class ApiSession(Session):
 
             # Check if the IP address is IPv6
             if is_ipv6:
-                self.prefix = '{}://[{}]'.format(protocol, self.avi_credentials.controller)
+                self.prefix = '{}://[{}]'.format(protocol,
+                                                 self.avi_credentials.controller)
             else:
-                self.prefix = '{}://{}'.format(protocol, self.avi_credentials.controller)
+                self.prefix = '{}://{}'.format(protocol,
+                                               self.avi_credentials.controller)
 
             # Include the port in the prefix if specified
             if port:
@@ -321,8 +329,10 @@ class ApiSession(Session):
         elif self.avi_credentials.csp_token:
             if self.avi_credentials.csp_host:
                 if self.avi_credentials.csp_host.startswith('https'):
-                    self.avi_credentials.csp_host = self.avi_credentials.csp_host.replace('https://', '')
-                self.csp_prefix = 'https://{x}/csp/gateway'.format(x=self.avi_credentials.csp_host)
+                    self.avi_credentials.csp_host = self.avi_credentials.csp_host.replace(
+                        'https://', '')
+                self.csp_prefix = 'https://{x}/csp/gateway'.format(
+                    x=self.avi_credentials.csp_host)
                 self.generate_access_token()
             else:
                 raise APIError("CSP host is not provided for csp login.")
@@ -425,7 +435,7 @@ class ApiSession(Session):
             tenant=None, tenant_uuid=None, verify=False, port=None, timeout=60,
             retry_conxn_errors=True, api_version=None, data_log=False,
             avi_credentials=None, session_id=None, csrftoken=None,
-            lazy_authentication=False, max_api_retries=None, csp_host=None, csp_token=None, idp_class=None, user_hdrs=None):
+            lazy_authentication=False, max_api_retries=None, csp_host=None, csp_token=None, idp_class=None, user_hdrs=None, ssl_cert=None, ssl_key=None):
         """
         returns the session object for same user and tenant
         calls init if session dose not exist and adds it to session cache
@@ -460,7 +470,7 @@ class ApiSession(Session):
                 password=password, api_version=api_version,
                 tenant=tenant, tenant_uuid=tenant_uuid,
                 token=token, port=port, timeout=timeout,
-                session_id=session_id, csrftoken=csrftoken, csp_host=csp_host, csp_token=csp_token)
+                session_id=session_id, csrftoken=csrftoken, csp_host=csp_host, csp_token=csp_token, ssl_cert=ssl_cert, ssl_key=ssl_key)
 
         k_port = avi_credentials.port if avi_credentials.port else 443
         if avi_credentials.controller.startswith('http'):
@@ -518,11 +528,12 @@ class ApiSession(Session):
                      self.avi_credentials.username, self.prefix)
         self.cookies.clear()
         err = None
+        certificate = self.avi_credentials.ssl_cert
+        key = self.avi_credentials.ssl_key
         try:
             rsp = super(ApiSession, self).post(
                 self.prefix + "/login", body, timeout=self.timeout,
-                verify=self.verify)
-
+                verify=self.verify, cert=(certificate, key))
             if rsp.status_code == 200:
                 self.num_session_retries = 0
                 self.remote_api_version = rsp.json().get('version', {})
@@ -685,7 +696,8 @@ class ApiSession(Session):
         if connection_error or resp.status_code in (401, 419):
             if 'multipart/form-data' in api_hdrs['Content-Type']:
                 if connection_error:
-                    raise AviMultipartUploadError("Connection failed or aborted")
+                    raise AviMultipartUploadError(
+                        "Connection failed or aborted")
                 else:
                     raise AviMultipartUploadError('Received error,: %d Error '
                                                   'Msg %s' % (resp.status_code,
@@ -1123,7 +1135,8 @@ class ApiSession(Session):
                                "for session ID: %s %s",
                                session, e)
                 pass
-            del session_cache[key]
+            if session_cache.get(key):
+                del session_cache[key]
             logger.debug("Cleaned inactive session : %s", key)
 
     def delete_session(self):
@@ -1134,10 +1147,11 @@ class ApiSession(Session):
 
     def is_ipv6_address(self, controller_ip):
         try:
-            logger.info('Verifing IPV6 Controller IP %s', controller_ip)
+            logger.info('Verifing Controller IP %s', controller_ip)
             ip = ipaddress.ip_address(controller_ip)
             return ip.version == self.IPV6
         except ValueError as ve:
-            logger.warning('Invalid Controller IP6 Address: %s - %s', controller_ip, ve)
+            logger.warning(
+                'Invalid Controller IP6 Address: %s - %s', controller_ip, ve)
             return False
 # End of file

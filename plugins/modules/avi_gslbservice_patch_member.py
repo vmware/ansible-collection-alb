@@ -107,11 +107,8 @@ obj:
     type: dict
 '''
 
-import json
-import time
-from ansible.module_utils.basic import AnsibleModule
 from copy import deepcopy
-
+from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
         avi_common_argument_spec, ansible_return, AviCheckModeResponse, avi_obj_cmp,
@@ -126,7 +123,8 @@ except ImportError:
 def delete_member(module, check_mode, api, tenant, tenant_uuid,
                   existing_obj, data, api_version):
     members = data.get('group', {}).get('members', [])
-    patched_member_ids = set([m['ip']['addr'] for m in members if 'fqdn' not in m])
+    patched_member_ids = set([m['ip']['addr']
+                             for m in members if 'fqdn' not in m])
     patched_member_fqdns = set([m['fqdn'] for m in members if 'fqdn' in m])
 
     changed = False
@@ -136,12 +134,10 @@ def delete_member(module, check_mode, api, tenant, tenant_uuid,
         groups = [group for group in existing_obj.get('groups', [])
                   if group['name'] == data['group']['name']]
         if groups:
-            changed = any(
-                [(lambda g: g['ip']['addr'] in patched_member_ids)(m)
-                    for m in groups[0].get('members', []) if 'fqdn' not in m])
-            changed = changed or any(
-                [(lambda g: g['fqdn'] in patched_member_fqdns)(m)
-                    for m in groups[0].get('members', []) if 'fqdn' in m])
+            changed = any((m['ip']['addr'] in patched_member_ids)
+                          for m in groups[0].get('members', []) if 'fqdn' not in m)
+            changed = changed or any((m['fqdn'] in patched_member_fqdns)
+                                     for m in groups[0].get('members', []) if 'fqdn' in m)
     if check_mode or not changed:
         return changed, rsp
     # should not come here if not found

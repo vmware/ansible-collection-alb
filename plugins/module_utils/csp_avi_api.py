@@ -5,25 +5,12 @@ from __future__ import (absolute_import, division, print_function)
 
 __metaclass__ = type
 
-from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, \
-    sessionDict, APIError, AviCredentials
-import os
-import sys
-import copy
-import json
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, APIError
 import logging
 import time
 
-if sys.version_info < (3, 5):
-    from urlparse import urlparse
-else:
-    from urllib.parse import urlparse
-
-from datetime import datetime, timedelta
 from requests import ConnectionError
-from requests import Response
 from requests.exceptions import ChunkedEncodingError
-from requests.sessions import Session
 from ssl import SSLError
 
 logger = logging.getLogger(__name__)
@@ -61,7 +48,8 @@ class CSPApiSession(ApiSession):
         if self.avi_credentials.csp_token:
             body["api_token"] = self.avi_credentials.csp_token
         else:
-            raise APIError("CSP API Token is not provided for csp login %s" % self.csp_prefix)
+            raise APIError(
+                "CSP API Token is not provided for csp login %s" % self.csp_prefix)
         logger.debug('authenticating using api token %s prefix %s',
                      self.avi_credentials.csp_token, self.csp_prefix)
         self.cookies.clear()
@@ -73,7 +61,8 @@ class CSPApiSession(ApiSession):
 
             if rsp.status_code == 200:
                 self.num_session_retries = 0
-                authorization_token = {"Authorization": "Bearer %s" % (rsp.json().get('access_token'))}
+                authorization_token = {"Authorization": "Bearer %s" % (
+                    rsp.json().get('access_token'))}
                 self.headers.update(authorization_token)
                 logger.debug("authentication success for user %s",
                              self.avi_credentials.csp_token)

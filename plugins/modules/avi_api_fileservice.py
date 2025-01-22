@@ -90,10 +90,9 @@ obj:
     type: dict
 '''
 
-import json
 import os
+import json
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from requests_toolbelt import MultipartEncoder
     HAS_LIB = True
@@ -101,9 +100,7 @@ except ImportError:
     HAS_LIB = False
 
 try:
-    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
+    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import avi_common_argument_spec
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
     HAS_REQUESTS = True
@@ -162,7 +159,8 @@ def main():
             uri = 'controller://upgrade_pkgs'
             path = 'fileservice/uploads'
         else:
-            uri = 'controller://%s' % module.params.get('path', '').split('?')[0]
+            uri = 'controller://%s' % module.params.get(
+                'path', '').split('?')[0]
         changed = False
         file_uri = 'fileservice?uri=%s' % uri
         rsp = api.post(file_uri, tenant=tenant, tenant_uuid=tenant_uuid,

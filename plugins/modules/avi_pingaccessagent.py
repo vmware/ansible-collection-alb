@@ -66,6 +66,7 @@ options:
             - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
             - edition.
         type: list
+        elements: dict
     name:
         description:
             - Name of the pingaccess agent.

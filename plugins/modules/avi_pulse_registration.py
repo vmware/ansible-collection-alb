@@ -179,13 +179,11 @@ obj:
     type: dict
 '''
 
-
-import time
 from ansible.module_utils.basic import AnsibleModule
+import time
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, AviCheckModeResponse, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
+        avi_common_argument_spec, AviCheckModeResponse, avi_obj_cmp)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
     HAS_REQUESTS = True
@@ -195,8 +193,10 @@ except ImportError:
 
 def main():
     case_spec = dict(
-        enable_auto_case_creation_on_controller_failure=dict(type='bool', default=False),
-        enable_auto_case_creation_on_se_failure=dict(type='bool', default=False)
+        enable_auto_case_creation_on_controller_failure=dict(
+            type='bool', default=False),
+        enable_auto_case_creation_on_se_failure=dict(
+            type='bool', default=False)
     )
     waf_spec = dict(
         enable_auto_download_waf_signatures=dict(type='bool', default=False),
@@ -223,7 +223,8 @@ def main():
         case_config=dict(type='dict', options=case_spec)
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(argument_spec=argument_specs,
+                           supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
             'Python requests package is not installed. '
@@ -249,24 +250,33 @@ def main():
     account_id = module.params.get('account_id', None)
     portal_url = 'https://portal.avipulse.vmware.com'
     optins = module.params.get('optins', None)
-    enable_cleanup_of_attached_files = module.params.get('enable_cleanup_of_attached_files', None)
-    enable_appsignature_sync = module.params.get('enable_appsignature_sync', None)
+    enable_cleanup_of_attached_files = module.params.get(
+        'enable_cleanup_of_attached_files', None)
+    enable_appsignature_sync = module.params.get(
+        'enable_appsignature_sync', None)
     enable_ip_reputation = module.params.get('enable_ip_reputation', None)
-    enable_pulse_case_management = module.params.get('enable_pulse_case_management', None)
-    enable_pulse_waf_management = module.params.get('enable_pulse_waf_management', None)
-    enable_user_agent_db_sync = module.params.get('enable_user_agent_db_sync', None)
+    enable_pulse_case_management = module.params.get(
+        'enable_pulse_case_management', None)
+    enable_pulse_waf_management = module.params.get(
+        'enable_pulse_waf_management', None)
+    enable_user_agent_db_sync = module.params.get(
+        'enable_user_agent_db_sync', None)
     use_tls = module.params.get('use_tls', None)
     waf_config = module.params.get('waf_config', None)
     case_config = module.params.get('case_config', None)
     if waf_config:
-        enable_auto_download_waf_signatures = module.params.get('waf_config', dict()).get('enable_auto_download_waf_signatures', None)
-        enable_waf_signatures_notifications = module.params.get('waf_config', dict()).get('enable_waf_signatures_notifications', None)
+        enable_auto_download_waf_signatures = module.params.get(
+            'waf_config', dict()).get('enable_auto_download_waf_signatures', None)
+        enable_waf_signatures_notifications = module.params.get(
+            'waf_config', dict()).get('enable_waf_signatures_notifications', None)
     else:
         enable_auto_download_waf_signatures = False
         enable_waf_signatures_notifications = False
     if case_config:
-        enable_auto_case_creation_on_controller_failure = module.params.get('case_config', dict()).get('enable_auto_case_creation_on_controller_failure', None)
-        enable_auto_case_creation_on_se_failure = module.params.get('case_config', dict()).get('enable_auto_case_creation_on_se_failure', None)
+        enable_auto_case_creation_on_controller_failure = module.params.get(
+            'case_config', dict()).get('enable_auto_case_creation_on_controller_failure', None)
+        enable_auto_case_creation_on_se_failure = module.params.get(
+            'case_config', dict()).get('enable_auto_case_creation_on_se_failure', None)
     else:
         enable_auto_case_creation_on_controller_failure = False
         enable_auto_case_creation_on_se_failure = False
@@ -275,13 +285,16 @@ def main():
     if state == 'present':
         # registration
         path = "albservices/status"
-        resp = api.get(path, tenant=tenant, tenant_uuid=tenant_uuid, api_version=api_version)
+        resp = api.get(path, tenant=tenant,
+                       tenant_uuid=tenant_uuid, api_version=api_version)
         existing_obj = resp
         if not (check_mode) and resp.json().get("connectivity_status") == "ALBSERVICES_DISCONNECTED":
-            headers = {'Content-Type': 'application/json', 'Authorization': 'Basic YWRtaW46YWRtaW4='}
+            headers = {'Content-Type': 'application/json',
+                       'Authorization': 'Basic YWRtaW46YWRtaW4='}
             data = {"jwt_token": jwt_token}
             path = "portal/refresh-access-token"
-            rsp = api.post(path, api_version=api_version, headers=headers, data=data)
+            rsp = api.post(path, api_version=api_version,
+                           headers=headers, data=data)
             if rsp.status_code > 300:
                 return module.fail_json(msg='Failed: %s' % rsp.text)
             else:
@@ -322,31 +335,42 @@ def main():
                 data["portal_url"] = portal_url
                 data["polling_interval"] = 10
                 data["feature_opt_in_status"] = dict()
-                data[("feature_opt_in_status")]["enable_appsignature_sync"] = enable_appsignature_sync
-                data[("feature_opt_in_status")]["enable_ip_reputation"] = enable_ip_reputation
-                data[("feature_opt_in_status")]["enable_pulse_case_management"] = enable_pulse_case_management
-                data[("feature_opt_in_status")]["enable_pulse_waf_management"] = enable_pulse_waf_management
-                data[("feature_opt_in_status")]["enable_user_agent_db_sync"] = enable_user_agent_db_sync
+                data[("feature_opt_in_status")
+                     ]["enable_appsignature_sync"] = enable_appsignature_sync
+                data[("feature_opt_in_status")
+                     ]["enable_ip_reputation"] = enable_ip_reputation
+                data[("feature_opt_in_status")
+                     ]["enable_pulse_case_management"] = enable_pulse_case_management
+                data[("feature_opt_in_status")
+                     ]["enable_pulse_waf_management"] = enable_pulse_waf_management
+                data[("feature_opt_in_status")
+                     ]["enable_user_agent_db_sync"] = enable_user_agent_db_sync
                 data[("tenant_config")] = dict()
                 data[("tenant_config")]["heartbeat_interval"] = 3
                 data[("tenant_config")]["token_refresh_interval"] = 57
                 data[("tenant_config")]["license_escrow_interval"] = 60
                 data["ip_reputation_config"] = dict()
-                data[("ip_reputation_config")]["ip_reputation_file_object_expiry_duration"] = 3
-                data[("ip_reputation_config")]["ip_reputation_sync_interval"] = 60
+                data[("ip_reputation_config")
+                     ]["ip_reputation_file_object_expiry_duration"] = 3
+                data[("ip_reputation_config")
+                     ]["ip_reputation_sync_interval"] = 60
                 data["use_tls"] = use_tls
                 data["mode"] = "MYVMWARE"
                 data["app_signature_config"] = dict()
-                data[("app_signature_config")]["app_signature_sync_interval"] = 1440
+                data[("app_signature_config")
+                     ]["app_signature_sync_interval"] = 1440
                 data["user_agent_db_config"] = dict()
                 data[("user_agent_db_config")]["allowed_batch_size"] = 500
                 data["waf_config"] = dict()
-                data[("waf_config")]["enable_auto_download_waf_signatures"] = enable_auto_download_waf_signatures
-                data[("waf_config")]["enable_waf_signatures_notifications"] = enable_waf_signatures_notifications
+                data[(
+                    "waf_config")]["enable_auto_download_waf_signatures"] = enable_auto_download_waf_signatures
+                data[(
+                    "waf_config")]["enable_waf_signatures_notifications"] = enable_waf_signatures_notifications
                 data["case_config"] = dict()
                 data[("case_config")]["enable_auto_case_creation_on_controller_failure"] = enable_auto_case_creation_on_controller_failure
                 data[("case_config")]["enable_auto_case_creation_on_se_failure"] = enable_auto_case_creation_on_se_failure
-                data[("case_config")]["enable_cleanup_of_attached_files"] = enable_cleanup_of_attached_files
+                data[(
+                    "case_config")]["enable_cleanup_of_attached_files"] = enable_cleanup_of_attached_files
                 data["saas_licensing_config"] = dict()
                 data[("saas_licensing_config")]["max_service_units"] = 1000
                 data[("saas_licensing_config")]["reserve_service_units"] = 0
