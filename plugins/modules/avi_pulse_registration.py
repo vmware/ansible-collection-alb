@@ -6,8 +6,6 @@
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
-from ansible.module_utils.basic import AnsibleModule
-import time
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
@@ -181,7 +179,8 @@ obj:
     type: dict
 '''
 
-
+from ansible.module_utils.basic import AnsibleModule
+import time
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
         avi_common_argument_spec, AviCheckModeResponse, avi_obj_cmp)

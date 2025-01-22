@@ -6,9 +6,6 @@
 
 
 from __future__ import (absolute_import, division, print_function)
-from ansible.module_utils.basic import AnsibleModule
-import os
-import json
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
@@ -93,7 +90,9 @@ obj:
     type: dict
 '''
 
-
+import os
+import json
+from ansible.module_utils.basic import AnsibleModule
 try:
     from requests_toolbelt import MultipartEncoder
     HAS_LIB = True

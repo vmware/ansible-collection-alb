@@ -7,7 +7,6 @@ avi_resource_types:
   - useraccountprofile
   - cloudproperties
   - systemlimits
-  - upgradeprofile
   - licensestatus
   - controllerproperties
   - licenseledgerdetails

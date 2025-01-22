@@ -1,7 +1,5 @@
 #!/usr/bin/python
 from __future__ import (absolute_import, division, print_function)
-from ansible.module_utils.basic import AnsibleModule
-import atexit
 __metaclass__ = type
 ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
@@ -207,7 +205,8 @@ obj:
     type: dict
 '''
 
-
+from ansible.module_utils.basic import AnsibleModule
+import atexit
 try:
     from urllib import quote
 except ImportError:
