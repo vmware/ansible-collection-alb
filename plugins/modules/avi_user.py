@@ -168,8 +168,7 @@ def main():
         default_tenant_ref=dict(type='str', default='/api/tenant?name=admin'),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
             'Python requests package is not installed. '

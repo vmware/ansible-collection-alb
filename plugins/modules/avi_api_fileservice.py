@@ -90,9 +90,10 @@ obj:
     type: dict
 '''
 
-import os
 import json
+import os
 from ansible.module_utils.basic import AnsibleModule
+
 try:
     from requests_toolbelt import MultipartEncoder
     HAS_LIB = True
@@ -159,8 +160,7 @@ def main():
             uri = 'controller://upgrade_pkgs'
             path = 'fileservice/uploads'
         else:
-            uri = 'controller://%s' % module.params.get(
-                'path', '').split('?')[0]
+            uri = 'controller://%s' % module.params.get('path', '').split('?')[0]
         changed = False
         file_uri = 'fileservice?uri=%s' % uri
         rsp = api.post(file_uri, tenant=tenant, tenant_uuid=tenant_uuid,
