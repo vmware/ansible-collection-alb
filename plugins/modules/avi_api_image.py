@@ -61,6 +61,7 @@ obj:
 
 import os
 from ansible.module_utils.basic import AnsibleModule
+
 try:
     from requests_toolbelt import MultipartEncoder
     HAS_LIB = True
