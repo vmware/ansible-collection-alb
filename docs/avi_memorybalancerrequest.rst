@@ -26,12 +26,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="4">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +52,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +76,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +99,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +115,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -131,7 +131,7 @@ Parameters
             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -149,15 +149,36 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> version </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version sequence number that monotonically advances with each configuration update event.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>controller_info</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -175,12 +196,36 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> current_controller_mem_usage </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">float</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Total controller memory usage in gbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -201,12 +246,12 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>node_uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -224,12 +269,12 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>process_info</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -247,12 +292,180 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> current_process_id </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">float</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Current process id.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> current_process_mem_usage </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">float</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Total memory usage of process in kbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> intimation_count </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">float</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of times the process has been in current processmode.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> memory_limit </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">float</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Memory limit for process in kbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> memory_trend_usage </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Current usage trend of process memory.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - UPWARD, DOWNWARD, NEUTRAL.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> process_mode </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Current mode of process.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - REGULAR, DEBUG, DEGRADED, STOP.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> threshold_percent </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">float</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Percentage of memory used out of given limits.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>process_instance</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -270,12 +483,12 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -296,12 +509,12 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>timestamp</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -319,12 +532,12 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -340,8 +553,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -359,11 +572,11 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-            </table>
+                    </table>
     <br/>
 
 

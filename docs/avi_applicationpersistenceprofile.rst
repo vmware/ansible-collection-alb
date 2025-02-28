@@ -26,12 +26,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="4">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +52,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +76,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +99,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +115,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -131,7 +131,7 @@ Parameters
             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>app_cookie_persistence_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -146,12 +146,79 @@ Parameters
                   - Specifies the application cookie persistence profile parameters.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> encryption_key </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key to use for cookie encryption.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> prst_hdr_name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Header or cookie name for application cookie persistence.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> timeout </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - The length of time after a client's connections have closed before expiring the client's persistence to a server.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-720.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -169,15 +236,36 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> version </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version sequence number that monotonically advances with each configuration update event.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>description</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -189,12 +277,91 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                        <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>diameter_app_persistence_profile</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Specifies the diameter persistence profile parameters.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> avp_key_type </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Avpkey type.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SESSION_ID, ORIGIN_HOST, ORIGIN_REALM, DESTINATION_HOST, DESTINATION_REALM, APPLICATION_ID.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> timeout </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - The maximum lifetime of diameter cookie.
+                </div>
+                                <div style="font-size: small">
+                  - No value or 'zero' indicates no timeout.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>hdr_persistence_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -209,12 +376,33 @@ Parameters
                   - Specifies the custom http header persistence profile parameters.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> prst_hdr_name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Header name for custom header persistence.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>http_cookie_persistence_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -229,12 +417,235 @@ Parameters
                   - Specifies the http cookie persistence profile parameters.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> always_send_cookie </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - If no persistence cookie was received from the client, always send it.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> cookie_name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Http cookie name for cookie persistence.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> encryption_key </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key name to use for cookie encryption.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> http_only </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Sets the httponly attribute in the cookie.
+                </div>
+                                <div style="font-size: small">
+                  - Setting this helps to prevent the client side scripts from accessing this cookie, if supported by browser.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> is_persistent_cookie </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - When true, the cookie used is a persistent cookie, i.e.
+                </div>
+                                <div style="font-size: small">
+                  - The cookie shouldn't be used at the end of the timeout.
+                </div>
+                                <div style="font-size: small">
+                  - By default, it is set to false, making the cookie a session cookie, which allows clients to use it even after the timeout, if the session is
+                </div>
+                                <div style="font-size: small">
+                  - still open.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> key </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> aes_key </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> hmac_key </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> name </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Name to use for cookie encryption.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> timeout </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - The maximum lifetime of any session cookie.
+                </div>
+                                <div style="font-size: small">
+                  - No value or 'zero' indicates no timeout.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-14400.
+                </div>
+                                <div style="font-size: small">
+                  - Special values are 0- no timeout.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ip_persistence_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -249,12 +660,71 @@ Parameters
                   - Specifies the client ip persistence profile parameters.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ip_mask </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Mask to be applied on client ip.
+                </div>
+                                <div style="font-size: small">
+                  - This may be used to persist clients from a subnet to the same server.
+                </div>
+                                <div style="font-size: small">
+                  - When set to 0, all requests are sent to the same server.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-128.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.7.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ip_persistent_timeout </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - The length of time after a client's connections have closed before expiring the client's persistence to a server.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-720.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>is_federated</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -278,15 +748,15 @@ Parameters
                   - Field introduced in 17.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>markers</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -304,15 +774,68 @@ Parameters
                   - Field introduced in 20.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> key </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> values </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Values for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Multiple values will be evaluated as or.
+                </div>
+                                <div style="font-size: small">
+                  - Example  key = value1 or key = value2.
+                </div>
+                                <div style="font-size: small">
+                  - Behavior for match is key = * if this field is empty.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -330,12 +853,12 @@ Parameters
                   - A user-friendly name for the persistence profile.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>persistence_type</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -356,24 +879,24 @@ Parameters
                   - Enum options - PERSISTENCE_TYPE_CLIENT_IP_ADDRESS, PERSISTENCE_TYPE_HTTP_COOKIE, PERSISTENCE_TYPE_TLS, PERSISTENCE_TYPE_CLIENT_IPV6_ADDRESS,
                 </div>
                                 <div style="font-size: small">
-                  - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE.
+                  - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE, PERSISTENCE_TYPE_APP_DIAMETER.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values-
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - persistence_type_client_ip_address,persistence_type_http_cookie), basic edition(allowed values-
+                  - Allowed in essentials (allowed values- persistence_type_client_ip_address,persistence_type_http_cookie), basic (allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - persistence_type_client_ip_address,persistence_type_http_cookie), enterprise with cloud services edition.
+                  - persistence_type_client_ip_address,persistence_type_http_cookie) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as PERSISTENCE_TYPE_CLIENT_IP_ADDRESS.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>server_hm_down_recovery</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -391,18 +914,18 @@ Parameters
                   - Enum options - HM_DOWN_PICK_NEW_SERVER, HM_DOWN_ABORT_CONNECTION, HM_DOWN_CONTINUE_PERSISTENT_SERVER.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- hm_down_pick_new_server), basic edition(allowed values-
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - hm_down_pick_new_server), enterprise with cloud services edition.
+                  - Allowed in essentials (allowed values- hm_down_pick_new_server), basic (allowed values- hm_down_pick_new_server) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as HM_DOWN_PICK_NEW_SERVER.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -417,12 +940,12 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -438,8 +961,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -454,11 +977,11 @@ Parameters
                   - Uuid of the persistence profile.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-            </table>
+                    </table>
     <br/>
 
 

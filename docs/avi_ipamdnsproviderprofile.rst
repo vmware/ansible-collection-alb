@@ -26,12 +26,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="4">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +52,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +76,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +99,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +115,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -131,7 +131,7 @@ Parameters
             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>allocate_ip_in_vrf</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -146,21 +146,21 @@ Parameters
                   - If this flag is set, only allocate ip from networks in the virtual service vrf.
                 </div>
                                 <div style="font-size: small">
-                  - Applicable for avi vantage ipam only.
+                  - Applicable for avi ipam only.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.4.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>aws_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -175,12 +175,365 @@ Parameters
                   - Provider details if type is aws.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> access_key_id </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Aws access key id.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> egress_service_subnets </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - A list of subnets used for source ip allocation for egress services in openshift/k8s on aws.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 1 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> iam_assume_role </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Iam assume role for cross-account access.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> publish_vip_to_public_zone </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - If enabled and the virtual service is not floating ip capable, vip will be published to both private and public zones.
+                </div>
+                                <div style="font-size: small">
+                  - This flag is applicable only for aws dns profile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.10.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> region </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Aws region.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> secret_access_key </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Aws secret access key.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ttl </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Default ttl for all records.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-172800.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_domains </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable domains to pick from amazon route 53.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_network_uuids </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable networks for virtual ip.
+                </div>
+                                <div style="font-size: small">
+                  - If virtualservice does not specify a network and auto_allocate_ip is set, then the first available network from this list will be chosen for ip
+                </div>
+                                <div style="font-size: small">
+                  - allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> use_iam_roles </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Use iam roles instead of access and secret key.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> vpc </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Vpc name.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> vpc_id </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Vpc id.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> zones </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Network configuration for virtual ip per az.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> availability_zone </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Availability zone.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_network_uuids </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">list</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable networks for virtual ip.
+                </div>
+                                <div style="font-size: small">
+                  - If virtualservice does not specify a network and auto_allocate_ip is set, then the first available network from this list will be chosen for ip
+                </div>
+                                <div style="font-size: small">
+                  - allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                                <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>azure_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -198,12 +551,431 @@ Parameters
                   - Field introduced in 17.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> azure_serviceprincipal </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Service principal based credentials for azure.
+                </div>
+                                <div style="font-size: small">
+                  - Only one of azure_userpass or azure_serviceprincipal is allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> application_id </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Application id created for avi controller.
+                </div>
+                                <div style="font-size: small">
+                  - Required for application id based authentication only.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> authentication_token </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Authentication token created for the avi controller application.
+                </div>
+                                <div style="font-size: small">
+                  - Required for application id based authentication only.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> tenant_id </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tenant id for the subscription.
+                </div>
+                                <div style="font-size: small">
+                  - Required for application id based authentication only.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> azure_userpass </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - User name password based credentials for azure.
+                </div>
+                                <div style="font-size: small">
+                  - Only one of azure_userpass or azure_serviceprincipal is allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> password </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Password for azure subscription.
+                </div>
+                                <div style="font-size: small">
+                  - Required only if username is provided.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> tenant_name </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tenant or the active directory associated with the subscription.
+                </div>
+                                <div style="font-size: small">
+                  - Required for user name password authentication.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> username </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Username for azure subscription.
+                </div>
+                                <div style="font-size: small">
+                  - Required only for username password based authentication.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> egress_service_subnets </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Used for allocating egress service source ips.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.8.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 1 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> resource_group </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Azure resource group dedicated for avi controller.
+                </div>
+                                <div style="font-size: small">
+                  - Avi controller will create all its resources in this resource group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> subscription_id </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Subscription id for the azure subscription.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_domains </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable domains to pick from azure dns.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_network_uuids </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable networks for virtual ip.
+                </div>
+                                <div style="font-size: small">
+                  - If virtualservice does not specify a network and auto_allocate_ip is set, then the first available network from this list will be chosen for ip
+                </div>
+                                <div style="font-size: small">
+                  - allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 128 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> use_enhanced_ha </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Use azure's enhanced ha features.
+                </div>
+                                <div style="font-size: small">
+                  - This needs a public ip to be associated with the vip.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> use_standard_alb </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Use standard sku azure load balancer.
+                </div>
+                                <div style="font-size: small">
+                  - By default basic sku load balancer is used.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.7.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> virtual_network_ids </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Virtual networks where virtual ips will belong.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 1 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -221,15 +993,36 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> version </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version sequence number that monotonically advances with each configuration update event.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>custom_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -247,12 +1040,302 @@ Parameters
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> custom_ipam_dns_profile_ref </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - It is a reference to an object of type customipamdnsprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> dynamic_params </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Custom parameters that will passed to the ipam/dns provider including but not limited to provider credentials and api version.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> is_dynamic </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">bool</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> is_sensitive </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">bool</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> name </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> value </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_alloc_subnets </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Networks or subnets to use for custom ipam ip allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> network_id </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Network to use for custom ipam ip allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> subnet </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ipv4 subnet to use for custom ipam ip allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> subnet6 </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ipv6 subnet to use for custom ipam ip allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_domains </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable domains.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_subnets </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable subnets.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ip_addr </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> mask </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                                <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>gcp_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -267,12 +1350,198 @@ Parameters
                   - Provider details if type is google cloud.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> match_se_group_subnet </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Match se group subnets for vip placement.
+                </div>
+                                <div style="font-size: small">
+                  - Default is to not match se group subnets.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> network_host_project_id </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Google cloud platform network host project id.
+                </div>
+                                <div style="font-size: small">
+                  - This is the host project in which google cloud platform network resides.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> region_name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Google cloud platform region name.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> se_project_id </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Google cloud platform project id.
+                </div>
+                                <div style="font-size: small">
+                  - This is the project where service engines are hosted.
+                </div>
+                                <div style="font-size: small">
+                  - This field is optional.
+                </div>
+                                <div style="font-size: small">
+                  - By default it will use the value of the field network_host_project_id.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_network_refs </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable networks for virtual ip.
+                </div>
+                                <div style="font-size: small">
+                  - If virtualservice does not specify a network and auto_allocate_ip is set, then the first available network from this list will be chosen for ip
+                </div>
+                                <div style="font-size: small">
+                  - allocation.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type network.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> use_gcp_network </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Use google cloud platform network for private vip allocation.
+                </div>
+                                <div style="font-size: small">
+                  - By default avi network is used for private vip allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> vpc_network_name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Google cloud platform vpc network name.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>infoblox_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -287,12 +1556,504 @@ Parameters
                   - Provider details if type is infoblox.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> dns_view </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Dns view used for infoblox host record creation, if this field is not configured by the user, then its value will be set to 'default'.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> extensible_attributes </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Custom parameters that will passed to the infoblox provider as extensible attributes.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.7, 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> is_dynamic </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">bool</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> is_sensitive </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">bool</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> name </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> value </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ip6_address </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ipv6 address of infoblox appliance.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> addr </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> type </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ip_address </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ipv4 address of infoblox appliance.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> addr </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> type </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> network_view </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Network view used for infoblox host record creation, if this field is not configured by the user, then its value will be set to 'default'.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> password </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Password for api access for infoblox appliance.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> profile_url </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Url of the profile writen to /etc/hosts for ha between ipv6 and ipv4.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_alloc_subnets </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Subnets to use for infoblox ip allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.8, 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> subnet </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ipv4 subnet to use for infoblox allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.8, 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> subnet6 </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ipv6 subnet to use for infoblox allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.8, 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_domains </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable domains to pick from infoblox.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_subnets </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - This field is deprecated, use usable_alloc_subnets instead.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 18.2.8.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ip_addr </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> mask </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> username </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Username for api access for infoblox appliance.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> wapi_version </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Wapi version.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>internal_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -307,12 +2068,286 @@ Parameters
                   - Provider details if type is avi.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> dns_service_domain </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of service domains.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> domain_name </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Service domain string used for fqdn.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> num_dns_ip </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - [deprecated] useless fieldplease refer to dnsserviceapplicationprofile's num_dns_ip for default valueplease refer to vsvip's dns_info
+                </div>
+                                <div style="font-size: small">
+                  - num_records_in_response for user config valuespecifies the number of a recordsreturned by avi dns service.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 20.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> pass_through </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">bool</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Third-party authoritative domain requests are delegated todns virtualservice's pool of nameservers.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> record_ttl </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ttl value for dns records.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-604800.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> dns_virtualservice_ref </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Avi virtualservice to be used for serving dns records.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type virtualservice.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ttl </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Default ttl for all records, overridden by ttl value for each service domain configured in dnsservicedomain.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-604800.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in essentials (allowed values- 30), basic (allowed values- 30) edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_network_refs </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Use usable_networks.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type network.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_networks </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable networks for virtual ip.
+                </div>
+                                <div style="font-size: small">
+                  - If virtualservice does not specify a network and auto_allocate_ip is set, then the first available network from this list will be chosen for ip
+                </div>
+                                <div style="font-size: small">
+                  - allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> labels </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">list</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Labels as key value pairs, used for selection of ipam networks.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 1 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> nw_ref </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Network.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type network.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                                <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>markers</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -330,15 +2365,68 @@ Parameters
                   - Field introduced in 20.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> key </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> values </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Values for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Multiple values will be evaluated as or.
+                </div>
+                                <div style="font-size: small">
+                  - Example  key = value1 or key = value2.
+                </div>
+                                <div style="font-size: small">
+                  - Behavior for match is key = * if this field is empty.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -356,12 +2444,12 @@ Parameters
                   - Name for the ipam/dns provider profile.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>oci_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -379,12 +2467,131 @@ Parameters
                   - Field introduced in 18.2.1,18.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> cloud_credentials_ref </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Credentials to access oracle cloud.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type cloudconnectoruser.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.1,18.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> region </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Region in which oracle cloud resource resides.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.1,18.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> tenancy </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Oracle cloud id for tenant aka root compartment.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.1,18.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> vcn_compartment_id </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Oracle cloud compartment id in which vcn resides.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.1,18.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> vcn_id </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Virtual cloud network id where virtual ip will belong.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.1,18.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>openstack_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -399,12 +2606,133 @@ Parameters
                   - Provider details if type is openstack.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> keystone_host </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Keystone's hostname or ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> password </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - The password avi will use when authenticating to keystone.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> region </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Region name.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> tenant </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Openstack tenant name.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> username </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - The username avi will use when authenticating to keystone.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> vip_network_name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Network to be used for vip allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>proxy_configuration</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -419,12 +2747,93 @@ Parameters
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> host </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Proxy hostname or ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> password </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Password for proxy.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> port </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Proxy port.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> username </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Username for proxy.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -439,12 +2848,12 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tencent_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -462,12 +2871,190 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> cloud_credentials_ref </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Credentials to access tencent cloud.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type cloudconnectoruser.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> region </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Vpc region.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_subnet_ids </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable networks for virtual ip.
+                </div>
+                                <div style="font-size: small">
+                  - If virtualservice does not specify a network and auto_allocate_ip is set, then the first available network from this list will be chosen for ip
+                </div>
+                                <div style="font-size: small">
+                  - allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> vpc_id </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Vpc id.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> zones </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=dictionary </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Network configuration for virtual ip per az.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> availability_zone </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Availability zone.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usable_subnet_id </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usable networks for virtual ip.
+                </div>
+                                <div style="font-size: small">
+                  - If virtualservice does not specify a network and auto_allocate_ip is set, then the first available network from this list will be chosen for ip
+                </div>
+                                <div style="font-size: small">
+                  - allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                                <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>type</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -494,15 +3081,15 @@ Parameters
                   - IPAMDNS_TYPE_AWS_DNS, IPAMDNS_TYPE_AZURE_DNS.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- ipamdns_type_internal), basic edition(allowed values-
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - ipamdns_type_internal), enterprise with cloud services edition.
+                  - Allowed in essentials (allowed values- ipamdns_type_internal), basic (allowed values- ipamdns_type_internal) edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -518,8 +3105,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -534,11 +3121,11 @@ Parameters
                   - Uuid of the ipam/dns provider profile.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-            </table>
+                    </table>
     <br/>
 
 

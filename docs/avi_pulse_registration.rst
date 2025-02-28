@@ -26,12 +26,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="4">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +52,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +76,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +99,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +115,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -131,7 +131,7 @@ Parameters
             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>account_id</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -150,8 +150,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>case_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -167,8 +167,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>description</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -187,8 +187,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>email</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -207,8 +207,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_appsignature_sync</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -224,8 +224,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_cleanup_of_attached_files</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -241,8 +241,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_ip_reputation</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -258,8 +258,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_pulse_case_management</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -275,8 +275,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_pulse_waf_management</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -292,8 +292,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_user_agent_db_sync</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -309,8 +309,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>jwt_token</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -341,8 +341,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -361,8 +361,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>optins</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -378,8 +378,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>params</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -395,8 +395,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>use_tls</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -412,8 +412,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>waf_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -429,7 +429,7 @@ Parameters
                 </div>
                                             </td>
         </tr>
-            </table>
+                    </table>
     <br/>
 
 

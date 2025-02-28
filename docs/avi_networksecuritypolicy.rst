@@ -26,12 +26,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="4">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +52,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +76,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +99,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +115,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -131,7 +131,7 @@ Parameters
             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>cloud_config_cksum</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -149,12 +149,12 @@ Parameters
                   - Internally set by cloud connector.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -172,15 +172,36 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> version </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version sequence number that monotonically advances with each configuration update event.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>created_by</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -195,12 +216,12 @@ Parameters
                   - Creator name.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>description</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -212,12 +233,12 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>geo_db_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -238,12 +259,12 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>internal</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -264,12 +285,12 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ip_reputation_db_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -290,12 +311,12 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>markers</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -313,15 +334,68 @@ Parameters
                   - Field introduced in 20.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> key </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> values </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Values for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Multiple values will be evaluated as or.
+                </div>
+                                <div style="font-size: small">
+                  - Example  key = value1 or key = value2.
+                </div>
+                                <div style="font-size: small">
+                  - Behavior for match is key = * if this field is empty.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -333,12 +407,12 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>rules</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -350,12 +424,364 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> action </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - NETWORK_SECURITY_POLICY_ACTION_TYPE_ALLOW, NETWORK_SECURITY_POLICY_ACTION_TYPE_DENY,
+                </div>
+                                <div style="font-size: small">
+                  - NETWORK_SECURITY_POLICY_ACTION_TYPE_RATE_LIMIT.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in essentials (allowed values- network_security_policy_action_type_deny), basic (allowed values-
+                </div>
+                                <div style="font-size: small">
+                  - network_security_policy_action_type_deny) edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> age </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time in minutes after which rule will be deleted.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-4294967295.
+                </div>
+                                <div style="font-size: small">
+                  - Special values are 0- blocked for ever.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in essentials (allowed values- 0), basic (allowed values- 0) edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> created_by </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Creator name.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> enable </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> index </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> log </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in essentials (allowed values- false), basic (allowed values- false) edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> match </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> client_ip </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> client_port </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Matches the source port of incoming packets in the client side traffic.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> geo_matches </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">list</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Matches the geo information of incoming packets in the client side traffic.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 1 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ip_reputation_type </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> microservice </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> vs_port </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> rl_param </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> burst_size </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of connections or requests or packets to be rate limited instantaneously.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> max_rate </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of connections or requests or packets per second.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-4294967295.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                                <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -370,12 +796,12 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -391,8 +817,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -404,11 +830,11 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-            </table>
+                    </table>
     <br/>
 
 

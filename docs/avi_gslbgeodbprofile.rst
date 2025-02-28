@@ -26,12 +26,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="4">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +52,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +76,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +99,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +115,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -131,7 +131,7 @@ Parameters
             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -149,15 +149,36 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> version </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version sequence number that monotonically advances with each configuration update event.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>description</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -172,12 +193,12 @@ Parameters
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>entries</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -204,12 +225,269 @@ Parameters
                   - Minimum of 1 items required.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> file </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - This field describes the geodb file.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> checksum </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - This field indicates the checksum of the original file.
+                </div>
+                                <div style="font-size: small">
+                  - The checksum is internally computed.
+                </div>
+                                <div style="font-size: small">
+                  - It's value changes every time the file is uploaded/modified.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> file_id </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - This field indicates the internal file used in the system.
+                </div>
+                                <div style="font-size: small">
+                  - The user uploaded file will be retained while a corresponding internal file is generated to be consumed by various upstream (other sites) and
+                </div>
+                                <div style="font-size: small">
+                  - downstream (ses) entities.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> file_id_checksum </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - This field indicates the checksum of the internal file.
+                </div>
+                                <div style="font-size: small">
+                  - The checksum is internally computed.
+                </div>
+                                <div style="font-size: small">
+                  - It's value changes every time the internal file is regenerated.
+                </div>
+                                <div style="font-size: small">
+                  - The internal file is regenerated whenever the original file is uploaded to the controller.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.6, 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> filename </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Geodb filename in the avi supported formats.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> format </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - This field indicates the file format.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - GSLB_GEODB_FILE_FORMAT_AVI, GSLB_GEODB_FILE_FORMAT_MAXMIND_CITY, GSLB_GEODB_FILE_FORMAT_MAXMIND_CITY_V6,
+                </div>
+                                <div style="font-size: small">
+                  - GSLB_GEODB_FILE_FORMAT_MAXMIND_CITY_V4_AND_V6, GSLB_GEODB_FILE_FORMAT_AVI_V6, GSLB_GEODB_FILE_FORMAT_AVI_V4_AND_V6.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> timestamp </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - This field indicates the timestamp of when the file is associated to the gslbgeodbprofile.
+                </div>
+                                <div style="font-size: small">
+                  - It is an internal generated timestamp.
+                </div>
+                                <div style="font-size: small">
+                  - This value is a constant for the lifetime of the file and does not change every time the file is uploaded.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> file_obj_ref </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - This is referred to fileobject that is associtated with the giveb geodb profile.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type fileobject.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> priority </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Priority of this geodb entry.
+                </div>
+                                <div style="font-size: small">
+                  - This value should be unique in a repeated list of geodb entries.
+                </div>
+                                <div style="font-size: small">
+                  - Higher the value, then greater is the priority.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>is_federated</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -227,15 +505,15 @@ Parameters
                   - Field introduced in 17.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>markers</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -253,15 +531,68 @@ Parameters
                   - Field introduced in 20.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                 <tr>
-            <td colspan="2">
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> key </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> values </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Values for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Multiple values will be evaluated as or.
+                </div>
+                                <div style="font-size: small">
+                  - Example  key = value1 or key = value2.
+                </div>
+                                <div style="font-size: small">
+                  - Behavior for match is key = * if this field is empty.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -282,12 +613,12 @@ Parameters
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -305,12 +636,12 @@ Parameters
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -326,8 +657,8 @@ Parameters
                 </div>
                                             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+                        <tr>
+            <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -345,11 +676,11 @@ Parameters
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-            </table>
+                    </table>
     <br/>
 
 

@@ -1,11 +1,11 @@
-.. vmware.alb.avi_tenantsystemconfiguration:
+.. vmware.alb.avi_trustedhostprofile:
 
 
 **********************************************
-vmware.alb.avi_tenantsystemconfiguration
+vmware.alb.avi_trustedhostprofile
 **********************************************
 
-**Module for setup of TenantSystemConfiguration Avi RESTful Object**
+**Module for setup of TrustedHostProfile Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_tenantsystemconfiguration
 
 Synopsis
 --------
-- This module is used to configure TenantSystemConfiguration object.
+- This module is used to configure TrustedHostProfile object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -146,7 +146,7 @@ Parameters
                   - Protobuf versioning for config pbs.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -180,30 +180,127 @@ Parameters
                                         <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>dns_virtualservice_refs</b>
+                <b>hosts</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">list</span>
                 </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Dns virtual services hosting fqdn records for applications configured within this tenant.
+                  - List of host ip(v4/v6) addresses or fqdns.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type virtualservice.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.1.1.
+                  - Minimum of 1 items required.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 20 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                        <tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> host </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Any valid ipv4, ipv6, or domain address.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> addr </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> type </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> port </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Optionally specify the port number.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
@@ -219,10 +316,10 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the tenant system configuration object.
+                  - Trustedhostprofile name.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -242,13 +339,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique identifier of the tenant that this object belongs to.
+                  - Tenant ref for trusted host profile.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -285,10 +382,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tenant system configuration uuid.
+                  - Trustedhostprofile uuid.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -315,11 +412,11 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create TenantSystemConfiguration object
-          avi_tenantsystemconfiguration:
+        - name: Example to create TrustedHostProfile object
+          avi_trustedhostprofile:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_tenantsystemconfiguration
+            name: sample_trustedhostprofile
 
 
 Authors

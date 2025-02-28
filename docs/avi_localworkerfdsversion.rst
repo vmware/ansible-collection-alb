@@ -1,11 +1,11 @@
-.. vmware.alb.avi_tenantsystemconfiguration:
+.. vmware.alb.avi_localworkerfdsversion:
 
 
 **********************************************
-vmware.alb.avi_tenantsystemconfiguration
+vmware.alb.avi_localworkerfdsversion
 **********************************************
 
-**Module for setup of TenantSystemConfiguration Avi RESTful Object**
+**Module for setup of LocalWorkerFdsVersion Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_tenantsystemconfiguration
 
 Synopsis
 --------
-- This module is used to configure TenantSystemConfiguration object.
+- This module is used to configure LocalWorkerFdsVersion object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -133,79 +133,6 @@ Parameters
                 <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>configpb_attributes</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Protobuf versioning for config pbs.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 30.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> version </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Version sequence number that monotonically advances with each configuration update event.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 21.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                                        <tr>
-            <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>dns_virtualservice_refs</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Dns virtual services hosting fqdn records for applications configured within this tenant.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type virtualservice.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 30.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -213,19 +140,19 @@ Parameters
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the tenant system configuration object.
+                  - Default glw fds version name.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as default.
                 </div>
                                             </td>
         </tr>
@@ -242,13 +169,36 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Unique identifier of the tenant that this object belongs to.
+                  - Uuid of the tenant.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.1.1.
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                        <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>timeline</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Fds timeline maintained by glw.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -285,13 +235,39 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tenant system configuration uuid.
+                  - Default glw fds version uuid.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 30.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                        <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>version</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Fds version maintained by glw.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
         </tr>
@@ -315,11 +291,11 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create TenantSystemConfiguration object
-          avi_tenantsystemconfiguration:
+        - name: Example to create LocalWorkerFdsVersion object
+          avi_localworkerfdsversion:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_tenantsystemconfiguration
+            name: sample_localworkerfdsversion
 
 
 Authors

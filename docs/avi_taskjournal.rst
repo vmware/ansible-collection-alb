@@ -1,11 +1,11 @@
-.. vmware.alb.avi_authmappingprofile:
+.. vmware.alb.avi_taskjournal:
 
 
 **********************************************
-vmware.alb.avi_authmappingprofile
+vmware.alb.avi_taskjournal
 **********************************************
 
-**Module for setup of AuthMappingProfile Avi RESTful Object**
+**Module for setup of TaskJournal Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_authmappingprofile
 
 Synopsis
 --------
-- This module is used to configure AuthMappingProfile object.
+- This module is used to configure TaskJournal object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -133,23 +133,23 @@ Parameters
                 <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>configpb_attributes</b>
+                <b>errors</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
+                    <span style="color: purple">list</span>
                 </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Protobuf versioning for config pbs.
+                  - List of errors in the process.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -157,9 +157,9 @@ Parameters
                     <td class="elbow-placeholder"></td>
             <td collspan="3">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> version </b>
+                    <b> details </b>
                     <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
+                                                    <span style="color: purple">list / elements=string </span>
                                             </div>
             </td>
             <td></td>
@@ -167,20 +167,135 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Version sequence number that monotonically advances with each configuration update event.
+                  - List of error messages for this object.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Name of the object for which error was reported.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> object </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Object type on which the error was reported.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> tenant </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tenant for which error was reported.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> uuid </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid of the object for which error was reported.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> version </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version to which the migration failed.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>             
         </tr>
                                         <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>description</b>
+                <b>image_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">str</span>
@@ -190,10 +305,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Description for the authmappingprofile.
+                  - Image uuid for identifying the current base image.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - It is a reference to an object of type image.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -203,26 +321,20 @@ Parameters
                         <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>mapping_rules</b>
+                <b>info</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
+                    <span style="color: purple">dict</span>
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Rules list for tenant or role mapping.
+                  - Detailed information of journal.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Minimum of 1 items required.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -233,9 +345,9 @@ Parameters
                     <td class="elbow-placeholder"></td>
             <td collspan="3">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> assign_policy </b>
+                    <b> actions </b>
                     <div style="font-size: small">
-                                                <span style="color: purple">string</span>
+                                                    <span style="color: purple">list / elements=dictionary </span>
                                             </div>
             </td>
             <td></td>
@@ -243,111 +355,13 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Assignment rule for the object access policy.
+                  - Details of run for each version.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - ASSIGN_ALL, ASSIGN_FROM_SELECT_LIST, ASSIGN_MATCHING_GROUP_NAME, ASSIGN_MATCHING_ATTRIBUTE_VALUE, ASSIGN_MATCHING_GROUP_REGEX,
-                </div>
-                                <div style="font-size: small">
-                  - ASSIGN_MATCHING_ATTRIBUTE_REGEX, ASSIGN_CONFIG_CONTAINS_ATTRIBUTE_VALUE.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.7, 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> assign_role </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enum options - ASSIGN_ALL, ASSIGN_FROM_SELECT_LIST, ASSIGN_MATCHING_GROUP_NAME, ASSIGN_MATCHING_ATTRIBUTE_VALUE, ASSIGN_MATCHING_GROUP_REGEX,
-                </div>
-                                <div style="font-size: small">
-                  - ASSIGN_MATCHING_ATTRIBUTE_REGEX, ASSIGN_CONFIG_CONTAINS_ATTRIBUTE_VALUE.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> assign_tenant </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enum options - ASSIGN_ALL, ASSIGN_FROM_SELECT_LIST, ASSIGN_MATCHING_GROUP_NAME, ASSIGN_MATCHING_ATTRIBUTE_VALUE, ASSIGN_MATCHING_GROUP_REGEX,
-                </div>
-                                <div style="font-size: small">
-                  - ASSIGN_MATCHING_ATTRIBUTE_REGEX, ASSIGN_CONFIG_CONTAINS_ATTRIBUTE_VALUE.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> assign_userprofile </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Assignment rule for the user account profile.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - ASSIGN_ALL, ASSIGN_FROM_SELECT_LIST, ASSIGN_MATCHING_GROUP_NAME, ASSIGN_MATCHING_ATTRIBUTE_VALUE, ASSIGN_MATCHING_GROUP_REGEX,
-                </div>
-                                <div style="font-size: small">
-                  - ASSIGN_MATCHING_ATTRIBUTE_REGEX, ASSIGN_CONFIG_CONTAINS_ATTRIBUTE_VALUE.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.3.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> attribute_match </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>             
         </tr>
@@ -356,47 +370,7 @@ Parameters
             <td class="elbow-placeholder"></td>
             <td collspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> criteria </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Rule match criteria.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - AUTH_MATCH_CONTAINS, AUTH_MATCH_DOES_NOT_CONTAIN, AUTH_MATCH_REGEX.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> name </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> values </b>
+                    <b> objects </b>
                     <div style="font-size: small">
                         <span style="color: purple">list</span>
                     </div>
@@ -405,59 +379,21 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> default_tenant_ref </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Default tenant ref to assign to user.
+                  - Details of the process for each object type.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type tenant.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
-                                            </td>             
+                                            </td>     
         </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> group_match </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                <tr>
                     <td class="elbow-placeholder"></td>
             <td class="elbow-placeholder"></td>
             <td collspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> criteria </b>
+                    <b> version </b>
                     <div style="font-size: small">
                         <span style="color: purple">string</span>
                     </div>
@@ -466,37 +402,20 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Rule match criteria.
+                  - Migrated version.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - AUTH_MATCH_CONTAINS, AUTH_MATCH_DOES_NOT_CONTAIN, AUTH_MATCH_REGEX.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> groups </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">list</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>     
         </tr>
                                     <td class="elbow-placeholder"></td>
             <td collspan="3">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> index </b>
+                    <b> total_objects </b>
                     <div style="font-size: small">
                                                 <span style="color: purple">integer</span>
                                             </div>
@@ -506,170 +425,10 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_superuser </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> object_access_policy_refs </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=string </span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Object access policies to assign to user on successful match.
+                  - Number of objects to be processed.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type objectaccesspolicy.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 20.1.2.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.7, 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> policy_attribute_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Attribute name for object access policy assignment.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.7, 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> role_attribute_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> role_refs </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=string </span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - It is a reference to an object of type role.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> tenant_attribute_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> tenant_refs </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=string </span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - It is a reference to an object of type tenant.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> userprofile_attribute_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Attribute name for user account profile assignment.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.3.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -679,9 +438,9 @@ Parameters
                             <td class="elbow-placeholder"></td>
             <td collspan="3">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> userprofile_ref </b>
+                    <b> versions </b>
                     <div style="font-size: small">
-                                                <span style="color: purple">string</span>
+                                                    <span style="color: purple">list / elements=string </span>
                                             </div>
             </td>
             <td></td>
@@ -689,13 +448,10 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - User account profile to assign to user on successful match.
+                  - List of versions to be migrated.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type useraccountprofile.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.3.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -712,16 +468,13 @@ Parameters
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the authmappingprofile.
+                  - Name for the task journal.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -729,6 +482,509 @@ Parameters
                                             </td>
         </tr>
                         <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>obj_cloud_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Cloud that this object belongs to.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type cloud.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                        <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>operation</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Operation for which the task journal created.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                        <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>patch_image_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Image uuid for identifying the current patch.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type image.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                        <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>summary</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Summary of journal.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> description </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Description of the process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> duration </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Duration of the process in seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> end_time </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - End time of the process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> error_count </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of errors in the process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> reason </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Summary reason for process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> start_time </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Start time of the process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> status </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Status of the process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> type </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Process type.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tasks</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">list</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of all the tasks executed with details.
+                </div>
+                                <div style="font-size: small">
+                  - For example, details of tasks to be executed for upgrade filecopy.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> duration </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time taken to complete task in seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> end_time </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time at which execution of task was completed.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> messages </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Details of executed task.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> reason </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Reason for the status of the executed task.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> start_time </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time at which execution of task was started.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> status </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">bool</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Status of the executed task.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> task_description </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Description of the executed task.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> task_name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Name of the executed task.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                                        <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
@@ -741,42 +997,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tenant ref for the auth mapping profile.
+                  - Tenant uuid associated with the object.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>type</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Type of the auth profile for which these rules can be linked.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -813,10 +1040,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid of the authmappingprofile.
+                  - Uuid identifier for the task journal.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.1.
+                  - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -843,11 +1070,11 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create AuthMappingProfile object
-          avi_authmappingprofile:
+        - name: Example to create TaskJournal object
+          avi_taskjournal:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_authmappingprofile
+            name: sample_taskjournal
 
 
 Authors

@@ -1,11 +1,11 @@
-.. vmware.alb.avi_networkservice:
+.. vmware.alb.avi_gslbhsmruntime:
 
 
 **********************************************
-vmware.alb.avi_networkservice
+vmware.alb.avi_gslbhsmruntime
 **********************************************
 
-**Module for setup of NetworkService Avi RESTful Object**
+**Module for setup of GslbHSMRuntime Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +15,7 @@ vmware.alb.avi_networkservice
 
 Synopsis
 --------
-- This module is used to configure NetworkService object.
+- This module is used to configure GslbHSMRuntime object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -133,7 +133,7 @@ Parameters
                 <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>cloud_ref</b>
+                <b>cluster_uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">str</span>
@@ -143,67 +143,43 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - It is a reference to an object of type cloud.
+                  - The site controller cluster uuid.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                         <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>configpb_attributes</b>
+                <b>enabled</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
+                    <span style="color: purple">bool</span>
                 </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Protobuf versioning for config pbs.
+                  - Represents whether hsm is enabled/disabled.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
-                <tr>
-                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> version </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Version sequence number that monotonically advances with each configuration update event.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 21.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                                        <tr>
+                        <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>markers</b>
+                <b>events</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">list</span>
@@ -213,13 +189,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - List of labels to be used for granular rbac.
+                  - Events captured wrt to config replication.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.5.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -227,30 +203,7 @@ Parameters
                     <td class="elbow-placeholder"></td>
             <td collspan="3">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> key </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Key for filter match.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> values </b>
+                    <b> msg </b>
                     <div style="font-size: small">
                                                     <span style="color: purple">list / elements=string </span>
                                             </div>
@@ -260,55 +213,106 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Values for filter match.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> name </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> timestamp </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Event creation time.
                 </div>
                                 <div style="font-size: small">
-                  - Multiple values will be evaluated as or.
-                </div>
-                                <div style="font-size: small">
-                  - Example  key = value1 or key = value2.
-                </div>
-                                <div style="font-size: small">
-                  - Behavior for match is key = * if this field is empty.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.3.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>             
         </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> secs </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usecs </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> uuid </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
                                         <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>name</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Name of the networkservice.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>routing_service</b>
+                <b>local_info</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">dict</span>
@@ -318,13 +322,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Routing information of the networkservice.
+                  - Represents local info for the site.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -332,405 +336,7 @@ Parameters
                     <td class="elbow-placeholder"></td>
             <td collspan="3">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> advertise_backend_networks </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Advertise reachability of backend server networks via adc through bgp for default gateway feature.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> enable_auto_gateway </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable auto gateway to save and use the same l2 path to send the return traffic.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> enable_routing </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Service engine acts as default gateway for this service.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> enable_vip_on_all_interfaces </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable vip on all interfaces of this service.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> enable_vmac </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Use virtual mac address for interfaces on which floating interface ips are placed.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> floating_intf_ip </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Floating interface ips for the routingservice.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 32 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> addr </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Ip address.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> type </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enum options - V4, DNS, V6.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> floating_intf_ip6_addresses </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Ipv6 floating interface ips for the routingservice.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 32 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> addr </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Ip address.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> type </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enum options - V4, DNS, V6.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> floating_intf_ip6_se_2_addresses </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - If serviceenginegroup is configured for legacy 1+1 active standby ha mode, ipv6 floating ip's will be advertised only by the active se in the
-                </div>
-                                <div style="font-size: small">
-                  - pair.
-                </div>
-                                <div style="font-size: small">
-                  - Virtual services in this group must be disabled/enabled for any changes to the ipv6 floating ip's to take effect.
-                </div>
-                                <div style="font-size: small">
-                  - Only active se hosting vs tagged with active standby se 2 tag will advertise this floating ip when manual load distribution is enabled.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.6, 30.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 32 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> addr </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Ip address.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> type </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enum options - V4, DNS, V6.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> floating_intf_ip_se_2 </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - If serviceenginegroup is configured for legacy 1+1 active standby ha mode, floating ip's will be advertised only by the active se in the pair.
-                </div>
-                                <div style="font-size: small">
-                  - Virtual services in this group must be disabled/enabled for any changes to the floating ip's to take effect.
-                </div>
-                                <div style="font-size: small">
-                  - Only active se hosting vs tagged with active standby se 2 tag will advertise this floating ip when manual load distribution is enabled.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 32 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> addr </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Ip address.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> type </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enum options - V4, DNS, V6.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> flowtable_profile </b>
+                    <b> gs_status </b>
                     <div style="font-size: small">
                                                 <span style="color: purple">string</span>
                                             </div>
@@ -740,13 +346,13 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Routing service related flow profile information.
+                  - This field encapsulates the gs-status edge-triggered framework.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>             
         </tr>
@@ -755,54 +361,16 @@ Parameters
             <td class="elbow-placeholder"></td>
             <td collspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> icmp_idle_timeout </b>
+                    <b> last_changed_time </b>
                     <div style="font-size: small">
-                        <span style="color: purple">integer</span>
+                        <span style="color: purple">string</span>
                     </div>
             </td>
             <td></td>
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Idle timeout in seconds for icmp flows.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-36000.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> tcp_closed_timeout </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">integer</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Idle timeout in seconds for tcp flows in closed state.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-36000.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
+                  - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -813,7 +381,7 @@ Parameters
             <td class="elbow-placeholder"></td>
             <td collspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> tcp_connection_setup_timeout </b>
+                    <b> num_partial_updates </b>
                     <div style="font-size: small">
                         <span style="color: purple">integer</span>
                     </div>
@@ -822,16 +390,13 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Idle timeout in seconds for nat tcp flows in connection setup state.
+                  - Counter to track the number of partial updates sent.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 1-36000.
+                  - Once it reaches the partial updates threshold, a full update is sent.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
+                  - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -842,7 +407,7 @@ Parameters
             <td class="elbow-placeholder"></td>
             <td collspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> tcp_half_closed_timeout </b>
+                    <b> partial_update_threshold </b>
                     <div style="font-size: small">
                         <span style="color: purple">integer</span>
                     </div>
@@ -851,16 +416,10 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Idle timeout in seconds for tcp flows in half closed state.
+                  - Threshold after which a full gs status is sent.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 1-36000.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
+                  - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -871,25 +430,22 @@ Parameters
             <td class="elbow-placeholder"></td>
             <td collspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> tcp_idle_timeout </b>
+                    <b> state </b>
                     <div style="font-size: small">
-                        <span style="color: purple">integer</span>
+                        <span style="color: purple">string</span>
                     </div>
             </td>
             <td></td>
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Idle timeout in seconds for tcp flows.
+                  - State variable to trigger full or partial update.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 1-36000.
+                  - Enum options - GSLB_FULL_UPDATE_PENDING, GSLB_PARTIAL_UPDATE_PENDING.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
+                  - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -900,63 +456,22 @@ Parameters
             <td class="elbow-placeholder"></td>
             <td collspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> tcp_reset_timeout </b>
+                    <b> type </b>
                     <div style="font-size: small">
-                        <span style="color: purple">integer</span>
+                        <span style="color: purple">string</span>
                     </div>
             </td>
             <td></td>
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Timeout in seconds for tcp flows after rst is seen.within this timeout, if any non-syn packet is seenfrom the endpoint from which rst is
+                  - Describes the type (partial/full) of the last gs status sent to dns-vs(es).
                 </div>
                                 <div style="font-size: small">
-                  - received,nat-flow moves to established state.
+                  - Enum options - GSLB_NO_UPDATE, GSLB_FULL_UPDATE, GSLB_PARTIAL_UPDATE.
                 </div>
                                 <div style="font-size: small">
-                  - Otherwise nat-flowis cleaned up.
-                </div>
-                                <div style="font-size: small">
-                  - This state helps to mitigate the impactof rst attacks.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-36000.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> udp_idle_timeout </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">integer</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Idle timeout in seconds for udp flows.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-36000.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is seconds.
+                  - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -966,33 +481,7 @@ Parameters
                                     <td class="elbow-placeholder"></td>
             <td collspan="3">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> graceful_restart </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable graceful restart feature in routing service.
-                </div>
-                                <div style="font-size: small">
-                  - For example, bgp.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.6.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> nat_policy_ref </b>
+                    <b> gslb_info </b>
                     <div style="font-size: small">
                                                 <span style="color: purple">string</span>
                                             </div>
@@ -1002,28 +491,119 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - Nat policy for outbound nat functionality.
+                  - This field keeps track of gslb object's information.
                 </div>
                                 <div style="font-size: small">
-                  - This is done in post-routing.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type natpolicy.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>             
         </tr>
-                            <td class="elbow-placeholder"></td>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> repl_state </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - The config replication info to se(es) and peer sites.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                                <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The name of db entry.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                        <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>obj_uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">str</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Gslb hsm runtime object uuid.
+                </div>
+                                <div style="font-size: small">
+                  - Points to the gslb to which this belongs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                        <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>oper_status</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">dict</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Gslb site operational status, represents whether site is up or down.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
             <td collspan="3">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> routing_by_linux_ipstack </b>
+                    <b> last_changed_time </b>
                     <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
+                                                <span style="color: purple">string</span>
                                             </div>
             </td>
             <td></td>
@@ -1031,10 +611,116 @@ Parameters
             <td></td>
             <td>
                                                 <div style="font-size: small">
-                  - For ip routing feature, enabling this knob will fallback to routing through linux, by default routing is done via service engine data-path.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> secs </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> usecs </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> reason </b>
+                    <div style="font-size: small">
+                                                    <span style="color: purple">list / elements=string </span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> reason_code </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">integer</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> reason_code_string </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                            <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> state </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - OPER_UP, OPER_DOWN, OPER_CREATING, OPER_RESOURCES, OPER_INACTIVE, OPER_DISABLED, OPER_UNUSED, OPER_UNKNOWN, OPER_PROCESSING,
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
+                  - OPER_INITIALIZING, OPER_ERROR_DISABLED, OPER_AWAIT_MANUAL_PLACEMENT, OPER_UPGRADING, OPER_SE_PROCESSING, OPER_PARTITIONED, OPER_DISABLING,
+                </div>
+                                <div style="font-size: small">
+                  - OPER_FAILED, OPER_UNAVAIL, OPER_AGGREGATE_DOWN.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1044,58 +730,488 @@ Parameters
                                         <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>se_group_ref</b>
+                <b>remote_info</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
+                    <span style="color: purple">dict</span>
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Service engine group to which the service is applied.
+                  - Remote info is basically updated by grw.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type serviceenginegroup.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> gslb_info </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Gslb object related information in the site.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> repl_state </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - The config replication info to se(es) and peer sites.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> ops_info </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Operational information of the site.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> rrtoken </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">list</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Current outstanding request-response token of the message to this site.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> sync_info </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Configuration sync-info of the site.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> errored_objects </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">list</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Objects that could not be synced to the site.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> last_changed_time </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> last_fail_obj </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Last object having replication issue.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> prev_target_version </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Previous targer version for a site.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> reason </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Reason for the replication issues.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> recommendation </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Recommended way to resolve replication issue.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> site_version </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version of the site.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> sync_state </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">string</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Configuration sync-state of the site.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - GSLB_SITE_CFG_IN_SYNC, GSLB_SITE_CFG_OUT_OF_SYNC, GSLB_SITE_CFG_SYNC_DISABLED, GSLB_SITE_CFG_SYNC_IN_PROGRESS,
+                </div>
+                                <div style="font-size: small">
+                  - GSLB_SITE_CFG_SYNC_NOT_APPLICABLE, GSLB_SITE_CFG_SYNCED_TILL_CHECKPOINT, GSLB_SITE_CFG_SYNC_SUSPENDED, GSLB_SITE_CFG_SYNC_STALLED.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> target_version </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Target version of the site.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                    <td class="elbow-placeholder"></td>
+            <td collspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> sync_stats </b>
+                    <div style="font-size: small">
+                                                <span style="color: purple">string</span>
+                                            </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Site replication specific statistic.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>             
+        </tr>
+                <tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> acknowledged_version </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Last config version acknowledged.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> pending_object_count </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of pending objects.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                    <td class="elbow-placeholder"></td>
+            <td class="elbow-placeholder"></td>
+            <td collspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                    <b> received_version </b>
+                    <div style="font-size: small">
+                        <span style="color: purple">integer</span>
+                    </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                                                <div style="font-size: small">
+                  - Last config version received.
+                </div>
+                                <div style="font-size: small">
+                  - On leader, this represents the version received from federated datastore.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>     
+        </tr>
+                                                <tr>
+            <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>send_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                    <span style="color: purple">int</span>
+                </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Frequency with which group members communicate.
+                </div>
+                                <div style="font-size: small">
+                  - This field shadows glb_cfg.send_interval.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
                         <tr>
             <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>service_type</b>
+                <b>site_name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                     <span style="color: purple">str</span>
                 </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - Indicates the type of networkservice.
+                  - The gslb site name.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - ROUTING_SERVICE.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -1112,13 +1228,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
+                  - Uuid of the tenant.
+                </div>
+                                <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -1152,42 +1271,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid of the networkservice.
+                  - The uuid of db entry.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.5.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>vrf_ref</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Vrf context to which the service is scoped.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type vrfcontext.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.5.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -1211,11 +1301,11 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create NetworkService object
-          avi_networkservice:
+        - name: Example to create GslbHSMRuntime object
+          avi_gslbhsmruntime:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_networkservice
+            name: sample_gslbhsmruntime
 
 
 Authors
