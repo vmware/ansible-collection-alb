@@ -1,3 +1,4 @@
+
 .. vmware.alb.avi_serviceengine:
 
 
@@ -26,12 +27,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="4">Parameter</th>
+            <th colspan="7">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="4">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +53,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="4">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +77,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="4">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +100,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="4">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +116,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="4">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -130,14 +131,14 @@ Parameters
                 </div>
             </td>
         </tr>
-                <tr>
-            <td colspan="4">
+            <tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>availability_zone</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -146,15 +147,14 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>cloud_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -166,15 +166,14 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>container_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -186,15 +185,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>container_type</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -209,15 +207,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as CONTAINER_TYPE_HOST.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>controller_created</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -229,15 +226,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>controller_ip</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -246,15 +242,14 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>data_vnics</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -263,36 +258,36 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> adapter </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>adapter</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> aggregator_chgd </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>aggregator_chgd</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Field introduced in 17.2.7.
@@ -300,70 +295,79 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> can_se_dp_takeover </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>can_se_dp_takeover</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> connected </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>connected</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> del_pending </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>del_pending</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> delete_vnic </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>delete_vnic</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Delete this vnic.
@@ -377,36 +381,42 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> dhcp_enabled </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>dhcp_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> dp_deletion_done </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>dp_deletion_done</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - The vnic has been cleaned up in the datapath.
@@ -417,53 +427,59 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> enabled </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> if_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>if_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> ip6_autocfg_enabled </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>ip6_autocfg_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Enable ipv6 auto configuration.
@@ -474,104 +490,122 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_asm </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_asm</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_avi_internal_network </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_avi_internal_network</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_hsm </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_hsm</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_mgmt </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_mgmt</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_portchannel </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_portchannel</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> link_up </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>link_up</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - The link is operationally up.
@@ -582,105 +616,114 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> linux_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>linux_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> mac_address </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>mac_address</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> members </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
+                <b>members</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
+                                            </td>
+    </tr>
                 <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> active </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>active</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> if_name </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
+                <b>if_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> mac_address </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
+                <b>mac_address</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Field introduced in 17.1.5.
@@ -688,53 +731,57 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mtu</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1500.
+                </div>
+                                            </td>
+    </tr>
                                     <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> mtu </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>network_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> network_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>network_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> network_ref </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type network.
@@ -742,19 +789,19 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> num_rx_descriptors </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>num_rx_descriptors</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - User defined value for rx descriptor ring size, expressed as power of 2.
@@ -771,19 +818,19 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> num_tx_descriptors </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>num_tx_descriptors</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - User defined value for tx descriptor ring size, expressed as power of 2.
@@ -800,105 +847,110 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> pci_id </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>pci_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> port_uuid </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>port_uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vlan_id </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>vlan_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vlan_interfaces </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
+                <b>vlan_interfaces</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
+                                            </td>
+    </tr>
                 <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> dhcp_enabled </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>dhcp_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> enabled </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Enable the interface.
@@ -909,36 +961,41 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> if_name </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
+                <b>if_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> ip6_autocfg_enabled </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>ip6_autocfg_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Enable ipv6 auto configuration.
@@ -949,36 +1006,41 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_mgmt </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>is_mgmt</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vlan_id </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">integer</span>
-                    </div>
+                <b>vlan_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Vlan id.
@@ -989,108 +1051,176 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vnic_networks </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">list</span>
-                    </div>
+                <b>vnic_networks</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vrf_ref </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
+                <b>ctlr_alloc</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - It is a reference to an object of type vrfcontext.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
+                                            </td>
+    </tr>
                                     <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vnic_networks </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mask</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> ctlr_alloc </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
             <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> ip </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> mode </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Enum options - DHCP, STATIC, VIP, DOCKER_HOST, MODE_MANUAL.
@@ -1098,36 +1228,24 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vrf_id </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as DHCP.
                 </div>
-                                            </td>             
-        </tr>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
                             <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vrf_ref </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>vrf_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type vrfcontext.
@@ -1135,16 +1253,227 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                                        <tr>
-            <td colspan="4">
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vnic_networks</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ctlr_alloc</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mask</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - DHCP, STATIC, VIP, DOCKER_HOST, MODE_MANUAL.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as DHCP.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vrf_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vrf_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - It is a reference to an object of type vrfcontext.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1165,15 +1494,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as SE_STATE_ENABLED.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>flavor</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1182,15 +1510,14 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>host_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1202,15 +1529,14 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>hypervisor</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1222,15 +1548,14 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>mgmt_vnic</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1239,36 +1564,36 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> adapter </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>adapter</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> aggregator_chgd </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>aggregator_chgd</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Field introduced in 17.2.7.
@@ -1276,70 +1601,79 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> can_se_dp_takeover </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>can_se_dp_takeover</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> connected </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>connected</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> del_pending </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>del_pending</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> delete_vnic </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>delete_vnic</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Delete this vnic.
@@ -1353,36 +1687,42 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> dhcp_enabled </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>dhcp_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> dp_deletion_done </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>dp_deletion_done</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - The vnic has been cleaned up in the datapath.
@@ -1393,53 +1733,59 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> enabled </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> if_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>if_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> ip6_autocfg_enabled </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>ip6_autocfg_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Enable ipv6 auto configuration.
@@ -1450,104 +1796,122 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_asm </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_asm</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_avi_internal_network </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_avi_internal_network</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_hsm </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_hsm</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_mgmt </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_mgmt</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_portchannel </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>is_portchannel</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> link_up </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>link_up</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - The link is operationally up.
@@ -1558,105 +1922,114 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> linux_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>linux_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> mac_address </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>mac_address</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> members </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
+                <b>members</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
+                                            </td>
+    </tr>
                 <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> active </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>active</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> if_name </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
+                <b>if_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> mac_address </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
+                <b>mac_address</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Field introduced in 17.1.5.
@@ -1664,53 +2037,57 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mtu</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1500.
+                </div>
+                                            </td>
+    </tr>
                                     <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> mtu </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>network_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> network_name </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>network_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
             <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> network_ref </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type network.
@@ -1718,19 +2095,19 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> num_rx_descriptors </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>num_rx_descriptors</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - User defined value for rx descriptor ring size, expressed as power of 2.
@@ -1747,19 +2124,19 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> num_tx_descriptors </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>num_tx_descriptors</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - User defined value for tx descriptor ring size, expressed as power of 2.
@@ -1776,105 +2153,110 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> pci_id </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>pci_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> port_uuid </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>port_uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vlan_id </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>vlan_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vlan_interfaces </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
+                <b>vlan_interfaces</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
+                                            </td>
+    </tr>
                 <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> dhcp_enabled </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>dhcp_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> enabled </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Enable the interface.
@@ -1885,36 +2267,41 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> if_name </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
+                <b>if_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> ip6_autocfg_enabled </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>ip6_autocfg_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Enable ipv6 auto configuration.
@@ -1925,36 +2312,41 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> is_mgmt </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>is_mgmt</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vlan_id </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">integer</span>
-                    </div>
+                <b>vlan_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Vlan id.
@@ -1965,108 +2357,176 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vnic_networks </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">list</span>
-                    </div>
+                <b>vnic_networks</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vrf_ref </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
+                <b>ctlr_alloc</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - It is a reference to an object of type vrfcontext.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="2">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
+                                            </td>
+    </tr>
                                     <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="2">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vnic_networks </b>
-                    <div style="font-size: small">
-                                                    <span style="color: purple">list / elements=dictionary </span>
-                                            </div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mask</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                <tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> ctlr_alloc </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">bool</span>
-                    </div>
+                <b>mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
             <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> ip </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>     
-        </tr>
-                    <td class="elbow-placeholder"></td>
-            <td class="elbow-placeholder"></td>
-            <td collspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> mode </b>
-                    <div style="font-size: small">
-                        <span style="color: purple">string</span>
-                    </div>
-            </td>
-            <td></td>
-            <td></td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Enum options - DHCP, STATIC, VIP, DOCKER_HOST, MODE_MANUAL.
@@ -2074,36 +2534,24 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>     
-        </tr>
-                                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vrf_id </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as DHCP.
                 </div>
-                                            </td>             
-        </tr>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
                             <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> vrf_ref </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>vrf_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - It is a reference to an object of type vrfcontext.
@@ -2111,16 +2559,227 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                                        <tr>
-            <td colspan="4">
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vnic_networks</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ctlr_alloc</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mask</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - DHCP, STATIC, VIP, DOCKER_HOST, MODE_MANUAL.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as DHCP.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vrf_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vrf_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - It is a reference to an object of type vrfcontext.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2132,15 +2791,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as VM name unknown.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>nsxt_no_hotplug</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2155,15 +2813,14 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>resources</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2172,70 +2829,70 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-                    <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> cores_per_socket </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>cores_per_socket</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> disk </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>disk</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> hyper_threading </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>hyper_threading</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> hypervisor_mode </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">bool</span>
-                                            </div>
+                <b>hypervisor_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Indicates that the se is running on a virtual machine.
@@ -2246,36 +2903,36 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> memory </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>memory</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> num_datapath_processes </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>num_datapath_processes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Indicates the number of active datapath processes.
@@ -2286,36 +2943,36 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> num_vcpus </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>num_vcpus</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> qat_mode </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">string</span>
-                                            </div>
+                <b>qat_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Usage of intel qat for crypto offloads.
@@ -2329,33 +2986,36 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                            <td class="elbow-placeholder"></td>
-            <td collspan="3">
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as QAT_OFF.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                    <b> sockets </b>
-                    <div style="font-size: small">
-                                                <span style="color: purple">integer</span>
-                                            </div>
+                <b>sockets</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                            </td>             
-        </tr>
-                                        <tr>
-            <td colspan="4">
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_group_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2367,15 +3027,14 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2387,15 +3046,14 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2404,15 +3062,14 @@ Parameters
                   - Avi controller URL of the object.
                 </div>
                                             </td>
-        </tr>
-                        <tr>
-            <td colspan="4">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2421,10 +3078,10 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                    </table>
+    </tr>
+        
+    </table>
     <br/>
-
 
 Examples
 --------
@@ -2451,9 +3108,6 @@ Examples
 
 Authors
 ~~~~~~~
-- Gaurav Rastogi (grastogi@vmware.com)
-- Sandeep Bandi (sbandi@vmware.com)
-- Amol Shinde (samol@vmware.com)
-
-
-
+- Anurag Palsule (anurag.palsule@broadcom.com)
+- Parikshit Manur (parikshit.manur@broadcom.com)
+- Rohan Suryavanshi (rohan.suryavanshi@broadcom.com)
