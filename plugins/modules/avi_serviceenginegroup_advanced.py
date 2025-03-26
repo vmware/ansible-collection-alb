@@ -6,6 +6,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 from __future__ import absolute_import, division, print_function
+
 __metaclass__ = type
 ANSIBLE_METADATA = {
     "metadata_version": "1.1",
@@ -821,8 +822,7 @@ def main():
         waf_mempool_size=dict(type="int"),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs,
-                           supports_check_mode=True)
+    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(
             msg="Python requests package is not installed. For installation instructions, visit https://pypi.org/project/requests."

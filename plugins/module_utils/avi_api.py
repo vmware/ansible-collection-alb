@@ -99,7 +99,6 @@ class ApiResponse(Response):
     routines
         1. obj: returns dictionary of Avi Object
     """
-
     def __init__(self, rsp):
         super(ApiResponse, self).__init__()
         for k, v in list(rsp.__dict__.items()):
@@ -298,11 +297,9 @@ class ApiSession(Session):
 
             # Check if the IP address is IPv6
             if is_ipv6:
-                self.prefix = '{}://[{}]'.format(protocol,
-                                                 self.avi_credentials.controller)
+                self.prefix = '{}://[{}]'.format(protocol, self.avi_credentials.controller)
             else:
-                self.prefix = '{}://{}'.format(protocol,
-                                               self.avi_credentials.controller)
+                self.prefix = '{}://{}'.format(protocol, self.avi_credentials.controller)
 
             # Include the port in the prefix if specified
             if port:
@@ -329,10 +326,8 @@ class ApiSession(Session):
         elif self.avi_credentials.csp_token:
             if self.avi_credentials.csp_host:
                 if self.avi_credentials.csp_host.startswith('https'):
-                    self.avi_credentials.csp_host = self.avi_credentials.csp_host.replace(
-                        'https://', '')
-                self.csp_prefix = 'https://{x}/csp/gateway'.format(
-                    x=self.avi_credentials.csp_host)
+                    self.avi_credentials.csp_host = self.avi_credentials.csp_host.replace('https://', '')
+                self.csp_prefix = 'https://{x}/csp/gateway'.format(x=self.avi_credentials.csp_host)
                 self.generate_access_token()
             else:
                 raise APIError("CSP host is not provided for csp login.")
@@ -696,8 +691,7 @@ class ApiSession(Session):
         if connection_error or resp.status_code in (401, 419):
             if 'multipart/form-data' in api_hdrs['Content-Type']:
                 if connection_error:
-                    raise AviMultipartUploadError(
-                        "Connection failed or aborted")
+                    raise AviMultipartUploadError("Connection failed or aborted")
                 else:
                     raise AviMultipartUploadError('Received error,: %d Error '
                                                   'Msg %s' % (resp.status_code,
@@ -1151,7 +1145,6 @@ class ApiSession(Session):
             ip = ipaddress.ip_address(controller_ip)
             return ip.version == self.IPV6
         except ValueError as ve:
-            logger.warning(
-                'Invalid Controller IP6 Address: %s - %s', controller_ip, ve)
+            logger.warning('Invalid Controller IP6 Address: %s - %s', controller_ip, ve)
             return False
 # End of file
