@@ -254,15 +254,6 @@
   become: true
   ignore_errors: yes
 
-- block:
-  - name: Check ports in use or not for range 5000-5100 except 5098 and 5054
-    shell: echo '{{ ns_res.stdout }}' | awk '{print $4}' | grep -w {{ item }}
-    when: item|int != 5054 and item|int != 5098
-    with_sequence: start=5000 end=5099
-    register: port_res
-    ignore_errors: yes
-  when: ns_res.rc is defined and ns_res.rc == 0
-
 - name: Set failed port
   set_fact:
     failed_port: "{{ item.item }}"

@@ -5,14 +5,17 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
-                    'supported_by': 'community'}
+ANSIBLE_METADATA = {
+    "metadata_version": "1.1",
+    "status": ["preview"],
+    "supported_by": "community",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: avi_analyticsprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -740,7 +743,7 @@ options:
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
-'''
+"""
 
 EXAMPLES = """
 - hosts: all
@@ -809,17 +812,21 @@ EXAMPLES = """
     tenant_ref: /api/tenant?name=Demo
 """
 
-RETURN = '''
+RETURN = """
 obj:
     description: AnalyticsProfile (api/analyticsprofile) object
     returned: success, changed
     type: dict
-'''
+"""
 
 from ansible.module_utils.basic import AnsibleModule
+
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, avi_ansible_api)
+        avi_common_argument_spec,
+        avi_ansible_api,
+    )
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -827,112 +834,294 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default='present',
-                   choices=['absent', 'present']),
-        avi_api_update_method=dict(default='put',
-                                   choices=['put', 'patch']),
-        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
-        avi_patch_path=dict(type='str',),
-        avi_patch_value=dict(type='str',),
-        apdex_response_threshold=dict(type='int',),
-        apdex_response_tolerated_factor=dict(type='float',),
-        apdex_rtt_threshold=dict(type='int',),
-        apdex_rtt_tolerated_factor=dict(type='float',),
-        apdex_rum_threshold=dict(type='int',),
-        apdex_rum_tolerated_factor=dict(type='float',),
-        apdex_server_response_threshold=dict(type='int',),
-        apdex_server_response_tolerated_factor=dict(type='float',),
-        apdex_server_rtt_threshold=dict(type='int',),
-        apdex_server_rtt_tolerated_factor=dict(type='float',),
-        client_log_config=dict(type='dict',),
-        client_log_streaming_config=dict(type='dict',),
-        configpb_attributes=dict(type='dict',),
-        conn_lossy_ooo_threshold=dict(type='int',),
-        conn_lossy_timeo_rexmt_threshold=dict(type='int',),
-        conn_lossy_total_rexmt_threshold=dict(type='int',),
-        conn_lossy_zero_win_size_event_threshold=dict(type='int',),
-        conn_server_lossy_ooo_threshold=dict(type='int',),
-        conn_server_lossy_timeo_rexmt_threshold=dict(type='int',),
-        conn_server_lossy_total_rexmt_threshold=dict(type='int',),
-        conn_server_lossy_zero_win_size_event_threshold=dict(type='int',),
-        description=dict(type='str',),
-        enable_adaptive_config=dict(type='bool',),
-        enable_advanced_analytics=dict(type='bool',),
-        enable_ondemand_metrics=dict(type='bool',),
-        enable_se_analytics=dict(type='bool',),
-        enable_server_analytics=dict(type='bool',),
-        enable_vs_analytics=dict(type='bool',),
-        exclude_client_close_before_request_as_error=dict(type='bool',),
-        exclude_dns_policy_drop_as_significant=dict(type='bool',),
-        exclude_gs_down_as_error=dict(type='bool',),
-        exclude_http_error_codes=dict(type='list', elements='int',),
-        exclude_invalid_dns_domain_as_error=dict(type='bool',),
-        exclude_invalid_dns_query_as_error=dict(type='bool',),
-        exclude_issuer_revoked_ocsp_responses_as_error=dict(type='bool',),
-        exclude_no_dns_record_as_error=dict(type='bool',),
-        exclude_no_valid_gs_member_as_error=dict(type='bool',),
-        exclude_persistence_change_as_error=dict(type='bool',),
-        exclude_revoked_ocsp_responses_as_error=dict(type='bool',),
-        exclude_server_dns_error_as_error=dict(type='bool',),
-        exclude_server_tcp_reset_as_error=dict(type='bool',),
-        exclude_sip_error_codes=dict(type='list', elements='int',),
-        exclude_stale_ocsp_responses_as_error=dict(type='bool',),
-        exclude_syn_retransmit_as_error=dict(type='bool',),
-        exclude_tcp_reset_as_error=dict(type='bool',),
-        exclude_unavailable_ocsp_responses_as_error=dict(type='bool',),
-        exclude_unsupported_dns_query_as_error=dict(type='bool',),
-        healthscore_max_server_limit=dict(type='int',),
-        hs_event_throttle_window=dict(type='int',),
-        hs_max_anomaly_penalty=dict(type='int',),
-        hs_max_resources_penalty=dict(type='int',),
-        hs_max_security_penalty=dict(type='int',),
-        hs_min_dos_rate=dict(type='int',),
-        hs_performance_boost=dict(type='int',),
-        hs_pscore_traffic_threshold_l4_client=dict(type='float',),
-        hs_pscore_traffic_threshold_l4_server=dict(type='float',),
-        hs_security_certscore_expired=dict(type='float',),
-        hs_security_certscore_gt30d=dict(type='float',),
-        hs_security_certscore_le07d=dict(type='float',),
-        hs_security_certscore_le30d=dict(type='float',),
-        hs_security_chain_invalidity_penalty=dict(type='float',),
-        hs_security_cipherscore_eq000b=dict(type='float',),
-        hs_security_cipherscore_ge128b=dict(type='float',),
-        hs_security_cipherscore_lt128b=dict(type='float',),
-        hs_security_encalgo_score_none=dict(type='float',),
-        hs_security_encalgo_score_rc4=dict(type='float',),
-        hs_security_hsts_penalty=dict(type='float',),
-        hs_security_nonpfs_penalty=dict(type='float',),
-        hs_security_ocsp_revoked_score=dict(type='float',),
-        hs_security_selfsignedcert_penalty=dict(type='float',),
-        hs_security_ssl30_score=dict(type='float',),
-        hs_security_tls10_score=dict(type='float',),
-        hs_security_tls11_score=dict(type='float',),
-        hs_security_tls12_score=dict(type='float',),
-        hs_security_tls13_score=dict(type='float',),
-        hs_security_weak_signature_algo_penalty=dict(type='float',),
-        latency_audit_props=dict(type='dict',),
-        markers=dict(type='list', elements='dict',),
-        name=dict(type='str', required=True),
-        ondemand_metrics_idle_timeout=dict(type='int',),
-        ranges=dict(type='list', elements='dict',),
-        resp_code_block=dict(type='list', elements='str',),
-        sensitive_log_profile=dict(type='dict',),
-        sip_log_depth=dict(type='int',),
-        tenant_ref=dict(type='str',),
-        time_tracker_props=dict(type='dict',),
-        url=dict(type='str',),
-        uuid=dict(type='str',),
+        state=dict(default="present", choices=["absent", "present"]),
+        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
+        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
+        avi_patch_path=dict(
+            type="str",
+        ),
+        avi_patch_value=dict(
+            type="str",
+        ),
+        apdex_response_threshold=dict(
+            type="int",
+        ),
+        apdex_response_tolerated_factor=dict(
+            type="float",
+        ),
+        apdex_rtt_threshold=dict(
+            type="int",
+        ),
+        apdex_rtt_tolerated_factor=dict(
+            type="float",
+        ),
+        apdex_rum_threshold=dict(
+            type="int",
+        ),
+        apdex_rum_tolerated_factor=dict(
+            type="float",
+        ),
+        apdex_server_response_threshold=dict(
+            type="int",
+        ),
+        apdex_server_response_tolerated_factor=dict(
+            type="float",
+        ),
+        apdex_server_rtt_threshold=dict(
+            type="int",
+        ),
+        apdex_server_rtt_tolerated_factor=dict(
+            type="float",
+        ),
+        client_log_config=dict(
+            type="dict",
+        ),
+        client_log_streaming_config=dict(
+            type="dict",
+        ),
+        configpb_attributes=dict(
+            type="dict",
+        ),
+        conn_lossy_ooo_threshold=dict(
+            type="int",
+        ),
+        conn_lossy_timeo_rexmt_threshold=dict(
+            type="int",
+        ),
+        conn_lossy_total_rexmt_threshold=dict(
+            type="int",
+        ),
+        conn_lossy_zero_win_size_event_threshold=dict(
+            type="int",
+        ),
+        conn_server_lossy_ooo_threshold=dict(
+            type="int",
+        ),
+        conn_server_lossy_timeo_rexmt_threshold=dict(
+            type="int",
+        ),
+        conn_server_lossy_total_rexmt_threshold=dict(
+            type="int",
+        ),
+        conn_server_lossy_zero_win_size_event_threshold=dict(
+            type="int",
+        ),
+        description=dict(
+            type="str",
+        ),
+        enable_adaptive_config=dict(
+            type="bool",
+        ),
+        enable_advanced_analytics=dict(
+            type="bool",
+        ),
+        enable_ondemand_metrics=dict(
+            type="bool",
+        ),
+        enable_se_analytics=dict(
+            type="bool",
+        ),
+        enable_server_analytics=dict(
+            type="bool",
+        ),
+        enable_vs_analytics=dict(
+            type="bool",
+        ),
+        exclude_client_close_before_request_as_error=dict(
+            type="bool",
+        ),
+        exclude_dns_policy_drop_as_significant=dict(
+            type="bool",
+        ),
+        exclude_gs_down_as_error=dict(
+            type="bool",
+        ),
+        exclude_http_error_codes=dict(
+            type="list",
+            elements="int",
+        ),
+        exclude_invalid_dns_domain_as_error=dict(
+            type="bool",
+        ),
+        exclude_invalid_dns_query_as_error=dict(
+            type="bool",
+        ),
+        exclude_issuer_revoked_ocsp_responses_as_error=dict(
+            type="bool",
+        ),
+        exclude_no_dns_record_as_error=dict(
+            type="bool",
+        ),
+        exclude_no_valid_gs_member_as_error=dict(
+            type="bool",
+        ),
+        exclude_persistence_change_as_error=dict(
+            type="bool",
+        ),
+        exclude_revoked_ocsp_responses_as_error=dict(
+            type="bool",
+        ),
+        exclude_server_dns_error_as_error=dict(
+            type="bool",
+        ),
+        exclude_server_tcp_reset_as_error=dict(
+            type="bool",
+        ),
+        exclude_sip_error_codes=dict(
+            type="list",
+            elements="int",
+        ),
+        exclude_stale_ocsp_responses_as_error=dict(
+            type="bool",
+        ),
+        exclude_syn_retransmit_as_error=dict(
+            type="bool",
+        ),
+        exclude_tcp_reset_as_error=dict(
+            type="bool",
+        ),
+        exclude_unavailable_ocsp_responses_as_error=dict(
+            type="bool",
+        ),
+        exclude_unsupported_dns_query_as_error=dict(
+            type="bool",
+        ),
+        healthscore_max_server_limit=dict(
+            type="int",
+        ),
+        hs_event_throttle_window=dict(
+            type="int",
+        ),
+        hs_max_anomaly_penalty=dict(
+            type="int",
+        ),
+        hs_max_resources_penalty=dict(
+            type="int",
+        ),
+        hs_max_security_penalty=dict(
+            type="int",
+        ),
+        hs_min_dos_rate=dict(
+            type="int",
+        ),
+        hs_performance_boost=dict(
+            type="int",
+        ),
+        hs_pscore_traffic_threshold_l4_client=dict(
+            type="float",
+        ),
+        hs_pscore_traffic_threshold_l4_server=dict(
+            type="float",
+        ),
+        hs_security_certscore_expired=dict(
+            type="float",
+        ),
+        hs_security_certscore_gt30d=dict(
+            type="float",
+        ),
+        hs_security_certscore_le07d=dict(
+            type="float",
+        ),
+        hs_security_certscore_le30d=dict(
+            type="float",
+        ),
+        hs_security_chain_invalidity_penalty=dict(
+            type="float",
+        ),
+        hs_security_cipherscore_eq000b=dict(
+            type="float",
+        ),
+        hs_security_cipherscore_ge128b=dict(
+            type="float",
+        ),
+        hs_security_cipherscore_lt128b=dict(
+            type="float",
+        ),
+        hs_security_encalgo_score_none=dict(
+            type="float",
+        ),
+        hs_security_encalgo_score_rc4=dict(
+            type="float",
+        ),
+        hs_security_hsts_penalty=dict(
+            type="float",
+        ),
+        hs_security_nonpfs_penalty=dict(
+            type="float",
+        ),
+        hs_security_ocsp_revoked_score=dict(
+            type="float",
+        ),
+        hs_security_selfsignedcert_penalty=dict(
+            type="float",
+        ),
+        hs_security_ssl30_score=dict(
+            type="float",
+        ),
+        hs_security_tls10_score=dict(
+            type="float",
+        ),
+        hs_security_tls11_score=dict(
+            type="float",
+        ),
+        hs_security_tls12_score=dict(
+            type="float",
+        ),
+        hs_security_tls13_score=dict(
+            type="float",
+        ),
+        hs_security_weak_signature_algo_penalty=dict(
+            type="float",
+        ),
+        latency_audit_props=dict(
+            type="dict",
+        ),
+        markers=dict(
+            type="list",
+            elements="dict",
+        ),
+        name=dict(type="str", required=True),
+        ondemand_metrics_idle_timeout=dict(
+            type="int",
+        ),
+        ranges=dict(
+            type="list",
+            elements="dict",
+        ),
+        resp_code_block=dict(
+            type="list",
+            elements="str",
+        ),
+        sensitive_log_profile=dict(
+            type="dict",
+        ),
+        sip_log_depth=dict(
+            type="int",
+        ),
+        tenant_ref=dict(
+            type="str",
+        ),
+        time_tracker_props=dict(
+            type="dict",
+        ),
+        url=dict(
+            type="str",
+        ),
+        uuid=dict(
+            type="str",
+        ),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(
-        argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(msg=(
-            'Python requests package is not installed. '
-            'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'analyticsprofile',
-                           set())
+        return module.fail_json(
+            msg=(
+                "Python requests package is not installed. "
+                "For installation instructions, visit https://pypi.org/project/requests."
+            )
+        )
+    return avi_ansible_api(module, "analyticsprofile", set())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -713,6 +713,7 @@ obj:
 """
 
 from ansible.module_utils.basic import AnsibleModule
+
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
         avi_common_argument_spec,
@@ -923,7 +924,12 @@ def main():
         # Need to check if tenant_ref was provided and the object returned
         # is actually in admin tenant.
 
-        if (existing_obj and "tenant_ref" in obj and "tenant_ref" in existing_obj and obj["tenant_ref"] is not None):
+        if (
+            existing_obj
+            and "tenant_ref" in obj
+            and "tenant_ref" in existing_obj
+            and obj["tenant_ref"] is not None
+        ):
             existing_obj_tenant = existing_obj["tenant_ref"].split("#")[1]
             obj_tenant = obj["tenant_ref"].split("name=")[1]
             if obj_tenant != existing_obj_tenant:

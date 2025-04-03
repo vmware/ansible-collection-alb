@@ -4,14 +4,17 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
-                    'supported_by': 'community'}
+ANSIBLE_METADATA = {
+    "metadata_version": "1.1",
+    "status": ["preview"],
+    "supported_by": "community",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: avi_albservicesconfig
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -212,7 +215,7 @@ options:
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
-'''
+"""
 
 EXAMPLES = """
 - hosts: all
@@ -230,17 +233,21 @@ EXAMPLES = """
     name: sample_albservicesconfig
 """
 
-RETURN = '''
+RETURN = """
 obj:
     description: ALBServicesConfig (api/albservicesconfig) object
     returned: success, changed
     type: dict
-'''
+"""
 
 from ansible.module_utils.basic import AnsibleModule
+
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, avi_ansible_api)
+        avi_common_argument_spec,
+        avi_ansible_api,
+    )
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -248,47 +255,78 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default='present',
-                   choices=['absent', 'present']),
-        avi_api_update_method=dict(default='put',
-                                   choices=['put', 'patch']),
-        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
-        avi_patch_path=dict(type='str',),
-        avi_patch_value=dict(type='str',),
-        app_signature_config=dict(type='dict', required=True),
-        asset_contact=dict(type='dict',),
-        case_config=dict(type='dict', required=True),
-        configpb_attributes=dict(type='dict',),
-        feature_opt_in_status=dict(type='dict', required=True),
-        inventory_config=dict(type='dict', required=True),
-        ip_reputation_config=dict(type='dict', required=True),
-        mode=dict(type='str',),
-        name=dict(type='str',),
-        operations_config=dict(type='dict',),
-        polling_interval=dict(type='int',),
-        portal_url=dict(type='str', required=True),
-        saas_licensing_config=dict(type='dict', required=True),
-        session_config=dict(type='dict',),
-        split_proxy_configuration=dict(type='dict',),
-        tenant_config=dict(type='dict',),
-        tenant_ref=dict(type='str',),
-        url=dict(type='str',),
-        use_split_proxy=dict(type='bool',),
-        use_tls=dict(type='bool',),
-        user_agent_db_config=dict(type='dict', required=True),
-        uuid=dict(type='str',),
-        waf_config=dict(type='dict', required=True),
+        state=dict(default="present", choices=["absent", "present"]),
+        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
+        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
+        avi_patch_path=dict(
+            type="str",
+        ),
+        avi_patch_value=dict(
+            type="str",
+        ),
+        app_signature_config=dict(type="dict", required=True),
+        asset_contact=dict(
+            type="dict",
+        ),
+        case_config=dict(type="dict", required=True),
+        configpb_attributes=dict(
+            type="dict",
+        ),
+        feature_opt_in_status=dict(type="dict", required=True),
+        inventory_config=dict(type="dict", required=True),
+        ip_reputation_config=dict(type="dict", required=True),
+        mode=dict(
+            type="str",
+        ),
+        name=dict(
+            type="str",
+        ),
+        operations_config=dict(
+            type="dict",
+        ),
+        polling_interval=dict(
+            type="int",
+        ),
+        portal_url=dict(type="str", required=True),
+        saas_licensing_config=dict(type="dict", required=True),
+        session_config=dict(
+            type="dict",
+        ),
+        split_proxy_configuration=dict(
+            type="dict",
+        ),
+        tenant_config=dict(
+            type="dict",
+        ),
+        tenant_ref=dict(
+            type="str",
+        ),
+        url=dict(
+            type="str",
+        ),
+        use_split_proxy=dict(
+            type="bool",
+        ),
+        use_tls=dict(
+            type="bool",
+        ),
+        user_agent_db_config=dict(type="dict", required=True),
+        uuid=dict(
+            type="str",
+        ),
+        waf_config=dict(type="dict", required=True),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(
-        argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(msg=(
-            'Python requests package is not installed. '
-            'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'albservicesconfig',
-                           set())
+        return module.fail_json(
+            msg=(
+                "Python requests package is not installed. "
+                "For installation instructions, visit https://pypi.org/project/requests."
+            )
+        )
+    return avi_ansible_api(module, "albservicesconfig", set())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

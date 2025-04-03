@@ -1083,7 +1083,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Do round robin load load balancing at se level instead of the default per core load balancing.
+                  - Do load balancing at se level instead of the default per core load balancing.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.5, 22.1.3.
