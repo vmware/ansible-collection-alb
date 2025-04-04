@@ -481,6 +481,9 @@ Parameters
                   - This is only used when fip is used for vs on azure cloud.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 30.2.3.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">

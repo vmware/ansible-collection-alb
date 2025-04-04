@@ -5,15 +5,18 @@
 # SPDX-License-Identifier: Apache License 2.0
 
 
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
-                    'supported_by': 'community'}
+ANSIBLE_METADATA = {
+    "metadata_version": "1.1",
+    "status": ["preview"],
+    "supported_by": "community",
+}
 
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: avi_api_session
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -48,9 +51,9 @@ options:
         type: int
 extends_documentation_fragment:
     - vmware.alb.avi
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
   - hosts: all
     vars:
       avi_credentials:
@@ -109,15 +112,15 @@ EXAMPLES = '''
     until: "'result' in upgrade_status.obj and upgrade_status.obj.result == 'SUCCESS'"
     retries: 120
     delay: 10
-'''
+"""
 
 
-RETURN = '''
+RETURN = """
 obj:
     description: Avi REST resource
     returned: success, changed
     type: dict
-'''
+"""
 
 import json
 import time
@@ -126,10 +129,16 @@ from copy import deepcopy
 
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
+        avi_common_argument_spec,
+        ansible_return,
+        avi_obj_cmp,
+        cleanup_absent_fields,
+    )
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-        ApiSession, AviCredentials)
+        ApiSession,
+        AviCredentials,
+    )
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -137,139 +146,188 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        http_method=dict(required=True,
-                         choices=['get', 'put', 'post', 'patch',
-                                  'delete']),
-        path=dict(type='str', required=True),
-        params=dict(type='dict'),
-        data=dict(type='jsonarg'),
-        timeout=dict(type='int', default=60)
+        http_method=dict(
+            required=True, choices=["get", "put", "post", "patch", "delete"]
+        ),
+        path=dict(type="str", required=True),
+        params=dict(type="dict"),
+        data=dict(type="jsonarg"),
+        timeout=dict(type="int", default=60),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
-        return module.fail_json(msg=(
-            'Python requests package is not installed. '
-            'For installation instructions, visit https://pypi.org/project/requests.'))
+        return module.fail_json(
+            msg=(
+                "Python requests package is not installed. "
+                "For installation instructions, visit https://pypi.org/project/requests."
+            )
+        )
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)
     api = ApiSession.get_session(
-        api_creds.controller, api_creds.username, password=api_creds.password,
-        timeout=api_creds.timeout, tenant=api_creds.tenant,
-        tenant_uuid=api_creds.tenant_uuid, token=api_creds.token,
-        port=api_creds.port)
+        api_creds.controller,
+        api_creds.username,
+        password=api_creds.password,
+        timeout=api_creds.timeout,
+        tenant=api_creds.tenant,
+        tenant_uuid=api_creds.tenant_uuid,
+        token=api_creds.token,
+        port=api_creds.port,
+    )
 
     tenant_uuid = api_creds.tenant_uuid
     tenant = api_creds.tenant
-    timeout = int(module.params.get('timeout'))
+    timeout = int(module.params.get("timeout"))
     # path is a required argument
-    path = module.params.get('path', '')
-    params = module.params.get('params', None)
-    data = module.params.get('data', None)
+    path = module.params.get("path", "")
+    params = module.params.get("params", None)
+    data = module.params.get("data", None)
     # Get the api_version from module.
     api_version = api_creds.api_version
     if data is not None:
         data = json.loads(data)
-    method = module.params['http_method']
+    method = module.params["http_method"]
 
     existing_obj = None
-    changed = method != 'get'
+    changed = method != "get"
     gparams = deepcopy(params) if params else {}
-    gparams.update({'include_refs': '', 'include_name': ''})
+    gparams.update({"include_refs": "", "include_name": ""})
 
     # API methods not allowed
-    api_get_not_allowed = ["cluster", "gslbsiteops", "server", "nsxt", "vcenter", "macro"]
+    api_get_not_allowed = [
+        "cluster",
+        "gslbsiteops",
+        "server",
+        "nsxt",
+        "vcenter",
+        "macro",
+    ]
     sub_api_get_not_allowed = ["scaleout", "scalein", "upgrade", "rollback"]
     api_post_not_allowed = ["alert", "fileservice"]
     api_put_not_allowed = ["backup"]
 
-    if method == 'post' and not any(path.startswith(uri) for uri in api_post_not_allowed):
+    if method == "post" and not any(
+        path.startswith(uri) for uri in api_post_not_allowed
+    ):
         # TODO: Above condition should be updated after AV-38981 is fixed
         # need to check if object already exists. In that case
         # change the method to be put
         try:
             using_collection = False
-            if (not any(path.startswith(uri) for uri in api_get_not_allowed) and
-                    not any(path.endswith(uri) for uri in sub_api_get_not_allowed)):
-                if 'name' in data:
-                    gparams['name'] = data['name']
+            if not any(path.startswith(uri) for uri in api_get_not_allowed) and not any(
+                path.endswith(uri) for uri in sub_api_get_not_allowed
+            ):
+                if "name" in data:
+                    gparams["name"] = data["name"]
                 using_collection = True
-            if (not any(path.startswith(uri) for uri in api_get_not_allowed) and
-                    not any(path.endswith(uri) for uri in sub_api_get_not_allowed)):
-                rsp = api.get(path, tenant=tenant, tenant_uuid=tenant_uuid,
-                              params=gparams, api_version=api_version)
+            if not any(path.startswith(uri) for uri in api_get_not_allowed) and not any(
+                path.endswith(uri) for uri in sub_api_get_not_allowed
+            ):
+                rsp = api.get(
+                    path,
+                    tenant=tenant,
+                    tenant_uuid=tenant_uuid,
+                    params=gparams,
+                    api_version=api_version,
+                )
                 existing_obj = rsp.json()
                 if using_collection:
-                    existing_obj = existing_obj['results'][0]
+                    existing_obj = existing_obj["results"][0]
         except (IndexError, KeyError):
             # object is not found
             pass
         else:
-            if (not any(path.startswith(uri) for uri in api_get_not_allowed)
-                    and not any(path.endswith(uri) for uri in
-                                sub_api_get_not_allowed)):
+            if not any(path.startswith(uri) for uri in api_get_not_allowed) and not any(
+                path.endswith(uri) for uri in sub_api_get_not_allowed
+            ):
                 # object is present
-                method = 'put'
-                path += '/' + existing_obj['uuid']
+                method = "put"
+                path += "/" + existing_obj["uuid"]
 
-    if method == 'put' and not any(path.startswith(uri) for uri in api_put_not_allowed):
+    if method == "put" and not any(path.startswith(uri) for uri in api_put_not_allowed):
         # put can happen with when full path is specified or it is put + post
         get_path = path
         data_for_cmp = data
         if existing_obj is None:
             using_collection = False
-            if ((len(path.split('/')) == 1) and ('name' in data) and
-                    (not any(path.startswith(uri) for uri in api_get_not_allowed))):
-                gparams['name'] = data['name']
+            if (
+                (len(path.split("/")) == 1)
+                and ("name" in data)
+                and (not any(path.startswith(uri) for uri in api_get_not_allowed))
+            ):
+                gparams["name"] = data["name"]
                 using_collection = True
 
-            if path.startswith('wafpolicy') and path.endswith('update-crs-rules'):
-                get_path = path.rstrip('/update-crs-rules')
+            if path.startswith("wafpolicy") and path.endswith("update-crs-rules"):
+                get_path = path.rstrip("/update-crs-rules")
                 data_for_cmp = deepcopy(data) if data else {}
                 data_for_cmp.pop("commit", None)
 
-            rsp = api.get(get_path, tenant=tenant, tenant_uuid=tenant_uuid,
-                          params=gparams, api_version=api_version)
+            rsp = api.get(
+                get_path,
+                tenant=tenant,
+                tenant_uuid=tenant_uuid,
+                params=gparams,
+                api_version=api_version,
+            )
             rsp_data = rsp.json()
             if using_collection:
-                if rsp_data['results']:
-                    existing_obj = rsp_data['results'][0]
-                    path += '/' + existing_obj['uuid']
+                if rsp_data["results"]:
+                    existing_obj = rsp_data["results"][0]
+                    path += "/" + existing_obj["uuid"]
                 else:
-                    method = 'post'
+                    method = "post"
             else:
                 if rsp.status_code == 404:
-                    method = 'post'
+                    method = "post"
                 else:
                     existing_obj = rsp_data
         if existing_obj:
             changed = not avi_obj_cmp(data_for_cmp, existing_obj)
             cleanup_absent_fields(data)
-    if method == 'patch':
-        rsp = api.get(path, tenant=tenant, tenant_uuid=tenant_uuid,
-                      params=gparams, api_version=api_version)
+    if method == "patch":
+        rsp = api.get(
+            path,
+            tenant=tenant,
+            tenant_uuid=tenant_uuid,
+            params=gparams,
+            api_version=api_version,
+        )
         existing_obj = rsp.json()
 
-    if (method == 'put' and changed) or (method != 'put'):
+    if (method == "put" and changed) or (method != "put"):
         fn = getattr(api, method)
-        rsp = fn(path, tenant=tenant, tenant_uuid=tenant, timeout=timeout,
-                 params=params, data=data, api_version=api_version)
+        rsp = fn(
+            path,
+            tenant=tenant,
+            tenant_uuid=tenant,
+            timeout=timeout,
+            params=params,
+            data=data,
+            api_version=api_version,
+        )
     else:
         rsp = None
-    if method == 'delete' and rsp.status_code == 404:
+    if method == "delete" and rsp.status_code == 404:
         changed = False
         rsp.status_code = 200
-    if method == 'patch' and existing_obj and rsp.status_code < 299:
+    if method == "patch" and existing_obj and rsp.status_code < 299:
         # Ideally the comparison should happen with the return values
         # from the patch API call. However, currently Avi API are
         # returning different hostname when GET is used vs Patch.
         # tracked as AV-12561
-        if path.startswith('pool'):
+        if path.startswith("pool"):
             time.sleep(1)
         gparams = deepcopy(params) if params else {}
-        gparams.update({'include_refs': '', 'include_name': ''})
-        rsp = api.get(path, tenant=tenant, tenant_uuid=tenant_uuid,
-                      params=gparams, api_version=api_version)
+        gparams.update({"include_refs": "", "include_name": ""})
+        rsp = api.get(
+            path,
+            tenant=tenant,
+            tenant_uuid=tenant_uuid,
+            params=gparams,
+            api_version=api_version,
+        )
         new_obj = rsp.json()
         changed = not avi_obj_cmp(new_obj, existing_obj)
     if rsp is None:
@@ -277,5 +335,5 @@ def main():
     return ansible_return(module, rsp, changed, req=data)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

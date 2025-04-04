@@ -28,6 +28,8 @@ plugins/modules/avi_saml_api_session.py validate-modules:missing-gplv3-license
 plugins/modules/avi_saml_api_session.py validate-modules:import-error
 plugins/modules/avi_gslbservice_patch_member.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbservice_patch_member.py validate-modules:import-error
+plugins/modules/avi_gslbservice_patch_member.py pylint:unnecessary-direct-lambda-call
+plugins/modules/avi_gslbservice_patch_member.py pylint:use-a-generator
 plugins/modules/avi_bootstrap_controller.py validate-modules:missing-gplv3-license
 plugins/modules/avi_bootstrap_controller.py validate-modules:import-error
 plugins/modules/avi_api_fileservice.py validate-modules:missing-gplv3-license

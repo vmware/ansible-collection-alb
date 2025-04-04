@@ -5,14 +5,17 @@
 # SPDX-License-Identifier: Apache License 2.0
 
 
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
-                    'supported_by': 'community'}
+ANSIBLE_METADATA = {
+    "metadata_version": "1.1",
+    "status": ["preview"],
+    "supported_by": "community",
+}
 
-DOCUMENTATION = '''
+DOCUMENTATION = """
 ---
 module: avi_update_se_data_vnics
 author: Shrikant Chaudhari (@gitshrikant) <shrikant.chaudhari@avinetworks.com>
@@ -35,9 +38,9 @@ options:
         elements: dict
 extends_documentation_fragment:
     - vmware.alb.avi
-'''
+"""
 
-EXAMPLES = '''
+EXAMPLES = """
   - name: Update data vnics and vlan interfaces
     vmware.alb.avi_update_se_data_vnics:
       avi_credentials:
@@ -88,21 +91,27 @@ EXAMPLES = '''
         ip6_autocfg_enabled: false
         vlan_id: 0
         is_portchannel: false
-'''
+"""
 
-RETURN = '''
+RETURN = """
 obj:
     description: Avi REST resource
     returned: success, changed
     type: dict
-'''
+"""
 
 from ansible.module_utils.basic import AnsibleModule
+
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, avi_ansible_api)
+        avi_common_argument_spec,
+        avi_ansible_api,
+    )
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-        ApiSession, AviCredentials)
+        ApiSession,
+        AviCredentials,
+    )
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -110,53 +119,61 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        data_vnics_config=dict(type='list', elements='dict',),
-        se_name=dict(type='str', required=True),
+        data_vnics_config=dict(
+            type="list",
+            elements="dict",
+        ),
+        se_name=dict(type="str", required=True),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(
-        argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(msg=(
-            'Python requests package is not installed. '
-            'For installation instructions, visit https://pypi.org/project/requests.'))
+        return module.fail_json(
+            msg=(
+                "Python requests package is not installed. "
+                "For installation instructions, visit https://pypi.org/project/requests."
+            )
+        )
     # Create controller session
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)
     api = ApiSession.get_session(
-        api_creds.controller, api_creds.username, password=api_creds.password,
-        timeout=api_creds.timeout, tenant=api_creds.tenant,
-        tenant_uuid=api_creds.tenant_uuid, token=api_creds.token,
-        port=api_creds.port)
-    path = 'serviceengine'
+        api_creds.controller,
+        api_creds.username,
+        password=api_creds.password,
+        timeout=api_creds.timeout,
+        tenant=api_creds.tenant,
+        tenant_uuid=api_creds.tenant_uuid,
+        token=api_creds.token,
+        port=api_creds.port,
+    )
+    path = "serviceengine"
     # Get existing SE object
     se_obj = api.get_object_by_name(
-        path, module.params['se_name'], api_version=api_creds.api_version)
-    data_vnics_config = module.params['data_vnics_config']
-    for d_vnic in se_obj['data_vnics']:
+        path, module.params["se_name"], api_version=api_creds.api_version
+    )
+    data_vnics_config = module.params["data_vnics_config"]
+    for d_vnic in se_obj["data_vnics"]:
         for obj in data_vnics_config:
-            config_for = obj.get('if_name', None)
+            config_for = obj.get("if_name", None)
             if not config_for:
-                return module.fail_json(msg=(
-                    "if_name in a configuration is mandatory. Please provide if_name i.e. vnic's interface name."))
-            if config_for == d_vnic['if_name']:
+                return module.fail_json(
+                    msg=(
+                        "if_name in a configuration is mandatory. Please provide if_name i.e. vnic's interface name."
+                    )
+                )
+            if config_for == d_vnic["if_name"]:
                 # modify existing object
                 for key, val in obj.items():
                     d_vnic[key] = val
-            if config_for == d_vnic['if_name']:
+            if config_for == d_vnic["if_name"]:
                 for key, val in obj.items():
                     d_vnic[key] = val
     module.params.update(se_obj)
-    module.params.update(
-        {
-            'avi_api_update_method': 'put',
-            'state': 'present'
-        }
-    )
-    module.params.pop('data_vnics_config')
-    return avi_ansible_api(module, 'serviceengine',
-                           set([]))
+    module.params.update({"avi_api_update_method": "put", "state": "present"})
+    module.params.pop("data_vnics_config")
+    return avi_ansible_api(module, "serviceengine", set([]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

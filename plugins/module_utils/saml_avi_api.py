@@ -1,13 +1,18 @@
 # Copyright 2021 VMware, Inc.
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import (absolute_import, division, print_function)
+from __future__ import absolute_import, division, print_function
+
 __metaclass__ = type
-from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, \
-    sessionDict, APIError
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
+    ApiSession,
+    sessionDict,
+    APIError,
+)
 import requests
 import re
 import urllib
+
 # import urlparse
 import json
 from datetime import datetime
@@ -19,38 +24,71 @@ import logging
 import warnings
 
 logger = logging.getLogger(__name__)
-warnings.filterwarnings('ignore')
+warnings.filterwarnings("ignore")
 
 
 class WS1loginSAMLApiSession(ApiSession):
     SAML_URL_SUFFIX = "/sso/login"
     # Request RegX
-    saml_request_regex = r'<input type=\"hidden\" ' \
-                         r'name=\"SAMLRequest\" value=\"(.*?)\"'
-    request_relay_state_regex = r'<input type=\"hidden\" ' \
-                                r'name=\"RelayState\" value=\"(.*?)\"'
-    request_assertion_url_regex = r'<form action=\"(.*?)\" method=\"post\">'
+    saml_request_regex = (
+        r"<input type=\"hidden\" " r"name=\"SAMLRequest\" value=\"(.*?)\""
+    )
+    request_relay_state_regex = (
+        r"<input type=\"hidden\" " r"name=\"RelayState\" value=\"(.*?)\""
+    )
+    request_assertion_url_regex = r"<form action=\"(.*?)\" method=\"post\">"
     # Response RegX
-    response_relay_state_regex = r'<input type=\"hidden\" ' \
-                                 r'name=\"RelayState\" value=\"(.*?)\"'
-    response_assertion_url_regex = r'<form id=\"the_form\" method=\"POST\" action=\"(.*?)\">'
+    response_relay_state_regex = (
+        r"<input type=\"hidden\" " r"name=\"RelayState\" value=\"(.*?)\""
+    )
+    response_assertion_url_regex = (
+        r"<form id=\"the_form\" method=\"POST\" action=\"(.*?)\">"
+    )
 
-    def __init__(self, controller=None, username=None, password=None,
-                 token=None, tenant=None, tenant_uuid=None, verify=False,
-                 port=None, timeout=60, api_version=None,
-                 retry_conxn_errors=True, data_log=False,
-                 avi_credentials=None, session_id=None, csrftoken=None,
-                 lazy_authentication=False, max_api_retries=None,
-                 idp_cookies=None, user_hdrs=None):
+    def __init__(
+        self,
+        controller=None,
+        username=None,
+        password=None,
+        token=None,
+        tenant=None,
+        tenant_uuid=None,
+        verify=False,
+        port=None,
+        timeout=60,
+        api_version=None,
+        retry_conxn_errors=True,
+        data_log=False,
+        avi_credentials=None,
+        session_id=None,
+        csrftoken=None,
+        lazy_authentication=False,
+        max_api_retries=None,
+        idp_cookies=None,
+        user_hdrs=None,
+    ):
 
         self.idp_cookies = idp_cookies
         super(WS1loginSAMLApiSession, self).__init__(
-            controller, username, password, token,
-            tenant, tenant_uuid, verify,
-            port, timeout, api_version,
-            retry_conxn_errors, data_log,
-            avi_credentials, session_id, csrftoken,
-            lazy_authentication, max_api_retries, user_hdrs)
+            controller,
+            username,
+            password,
+            token,
+            tenant,
+            tenant_uuid,
+            verify,
+            port,
+            timeout,
+            api_version,
+            retry_conxn_errors,
+            data_log,
+            avi_credentials,
+            session_id,
+            csrftoken,
+            lazy_authentication,
+            max_api_retries,
+            user_hdrs,
+        )
         return
 
     def saml_assertion(self, username, password):
@@ -70,72 +108,95 @@ class WS1loginSAMLApiSession(ApiSession):
         controller_session.verify = False
         saml_controller_url = self.prefix + self.SAML_URL_SUFFIX
         logger.info("Getting SAML request from url: %s", saml_controller_url)
-        resp = controller_session.get(saml_controller_url,
-                                      allow_redirects=True)
+        resp = controller_session.get(saml_controller_url, allow_redirects=True)
         if resp.status_code != 200:
-            logger.error('Status Code %s msg %s' % (
-                resp.status_code, resp.text))
-            raise APIError('Status Code %s msg %s' % (
-                resp.status_code, resp.text), resp)
+            logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+            raise APIError(
+                "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+            )
         # Getting IDP session
         idp_session = requests.Session()
-        saml_request_match = re.search(WS1loginSAMLApiSession.saml_request_regex, resp.text,
-                                       re.M | re.S)
+        saml_request_match = re.search(
+            WS1loginSAMLApiSession.saml_request_regex, resp.text, re.M | re.S
+        )
         if not saml_request_match:
             logger.error("SAML request not generated by controller.")
             raise APIError("SAML request not generated by controller.")
         saml_request = saml_request_match.group(1)
-        relay_state = re.search(WS1loginSAMLApiSession.request_relay_state_regex, resp.text, re.M | re.S).group(1)
-        assertion_url = re.search(WS1loginSAMLApiSession.request_assertion_url_regex, resp.text, re.M | re.S).group(1)
-        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        saml_data = urllib.parse.urlencode({
-            'SAMLRequest': saml_request,
-            'RelayState': relay_state})
+        relay_state = re.search(
+            WS1loginSAMLApiSession.request_relay_state_regex, resp.text, re.M | re.S
+        ).group(1)
+        assertion_url = re.search(
+            WS1loginSAMLApiSession.request_assertion_url_regex, resp.text, re.M | re.S
+        ).group(1)
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        saml_data = urllib.parse.urlencode(
+            {"SAMLRequest": saml_request, "RelayState": relay_state}
+        )
         if self.idp_cookies:
-            logger.info("Controller url %s generated SAML request is being "
-                        "sent to IDP with existing IDP cookies.",
-                        saml_controller_url)
-            idp_resp = idp_session.post(assertion_url, headers=headers,
-                                        data=saml_data, allow_redirects=False,
-                                        cookies=self.idp_cookies)
+            logger.info(
+                "Controller url %s generated SAML request is being "
+                "sent to IDP with existing IDP cookies.",
+                saml_controller_url,
+            )
+            idp_resp = idp_session.post(
+                assertion_url,
+                headers=headers,
+                data=saml_data,
+                allow_redirects=False,
+                cookies=self.idp_cookies,
+            )
         else:
-            logger.info("Controller url %s generated SAML request is being "
-                        "sent to IDP.", saml_controller_url)
-            idp_resp = idp_session.post(assertion_url, headers=headers,
-                                        data=saml_data, allow_redirects=False)
+            logger.info(
+                "Controller url %s generated SAML request is being " "sent to IDP.",
+                saml_controller_url,
+            )
+            idp_resp = idp_session.post(
+                assertion_url, headers=headers, data=saml_data, allow_redirects=False
+            )
         if idp_resp.status_code not in (200, 301, 302):
-            logger.error('Status Code %s msg %s' % (
-                resp.status_code, resp.text))
-            raise APIError('Status Code %s msg %s' % (
-                resp.status_code, resp.text), resp)
+            logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+            raise APIError(
+                "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+            )
         if "SAMLResponse" not in idp_resp.text:
             # credentials payload for given IDP
             parsed_uri = urllib.parse.urlparse(assertion_url)
-            auth_url = "{}://{}/SAAS/API/1.0/REST/auth/system/login".format(parsed_uri.scheme, parsed_uri.netloc)
-            auth = {'username': username, 'password': password, 'issueToken': 'true'}
-            idp_session.headers.update({'content-type': 'application/json'})
-            idp_session.headers.update({'accept': 'application/json'})
+            auth_url = "{}://{}/SAAS/API/1.0/REST/auth/system/login".format(
+                parsed_uri.scheme, parsed_uri.netloc
+            )
+            auth = {"username": username, "password": password, "issueToken": "true"}
+            idp_session.headers.update({"content-type": "application/json"})
+            idp_session.headers.update({"accept": "application/json"})
             idp_session.verify = False
             auth_resp = idp_session.post(auth_url, json=auth)
             if auth_resp.status_code != 200:
-                logger.error('Status Code %s msg %s' % (
-                    auth_resp.status_code, auth_resp.text))
-                raise APIError('Status Code %s msg %s' % (
-                    auth_resp.status_code, auth_resp.text), auth_resp)
+                logger.error(
+                    "Status Code %s msg %s" % (auth_resp.status_code, auth_resp.text)
+                )
+                raise APIError(
+                    "Status Code %s msg %s" % (auth_resp.status_code, auth_resp.text),
+                    auth_resp,
+                )
             json_response = json.loads(auth_resp.content)
-            idp_token = json_response['sessionToken']
+            idp_token = json_response["sessionToken"]
             basic_auth_header = "Bearer " + idp_token
             idp_session.headers.update({"authorization": basic_auth_header})
-            idp_resp = idp_session.post(assertion_url, headers=headers,
-                                        data=saml_data, allow_redirects=True)
+            idp_resp = idp_session.post(
+                assertion_url, headers=headers, data=saml_data, allow_redirects=True
+            )
             if idp_resp.status_code not in (200, 301, 302):
-                logger.error('Status Code %s msg %s' % (
-                    idp_resp.status_code, idp_resp.text))
-                raise APIError('Status Code %s msg %s' % (
-                    idp_resp.status_code, idp_resp.text), resp)
+                logger.error(
+                    "Status Code %s msg %s" % (idp_resp.status_code, idp_resp.text)
+                )
+                raise APIError(
+                    "Status Code %s msg %s" % (idp_resp.status_code, idp_resp.text),
+                    resp,
+                )
             from bs4 import BeautifulSoup
+
             saml_resp = BeautifulSoup(idp_resp.text, features="html.parser")
-            saml_response_match = saml_resp.find('textarea').string
+            saml_response_match = saml_resp.find("textarea").string
             if not saml_response_match:
                 logger.error("SAML request not generated by controller.")
                 raise APIError("SAML request not generated by controller.")
@@ -152,59 +213,67 @@ class WS1loginSAMLApiSession(ApiSession):
             password = self.avi_credentials.password
         else:
             raise APIError("No user password provided")
-        logger.debug('authenticating user %s prefix %s',
-                     self.avi_credentials.username, self.prefix)
+        logger.debug(
+            "authenticating user %s prefix %s",
+            self.avi_credentials.username,
+            self.prefix,
+        )
         self.cookies.clear()
         try:
             # Assert SAML response
             controller_session, resp = self.saml_assertion(username, password)
             content = resp.text
             from bs4 import BeautifulSoup
+
             saml_resp = BeautifulSoup(resp.text, features="html.parser")
-            saml_response = saml_resp.find('textarea').string
-            relay_state = re.search(WS1loginSAMLApiSession.response_relay_state_regex, content, re.M |
-                                    re.S).group(1)
-            assertion_url = re.search(WS1loginSAMLApiSession.response_assertion_url_regex, content, re.M | re.S).group(1)
-            saml_data = urllib.parse.urlencode({
-                'SAMLResponse': saml_response,
-                'RelayState': relay_state
-            })
-            headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-            rsp = controller_session.post(assertion_url,
-                                          headers=headers,
-                                          data=saml_data)
+            saml_response = saml_resp.find("textarea").string
+            relay_state = re.search(
+                WS1loginSAMLApiSession.response_relay_state_regex, content, re.M | re.S
+            ).group(1)
+            assertion_url = re.search(
+                WS1loginSAMLApiSession.response_assertion_url_regex,
+                content,
+                re.M | re.S,
+            ).group(1)
+            saml_data = urllib.parse.urlencode(
+                {"SAMLResponse": saml_response, "RelayState": relay_state}
+            )
+            headers = {"Content-Type": "application/x-www-form-urlencoded"}
+            rsp = controller_session.post(
+                assertion_url, headers=headers, data=saml_data
+            )
             if rsp.status_code == 200:
                 self.num_session_retries = 0
-                self.remote_api_version = \
-                    rsp.headers.get('AVI_API_VERSION', {})
+                self.remote_api_version = rsp.headers.get("AVI_API_VERSION", {})
                 if self.user_hdrs:
                     self.headers.update(self.user_hdrs)
-                if rsp.cookies and 'csrftoken' in rsp.cookies:
+                if rsp.cookies and "csrftoken" in rsp.cookies:
                     sessionDict[self.key] = {
-                        'csrftoken': rsp.cookies['csrftoken'],
-                        'session_id': rsp.cookies['sessionid'],
-                        'last_used': datetime.utcnow(),
-                        'api': self,
-                        'connected': True
+                        "csrftoken": rsp.cookies["csrftoken"],
+                        "session_id": rsp.cookies["sessionid"],
+                        "last_used": datetime.utcnow(),
+                        "api": self,
+                        "connected": True,
                     }
-                logger.debug("authentication success for user %s",
-                             self.avi_credentials.username)
+                logger.debug(
+                    "authentication success for user %s", self.avi_credentials.username
+                )
                 return
             # Check for bad request and invalid credentials response code
             elif rsp.status_code in [401, 403]:
-                logger.error('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text))
-                err = APIError('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text), rsp)
+                logger.error("Status Code %s msg %s" % (rsp.status_code, rsp.text))
+                err = APIError(
+                    "Status Code %s msg %s" % (rsp.status_code, rsp.text), rsp
+                )
             else:
-                logger.error("Error status code %s msg %s", rsp.status_code,
-                             rsp.text)
-                err = APIError('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text), rsp)
+                logger.error("Error status code %s msg %s", rsp.status_code, rsp.text)
+                err = APIError(
+                    "Status Code %s msg %s" % (rsp.status_code, rsp.text), rsp
+                )
         except (ConnectionError, SSLError, ChunkedEncodingError) as e:
             if not self.retry_conxn_errors:
                 raise
-            logger.warning('Connection error retrying %s', e)
+            logger.warning("Connection error retrying %s", e)
             err = e
         # comes here only if there was either exception or login was not
         # successful
@@ -213,8 +282,10 @@ class WS1loginSAMLApiSession(ApiSession):
         self.num_session_retries += 1
         if self.num_session_retries > self.max_session_retries:
             self.num_session_retries = 0
-            logger.error("Giving up after %d retries connection failure %s" % (
-                self.max_session_retries, True))
+            logger.error(
+                "Giving up after %d retries connection failure %s"
+                % (self.max_session_retries, True)
+            )
             raise err
         self.authenticate_session()
         return
@@ -229,26 +300,44 @@ class OneloginSAMLApiSession(ApiSession):
 
     SAML_URL_SUFFIX = "/sso/login"
     # Request RegX
-    saml_request_regex = r'<input type=\"hidden\" ' \
-                         r'name=\"SAMLRequest\" value=\"(.*?)\"'
-    request_relay_state_regex = r'<input type=\"hidden\" ' \
-                                r'name=\"RelayState\" value=\"(.*?)\"'
-    request_assertion_url_regex = r'<form method=\"post\" action=\"(.*?)\">'
+    saml_request_regex = (
+        r"<input type=\"hidden\" " r"name=\"SAMLRequest\" value=\"(.*?)\""
+    )
+    request_relay_state_regex = (
+        r"<input type=\"hidden\" " r"name=\"RelayState\" value=\"(.*?)\""
+    )
+    request_assertion_url_regex = r"<form method=\"post\" action=\"(.*?)\">"
     # Response RegX
-    saml_response_regex = r'<input type=\"hidden\" ' \
-                          r'name=\"SAMLResponse\" value=\"(.*?)\"'
-    response_relay_state_regex = r'<input type=\"hidden\" ' \
-                                 r'name=\"RelayState\" value=\"(.*?)\"'
-    response_assertion_url_regex = r'<form method=\"post\" ' \
-                                   r'action=\"(.*?)\">'
+    saml_response_regex = (
+        r"<input type=\"hidden\" " r"name=\"SAMLResponse\" value=\"(.*?)\""
+    )
+    response_relay_state_regex = (
+        r"<input type=\"hidden\" " r"name=\"RelayState\" value=\"(.*?)\""
+    )
+    response_assertion_url_regex = r"<form method=\"post\" " r"action=\"(.*?)\">"
 
-    def __init__(self, controller=None, username=None, password=None,
-                 token=None, tenant=None, tenant_uuid=None, verify=False,
-                 port=None, timeout=60, api_version=None,
-                 retry_conxn_errors=True, data_log=False,
-                 avi_credentials=None, session_id=None, csrftoken=None,
-                 lazy_authentication=False, max_api_retries=None,
-                 idp_cookies=None, user_hdrs=None):
+    def __init__(
+        self,
+        controller=None,
+        username=None,
+        password=None,
+        token=None,
+        tenant=None,
+        tenant_uuid=None,
+        verify=False,
+        port=None,
+        timeout=60,
+        api_version=None,
+        retry_conxn_errors=True,
+        data_log=False,
+        avi_credentials=None,
+        session_id=None,
+        csrftoken=None,
+        lazy_authentication=False,
+        max_api_retries=None,
+        idp_cookies=None,
+        user_hdrs=None,
+    ):
         """
         This extends ApiSession class and overrides authentication method
         for SMAL authentication.
@@ -277,12 +366,25 @@ class OneloginSAMLApiSession(ApiSession):
 
         self.idp_cookies = idp_cookies
         super(OneloginSAMLApiSession, self).__init__(
-            controller, username, password, token,
-            tenant, tenant_uuid, verify,
-            port, timeout, api_version,
-            retry_conxn_errors, data_log,
-            avi_credentials, session_id, csrftoken,
-            lazy_authentication, max_api_retries, user_hdrs)
+            controller,
+            username,
+            password,
+            token,
+            tenant,
+            tenant_uuid,
+            verify,
+            port,
+            timeout,
+            api_version,
+            retry_conxn_errors,
+            data_log,
+            avi_credentials,
+            session_id,
+            csrftoken,
+            lazy_authentication,
+            max_api_retries,
+            user_hdrs,
+        )
         return
 
     def saml_assertion(self, username, password):
@@ -302,114 +404,131 @@ class OneloginSAMLApiSession(ApiSession):
         controller_session.verify = False
         saml_controller_url = self.prefix + self.SAML_URL_SUFFIX
         logger.info("Getting SAML request from url: %s", saml_controller_url)
-        resp = controller_session.get(saml_controller_url,
-                                      allow_redirects=True)
+        resp = controller_session.get(saml_controller_url, allow_redirects=True)
         if resp.status_code != 200:
-            logger.error('Status Code %s msg %s' % (
-                resp.status_code, resp.text))
-            raise APIError('Status Code %s msg %s' % (
-                resp.status_code, resp.text), resp)
+            logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+            raise APIError(
+                "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+            )
         # Getting IDP session
         idp_session = requests.Session()
-        saml_request_match = re.search(OneloginSAMLApiSession.saml_request_regex, resp.text,
-                                       re.M | re.S)
+        saml_request_match = re.search(
+            OneloginSAMLApiSession.saml_request_regex, resp.text, re.M | re.S
+        )
         if not saml_request_match:
             logger.error("SAML request not generated by controller.")
             raise APIError("SAML request not generated by controller.")
         saml_request = saml_request_match.group(1)
-        relay_state = re.search(OneloginSAMLApiSession.request_relay_state_regex, resp.text,
-                                re.M | re.S).group(1)
-        assertion_url = re.search(OneloginSAMLApiSession.request_assertion_url_regex, resp.text,
-                                  re.M | re.S).group(1)
-        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-        saml_data = urllib.urlencode({
-            'SAMLRequest': saml_request,
-            'RelayState': relay_state})
+        relay_state = re.search(
+            OneloginSAMLApiSession.request_relay_state_regex, resp.text, re.M | re.S
+        ).group(1)
+        assertion_url = re.search(
+            OneloginSAMLApiSession.request_assertion_url_regex, resp.text, re.M | re.S
+        ).group(1)
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        saml_data = urllib.urlencode(
+            {"SAMLRequest": saml_request, "RelayState": relay_state}
+        )
         if self.idp_cookies:
-            logger.info("Controller url %s generated SAML request is being "
-                        "sent to IDP with existing IDP cookies.",
-                        saml_controller_url)
-            idp_resp = idp_session.post(assertion_url, headers=headers,
-                                        data=saml_data, allow_redirects=False,
-                                        cookies=self.idp_cookies)
+            logger.info(
+                "Controller url %s generated SAML request is being "
+                "sent to IDP with existing IDP cookies.",
+                saml_controller_url,
+            )
+            idp_resp = idp_session.post(
+                assertion_url,
+                headers=headers,
+                data=saml_data,
+                allow_redirects=False,
+                cookies=self.idp_cookies,
+            )
         else:
-            logger.info("Controller url %s generated SAML request is being "
-                        "sent to IDP.", saml_controller_url)
-            idp_resp = idp_session.post(assertion_url, headers=headers,
-                                        data=saml_data,
-                                        allow_redirects=False)
+            logger.info(
+                "Controller url %s generated SAML request is being " "sent to IDP.",
+                saml_controller_url,
+            )
+            idp_resp = idp_session.post(
+                assertion_url, headers=headers, data=saml_data, allow_redirects=False
+            )
         if resp.status_code not in (200, 301, 302):
-            logger.error('Status Code %s msg %s' % (
-                resp.status_code, resp.text))
-            raise APIError('Status Code %s msg %s' % (
-                resp.status_code, resp.text), resp)
+            logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+            raise APIError(
+                "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+            )
         if "SAMLResponse" not in idp_resp.text:
-            redirect_url = idp_resp.headers['Location']
-            idp_resp = idp_session.get(redirect_url,
-                                       allow_redirects=False)
+            redirect_url = idp_resp.headers["Location"]
+            idp_resp = idp_session.get(redirect_url, allow_redirects=False)
             if resp.status_code not in (200, 301, 302):
-                logger.error('Status Code %s msg %s' % (
-                    resp.status_code, resp.text))
-                raise APIError('Status Code %s msg %s' % (
-                    resp.status_code, resp.text), resp)
-            query_string = idp_resp.headers['Location'].split('=')[1]
+                logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+                raise APIError(
+                    "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+                )
+            query_string = idp_resp.headers["Location"].split("=")[1]
             data = {"return": query_string}
             json_data = json.dumps(data)
-            headers = {'content-type': 'application/json'}
+            headers = {"content-type": "application/json"}
             parsed_uri = urlparse.urlparse(assertion_url)
             # This needs to be modified for other IDPs.
-            auth_url = "{}://{}/access/auth".format(parsed_uri.scheme,
-                                                    parsed_uri.netloc)
-            resp = idp_session.post(auth_url, headers=headers,
-                                    data=json_data)
+            auth_url = "{}://{}/access/auth".format(
+                parsed_uri.scheme, parsed_uri.netloc
+            )
+            resp = idp_session.post(auth_url, headers=headers, data=json_data)
             if resp.status_code in [401, 403]:
-                logger.error('Status Code %s msg Invalid SAML credentials %s'
-                             % (resp.status_code, resp.text))
-                raise APIError('Status Code %s msg Invalid SAML credentials %s'
-                               % (resp.status_code, resp.text), resp)
+                logger.error(
+                    "Status Code %s msg Invalid SAML credentials %s"
+                    % (resp.status_code, resp.text)
+                )
+                raise APIError(
+                    "Status Code %s msg Invalid SAML credentials %s"
+                    % (resp.status_code, resp.text),
+                    resp,
+                )
             elif resp.status_code != 200:
-                logger.error('Status Code %s msg %s' % (
-                    resp.status_code, resp.text))
-                raise APIError('Status Code %s msg %s' % (
-                    resp.status_code, resp.text), resp)
+                logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+                raise APIError(
+                    "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+                )
             # credentials payload for given IDP
-            credentials_tuple = [('username', 'login',
-                                  username),
-                                 ('password', 'password',
-                                  password)]
+            credentials_tuple = [
+                ("username", "login", username),
+                ("password", "password", password),
+            ]
             for state in credentials_tuple:
                 bearer = "Bearer " + resp.text.split('jwt":"')[1][:-3]
-                headers = {'content-type': 'application/json',
-                           'authorization': bearer}
-                user_data = {'state': state[0],
-                             'payload': {state[1]: state[2]}}
+                headers = {"content-type": "application/json", "authorization": bearer}
+                user_data = {"state": state[0], "payload": {state[1]: state[2]}}
                 json_data = json.dumps(user_data)
-                resp = idp_session.put(auth_url, headers=headers,
-                                       data=json_data)
+                resp = idp_session.put(auth_url, headers=headers, data=json_data)
                 if resp.status_code in [401, 403]:
-                    logger.error('Status Code %s msg Invalid SAML credentials %s'
-                                 % (resp.status_code, resp.text))
-                    raise APIError('Status Code %s msg Invalid SAML credentials %s'
-                                   % (resp.status_code, resp.text), resp)
+                    logger.error(
+                        "Status Code %s msg Invalid SAML credentials %s"
+                        % (resp.status_code, resp.text)
+                    )
+                    raise APIError(
+                        "Status Code %s msg Invalid SAML credentials %s"
+                        % (resp.status_code, resp.text),
+                        resp,
+                    )
                 elif resp.status_code != 200:
-                    logger.error('Status Code %s msg %s' % (
-                        resp.status_code, resp.text))
-                    raise APIError('Status Code %s msg %s' % (
-                        resp.status_code, resp.text), resp)
+                    logger.error(
+                        "Status Code %s msg %s" % (resp.status_code, resp.text)
+                    )
+                    raise APIError(
+                        "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+                    )
             data = json.loads(resp.text)
             try:
                 token = data["request"]["params"]["saml_request_params_token"]
             except KeyError:
-                raise APIError("Couldn't complete "
-                               "authentication with IDP")
+                raise APIError("Couldn't complete " "authentication with IDP")
             url = data["request"]["uri"]
-            params = {'saml_request_params_token': token}
+            params = {"saml_request_params_token": token}
             resp = idp_session.get(url, params=params)
             if resp.status_code != 200:
-                logger.error('Status Code %s msg %s' % (
-                    resp.status_code, resp.text))
-                raise APIError('Status Code %s msg %s' % (
-                    resp.status_code, resp.text), resp)
+                logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+                raise APIError(
+                    "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+                )
         return controller_session, resp
 
     def authenticate_session(self):
@@ -423,58 +542,66 @@ class OneloginSAMLApiSession(ApiSession):
             password = self.avi_credentials.password
         else:
             raise APIError("No user password provided")
-        logger.debug('authenticating user %s prefix %s',
-                     self.avi_credentials.username, self.prefix)
+        logger.debug(
+            "authenticating user %s prefix %s",
+            self.avi_credentials.username,
+            self.prefix,
+        )
         self.cookies.clear()
         try:
             # Assert SAML response
             controller_session, resp = self.saml_assertion(username, password)
             content = resp.text
-            saml_response_match = re.search(OneloginSAMLApiSession.saml_response_regex, content,
-                                            re.M | re.S)
+            saml_response_match = re.search(
+                OneloginSAMLApiSession.saml_response_regex, content, re.M | re.S
+            )
             saml_response = saml_response_match.group(1)
-            relay_state = re.search(OneloginSAMLApiSession.response_relay_state_regex, content, re.M |
-                                    re.S).group(1)
-            assertion_url = re.search(OneloginSAMLApiSession.response_assertion_url_regex, content, re.M |
-                                      re.S).group(1)
-            saml_data = urllib.urlencode([
-                ('SAMLResponse', saml_response),
-                ('RelayState', relay_state)])
-            headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-            rsp = controller_session.post(assertion_url,
-                                          headers=headers,
-                                          data=saml_data)
+            relay_state = re.search(
+                OneloginSAMLApiSession.response_relay_state_regex, content, re.M | re.S
+            ).group(1)
+            assertion_url = re.search(
+                OneloginSAMLApiSession.response_assertion_url_regex,
+                content,
+                re.M | re.S,
+            ).group(1)
+            saml_data = urllib.urlencode(
+                [("SAMLResponse", saml_response), ("RelayState", relay_state)]
+            )
+            headers = {"Content-Type": "application/x-www-form-urlencoded"}
+            rsp = controller_session.post(
+                assertion_url, headers=headers, data=saml_data
+            )
             if rsp.status_code == 200:
                 self.num_session_retries = 0
-                self.remote_api_version = \
-                    rsp.headers.get('AVI_API_VERSION', {})
+                self.remote_api_version = rsp.headers.get("AVI_API_VERSION", {})
                 self.headers.update(self.user_hdrs)
-                if rsp.cookies and 'csrftoken' in rsp.cookies:
+                if rsp.cookies and "csrftoken" in rsp.cookies:
                     sessionDict[self.key] = {
-                        'csrftoken': rsp.cookies['csrftoken'],
-                        'session_id': rsp.cookies['sessionid'],
-                        'last_used': datetime.utcnow(),
-                        'api': self,
-                        'connected': True
+                        "csrftoken": rsp.cookies["csrftoken"],
+                        "session_id": rsp.cookies["sessionid"],
+                        "last_used": datetime.utcnow(),
+                        "api": self,
+                        "connected": True,
                     }
-                logger.debug("authentication success for user %s",
-                             self.avi_credentials.username)
+                logger.debug(
+                    "authentication success for user %s", self.avi_credentials.username
+                )
                 return
             # Check for bad request and invalid credentials response code
             elif rsp.status_code in [401, 403]:
-                logger.error('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text))
-                err = APIError('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text), rsp)
+                logger.error("Status Code %s msg %s" % (rsp.status_code, rsp.text))
+                err = APIError(
+                    "Status Code %s msg %s" % (rsp.status_code, rsp.text), rsp
+                )
             else:
-                logger.error("Error status code %s msg %s", rsp.status_code,
-                             rsp.text)
-                err = APIError('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text), rsp)
+                logger.error("Error status code %s msg %s", rsp.status_code, rsp.text)
+                err = APIError(
+                    "Status Code %s msg %s" % (rsp.status_code, rsp.text), rsp
+                )
         except (ConnectionError, SSLError, ChunkedEncodingError) as e:
             if not self.retry_conxn_errors:
                 raise
-            logger.warning('Connection error retrying %s', e)
+            logger.warning("Connection error retrying %s", e)
             err = e
         # comes here only if there was either exception or login was not
         # successful
@@ -483,8 +610,10 @@ class OneloginSAMLApiSession(ApiSession):
         self.num_session_retries += 1
         if self.num_session_retries > self.max_session_retries:
             self.num_session_retries = 0
-            logger.error("Giving up after %d retries connection failure %s" % (
-                self.max_session_retries, True))
+            logger.error(
+                "Giving up after %d retries connection failure %s"
+                % (self.max_session_retries, True)
+            )
             raise err
         self.authenticate_session()
         return
@@ -499,26 +628,45 @@ class OktaSAMLApiSession(ApiSession):
 
     SAML_URL_SUFFIX = "/sso/login"
     # Request RegX
-    saml_request_regex = r'<input type=\"hidden\" ' \
-                         r'name=\"SAMLRequest\" value=\"(.*?)\"'
-    request_relay_state_regex = r'<input type=\"hidden\" ' \
-                                r'name=\"RelayState\" value=\"(.*?)\"'
-    request_assertion_url_regex = r'<form method=\"post\" action=\"(.*?)\">'
+    saml_request_regex = (
+        r"<input type=\"hidden\" " r"name=\"SAMLRequest\" value=\"(.*?)\""
+    )
+    request_relay_state_regex = (
+        r"<input type=\"hidden\" " r"name=\"RelayState\" value=\"(.*?)\""
+    )
+    request_assertion_url_regex = r"<form method=\"post\" action=\"(.*?)\">"
     # Response RegX
-    saml_response_regex = r'<input name=\"SAMLResponse\" ' \
-                          r'type=\"hidden\" value=\"(.*?)\"'
-    response_relay_state_regex = r'<input name=\"RelayState\" ' \
-                                 r'type=\"hidden\" value=\"(.*?)\"'
-    response_assertion_url_regex = r'<form id=\"appForm\" ' \
-                                   r'action=\"(.*?)\" method=\"post\">'
+    saml_response_regex = (
+        r"<input name=\"SAMLResponse\" " r"type=\"hidden\" value=\"(.*?)\""
+    )
+    response_relay_state_regex = (
+        r"<input name=\"RelayState\" " r"type=\"hidden\" value=\"(.*?)\""
+    )
+    response_assertion_url_regex = (
+        r"<form id=\"appForm\" " r"action=\"(.*?)\" method=\"post\">"
+    )
 
-    def __init__(self, controller=None, username=None, password=None,
-                 token=None, tenant=None, tenant_uuid=None, verify=False,
-                 port=None, timeout=60, api_version=None,
-                 retry_conxn_errors=True, data_log=False,
-                 avi_credentials=None, session_id=None, csrftoken=None,
-                 lazy_authentication=False, max_api_retries=None,
-                 idp_cookies=None):
+    def __init__(
+        self,
+        controller=None,
+        username=None,
+        password=None,
+        token=None,
+        tenant=None,
+        tenant_uuid=None,
+        verify=False,
+        port=None,
+        timeout=60,
+        api_version=None,
+        retry_conxn_errors=True,
+        data_log=False,
+        avi_credentials=None,
+        session_id=None,
+        csrftoken=None,
+        lazy_authentication=False,
+        max_api_retries=None,
+        idp_cookies=None,
+    ):
         """
         This extends ApiSession class and overrides authentication method
         for SMAL authentication.
@@ -547,12 +695,24 @@ class OktaSAMLApiSession(ApiSession):
 
         self.idp_cookies = idp_cookies
         super(OktaSAMLApiSession, self).__init__(
-            controller, username, password, token,
-            tenant, tenant_uuid, verify,
-            port, timeout, api_version,
-            retry_conxn_errors, data_log,
-            avi_credentials, session_id, csrftoken,
-            lazy_authentication, max_api_retries)
+            controller,
+            username,
+            password,
+            token,
+            tenant,
+            tenant_uuid,
+            verify,
+            port,
+            timeout,
+            api_version,
+            retry_conxn_errors,
+            data_log,
+            avi_credentials,
+            session_id,
+            csrftoken,
+            lazy_authentication,
+            max_api_retries,
+        )
         return
 
     def saml_assertion(self, username, password):
@@ -572,66 +732,82 @@ class OktaSAMLApiSession(ApiSession):
         controller_session.verify = False
         saml_controller_url = self.prefix + self.SAML_URL_SUFFIX
         logger.info("Getting SAML request from url: %s", saml_controller_url)
-        resp = controller_session.get(saml_controller_url,
-                                      allow_redirects=True)
+        resp = controller_session.get(saml_controller_url, allow_redirects=True)
         if resp.status_code != 200:
-            logger.error('Status Code %s msg %s' % (
-                resp.status_code, resp.text))
-            raise APIError('Status Code %s msg %s' % (
-                resp.status_code, resp.text), resp)
-        saml_request_match = re.search(OktaSAMLApiSession.saml_request_regex, resp.text,
-                                       re.M | re.S)
+            logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+            raise APIError(
+                "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+            )
+        saml_request_match = re.search(
+            OktaSAMLApiSession.saml_request_regex, resp.text, re.M | re.S
+        )
         if not saml_request_match:
             logger.error("SAML request not generated by controller.")
             raise APIError("SAML request not generated by controller.")
         saml_request = saml_request_match.group(1)
-        relay_state = re.search(OktaSAMLApiSession.request_relay_state_regex, resp.text,
-                                re.M | re.S).group(1)
-        assertion_url = re.search(OktaSAMLApiSession.request_assertion_url_regex, resp.text,
-                                  re.M | re.S).group(1)
+        relay_state = re.search(
+            OktaSAMLApiSession.request_relay_state_regex, resp.text, re.M | re.S
+        ).group(1)
+        assertion_url = re.search(
+            OktaSAMLApiSession.request_assertion_url_regex, resp.text, re.M | re.S
+        ).group(1)
 
         idp_session = requests.Session()
         idp_session.verify = False
-        saml_data = urllib.parse.urlencode({
-            'SAMLRequest': saml_request,
-            'RelayState': relay_state})
+        saml_data = urllib.parse.urlencode(
+            {"SAMLRequest": saml_request, "RelayState": relay_state}
+        )
         parsed_uri = urllib.parse.urlparse(assertion_url)
         base_url = "{}://{}".format(parsed_uri.scheme, parsed_uri.netloc)
         if self.idp_cookies:
-            logger.info("Controller url %s generated SAML request is being "
-                        "sent to IDP with existing IDP cookies.",
-                        saml_controller_url)
-            resp = idp_session.get(assertion_url, allow_redirects=False,
-                                   cookies=self.idp_cookies)
+            logger.info(
+                "Controller url %s generated SAML request is being "
+                "sent to IDP with existing IDP cookies.",
+                saml_controller_url,
+            )
+            resp = idp_session.get(
+                assertion_url, allow_redirects=False, cookies=self.idp_cookies
+            )
         else:
-            logger.info("Controller url %s generated SAML request is being "
-                        "sent to IDP.", saml_controller_url)
+            logger.info(
+                "Controller url %s generated SAML request is being " "sent to IDP.",
+                saml_controller_url,
+            )
             resp = idp_session.get(assertion_url, allow_redirects=False)
         if resp.status_code not in (200, 301, 302):
-            logger.error('Status Code %s msg %s' % (
-                resp.status_code, resp.text))
-            raise APIError('Status Code %s msg %s' % (
-                resp.status_code, resp.text), resp)
+            logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+            raise APIError(
+                "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+            )
         if "SAMLResponse" not in resp.text:
-            user_data = {"username": username,
-                         "options": {"warnBeforePasswordExpired": True,
-                                     "multiOptionalFactorEnroll": True},
-                         "password": password}
+            user_data = {
+                "username": username,
+                "options": {
+                    "warnBeforePasswordExpired": True,
+                    "multiOptionalFactorEnroll": True,
+                },
+                "password": password,
+            }
             json_data = json.dumps(user_data)
-            headers = {'content-type': 'application/json'}
-            resp = idp_session.post(base_url + "/api/v1/authn",
-                                    headers=headers,
-                                    data=json_data)
+            headers = {"content-type": "application/json"}
+            resp = idp_session.post(
+                base_url + "/api/v1/authn", headers=headers, data=json_data
+            )
             if resp.status_code in [401, 403]:
-                logger.error('Status Code %s msg Invalid SAML credentials %s'
-                             % (resp.status_code, resp.text))
-                raise APIError('Status Code %s msg Invalid SAML credentials %s'
-                               % (resp.status_code, resp.text), resp)
+                logger.error(
+                    "Status Code %s msg Invalid SAML credentials %s"
+                    % (resp.status_code, resp.text)
+                )
+                raise APIError(
+                    "Status Code %s msg Invalid SAML credentials %s"
+                    % (resp.status_code, resp.text),
+                    resp,
+                )
             elif resp.status_code != 200:
-                logger.error('Status Code %s msg %s' % (
-                    resp.status_code, resp.text))
-                raise APIError('Status Code %s msg %s' % (
-                    resp.status_code, resp.text), resp)
+                logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+                raise APIError(
+                    "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+                )
             data = json.loads(resp.text)
             try:
                 token = data["sessionToken"]
@@ -639,16 +815,17 @@ class OktaSAMLApiSession(ApiSession):
                 raise APIError("Couldn't complete authentication with IDP")
             new_url = base_url + "/login/sessionCookieRedirect"
             redirect_url = "{}?{}".format(assertion_url, saml_data)
-            params = {'checkAccountSetupComplete': 'true',
-                      'token': token,
-                      'redirectUrl': redirect_url}
-            resp = idp_session.get(new_url, params=params,
-                                   allow_redirects=True)
+            params = {
+                "checkAccountSetupComplete": "true",
+                "token": token,
+                "redirectUrl": redirect_url,
+            }
+            resp = idp_session.get(new_url, params=params, allow_redirects=True)
             if resp.status_code not in (200, 301, 302):
-                logger.error('Status Code %s msg %s' % (
-                    resp.status_code, resp.text))
-                raise APIError('Status Code %s msg %s' % (
-                    resp.status_code, resp.text), resp)
+                logger.error("Status Code %s msg %s" % (resp.status_code, resp.text))
+                raise APIError(
+                    "Status Code %s msg %s" % (resp.status_code, resp.text), resp
+                )
         return controller_session, resp
 
     def authenticate_session(self):
@@ -662,65 +839,72 @@ class OktaSAMLApiSession(ApiSession):
             password = self.avi_credentials.password
         else:
             raise APIError("No user password provided")
-        logger.debug('authenticating user %s prefix %s',
-                     self.avi_credentials.username, self.prefix)
+        logger.debug(
+            "authenticating user %s prefix %s",
+            self.avi_credentials.username,
+            self.prefix,
+        )
         self.cookies.clear()
         try:
             # Assert SAML response
             controller_session, resp = self.saml_assertion(username, password)
             content = resp.text
-            saml_response_match = re.search(OktaSAMLApiSession.saml_response_regex,
-                                            content, re.M | re.S)
+            saml_response_match = re.search(
+                OktaSAMLApiSession.saml_response_regex, content, re.M | re.S
+            )
             saml_response = saml_response_match.group(1)
-            assertion_url = re.search(OktaSAMLApiSession.response_assertion_url_regex, content,
-                                      re.M | re.S |
-                                      re.IGNORECASE).group(1)
-            relay_state = re.search(OktaSAMLApiSession.response_relay_state_regex, content,
-                                    re.M | re.S).group(1)
+            assertion_url = re.search(
+                OktaSAMLApiSession.response_assertion_url_regex,
+                content,
+                re.M | re.S | re.IGNORECASE,
+            ).group(1)
+            relay_state = re.search(
+                OktaSAMLApiSession.response_relay_state_regex, content, re.M | re.S
+            ).group(1)
             from HTMLParser import HTMLParser
+
             parser = HTMLParser()
             assertion_url = parser.unescape(assertion_url)
             saml_response = parser.unescape(saml_response)
-            saml_data = urllib.urlencode([
-                ('SAMLResponse', saml_response),
-                ('RelayState', relay_state)])
-            headers = {'Content-Type': 'application/x-www-form-urlencoded'}
-            rsp = controller_session.post(assertion_url,
-                                          headers=headers,
-                                          data=saml_data,
-                                          allow_redirects=True)
+            saml_data = urllib.urlencode(
+                [("SAMLResponse", saml_response), ("RelayState", relay_state)]
+            )
+            headers = {"Content-Type": "application/x-www-form-urlencoded"}
+            rsp = controller_session.post(
+                assertion_url, headers=headers, data=saml_data, allow_redirects=True
+            )
             if rsp.status_code == 200:
                 self.num_session_retries = 0
-                self.remote_api_version = \
-                    rsp.headers.get('AVI_API_VERSION', {})
+                self.remote_api_version = rsp.headers.get("AVI_API_VERSION", {})
                 self.headers.update(self.user_hdrs)
-                if rsp.cookies and 'csrftoken' in rsp.cookies:
+                if rsp.cookies and "csrftoken" in rsp.cookies:
                     sessionDict[self.key] = {
-                        'csrftoken': rsp.cookies['csrftoken'],
-                        'session_id': rsp.cookies['sessionid'],
-                        'last_used': datetime.utcnow(),
-                        'api': self,
-                        'connected': True
+                        "csrftoken": rsp.cookies["csrftoken"],
+                        "session_id": rsp.cookies["sessionid"],
+                        "last_used": datetime.utcnow(),
+                        "api": self,
+                        "connected": True,
                     }
-                logger.debug("authentication success for user %s",
-                             self.avi_credentials.username)
+                logger.debug(
+                    "authentication success for user %s", self.avi_credentials.username
+                )
                 return
             # Check for bad request and invalid credentials response code
             elif rsp.status_code in [401, 403]:
-                logger.error('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text))
-                err = APIError('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text), rsp)
+                logger.error("Status Code %s msg %s" % (rsp.status_code, rsp.text))
+                err = APIError(
+                    "Status Code %s msg %s" % (rsp.status_code, rsp.text), rsp
+                )
                 raise err
             else:
-                logger.error("Error status code %s msg %s", rsp.status_code,
-                             rsp.text)
-                err = APIError('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text), rsp)
+                logger.error("Error status code %s msg %s", rsp.status_code, rsp.text)
+                err = APIError(
+                    "Status Code %s msg %s" % (rsp.status_code, rsp.text), rsp
+                )
         except (ConnectionError, SSLError, ChunkedEncodingError) as e:
             if not self.retry_conxn_errors:
                 raise
-            logger.warning('Connection error retrying %s', e)
+            logger.warning("Connection error retrying %s", e)
             err = e
         # Comes here only if there was either exception or login was not
         # successful
@@ -729,8 +913,10 @@ class OktaSAMLApiSession(ApiSession):
         self.num_session_retries += 1
         if self.num_session_retries > self.max_session_retries:
             self.num_session_retries = 0
-            logger.error("Giving up after %d retries connection failure %s" % (
-                self.max_session_retries, True))
+            logger.error(
+                "Giving up after %d retries connection failure %s"
+                % (self.max_session_retries, True)
+            )
             raise err
         self.authenticate_session()
         return
