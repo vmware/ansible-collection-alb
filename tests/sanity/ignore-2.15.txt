@@ -395,10 +395,7 @@ plugins/modules/avi_albservicesfiledownload.py validate-modules:import-error
 plugins/modules/avi_albservicesfiledownload.py validate-modules:missing-gplv3-license
 plugins/modules/avi_csrfpolicy.py import-3.10!skip
 plugins/modules/avi_csrfpolicy.py validate-modules:import-error
-plugins/modules/avi_csrfpolicy.py validate-modules:missing-documentation
 plugins/modules/avi_csrfpolicy.py validate-modules:missing-gplv3-license
-plugins/modules/avi_csrfpolicy.py validate-modules:deprecation-mismatch
-plugins/modules/avi_csrfpolicy.py validate-modules:documentation-syntax-error
 plugins/modules/avi_serviceauthprofile.py import-3.10!skip
 plugins/modules/avi_serviceauthprofile.py validate-modules:import-error
 plugins/modules/avi_serviceauthprofile.py validate-modules:missing-gplv3-license
