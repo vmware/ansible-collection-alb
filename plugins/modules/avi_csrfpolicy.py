@@ -102,8 +102,8 @@ options:
             - A csrf token is rotated when this amount of time has passed.
             - Even after that, tokens will be accepted until twice this amount of time has passed.
             - Note, however, that other timeouts from the underlying session layer also affect how long a given token can be used.
-            - A token will be invalidated (rotated or deleted) after one of 'token_validity_time_min' (this value), 'session_establishment_timeout',
-            - 'session_idle_timeout', 'session_maximum_timeout' is reached, whichever occurs first.
+            - A token will be invalidated (rotated or deleted) after one of token_validity_time_min (this value), session_establishment_timeout,
+            - session_idle_timeout, session_maximum_timeout is reached, whichever occurs first.
             - Allowed values are 10-1440.
             - Special values are 0- unlimited.
             - Field introduced in 30.2.1.
