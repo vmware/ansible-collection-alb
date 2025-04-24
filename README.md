@@ -7,7 +7,7 @@
 <!--start requires_ansible-->
 ## Ansible version compatibility
 
-This collection has been tested against following Ansible versions: **>=2.9.10**.
+This collection has been tested against following Ansible versions: **>=2.15.0**.
 
 <!--end requires_ansible-->
 
@@ -284,6 +284,14 @@ avi_config:
           # For importing credentials from external file in modules,
           # please use vars_files parameter as shown in previous example
 ```
+
+
+## Licensing
+
+GNU General Public License v2.0 or later.
+
+See [LICENSE](./LICENSE) to see the full text.
+
 
 **Notes**
 Please use Python >= 3.8 if you are using avi_serviceenginegroup module as it has more than 255 arguments
