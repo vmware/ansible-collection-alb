@@ -35,7 +35,7 @@
       when: se_ova_deploy
 
     - name: Avi SE | Verify non default se group is available
-      avi_api_session:
+      vmware.alb.avi_api_session:
         controller: "{{ se_leader_ctl_ip }}"
         username: "{{ se_leader_ctl_username }}"
         password: "{{ se_leader_ctl_password }}"
@@ -49,7 +49,7 @@
 
 
     - name: Avi SE | VMware | Deploy SE VM
-      deploy_se:
+      vmware.alb.deploy_se:
         ovftool_path: '{{ ovftool_path }}'
         vcenter_host: '{{ vcenter_host }}'
         vcenter_user: '{{ vcenter_user }}'
@@ -81,7 +81,7 @@
       delegate_to: localhost
 
     - name: Avi SE | Verify SE Deployment
-      verify_se:
+      vmware.alb.verify_se:
         se_leader_ctl_ip: '{{ se_leader_ctl_ip }}'
         se_leader_ctl_username: '{{ se_leader_ctl_username }}'
         se_leader_ctl_password: '{{ se_leader_ctl_password }}'
@@ -102,7 +102,7 @@
     - debug: msg={{ verify_output.msg }}
 
     - name: Avi SE | Attach SE to SE group
-      avi_api_session:
+      vmware.alb.avi_api_session:
         controller: "{{ se_leader_ctl_ip }}"
         username: "{{ se_leader_ctl_username }}"
         password: "{{ se_leader_ctl_password }}"

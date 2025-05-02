@@ -1,0 +1,48 @@
+galaxy_info:
+  authors:
+  - Anurag Palsule <anurag.palsule@broadcom.com>
+  - Parikshit Manur <parikshit.manur@broadcom.com>
+  description: Ansible role to configure Avi
+  company: VMware
+  issue_tracker_url: https://github.com/vmware/ansible-collection-alb/issues
+  license: Apache-2.0
+  min_ansible_version: 2.15.0
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Fedora
+      versions:
+        - 22
+        - 23
+        - 24
+    - name: Ubuntu
+      versions:
+        - precise
+        - trusty
+        - wily
+        - xenial
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+        - wheezy
+
+  galaxy_tags:
+    - avi
+    - controller
+    - avicontroller
+    - avisdk
+    - avinetworks
+    - networking
+    - load
+    - balancer
+    - sdk
+    - lbaas
+    - lb
+    - virtualserver
+    - cloud
+    - loadbalancer
+    - gslb
+dependencies: []
