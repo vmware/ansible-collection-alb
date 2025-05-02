@@ -102,7 +102,7 @@
     - "{{ ci_iso }}"
 
 - name: "Avi SE | KVM | Verify SE connected to controller"
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_kvm_ctrl_ip }}"
     username: "{{ se_kvm_ctrl_username }}"
     password: "{{ se_kvm_ctrl_password }}"
@@ -120,7 +120,7 @@
 
 - block:
   - name: Avi SE | KVM | Service deploy | Configure vnic ips
-    avi_update_se_data_vnics:
+    vmware.alb.avi_update_se_data_vnics:
       controller: "{{ se_kvm_ctrl_ip }}"
       username: "{{ se_kvm_ctrl_username }}"
       password: "{{ se_kvm_ctrl_password }}"

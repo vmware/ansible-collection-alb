@@ -66,7 +66,7 @@
    mode: 0644
 
 - name: "Avi SE | KVM | Get the cloud uuid from Default-Cloud"
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_kvm_ctrl_ip }}"
     username: "{{ se_kvm_ctrl_username }}"
     password: "{{ se_kvm_ctrl_password }}"
@@ -79,7 +79,7 @@
   delegate_to: localhost
 
 - name: "Avi SE | KVM | Get a token from the Avi Controller"
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_kvm_ctrl_ip }}"
     username: "{{ se_kvm_ctrl_username }}"
     password: "{{ se_kvm_ctrl_password }}"
@@ -92,7 +92,7 @@
   delegate_to: localhost
 
 - name: "Avi SE | KVM | Image deploy | generate SE image on the controller"
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_kvm_ctrl_ip }}"
     username: "{{ se_kvm_ctrl_username }}"
     password: "{{ se_kvm_ctrl_password }}"
@@ -106,7 +106,7 @@
   delegate_to: localhost
 
 - name: "Avi SE | KVM | Get the se.qcow2 from the Avi Controller"
-  avi_api_fileservice:
+  vmware.alb.avi_api_fileservice:
     controller: "{{ se_kvm_ctrl_ip }}"
     username: "{{ se_kvm_ctrl_username }}"
     password: "{{ se_kvm_ctrl_password }}"
