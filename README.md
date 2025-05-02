@@ -7,7 +7,7 @@
 <!--start requires_ansible-->
 ## Ansible version compatibility
 
-This collection has been tested against following Ansible versions: **>=2.9.10**.
+This collection has been tested against following Ansible versions: **>=2.15.0**.
 
 <!--end requires_ansible-->
 
@@ -16,6 +16,11 @@ This collection has been tested against following Ansible versions: **>=2.9.10**
 * Collection supports >= 3.5
 
 ## Installation and Usage
+
+Ansible must be installed
+```
+pip install ansible
+```
 
 Install ALB collection using `ansible-galaxy` CLI:
 ```
@@ -282,8 +287,8 @@ avi_config:
 
 ## Support
 
-As Red Hat Ansible Certified Content, this collection is entitled to support through the Ansible Automation Platform (AAP) using the Create issue button on the top right corner.
-If a support case cannot be opened with Red Hat and the collection has been obtained either from Galaxy or GitHub, there may community help available on the [Ansible Forum](https://forum.ansible.com/).
+As Red Hat Ansible Certified Content, this collection is entitled to support through the Ansible Automation Platform (AAP) using the Create issue button on the top right corner.
+If a support case cannot be opened with Red Hat and the collection has been obtained either from Galaxy or GitHub, there may community help available on the [Ansible Forum](https://forum.ansible.com/).
 
 ## Release Notes
 
@@ -293,7 +298,8 @@ For release notes, see [CHANGELOG.rst](https://github.com/vmware/ansible-collect
 
 GNU General Public License v2.0 or later.
 
-See [LICENSE](https://github.com/vmware/ansible-collection-alb/blob//LICENSE) to see the full text.
+See [LICENSE](https://github.com/vmware/ansible-collection-alb/blob/31.1.1/LICENSE) to see the full text.
+
 
 **Notes**
 Please use Python >= 3.8 if you are using avi_serviceenginegroup module as it has more than 255 arguments
