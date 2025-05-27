@@ -4,17 +4,14 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_icapprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -207,7 +204,7 @@ options:
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
 EXAMPLES = """
 - hosts: all
@@ -225,21 +222,17 @@ EXAMPLES = """
     name: sample_icapprofile
 """
 
-RETURN = """
+RETURN = '''
 obj:
     description: IcapProfile (api/icapprofile) object
     returned: success, changed
     type: dict
-"""
+'''
 
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_ansible_api,
-    )
-
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -247,78 +240,43 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default="present", choices=["absent", "present"]),
-        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
-        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
-        avi_patch_path=dict(
-            type="str",
-        ),
-        avi_patch_value=dict(
-            type="str",
-        ),
-        allow_204=dict(
-            type="bool",
-        ),
-        buffer_size=dict(
-            type="int",
-        ),
-        buffer_size_exceed_action=dict(
-            type="str",
-        ),
-        cloud_ref=dict(
-            type="str",
-        ),
-        configpb_attributes=dict(
-            type="dict",
-        ),
-        description=dict(
-            type="str",
-        ),
-        enable_preview=dict(
-            type="bool",
-        ),
-        fail_action=dict(
-            type="str",
-        ),
-        name=dict(type="str", required=True),
-        nsx_defender_config=dict(
-            type="dict",
-        ),
-        pool_group_ref=dict(type="str", required=True),
-        preview_size=dict(
-            type="int",
-        ),
-        response_timeout=dict(
-            type="int",
-        ),
-        service_uri=dict(type="str", required=True),
-        slow_response_warning_threshold=dict(
-            type="int",
-        ),
-        tenant_ref=dict(
-            type="str",
-        ),
-        url=dict(
-            type="str",
-        ),
-        uuid=dict(
-            type="str",
-        ),
-        vendor=dict(
-            type="str",
-        ),
+        state=dict(default='present',
+                   choices=['absent', 'present']),
+        avi_api_update_method=dict(default='put',
+                                   choices=['put', 'patch']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
+        allow_204=dict(type='bool',),
+        buffer_size=dict(type='int',),
+        buffer_size_exceed_action=dict(type='str',),
+        cloud_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
+        description=dict(type='str',),
+        enable_preview=dict(type='bool',),
+        fail_action=dict(type='str',),
+        name=dict(type='str', required=True),
+        nsx_defender_config=dict(type='dict',),
+        pool_group_ref=dict(type='str', required=True),
+        preview_size=dict(type='int',),
+        response_timeout=dict(type='int',),
+        service_uri=dict(type='str', required=True),
+        slow_response_warning_threshold=dict(type='int',),
+        tenant_ref=dict(type='str',),
+        url=dict(type='str',),
+        uuid=dict(type='str',),
+        vendor=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(
+        argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
-    return avi_ansible_api(module, "icapprofile", set())
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
+    return avi_ansible_api(module, 'icapprofile',
+                           set())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

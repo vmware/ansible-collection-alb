@@ -5,17 +5,14 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_controllerproperties
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -919,7 +916,7 @@ options:
         type: int
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
 EXAMPLES = """
 - hosts: all
@@ -937,21 +934,17 @@ EXAMPLES = """
     name: sample_controllerproperties
 """
 
-RETURN = """
+RETURN = '''
 obj:
     description: ControllerProperties (api/controllerproperties) object
     returned: success, changed
     type: dict
-"""
+'''
 
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_ansible_api,
-    )
-
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -959,375 +952,139 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default="present", choices=["absent", "present"]),
-        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
-        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
-        avi_patch_path=dict(
-            type="str",
-        ),
-        avi_patch_value=dict(
-            type="str",
-        ),
-        alert_manager_use_evms=dict(
-            type="bool",
-        ),
-        allow_admin_network_updates=dict(
-            type="bool",
-        ),
-        allow_ip_forwarding=dict(
-            type="bool",
-        ),
-        allow_unauthenticated_apis=dict(
-            type="bool",
-        ),
-        allow_unauthenticated_nodes=dict(
-            type="bool",
-        ),
-        api_idle_timeout=dict(
-            type="int",
-        ),
-        api_perf_logging_threshold=dict(
-            type="int",
-        ),
-        appviewx_compat_mode=dict(
-            type="bool",
-        ),
-        async_patch_merge_period=dict(
-            type="int",
-        ),
-        async_patch_request_cleanup_duration=dict(
-            type="int",
-        ),
-        attach_ip_retry_interval=dict(
-            type="int",
-        ),
-        attach_ip_retry_limit=dict(
-            type="int",
-        ),
-        bm_use_ansible=dict(
-            type="bool",
-        ),
-        check_vsvip_fqdn_syntax=dict(
-            type="bool",
-        ),
-        cleanup_expired_authtoken_timeout_period=dict(
-            type="int",
-        ),
-        cleanup_sessions_timeout_period=dict(
-            type="int",
-        ),
-        cloud_discovery_interval=dict(
-            type="int",
-        ),
-        cloud_reconcile=dict(
-            type="bool",
-        ),
-        cloud_reconcile_interval=dict(
-            type="int",
-        ),
-        cluster_ip_gratuitous_arp_period=dict(
-            type="int",
-        ),
-        configpb_attributes=dict(
-            type="dict",
-        ),
-        consistency_check_timeout_period=dict(
-            type="int",
-        ),
-        controller_resource_info_collection_period=dict(
-            type="int",
-        ),
-        crashed_se_reboot=dict(
-            type="int",
-        ),
-        dead_se_detection_timer=dict(
-            type="int",
-        ),
-        default_minimum_api_timeout=dict(
-            type="int",
-        ),
-        del_offline_se_after_reboot_delay=dict(
-            type="int",
-        ),
-        detach_ip_retry_interval=dict(
-            type="int",
-        ),
-        detach_ip_retry_limit=dict(
-            type="int",
-        ),
-        detach_ip_timeout=dict(
-            type="int",
-        ),
-        dns_refresh_period=dict(
-            type="int",
-        ),
-        dummy=dict(
-            type="int",
-        ),
-        edit_system_limits=dict(
-            type="bool",
-        ),
-        enable_api_sharding=dict(
-            type="bool",
-        ),
-        enable_memory_balancer=dict(
-            type="bool",
-        ),
-        enable_per_process_stop=dict(
-            type="bool",
-        ),
-        enable_resmgr_log_cache_print=dict(
-            type="bool",
-        ),
-        event_manager_max_goroutines=dict(
-            type="int",
-        ),
-        event_manager_max_subscribers=dict(
-            type="int",
-        ),
-        event_manager_processing_time_threshold=dict(
-            type="int",
-        ),
-        false_positive_learning_config=dict(
-            type="dict",
-        ),
-        fatal_error_lease_time=dict(
-            type="int",
-        ),
-        federated_datastore_cleanup_duration=dict(
-            type="int",
-        ),
-        file_object_cleanup_period=dict(
-            type="int",
-        ),
-        file_reference_mappings=dict(
-            type="list",
-            elements="dict",
-        ),
-        fileobject_max_file_versions=dict(
-            type="int",
-        ),
-        gslb_purge_batch_size=dict(
-            type="int",
-        ),
-        gslb_purge_sleep_time_ms=dict(
-            type="int",
-        ),
-        ignore_vrf_in_networksubnetlist=dict(
-            type="bool",
-        ),
-        max_dead_se_in_grp=dict(
-            type="int",
-        ),
-        max_pcap_per_tenant=dict(
-            type="int",
-        ),
-        max_se_spawn_interval_delay=dict(
-            type="int",
-        ),
-        max_seq_attach_ip_failures=dict(
-            type="int",
-        ),
-        max_seq_vnic_failures=dict(
-            type="int",
-        ),
-        max_threads_cc_vip_bg_worker=dict(
-            type="int",
-        ),
-        permission_scoped_shared_admin_networks=dict(
-            type="bool",
-        ),
-        persistence_key_rotate_period=dict(
-            type="int",
-        ),
-        portal_request_burst_limit=dict(
-            type="int",
-        ),
-        portal_request_rate_limit=dict(
-            type="int",
-        ),
-        portal_token=dict(
-            type="str",
-            no_log=True,
-        ),
-        postgres_vacuum_period=dict(
-            type="int",
-        ),
-        process_locked_useraccounts_timeout_period=dict(
-            type="int",
-        ),
-        process_pki_profile_timeout_period=dict(
-            type="int",
-        ),
-        query_host_fail=dict(
-            type="int",
-        ),
-        resmgr_log_caching_period=dict(
-            type="int",
-        ),
-        restrict_cloud_read_access=dict(
-            type="bool",
-        ),
-        safenet_hsm_version=dict(
-            type="str",
-        ),
-        se_create_timeout=dict(
-            type="int",
-        ),
-        se_failover_attempt_interval=dict(
-            type="int",
-        ),
-        se_from_marketplace=dict(
-            type="str",
-        ),
-        se_offline_del=dict(
-            type="int",
-        ),
-        se_spawn_retry_interval=dict(
-            type="int",
-        ),
-        se_upgrade_flow_cleanup_timeout=dict(
-            type="int",
-        ),
-        se_vnic_cooldown=dict(
-            type="int",
-        ),
-        se_vnic_gc_wait_time=dict(
-            type="int",
-        ),
-        secure_channel_cleanup_timeout=dict(
-            type="int",
-        ),
-        secure_channel_controller_token_timeout=dict(
-            type="int",
-        ),
-        secure_channel_se_token_timeout=dict(
-            type="int",
-        ),
-        seupgrade_copy_buffer_size=dict(
-            type="int",
-        ),
-        seupgrade_copy_pool_size=dict(
-            type="int",
-        ),
-        seupgrade_fabric_pool_size=dict(
-            type="int",
-        ),
-        seupgrade_segroup_min_dead_timeout=dict(
-            type="int",
-        ),
-        shared_ssl_certificates=dict(
-            type="bool",
-        ),
-        skopeo_retry_interval=dict(
-            type="int",
-        ),
-        skopeo_retry_limit=dict(
-            type="int",
-        ),
-        soft_min_mem_per_se_limit=dict(
-            type="int",
-        ),
-        ssl_certificate_expiry_warning_days=dict(
-            type="list",
-            elements="int",
-        ),
-        system_report_cleanup_interval=dict(
-            type="int",
-        ),
-        system_report_limit=dict(
-            type="int",
-        ),
-        unresponsive_se_reboot=dict(
-            type="int",
-        ),
-        update_dns_entry_retry_limit=dict(
-            type="int",
-        ),
-        update_dns_entry_timeout=dict(
-            type="int",
-        ),
-        upgrade_dns_ttl=dict(
-            type="int",
-        ),
-        upgrade_fat_se_lease_time=dict(
-            type="int",
-        ),
-        upgrade_lease_time=dict(
-            type="int",
-        ),
-        upgrade_se_per_vs_scale_ops_txn_time=dict(
-            type="int",
-        ),
-        url=dict(
-            type="str",
-        ),
-        user_agent_cache_config=dict(
-            type="dict",
-        ),
-        uuid=dict(
-            type="str",
-        ),
-        vnic_op_fail_time=dict(
-            type="int",
-        ),
-        vs_awaiting_se_timeout=dict(
-            type="int",
-        ),
-        vs_key_rotate_period=dict(
-            type="int",
-        ),
-        vs_scaleout_ready_check_interval=dict(
-            type="int",
-        ),
-        vs_se_attach_ip_fail=dict(
-            type="int",
-        ),
-        vs_se_bootup_fail=dict(
-            type="int",
-        ),
-        vs_se_bootup_fail_patch=dict(
-            type="int",
-        ),
-        vs_se_create_fail=dict(
-            type="int",
-        ),
-        vs_se_ping_fail=dict(
-            type="int",
-        ),
-        vs_se_vnic_fail=dict(
-            type="int",
-        ),
-        vs_se_vnic_ip_fail=dict(
-            type="int",
-        ),
-        vsphere_ha_detection_timeout=dict(
-            type="int",
-        ),
-        vsphere_ha_recovery_timeout=dict(
-            type="int",
-        ),
-        vsphere_ha_timer_interval=dict(
-            type="int",
-        ),
-        warmstart_se_reconnect_wait_time=dict(
-            type="int",
-        ),
-        warmstart_vs_resync_wait_time=dict(
-            type="int",
-        ),
+        state=dict(default='present',
+                   choices=['absent', 'present']),
+        avi_api_update_method=dict(default='put',
+                                   choices=['put', 'patch']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
+        alert_manager_use_evms=dict(type='bool',),
+        allow_admin_network_updates=dict(type='bool',),
+        allow_ip_forwarding=dict(type='bool',),
+        allow_unauthenticated_apis=dict(type='bool',),
+        allow_unauthenticated_nodes=dict(type='bool',),
+        api_idle_timeout=dict(type='int',),
+        api_perf_logging_threshold=dict(type='int',),
+        appviewx_compat_mode=dict(type='bool',),
+        async_patch_merge_period=dict(type='int',),
+        async_patch_request_cleanup_duration=dict(type='int',),
+        attach_ip_retry_interval=dict(type='int',),
+        attach_ip_retry_limit=dict(type='int',),
+        bm_use_ansible=dict(type='bool',),
+        check_vsvip_fqdn_syntax=dict(type='bool',),
+        cleanup_expired_authtoken_timeout_period=dict(type='int',),
+        cleanup_sessions_timeout_period=dict(type='int',),
+        cloud_discovery_interval=dict(type='int',),
+        cloud_reconcile=dict(type='bool',),
+        cloud_reconcile_interval=dict(type='int',),
+        cluster_ip_gratuitous_arp_period=dict(type='int',),
+        configpb_attributes=dict(type='dict',),
+        consistency_check_timeout_period=dict(type='int',),
+        controller_resource_info_collection_period=dict(type='int',),
+        crashed_se_reboot=dict(type='int',),
+        dead_se_detection_timer=dict(type='int',),
+        default_minimum_api_timeout=dict(type='int',),
+        del_offline_se_after_reboot_delay=dict(type='int',),
+        detach_ip_retry_interval=dict(type='int',),
+        detach_ip_retry_limit=dict(type='int',),
+        detach_ip_timeout=dict(type='int',),
+        dns_refresh_period=dict(type='int',),
+        dummy=dict(type='int',),
+        edit_system_limits=dict(type='bool',),
+        enable_api_sharding=dict(type='bool',),
+        enable_memory_balancer=dict(type='bool',),
+        enable_per_process_stop=dict(type='bool',),
+        enable_resmgr_log_cache_print=dict(type='bool',),
+        event_manager_max_goroutines=dict(type='int',),
+        event_manager_max_subscribers=dict(type='int',),
+        event_manager_processing_time_threshold=dict(type='int',),
+        false_positive_learning_config=dict(type='dict',),
+        fatal_error_lease_time=dict(type='int',),
+        federated_datastore_cleanup_duration=dict(type='int',),
+        file_object_cleanup_period=dict(type='int',),
+        file_reference_mappings=dict(type='list', elements='dict',),
+        fileobject_max_file_versions=dict(type='int',),
+        gslb_purge_batch_size=dict(type='int',),
+        gslb_purge_sleep_time_ms=dict(type='int',),
+        ignore_vrf_in_networksubnetlist=dict(type='bool',),
+        max_dead_se_in_grp=dict(type='int',),
+        max_pcap_per_tenant=dict(type='int',),
+        max_se_spawn_interval_delay=dict(type='int',),
+        max_seq_attach_ip_failures=dict(type='int',),
+        max_seq_vnic_failures=dict(type='int',),
+        max_threads_cc_vip_bg_worker=dict(type='int',),
+        permission_scoped_shared_admin_networks=dict(type='bool',),
+        persistence_key_rotate_period=dict(type='int',),
+        portal_request_burst_limit=dict(type='int',),
+        portal_request_rate_limit=dict(type='int',),
+        portal_token=dict(type='str', no_log=True,),
+        postgres_vacuum_period=dict(type='int',),
+        process_locked_useraccounts_timeout_period=dict(type='int',),
+        process_pki_profile_timeout_period=dict(type='int',),
+        query_host_fail=dict(type='int',),
+        resmgr_log_caching_period=dict(type='int',),
+        restrict_cloud_read_access=dict(type='bool',),
+        safenet_hsm_version=dict(type='str',),
+        se_create_timeout=dict(type='int',),
+        se_failover_attempt_interval=dict(type='int',),
+        se_from_marketplace=dict(type='str',),
+        se_offline_del=dict(type='int',),
+        se_spawn_retry_interval=dict(type='int',),
+        se_upgrade_flow_cleanup_timeout=dict(type='int',),
+        se_vnic_cooldown=dict(type='int',),
+        se_vnic_gc_wait_time=dict(type='int',),
+        secure_channel_cleanup_timeout=dict(type='int',),
+        secure_channel_controller_token_timeout=dict(type='int',),
+        secure_channel_se_token_timeout=dict(type='int',),
+        seupgrade_copy_buffer_size=dict(type='int',),
+        seupgrade_copy_pool_size=dict(type='int',),
+        seupgrade_fabric_pool_size=dict(type='int',),
+        seupgrade_segroup_min_dead_timeout=dict(type='int',),
+        shared_ssl_certificates=dict(type='bool',),
+        skopeo_retry_interval=dict(type='int',),
+        skopeo_retry_limit=dict(type='int',),
+        soft_min_mem_per_se_limit=dict(type='int',),
+        ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
+        system_report_cleanup_interval=dict(type='int',),
+        system_report_limit=dict(type='int',),
+        unresponsive_se_reboot=dict(type='int',),
+        update_dns_entry_retry_limit=dict(type='int',),
+        update_dns_entry_timeout=dict(type='int',),
+        upgrade_dns_ttl=dict(type='int',),
+        upgrade_fat_se_lease_time=dict(type='int',),
+        upgrade_lease_time=dict(type='int',),
+        upgrade_se_per_vs_scale_ops_txn_time=dict(type='int',),
+        url=dict(type='str',),
+        user_agent_cache_config=dict(type='dict',),
+        uuid=dict(type='str',),
+        vnic_op_fail_time=dict(type='int',),
+        vs_awaiting_se_timeout=dict(type='int',),
+        vs_key_rotate_period=dict(type='int',),
+        vs_scaleout_ready_check_interval=dict(type='int',),
+        vs_se_attach_ip_fail=dict(type='int',),
+        vs_se_bootup_fail=dict(type='int',),
+        vs_se_bootup_fail_patch=dict(type='int',),
+        vs_se_create_fail=dict(type='int',),
+        vs_se_ping_fail=dict(type='int',),
+        vs_se_vnic_fail=dict(type='int',),
+        vs_se_vnic_ip_fail=dict(type='int',),
+        vsphere_ha_detection_timeout=dict(type='int',),
+        vsphere_ha_recovery_timeout=dict(type='int',),
+        vsphere_ha_timer_interval=dict(type='int',),
+        warmstart_se_reconnect_wait_time=dict(type='int',),
+        warmstart_vs_resync_wait_time=dict(type='int',),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(
+        argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
-    return avi_ansible_api(module, "controllerproperties", ["portal_token"])
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
+    return avi_ansible_api(module, 'controllerproperties',
+                           ['portal_token'])
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

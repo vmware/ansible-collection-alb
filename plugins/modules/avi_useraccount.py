@@ -5,17 +5,14 @@
 # SPDX-License-Identifier: Apache License 2.0
 
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_useraccount
 author: Chaitanya Deshpande (@chaitanyaavi) <chaitanya.deshpande@avinetworks.com>
@@ -45,9 +42,9 @@ options:
         default: false
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
-EXAMPLES = """
+EXAMPLES = '''
   - hosts: all
     vars:
       avi_credentials:
@@ -69,27 +66,26 @@ EXAMPLES = """
       avi_credentials: "{{ avi_credentials }}"
       old_password: "{{ avi_credentials.password }}"
       force_change: false
-"""
+'''
 
-RETURN = """
+RETURN = '''
 obj:
     description: Avi REST resource
     returned: success, changed
     type: dict
-"""
+'''
 
+import json
+import time
 from ansible.module_utils.basic import AnsibleModule
+from copy import deepcopy
 
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        ansible_return,
-    )
+        avi_common_argument_spec, ansible_return, avi_obj_cmp,
+        cleanup_absent_fields)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-        ApiSession,
-        AviCredentials,
-    )
-
+        ApiSession, AviCredentials)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -97,65 +93,55 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        full_name=dict(type="str"),
-        email=dict(type="str"),
-        old_password=dict(type="str", required=True, no_log=True),
+        full_name=dict(type='str'),
+        email=dict(type='str'),
+        old_password=dict(type='str', required=True, no_log=True),
         # Flag to specify priority of old/new password while establishing session with controller.
         # To handle both Saas and conventional (Entire state in playbook) scenario.
-        force_change=dict(type="bool", default=False),
+        force_change=dict(type='bool', default=False)
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)
-    full_name = module.params.get("full_name")
-    email = module.params.get("email")
-    old_password = module.params.get("old_password")
-    force_change = module.params.get("force_change", False)
-    data = {"old_password": old_password, "password": api_creds.password}
+    full_name = module.params.get('full_name')
+    email = module.params.get('email')
+    old_password = module.params.get('old_password')
+    force_change = module.params.get('force_change', False)
+    data = {
+        'old_password': old_password,
+        'password': api_creds.password
+    }
     if full_name:
-        data["full_name"] = full_name
+        data['full_name'] = full_name
     if email:
-        data["email"] = email
+        data['email'] = email
     api = None
     if not force_change:
         # check if the new password is already set.
         try:
             api = ApiSession.get_session(
-                api_creds.controller,
-                api_creds.username,
-                password=api_creds.password,
-                timeout=api_creds.timeout,
-                tenant=api_creds.tenant,
-                tenant_uuid=api_creds.tenant_uuid,
-                token=api_creds.token,
-                port=api_creds.port,
-            )
-            data["old_password"] = api_creds.password
+                api_creds.controller, api_creds.username,
+                password=api_creds.password, timeout=api_creds.timeout,
+                tenant=api_creds.tenant, tenant_uuid=api_creds.tenant_uuid,
+                token=api_creds.token, port=api_creds.port)
+            data['old_password'] = api_creds.password
         except Exception:
             # create a new session using the old password.
             pass
     if not api:
         api = ApiSession.get_session(
-            api_creds.controller,
-            api_creds.username,
-            password=old_password,
-            timeout=api_creds.timeout,
-            tenant=api_creds.tenant,
-            tenant_uuid=api_creds.tenant_uuid,
-            token=api_creds.token,
-            port=api_creds.port,
-        )
-    rsp = api.put("useraccount", data=data)
+            api_creds.controller, api_creds.username,
+            password=old_password, timeout=api_creds.timeout,
+            tenant=api_creds.tenant, tenant_uuid=api_creds.tenant_uuid,
+            token=api_creds.token, port=api_creds.port)
+    rsp = api.put('useraccount', data=data)
     return ansible_return(module, rsp, True, req=data)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

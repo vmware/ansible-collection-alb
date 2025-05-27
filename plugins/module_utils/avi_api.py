@@ -10,6 +10,7 @@ import json
 import logging
 import time
 import ipaddress
+import socket
 
 if sys.version_info < (3, 5):
     from urlparse import urlparse
@@ -218,7 +219,6 @@ class ApiSession(Session):
     MAX_API_RETRIES = 3
     CSP_HOST = 'console.cloud.vmware.com'
     IPV6 = 6
-
     def __init__(self, controller_ip=None, username=None, password=None,
                  token=None, tenant=None, tenant_uuid=None, verify=False,
                  port=None, timeout=60, api_version=None,

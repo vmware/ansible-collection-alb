@@ -6,8 +6,7 @@ Created on Aug 16, 2016
 
 @author: Gaurav Rastogi (grastogi@avinetworks.com)
 """
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 import os
 import re
@@ -16,21 +15,12 @@ import yaml
 import time
 import logging
 from copy import deepcopy
-from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-    ApiSession,
-    ObjectNotFound,
-    avi_sdk_syslog_logger,
-    AviCredentials,
-)
-from ansible_collections.vmware.alb.plugins.module_utils.csp_avi_api import (
-    CSPApiSession,
-)
-from ansible_collections.vmware.alb.plugins.module_utils.saml_avi_api import (
-    OneloginSAMLApiSession,
-    OktaSAMLApiSession,
-)
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, avi_sdk_syslog_logger, \
+    AviCredentials
+from ansible_collections.vmware.alb.plugins.module_utils.csp_avi_api import CSPApiSession
+from ansible_collections.vmware.alb.plugins.module_utils.saml_avi_api import OneloginSAMLApiSession, OktaSAMLApiSession
 
-if os.environ.get("AVI_LOG_HANDLER", "") != "syslog":
+if os.environ.get('AVI_LOG_HANDLER', '') != 'syslog':
     log = logging.getLogger(__name__)
 else:
     # Ansible does not allow logging from the modules.
@@ -50,7 +40,8 @@ class AviCheckModeResponse(object):
         return self.obj
 
 
-def ansible_return(module, rsp, changed, req=None, existing_obj=None, api_context=None):
+def ansible_return(module, rsp, changed, req=None, existing_obj=None,
+                   api_context=None):
     """
     :param module: AnsibleModule
     :param rsp: ApiResponse from avi_api
@@ -64,23 +55,20 @@ def ansible_return(module, rsp, changed, req=None, existing_obj=None, api_contex
     Returns: specific ansible module exit function
     """
 
-    if (
-        rsp is not None
-        and rsp.status_code > 299
-        and not any(error in rsp.text for error in SKIP_DELETE_ERROR)
-    ):
+    if rsp is not None and rsp.status_code > 299 and not \
+            any(error in rsp.text for error in SKIP_DELETE_ERROR):
         return module.fail_json(
-            msg="Error %d Msg %s req: %s api_context:%s "
-            % (rsp.status_code, rsp.text, req, api_context)
-        )
+            msg='Error %d Msg %s req: %s api_context:%s ' % (
+                rsp.status_code, rsp.text, req, api_context))
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)
-    key = "%s:%s:%s" % (api_creds.controller, api_creds.username, api_creds.port)
-    deactivate_fact = module.params.get("avi_deactivate_session_cache_as_fact")
+    key = '%s:%s:%s' % (api_creds.controller, api_creds.username,
+                        api_creds.port)
+    deactivate_fact = module.params.get('avi_deactivate_session_cache_as_fact')
 
     fact_context = None
     if not deactivate_fact:
-        fact_context = module.params.get("api_context", {})
+        fact_context = module.params.get('api_context', {})
         if fact_context:
             fact_context.update({key: api_context})
         else:
@@ -88,25 +76,23 @@ def ansible_return(module, rsp, changed, req=None, existing_obj=None, api_contex
 
     obj_val = rsp.json() if rsp else existing_obj
 
-    if obj_val and module.params.get("obj_username", None) and "username" in obj_val:
+    if (obj_val and module.params.get("obj_username", None) and
+            "username" in obj_val):
         obj_val["obj_username"] = obj_val["username"]
-    if obj_val and module.params.get("obj_password", None) and "password" in obj_val:
+    if (obj_val and module.params.get("obj_password", None) and
+            "password" in obj_val):
         obj_val["obj_password"] = obj_val["password"]
-    if obj_val and module.params.get("obj_state", None) and "state" in obj_val:
+    if (obj_val and module.params.get("obj_state", None) and
+            "state" in obj_val):
         obj_val["obj_state"] = obj_val["state"]
     old_obj_val = existing_obj if changed and existing_obj else None
     api_context_val = api_context if deactivate_fact else None
-    ansible_facts_val = (
-        dict(avi_api_context=fact_context) if not deactivate_fact else {}
-    )
+    ansible_facts_val = dict(
+        avi_api_context=fact_context) if not deactivate_fact else {}
 
     return module.exit_json(
-        changed=changed,
-        obj=obj_val,
-        old_obj=old_obj_val,
-        ansible_facts=ansible_facts_val,
-        api_context=api_context_val,
-    )
+        changed=changed, obj=obj_val, old_obj=old_obj_val,
+        ansible_facts=ansible_facts_val, api_context=api_context_val)
 
 
 def purge_optional_fields(obj, module):
@@ -118,13 +104,13 @@ def purge_optional_fields(obj, module):
     """
     purge_fields = []
     for param, spec in module.argument_spec.items():
-        if not spec.get("required", False):
+        if not spec.get('required', False):
             if param not in obj:
                 # these are ansible common items
                 continue
             if obj[param] is None:
                 purge_fields.append(param)
-    log.debug("purging fields %s", purge_fields)
+    log.debug('purging fields %s', purge_fields)
     for param in purge_fields:
         obj.pop(param, None)
     return obj
@@ -142,9 +128,8 @@ def cleanup_absent_fields(obj):
     cleanup_keys = []
     for k, v in obj.items():
         if type(v) == dict:
-            if ("state" in v and v["state"] == "absent") or (
-                v == "{'state': 'absent'}"
-            ):
+            if (('state' in v and v['state'] == 'absent') or
+                    (v == "{'state': 'absent'}")):
                 cleanup_keys.append(k)
             else:
                 cleanup_absent_fields(v)
@@ -176,15 +161,14 @@ def get_unicode_type():
         return str
 
 
-RE_REF_MATCH = re.compile(r"^/api/[\w/]+\?name\=[\w*]+[^#<>]*$")
+RE_REF_MATCH = re.compile(r'^/api/[\w/]+\?name\=[\w*]+[^#<>]*$')
 
 # if HTTP ref match then strip out the #name
 # HTTP_REF_MATCH = re.compile('https://[\w.0-9:-]+/api/[\w/\?.#&-]*$')
-HTTP_REF_MATCH = re.compile(r"https://[\w.0-9:-]+/api/.+")
-HTTP_REF_MATCH_IPV6 = re.compile(r"https://[[\w.0-9:-]+]/api/.+")
-HTTP_REF_W_NAME_MATCH = re.compile(r"https://[\w.0-9:-]+/api/.*#.+")
-HTTP_REF_W_NAME_MATCH_IPV6 = re.compile(r"https://[[\w.0-9:-]+]/api/.*#.+")
-
+HTTP_REF_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.+')
+HTTP_REF_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.+')
+HTTP_REF_W_NAME_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.*#.+')
+HTTP_REF_W_NAME_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.*#.+')
 
 def ref_n_str_cmp(x, y):
     """
@@ -211,36 +195,35 @@ def ref_n_str_cmp(x, y):
         y = str(y)
         x = str(x)
     unicode_type = get_unicode_type()
-    if not (
-        (isinstance(x, str) or isinstance(x, unicode_type))
-        and (isinstance(y, str) or isinstance(y, unicode_type))
-    ):
+    if not ((isinstance(x, str) or isinstance(x, unicode_type)) and
+            (isinstance(y, str) or isinstance(y, unicode_type))):
         return False
     if str(type(y)) == "<type 'unicode'>":
-        y = y.encode("utf-8")
+        y = y.encode('utf-8')
     if str(type(x)) == "<type 'unicode'>":
-        x = x.encode("utf-8")
+        x = x.encode('utf-8')
     y_uuid = y_name = str(y)
     x = str(x)
     if RE_REF_MATCH.match(x):
-        x = x.split("name=")[1]
+        x = x.split('name=')[1]
     elif HTTP_REF_MATCH.match(x):
-        x = x.rsplit("#", 1)[0]
-        y = y.rsplit("#", 1)[0]
+        x = x.rsplit('#', 1)[0]
+        y = y.rsplit('#', 1)[0]
     elif RE_REF_MATCH.match(y) or HTTP_REF_MATCH_IPV6.match(y):
-        y = y.split("name=")[1]
+        y = y.split('name=')[1]
 
     if HTTP_REF_W_NAME_MATCH.match(y) or HTTP_REF_W_NAME_MATCH_IPV6.match(y):
-        path = y.split("api/", 1)[1]
+        path = y.split('api/', 1)[1]
         # Fetching name or uuid from path /xxxx_xx/xx/xx_x/uuid_or_name
-        uuid_or_name = path.split("/")[-1]
-        parts = uuid_or_name.rsplit("#", 1)
+        uuid_or_name = path.split('/')[-1]
+        parts = uuid_or_name.rsplit('#', 1)
         y_uuid = parts[0]
-        y_name = parts[1] if len(parts) > 1 else ""
+        y_name = parts[1] if len(parts) > 1 else ''
         # is just string but y is a url so match either uuid or name
-    result = x in (y, y_name, y_uuid)
+    result = (x in (y, y_name, y_uuid))
     if not result:
-        log.debug("x: %s y: %s y_name %s y_uuid %s", x, y, y_name, y_uuid)
+        log.debug('x: %s y: %s y_name %s y_uuid %s',
+                  x, y, y_name, y_uuid)
     return result
 
 
@@ -292,7 +275,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
     if type(x) == list:
         # should compare each item in the list and that should match
         if len(x) != len(y):
-            log.debug("x has %d items y has %d", len(x), len(y))
+            log.debug('x has %d items y has %d', len(x), len(y))
             return False
         for i in zip(x, y):
             if not avi_obj_cmp(i[0], i[1], sensitive_fields=sensitive_fields):
@@ -300,11 +283,11 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
                 return False
 
     if type(x) == dict:
-        x.pop("_last_modified", None)
-        x.pop("tenant", None)
-        y.pop("_last_modified", None)
-        x.pop("api_version", None)
-        y.pop("api_verison", None)
+        x.pop('_last_modified', None)
+        x.pop('tenant', None)
+        y.pop('_last_modified', None)
+        x.pop('api_version', None)
+        y.pop('api_verison', None)
         d_xks = [k for k in x.keys() if k in sensitive_fields]
 
         if d_xks:
@@ -318,7 +301,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
                 d_x_absent_ks.append(k)
                 continue
             if isinstance(v, dict):
-                if ("state" in v) and (v["state"] == "absent"):
+                if ('state' in v) and (v['state'] == 'absent'):
                     if type(y) == dict and k not in y:
                         d_x_absent_ks.append(k)
                     else:
@@ -354,40 +337,26 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
     return True
 
 
-POP_FIELDS = [
-    "state",
-    "controller",
-    "username",
-    "password",
-    "api_version",
-    "avi_credentials",
-    "avi_api_update_method",
-    "avi_api_patch_op",
-    "avi_patch_path",
-    "avi_patch_value",
-    "api_context",
-    "tenant",
-    "tenant_uuid",
-    "avi_deactivate_session_cache_as_fact",
-]
+POP_FIELDS = ['state', 'controller', 'username', 'password', 'api_version',
+              'avi_credentials', 'avi_api_update_method', 'avi_api_patch_op', 'avi_patch_path',
+              'avi_patch_value', 'api_context', 'tenant', 'tenant_uuid', 'avi_deactivate_session_cache_as_fact']
 
 
 def get_api_context(module, api_creds):
-    api_context = module.params.get("api_context")
-    if api_context and module.params.get("avi_deactivate_session_cache_as_fact"):
+    api_context = module.params.get('api_context')
+    if api_context and module.params.get('avi_deactivate_session_cache_as_fact'):
         return api_context
-    elif api_context and not module.params.get("avi_deactivate_session_cache_as_fact"):
-        key = "%s:%s:%s" % (api_creds.controller, api_creds.username, api_creds.port)
+    elif api_context and not module.params.get(
+            'avi_deactivate_session_cache_as_fact'):
+        key = '%s:%s:%s' % (api_creds.controller, api_creds.username,
+                            api_creds.port)
         return api_context.get(key)
     else:
         return None
 
 
-NO_UUID_OBJ = ["cluster", "systemconfiguration", "inventoryfaultconfig"]
-SKIP_DELETE_ERROR = [
-    "Cannot delete system default object",
-    "Method 'DELETE' not allowed",
-]
+NO_UUID_OBJ = ['cluster', 'systemconfiguration', 'inventoryfaultconfig']
+SKIP_DELETE_ERROR = ["Cannot delete system default object", "Method \'DELETE\' not allowed"]
 BUFFER_DELAY = 120
 
 
@@ -401,7 +370,7 @@ def get_idp_class(idp):
         idp_class = CSPApiSession
     elif str(idp).lower() == "oktasamlapisession":
         idp_class = OktaSAMLApiSession
-    elif str(idp).lower() == "oneloginsamlapisession":
+    elif str(idp).lower() == 'oneloginsamlapisession':
         idp_class = OneloginSAMLApiSession
     else:
         idp_class = None
@@ -435,11 +404,12 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
             timeout=api_creds.timeout,
             tenant=api_creds.tenant,
             tenant_uuid=api_creds.tenant_uuid,
-            token=api_context["csrftoken"],
+            token=api_context['csrftoken'],
             port=api_creds.port,
-            session_id=api_context["session_id"],
-            csrftoken=api_context["csrftoken"],
-        )
+            session_id=api_context['session_id'],
+            csrftoken=api_context['csrftoken'],
+            ssl_cert=api_context['ssl_cert'],
+            ssl_key=api_context['ssl_key'])
     else:
         api = ApiSession.get_session(
             api_creds.controller,
@@ -454,26 +424,25 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
             csp_host=api_creds.csp_host,
             csp_token=api_creds.csp_token,
             ssl_cert=api_creds.ssl_cert,
-            ssl_key=api_creds.ssl_key,
-        )
-    state = module.params["state"]
+            ssl_key=api_creds.ssl_key)
+    state = module.params['state']
     # Get the api version.
-    avi_update_method = module.params.get("avi_api_update_method", "put")
-    avi_patch_op = module.params.get("avi_api_patch_op", "add")
-    avi_patch_path = module.params.get("avi_patch_path")
-    avi_patch_value = module.params.get("avi_patch_value", None)
+    avi_update_method = module.params.get('avi_api_update_method', 'put')
+    avi_patch_op = module.params.get('avi_api_patch_op', 'add')
+    avi_patch_path = module.params.get('avi_patch_path')
+    avi_patch_value = module.params.get('avi_patch_value', None)
     api_version = api_creds.api_version
-    name = module.params.get("name", None)
+    name = module.params.get('name', None)
     # Added Support to get uuid
-    uuid = module.params.get("uuid", None)
+    uuid = module.params.get('uuid', None)
     check_mode = module.check_mode
     if uuid and obj_type not in NO_UUID_OBJ:
-        obj_path = "%s/%s" % (obj_type, uuid)
+        obj_path = '%s/%s' % (obj_type, uuid)
     else:
-        obj_path = "%s/" % obj_type
+        obj_path = '%s/' % obj_type
     obj = deepcopy(module.params)
-    tenant = obj.pop("tenant", "")
-    tenant_uuid = obj.pop("tenant_uuid", "")
+    tenant = obj.pop('tenant', '')
+    tenant_uuid = obj.pop('tenant_uuid', '')
     # obj.pop('cloud_ref', None)
     for k in POP_FIELDS:
         obj.pop(k, None)
@@ -483,70 +452,58 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
     # named username/password/state. The following code copies
     # username, password and state from the obj_username, obj_password
     # and obj_state fields.
-    if "obj_username" in obj:
-        obj["username"] = obj["obj_username"]
-        obj.pop("obj_username")
-    if "obj_password" in obj:
-        obj["password"] = obj["obj_password"]
-        obj.pop("obj_password")
-    if "obj_state" in obj:
-        obj["state"] = obj["obj_state"]
-        obj.pop("obj_state")
-    if "full_name" not in obj and "name" in obj and obj_type == "user":
-        obj["full_name"] = obj["name"]
+    if 'obj_username' in obj:
+        obj['username'] = obj['obj_username']
+        obj.pop('obj_username')
+    if 'obj_password' in obj:
+        obj['password'] = obj['obj_password']
+        obj.pop('obj_password')
+    if 'obj_state' in obj:
+        obj['state'] = obj['obj_state']
+        obj.pop('obj_state')
+    if 'full_name' not in obj and 'name' in obj and obj_type == "user":
+        obj['full_name'] = obj['name']
         # Special case as name represent full_name in user module
         # As per API response, name is always same as username regardless of full_name
-        obj["name"] = obj["username"]
+        obj['name'] = obj['username']
 
-    log.info("passed object %s ", obj)
+    log.info('passed object %s ', obj)
 
     if uuid:
         # Get the object based on uuid.
         try:
             existing_obj = api.get(
-                obj_path,
-                tenant=tenant,
-                tenant_uuid=tenant_uuid,
-                params={"include_refs": "", "include_name": ""},
-                api_version=api_version,
-            )
+                obj_path, tenant=tenant, tenant_uuid=tenant_uuid,
+                params={'include_refs': '', 'include_name': ''},
+                api_version=api_version)
             existing_obj = existing_obj.json()
         except ObjectNotFound:
             existing_obj = None
     elif name:
-        params = {"include_refs": "", "include_name": ""}
-        if obj.get("cloud_ref", None):
+        params = {'include_refs': '', 'include_name': ''}
+        if obj.get('cloud_ref', None):
             # this is the case when gets have to be scoped with cloud
-            cloud = obj["cloud_ref"].split("name=")[1]
-            params["cloud_ref.name"] = cloud
+            cloud = obj['cloud_ref'].split('name=')[1]
+            params['cloud_ref.name'] = cloud
         existing_obj = api.get_object_by_name(
-            obj_type,
-            name,
-            tenant=tenant,
-            tenant_uuid=tenant_uuid,
-            params=params,
-            api_version=api_version,
-        )
+            obj_type, name, tenant=tenant, tenant_uuid=tenant_uuid,
+            params=params, api_version=api_version)
 
         # Need to check if tenant_ref was provided and the object returned
         # is actually in admin tenant.
-        if existing_obj and "tenant_ref" in obj and "tenant_ref" in existing_obj:
+        if existing_obj and 'tenant_ref' in obj and 'tenant_ref' in existing_obj:
             # https://10.10.25.42/api/tenant/admin#admin
-            existing_obj_tenant = existing_obj["tenant_ref"].split("#")[1]
-            obj_tenant = obj["tenant_ref"].split("name=")[1]
+            existing_obj_tenant = existing_obj['tenant_ref'].split('#')[1]
+            obj_tenant = obj['tenant_ref'].split('name=')[1]
             if obj_tenant != existing_obj_tenant:
                 existing_obj = None
     else:
         # added api version to avi api call.
-        existing_obj = api.get(
-            obj_path,
-            tenant=tenant,
-            tenant_uuid=tenant_uuid,
-            params={"include_refs": "", "include_name": ""},
-            api_version=api_version,
-        ).json()
+        existing_obj = api.get(obj_path, tenant=tenant, tenant_uuid=tenant_uuid,
+                               params={'include_refs': '', 'include_name': ''},
+                               api_version=api_version).json()
 
-    if state == "absent":
+    if state == 'absent':
         rsp = None
         changed = False
         err = False
@@ -558,20 +515,13 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                 if name is not None:
                     # added api version to avi api call.
                     rsp = api.delete_by_name(
-                        obj_type,
-                        name,
-                        tenant=tenant,
-                        tenant_uuid=tenant_uuid,
-                        api_version=api_version,
-                    )
+                        obj_type, name, tenant=tenant, tenant_uuid=tenant_uuid,
+                        api_version=api_version)
                 else:
                     # added api version to avi api call.
                     rsp = api.delete(
-                        obj_path,
-                        tenant=tenant,
-                        tenant_uuid=tenant_uuid,
-                        api_version=api_version,
-                    )
+                        obj_path, tenant=tenant, tenant_uuid=tenant_uuid,
+                        api_version=api_version)
             except ObjectNotFound:
                 pass
         if check_mode and existing_obj:
@@ -585,12 +535,8 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
 
         if not err:
             return ansible_return(
-                module,
-                rsp,
-                changed,
-                existing_obj=existing_obj,
-                api_context=api.get_context(),
-            )
+                module, rsp, changed, existing_obj=existing_obj,
+                api_context=api.get_context())
         elif rsp:
             return module.fail_json(msg=rsp.text)
 
@@ -600,9 +546,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
         # this is case of modify as object exists. should find out
         # if changed is true or not
         if name is not None and obj_type not in NO_UUID_OBJ:
-            obj_uuid = existing_obj["uuid"]
-            obj_path = "%s/%s" % (obj_type, obj_uuid)
-        if avi_update_method == "put":
+            obj_uuid = existing_obj['uuid']
+            obj_path = '%s/%s' % (obj_type, obj_uuid)
+        if avi_update_method == 'put':
             changed = not avi_obj_cmp(obj, existing_obj, sensitive_fields)
             obj = cleanup_absent_fields(obj)
             if changed:
@@ -612,12 +558,8 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                     rsp = AviCheckModeResponse(obj=existing_obj)
                 else:
                     rsp = api.put(
-                        obj_path,
-                        data=req,
-                        tenant=tenant,
-                        tenant_uuid=tenant_uuid,
-                        api_version=api_version,
-                    )
+                        obj_path, data=req, tenant=tenant,
+                        tenant_uuid=tenant_uuid, api_version=api_version)
             elif check_mode:
                 rsp = AviCheckModeResponse(obj=existing_obj)
         else:
@@ -626,60 +568,43 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                 rsp = AviCheckModeResponse(obj=existing_obj)
                 changed = True
             else:
-                obj.pop("name", None)
+                obj.pop('name', None)
                 patch_data = {}
                 if avi_patch_path:
                     if avi_patch_value:
                         avi_patch_value = yaml.load(avi_patch_value)
                     patch_data = {
-                        "json_patch": [
-                            {
-                                "op": avi_patch_op,
-                                "path": avi_patch_path,
-                                "value": avi_patch_value,
-                            }
-                        ]
+                        "json_patch": [{
+                            "op": avi_patch_op,
+                            "path": avi_patch_path,
+                            "value": avi_patch_value
+                        }]
                     }
                 else:
                     patch_data.update({avi_patch_op: obj})
                 try:
                     rsp = api.patch(
-                        obj_path,
-                        data=patch_data,
-                        tenant=tenant,
-                        tenant_uuid=tenant_uuid,
-                        api_version=api_version,
-                    )
+                        obj_path, data=patch_data, tenant=tenant,
+                        tenant_uuid=tenant_uuid, api_version=api_version)
                     obj = rsp.json()
                     changed = not avi_obj_cmp(obj, existing_obj)
                 except ObjectNotFound:
                     changed = False
-                    if avi_patch_op == "delete":
+                    if avi_patch_op == 'delete':
                         rsp = None
         if changed:
-            log.debug("EXISTING OBJ %s", existing_obj)
-            log.debug("NEW OBJ %s", obj)
+            log.debug('EXISTING OBJ %s', existing_obj)
+            log.debug('NEW OBJ %s', obj)
     else:
         changed = True
         req = obj
         if check_mode:
             rsp = AviCheckModeResponse(obj=None)
         else:
-            rsp = api.post(
-                obj_type,
-                data=obj,
-                tenant=tenant,
-                tenant_uuid=tenant_uuid,
-                api_version=api_version,
-            )
-    return ansible_return(
-        module,
-        rsp,
-        changed,
-        req,
-        existing_obj=existing_obj,
-        api_context=api.get_context(),
-    )
+            rsp = api.post(obj_type, data=obj, tenant=tenant,
+                           tenant_uuid=tenant_uuid, api_version=api_version)
+    return ansible_return(module, rsp, changed, req, existing_obj=existing_obj,
+                          api_context=api.get_context())
 
 
 def avi_common_argument_spec():
@@ -688,32 +613,32 @@ def avi_common_argument_spec():
     :return: dict
     """
     credentials_spec = dict(
-        controller=dict(default=os.environ.get("AVI_CONTROLLER", "")),
-        username=dict(default=os.environ.get("AVI_USERNAME", "")),
-        password=dict(default=os.environ.get("AVI_PASSWORD", ""), no_log=True),
-        api_version=dict(default="18.2.6", type="str"),
-        tenant=dict(default="admin"),
-        tenant_uuid=dict(default="", type="str"),
-        port=dict(type="int"),
-        token=dict(default="", type="str", no_log=True),
-        timeout=dict(default=300, type="int"),
-        session_id=dict(default="", type="str", no_log=True),
-        csrftoken=dict(default="", type="str", no_log=True),
-        idp_class=dict(default="", type="str"),
-        csp_host=dict(default="", type="str", no_log=True),
-        csp_token=dict(default="", type="str", no_log=True),
-        ssl_cert=dict(default="", type="str", no_log=True),
-        ssl_key=dict(default="", type="str", no_log=True),
+        controller=dict(default=os.environ.get('AVI_CONTROLLER', '')),
+        username=dict(default=os.environ.get('AVI_USERNAME', '')),
+        password=dict(default=os.environ.get('AVI_PASSWORD', ''), no_log=True),
+        api_version=dict(default='18.2.6', type='str'),
+        tenant=dict(default='admin'),
+        tenant_uuid=dict(default='', type='str'),
+        port=dict(type='int'),
+        token=dict(default='', type='str', no_log=True),
+        timeout=dict(default=300, type='int'),
+        session_id=dict(default='', type='str', no_log=True),
+        csrftoken=dict(default='', type='str', no_log=True),
+        idp_class=dict(default='', type='str'),
+        csp_host=dict(default='', type='str', no_log=True),
+        csp_token=dict(default='', type='str', no_log=True),
+        ssl_cert=dict(default='', type='str', no_log=True),
+        ssl_key=dict(default='', type='str', no_log=True)
     )
 
     return dict(
-        controller=dict(default=os.environ.get("AVI_CONTROLLER", "")),
-        username=dict(default=os.environ.get("AVI_USERNAME", "")),
-        password=dict(default=os.environ.get("AVI_PASSWORD", ""), no_log=True),
-        tenant=dict(default="admin"),
-        tenant_uuid=dict(default=""),
-        api_version=dict(default="18.2.6", type="str"),
-        avi_credentials=dict(default=None, type="dict", options=credentials_spec),
-        api_context=dict(type="dict"),
-        avi_deactivate_session_cache_as_fact=dict(default=False, type="bool"),
-    )
+        controller=dict(default=os.environ.get('AVI_CONTROLLER', '')),
+        username=dict(default=os.environ.get('AVI_USERNAME', '')),
+        password=dict(default=os.environ.get('AVI_PASSWORD', ''), no_log=True),
+        tenant=dict(default='admin'),
+        tenant_uuid=dict(default=''),
+        api_version=dict(default='18.2.6', type='str'),
+        avi_credentials=dict(default=None, type='dict',
+                             options=credentials_spec),
+        api_context=dict(type='dict'),
+        avi_deactivate_session_cache_as_fact=dict(default=False, type='bool'))
