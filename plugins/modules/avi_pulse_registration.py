@@ -31,8 +31,8 @@ options:
         description:
             - Token which is used to login to pulse from controller for the specific user.
             - For generation of the jwt_token paste the related link in Incognito window to prevent IdP from considering any existing valid login session
-            - If controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ctrllogin
-            - If controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ccctrllogin
+            - If controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.pulse.broadcom.com/portal/controller/auth/ctrllogin
+            - If controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.pulse.broadcom.com/portal/controller/auth/ccctrllogin
             - jwt_token is valid for 365 days.
         required: true
         type: str
@@ -247,7 +247,7 @@ def main():
     description = module.params.get('description', None)
     email = module.params.get('email', None)
     account_id = module.params.get('account_id', None)
-    portal_url = 'https://portal.avipulse.vmware.com'
+    portal_url = 'https://portal.pulse.broadcom.com'
     optins = module.params.get('optins', None)
     enable_cleanup_of_attached_files = module.params.get('enable_cleanup_of_attached_files', None)
     enable_appsignature_sync = module.params.get('enable_appsignature_sync', None)
