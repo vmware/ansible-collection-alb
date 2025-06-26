@@ -917,6 +917,37 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>persistence_update_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Interval in minutes at which refreshed persistence entries are synced to peer ses.
+                </div>
+                                <div style="font-size: small">
+                  - If not set, it willsync at an interval of timeout/2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-30.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.4.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>server_hm_down_recovery</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

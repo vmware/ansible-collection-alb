@@ -28,25 +28,27 @@ avi_resource_types:
   - networkprofile
   - securitypolicy
   - protocolparser
-  - jwtserverprofile
+  - wafprofile
   - wafapplicationsignatureprovider
   - errorpagebody
+  - jwtserverprofile
   - testsedatastorelevel3
   - botipreputationtypemapping
   - botconfigconsolidator
-  - federationcheckpoint
   - image
   - albservicesfileupload
   - securitymanagerdata
   - statediffoperation
   - taskjournal
   - webhook
+  - gslbcrmruntime
   - gslbhsmruntime
   - gslbsmruntime
   - localworkerfdsversion
   - role
   - serviceauthprofile
   - trustedhostprofile
+  - gslb
   - albservicesfiledownload
   - poolgroupdeploymentpolicy
   - vsgs
@@ -58,9 +60,9 @@ avi_resource_types:
   - retentionpolicy
   - controllerportalregistration
   - albservicesjob
+  - ratelimitconfiguration
   - albservicesconfig
   - controllersite
-  - wafprofile
   - natpolicy
   - analyticsprofile
   - wafpolicypsmgroup
@@ -77,13 +79,12 @@ avi_resource_types:
   - microservicegroup
   - errorpageprofile
   - testsedatastorelevel2
-  - gslbcrmruntime
-  - gslb
   - upgradestatussummary
   - statediffsnapshot
   - upgradestatusinfo
   - systemreport
   - authmappingprofile
+  - apiratelimitprofile
   - applicationprofile
   - wafpolicy
   - botdetectionpolicy
@@ -95,7 +96,6 @@ avi_resource_types:
   - cloud
   - alertsyslogconfig
   - backup
-  - gslbservice
   - vrfcontext
   - prioritylabels
   - vcenterserver
@@ -112,6 +112,7 @@ avi_resource_types:
   - trafficcloneprofile
   - vsvip
   - poolgroup
+  - authprofile
   - serviceengine
   - networkservice
   - httppolicyset
@@ -119,7 +120,7 @@ avi_resource_types:
   - vsdatascriptset
   - l4policyset
   - icapprofile
-  - authprofile
   - ssopolicy
   - systemconfiguration
   - virtualservice
+  - gslbservice

@@ -219,6 +219,35 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
+    sync_dns_to_se:
+        description:
+            - Ability to sync the dns to ses.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    sync_kex_host_to_se:
+        description:
+            - Ability to sync the kexalgorithms & hostkeyalgorithms to ses.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    sync_syslog_to_se:
+        description:
+            - Ability to sync the syslog server config to ses.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    syslog_servers:
+        description:
+            - The destination syslog server ip(v4/v6) address or fqdn.
+            - Provide in the format ip port.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
     telemetry_configuration:
         description:
             - Telemetry configuration.
@@ -347,6 +376,10 @@ def main():
         snmp_configuration=dict(type='dict',),
         ssh_ciphers=dict(type='list', elements='str',),
         ssh_hmacs=dict(type='list', elements='str',),
+        sync_dns_to_se=dict(type='bool',),
+        sync_kex_host_to_se=dict(type='bool',),
+        sync_syslog_to_se=dict(type='bool',),
+        syslog_servers=dict(type='list', elements='dict',),
         telemetry_configuration=dict(type='dict',),
         trusted_host_profiles_refs=dict(type='list', elements='str',),
         truststore_pkiprofile_ref=dict(type='str',),

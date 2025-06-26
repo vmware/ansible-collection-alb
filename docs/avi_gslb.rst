@@ -944,6 +944,9 @@ Parameters
                   - Policy for replicating configuration to the active follower sites.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -955,7 +958,7 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>checkpoint_ref</b>
+                <b>checkpoint_uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -971,7 +974,7 @@ Parameters
                   - Follower attempt to replicate configuration till this checkpoint.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type federationcheckpoint.
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -1851,7 +1854,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Policy for replicating configuration to the active follower sites.
+                  - Policy for replicating configuration to the follower sites.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.1.1.
@@ -1866,7 +1869,7 @@ Parameters
                             <td class="elbow-placeholder"></td>
                                     <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>checkpoint_ref</b>
+                <b>checkpoint_uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -1882,7 +1885,7 @@ Parameters
                   - Follower attempt to replicate configuration till this checkpoint.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type federationcheckpoint.
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.

@@ -178,7 +178,7 @@ options:
             - Waf policy mode.
             - This can be detection or enforcement.
             - It can be overwritten by rules if allow_mode_delegation is set.
-            - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+            - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
             - Field introduced in 17.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as WAF_MODE_DETECTION_ONLY.
@@ -237,19 +237,25 @@ options:
         type: str
     updated_crs_rules_in_detection_mode:
         description:
-            - While updating crs, the system will make sure that new rules are added in detection mode.
-            - It only has an effect if the policy is in enforcement mode.
-            - In this case, the update will set new rules into detection mode by adding crs_overrides for the new rules.
-            - If this flag is not set or if the policy mode is detection, rules will be added without new crs_overrides.
-            - This option is used for the auto_update_crs workflow as well as for the ui based crs update workflow.
+            - The functionality of this flag was moved to the new use_evaluation_mode_on_crs_update flag.
+            - Field deprecated in 31.2.1.
             - Field introduced in 22.1.3.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     url:
         description:
             - Avi controller URL of the object.
         type: str
+    use_evaluation_mode_on_crs_update:
+        description:
+            - While updating crs, the system will make sure that new rules are added in evaluation mode.
+            - A crs update will set new rules into evaluation mode by adding crs_overrides for the new rules.
+            - If this flag is not set or if the old crs object was empty, the new rules will be added without crs_overrides.
+            - This option is used for the auto_update_crs workflow as well as for the ui based crs update workflow.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     uuid:
         description:
             - Field introduced in 17.2.1.
@@ -369,6 +375,7 @@ def main():
         tenant_ref=dict(type='str',),
         updated_crs_rules_in_detection_mode=dict(type='bool',),
         url=dict(type='str',),
+        use_evaluation_mode_on_crs_update=dict(type='bool',),
         uuid=dict(type='str',),
         waf_crs_ref=dict(type='str',),
         waf_profile_ref=dict(type='str', required=True),

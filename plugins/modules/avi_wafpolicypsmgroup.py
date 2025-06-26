@@ -81,6 +81,15 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    location_match_miss_action:
+        description:
+            - If there is no location matching the request, this action will be executed.
+            - Allowed actions are waf_action_no_op and waf_action_block.
+            - Enum options - WAF_ACTION_NO_OP, WAF_ACTION_BLOCK, WAF_ACTION_ALLOW_PARAMETER.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as WAF_ACTION_NO_OP.
+        type: str
     locations:
         description:
             - Positive security model locations.
@@ -179,6 +188,7 @@ def main():
         enable=dict(type='bool',),
         hit_action=dict(type='str',),
         is_learning_group=dict(type='bool',),
+        location_match_miss_action=dict(type='str',),
         locations=dict(type='list', elements='dict',),
         markers=dict(type='list', elements='dict',),
         miss_action=dict(type='str',),

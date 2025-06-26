@@ -362,6 +362,37 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>async_cert_chaining_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time in seconds to wait before starting async certificate chaining.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-120.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>async_patch_merge_period</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1660,6 +1691,71 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>log_records_additional_buffer_space</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Additional buffer space (up to 10 gb) to be allocated to store logs on a controller.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-10000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is mb.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>log_records_purge_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Frequency (in seconds) to clean up log files on controller node.
+                </div>
+                                <div style="font-size: small">
+                  - By default, 600 seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-100000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 600.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_dead_se_in_grp</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -2928,58 +3024,61 @@ Parameters
                   - GSLBSITE, GSLBTHIRDPARTYSITE, LICENSEINFO, LICENSELEDGERDETAILS, USERACTIVITY, OBJECTACCESSPOLICY, SERVICEAUTHPROFILE, ALBSERVICESFILEDOWNLOAD,
                 </div>
                                 <div style="font-size: small">
-                  - TRUSTEDHOSTPROFILE, TCPSTATRUNTIME, UDPSTATRUNTIME, IPSTATRUNTIME, ARPSTATRUNTIME, MBSTATRUNTIME, IPSTKQSTATSRUNTIME, MALLOCSTATRUNTIME,
+                  - TRUSTEDHOSTPROFILE, APIRATELIMITPROFILE, RATELIMITCONFIGURATION, VIRETRIEVEPGNAMES, TCPSTATRUNTIME, UDPSTATRUNTIME, IPSTATRUNTIME, ARPSTATRUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - SHMALLOCSTATRUNTIME, CPUUSAGERUNTIME, L7GLOBALSTATSRUNTIME, L7VIRTUALSERVICESTATSRUNTIME, SEAGENTVNICDBRUNTIME, SEAGENTGRAPHDBRUNTIME,
+                  - MBSTATRUNTIME, IPSTKQSTATSRUNTIME, MALLOCSTATRUNTIME, SHMALLOCSTATRUNTIME, CPUUSAGERUNTIME, L7GLOBALSTATSRUNTIME, L7VIRTUALSERVICESTATSRUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - SEAGENTSTATERUNTIME, INTERFACERUNTIME, ARPTABLERUNTIME, DISPATCHERSTATRUNTIME, DISPATCHERSTATCLEARRUNTIME, DISPATCHERTABLEDUMPRUNTIME,
+                  - SEAGENTVNICDBRUNTIME, SEAGENTGRAPHDBRUNTIME, SEAGENTSTATERUNTIME, INTERFACERUNTIME, ARPTABLERUNTIME, DISPATCHERSTATRUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - DISPATCHERREMOTETIMERLISTDUMPRUNTIME, METRICSAGENTMESSAGE, HEALTHMONITORSTATRUNTIME, METRICSENTITYRUNTIME, PERSISTENCEINTERNAL,
+                  - DISPATCHERSTATCLEARRUNTIME, DISPATCHERTABLEDUMPRUNTIME, DISPATCHERREMOTETIMERLISTDUMPRUNTIME, METRICSAGENTMESSAGE, HEALTHMONITORSTATRUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - HTTPPOLICYSETINTERNAL, DNSPOLICYINTERNAL, CONNECTIONDUMPRUNTIME, SHAREDDBSTATS, SHAREDDBSTATSCLEAR, ICMPSTATRUNTIME, ROUTETABLERUNTIME,
+                  - METRICSENTITYRUNTIME, PERSISTENCEINTERNAL, HTTPPOLICYSETINTERNAL, DNSPOLICYINTERNAL, CONNECTIONDUMPRUNTIME, SHAREDDBSTATS, SHAREDDBSTATSCLEAR,
                 </div>
                                 <div style="font-size: small">
-                  - VIRTUALMACHINE, POOLSERVER, SEVSLIST, MEMINFORUNTIME, RTERINGSTATRUNTIME, ALGOSTATRUNTIME, HEALTHMONITORRUNTIME, CPUSTATRUNTIME, SEVM, HOST,
+                  - ICMPSTATRUNTIME, ROUTETABLERUNTIME, VIRTUALMACHINE, POOLSERVER, SEVSLIST, MEMINFORUNTIME, RTERINGSTATRUNTIME, ALGOSTATRUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - PORTGROUP, CLUSTER, DATACENTER, VCENTER, HTTPPOLICYSETSTATS, DNSPOLICYSTATS, METRICSSESTATS, RATELIMITERSTATRUNTIME, NETWORKSECURITYPOLICYSTATS,
+                  - HEALTHMONITORRUNTIME, CPUSTATRUNTIME, SEVM, HOST, PORTGROUP, CLUSTER, DATACENTER, VCENTER, HTTPPOLICYSETSTATS, DNSPOLICYSTATS, METRICSSESTATS,
                 </div>
                                 <div style="font-size: small">
-                  - TCPCONNRUNTIME, POOLSTATS, CONNPOOLINTERNAL, CONNPOOLSTATS, VSHASHSHOWRUNTIME, SELOGSTATSRUNTIME, NETWORKSECURITYPOLICYDETAIL, LICENSERUNTIME,
+                  - RATELIMITERSTATRUNTIME, NETWORKSECURITYPOLICYSTATS, TCPCONNRUNTIME, POOLSTATS, CONNPOOLINTERNAL, CONNPOOLSTATS, VSHASHSHOWRUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - SERVERRUNTIME, METRICSRUNTIMESUMMARY, METRICSRUNTIMEDETAIL, DISPATCHERSEHMPROBETEMPDISABLERUNTIME, POOLDEBUG, VSLOGMGRMAP, SERUMINSERTIONSTATS,
+                  - SELOGSTATSRUNTIME, NETWORKSECURITYPOLICYDETAIL, LICENSERUNTIME, SERVERRUNTIME, METRICSRUNTIMESUMMARY, METRICSRUNTIMEDETAIL,
                 </div>
                                 <div style="font-size: small">
-                  - HTTPCACHE, HTTPCACHESTATS, SEDOSSTATRUNTIME, VSDOSSTATRUNTIME, SERVERUPDATEREQ, VSSCALEOUTLIST, SEMEMDISTRUNTIME, TCPCONNRUNTIMEDETAIL,
+                  - DISPATCHERSEHMPROBETEMPDISABLERUNTIME, POOLDEBUG, VSLOGMGRMAP, SERUMINSERTIONSTATS, HTTPCACHE, HTTPCACHESTATS, SEDOSSTATRUNTIME, VSDOSSTATRUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - SEUPGRADESTATUS, SEUPGRADEPREVIEW, SEFAULTINJECTEXHAUSTM, SEFAULTINJECTEXHAUSTMCL, SEFAULTINJECTEXHAUSTMCLSMALL, SEFAULTINJECTEXHAUSTCONN,
+                  - SERVERUPDATEREQ, VSSCALEOUTLIST, SEMEMDISTRUNTIME, TCPCONNRUNTIMEDETAIL, SEUPGRADESTATUS, SEUPGRADEPREVIEW, SEFAULTINJECTEXHAUSTM,
                 </div>
                                 <div style="font-size: small">
-                  - SEHEADLESSONLINEREQ, SEUPGRADE, SEUPGRADESTATUSDETAIL, SERESERVEDVS, SERESERVEDVSCLEAR, VSCANDIDATESEHOSTLIST, SEGROUPUPGRADE, REBALANCE,
+                  - SEFAULTINJECTEXHAUSTMCL, SEFAULTINJECTEXHAUSTMCLSMALL, SEFAULTINJECTEXHAUSTCONN, SEHEADLESSONLINEREQ, SEUPGRADE, SEUPGRADESTATUSDETAIL,
                 </div>
                                 <div style="font-size: small">
-                  - SEGROUPREBALANCE, SEAUTHSTATSRUNTIME, AUTOSCALESTATE, VIRTUALSERVICEAUTHSTATS, NETWORKSECURITYPOLICYDOS, KEYVALINTERNAL, KEYVALSUMMARYINTERNAL,
+                  - SERESERVEDVS, SERESERVEDVSCLEAR, VSCANDIDATESEHOSTLIST, SEGROUPUPGRADE, REBALANCE, SEGROUPREBALANCE, SEAUTHSTATSRUNTIME, AUTOSCALESTATE,
                 </div>
                                 <div style="font-size: small">
-                  - SERVERSTATEUPDATEINFO, CLTRACKINTERNAL, CLTRACKSUMMARYINTERNAL, MICROSERVICERUNTIME, SEMICROSERVICE, VIRTUALSERVICEANALYSIS, CLIENTINTERNAL,
+                  - VIRTUALSERVICEAUTHSTATS, NETWORKSECURITYPOLICYDOS, KEYVALINTERNAL, KEYVALSUMMARYINTERNAL, SERVERSTATEUPDATEINFO, CLTRACKINTERNAL,
                 </div>
                                 <div style="font-size: small">
-                  - CLIENTSUMMARYINTERNAL, MICROSERVICEGROUPRUNTIME, BGPRUNTIME, REQUESTQUEUERUNTIME, MIGRATEALL, MIGRATEALLSTATUSSUMMARY, MIGRATEALLSTATUSDETAIL,
+                  - CLTRACKSUMMARYINTERNAL, MICROSERVICERUNTIME, SEMICROSERVICE, VIRTUALSERVICEANALYSIS, CLIENTINTERNAL, CLIENTSUMMARYINTERNAL,
                 </div>
                                 <div style="font-size: small">
-                  - INTERFACESUMMARYRUNTIME, INTERFACELACPRUNTIME, DNSTABLE, GSLBSERVICEDETAIL, GSLBSERVICEINTERNAL, GSLBSERVICEHMONSTAT, SETROLESREQUEST,
+                  - MICROSERVICEGROUPRUNTIME, BGPRUNTIME, REQUESTQUEUERUNTIME, MIGRATEALL, MIGRATEALLSTATUSSUMMARY, MIGRATEALLSTATUSDETAIL, INTERFACESUMMARYRUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - TRAFFICCLONERUNTIME, GEOLOCATIONINFO, SEVSHBSTATRUNTIME, GEODBINTERNAL, GSLBSITEINTERNAL, WAFSTATS, USERDEFINEDDATASCRIPTCOUNTERS, LLDPRUNTIME,
+                  - INTERFACELACPRUNTIME, DNSTABLE, GSLBSERVICEDETAIL, GSLBSERVICEINTERNAL, GSLBSERVICEHMONSTAT, SETROLESREQUEST, TRAFFICCLONERUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - VSESSHARINGPOOL, NDTABLERUNTIME, IP6STATRUNTIME, ICMP6STATRUNTIME, SEVSSPLACEMENT, L4POLICYSETSTATS, L4POLICYSETINTERNAL, BGPDEBUGINFO, SHARD,
+                  - GEOLOCATIONINFO, SEVSHBSTATRUNTIME, GEODBINTERNAL, GSLBSITEINTERNAL, WAFSTATS, USERDEFINEDDATASCRIPTCOUNTERS, LLDPRUNTIME, VSESSHARINGPOOL,
+                </div>
+                                <div style="font-size: small">
+                  - NDTABLERUNTIME, IP6STATRUNTIME, ICMP6STATRUNTIME, SEVSSPLACEMENT, L4POLICYSETSTATS, L4POLICYSETINTERNAL, BGPDEBUGINFO, SHARD,
                 </div>
                                 <div style="font-size: small">
                   - CPUSTATRUNTIMEDETAIL, SEASSERTSTATRUNTIME, SEFAULTINJECTINFRA, SEAGENTASSERTSTATRUNTIME, SEDATASTORESTATUS, DIFFQUEUESTATUS, IP6ROUTETABLERUNTIME,
@@ -3090,19 +3189,19 @@ Parameters
                   - SYSTEMHEALTHGETSERVICERESTARTEDRESPONSE, SYSTEMHEALTHGETSERVICEDETAILRESPONSE, SEAGENTSEDATASTOREDOWNLOADFAIL, UPGRADEPROFILE, QATINFO,
                 </div>
                                 <div style="font-size: small">
-                  - RETENTIONPOLICY, MAXOBJECTS, GSLBSMRUNTIME, GSLBCRMRUNTIME, GSLBHSMRUNTIME, VERSIONINFO, CFGSTATE, GSLBDNSSEINFO, GSLBPERDNSSTATE, GSLBRUNTIME,
+                  - RETENTIONPOLICY, SYSTEMLIMITOBJECTCOUNT, SYSTEMLIMITOBJECTCOUNTS, MAXOBJECTS, GSLBSMRUNTIME, GSLBCRMRUNTIME, GSLBHSMRUNTIME, VERSIONINFO,
                 </div>
                                 <div style="font-size: small">
-                  - GSLBSERVICESITEPERSISTENCEPOOL, GSLBHEALTHMONITORRUNTIME, GSLBGEODBPROFILERUNTIME, GSLBAPPLICATIONPERSISTENCEPROFILERUNTIME,
+                  - CFGSTATE, GSLBDNSSEINFO, GSLBPERDNSSTATE, GSLBRUNTIME, GSLBSERVICESITEPERSISTENCEPOOL, GSLBHEALTHMONITORRUNTIME, GSLBGEODBPROFILERUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - GSLBPKIPROFILERUNTIME, GSLBJWTSERVERPROFILERUNTIME, GSLBSSLPROFILERUNTIME, GSLBSSLKEYANDCERTIFICATERUNTIME, GSLBGEOFILE, GSLBGEOFILERUNTIME,
+                  - GSLBAPPLICATIONPERSISTENCEPROFILERUNTIME, GSLBPKIPROFILERUNTIME, GSLBJWTSERVERPROFILERUNTIME, GSLBSSLPROFILERUNTIME,
                 </div>
                                 <div style="font-size: small">
-                  - EVENTINFO, GSLBSITEHTTPTABLE, LOCALWORKERFDSVERSION, GSLBSERVICEHEALTHSTATUS, GSLBFILEOBJECTRUNTIME, GSLBRUNTIMESUMMARY, GSLBRUNTIMEDETAIL,
+                  - GSLBSSLKEYANDCERTIFICATERUNTIME, GSLBGEOFILE, GSLBGEOFILERUNTIME, EVENTINFO, GSLBSITEHTTPTABLE, LOCALWORKERFDSVERSION, GSLBSERVICEHEALTHSTATUS,
                 </div>
                                 <div style="font-size: small">
-                  - GSLBRUNTIMEINTERNAL.
+                  - GSLBFILEOBJECTRUNTIME, GSLBRUNTIMESUMMARY, GSLBRUNTIMEDETAIL, GSLBRUNTIMEINTERNAL.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.1.1.
@@ -3203,6 +3302,37 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>telemetry_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Period for telemetry job.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-1440.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1440.
                 </div>
                                             </td>
     </tr>

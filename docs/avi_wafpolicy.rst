@@ -3452,7 +3452,7 @@ Parameters
                   - This only takes effect if the policy allows delegation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.1.5, 18.2.1.
@@ -4114,7 +4114,7 @@ Parameters
                   - Override the waf mode for this rule.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.6.
@@ -4731,7 +4731,7 @@ Parameters
                   - This only takes effect if the policy allows delegation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.1.5, 18.2.1.
@@ -5678,7 +5678,7 @@ Parameters
                   - Override the waf mode for this group.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.6.
@@ -6191,7 +6191,7 @@ Parameters
                   - Override the waf mode for this rule.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.6.
@@ -6927,7 +6927,7 @@ Parameters
                   - It can be overwritten by rules if allow_mode_delegation is set.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.1.
@@ -8155,7 +8155,7 @@ Parameters
                   - This only takes effect if the policy allows delegation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.1.5, 18.2.1.
@@ -9441,7 +9441,7 @@ Parameters
                   - This only takes effect if the policy allows delegation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.1.5, 18.2.1.
@@ -9731,28 +9731,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - While updating crs, the system will make sure that new rules are added in detection mode.
+                  - The functionality of this flag was moved to the new use_evaluation_mode_on_crs_update flag.
                 </div>
                                 <div style="font-size: small">
-                  - It only has an effect if the policy is in enforcement mode.
-                </div>
-                                <div style="font-size: small">
-                  - In this case, the update will set new rules into detection mode by adding crs_overrides for the new rules.
-                </div>
-                                <div style="font-size: small">
-                  - If this flag is not set or if the policy mode is detection, rules will be added without new crs_overrides.
-                </div>
-                                <div style="font-size: small">
-                  - This option is used for the auto_update_crs workflow as well as for the ui based crs update workflow.
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -9769,6 +9757,40 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Avi controller URL of the object.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>use_evaluation_mode_on_crs_update</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - While updating crs, the system will make sure that new rules are added in evaluation mode.
+                </div>
+                                <div style="font-size: small">
+                  - A crs update will set new rules into evaluation mode by adding crs_overrides for the new rules.
+                </div>
+                                <div style="font-size: small">
+                  - If this flag is not set or if the old crs object was empty, the new rules will be added without crs_overrides.
+                </div>
+                                <div style="font-size: small">
+                  - This option is used for the auto_update_crs workflow as well as for the ui based crs update workflow.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>

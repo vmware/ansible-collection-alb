@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_taskjournal
+module: avi_ratelimitconfiguration
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of TaskJournal Avi RESTful Object
+short_description: Module for setup of RateLimitConfiguration Avi RESTful Object
 description:
-    - This module is used to configure TaskJournal object
+    - This module is used to configure RateLimitConfiguration object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,73 +46,77 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    errors:
+    burst:
         description:
-            - List of errors in the process.
-            - Field introduced in 30.2.1.
+            - The maximum request per second(rps) user intends to support for this category.this is not guaranteed as this will be the minimum of the rps
+            - supported by the resources in the category and this value.if user doesnt provide then it will be minimum value of the resources in this category.
+            - Allowed values are 1-1000.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: list
-        elements: dict
-    image_ref:
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+        type: int
+    configpb_attributes:
         description:
-            - Image uuid for identifying the current base image.
-            - It is a reference to an object of type image.
-            - Field introduced in 30.2.1.
+            - Protobuf versioning for config pbs.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
+    description:
+        description:
+            - Description for the rate limit configuration.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
-    info:
+    http_methods:
         description:
-            - Detailed information of journal.
-            - Field introduced in 30.2.1.
+            - List of http method(s) of the resources that need to be rate limited.
+            - Enum options - HTTP_METHOD_GET, HTTP_METHOD_HEAD, HTTP_METHOD_PUT, HTTP_METHOD_DELETE, HTTP_METHOD_POST, HTTP_METHOD_OPTIONS, HTTP_METHOD_TRACE,
+            - HTTP_METHOD_CONNECT, HTTP_METHOD_PATCH, HTTP_METHOD_PROPFIND, HTTP_METHOD_PROPPATCH, HTTP_METHOD_MKCOL, HTTP_METHOD_COPY, HTTP_METHOD_MOVE,
+            - HTTP_METHOD_LOCK, HTTP_METHOD_UNLOCK.
+            - Field introduced in 31.2.1.
+            - Minimum of 1 items required.
+            - Maximum of 5 items allowed.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: dict
+        required: true
+        type: list
+        elements: str
     name:
         description:
-            - Name for the task journal.
-            - Field introduced in 30.2.1.
+            - Name of the rate limit configuration(unique).
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        required: true
+        type: str
+    resource:
+        description:
+            - Ratelimitresource which needs to be rate limited.
+            - Enum options - RATE_LIMIT_VIRTUALSERVICE, RATE_LIMIT_POOL, RATE_LIMIT_LOGIN, RATE_LIMIT_AUTHTOKEN, RATE_LIMIT_HEALTHMONITOR,
+            - RATE_LIMIT_CLUSTER_RUNTIME, RATE_LIMIT_AUTHPROFILE, RATE_LIMIT_ALERT.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        required: true
+        type: str
+    tenant_ref:
+        description:
+            - Tenant ref for the auth rate limit configuration.
+            - It is a reference to an object of type tenant.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
-    obj_cloud_ref:
+    token_refill_rate:
         description:
-            - Cloud that this object belongs to.
-            - It is a reference to an object of type cloud.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
-    operation:
-        description:
-            - Operation for which the task journal created.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
-    patch_image_ref:
-        description:
-            - Image uuid for identifying the current patch.
-            - It is a reference to an object of type image.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
-    summary:
-        description:
-            - Summary of journal.
-            - Field introduced in 30.2.1.
+            - Token refill rate.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: dict
-    tasks:
+    type:
         description:
-            - List of all the tasks executed with details.
-            - For example, details of tasks to be executed for upgrade filecopy.
-            - Field introduced in 31.1.1.
+            - Type of the rate limiter, for now we only support api categorization based.
+            - Enum options - RATE_LIMITER_API_CATEGORY.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: list
-        elements: dict
-    tenant_ref:
-        description:
-            - Tenant uuid associated with the object.
-            - It is a reference to an object of type tenant.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as RATE_LIMITER_API_CATEGORY.
         type: str
     url:
         description:
@@ -120,17 +124,10 @@ options:
         type: str
     uuid:
         description:
-            - Uuid identifier for the task journal.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
-    warnings:
-        description:
-            - List of warnings in the process.
+            - Uuid of the rate limit configuration.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: list
-        elements: dict
+        type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -144,16 +141,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create TaskJournal object
-  vmware.alb.avi_taskjournal:
+- name: Example to create RateLimitConfiguration object
+  vmware.alb.avi_ratelimitconfiguration:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_taskjournal
+    name: sample_ratelimitconfiguration
 """
 
 RETURN = '''
 obj:
-    description: TaskJournal (api/taskjournal) object
+    description: RateLimitConfiguration (api/ratelimitconfiguration) object
     returned: success, changed
     type: dict
 '''
@@ -176,19 +173,17 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        errors=dict(type='list', elements='dict',),
-        image_ref=dict(type='str',),
-        info=dict(type='dict',),
-        name=dict(type='str',),
-        obj_cloud_ref=dict(type='str',),
-        operation=dict(type='str',),
-        patch_image_ref=dict(type='str',),
-        summary=dict(type='dict', required=True),
-        tasks=dict(type='list', elements='dict',),
+        burst=dict(type='int',),
+        configpb_attributes=dict(type='dict',),
+        description=dict(type='str',),
+        http_methods=dict(type='list', elements='str', required=True),
+        name=dict(type='str', required=True),
+        resource=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
+        token_refill_rate=dict(type='dict', required=True),
+        type=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
-        warnings=dict(type='list', elements='dict',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
@@ -197,7 +192,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'taskjournal',
+    return avi_ansible_api(module, 'ratelimitconfiguration',
                            set())
 
 

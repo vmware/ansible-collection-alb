@@ -111,6 +111,15 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
+    async_cert_chaining_interval:
+        description:
+            - Time in seconds to wait before starting async certificate chaining.
+            - Allowed values are 0-120.
+            - Field introduced in 31.2.1.
+            - Unit is sec.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
     async_patch_merge_period:
         description:
             - Period for which asynchronous patch requests are queued.
@@ -441,6 +450,25 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    log_records_additional_buffer_space:
+        description:
+            - Additional buffer space (up to 10 gb) to be allocated to store logs on a controller.
+            - Allowed values are 0-10000.
+            - Field introduced in 31.2.1.
+            - Unit is mb.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
+    log_records_purge_interval:
+        description:
+            - Frequency (in seconds) to clean up log files on controller node.
+            - By default, 600 seconds.
+            - Allowed values are 1-100000.
+            - Field introduced in 31.2.1.
+            - Unit is sec.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 600.
+        type: int
     max_dead_se_in_grp:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -757,6 +785,15 @@ options:
             - Field introduced in 22.1.6, 30.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
+    telemetry_interval:
+        description:
+            - Period for telemetry job.
+            - Allowed values are 1-1440.
+            - Field introduced in 31.2.1.
+            - Unit is min.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1440.
+        type: int
     unresponsive_se_reboot:
         description:
             - Unit is sec.
@@ -1001,6 +1038,7 @@ def main():
         api_perf_logging_threshold=dict(type='int',),
         appviewx_compat_mode=dict(type='bool',),
         archive_retention_framework_period=dict(type='int',),
+        async_cert_chaining_interval=dict(type='int',),
         async_patch_merge_period=dict(type='int',),
         async_patch_request_cleanup_duration=dict(type='int',),
         attach_ip_retry_interval=dict(type='int',),
@@ -1043,6 +1081,8 @@ def main():
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
         ignore_vrf_in_networksubnetlist=dict(type='bool',),
+        log_records_additional_buffer_space=dict(type='int',),
+        log_records_purge_interval=dict(type='int',),
         max_dead_se_in_grp=dict(type='int',),
         max_pcap_per_tenant=dict(type='int',),
         max_se_spawn_interval_delay=dict(type='int',),
@@ -1085,6 +1125,7 @@ def main():
         statecache_properties=dict(type='dict',),
         system_report_cleanup_interval=dict(type='int',),
         system_report_limit=dict(type='int',),
+        telemetry_interval=dict(type='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
         update_dns_entry_timeout=dict(type='int',),

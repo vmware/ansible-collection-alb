@@ -1,12 +1,12 @@
 
-.. vmware.alb.avi_pulse_registration:
+.. vmware.alb.avi_apiratelimitprofile:
 
 
 **********************************************
-vmware.alb.avi_pulse_registration
+vmware.alb.avi_apiratelimitprofile
 **********************************************
 
-**Module for setup of PulseRegistration Avi RESTful Object**
+**Module for setup of ApiRateLimitProfile Avi RESTful Object**
 
 
 .. contents::
@@ -16,7 +16,7 @@ vmware.alb.avi_pulse_registration
 
 Synopsis
 --------
-- This module is used to configure PulseRegistration object.
+- This module is used to configure ApiRateLimitProfile object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -134,40 +134,55 @@ Parameters
             <tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>account_id</b>
+                <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - account id to be specified for registration.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>case_config</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Dictionary which is used to set the default values to be used for pulse case management.
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>version</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version sequence number that monotonically advances with each configuration update event.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>description</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -176,38 +191,22 @@ Parameters
                                                             </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - description to be specified for registration.
+                  - Description for the api rate limit profile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>email</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - email to be specified for registration.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_appsignature_sync</b>
+                <b>enabled</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">bool</span>
@@ -217,118 +216,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable to receive application specific signature updates.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_cleanup_of_attached_files</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable to clean up the attached files.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_ip_reputation</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable to receive IP reputation updates.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_pulse_case_management</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable for pulse case management.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_pulse_waf_management</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable to receive WAF CRS updates.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enable_user_agent_db_sync</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enable to receive bot management updates.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>jwt_token</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Token which is used to login to pulse from controller for the specific user.
+                  - Activate/deactivate the api rate limit profile.
                 </div>
                                 <div style="font-size: small">
-                  - For generation of the jwt_token paste the related link in Incognito window to prevent IdP from considering any existing valid login session
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - If controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.pulse.broadcom.com/portal/controller/auth/ctrllogin
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - If controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.pulse.broadcom.com/portal/controller/auth/ccctrllogin
-                </div>
-                                <div style="font-size: small">
-                  - jwt_token is valid for 365 days.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -347,13 +244,53 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - name to be specified for registration.
+                  - Name of the api rate limit profile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>optins</b>
+                <b>rate_limit_configuration_refs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of the rate limiter configuration uuids.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type ratelimitconfiguration.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Minimum of 1 items required.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 100 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -363,55 +300,54 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The opt-in that should be applied on the entity.
+                  - Tenant ref for the api rate limit profile.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>params</b>
+                <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                        <span style="color: purple">str</span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Query parameters passed to the HTTP API.
+                  - Avi controller URL of the object.
                 </div>
                                             </td>
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>use_tls</b>
+                <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
+                                                                        <span style="color: purple">str</span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable to allow secure end to end communication between controller and NSX alb services.
+                  - Uuid of the api rate limit profile.
                 </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>waf_config</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Dictionary which is used to set the default values to be used for WAF management.
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -435,11 +371,11 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create PulseRegistration object
-          avi_pulse_registration:
+        - name: Example to create ApiRateLimitProfile object
+          avi_apiratelimitprofile:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_pulse_registration
+            name: sample_apiratelimitprofile
 
 
 Authors

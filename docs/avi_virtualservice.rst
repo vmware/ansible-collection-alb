@@ -1790,6 +1790,9 @@ Parameters
                   - Set it to zero (0) to deactivate throttling.
                 </div>
                                 <div style="font-size: small">
+                  - Note that the se group's throttle value takes precedence over this setting.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 17.1.3.
                 </div>
                                 <div style="font-size: small">
@@ -2008,6 +2011,9 @@ Parameters
                   - Set it to zero (0) to deactivate throttling.
                 </div>
                                 <div style="font-size: small">
+                  - Note that the se group's throttle value takes precedence over this setting.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 17.1.3.
                 </div>
                                 <div style="font-size: small">
@@ -2044,6 +2050,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Set it to zero (0) to deactivate throttling.
+                </div>
+                                <div style="font-size: small">
+                  - Note that the se group's throttle value takes precedence over this setting.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.1.3.
@@ -5618,6 +5627,9 @@ Parameters
                   - A list of nsx groups representing the clients which can access the virtual ip of the virtual service.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -5988,6 +6000,32 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>userid_claim_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Claim name from id token to be used as user id.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>

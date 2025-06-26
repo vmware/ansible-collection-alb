@@ -34,6 +34,7 @@
     ldap_monitor: "{{ item.ldap_monitor | default(omit) }}"
     ldaps_monitor: "{{ item.ldaps_monitor | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
+    monitor_ip: "{{ item.monitor_ip | default(omit) }}"
     monitor_port: "{{ item.monitor_port | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     pop3_monitor: "{{ item.pop3_monitor | default(omit) }}"

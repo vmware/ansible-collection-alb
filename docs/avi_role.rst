@@ -509,7 +509,7 @@ Parameters
                   - PERMISSION_SERVICEAUTHPROFILE, PERMISSION_SYSTEMREPORT, PERMISSION_CLOUD_API, PERMISSION_TASKJOURNAL, PERMISSION_TELEMETRY_API,
                 </div>
                                 <div style="font-size: small">
-                  - PERMISSION_UPGRADEPROFILE, PERMISSION_RETENTIONPOLICY.
+                  - PERMISSION_UPGRADEPROFILE, PERMISSION_RETENTIONPOLICY, PERMISSION_APIRATELIMITPROFILE.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

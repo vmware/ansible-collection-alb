@@ -72,6 +72,12 @@ options:
             - Field introduced in 18.2.8, 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    dryrun_info:
+        description:
+            - Dry-run package details.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     duration:
         description:
             - Time taken to upload the image in seconds.
@@ -246,6 +252,7 @@ def main():
         controller_info=dict(type='dict',),
         controller_patch_name=dict(type='str',),
         controller_patch_ref=dict(type='str',),
+        dryrun_info=dict(type='dict',),
         duration=dict(type='int',),
         end_time=dict(type='str',),
         events=dict(type='list', elements='dict',),

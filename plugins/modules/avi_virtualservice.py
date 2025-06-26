@@ -395,6 +395,7 @@ options:
     nsx_securitygroup:
         description:
             - A list of nsx groups representing the clients which can access the virtual ip of the virtual service.
+            - Field deprecated in 31.2.1.
             - Field introduced in 17.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list

@@ -230,13 +230,13 @@ options:
     graceful_disable_timeout:
         description:
             - Used to gracefully disable a server.
-            - Virtual service waits for the specified time before terminating the existing connections  to the servers that are disabled.
-            - Not used anymore .graceful_disable_timeout_sec is introduced.
+            - Deprecated from version 31.2.1.
+            - Please use graceful_disable_timeout_sec instead.
             - Allowed values are 1-7200.
             - Special values are 0 - immediate, -1 - infinite.
+            - Field deprecated in 31.2.1.
             - Unit is min.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
     graceful_disable_timeout_sec:
         description:
@@ -259,6 +259,16 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as -1.
         type: int
+    gslb_pool_type:
+        description:
+            - Specifies the pool type (generic/private/public).
+            - The public ips of the members can be specified in seperate pool of type public.this would allow features like health monitoring to be enabled
+            - independantly for the public ips.this is only applicable for gslb pools.
+            - Enum options - GSLB_POOL_TYPE_GENERIC, GSLB_POOL_TYPE_PRIVATE, GSLB_POOL_TYPE_PUBLIC.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as GSLB_POOL_TYPE_GENERIC.
+        type: str
     gslb_sp_enabled:
         description:
             - Indicates if the pool is a site-persistence pool.
@@ -699,6 +709,7 @@ def main():
         graceful_disable_timeout=dict(type='int',),
         graceful_disable_timeout_sec=dict(type='int',),
         graceful_hm_down_disable_timeout=dict(type='int',),
+        gslb_pool_type=dict(type='str',),
         gslb_sp_enabled=dict(type='bool',),
         health_monitor_refs=dict(type='list', elements='str',),
         horizon_profile=dict(type='dict',),

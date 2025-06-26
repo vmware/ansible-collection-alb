@@ -287,6 +287,37 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>location_match_miss_action</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If there is no location matching the request, this action will be executed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed actions are waf_action_no_op and waf_action_block.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - WAF_ACTION_NO_OP, WAF_ACTION_BLOCK, WAF_ACTION_ALLOW_PARAMETER.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as WAF_ACTION_NO_OP.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>locations</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1250,7 +1281,7 @@ Parameters
                   - This only takes effect if the policy allows delegation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.

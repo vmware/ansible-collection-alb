@@ -248,7 +248,6 @@ options:
     obj_name_prefix:
         description:
             - Default prefix for all automatically created objects in this cloud.
-            - This prefix can be overridden by the se-group template.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     openstack_configuration:

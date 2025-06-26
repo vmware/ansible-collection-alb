@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_taskjournal
+module: avi_apiratelimitprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of TaskJournal Avi RESTful Object
+short_description: Module for setup of ApiRateLimitProfile Avi RESTful Object
 description:
-    - This module is used to configure TaskJournal object
+    - This module is used to configure ApiRateLimitProfile object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,72 +46,48 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    errors:
+    configpb_attributes:
         description:
-            - List of errors in the process.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: list
-        elements: dict
-    image_ref:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
+    description:
         description:
-            - Image uuid for identifying the current base image.
-            - It is a reference to an object of type image.
-            - Field introduced in 30.2.1.
+            - Description for the api rate limit profile.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
-    info:
+    enabled:
         description:
-            - Detailed information of journal.
-            - Field introduced in 30.2.1.
+            - Activate/deactivate the api rate limit profile.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: dict
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     name:
         description:
-            - Name for the task journal.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
-    obj_cloud_ref:
-        description:
-            - Cloud that this object belongs to.
-            - It is a reference to an object of type cloud.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
-    operation:
-        description:
-            - Operation for which the task journal created.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
-    patch_image_ref:
-        description:
-            - Image uuid for identifying the current patch.
-            - It is a reference to an object of type image.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
-    summary:
-        description:
-            - Summary of journal.
-            - Field introduced in 30.2.1.
+            - Name of the api rate limit profile.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
-        type: dict
-    tasks:
+        type: str
+    rate_limit_configuration_refs:
         description:
-            - List of all the tasks executed with details.
-            - For example, details of tasks to be executed for upgrade filecopy.
-            - Field introduced in 31.1.1.
+            - List of the rate limiter configuration uuids.
+            - It is a reference to an object of type ratelimitconfiguration.
+            - Field introduced in 31.2.1.
+            - Minimum of 1 items required.
+            - Maximum of 100 items allowed.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
+        required: true
         type: list
-        elements: dict
+        elements: str
     tenant_ref:
         description:
-            - Tenant uuid associated with the object.
+            - Tenant ref for the api rate limit profile.
             - It is a reference to an object of type tenant.
-            - Field introduced in 30.2.1.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
@@ -120,17 +96,10 @@ options:
         type: str
     uuid:
         description:
-            - Uuid identifier for the task journal.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
-    warnings:
-        description:
-            - List of warnings in the process.
+            - Uuid of the api rate limit profile.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: list
-        elements: dict
+        type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -144,16 +113,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Example to create TaskJournal object
-  vmware.alb.avi_taskjournal:
+- name: Example to create ApiRateLimitProfile object
+  vmware.alb.avi_apiratelimitprofile:
     avi_credentials: "{{ avi_credentials }}"
     state: present
-    name: sample_taskjournal
+    name: sample_apiratelimitprofile
 """
 
 RETURN = '''
 obj:
-    description: TaskJournal (api/taskjournal) object
+    description: ApiRateLimitProfile (api/apiratelimitprofile) object
     returned: success, changed
     type: dict
 '''
@@ -176,19 +145,14 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        errors=dict(type='list', elements='dict',),
-        image_ref=dict(type='str',),
-        info=dict(type='dict',),
-        name=dict(type='str',),
-        obj_cloud_ref=dict(type='str',),
-        operation=dict(type='str',),
-        patch_image_ref=dict(type='str',),
-        summary=dict(type='dict', required=True),
-        tasks=dict(type='list', elements='dict',),
+        configpb_attributes=dict(type='dict',),
+        description=dict(type='str',),
+        enabled=dict(type='bool',),
+        name=dict(type='str', required=True),
+        rate_limit_configuration_refs=dict(type='list', elements='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
-        warnings=dict(type='list', elements='dict',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
@@ -197,7 +161,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'taskjournal',
+    return avi_ansible_api(module, 'apiratelimitprofile',
                            set())
 
 

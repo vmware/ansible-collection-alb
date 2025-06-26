@@ -170,6 +170,12 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    monitor_ip:
+        description:
+            - Destination ip address to be monitored instead of the pool member ip.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     monitor_port:
         description:
             - Use this port instead of the port defined for the server in the pool.
@@ -359,6 +365,7 @@ def main():
         ldap_monitor=dict(type='dict',),
         ldaps_monitor=dict(type='dict',),
         markers=dict(type='list', elements='dict',),
+        monitor_ip=dict(type='dict',),
         monitor_port=dict(type='int',),
         name=dict(type='str', required=True),
         pop3_monitor=dict(type='dict',),

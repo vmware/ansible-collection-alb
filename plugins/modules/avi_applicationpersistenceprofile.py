@@ -115,6 +115,15 @@ options:
             - persistence_type_client_ip_address,persistence_type_http_cookie) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as PERSISTENCE_TYPE_CLIENT_IP_ADDRESS.
         type: str
+    persistence_update_interval:
+        description:
+            - Interval in minutes at which refreshed persistence entries are synced to peer ses.
+            - If not set, it willsync at an interval of timeout/2.
+            - Allowed values are 1-30.
+            - Field introduced in 30.2.4.
+            - Unit is min.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: int
     server_hm_down_recovery:
         description:
             - Specifies behavior when a persistent server has been marked down by a health monitor.
@@ -206,6 +215,7 @@ def main():
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         persistence_type=dict(type='str',),
+        persistence_update_interval=dict(type='int',),
         server_hm_down_recovery=dict(type='str',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

@@ -166,6 +166,7 @@ options:
     replication_policy:
         description:
             - Policy for replicating configuration to the active follower sites.
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict

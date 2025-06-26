@@ -1053,94 +1053,97 @@ Parameters
                   - SYSERR_RM_CLOUD_NOT_FOUND, SYSERR_RM_SEGROUP_NOT_FOUND, SYSERR_RM_SE_OFFLINE, SYSERR_RM_SE_USED, SYSERR_RM_SE_BGP_PEERS_DOWN,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_RM_SE_FLAVOR_LIMIT_REACHED, SYSERR_VI_MGR_SEVM_VNIC_SUCCESS, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_HW_INFO,
+                  - SYSERR_RM_SE_FLAVOR_LIMIT_REACHED, SYSERR_RM_SE_INSUFFICIENT_VNIC_SLOTS, SYSERR_VI_MGR_SEVM_VNIC_SUCCESS,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_DUPLICATE_NAME, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_CPU,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_HW_INFO, SYSERR_VI_MGR_SEVM_CREATE_FAIL_DUPLICATE_NAME, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MEM, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_LEASE, SYSERR_VI_MGR_SEVM_CREATE_FAIL_OVF_ERROR,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_CPU, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MEM, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_LEASE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_NO_HOST_VM_NETWORK, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_PROGRESS, SYSERR_VI_MGR_SEVM_CREATE_FAIL_ABORTED,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_OVF_ERROR, SYSERR_VI_MGR_SEVM_CREATE_NO_HOST_VM_NETWORK, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_PROGRESS,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_FAILURE, SYSERR_VI_MGR_SEVM_CREATE_FAIL_POWER_ON, SYSERR_VI_MGR_SEVM_VNIC_NO_VM, SYSERR_VI_MGR_SEVM_VNIC_MAC_ADDR_ERROR,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_ABORTED, SYSERR_VI_MGR_SEVM_CREATE_FAILURE, SYSERR_VI_MGR_SEVM_CREATE_FAIL_POWER_ON, SYSERR_VI_MGR_SEVM_VNIC_NO_VM,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_VNIC_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_NO_PG_PORTS, SYSERR_VI_MGR_SEVM_DELETE_FAILURE, SYSERR_VI_MGR_SEVM_CREATE_LIMIT_REACHED,
+                  - SYSERR_VI_MGR_SEVM_VNIC_MAC_ADDR_ERROR, SYSERR_VI_MGR_SEVM_VNIC_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_NO_PG_PORTS, SYSERR_VI_MGR_SEVM_DELETE_FAILURE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_SET_MGMT_IP_FAILED, SYSERR_VI_MGR_SEVM_CREATE_ACCESS_ERROR, SYSERR_VI_MGR_SEVM_CREATE_NO_IMAGE,
+                  - SYSERR_VI_MGR_SEVM_CREATE_LIMIT_REACHED, SYSERR_VI_MGR_SEVM_SET_MGMT_IP_FAILED, SYSERR_VI_MGR_SEVM_CREATE_ACCESS_ERROR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_VINFRA_UNINITIALIZED, SYSERR_VI_MGR_SEVM_CREATE_NO_HOST, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW_PORTS,
+                  - SYSERR_VI_MGR_SEVM_CREATE_NO_IMAGE, SYSERR_VI_MGR_SEVM_VINFRA_UNINITIALIZED, SYSERR_VI_MGR_SEVM_CREATE_NO_HOST,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_INVALID_DATA, SYSERR_VI_MGR_SEVM_CREATE_FAIL_MULTIPLE_MGMT_NW, SYSERR_VI_MGR_SEVM_VCENTER_CONN_FAIL,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW_PORTS, SYSERR_VI_MGR_SEVM_INVALID_DATA, SYSERR_VI_MGR_SEVM_CREATE_FAIL_MULTIPLE_MGMT_NW,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_TIMED_OUT, SYSERR_VI_MGR_SEVM_NO_SOURCE_CLONE, SYSERR_VI_MGR_SEVM_NO_AVAILABILITY_ZONE, SYSERR_VI_MGR_SEVM_FLAVOR_UNAVAIL,
+                  - SYSERR_VI_MGR_SEVM_VCENTER_CONN_FAIL, SYSERR_VI_MGR_SEVM_TIMED_OUT, SYSERR_VI_MGR_SEVM_NO_SOURCE_CLONE, SYSERR_VI_MGR_SEVM_NO_AVAILABILITY_ZONE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_DELETED, SYSERR_VI_MGR_SEVM_VINFRA_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_FAILURE_QUESTION, SYSERR_VI_MGR_LOGIN_FAIL_NO_VCENTER,
+                  - SYSERR_VI_MGR_SEVM_FLAVOR_UNAVAIL, SYSERR_VI_MGR_SEVM_DELETED, SYSERR_VI_MGR_SEVM_VINFRA_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_FAILURE_QUESTION,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_LOGIN_FAIL_USER_CREDENTIALS, SYSERR_VI_MGR_VCENTER_VERSION_MISMATCH, SYSERR_DB_CACHE_TBL_NOT_FOUND, SYSERR_DB_CACHE_OBJ_NOT_FOUND,
+                  - SYSERR_VI_MGR_LOGIN_FAIL_NO_VCENTER, SYSERR_VI_MGR_LOGIN_FAIL_USER_CREDENTIALS, SYSERR_VI_MGR_VCENTER_VERSION_MISMATCH,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_DB_QUERY_QUEUED, SYSERR_DB_QUERY_BATCHED, SYSERR_DB_UPDATE_FAILED, SYSERR_DB_QUERY_FAILED, SYSERR_DB_ENQUEUE_FULL, SYSERR_OS_AGENT_Q_FULL,
+                  - SYSERR_DB_CACHE_TBL_NOT_FOUND, SYSERR_DB_CACHE_OBJ_NOT_FOUND, SYSERR_DB_QUERY_QUEUED, SYSERR_DB_QUERY_BATCHED, SYSERR_DB_UPDATE_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_OS_AGENT_OPENSTACK_UNINITIALIZED, SYSERR_OS_AGENT_OPENSTACK_ACCESSERR, SYSERR_OS_AGENT_OPENSTACK_RESOURCEERR,
+                  - SYSERR_DB_QUERY_FAILED, SYSERR_DB_ENQUEUE_FULL, SYSERR_OS_AGENT_Q_FULL, SYSERR_OS_AGENT_OPENSTACK_UNINITIALIZED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_OS_AGENT_TENANT_ABSENT, SYSERR_OS_AGENT_INVALID_DATA, SYSERR_CC_SVC_Q_FULL, SYSERR_CC_AGENT_UNINITIALIZED, SYSERR_CC_AGENT_ACCESSERR,
+                  - SYSERR_OS_AGENT_OPENSTACK_ACCESSERR, SYSERR_OS_AGENT_OPENSTACK_RESOURCEERR, SYSERR_OS_AGENT_TENANT_ABSENT, SYSERR_OS_AGENT_INVALID_DATA,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_AGENT_RESOURCEERR, SYSERR_CC_AGENT_TENANT_ACCESSERR, SYSERR_CC_AGENT_TENANT_ABSENT, SYSERR_CC_SVC_INVALID_DATA,
+                  - SYSERR_CC_SVC_Q_FULL, SYSERR_CC_AGENT_UNINITIALIZED, SYSERR_CC_AGENT_ACCESSERR, SYSERR_CC_AGENT_RESOURCEERR, SYSERR_CC_AGENT_TENANT_ACCESSERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_OS_AGENT_NEUTRON_HOST_ACCESSERR, SYSERR_CC_NO_FLAVOR, SYSERR_CC_AGENT_ABSENT, SYSERR_CC_AGENT_CONFIG_FAILURE,
+                  - SYSERR_CC_AGENT_TENANT_ABSENT, SYSERR_CC_SVC_INVALID_DATA, SYSERR_CC_OS_AGENT_NEUTRON_HOST_ACCESSERR, SYSERR_CC_NO_FLAVOR, SYSERR_CC_AGENT_ABSENT,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_AGENT_DECONFIG_FAILURE, SYSERR_CC_AGENT_NON_INFRA_SEVM, SYSERR_MESOS_DISCOVERY_DEPLOYMENT_FAIL, SYSERR_MESOS_DISCOVERY_TIMEOUT,
+                  - SYSERR_CC_AGENT_CONFIG_FAILURE, SYSERR_CC_AGENT_DECONFIG_FAILURE, SYSERR_CC_AGENT_NON_INFRA_SEVM, SYSERR_MESOS_DISCOVERY_DEPLOYMENT_FAIL,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MARATHON_APP_TERMINATED, SYSERR_MARATHON_INACCESSIBLE, SYSERR_FLEET_API_ERROR, SYSERR_MESOS_SSH_CMD_TIMEOUT, SYSERR_MESOS_SSH_ABORTED,
+                  - SYSERR_MESOS_DISCOVERY_TIMEOUT, SYSERR_MARATHON_APP_TERMINATED, SYSERR_MARATHON_INACCESSIBLE, SYSERR_FLEET_API_ERROR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MESOS_SSH_FAILURE, SYSERR_MESOS_SSH_NOTFOUND, SYSERR_CC_AGENT_VNIC_NO_IPS_AVAILABLE, SYSERR_CC_AGENT_VNIC_NO_SUBNETWORK,
+                  - SYSERR_MESOS_SSH_CMD_TIMEOUT, SYSERR_MESOS_SSH_ABORTED, SYSERR_MESOS_SSH_FAILURE, SYSERR_MESOS_SSH_NOTFOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_AGENT_VNIC_FAILURE, SYSERR_CC_AGENT_SCALE_IN_FAILED, SYSERR_CC_AGENT_DS_FAILED, SYSERR_CC_AGENT_SCALE_OUT_FAILED, SYSERR_CC_TOO_BUSY,
+                  - SYSERR_CC_AGENT_VNIC_NO_IPS_AVAILABLE, SYSERR_CC_AGENT_VNIC_NO_SUBNETWORK, SYSERR_CC_AGENT_VNIC_FAILURE, SYSERR_CC_AGENT_SCALE_IN_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_AGENT_NOT_IMPLEMENTED, SYSERR_CC_AGENT_METHOD_NOT_IMPLEMENTED, SYSERR_CC_AGENT_GENERIC_FAILURE, SYSERR_RUM_TOOMANYSAMPLES,
+                  - SYSERR_CC_AGENT_DS_FAILED, SYSERR_CC_AGENT_SCALE_OUT_FAILED, SYSERR_CC_TOO_BUSY, SYSERR_CC_AGENT_NOT_IMPLEMENTED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_METRICS_TOO_MANY_MSG, SYSERR_METRICS_TOO_MANY_MSG_ACROSS_ENTITIES, SYSERR_ANOMALYZER_NOT_ENOUGH_SAMPLES,
+                  - SYSERR_CC_AGENT_METHOD_NOT_IMPLEMENTED, SYSERR_CC_AGENT_GENERIC_FAILURE, SYSERR_RUM_TOOMANYSAMPLES, SYSERR_METRICS_TOO_MANY_MSG,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_REASON_INTELLIGENT_AUTOSCALE, SYSERR_AUTOSCALE_REASON_CONFIG_UPDATE, SYSERR_AUTOSCALE_REASON_POOL_STATE_CHANGE,
+                  - SYSERR_METRICS_TOO_MANY_MSG_ACROSS_ENTITIES, SYSERR_ANOMALYZER_NOT_ENOUGH_SAMPLES, SYSERR_AUTOSCALE_REASON_INTELLIGENT_AUTOSCALE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_REASON_ALERT, SYSERR_AUTOSCALEIN_FAILED_LIMIT_EXCEEDED, SYSERR_AUTOSCALEOUT_FAILED_LIMIT_EXCEEDED,
+                  - SYSERR_AUTOSCALE_REASON_CONFIG_UPDATE, SYSERR_AUTOSCALE_REASON_POOL_STATE_CHANGE, SYSERR_AUTOSCALE_REASON_ALERT,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_IGNORED_AS_WITHIN_COOLDOWN, SYSERR_AUTOSCALE_ORCHESTRATION_TIMEOUT, SYSERR_AUTOSCALE_REASON_NOT_ENOUGH_SERVERS,
+                  - SYSERR_AUTOSCALEIN_FAILED_LIMIT_EXCEEDED, SYSERR_AUTOSCALEOUT_FAILED_LIMIT_EXCEEDED, SYSERR_AUTOSCALE_IGNORED_AS_WITHIN_COOLDOWN,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_REASON_TOO_MANY_SERVERS, SYSERR_AUTOSCALE_REASON_ORCHESTRATION_FAILED, SYSERR_AUTOSCALE_REASON_MANUAL,
+                  - SYSERR_AUTOSCALE_ORCHESTRATION_TIMEOUT, SYSERR_AUTOSCALE_REASON_NOT_ENOUGH_SERVERS, SYSERR_AUTOSCALE_REASON_TOO_MANY_SERVERS,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_POLICY_NOT_FOUND, SYSERR_AUTOSCALE_REASON_GARBAGE_COLLECTION, SYSERR_AUTOSCALE_SCHEDULED_SCALEIN,
+                  - SYSERR_AUTOSCALE_REASON_ORCHESTRATION_FAILED, SYSERR_AUTOSCALE_REASON_MANUAL, SYSERR_AUTOSCALE_POLICY_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_SCHEDULED_SCALEOUT, SYSERR_LICENSE_FIELD_NAME_NOT_SET, SYSERR_LICENSE_FILE_NOT_FOUND, SYSERR_LICENSE_FIELD_VALID_UNTIL_NOT_SET,
+                  - SYSERR_AUTOSCALE_REASON_GARBAGE_COLLECTION, SYSERR_AUTOSCALE_SCHEDULED_SCALEIN, SYSERR_AUTOSCALE_SCHEDULED_SCALEOUT,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_LICENSE_INVALID_TIERS, SYSERR_LICENSE_FIELD_LICENSE_ID_NOT_PRESENT, SYSERR_LICENSE_INVALID_VERSION, SYSERR_LICENSE_DECRYPTION_FAILED,
+                  - SYSERR_LICENSE_FIELD_NAME_NOT_SET, SYSERR_LICENSE_FILE_NOT_FOUND, SYSERR_LICENSE_FIELD_VALID_UNTIL_NOT_SET, SYSERR_LICENSE_INVALID_TIERS,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_LICENSE_FIELD_LICENSE_ID_NOT_PRESENT, SYSERR_LICENSE_INVALID_VERSION, SYSERR_LICENSE_DECRYPTION_FAILED,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_LICENSE_ENFORCEMENT_KEY_NOT_VALID, SYSERR_LICENSE_INVALID_SERIALKEY, SYSERR_LICENSE_INVALID_METRICS, SYSERR_LICENSE_GRPC_NOT_READY,
@@ -1167,28 +1170,28 @@ Parameters
                   - SYSERR_LICENSE_INVALID_TIER, SYSERR_TRIAL_OR_EVAL_LICENSE_ADDITION_NOT_ALLOWED, SYSERR_LICENSE_INVALID_CLUSTER_UUID,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_LICENSE_SAAS_LICENSE_INSTALLATION_FAILED, SYSERR_SEAGENT_OBJ_INACTIVE, SYSERR_SEAGENT_OBJ_AWAITING_DP_PROGRAMMING,
+                  - SYSERR_LICENSE_SAAS_LICENSE_INSTALLATION_FAILED, SYSERR_LICENSE_TRANSACTION_SERVICE_UNITS_REQUIRED, SYSERR_SEAGENT_OBJ_INACTIVE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEAGENT_OBJ_ACTIVE, SYSERR_SEAGENT_OBJ_GRAPHDB_ERROR, SYSERR_SEAGENT_OBJ_DP_ERROR, SYSERR_SEAGENT_OBJ_DISABLED_RULE_POOL,
+                  - SYSERR_SEAGENT_OBJ_AWAITING_DP_PROGRAMMING, SYSERR_SEAGENT_OBJ_ACTIVE, SYSERR_SEAGENT_OBJ_GRAPHDB_ERROR, SYSERR_SEAGENT_OBJ_DP_ERROR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEAGENT_EASTWEST_VS_SUBNET_ERROR, SYSERR_SEAGENT_OBJ_NOT_FOUND, SYSERR_SEAGENT_VS_NOT_FOUND, SYSERR_SEAGENT_VS_VRF_ERROR,
+                  - SYSERR_SEAGENT_OBJ_DISABLED_RULE_POOL, SYSERR_SEAGENT_EASTWEST_VS_SUBNET_ERROR, SYSERR_SEAGENT_OBJ_NOT_FOUND, SYSERR_SEAGENT_VS_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEAGENT_VS_SELIST_LIMIT_ERROR, SYSERR_SEAGENT_VS_SELIST_SE_INTF_ERROR, SYSERR_SEAGENT_VS_CHILD_PARENT_UUID_MISSING,
+                  - SYSERR_SEAGENT_VS_VRF_ERROR, SYSERR_SEAGENT_VS_SELIST_LIMIT_ERROR, SYSERR_SEAGENT_VS_SELIST_SE_INTF_ERROR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEDP_PARENT_VS_NOT_EXIST_FOR_CHILD, SYSERR_SEAGENT_TENANT_CREATE_FAILED, SYSERR_SEAGENT_TENANT_UPDATE_FAILED,
+                  - SYSERR_SEAGENT_VS_CHILD_PARENT_UUID_MISSING, SYSERR_SEDP_PARENT_VS_NOT_EXIST_FOR_CHILD, SYSERR_SEAGENT_TENANT_CREATE_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEAGENT_VS_INTERFACE_ERROR, SYSERR_SEAGENT_INSUFFICIENT_MEMORY, SYSERR_SEDP_VNIC_CREATION_FAILURE, SYSERR_SEDP_VNIC_ATTACH_FAILURE,
+                  - SYSERR_SEAGENT_TENANT_UPDATE_FAILED, SYSERR_SEAGENT_VS_INTERFACE_ERROR, SYSERR_SEAGENT_INSUFFICIENT_MEMORY, SYSERR_SEDP_VNIC_CREATION_FAILURE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEDP_VNIC_IF_CREATION_FAILURE, SYSERR_SEDP_VNIC_START_FAILURE, SYSERR_SEDP_VNIC_NOT_FOUND, SYSERR_SEDP_VNIC_MISMATCH_VRF,
+                  - SYSERR_SEDP_VNIC_ATTACH_FAILURE, SYSERR_SEDP_VNIC_IF_CREATION_FAILURE, SYSERR_SEDP_VNIC_START_FAILURE, SYSERR_SEDP_VNIC_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEDP_VNIC_IP_ADDR_ADD_FAILURE, SYSERR_SEDP_VNIC_IP_ADDR_DEL_FAILURE, SYSERR_SEDP_VNIC_OWNER_CORE_NOT_FOUND,
+                  - SYSERR_SEDP_VNIC_MISMATCH_VRF, SYSERR_SEDP_VNIC_IP_ADDR_ADD_FAILURE, SYSERR_SEDP_VNIC_IP_ADDR_DEL_FAILURE, SYSERR_SEDP_VNIC_OWNER_CORE_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_SEDP_VNIC_MAIN_VNIC_NOT_FOUND, SYSERR_SEDP_VNIC_MEMBER_VNIC_NOT_FOUND, SYSERR_SEDP_VNIC_VLAN_FILTER_ADD_FAILURE,
@@ -1485,94 +1488,97 @@ Parameters
                   - SYSERR_CHECK_DRYRUN_FIPS_MODE, SYSERR_CHECK_CONFIG_BUNDLE, SYSERR_CHECK_ROLLBACK_FIPS_MODE, SYSERR_CHECK_TIME_SYNC, SYSERR_CHECK_ROLLBACK_SYSTEM,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_LICENSE_CONSUMPTION, SYSERR_MC_UPGRADE_LICENSE_ERR, SYSERR_MC_UPGRADE_CLUSTER_NOT_READY, SYSERR_MC_DISK_INSUFFICIENT_ERR,
+                  - SYSERR_CHECK_LICENSE_CONSUMPTION, SYSERR_CHECK_LINUX_INFRA_HEALTH, SYSERR_CHECK_GSLBSERVICE_DISRUPTION, SYSERR_MC_UPGRADE_LICENSE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_CLUSTER_INPROGRESS_ERR, SYSERR_MC_SEGROUP_INPROGRESS_ERR, SYSERR_MC_UPGRADE_INCOMPATIBLE_IMAGE_AND_PATCH,
+                  - SYSERR_MC_UPGRADE_CLUSTER_NOT_READY, SYSERR_MC_DISK_INSUFFICIENT_ERR, SYSERR_MC_CLUSTER_INPROGRESS_ERR, SYSERR_MC_SEGROUP_INPROGRESS_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_UPGRADE_INCOMPATIBLE_FROM_TO_IMAGE, SYSERR_MC_UPGRADE_INCOMPATIBLE_PATCH, SYSERR_MC_UPGRADE_INCOMPATIBLE_SE_GROUP_IMAGE,
+                  - SYSERR_MC_UPGRADE_INCOMPATIBLE_IMAGE_AND_PATCH, SYSERR_MC_UPGRADE_INCOMPATIBLE_FROM_TO_IMAGE, SYSERR_MC_UPGRADE_INCOMPATIBLE_PATCH,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_SE_UNREACHABLE_ERR, SYSERR_MC_SE_GROUP_CLOUD_NOT_READY_ERR, SYSERR_MC_UPGRADE_VS_DISRUPTED_ERR, SYSERR_MC_ROLLBACK_NOT_POSSIBLE,
+                  - SYSERR_MC_UPGRADE_INCOMPATIBLE_SE_GROUP_IMAGE, SYSERR_MC_SE_UNREACHABLE_ERR, SYSERR_MC_SE_GROUP_CLOUD_NOT_READY_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_SE_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_ROLLBACK_INFO_ERR, SYSERR_MC_CONTROLLER_ROLLBACK_NOT_POSSIBLE,
+                  - SYSERR_MC_UPGRADE_VS_DISRUPTED_ERR, SYSERR_MC_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_SE_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_ROLLBACK_INFO_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_SYSTEM_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_IMAGE_INVALID_ERR, SYSERR_MC_ACTIVE_VERSIONS_ERR, SYSERR_MC_BACKUP_ERR,
+                  - SYSERR_MC_CONTROLLER_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_SYSTEM_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_IMAGE_INVALID_ERR, SYSERR_MC_ACTIVE_VERSIONS_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_ROLLBACK_ON_ERR, SYSERR_MC_SUSPENDED_ERR, SYSERR_MC_SYSTEM_FLAG_ERR, SYSERR_MC_PREVIOUS_PARTITION_INCOMPATIBLE_ERR,
+                  - SYSERR_MC_BACKUP_ERR, SYSERR_MC_ROLLBACK_ON_ERR, SYSERR_MC_SUSPENDED_ERR, SYSERR_MC_SYSTEM_FLAG_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_IMAGE_VALIDATION_ERR, SYSERR_MC_CONTROLLER_PATCH_ERR, SYSERR_MC_SE_PATCH_ERR, SYSERR_MC_SE_ROLLBACK_V1_ERR, SYSERR_MC_ALERTS,
+                  - SYSERR_MC_PREVIOUS_PARTITION_INCOMPATIBLE_ERR, SYSERR_MC_IMAGE_VALIDATION_ERR, SYSERR_MC_CONTROLLER_PATCH_ERR, SYSERR_MC_SE_PATCH_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_ROLLBACK_DOCKER_IMAGE_ERR, SYSERR_MC_RESUME_OPS_ERR, SYSERR_MC_CHECK_PATCH_IMAGE_ERR, SYSERR_MC_CHECK_SE_GROUP_ROLLBACK_ERR,
+                  - SYSERR_MC_SE_ROLLBACK_V1_ERR, SYSERR_MC_ALERTS, SYSERR_MC_ROLLBACK_DOCKER_IMAGE_ERR, SYSERR_MC_RESUME_OPS_ERR, SYSERR_MC_CHECK_PATCH_IMAGE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_SKIP_SE_GROUPS_ERR, SYSERR_MC_CHECK_CLOUD_COMPATIBILITY_ERR, SYSERR_MC_SKIP_ALL_SE_GROUPS_ERR, SYSERR_MC_MAND_PATCH_ROLLBACK_ERR,
+                  - SYSERR_MC_CHECK_SE_GROUP_ROLLBACK_ERR, SYSERR_MC_SKIP_SE_GROUPS_ERR, SYSERR_MC_CHECK_CLOUD_COMPATIBILITY_ERR, SYSERR_MC_SKIP_ALL_SE_GROUPS_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_GSLB_LEADER_ERR, SYSERR_MC_SYSTEM_CONFIGURATION_ERR, SYSERR_MC_AVI_ESSENTIALS_OPERATION_NOT_SUPPORTED_ERROR,
+                  - SYSERR_MC_MAND_PATCH_ROLLBACK_ERR, SYSERR_MC_GSLB_LEADER_ERR, SYSERR_MC_SYSTEM_CONFIGURATION_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_ROLLBACK_VS_DISRUPTED_ERR, SYSERR_MC_SE_LINUX_ENABLED_ERR, SYSERR_MC_PREVIOUS_DOCKER_IMAGE_NOT_PRESENT_ERR,
+                  - SYSERR_MC_AVI_ESSENTIALS_OPERATION_NOT_SUPPORTED_ERROR, SYSERR_MC_ROLLBACK_VS_DISRUPTED_ERR, SYSERR_MC_SE_LINUX_ENABLED_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_DOCKER_VERSION_INCOMPATIBLE_ERROR, SYSERR_MC_IP_TYPE_ERR, SYSERR_MC_INVALID_SE_LICENSE_ERR,
+                  - SYSERR_MC_PREVIOUS_DOCKER_IMAGE_NOT_PRESENT_ERR, SYSERR_MC_DOCKER_VERSION_INCOMPATIBLE_ERROR, SYSERR_MC_IP_TYPE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_AVI_CLOUD_SERVICES_OPERATION_NOT_SUPPORTED_ERROR, SYSERR_MC_CONFIG_CHK_ERR, SYSERR_MC_GSLB_MANUAL_RESUME_ERR, SYSERR_MC_K8S_ACCESS_ERR,
+                  - SYSERR_MC_INVALID_SE_LICENSE_ERR, SYSERR_MC_AVI_CLOUD_SERVICES_OPERATION_NOT_SUPPORTED_ERROR, SYSERR_MC_CONFIG_CHK_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_IMAGE_AVAILABILITY_ERR, SYSERR_MC_POD_IMAGE_ERR, SYSERR_MC_REMOTE_IMAGE_REF_ERR, SYSERR_MC_CONTROLLER_PACKAGE_ERR,
+                  - SYSERR_MC_GSLB_MANUAL_RESUME_ERR, SYSERR_MC_K8S_ACCESS_ERR, SYSERR_MC_IMAGE_AVAILABILITY_ERR, SYSERR_MC_POD_IMAGE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_PATCH_PACKAGE_ERR, SYSERR_MC_CONSENT_ERR, SYSERR_MC_CONFIG_VERSION_ERR, SYSERR_MC_CONFIG_FIPS_ERR, SYSERR_MC_CONFIG_FILES_ERR,
+                  - SYSERR_MC_REMOTE_IMAGE_REF_ERR, SYSERR_MC_CONTROLLER_PACKAGE_ERR, SYSERR_MC_PATCH_PACKAGE_ERR, SYSERR_MC_CONSENT_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_CONFIG_IMAGES_ERR, SYSERR_MC_CONFIG_ERR, SYSERR_CHECK_CONFIG_SE_ERR, SYSERR_CHECK_CONFIG_ENV_ERR,
+                  - SYSERR_MC_CONFIG_VERSION_ERR, SYSERR_MC_CONFIG_FIPS_ERR, SYSERR_MC_CONFIG_FILES_ERR, SYSERR_MC_CONFIG_IMAGES_ERR, SYSERR_MC_CONFIG_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_CONFIG_ACTIVE_VERSIONS_ERR, SYSERR_CHECK_RESTORE_PATCH_ERR, SYSERR_MC_GSLB_MAINTENANCE_MODE_ERR, SYSERR_CHECK_VERSION_MIGRATION_ERR,
+                  - SYSERR_CHECK_CONFIG_SE_ERR, SYSERR_CHECK_CONFIG_ENV_ERR, SYSERR_CHECK_CONFIG_ACTIVE_VERSIONS_ERR, SYSERR_CHECK_RESTORE_PATCH_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_CLUSTER_SINGLE_NODE_ERR, SYSERR_CONTROLLER_SE_SECURE_CHANNEL_CERTIFICATE_VALIDATION_ERR, SYSERR_CHECK_DRYRUN_CAPABILITY_ERR,
+                  - SYSERR_MC_GSLB_MAINTENANCE_MODE_ERR, SYSERR_CHECK_VERSION_MIGRATION_ERR, SYSERR_CHECK_CLUSTER_SINGLE_NODE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_SE_AVAILABLE_MEMORY, SYSERR_CHECK_SE_AVAILABLE_MEMORY_ERR, SYSERR_CHECK_DRYRUN_FIPS_MODE_ERR, SYSERR_CHECK_CONFIG_BUNDLE_ERR,
+                  - SYSERR_CONTROLLER_SE_SECURE_CHANNEL_CERTIFICATE_VALIDATION_ERR, SYSERR_CHECK_DRYRUN_CAPABILITY_ERR, SYSERR_CHECK_SE_AVAILABLE_MEMORY,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_ROLLBACK_FIPS_ERR, SYSERR_MC_CHECK_TIME_SYNC_ERR, SYSERR_CHECK_ROLLBACK_SYSTEM_ERR, SYSERR_MC_CHECK_LICENSE_CONSUMPTION_ERR,
+                  - SYSERR_CHECK_SE_AVAILABLE_MEMORY_ERR, SYSERR_CHECK_DRYRUN_FIPS_MODE_ERR, SYSERR_CHECK_CONFIG_BUNDLE_ERR, SYSERR_CHECK_ROLLBACK_FIPS_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VS_NOT_FOUND, SYSERR_DEFAULT_POOL_NOT_FOUND, SYSERR_PROXY_POOL_NOT_FOUND, SYSERR_MISSING_APPLICATION_PROFILE, SYSERR_APP_PROFILE_NOT_FOUND,
+                  - SYSERR_MC_CHECK_TIME_SYNC_ERR, SYSERR_CHECK_ROLLBACK_SYSTEM_ERR, SYSERR_MC_CHECK_LICENSE_CONSUMPTION_ERR, SYSERR_MC_LINUX_INFRA_HEALTH_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_WAF_POLICY_NOT_FOUND, SYSERR_DUPLICATE_VS, SYSERR_WRONG_VS_TYPE, SYSERR_POOL_IN_PG_NOT_FOUND, SYSERR_PG_IN_PG,
+                  - SYSERR_GSLBSERVICE_DISRUPTED_ERR, SYSERR_VS_NOT_FOUND, SYSERR_DEFAULT_POOL_NOT_FOUND, SYSERR_PROXY_POOL_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_LB_MODULE_INIT_FAILED, SYSERR_CONNPOOL_MODULE_INIT_FAILED, SYSERR_LBACTION_MODULE_INIT_FAILED, SYSERR_PG_NOT_FOUND, SYSERR_DUPLICATE_POOL,
+                  - SYSERR_MISSING_APPLICATION_PROFILE, SYSERR_APP_PROFILE_NOT_FOUND, SYSERR_WAF_POLICY_NOT_FOUND, SYSERR_DUPLICATE_VS, SYSERR_WRONG_VS_TYPE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SSL_PROFILE_NOT_FOUND, SYSERR_PKI_PROFILE_NOT_FOUND, SYSERR_SSL_CERTKEY_NOT_FOUND, SYSERR_SET_CIPHER_LIST_FAILED,
+                  - SYSERR_POOL_IN_PG_NOT_FOUND, SYSERR_PG_IN_PG, SYSERR_LB_MODULE_INIT_FAILED, SYSERR_CONNPOOL_MODULE_INIT_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SET_CIPHER_SUITES_FAILED, SYSERR_WRONG_TLS_VERSION, SYSERR_ERR_PAGE_PROFILE_NO_PAGES, SYSERR_ERR_PAGE_PROFILE_NOT_FOUND,
+                  - SYSERR_LBACTION_MODULE_INIT_FAILED, SYSERR_PG_NOT_FOUND, SYSERR_DUPLICATE_POOL, SYSERR_SSL_PROFILE_NOT_FOUND, SYSERR_PKI_PROFILE_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ERR_PAGE_NOT_FOUND, SYSERR_ERR_PAGE_REDIRECT_NOT_CONFIGURED, SYSERR_HM_NOT_FOUND, SYSERR_HTTPS_HM_MISSING_CONFIG,
+                  - SYSERR_SSL_CERTKEY_NOT_FOUND, SYSERR_SET_CIPHER_LIST_FAILED, SYSERR_SET_CIPHER_SUITES_FAILED, SYSERR_WRONG_TLS_VERSION,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SNI_PARENT_UNCONFIGURED, SYSERR_SNI_PARENT_NOT_FOUND, SYSERR_HTTP_POLICYSET_NOT_FOUND, SYSERR_VSDS_NOT_FOUND,
+                  - SYSERR_ERR_PAGE_PROFILE_NO_PAGES, SYSERR_ERR_PAGE_PROFILE_NOT_FOUND, SYSERR_ERR_PAGE_NOT_FOUND, SYSERR_ERR_PAGE_REDIRECT_NOT_CONFIGURED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MULTIPLE_SP_POOLS_CONFIGURED, SYSERR_L4SSL_VS_INVALID_CLIENT_CERT, SYSERR_CR_PROFILE_NOT_FOUND, SYSERR_POOL_NOT_FOUND,
+                  - SYSERR_HM_NOT_FOUND, SYSERR_HTTPS_HM_MISSING_CONFIG, SYSERR_SNI_PARENT_UNCONFIGURED, SYSERR_SNI_PARENT_NOT_FOUND, SYSERR_HTTP_POLICYSET_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_LISTEN_PORTS_CFG_FAILED, SYSERR_STRGRP_NOT_FOUND, SYSERR_SSOPOLICY_NULL, SYSERR_SSOPOLICY_NO_AUTHN_POLICY,
+                  - SYSERR_VSDS_NOT_FOUND, SYSERR_MULTIPLE_SP_POOLS_CONFIGURED, SYSERR_L4SSL_VS_INVALID_CLIENT_CERT, SYSERR_CR_PROFILE_NOT_FOUND,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_POOL_NOT_FOUND, SYSERR_LISTEN_PORTS_CFG_FAILED, SYSERR_STRGRP_NOT_FOUND, SYSERR_SSOPOLICY_NULL, SYSERR_SSOPOLICY_NO_AUTHN_POLICY,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_SSOPOLICY_NO_AUTH_PROFILE, SYSERR_AUTHPROFILE_NULL, SYSERR_SSOPOLICY_INVALID_AUTH_TYPE, SYSERR_SSOPOLICY_MISSING_SAML_IDP_SP_CONF,
@@ -1686,7 +1692,7 @@ Parameters
                   - SYSERR_FILE_CONTENT_DECODE_FAILED, SYSERR_RETENTION_POLICY_ERR, SYSERR_RETENTION_POLICY_SERVICE_UNAVAILABLE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_RETENTION_POLICY_INVALID_ACTION, SYSERR_SVC_FAILURE, SYSERR_SVC_SUCCESS.
+                  - SYSERR_RETENTION_POLICY_INVALID_ACTION, SYSERR_SVC_FAILURE, SYSERR_SVC_SUCCESS, SYSERR_PROTOBUF_MEM_CHUNK_SIZE_EXCEEDED.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1847,6 +1853,57 @@ Parameters
     </tr>
         
                                         <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_vs_completed</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_vs_failed</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_vs_total</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>reason</b>
@@ -2474,94 +2531,97 @@ Parameters
                   - SYSERR_RM_CLOUD_NOT_FOUND, SYSERR_RM_SEGROUP_NOT_FOUND, SYSERR_RM_SE_OFFLINE, SYSERR_RM_SE_USED, SYSERR_RM_SE_BGP_PEERS_DOWN,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_RM_SE_FLAVOR_LIMIT_REACHED, SYSERR_VI_MGR_SEVM_VNIC_SUCCESS, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_HW_INFO,
+                  - SYSERR_RM_SE_FLAVOR_LIMIT_REACHED, SYSERR_RM_SE_INSUFFICIENT_VNIC_SLOTS, SYSERR_VI_MGR_SEVM_VNIC_SUCCESS,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_DUPLICATE_NAME, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_CPU,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_HW_INFO, SYSERR_VI_MGR_SEVM_CREATE_FAIL_DUPLICATE_NAME, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MEM, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_LEASE, SYSERR_VI_MGR_SEVM_CREATE_FAIL_OVF_ERROR,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_CPU, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MEM, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_LEASE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_NO_HOST_VM_NETWORK, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_PROGRESS, SYSERR_VI_MGR_SEVM_CREATE_FAIL_ABORTED,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_OVF_ERROR, SYSERR_VI_MGR_SEVM_CREATE_NO_HOST_VM_NETWORK, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_PROGRESS,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_FAILURE, SYSERR_VI_MGR_SEVM_CREATE_FAIL_POWER_ON, SYSERR_VI_MGR_SEVM_VNIC_NO_VM, SYSERR_VI_MGR_SEVM_VNIC_MAC_ADDR_ERROR,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_ABORTED, SYSERR_VI_MGR_SEVM_CREATE_FAILURE, SYSERR_VI_MGR_SEVM_CREATE_FAIL_POWER_ON, SYSERR_VI_MGR_SEVM_VNIC_NO_VM,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_VNIC_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_NO_PG_PORTS, SYSERR_VI_MGR_SEVM_DELETE_FAILURE, SYSERR_VI_MGR_SEVM_CREATE_LIMIT_REACHED,
+                  - SYSERR_VI_MGR_SEVM_VNIC_MAC_ADDR_ERROR, SYSERR_VI_MGR_SEVM_VNIC_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_NO_PG_PORTS, SYSERR_VI_MGR_SEVM_DELETE_FAILURE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_SET_MGMT_IP_FAILED, SYSERR_VI_MGR_SEVM_CREATE_ACCESS_ERROR, SYSERR_VI_MGR_SEVM_CREATE_NO_IMAGE,
+                  - SYSERR_VI_MGR_SEVM_CREATE_LIMIT_REACHED, SYSERR_VI_MGR_SEVM_SET_MGMT_IP_FAILED, SYSERR_VI_MGR_SEVM_CREATE_ACCESS_ERROR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_VINFRA_UNINITIALIZED, SYSERR_VI_MGR_SEVM_CREATE_NO_HOST, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW_PORTS,
+                  - SYSERR_VI_MGR_SEVM_CREATE_NO_IMAGE, SYSERR_VI_MGR_SEVM_VINFRA_UNINITIALIZED, SYSERR_VI_MGR_SEVM_CREATE_NO_HOST,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_INVALID_DATA, SYSERR_VI_MGR_SEVM_CREATE_FAIL_MULTIPLE_MGMT_NW, SYSERR_VI_MGR_SEVM_VCENTER_CONN_FAIL,
+                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW_PORTS, SYSERR_VI_MGR_SEVM_INVALID_DATA, SYSERR_VI_MGR_SEVM_CREATE_FAIL_MULTIPLE_MGMT_NW,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_TIMED_OUT, SYSERR_VI_MGR_SEVM_NO_SOURCE_CLONE, SYSERR_VI_MGR_SEVM_NO_AVAILABILITY_ZONE, SYSERR_VI_MGR_SEVM_FLAVOR_UNAVAIL,
+                  - SYSERR_VI_MGR_SEVM_VCENTER_CONN_FAIL, SYSERR_VI_MGR_SEVM_TIMED_OUT, SYSERR_VI_MGR_SEVM_NO_SOURCE_CLONE, SYSERR_VI_MGR_SEVM_NO_AVAILABILITY_ZONE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_DELETED, SYSERR_VI_MGR_SEVM_VINFRA_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_FAILURE_QUESTION, SYSERR_VI_MGR_LOGIN_FAIL_NO_VCENTER,
+                  - SYSERR_VI_MGR_SEVM_FLAVOR_UNAVAIL, SYSERR_VI_MGR_SEVM_DELETED, SYSERR_VI_MGR_SEVM_VINFRA_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_FAILURE_QUESTION,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VI_MGR_LOGIN_FAIL_USER_CREDENTIALS, SYSERR_VI_MGR_VCENTER_VERSION_MISMATCH, SYSERR_DB_CACHE_TBL_NOT_FOUND, SYSERR_DB_CACHE_OBJ_NOT_FOUND,
+                  - SYSERR_VI_MGR_LOGIN_FAIL_NO_VCENTER, SYSERR_VI_MGR_LOGIN_FAIL_USER_CREDENTIALS, SYSERR_VI_MGR_VCENTER_VERSION_MISMATCH,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_DB_QUERY_QUEUED, SYSERR_DB_QUERY_BATCHED, SYSERR_DB_UPDATE_FAILED, SYSERR_DB_QUERY_FAILED, SYSERR_DB_ENQUEUE_FULL, SYSERR_OS_AGENT_Q_FULL,
+                  - SYSERR_DB_CACHE_TBL_NOT_FOUND, SYSERR_DB_CACHE_OBJ_NOT_FOUND, SYSERR_DB_QUERY_QUEUED, SYSERR_DB_QUERY_BATCHED, SYSERR_DB_UPDATE_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_OS_AGENT_OPENSTACK_UNINITIALIZED, SYSERR_OS_AGENT_OPENSTACK_ACCESSERR, SYSERR_OS_AGENT_OPENSTACK_RESOURCEERR,
+                  - SYSERR_DB_QUERY_FAILED, SYSERR_DB_ENQUEUE_FULL, SYSERR_OS_AGENT_Q_FULL, SYSERR_OS_AGENT_OPENSTACK_UNINITIALIZED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_OS_AGENT_TENANT_ABSENT, SYSERR_OS_AGENT_INVALID_DATA, SYSERR_CC_SVC_Q_FULL, SYSERR_CC_AGENT_UNINITIALIZED, SYSERR_CC_AGENT_ACCESSERR,
+                  - SYSERR_OS_AGENT_OPENSTACK_ACCESSERR, SYSERR_OS_AGENT_OPENSTACK_RESOURCEERR, SYSERR_OS_AGENT_TENANT_ABSENT, SYSERR_OS_AGENT_INVALID_DATA,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_AGENT_RESOURCEERR, SYSERR_CC_AGENT_TENANT_ACCESSERR, SYSERR_CC_AGENT_TENANT_ABSENT, SYSERR_CC_SVC_INVALID_DATA,
+                  - SYSERR_CC_SVC_Q_FULL, SYSERR_CC_AGENT_UNINITIALIZED, SYSERR_CC_AGENT_ACCESSERR, SYSERR_CC_AGENT_RESOURCEERR, SYSERR_CC_AGENT_TENANT_ACCESSERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_OS_AGENT_NEUTRON_HOST_ACCESSERR, SYSERR_CC_NO_FLAVOR, SYSERR_CC_AGENT_ABSENT, SYSERR_CC_AGENT_CONFIG_FAILURE,
+                  - SYSERR_CC_AGENT_TENANT_ABSENT, SYSERR_CC_SVC_INVALID_DATA, SYSERR_CC_OS_AGENT_NEUTRON_HOST_ACCESSERR, SYSERR_CC_NO_FLAVOR, SYSERR_CC_AGENT_ABSENT,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_AGENT_DECONFIG_FAILURE, SYSERR_CC_AGENT_NON_INFRA_SEVM, SYSERR_MESOS_DISCOVERY_DEPLOYMENT_FAIL, SYSERR_MESOS_DISCOVERY_TIMEOUT,
+                  - SYSERR_CC_AGENT_CONFIG_FAILURE, SYSERR_CC_AGENT_DECONFIG_FAILURE, SYSERR_CC_AGENT_NON_INFRA_SEVM, SYSERR_MESOS_DISCOVERY_DEPLOYMENT_FAIL,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MARATHON_APP_TERMINATED, SYSERR_MARATHON_INACCESSIBLE, SYSERR_FLEET_API_ERROR, SYSERR_MESOS_SSH_CMD_TIMEOUT, SYSERR_MESOS_SSH_ABORTED,
+                  - SYSERR_MESOS_DISCOVERY_TIMEOUT, SYSERR_MARATHON_APP_TERMINATED, SYSERR_MARATHON_INACCESSIBLE, SYSERR_FLEET_API_ERROR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MESOS_SSH_FAILURE, SYSERR_MESOS_SSH_NOTFOUND, SYSERR_CC_AGENT_VNIC_NO_IPS_AVAILABLE, SYSERR_CC_AGENT_VNIC_NO_SUBNETWORK,
+                  - SYSERR_MESOS_SSH_CMD_TIMEOUT, SYSERR_MESOS_SSH_ABORTED, SYSERR_MESOS_SSH_FAILURE, SYSERR_MESOS_SSH_NOTFOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_AGENT_VNIC_FAILURE, SYSERR_CC_AGENT_SCALE_IN_FAILED, SYSERR_CC_AGENT_DS_FAILED, SYSERR_CC_AGENT_SCALE_OUT_FAILED, SYSERR_CC_TOO_BUSY,
+                  - SYSERR_CC_AGENT_VNIC_NO_IPS_AVAILABLE, SYSERR_CC_AGENT_VNIC_NO_SUBNETWORK, SYSERR_CC_AGENT_VNIC_FAILURE, SYSERR_CC_AGENT_SCALE_IN_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CC_AGENT_NOT_IMPLEMENTED, SYSERR_CC_AGENT_METHOD_NOT_IMPLEMENTED, SYSERR_CC_AGENT_GENERIC_FAILURE, SYSERR_RUM_TOOMANYSAMPLES,
+                  - SYSERR_CC_AGENT_DS_FAILED, SYSERR_CC_AGENT_SCALE_OUT_FAILED, SYSERR_CC_TOO_BUSY, SYSERR_CC_AGENT_NOT_IMPLEMENTED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_METRICS_TOO_MANY_MSG, SYSERR_METRICS_TOO_MANY_MSG_ACROSS_ENTITIES, SYSERR_ANOMALYZER_NOT_ENOUGH_SAMPLES,
+                  - SYSERR_CC_AGENT_METHOD_NOT_IMPLEMENTED, SYSERR_CC_AGENT_GENERIC_FAILURE, SYSERR_RUM_TOOMANYSAMPLES, SYSERR_METRICS_TOO_MANY_MSG,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_REASON_INTELLIGENT_AUTOSCALE, SYSERR_AUTOSCALE_REASON_CONFIG_UPDATE, SYSERR_AUTOSCALE_REASON_POOL_STATE_CHANGE,
+                  - SYSERR_METRICS_TOO_MANY_MSG_ACROSS_ENTITIES, SYSERR_ANOMALYZER_NOT_ENOUGH_SAMPLES, SYSERR_AUTOSCALE_REASON_INTELLIGENT_AUTOSCALE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_REASON_ALERT, SYSERR_AUTOSCALEIN_FAILED_LIMIT_EXCEEDED, SYSERR_AUTOSCALEOUT_FAILED_LIMIT_EXCEEDED,
+                  - SYSERR_AUTOSCALE_REASON_CONFIG_UPDATE, SYSERR_AUTOSCALE_REASON_POOL_STATE_CHANGE, SYSERR_AUTOSCALE_REASON_ALERT,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_IGNORED_AS_WITHIN_COOLDOWN, SYSERR_AUTOSCALE_ORCHESTRATION_TIMEOUT, SYSERR_AUTOSCALE_REASON_NOT_ENOUGH_SERVERS,
+                  - SYSERR_AUTOSCALEIN_FAILED_LIMIT_EXCEEDED, SYSERR_AUTOSCALEOUT_FAILED_LIMIT_EXCEEDED, SYSERR_AUTOSCALE_IGNORED_AS_WITHIN_COOLDOWN,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_REASON_TOO_MANY_SERVERS, SYSERR_AUTOSCALE_REASON_ORCHESTRATION_FAILED, SYSERR_AUTOSCALE_REASON_MANUAL,
+                  - SYSERR_AUTOSCALE_ORCHESTRATION_TIMEOUT, SYSERR_AUTOSCALE_REASON_NOT_ENOUGH_SERVERS, SYSERR_AUTOSCALE_REASON_TOO_MANY_SERVERS,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_POLICY_NOT_FOUND, SYSERR_AUTOSCALE_REASON_GARBAGE_COLLECTION, SYSERR_AUTOSCALE_SCHEDULED_SCALEIN,
+                  - SYSERR_AUTOSCALE_REASON_ORCHESTRATION_FAILED, SYSERR_AUTOSCALE_REASON_MANUAL, SYSERR_AUTOSCALE_POLICY_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_SCHEDULED_SCALEOUT, SYSERR_LICENSE_FIELD_NAME_NOT_SET, SYSERR_LICENSE_FILE_NOT_FOUND, SYSERR_LICENSE_FIELD_VALID_UNTIL_NOT_SET,
+                  - SYSERR_AUTOSCALE_REASON_GARBAGE_COLLECTION, SYSERR_AUTOSCALE_SCHEDULED_SCALEIN, SYSERR_AUTOSCALE_SCHEDULED_SCALEOUT,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_LICENSE_INVALID_TIERS, SYSERR_LICENSE_FIELD_LICENSE_ID_NOT_PRESENT, SYSERR_LICENSE_INVALID_VERSION, SYSERR_LICENSE_DECRYPTION_FAILED,
+                  - SYSERR_LICENSE_FIELD_NAME_NOT_SET, SYSERR_LICENSE_FILE_NOT_FOUND, SYSERR_LICENSE_FIELD_VALID_UNTIL_NOT_SET, SYSERR_LICENSE_INVALID_TIERS,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_LICENSE_FIELD_LICENSE_ID_NOT_PRESENT, SYSERR_LICENSE_INVALID_VERSION, SYSERR_LICENSE_DECRYPTION_FAILED,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_LICENSE_ENFORCEMENT_KEY_NOT_VALID, SYSERR_LICENSE_INVALID_SERIALKEY, SYSERR_LICENSE_INVALID_METRICS, SYSERR_LICENSE_GRPC_NOT_READY,
@@ -2588,28 +2648,28 @@ Parameters
                   - SYSERR_LICENSE_INVALID_TIER, SYSERR_TRIAL_OR_EVAL_LICENSE_ADDITION_NOT_ALLOWED, SYSERR_LICENSE_INVALID_CLUSTER_UUID,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_LICENSE_SAAS_LICENSE_INSTALLATION_FAILED, SYSERR_SEAGENT_OBJ_INACTIVE, SYSERR_SEAGENT_OBJ_AWAITING_DP_PROGRAMMING,
+                  - SYSERR_LICENSE_SAAS_LICENSE_INSTALLATION_FAILED, SYSERR_LICENSE_TRANSACTION_SERVICE_UNITS_REQUIRED, SYSERR_SEAGENT_OBJ_INACTIVE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEAGENT_OBJ_ACTIVE, SYSERR_SEAGENT_OBJ_GRAPHDB_ERROR, SYSERR_SEAGENT_OBJ_DP_ERROR, SYSERR_SEAGENT_OBJ_DISABLED_RULE_POOL,
+                  - SYSERR_SEAGENT_OBJ_AWAITING_DP_PROGRAMMING, SYSERR_SEAGENT_OBJ_ACTIVE, SYSERR_SEAGENT_OBJ_GRAPHDB_ERROR, SYSERR_SEAGENT_OBJ_DP_ERROR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEAGENT_EASTWEST_VS_SUBNET_ERROR, SYSERR_SEAGENT_OBJ_NOT_FOUND, SYSERR_SEAGENT_VS_NOT_FOUND, SYSERR_SEAGENT_VS_VRF_ERROR,
+                  - SYSERR_SEAGENT_OBJ_DISABLED_RULE_POOL, SYSERR_SEAGENT_EASTWEST_VS_SUBNET_ERROR, SYSERR_SEAGENT_OBJ_NOT_FOUND, SYSERR_SEAGENT_VS_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEAGENT_VS_SELIST_LIMIT_ERROR, SYSERR_SEAGENT_VS_SELIST_SE_INTF_ERROR, SYSERR_SEAGENT_VS_CHILD_PARENT_UUID_MISSING,
+                  - SYSERR_SEAGENT_VS_VRF_ERROR, SYSERR_SEAGENT_VS_SELIST_LIMIT_ERROR, SYSERR_SEAGENT_VS_SELIST_SE_INTF_ERROR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEDP_PARENT_VS_NOT_EXIST_FOR_CHILD, SYSERR_SEAGENT_TENANT_CREATE_FAILED, SYSERR_SEAGENT_TENANT_UPDATE_FAILED,
+                  - SYSERR_SEAGENT_VS_CHILD_PARENT_UUID_MISSING, SYSERR_SEDP_PARENT_VS_NOT_EXIST_FOR_CHILD, SYSERR_SEAGENT_TENANT_CREATE_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEAGENT_VS_INTERFACE_ERROR, SYSERR_SEAGENT_INSUFFICIENT_MEMORY, SYSERR_SEDP_VNIC_CREATION_FAILURE, SYSERR_SEDP_VNIC_ATTACH_FAILURE,
+                  - SYSERR_SEAGENT_TENANT_UPDATE_FAILED, SYSERR_SEAGENT_VS_INTERFACE_ERROR, SYSERR_SEAGENT_INSUFFICIENT_MEMORY, SYSERR_SEDP_VNIC_CREATION_FAILURE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEDP_VNIC_IF_CREATION_FAILURE, SYSERR_SEDP_VNIC_START_FAILURE, SYSERR_SEDP_VNIC_NOT_FOUND, SYSERR_SEDP_VNIC_MISMATCH_VRF,
+                  - SYSERR_SEDP_VNIC_ATTACH_FAILURE, SYSERR_SEDP_VNIC_IF_CREATION_FAILURE, SYSERR_SEDP_VNIC_START_FAILURE, SYSERR_SEDP_VNIC_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SEDP_VNIC_IP_ADDR_ADD_FAILURE, SYSERR_SEDP_VNIC_IP_ADDR_DEL_FAILURE, SYSERR_SEDP_VNIC_OWNER_CORE_NOT_FOUND,
+                  - SYSERR_SEDP_VNIC_MISMATCH_VRF, SYSERR_SEDP_VNIC_IP_ADDR_ADD_FAILURE, SYSERR_SEDP_VNIC_IP_ADDR_DEL_FAILURE, SYSERR_SEDP_VNIC_OWNER_CORE_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_SEDP_VNIC_MAIN_VNIC_NOT_FOUND, SYSERR_SEDP_VNIC_MEMBER_VNIC_NOT_FOUND, SYSERR_SEDP_VNIC_VLAN_FILTER_ADD_FAILURE,
@@ -2906,94 +2966,97 @@ Parameters
                   - SYSERR_CHECK_DRYRUN_FIPS_MODE, SYSERR_CHECK_CONFIG_BUNDLE, SYSERR_CHECK_ROLLBACK_FIPS_MODE, SYSERR_CHECK_TIME_SYNC, SYSERR_CHECK_ROLLBACK_SYSTEM,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_LICENSE_CONSUMPTION, SYSERR_MC_UPGRADE_LICENSE_ERR, SYSERR_MC_UPGRADE_CLUSTER_NOT_READY, SYSERR_MC_DISK_INSUFFICIENT_ERR,
+                  - SYSERR_CHECK_LICENSE_CONSUMPTION, SYSERR_CHECK_LINUX_INFRA_HEALTH, SYSERR_CHECK_GSLBSERVICE_DISRUPTION, SYSERR_MC_UPGRADE_LICENSE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_CLUSTER_INPROGRESS_ERR, SYSERR_MC_SEGROUP_INPROGRESS_ERR, SYSERR_MC_UPGRADE_INCOMPATIBLE_IMAGE_AND_PATCH,
+                  - SYSERR_MC_UPGRADE_CLUSTER_NOT_READY, SYSERR_MC_DISK_INSUFFICIENT_ERR, SYSERR_MC_CLUSTER_INPROGRESS_ERR, SYSERR_MC_SEGROUP_INPROGRESS_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_UPGRADE_INCOMPATIBLE_FROM_TO_IMAGE, SYSERR_MC_UPGRADE_INCOMPATIBLE_PATCH, SYSERR_MC_UPGRADE_INCOMPATIBLE_SE_GROUP_IMAGE,
+                  - SYSERR_MC_UPGRADE_INCOMPATIBLE_IMAGE_AND_PATCH, SYSERR_MC_UPGRADE_INCOMPATIBLE_FROM_TO_IMAGE, SYSERR_MC_UPGRADE_INCOMPATIBLE_PATCH,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_SE_UNREACHABLE_ERR, SYSERR_MC_SE_GROUP_CLOUD_NOT_READY_ERR, SYSERR_MC_UPGRADE_VS_DISRUPTED_ERR, SYSERR_MC_ROLLBACK_NOT_POSSIBLE,
+                  - SYSERR_MC_UPGRADE_INCOMPATIBLE_SE_GROUP_IMAGE, SYSERR_MC_SE_UNREACHABLE_ERR, SYSERR_MC_SE_GROUP_CLOUD_NOT_READY_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_SE_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_ROLLBACK_INFO_ERR, SYSERR_MC_CONTROLLER_ROLLBACK_NOT_POSSIBLE,
+                  - SYSERR_MC_UPGRADE_VS_DISRUPTED_ERR, SYSERR_MC_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_SE_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_ROLLBACK_INFO_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_SYSTEM_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_IMAGE_INVALID_ERR, SYSERR_MC_ACTIVE_VERSIONS_ERR, SYSERR_MC_BACKUP_ERR,
+                  - SYSERR_MC_CONTROLLER_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_SYSTEM_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_IMAGE_INVALID_ERR, SYSERR_MC_ACTIVE_VERSIONS_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_ROLLBACK_ON_ERR, SYSERR_MC_SUSPENDED_ERR, SYSERR_MC_SYSTEM_FLAG_ERR, SYSERR_MC_PREVIOUS_PARTITION_INCOMPATIBLE_ERR,
+                  - SYSERR_MC_BACKUP_ERR, SYSERR_MC_ROLLBACK_ON_ERR, SYSERR_MC_SUSPENDED_ERR, SYSERR_MC_SYSTEM_FLAG_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_IMAGE_VALIDATION_ERR, SYSERR_MC_CONTROLLER_PATCH_ERR, SYSERR_MC_SE_PATCH_ERR, SYSERR_MC_SE_ROLLBACK_V1_ERR, SYSERR_MC_ALERTS,
+                  - SYSERR_MC_PREVIOUS_PARTITION_INCOMPATIBLE_ERR, SYSERR_MC_IMAGE_VALIDATION_ERR, SYSERR_MC_CONTROLLER_PATCH_ERR, SYSERR_MC_SE_PATCH_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_ROLLBACK_DOCKER_IMAGE_ERR, SYSERR_MC_RESUME_OPS_ERR, SYSERR_MC_CHECK_PATCH_IMAGE_ERR, SYSERR_MC_CHECK_SE_GROUP_ROLLBACK_ERR,
+                  - SYSERR_MC_SE_ROLLBACK_V1_ERR, SYSERR_MC_ALERTS, SYSERR_MC_ROLLBACK_DOCKER_IMAGE_ERR, SYSERR_MC_RESUME_OPS_ERR, SYSERR_MC_CHECK_PATCH_IMAGE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_SKIP_SE_GROUPS_ERR, SYSERR_MC_CHECK_CLOUD_COMPATIBILITY_ERR, SYSERR_MC_SKIP_ALL_SE_GROUPS_ERR, SYSERR_MC_MAND_PATCH_ROLLBACK_ERR,
+                  - SYSERR_MC_CHECK_SE_GROUP_ROLLBACK_ERR, SYSERR_MC_SKIP_SE_GROUPS_ERR, SYSERR_MC_CHECK_CLOUD_COMPATIBILITY_ERR, SYSERR_MC_SKIP_ALL_SE_GROUPS_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_GSLB_LEADER_ERR, SYSERR_MC_SYSTEM_CONFIGURATION_ERR, SYSERR_MC_AVI_ESSENTIALS_OPERATION_NOT_SUPPORTED_ERROR,
+                  - SYSERR_MC_MAND_PATCH_ROLLBACK_ERR, SYSERR_MC_GSLB_LEADER_ERR, SYSERR_MC_SYSTEM_CONFIGURATION_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_ROLLBACK_VS_DISRUPTED_ERR, SYSERR_MC_SE_LINUX_ENABLED_ERR, SYSERR_MC_PREVIOUS_DOCKER_IMAGE_NOT_PRESENT_ERR,
+                  - SYSERR_MC_AVI_ESSENTIALS_OPERATION_NOT_SUPPORTED_ERROR, SYSERR_MC_ROLLBACK_VS_DISRUPTED_ERR, SYSERR_MC_SE_LINUX_ENABLED_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_DOCKER_VERSION_INCOMPATIBLE_ERROR, SYSERR_MC_IP_TYPE_ERR, SYSERR_MC_INVALID_SE_LICENSE_ERR,
+                  - SYSERR_MC_PREVIOUS_DOCKER_IMAGE_NOT_PRESENT_ERR, SYSERR_MC_DOCKER_VERSION_INCOMPATIBLE_ERROR, SYSERR_MC_IP_TYPE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_AVI_CLOUD_SERVICES_OPERATION_NOT_SUPPORTED_ERROR, SYSERR_MC_CONFIG_CHK_ERR, SYSERR_MC_GSLB_MANUAL_RESUME_ERR, SYSERR_MC_K8S_ACCESS_ERR,
+                  - SYSERR_MC_INVALID_SE_LICENSE_ERR, SYSERR_MC_AVI_CLOUD_SERVICES_OPERATION_NOT_SUPPORTED_ERROR, SYSERR_MC_CONFIG_CHK_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_IMAGE_AVAILABILITY_ERR, SYSERR_MC_POD_IMAGE_ERR, SYSERR_MC_REMOTE_IMAGE_REF_ERR, SYSERR_MC_CONTROLLER_PACKAGE_ERR,
+                  - SYSERR_MC_GSLB_MANUAL_RESUME_ERR, SYSERR_MC_K8S_ACCESS_ERR, SYSERR_MC_IMAGE_AVAILABILITY_ERR, SYSERR_MC_POD_IMAGE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_PATCH_PACKAGE_ERR, SYSERR_MC_CONSENT_ERR, SYSERR_MC_CONFIG_VERSION_ERR, SYSERR_MC_CONFIG_FIPS_ERR, SYSERR_MC_CONFIG_FILES_ERR,
+                  - SYSERR_MC_REMOTE_IMAGE_REF_ERR, SYSERR_MC_CONTROLLER_PACKAGE_ERR, SYSERR_MC_PATCH_PACKAGE_ERR, SYSERR_MC_CONSENT_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MC_CONFIG_IMAGES_ERR, SYSERR_MC_CONFIG_ERR, SYSERR_CHECK_CONFIG_SE_ERR, SYSERR_CHECK_CONFIG_ENV_ERR,
+                  - SYSERR_MC_CONFIG_VERSION_ERR, SYSERR_MC_CONFIG_FIPS_ERR, SYSERR_MC_CONFIG_FILES_ERR, SYSERR_MC_CONFIG_IMAGES_ERR, SYSERR_MC_CONFIG_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_CONFIG_ACTIVE_VERSIONS_ERR, SYSERR_CHECK_RESTORE_PATCH_ERR, SYSERR_MC_GSLB_MAINTENANCE_MODE_ERR, SYSERR_CHECK_VERSION_MIGRATION_ERR,
+                  - SYSERR_CHECK_CONFIG_SE_ERR, SYSERR_CHECK_CONFIG_ENV_ERR, SYSERR_CHECK_CONFIG_ACTIVE_VERSIONS_ERR, SYSERR_CHECK_RESTORE_PATCH_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_CLUSTER_SINGLE_NODE_ERR, SYSERR_CONTROLLER_SE_SECURE_CHANNEL_CERTIFICATE_VALIDATION_ERR, SYSERR_CHECK_DRYRUN_CAPABILITY_ERR,
+                  - SYSERR_MC_GSLB_MAINTENANCE_MODE_ERR, SYSERR_CHECK_VERSION_MIGRATION_ERR, SYSERR_CHECK_CLUSTER_SINGLE_NODE_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_SE_AVAILABLE_MEMORY, SYSERR_CHECK_SE_AVAILABLE_MEMORY_ERR, SYSERR_CHECK_DRYRUN_FIPS_MODE_ERR, SYSERR_CHECK_CONFIG_BUNDLE_ERR,
+                  - SYSERR_CONTROLLER_SE_SECURE_CHANNEL_CERTIFICATE_VALIDATION_ERR, SYSERR_CHECK_DRYRUN_CAPABILITY_ERR, SYSERR_CHECK_SE_AVAILABLE_MEMORY,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_ROLLBACK_FIPS_ERR, SYSERR_MC_CHECK_TIME_SYNC_ERR, SYSERR_CHECK_ROLLBACK_SYSTEM_ERR, SYSERR_MC_CHECK_LICENSE_CONSUMPTION_ERR,
+                  - SYSERR_CHECK_SE_AVAILABLE_MEMORY_ERR, SYSERR_CHECK_DRYRUN_FIPS_MODE_ERR, SYSERR_CHECK_CONFIG_BUNDLE_ERR, SYSERR_CHECK_ROLLBACK_FIPS_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_VS_NOT_FOUND, SYSERR_DEFAULT_POOL_NOT_FOUND, SYSERR_PROXY_POOL_NOT_FOUND, SYSERR_MISSING_APPLICATION_PROFILE, SYSERR_APP_PROFILE_NOT_FOUND,
+                  - SYSERR_MC_CHECK_TIME_SYNC_ERR, SYSERR_CHECK_ROLLBACK_SYSTEM_ERR, SYSERR_MC_CHECK_LICENSE_CONSUMPTION_ERR, SYSERR_MC_LINUX_INFRA_HEALTH_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_WAF_POLICY_NOT_FOUND, SYSERR_DUPLICATE_VS, SYSERR_WRONG_VS_TYPE, SYSERR_POOL_IN_PG_NOT_FOUND, SYSERR_PG_IN_PG,
+                  - SYSERR_GSLBSERVICE_DISRUPTED_ERR, SYSERR_VS_NOT_FOUND, SYSERR_DEFAULT_POOL_NOT_FOUND, SYSERR_PROXY_POOL_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_LB_MODULE_INIT_FAILED, SYSERR_CONNPOOL_MODULE_INIT_FAILED, SYSERR_LBACTION_MODULE_INIT_FAILED, SYSERR_PG_NOT_FOUND, SYSERR_DUPLICATE_POOL,
+                  - SYSERR_MISSING_APPLICATION_PROFILE, SYSERR_APP_PROFILE_NOT_FOUND, SYSERR_WAF_POLICY_NOT_FOUND, SYSERR_DUPLICATE_VS, SYSERR_WRONG_VS_TYPE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SSL_PROFILE_NOT_FOUND, SYSERR_PKI_PROFILE_NOT_FOUND, SYSERR_SSL_CERTKEY_NOT_FOUND, SYSERR_SET_CIPHER_LIST_FAILED,
+                  - SYSERR_POOL_IN_PG_NOT_FOUND, SYSERR_PG_IN_PG, SYSERR_LB_MODULE_INIT_FAILED, SYSERR_CONNPOOL_MODULE_INIT_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SET_CIPHER_SUITES_FAILED, SYSERR_WRONG_TLS_VERSION, SYSERR_ERR_PAGE_PROFILE_NO_PAGES, SYSERR_ERR_PAGE_PROFILE_NOT_FOUND,
+                  - SYSERR_LBACTION_MODULE_INIT_FAILED, SYSERR_PG_NOT_FOUND, SYSERR_DUPLICATE_POOL, SYSERR_SSL_PROFILE_NOT_FOUND, SYSERR_PKI_PROFILE_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ERR_PAGE_NOT_FOUND, SYSERR_ERR_PAGE_REDIRECT_NOT_CONFIGURED, SYSERR_HM_NOT_FOUND, SYSERR_HTTPS_HM_MISSING_CONFIG,
+                  - SYSERR_SSL_CERTKEY_NOT_FOUND, SYSERR_SET_CIPHER_LIST_FAILED, SYSERR_SET_CIPHER_SUITES_FAILED, SYSERR_WRONG_TLS_VERSION,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SNI_PARENT_UNCONFIGURED, SYSERR_SNI_PARENT_NOT_FOUND, SYSERR_HTTP_POLICYSET_NOT_FOUND, SYSERR_VSDS_NOT_FOUND,
+                  - SYSERR_ERR_PAGE_PROFILE_NO_PAGES, SYSERR_ERR_PAGE_PROFILE_NOT_FOUND, SYSERR_ERR_PAGE_NOT_FOUND, SYSERR_ERR_PAGE_REDIRECT_NOT_CONFIGURED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_MULTIPLE_SP_POOLS_CONFIGURED, SYSERR_L4SSL_VS_INVALID_CLIENT_CERT, SYSERR_CR_PROFILE_NOT_FOUND, SYSERR_POOL_NOT_FOUND,
+                  - SYSERR_HM_NOT_FOUND, SYSERR_HTTPS_HM_MISSING_CONFIG, SYSERR_SNI_PARENT_UNCONFIGURED, SYSERR_SNI_PARENT_NOT_FOUND, SYSERR_HTTP_POLICYSET_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_LISTEN_PORTS_CFG_FAILED, SYSERR_STRGRP_NOT_FOUND, SYSERR_SSOPOLICY_NULL, SYSERR_SSOPOLICY_NO_AUTHN_POLICY,
+                  - SYSERR_VSDS_NOT_FOUND, SYSERR_MULTIPLE_SP_POOLS_CONFIGURED, SYSERR_L4SSL_VS_INVALID_CLIENT_CERT, SYSERR_CR_PROFILE_NOT_FOUND,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_POOL_NOT_FOUND, SYSERR_LISTEN_PORTS_CFG_FAILED, SYSERR_STRGRP_NOT_FOUND, SYSERR_SSOPOLICY_NULL, SYSERR_SSOPOLICY_NO_AUTHN_POLICY,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_SSOPOLICY_NO_AUTH_PROFILE, SYSERR_AUTHPROFILE_NULL, SYSERR_SSOPOLICY_INVALID_AUTH_TYPE, SYSERR_SSOPOLICY_MISSING_SAML_IDP_SP_CONF,
@@ -3107,7 +3170,7 @@ Parameters
                   - SYSERR_FILE_CONTENT_DECODE_FAILED, SYSERR_RETENTION_POLICY_ERR, SYSERR_RETENTION_POLICY_SERVICE_UNAVAILABLE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_RETENTION_POLICY_INVALID_ACTION, SYSERR_SVC_FAILURE, SYSERR_SVC_SUCCESS.
+                  - SYSERR_RETENTION_POLICY_INVALID_ACTION, SYSERR_SVC_FAILURE, SYSERR_SVC_SUCCESS, SYSERR_PROTOBUF_MEM_CHUNK_SIZE_EXCEEDED.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

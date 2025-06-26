@@ -1430,10 +1430,10 @@ Parameters
                   - Used to gracefully disable a server.
                 </div>
                                 <div style="font-size: small">
-                  - Virtual service waits for the specified time before terminating the existing connections  to the servers that are disabled.
+                  - Deprecated from version 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Not used anymore .graceful_disable_timeout_sec is introduced.
+                  - Please use graceful_disable_timeout_sec instead.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-7200.
@@ -1442,13 +1442,13 @@ Parameters
                   - Special values are 0 - immediate, -1 - infinite.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
+                </div>
+                                <div style="font-size: small">
                   - Unit is min.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
     </tr>
@@ -1520,6 +1520,40 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as -1.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>gslb_pool_type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Specifies the pool type (generic/private/public).
+                </div>
+                                <div style="font-size: small">
+                  - The public ips of the members can be specified in seperate pool of type public.this would allow features like health monitoring to be enabled
+                </div>
+                                <div style="font-size: small">
+                  - independantly for the public ips.this is only applicable for gslb pools.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - GSLB_POOL_TYPE_GENERIC, GSLB_POOL_TYPE_PRIVATE, GSLB_POOL_TYPE_PUBLIC.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as GSLB_POOL_TYPE_GENERIC.
                 </div>
                                             </td>
     </tr>

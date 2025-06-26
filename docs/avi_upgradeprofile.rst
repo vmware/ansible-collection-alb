@@ -339,7 +339,7 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 2.0.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 6.0.
                 </div>
                                             </td>
     </tr>

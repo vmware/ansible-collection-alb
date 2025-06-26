@@ -932,6 +932,9 @@ Parameters
                   - Set this to zero(0) to not enforce any limit.
                 </div>
                                 <div style="font-size: small">
+                  - Note that the se group's throttle value takes precedence over this setting.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 17.1.1.
                 </div>
                                 <div style="font-size: small">

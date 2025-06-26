@@ -1,12 +1,12 @@
 
-.. vmware.alb.avi_federationcheckpoint:
+.. vmware.alb.avi_ratelimitconfiguration:
 
 
 **********************************************
-vmware.alb.avi_federationcheckpoint
+vmware.alb.avi_ratelimitconfiguration
 **********************************************
 
-**Module for setup of FederationCheckpoint Avi RESTful Object**
+**Module for setup of RateLimitConfiguration Avi RESTful Object**
 
 
 .. contents::
@@ -16,7 +16,7 @@ vmware.alb.avi_federationcheckpoint
 
 Synopsis
 --------
-- This module is used to configure FederationCheckpoint object.
+- This module is used to configure RateLimitConfiguration object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -134,6 +134,37 @@ Parameters
             <tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>burst</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The maximum request per second(rps) user intends to support for this category.this is not guaranteed as this will be the minimum of the rps
+                </div>
+                                <div style="font-size: small">
+                  - supported by the resources in the category and this value.if user doesnt provide then it will be minimum value of the resources in this category.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-1000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -147,7 +178,7 @@ Parameters
                   - Protobuf versioning for config pbs.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -184,28 +215,6 @@ Parameters
         
                                                 <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>date</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Date when the checkpoint was created.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>description</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -216,44 +225,53 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Description for this checkpoint.
+                  - Description for the rate limit configuration.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.1.
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>is_federated</b>
+                <b>http_methods</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
+                                                                        <span style="color: purple">list / elements=string </span>
                                                             </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - This field describes the objects replication scope.
+                  - List of http method(s) of the resources that need to be rate limited.
                 </div>
                                 <div style="font-size: small">
-                  - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
+                  - Enum options - HTTP_METHOD_GET, HTTP_METHOD_HEAD, HTTP_METHOD_PUT, HTTP_METHOD_DELETE, HTTP_METHOD_POST, HTTP_METHOD_OPTIONS, HTTP_METHOD_TRACE,
                 </div>
                                 <div style="font-size: small">
-                  - If the field is set to true, then the object is replicated across the federation.
+                  - HTTP_METHOD_CONNECT, HTTP_METHOD_PATCH, HTTP_METHOD_PROPFIND, HTTP_METHOD_PROPPATCH, HTTP_METHOD_MKCOL, HTTP_METHOD_COPY, HTTP_METHOD_MOVE,
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.1.
+                  - HTTP_METHOD_LOCK, HTTP_METHOD_UNLOCK.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                  - Minimum of 1 items required.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 5 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -272,13 +290,44 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the checkpoint.
+                  - Name of the rate limit configuration(unique).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.1.
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>resource</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ratelimitresource which needs to be rate limited.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - RATE_LIMIT_VIRTUALSERVICE, RATE_LIMIT_POOL, RATE_LIMIT_LOGIN, RATE_LIMIT_AUTHTOKEN, RATE_LIMIT_HEALTHMONITOR,
+                </div>
+                                <div style="font-size: small">
+                  - RATE_LIMIT_CLUSTER_RUNTIME, RATE_LIMIT_AUTHPROFILE, RATE_LIMIT_ALERT.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -294,16 +343,129 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tenant that this object belongs to.
+                  - Tenant ref for the auth rate limit configuration.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.1.
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>token_refill_rate</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Token refill rate.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The time interval over which refill rate is defined.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - PER_MINUTE_INTERVAL.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as PER_MINUTE_INTERVAL.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>refill_rate</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The rate per refill interval at which tokens are added to the bucket.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-1000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Type of the rate limiter, for now we only support api categorization based.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - RATE_LIMITER_API_CATEGORY.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as RATE_LIMITER_API_CATEGORY.
                 </div>
                                             </td>
     </tr>
@@ -335,13 +497,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid of the checkpoint.
+                  - Uuid of the rate limit configuration.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.1.
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -365,11 +527,11 @@ Examples
           controller: "192.168.138.18"
           api_version: "21.1.1"
       tasks:
-        - name: Example to create FederationCheckpoint object
-          avi_federationcheckpoint:
+        - name: Example to create RateLimitConfiguration object
+          avi_ratelimitconfiguration:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_federationcheckpoint
+            name: sample_ratelimitconfiguration
 
 
 Authors

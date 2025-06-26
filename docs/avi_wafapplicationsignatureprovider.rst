@@ -1089,7 +1089,7 @@ Parameters
                   - This only takes effect if the policy allows delegation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.1.5, 18.2.1.

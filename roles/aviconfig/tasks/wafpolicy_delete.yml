@@ -41,6 +41,7 @@
     required_data_files: "{{ item.required_data_files | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     updated_crs_rules_in_detection_mode: "{{ item.updated_crs_rules_in_detection_mode | default(omit) }}"
+    use_evaluation_mode_on_crs_update: "{{ item.use_evaluation_mode_on_crs_update | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     waf_crs_ref: "{{ item.waf_crs_ref | default(omit) }}"
     waf_profile_ref: "{{ item.waf_profile_ref | default(omit) }}"

@@ -18,6 +18,7 @@
     controller_info: "{{ item.controller_info | default(omit) }}"
     controller_patch_name: "{{ item.controller_patch_name | default(omit) }}"
     controller_patch_ref: "{{ item.controller_patch_ref | default(omit) }}"
+    dryrun_info: "{{ item.dryrun_info | default(omit) }}"
     duration: "{{ item.duration | default(omit) }}"
     end_time: "{{ item.end_time | default(omit) }}"
     events: "{{ item.events | default(omit) }}"
