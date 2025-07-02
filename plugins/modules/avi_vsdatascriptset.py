@@ -141,6 +141,22 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
+    snat_ip6s:
+        description:
+            - Ipv6 address used by a vs-datascript in avi.l4.source_ip api.
+            - Field introduced in 31.2.1.
+            - Maximum of 8 items allowed.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    snat_ips:
+        description:
+            - Ipv4 address used by a vs-datascript in avi.l4.source_ip api.
+            - Field introduced in 31.2.1.
+            - Maximum of 8 items allowed.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
     ssl_key_certificate_refs:
         description:
             - Uuids of sslkeyandcertificate objects that could be referred by vsdatascriptset objects.
@@ -237,6 +253,8 @@ def main():
         pool_refs=dict(type='list', elements='str',),
         protocol_parser_refs=dict(type='list', elements='str',),
         rate_limiters=dict(type='list', elements='dict',),
+        snat_ip6s=dict(type='list', elements='dict',),
+        snat_ips=dict(type='list', elements='dict',),
         ssl_key_certificate_refs=dict(type='list', elements='str',),
         ssl_profile_refs=dict(type='list', elements='str',),
         string_group_refs=dict(type='list', elements='str',),

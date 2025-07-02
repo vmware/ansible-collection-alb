@@ -318,10 +318,7 @@ Parameters
                   - Ratelimitresource which needs to be rate limited.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - RATE_LIMIT_VIRTUALSERVICE, RATE_LIMIT_POOL, RATE_LIMIT_LOGIN, RATE_LIMIT_AUTHTOKEN, RATE_LIMIT_HEALTHMONITOR,
-                </div>
-                                <div style="font-size: small">
-                  - RATE_LIMIT_CLUSTER_RUNTIME, RATE_LIMIT_AUTHPROFILE, RATE_LIMIT_ALERT.
+                  - Enum options - RATE_LIMIT_VIRTUALSERVICE, RATE_LIMIT_POOL, RATE_LIMIT_LOGIN, RATE_LIMIT_AUTHTOKEN, RATE_LIMIT_HEALTHMONITOR.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -427,7 +424,7 @@ Parameters
                   - The rate per refill interval at which tokens are added to the bucket.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 1-1000.
+                  - Allowed values are 1-100000.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.

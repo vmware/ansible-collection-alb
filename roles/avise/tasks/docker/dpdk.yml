@@ -83,11 +83,9 @@
 - name: Configure DPDK Pre Parameters
   set_fact:
     se_dpdk_pre: >
-      modprobe uio;
       mkdir -p /mnt/huge; umount /mnt/huge; rm /mnt/huge/*; mount -t hugetlbfs nodev /mnt/huge
 
 - name: Configure DPDK Post Parameters
   set_fact:
     se_dpdk_post: >
-      rmmod igb_uio;
-      rmmod rte_kni; umount /mnt/huge
+      umount /mnt/huge

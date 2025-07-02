@@ -90,8 +90,7 @@ options:
     resource:
         description:
             - Ratelimitresource which needs to be rate limited.
-            - Enum options - RATE_LIMIT_VIRTUALSERVICE, RATE_LIMIT_POOL, RATE_LIMIT_LOGIN, RATE_LIMIT_AUTHTOKEN, RATE_LIMIT_HEALTHMONITOR,
-            - RATE_LIMIT_CLUSTER_RUNTIME, RATE_LIMIT_AUTHPROFILE, RATE_LIMIT_ALERT.
+            - Enum options - RATE_LIMIT_VIRTUALSERVICE, RATE_LIMIT_POOL, RATE_LIMIT_LOGIN, RATE_LIMIT_AUTHTOKEN, RATE_LIMIT_HEALTHMONITOR.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
