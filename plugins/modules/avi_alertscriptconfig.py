@@ -79,6 +79,13 @@ options:
         description:
             - Avi controller URL of the object.
         type: str
+    user_ref:
+        description:
+            - Uuid of last editor user.
+            - It is a reference to an object of type user.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: str
     uuid:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -135,6 +142,7 @@ def main():
         tenant_ref=dict(type='str',),
         timeout=dict(type='int',),
         url=dict(type='str',),
+        user_ref=dict(type='str',),
         uuid=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
