@@ -2,6 +2,7 @@
 # module_check: supported
 
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -52,6 +53,7 @@ options:
             - Field introduced in 31.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
+        default: {}
     dry_run:
         description:
             - List of dryrun related configurable parameters.
