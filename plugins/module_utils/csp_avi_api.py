@@ -7,8 +7,6 @@ __metaclass__ = type
 
 from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, \
     APIError
-import sys
-import json
 import logging
 import time
 from requests import ConnectionError
