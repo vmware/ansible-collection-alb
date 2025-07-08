@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ############################################################################
 # ========================================================================
 # Copyright 2024 VMware, Inc. All rights reserved. VMware Confidential
@@ -51,7 +51,7 @@ log_file = "/var/log/avi_host.log"
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 # 20MB file limit for logging
-handler = RotatingFileHandler(log_file, maxBytes = 20 * 1024 * 1024, backupCount = 1)
+handler = RotatingFileHandler(log_file, maxBytes=20 * 1024 * 1024, backupCount=1)
 formatter = logging.Formatter("%(asctime)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)

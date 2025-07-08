@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 ############################################################################
 # ========================================================================
 # Copyright 2024 VMware, Inc. All rights reserved. VMware Confidential
