@@ -52,6 +52,7 @@ options:
             - Field introduced in 31.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
+        default: {}
     dry_run:
         description:
             - List of dryrun related configurable parameters.

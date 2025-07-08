@@ -99,7 +99,6 @@ try:
         avi_common_argument_spec, ansible_return)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
-    from pkg_resources import parse_version
     from requests import ConnectionError
     from ssl import SSLError
     from requests.exceptions import ChunkedEncodingError
