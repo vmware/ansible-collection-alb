@@ -119,10 +119,11 @@ obj:
     type: dict
 '''
 
-from copy import deepcopy
-import time
 import json
+import time
 from ansible.module_utils.basic import AnsibleModule
+from copy import deepcopy
+
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
         avi_common_argument_spec, ansible_return, avi_obj_cmp,
@@ -178,8 +179,7 @@ def main():
     gparams.update({'include_refs': '', 'include_name': ''})
 
     # API methods not allowed
-    api_get_not_allowed = ["cluster", "gslbsiteops",
-                           "server", "nsxt", "vcenter", "macro"]
+    api_get_not_allowed = ["cluster", "gslbsiteops", "server", "nsxt", "vcenter", "macro"]
     sub_api_get_not_allowed = ["scaleout", "scalein", "upgrade", "rollback"]
     api_post_not_allowed = ["alert", "fileservice"]
     api_put_not_allowed = ["backup"]

@@ -76,6 +76,7 @@ obj:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
+
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
         avi_common_argument_spec, ansible_return)

@@ -48,8 +48,7 @@ class CSPApiSession(ApiSession):
         if self.avi_credentials.csp_token:
             body["api_token"] = self.avi_credentials.csp_token
         else:
-            raise APIError(
-                "CSP API Token is not provided for csp login %s" % self.csp_prefix)
+            raise APIError("CSP API Token is not provided for csp login %s" % self.csp_prefix)
         logger.debug('authenticating using api token %s prefix %s',
                      self.avi_credentials.csp_token, self.csp_prefix)
         self.cookies.clear()
@@ -61,8 +60,7 @@ class CSPApiSession(ApiSession):
 
             if rsp.status_code == 200:
                 self.num_session_retries = 0
-                authorization_token = {"Authorization": "Bearer %s" % (
-                    rsp.json().get('access_token'))}
+                authorization_token = {"Authorization": "Bearer %s" % (rsp.json().get('access_token'))}
                 self.headers.update(authorization_token)
                 logger.debug("authentication success for user %s",
                              self.avi_credentials.csp_token)

@@ -66,8 +66,7 @@ def send_response(conn, version, returncode, output, error):
     output, error = output.strip(), error.strip()
 
     if version == CURRENT_VERSION:
-        conn.sendall("#version:{}#ret:{}#aviout:".format(
-            CURRENT_VERSION, returncode).encode("utf-8"))
+        conn.sendall("#version:{}#ret:{}#aviout:".format(CURRENT_VERSION, returncode).encode("utf-8"))
         conn.sendall(output)
         conn.sendall("#avierror:".encode("utf-8"))
         conn.sendall(error)
@@ -77,8 +76,7 @@ def send_response(conn, version, returncode, output, error):
 
     # Legacy handling of o/p and error differently
     if returncode:
-        logger.error(
-            "command execution failed %s %s", error, returncode)
+        logger.error("command execution failed %s %s", error, returncode)
         conn.sendall(error)
         conn.sendall("#ret:{}#avierror#".format(returncode).encode("utf-8"))
     else:
@@ -114,10 +112,8 @@ def create_uds_socket():
     except OSError as error:
         if os.path.exists(SERVER_ADDRESS):
             exception = traceback.format_exc()
-            logger.error(
-                "Failed to unlink domain stream socket: %s", exception)
-            raise Exception(
-                "Failed to unlink domain stream socket: {}".format(exception))
+            logger.error("Failed to unlink domain stream socket: %s", exception)
+            raise Exception("Failed to unlink domain stream socket: %s" % exception)
 
     # Create a UDS socket
     try:
@@ -127,10 +123,10 @@ def create_uds_socket():
         sock.listen(1)
         logger.info("Listening on %s", SERVER_ADDRESS)
         return sock
-    except Exception as ex:
+    except OSError:
         exception = traceback.format_exc()
         logger.error("socket listen failed: %s", exception)
-        raise Exception("socket listen failed: {}".format(exception))
+        raise Exception("socket listen failed: %s" % exception)
 
 
 def run():
@@ -157,8 +153,7 @@ def run():
 
             # Empty command, send error response
             if not command:
-                send_response(conn, version, 255, b"",
-                              b"Received empty command")
+                send_response(conn, version, 255, b"", b"Received empty command")
                 continue
 
             # AVI induced crash (A way to restart the service)
@@ -174,8 +169,7 @@ def run():
             # Execute command with timeout of 120 seconds and send response for other commands
             logger.debug("received command %s", command)
             command = "timeout 120 " + command
-            op = subprocess.Popen(
-                command, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+            op = subprocess.Popen(command, shell=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
             output, error = op.communicate()
             returncode = op.returncode
             send_response(conn, version, returncode, output, error)
