@@ -4,17 +4,14 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_wafpolicy
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -278,7 +275,7 @@ options:
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
 EXAMPLES = """
 - hosts: all
@@ -322,21 +319,17 @@ EXAMPLES = """
     waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
 """
 
-RETURN = """
+RETURN = '''
 obj:
     description: WafPolicy (api/wafpolicy) object
     returned: success, changed
     type: dict
-"""
+'''
 
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_ansible_api,
-    )
-
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -344,121 +337,55 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default="present", choices=["absent", "present"]),
-        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
-        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
-        avi_patch_path=dict(
-            type="str",
-        ),
-        avi_patch_value=dict(
-            type="str",
-        ),
-        allow_mode_delegation=dict(
-            type="bool",
-        ),
-        allowlist=dict(
-            type="dict",
-        ),
-        application_signatures=dict(
-            type="dict",
-        ),
-        auto_update_crs=dict(
-            type="bool",
-        ),
-        bypass_static_extensions=dict(
-            type="bool",
-        ),
-        confidence_override=dict(
-            type="dict",
-        ),
-        configpb_attributes=dict(
-            type="dict",
-        ),
-        created_by=dict(
-            type="str",
-        ),
-        crs_overrides=dict(
-            type="list",
-            elements="dict",
-        ),
-        description=dict(
-            type="str",
-        ),
-        enable_app_learning=dict(
-            type="bool",
-        ),
-        enable_auto_rule_updates=dict(
-            type="bool",
-        ),
-        enable_regex_learning=dict(
-            type="bool",
-        ),
-        failure_mode=dict(
-            type="str",
-        ),
-        geo_db_ref=dict(
-            type="str",
-        ),
-        learning_params=dict(
-            type="dict",
-        ),
-        markers=dict(
-            type="list",
-            elements="dict",
-        ),
-        min_confidence=dict(
-            type="str",
-        ),
-        mode=dict(
-            type="str",
-        ),
-        name=dict(type="str", required=True),
-        paranoia_level=dict(
-            type="str",
-        ),
-        positive_security_model=dict(
-            type="dict",
-        ),
-        post_crs_groups=dict(
-            type="list",
-            elements="dict",
-        ),
-        pre_crs_groups=dict(
-            type="list",
-            elements="dict",
-        ),
-        required_data_files=dict(
-            type="list",
-            elements="dict",
-        ),
-        tenant_ref=dict(
-            type="str",
-        ),
-        updated_crs_rules_in_detection_mode=dict(
-            type="bool",
-        ),
-        url=dict(
-            type="str",
-        ),
-        uuid=dict(
-            type="str",
-        ),
-        waf_crs_ref=dict(
-            type="str",
-        ),
-        waf_profile_ref=dict(type="str", required=True),
+        state=dict(default='present',
+                   choices=['absent', 'present']),
+        avi_api_update_method=dict(default='put',
+                                   choices=['put', 'patch']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
+        allow_mode_delegation=dict(type='bool',),
+        allowlist=dict(type='dict',),
+        application_signatures=dict(type='dict',),
+        auto_update_crs=dict(type='bool',),
+        bypass_static_extensions=dict(type='bool',),
+        confidence_override=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
+        created_by=dict(type='str',),
+        crs_overrides=dict(type='list', elements='dict',),
+        description=dict(type='str',),
+        enable_app_learning=dict(type='bool',),
+        enable_auto_rule_updates=dict(type='bool',),
+        enable_regex_learning=dict(type='bool',),
+        failure_mode=dict(type='str',),
+        geo_db_ref=dict(type='str',),
+        learning_params=dict(type='dict',),
+        markers=dict(type='list', elements='dict',),
+        min_confidence=dict(type='str',),
+        mode=dict(type='str',),
+        name=dict(type='str', required=True),
+        paranoia_level=dict(type='str',),
+        positive_security_model=dict(type='dict',),
+        post_crs_groups=dict(type='list', elements='dict',),
+        pre_crs_groups=dict(type='list', elements='dict',),
+        required_data_files=dict(type='list', elements='dict',),
+        tenant_ref=dict(type='str',),
+        updated_crs_rules_in_detection_mode=dict(type='bool',),
+        url=dict(type='str',),
+        uuid=dict(type='str',),
+        waf_crs_ref=dict(type='str',),
+        waf_profile_ref=dict(type='str', required=True),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(
+        argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
-    return avi_ansible_api(module, "wafpolicy", set())
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
+    return avi_ansible_api(module, 'wafpolicy',
+                           set())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

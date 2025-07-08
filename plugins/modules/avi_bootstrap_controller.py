@@ -4,17 +4,14 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_bootstrap_controller
 author: Shrikant Chaudhari (@gitshrikant) <shrikant.chaudhari@avinetworks.com>
@@ -51,9 +48,9 @@ options:
         type: int
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
-EXAMPLES = """
+EXAMPLES = '''
   - name: Initialize user password
     vmware.alb.avi_bootstrap_controller:
       avi_credentials:
@@ -65,30 +62,25 @@ EXAMPLES = """
       password: new_password
       con_wait_time: 3600
       round_wait: 10
-"""
+'''
 
-RETURN = """
+RETURN = '''
 obj:
     description: Avi REST resource
     returned: success, changed
     type: dict
-"""
+'''
 
 import time
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-    )
+        avi_common_argument_spec)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-        ApiSession,
-        AviCredentials,
-    )
+        ApiSession, AviCredentials)
 
     import subprocess
     import requests
-
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -110,7 +102,7 @@ def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600):
         try:
             r = requests.get(path, timeout=10, verify=False)
             # Check for controller response for login URI.
-            if r.json()["cluster_state"]["state"] == "CLUSTER_UP_NO_HA":
+            if r.json()['cluster_state']['state'] == 'CLUSTER_UP_NO_HA':
                 ctrl_status = True
                 break
         except Exception as e:
@@ -122,86 +114,55 @@ def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600):
 
 def main():
     argument_specs = dict(
-        password=dict(type="str", required=True, no_log=True),
-        ssh_key_pair=dict(type="str", required=True),
-        force_mode=dict(type="bool", default=False),
+        password=dict(type='str', required=True, no_log=True),
+        ssh_key_pair=dict(type='str', required=True),
+        force_mode=dict(type='bool', default=False),
         # Max time to wait for controller up state
-        con_wait_time=dict(type="int", default=3600),
+        con_wait_time=dict(type='int', default=3600),
         # Retry after every rount_wait time to check for controller state.
-        round_wait=dict(type="int", default=10),
+        round_wait=dict(type='int', default=10),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)
-    new_password = module.params.get("password")
-    key_pair = module.params.get("ssh_key_pair")
-    force_mode = module.params.get("force_mode")
+    new_password = module.params.get('password')
+    key_pair = module.params.get('ssh_key_pair')
+    force_mode = module.params.get('force_mode')
     # Wait for controller to come up for given con_wait_time
-    controller_up = controller_wait(
-        api_creds.controller,
-        api_creds.port,
-        module.params["round_wait"],
-        module.params["con_wait_time"],
-    )
+    controller_up = controller_wait(api_creds.controller, api_creds.port, module.params['round_wait'],
+                                    module.params['con_wait_time'])
     if not controller_up:
         return module.fail_json(
-            msg="Something wrong with the controller. The Controller is not in the up state."
-        )
+            msg='Something wrong with the controller. The Controller is not in the up state.')
     if not force_mode:
         # Check for admin login with new password before initializing controller password.
         try:
             ApiSession.get_session(
-                api_creds.controller,
-                "admin",
-                password=new_password,
-                timeout=api_creds.timeout,
-                tenant=api_creds.tenant,
-                tenant_uuid=api_creds.tenant_uuid,
-                token=api_creds.token,
-                port=api_creds.port,
-            )
-            module.exit_json(
-                msg="Already initialized controller password with a given password.",
-                changed=False,
-            )
+                api_creds.controller, "admin",
+                password=new_password, timeout=api_creds.timeout,
+                tenant=api_creds.tenant, tenant_uuid=api_creds.tenant_uuid,
+                token=api_creds.token, port=api_creds.port)
+            module.exit_json(msg="Already initialized controller password with a given password.", changed=False)
         except Exception as e:
             pass
-    cmd = (
-        'ssh -o "StrictHostKeyChecking no" -t -i '
-        + key_pair
-        + " admin@"
-        + api_creds.controller
-        + " \"ls /opt/avi/scripts/initialize_admin_user.py && echo -e '"
-        + api_creds.controller
-        + "\\n"
-        + new_password
-        + "' | sudo /opt/avi/scripts/initialize_admin_user.py\""
-    )
-    process = subprocess.Popen(
-        cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE, shell=True
-    )
+    cmd = "ssh -o \"StrictHostKeyChecking no\" -t -i " + key_pair + " admin@" + \
+          api_creds.controller + " \"ls /opt/avi/scripts/initialize_admin_user.py && echo -e '" + \
+          api_creds.controller + "\\n" + new_password + "' | sudo /opt/avi/scripts/initialize_admin_user.py\""
+    process = subprocess.Popen(cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE, shell=True)
     stdout, stderr = process.communicate()
     cmd_status = process.returncode
     if cmd_status == 0:
-        return module.exit_json(
-            changed=True,
-            msg="Successfully initialized controller with new password. "
-            "return_code: %s output: %s error: %s" % (cmd_status, stdout, stderr),
-        )
+        return module.exit_json(changed=True, msg="Successfully initialized controller with new password. "
+                                "return_code: %s output: %s error: %s" % (cmd_status, stdout, stderr))
     else:
-        return module.fail_json(
-            msg="Fail to initialize password for controllers return_code: %s "
-            "output: %s error: %s" % (cmd_status, stdout, stderr)
-        )
+        return module.fail_json(msg='Fail to initialize password for controllers return_code: %s '
+                                'output: %s error: %s' % (cmd_status, stdout, stderr))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

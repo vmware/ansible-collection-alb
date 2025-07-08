@@ -5,17 +5,14 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_tenant
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -114,7 +111,7 @@ options:
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
 EXAMPLES = """
 - hosts: all
@@ -137,21 +134,17 @@ EXAMPLES = """
     name: Demo
 """
 
-RETURN = """
+RETURN = '''
 obj:
     description: Tenant (api/tenant) object
     returned: success, changed
     type: dict
-"""
+'''
 
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_ansible_api,
-    )
-
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -159,60 +152,35 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default="present", choices=["absent", "present"]),
-        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
-        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
-        avi_patch_path=dict(
-            type="str",
-        ),
-        avi_patch_value=dict(
-            type="str",
-        ),
-        attrs=dict(
-            type="list",
-            elements="dict",
-        ),
-        config_settings=dict(
-            type="dict",
-        ),
-        configpb_attributes=dict(
-            type="dict",
-        ),
-        created_by=dict(
-            type="str",
-        ),
-        description=dict(
-            type="str",
-        ),
-        enforce_label_group=dict(
-            type="bool",
-        ),
-        label_group_refs=dict(
-            type="list",
-            elements="str",
-        ),
-        local=dict(
-            type="bool",
-        ),
-        name=dict(type="str", required=True),
-        url=dict(
-            type="str",
-        ),
-        uuid=dict(
-            type="str",
-        ),
+        state=dict(default='present',
+                   choices=['absent', 'present']),
+        avi_api_update_method=dict(default='put',
+                                   choices=['put', 'patch']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
+        attrs=dict(type='list', elements='dict',),
+        config_settings=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
+        created_by=dict(type='str',),
+        description=dict(type='str',),
+        enforce_label_group=dict(type='bool',),
+        label_group_refs=dict(type='list', elements='str',),
+        local=dict(type='bool',),
+        name=dict(type='str', required=True),
+        url=dict(type='str',),
+        uuid=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(
+        argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
-    return avi_ansible_api(module, "tenant", set())
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
+    return avi_ansible_api(module, 'tenant',
+                           set())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

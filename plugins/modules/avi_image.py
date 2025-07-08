@@ -4,17 +4,14 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_image
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -202,7 +199,7 @@ options:
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
 EXAMPLES = """
 - hosts: all
@@ -220,21 +217,17 @@ EXAMPLES = """
     name: sample_image
 """
 
-RETURN = """
+RETURN = '''
 obj:
     description: Image (api/image) object
     returned: success, changed
     type: dict
-"""
+'''
 
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_ansible_api,
-    )
-
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -242,96 +235,47 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default="present", choices=["absent", "present"]),
-        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
-        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
-        avi_patch_path=dict(
-            type="str",
-        ),
-        avi_patch_value=dict(
-            type="str",
-        ),
-        cloud_info_values=dict(
-            type="list",
-            elements="dict",
-        ),
-        controller_info=dict(
-            type="dict",
-        ),
-        controller_patch_name=dict(
-            type="str",
-        ),
-        controller_patch_ref=dict(
-            type="str",
-        ),
-        duration=dict(
-            type="int",
-        ),
-        end_time=dict(
-            type="str",
-        ),
-        events=dict(
-            type="list",
-            elements="dict",
-        ),
-        fips_mode_transition_applicable=dict(
-            type="bool",
-        ),
-        img_state=dict(
-            type="dict",
-        ),
-        migrations=dict(
-            type="dict",
-        ),
-        name=dict(type="str", required=True),
-        progress=dict(
-            type="int",
-        ),
-        se_info=dict(
-            type="dict",
-        ),
-        se_patch_name=dict(
-            type="str",
-        ),
-        se_patch_ref=dict(
-            type="str",
-        ),
-        start_time=dict(
-            type="str",
-        ),
-        tasks_completed=dict(
-            type="int",
-        ),
-        tenant_ref=dict(
-            type="str",
-        ),
-        total_tasks=dict(
-            type="int",
-        ),
-        type=dict(
-            type="str",
-        ),
-        uber_bundle=dict(
-            type="bool",
-        ),
-        url=dict(
-            type="str",
-        ),
-        uuid=dict(
-            type="str",
-        ),
+        state=dict(default='present',
+                   choices=['absent', 'present']),
+        avi_api_update_method=dict(default='put',
+                                   choices=['put', 'patch']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
+        cloud_info_values=dict(type='list', elements='dict',),
+        controller_info=dict(type='dict',),
+        controller_patch_name=dict(type='str',),
+        controller_patch_ref=dict(type='str',),
+        duration=dict(type='int',),
+        end_time=dict(type='str',),
+        events=dict(type='list', elements='dict',),
+        fips_mode_transition_applicable=dict(type='bool',),
+        img_state=dict(type='dict',),
+        migrations=dict(type='dict',),
+        name=dict(type='str', required=True),
+        progress=dict(type='int',),
+        se_info=dict(type='dict',),
+        se_patch_name=dict(type='str',),
+        se_patch_ref=dict(type='str',),
+        start_time=dict(type='str',),
+        tasks_completed=dict(type='int',),
+        tenant_ref=dict(type='str',),
+        total_tasks=dict(type='int',),
+        type=dict(type='str',),
+        uber_bundle=dict(type='bool',),
+        url=dict(type='str',),
+        uuid=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(
+        argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
-    return avi_ansible_api(module, "image", set())
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
+    return avi_ansible_api(module, 'image',
+                           set())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

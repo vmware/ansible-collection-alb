@@ -5,17 +5,14 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_virtualservice
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -728,7 +725,7 @@ options:
         type: int
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
 EXAMPLES = """
 - hosts: all
@@ -758,21 +755,17 @@ EXAMPLES = """
     pool_ref: '/api/pool?name=testpool2'
 """
 
-RETURN = """
+RETURN = '''
 obj:
     description: VirtualService (api/virtualservice) object
     returned: success, changed
     type: dict
-"""
+'''
 
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_ansible_api,
-    )
-
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -780,337 +773,121 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default="present", choices=["absent", "present"]),
-        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
-        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
-        avi_patch_path=dict(
-            type="str",
-        ),
-        avi_patch_value=dict(
-            type="str",
-        ),
-        active_standby_se_tag=dict(
-            type="str",
-        ),
-        advertise_down_vs=dict(
-            type="bool",
-        ),
-        allow_invalid_client_cert=dict(
-            type="bool",
-        ),
-        analytics_policy=dict(
-            type="dict",
-        ),
-        analytics_profile_ref=dict(
-            type="str",
-        ),
-        application_profile_ref=dict(
-            type="str",
-        ),
-        azure_availability_set=dict(
-            type="str",
-        ),
-        bgp_local_preference=dict(
-            type="int",
-        ),
-        bgp_num_as_path_prepend=dict(
-            type="int",
-        ),
-        bgp_peer_labels=dict(
-            type="list",
-            elements="str",
-        ),
-        bot_policy_ref=dict(
-            type="str",
-        ),
-        bulk_sync_kvcache=dict(
-            type="bool",
-        ),
-        close_client_conn_on_config_update=dict(
-            type="bool",
-        ),
-        cloud_config_cksum=dict(
-            type="str",
-        ),
-        cloud_ref=dict(
-            type="str",
-        ),
-        cloud_type=dict(
-            type="str",
-        ),
-        configpb_attributes=dict(
-            type="dict",
-        ),
-        connections_rate_limit=dict(
-            type="dict",
-        ),
-        content_rewrite=dict(
-            type="dict",
-        ),
-        created_by=dict(
-            type="str",
-        ),
-        csrf_policy_ref=dict(
-            type="str",
-        ),
-        delay_fairness=dict(
-            type="bool",
-        ),
-        description=dict(
-            type="str",
-        ),
-        dns_info=dict(
-            type="list",
-            elements="dict",
-        ),
-        dns_policies=dict(
-            type="list",
-            elements="dict",
-        ),
-        east_west_placement=dict(
-            type="bool",
-        ),
-        enable_autogw=dict(
-            type="bool",
-        ),
-        enable_rhi=dict(
-            type="bool",
-        ),
-        enable_rhi_snat=dict(
-            type="bool",
-        ),
-        enable_session=dict(
-            type="bool",
-        ),
-        enabled=dict(
-            type="bool",
-        ),
-        error_page_profile_ref=dict(
-            type="str",
-        ),
-        flow_dist=dict(
-            type="str",
-        ),
-        flow_label_type=dict(
-            type="str",
-        ),
-        fqdn=dict(
-            type="str",
-        ),
-        host_name_xlate=dict(
-            type="str",
-        ),
-        http_policies=dict(
-            type="list",
-            elements="dict",
-        ),
-        icap_request_profile_refs=dict(
-            type="list",
-            elements="str",
-        ),
-        ign_pool_net_reach=dict(
-            type="bool",
-        ),
-        jwt_config=dict(
-            type="dict",
-        ),
-        l4_policies=dict(
-            type="list",
-            elements="dict",
-        ),
-        ldap_vs_config=dict(
-            type="dict",
-        ),
-        limit_doser=dict(
-            type="bool",
-        ),
-        markers=dict(
-            type="list",
-            elements="dict",
-        ),
-        max_cps_per_client=dict(
-            type="int",
-        ),
-        microservice_ref=dict(
-            type="str",
-        ),
-        min_pools_up=dict(
-            type="int",
-        ),
-        name=dict(type="str", required=True),
-        network_profile_ref=dict(
-            type="str",
-        ),
-        network_security_policy_ref=dict(
-            type="str",
-        ),
-        nsx_securitygroup=dict(
-            type="list",
-            elements="str",
-        ),
-        oauth_vs_config=dict(
-            type="dict",
-        ),
-        performance_limits=dict(
-            type="dict",
-        ),
-        pool_group_ref=dict(
-            type="str",
-        ),
-        pool_ref=dict(
-            type="str",
-        ),
-        remove_listening_port_on_vs_down=dict(
-            type="bool",
-        ),
-        requests_rate_limit=dict(
-            type="dict",
-        ),
-        revoke_vip_route=dict(
-            type="bool",
-        ),
-        saml_sp_config=dict(
-            type="dict",
-        ),
-        scaleout_ecmp=dict(
-            type="bool",
-        ),
-        se_group_ref=dict(
-            type="str",
-        ),
-        security_policy_ref=dict(
-            type="str",
-        ),
-        server_network_profile_ref=dict(
-            type="str",
-        ),
-        service_metadata=dict(
-            type="str",
-        ),
-        service_pool_select=dict(
-            type="list",
-            elements="dict",
-        ),
-        services=dict(
-            type="list",
-            elements="dict",
-        ),
-        sideband_profile=dict(
-            type="dict",
-        ),
-        snat_ip=dict(
-            type="list",
-            elements="dict",
-        ),
-        snat_ip6_addresses=dict(
-            type="list",
-            elements="dict",
-        ),
-        sp_pool_refs=dict(
-            type="list",
-            elements="str",
-        ),
-        ssl_key_and_certificate_refs=dict(
-            type="list",
-            elements="str",
-        ),
-        ssl_profile_ref=dict(
-            type="str",
-        ),
-        ssl_profile_selectors=dict(
-            type="list",
-            elements="dict",
-        ),
-        ssl_sess_cache_avg_size=dict(
-            type="int",
-        ),
-        sso_policy_ref=dict(
-            type="str",
-        ),
-        static_dns_records=dict(
-            type="list",
-            elements="dict",
-        ),
-        tenant_ref=dict(
-            type="str",
-        ),
-        test_se_datastore_level_1_ref=dict(
-            type="str",
-        ),
-        topology_policies=dict(
-            type="list",
-            elements="dict",
-        ),
-        traffic_clone_profile_ref=dict(
-            type="str",
-        ),
-        traffic_enabled=dict(
-            type="bool",
-        ),
-        type=dict(
-            type="str",
-        ),
-        url=dict(
-            type="str",
-        ),
-        use_bridge_ip_as_vip=dict(
-            type="bool",
-        ),
-        use_vip_as_snat=dict(
-            type="bool",
-        ),
-        uuid=dict(
-            type="str",
-        ),
-        vh_domain_name=dict(
-            type="list",
-            elements="str",
-        ),
-        vh_matches=dict(
-            type="list",
-            elements="dict",
-        ),
-        vh_parent_vs_ref=dict(
-            type="str",
-        ),
-        vh_type=dict(
-            type="str",
-        ),
-        vip=dict(
-            type="list",
-            elements="dict",
-        ),
-        vrf_context_ref=dict(
-            type="str",
-        ),
-        vs_datascripts=dict(
-            type="list",
-            elements="dict",
-        ),
-        vsvip_cloud_config_cksum=dict(
-            type="str",
-        ),
-        vsvip_ref=dict(
-            type="str",
-        ),
-        waf_policy_ref=dict(
-            type="str",
-        ),
-        weight=dict(
-            type="int",
-        ),
+        state=dict(default='present',
+                   choices=['absent', 'present']),
+        avi_api_update_method=dict(default='put',
+                                   choices=['put', 'patch']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
+        active_standby_se_tag=dict(type='str',),
+        advertise_down_vs=dict(type='bool',),
+        allow_invalid_client_cert=dict(type='bool',),
+        analytics_policy=dict(type='dict',),
+        analytics_profile_ref=dict(type='str',),
+        application_profile_ref=dict(type='str',),
+        azure_availability_set=dict(type='str',),
+        bgp_local_preference=dict(type='int',),
+        bgp_num_as_path_prepend=dict(type='int',),
+        bgp_peer_labels=dict(type='list', elements='str',),
+        bot_policy_ref=dict(type='str',),
+        bulk_sync_kvcache=dict(type='bool',),
+        close_client_conn_on_config_update=dict(type='bool',),
+        cloud_config_cksum=dict(type='str',),
+        cloud_ref=dict(type='str',),
+        cloud_type=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
+        connections_rate_limit=dict(type='dict',),
+        content_rewrite=dict(type='dict',),
+        created_by=dict(type='str',),
+        csrf_policy_ref=dict(type='str',),
+        delay_fairness=dict(type='bool',),
+        description=dict(type='str',),
+        dns_info=dict(type='list', elements='dict',),
+        dns_policies=dict(type='list', elements='dict',),
+        east_west_placement=dict(type='bool',),
+        enable_autogw=dict(type='bool',),
+        enable_rhi=dict(type='bool',),
+        enable_rhi_snat=dict(type='bool',),
+        enable_session=dict(type='bool',),
+        enabled=dict(type='bool',),
+        error_page_profile_ref=dict(type='str',),
+        flow_dist=dict(type='str',),
+        flow_label_type=dict(type='str',),
+        fqdn=dict(type='str',),
+        host_name_xlate=dict(type='str',),
+        http_policies=dict(type='list', elements='dict',),
+        icap_request_profile_refs=dict(type='list', elements='str',),
+        ign_pool_net_reach=dict(type='bool',),
+        jwt_config=dict(type='dict',),
+        l4_policies=dict(type='list', elements='dict',),
+        ldap_vs_config=dict(type='dict',),
+        limit_doser=dict(type='bool',),
+        markers=dict(type='list', elements='dict',),
+        max_cps_per_client=dict(type='int',),
+        microservice_ref=dict(type='str',),
+        min_pools_up=dict(type='int',),
+        name=dict(type='str', required=True),
+        network_profile_ref=dict(type='str',),
+        network_security_policy_ref=dict(type='str',),
+        nsx_securitygroup=dict(type='list', elements='str',),
+        oauth_vs_config=dict(type='dict',),
+        performance_limits=dict(type='dict',),
+        pool_group_ref=dict(type='str',),
+        pool_ref=dict(type='str',),
+        remove_listening_port_on_vs_down=dict(type='bool',),
+        requests_rate_limit=dict(type='dict',),
+        revoke_vip_route=dict(type='bool',),
+        saml_sp_config=dict(type='dict',),
+        scaleout_ecmp=dict(type='bool',),
+        se_group_ref=dict(type='str',),
+        security_policy_ref=dict(type='str',),
+        server_network_profile_ref=dict(type='str',),
+        service_metadata=dict(type='str',),
+        service_pool_select=dict(type='list', elements='dict',),
+        services=dict(type='list', elements='dict',),
+        sideband_profile=dict(type='dict',),
+        snat_ip=dict(type='list', elements='dict',),
+        snat_ip6_addresses=dict(type='list', elements='dict',),
+        sp_pool_refs=dict(type='list', elements='str',),
+        ssl_key_and_certificate_refs=dict(type='list', elements='str',),
+        ssl_profile_ref=dict(type='str',),
+        ssl_profile_selectors=dict(type='list', elements='dict',),
+        ssl_sess_cache_avg_size=dict(type='int',),
+        sso_policy_ref=dict(type='str',),
+        static_dns_records=dict(type='list', elements='dict',),
+        tenant_ref=dict(type='str',),
+        test_se_datastore_level_1_ref=dict(type='str',),
+        topology_policies=dict(type='list', elements='dict',),
+        traffic_clone_profile_ref=dict(type='str',),
+        traffic_enabled=dict(type='bool',),
+        type=dict(type='str',),
+        url=dict(type='str',),
+        use_bridge_ip_as_vip=dict(type='bool',),
+        use_vip_as_snat=dict(type='bool',),
+        uuid=dict(type='str',),
+        vh_domain_name=dict(type='list', elements='str',),
+        vh_matches=dict(type='list', elements='dict',),
+        vh_parent_vs_ref=dict(type='str',),
+        vh_type=dict(type='str',),
+        vip=dict(type='list', elements='dict',),
+        vrf_context_ref=dict(type='str',),
+        vs_datascripts=dict(type='list', elements='dict',),
+        vsvip_cloud_config_cksum=dict(type='str',),
+        vsvip_ref=dict(type='str',),
+        waf_policy_ref=dict(type='str',),
+        weight=dict(type='int',),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(
+        argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
-    return avi_ansible_api(module, "virtualservice", set())
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
+    return avi_ansible_api(module, 'virtualservice',
+                           set())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

@@ -144,6 +144,27 @@ prestart() {
     fi
   fi
   if [ $cont_plat == "podman" ]; then
+      # During an upgrade from AVI version x to y, if podman assigned the prefix localhost/ to image x while loading it
+      # and image y was loaded with a different prefix (e.g., docker.io/), the system might attempt to pull localhost/<image-name>:y, which doesn't exist.
+      # To handle this, we tag the actual image with the expected name defined in AVI_RUN_PARAMS to ensure consistency and avoid pull errors.
+      image_version_tag=`echo ${se_docker_run_params} | awk '{ print $NF }' | awk -F: '{ print $2 }'`
+      actual_image_name=`podman images | grep $image_version_tag | grep "avinetworks/se" | awk '{ printf "%s:%s",$1,$2 }'`
+      expected_image_name=`echo ${se_docker_run_params} | awk '{ print $NF }'`
+
+      write_log "[`date`] SE image name from podman images: ${actual_image_name}"
+      write_log "[`date`] SE image name from AVI_RUN_PARAMS: ${expected_image_name}"
+
+      if [[ -n "$expected_image_name" && -n "$actual_image_name" ]]; then
+          if [[ ! "$actual_image_name" =~ ^avinetworks/* && ! "$expected_image_name" =~ ^avinetworks/* ]]; then
+              if [[ "$expected_image_name" != "$actual_image_name" ]]; then
+                  write_log "[`date`] Trying to tag image ${actual_image_name} with ${expected_image_name}"
+                  podman tag $actual_image_name $expected_image_name
+                  write_log "[`date`] Trying to untag image ${expected_image_name} with ${actual_image_name}"
+                  podman untag $expected_image_name $actual_image_name
+              fi
+          fi
+      fi
+
       load_image
   fi
   iptables -w 30 -N avi_tmp || true

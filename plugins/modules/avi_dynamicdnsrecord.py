@@ -4,17 +4,14 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_dynamicdnsrecord
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -203,7 +200,7 @@ options:
         type: bool
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
 EXAMPLES = """
 - hosts: all
@@ -221,21 +218,17 @@ EXAMPLES = """
     name: sample_dynamicdnsrecord
 """
 
-RETURN = """
+RETURN = '''
 obj:
     description: DynamicDnsRecord (api/dynamicdnsrecord) object
     returned: success, changed
     type: dict
-"""
+'''
 
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_ansible_api,
-    )
-
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -243,96 +236,45 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default="present", choices=["absent", "present"]),
-        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
-        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
-        avi_patch_path=dict(
-            type="str",
-        ),
-        avi_patch_value=dict(
-            type="str",
-        ),
-        algorithm=dict(
-            type="str",
-        ),
-        cname=dict(
-            type="dict",
-        ),
-        delegated=dict(
-            type="bool",
-        ),
-        description=dict(
-            type="str",
-        ),
-        dns_vs_uuid=dict(
-            type="str",
-        ),
-        fqdn=dict(
-            type="str",
-        ),
-        ip6_address=dict(
-            type="list",
-            elements="dict",
-        ),
-        ip_address=dict(
-            type="list",
-            elements="dict",
-        ),
-        metadata=dict(
-            type="str",
-        ),
-        mx_records=dict(
-            type="list",
-            elements="dict",
-        ),
-        name=dict(
-            type="str",
-        ),
-        ns=dict(
-            type="list",
-            elements="dict",
-        ),
-        num_records_in_response=dict(
-            type="int",
-        ),
-        service_locators=dict(
-            type="list",
-            elements="dict",
-        ),
-        tenant_ref=dict(
-            type="str",
-        ),
-        ttl=dict(
-            type="int",
-        ),
-        txt_records=dict(
-            type="list",
-            elements="dict",
-        ),
-        type=dict(
-            type="str",
-        ),
-        url=dict(
-            type="str",
-        ),
-        uuid=dict(
-            type="str",
-        ),
-        wildcard_match=dict(
-            type="bool",
-        ),
+        state=dict(default='present',
+                   choices=['absent', 'present']),
+        avi_api_update_method=dict(default='put',
+                                   choices=['put', 'patch']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
+        algorithm=dict(type='str',),
+        cname=dict(type='dict',),
+        delegated=dict(type='bool',),
+        description=dict(type='str',),
+        dns_vs_uuid=dict(type='str',),
+        fqdn=dict(type='str',),
+        ip6_address=dict(type='list', elements='dict',),
+        ip_address=dict(type='list', elements='dict',),
+        metadata=dict(type='str',),
+        mx_records=dict(type='list', elements='dict',),
+        name=dict(type='str',),
+        ns=dict(type='list', elements='dict',),
+        num_records_in_response=dict(type='int',),
+        service_locators=dict(type='list', elements='dict',),
+        tenant_ref=dict(type='str',),
+        ttl=dict(type='int',),
+        txt_records=dict(type='list', elements='dict',),
+        type=dict(type='str',),
+        url=dict(type='str',),
+        uuid=dict(type='str',),
+        wildcard_match=dict(type='bool',),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(
+        argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
-    return avi_ansible_api(module, "dynamicdnsrecord", set())
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
+    return avi_ansible_api(module, 'dynamicdnsrecord',
+                           set())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

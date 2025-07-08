@@ -5,17 +5,14 @@
 # Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
-from __future__ import absolute_import, division, print_function
-
+from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {
-    "metadata_version": "1.1",
-    "status": ["preview"],
-    "supported_by": "community",
-}
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
-DOCUMENTATION = """
+DOCUMENTATION = '''
 ---
 module: avi_pool
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
@@ -598,7 +595,7 @@ options:
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
-"""
+'''
 
 EXAMPLES = """
 - hosts: all
@@ -640,21 +637,17 @@ EXAMPLES = """
     - state | default("present") == "present"
 """
 
-RETURN = """
+RETURN = '''
 obj:
     description: Pool (api/pool) object
     returned: success, changed
     type: dict
-"""
+'''
 
 from ansible.module_utils.basic import AnsibleModule
-
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_ansible_api,
-    )
-
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -662,259 +655,99 @@ except ImportError:
 
 def main():
     argument_specs = dict(
-        state=dict(default="present", choices=["absent", "present"]),
-        avi_api_update_method=dict(default="put", choices=["put", "patch"]),
-        avi_api_patch_op=dict(choices=["add", "replace", "delete", "remove"]),
-        avi_patch_path=dict(
-            type="str",
-        ),
-        avi_patch_value=dict(
-            type="str",
-        ),
-        analytics_policy=dict(
-            type="dict",
-        ),
-        analytics_profile_ref=dict(
-            type="str",
-        ),
-        append_port=dict(
-            type="str",
-        ),
-        application_persistence_profile_ref=dict(
-            type="str",
-        ),
-        autoscale_launch_config_ref=dict(
-            type="str",
-        ),
-        autoscale_networks=dict(
-            type="list",
-            elements="str",
-        ),
-        autoscale_policy_ref=dict(
-            type="str",
-        ),
-        capacity_estimation=dict(
-            type="bool",
-        ),
-        capacity_estimation_ttfb_thresh=dict(
-            type="int",
-        ),
-        cloud_config_cksum=dict(
-            type="str",
-        ),
-        cloud_ref=dict(
-            type="str",
-        ),
-        configpb_attributes=dict(
-            type="dict",
-        ),
-        conn_pool_properties=dict(
-            type="dict",
-        ),
-        connection_ramp_duration=dict(
-            type="int",
-        ),
-        created_by=dict(
-            type="str",
-        ),
-        default_server_port=dict(
-            type="int",
-        ),
-        delete_server_on_dns_refresh=dict(
-            type="bool",
-        ),
-        description=dict(
-            type="str",
-        ),
-        domain_name=dict(
-            type="list",
-            elements="str",
-        ),
-        east_west=dict(
-            type="bool",
-        ),
-        enable_http2=dict(
-            type="bool",
-        ),
-        enabled=dict(
-            type="bool",
-        ),
-        external_autoscale_groups=dict(
-            type="list",
-            elements="str",
-        ),
-        fail_action=dict(
-            type="dict",
-        ),
-        fewest_tasks_feedback_delay=dict(
-            type="int",
-        ),
-        graceful_disable_timeout=dict(
-            type="int",
-        ),
-        graceful_hm_down_disable_timeout=dict(
-            type="int",
-        ),
-        gslb_sp_enabled=dict(
-            type="bool",
-        ),
-        health_monitor_refs=dict(
-            type="list",
-            elements="str",
-        ),
-        horizon_profile=dict(
-            type="dict",
-        ),
-        host_check_enabled=dict(
-            type="bool",
-        ),
-        http2_properties=dict(
-            type="dict",
-        ),
-        ignore_server_port=dict(
-            type="bool",
-        ),
-        inline_health_monitor=dict(
-            type="bool",
-        ),
-        ipaddrgroup_ref=dict(
-            type="str",
-        ),
-        lb_algo_rr_per_se=dict(
-            type="bool",
-        ),
-        lb_algorithm=dict(
-            type="str",
-        ),
-        lb_algorithm_consistent_hash_hdr=dict(
-            type="str",
-        ),
-        lb_algorithm_core_nonaffinity=dict(
-            type="int",
-        ),
-        lb_algorithm_hash=dict(
-            type="str",
-        ),
-        lookup_server_by_name=dict(
-            type="bool",
-        ),
-        markers=dict(
-            type="list",
-            elements="dict",
-        ),
-        max_concurrent_connections_per_server=dict(
-            type="int",
-        ),
-        max_conn_rate_per_server=dict(
-            type="dict",
-        ),
-        min_health_monitors_up=dict(
-            type="int",
-        ),
-        min_servers_up=dict(
-            type="int",
-        ),
-        name=dict(type="str", required=True),
-        networks=dict(
-            type="list",
-            elements="dict",
-        ),
-        nsx_securitygroup=dict(
-            type="list",
-            elements="str",
-        ),
-        pki_profile_ref=dict(
-            type="str",
-        ),
-        placement_networks=dict(
-            type="list",
-            elements="dict",
-        ),
-        pool_type=dict(
-            type="str",
-        ),
-        request_queue_depth=dict(
-            type="int",
-        ),
-        request_queue_enabled=dict(
-            type="bool",
-        ),
-        resolve_pool_by_dns=dict(
-            type="bool",
-        ),
-        rewrite_host_header_to_server_name=dict(
-            type="bool",
-        ),
-        rewrite_host_header_to_sni=dict(
-            type="bool",
-        ),
-        routing_pool=dict(
-            type="bool",
-        ),
-        server_disable_type=dict(
-            type="str",
-        ),
-        server_name=dict(
-            type="str",
-        ),
-        server_reselect=dict(
-            type="dict",
-        ),
-        server_timeout=dict(
-            type="int",
-        ),
-        servers=dict(
-            type="list",
-            elements="dict",
-        ),
-        service_metadata=dict(
-            type="str",
-        ),
-        sni_enabled=dict(
-            type="bool",
-        ),
-        sp_gs_info=dict(
-            type="dict",
-        ),
-        ssl_key_and_certificate_ref=dict(
-            type="str",
-        ),
-        ssl_profile_ref=dict(
-            type="str",
-        ),
-        tenant_ref=dict(
-            type="str",
-        ),
-        tier1_lr=dict(
-            type="str",
-        ),
-        url=dict(
-            type="str",
-        ),
-        use_service_port=dict(
-            type="bool",
-        ),
-        use_service_ssl_mode=dict(
-            type="bool",
-        ),
-        uuid=dict(
-            type="str",
-        ),
-        vrf_ref=dict(
-            type="str",
-        ),
+        state=dict(default='present',
+                   choices=['absent', 'present']),
+        avi_api_update_method=dict(default='put',
+                                   choices=['put', 'patch']),
+        avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
+        avi_patch_path=dict(type='str',),
+        avi_patch_value=dict(type='str',),
+        analytics_policy=dict(type='dict',),
+        analytics_profile_ref=dict(type='str',),
+        append_port=dict(type='str',),
+        application_persistence_profile_ref=dict(type='str',),
+        autoscale_launch_config_ref=dict(type='str',),
+        autoscale_networks=dict(type='list', elements='str',),
+        autoscale_policy_ref=dict(type='str',),
+        capacity_estimation=dict(type='bool',),
+        capacity_estimation_ttfb_thresh=dict(type='int',),
+        cloud_config_cksum=dict(type='str',),
+        cloud_ref=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
+        conn_pool_properties=dict(type='dict',),
+        connection_ramp_duration=dict(type='int',),
+        created_by=dict(type='str',),
+        default_server_port=dict(type='int',),
+        delete_server_on_dns_refresh=dict(type='bool',),
+        description=dict(type='str',),
+        domain_name=dict(type='list', elements='str',),
+        east_west=dict(type='bool',),
+        enable_http2=dict(type='bool',),
+        enabled=dict(type='bool',),
+        external_autoscale_groups=dict(type='list', elements='str',),
+        fail_action=dict(type='dict',),
+        fewest_tasks_feedback_delay=dict(type='int',),
+        graceful_disable_timeout=dict(type='int',),
+        graceful_hm_down_disable_timeout=dict(type='int',),
+        gslb_sp_enabled=dict(type='bool',),
+        health_monitor_refs=dict(type='list', elements='str',),
+        horizon_profile=dict(type='dict',),
+        host_check_enabled=dict(type='bool',),
+        http2_properties=dict(type='dict',),
+        ignore_server_port=dict(type='bool',),
+        inline_health_monitor=dict(type='bool',),
+        ipaddrgroup_ref=dict(type='str',),
+        lb_algo_rr_per_se=dict(type='bool',),
+        lb_algorithm=dict(type='str',),
+        lb_algorithm_consistent_hash_hdr=dict(type='str',),
+        lb_algorithm_core_nonaffinity=dict(type='int',),
+        lb_algorithm_hash=dict(type='str',),
+        lookup_server_by_name=dict(type='bool',),
+        markers=dict(type='list', elements='dict',),
+        max_concurrent_connections_per_server=dict(type='int',),
+        max_conn_rate_per_server=dict(type='dict',),
+        min_health_monitors_up=dict(type='int',),
+        min_servers_up=dict(type='int',),
+        name=dict(type='str', required=True),
+        networks=dict(type='list', elements='dict',),
+        nsx_securitygroup=dict(type='list', elements='str',),
+        pki_profile_ref=dict(type='str',),
+        placement_networks=dict(type='list', elements='dict',),
+        pool_type=dict(type='str',),
+        request_queue_depth=dict(type='int',),
+        request_queue_enabled=dict(type='bool',),
+        resolve_pool_by_dns=dict(type='bool',),
+        rewrite_host_header_to_server_name=dict(type='bool',),
+        rewrite_host_header_to_sni=dict(type='bool',),
+        routing_pool=dict(type='bool',),
+        server_disable_type=dict(type='str',),
+        server_name=dict(type='str',),
+        server_reselect=dict(type='dict',),
+        server_timeout=dict(type='int',),
+        servers=dict(type='list', elements='dict',),
+        service_metadata=dict(type='str',),
+        sni_enabled=dict(type='bool',),
+        sp_gs_info=dict(type='dict',),
+        ssl_key_and_certificate_ref=dict(type='str',),
+        ssl_profile_ref=dict(type='str',),
+        tenant_ref=dict(type='str',),
+        tier1_lr=dict(type='str',),
+        url=dict(type='str',),
+        use_service_port=dict(type='bool',),
+        use_service_ssl_mode=dict(type='bool',),
+        uuid=dict(type='str',),
+        vrf_ref=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
-    module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
+    module = AnsibleModule(
+        argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg=(
-                "Python requests package is not installed. "
-                "For installation instructions, visit https://pypi.org/project/requests."
-            )
-        )
-    return avi_ansible_api(module, "pool", set())
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
+    return avi_ansible_api(module, 'pool',
+                           set())
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
