@@ -113,6 +113,15 @@ options:
             - Field introduced in 17.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    enable_adaptive_sampling:
+        description:
+            - Whether or not adaptive sampling should be enabled.
+            - If enabled, a varying percentage of requests will be subject to waf processing in evaluation mode.
+            - The se-group property max_cpu_load_adaptive_sampling limits the maximum load on the cpu allowed for adaptive sampling to take place.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     enable_app_learning:
         description:
             - Enable application learning for this waf policy.
@@ -357,6 +366,7 @@ def main():
         created_by=dict(type='str',),
         crs_overrides=dict(type='list', elements='dict',),
         description=dict(type='str',),
+        enable_adaptive_sampling=dict(type='bool',),
         enable_app_learning=dict(type='bool',),
         enable_auto_rule_updates=dict(type='bool',),
         enable_regex_learning=dict(type='bool',),

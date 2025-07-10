@@ -61,6 +61,13 @@ options:
         required: true
         type: list
         elements: dict
+    allow_legacy_renegotiation:
+        description:
+            - Allow backend servers to use legacy renegotiation.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     cipher_enums:
         description:
             - Enum options - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384, TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
@@ -283,6 +290,7 @@ def main():
         avi_patch_value=dict(type='str',),
         accepted_ciphers=dict(type='str',),
         accepted_versions=dict(type='list', elements='dict', required=True),
+        allow_legacy_renegotiation=dict(type='bool',),
         cipher_enums=dict(type='list', elements='str',),
         ciphersuites=dict(type='str',),
         configpb_attributes=dict(type='dict',),

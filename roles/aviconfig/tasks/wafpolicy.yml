@@ -24,6 +24,7 @@
     created_by: "{{ item.created_by | default(omit) }}"
     crs_overrides: "{{ item.crs_overrides | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
+    enable_adaptive_sampling: "{{ item.enable_adaptive_sampling | default(omit) }}"
     enable_app_learning: "{{ item.enable_app_learning | default(omit) }}"
     enable_auto_rule_updates: "{{ item.enable_auto_rule_updates | default(omit) }}"
     enable_regex_learning: "{{ item.enable_regex_learning | default(omit) }}"
