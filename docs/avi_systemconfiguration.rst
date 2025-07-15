@@ -6315,9 +6315,6 @@ Parameters
                   - The destination syslog server ip(v4/v6) address or fqdn.
                 </div>
                                 <div style="font-size: small">
-                  - Provide in the format ip port.
-                </div>
-                                <div style="font-size: small">
                   - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">

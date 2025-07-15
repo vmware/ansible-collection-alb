@@ -243,7 +243,6 @@ options:
     syslog_servers:
         description:
             - The destination syslog server ip(v4/v6) address or fqdn.
-            - Provide in the format ip port.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
