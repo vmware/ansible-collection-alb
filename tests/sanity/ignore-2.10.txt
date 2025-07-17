@@ -63,6 +63,10 @@ plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemlimits.py import-3.8!skip
 plugins/modules/avi_upgradeprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_upgradeprofile.py import-3.8!skip
+plugins/modules/avi_techsupportmessage.py validate-modules:missing-gplv3-license
+plugins/modules/avi_techsupportmessage.py import-3.8!skip
+plugins/modules/avi_techsupportprofile.py validate-modules:missing-gplv3-license
+plugins/modules/avi_techsupportprofile.py import-3.8!skip
 plugins/modules/avi_licensestatus.py validate-modules:missing-gplv3-license
 plugins/modules/avi_licensestatus.py import-3.8!skip
 plugins/modules/avi_controllerproperties.py validate-modules:missing-gplv3-license
@@ -159,6 +163,8 @@ plugins/modules/avi_memorybalancerrequest.py validate-modules:missing-gplv3-lice
 plugins/modules/avi_memorybalancerrequest.py import-3.8!skip
 plugins/modules/avi_inventoryfaultconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_inventoryfaultconfig.py import-3.8!skip
+plugins/modules/avi_techsupport.py validate-modules:missing-gplv3-license
+plugins/modules/avi_techsupport.py import-3.8!skip
 plugins/modules/avi_cluster.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cluster.py import-3.8!skip
 plugins/modules/avi_retentionpolicy.py validate-modules:missing-gplv3-license

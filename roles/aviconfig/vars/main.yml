@@ -8,6 +8,8 @@ avi_resource_types:
   - cloudproperties
   - systemlimits
   - upgradeprofile
+  - techsupportmessage
+  - techsupportprofile
   - licensestatus
   - controllerproperties
   - licenseledgerdetails
@@ -56,6 +58,7 @@ avi_resource_types:
   - siteversion
   - memorybalancerrequest
   - inventoryfaultconfig
+  - techsupport
   - cluster
   - retentionpolicy
   - controllerportalregistration
