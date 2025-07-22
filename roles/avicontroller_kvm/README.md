@@ -5,7 +5,6 @@ Requirements
 ------------
  - python >= 2.6
  - avisdk : It can be installed by `pip install avisdk --upgrade`
- - avinetworks.avisdk : It can be installed by `ansible-galaxy install -f avinetworks.avisdk` 
 
 Role Variables
 --------------

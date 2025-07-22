@@ -27,7 +27,7 @@
     query: "[?guest_name=='{{ se_vmw_vm_name }}']"
 
 - name: Avi SE | VMware | Destroy SE VM
-  deploy_se:
+  vmware.alb.deploy_se:
     ovftool_path: '{{ ovftool_path }}'
     vcenter_host: '{{ vcenter_host }}'
     vcenter_user: '{{ vcenter_user }}'
@@ -48,7 +48,7 @@
   delegate_to: localhost
 
 - name: Avi SE | VMware | Service destroy | Verify SE disconnection
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_leader_ctl_ip }}"
     username: "{{ se_leader_ctl_username }}"
     password: "{{ se_leader_ctl_password }}"
@@ -64,7 +64,7 @@
   delegate_to: localhost
 
 - name:  Avi SE | VMware | Service destroy | Delete SE from controller
-  avi_serviceengine:
+  vmware.alb.avi_serviceengine:
     controller: '{{ se_leader_ctl_ip }}'
     username: '{{ se_leader_ctl_username }}'
     password: '{{ se_leader_ctl_password }}'

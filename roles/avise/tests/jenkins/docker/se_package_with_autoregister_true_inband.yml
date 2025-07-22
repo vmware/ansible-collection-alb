@@ -9,6 +9,8 @@
       failed_when: false
 
 - hosts: all
+  collections:
+    - vmware.alb
   become: yes
   pre_tasks:
     - name: Enable ipv4 forwarding
@@ -17,9 +19,8 @@
       service: name="firewalld" state="stopped" enabled="no"
       when: ansible_distribution == "Redhat"
   roles:
-    - role: avinetworks.avisdk
     - role: avinetworks.docker
-    - role: avinetworks.avise
+    - role: avise
       se_leader_ctl_ip: "{{ controller_ip }}"
       se_leader_ctl_username: "{{ controller_username }}"
       se_leader_ctl_password: "{{ controller_password }}"

@@ -17,11 +17,6 @@ This collection has been tested against following Ansible versions: **>=2.9.10**
 
 ## Installation and Usage
 
-Ansible must be installed
-```
-pip install ansible
-```
-
 Install ALB collection using `ansible-galaxy` CLI:
 ```
 ansible-galaxy collection install vmware.alb
@@ -284,6 +279,21 @@ avi_config:
           # For importing credentials from external file in modules,
           # please use vars_files parameter as shown in previous example
 ```
+
+## Support
+
+As Red Hat Ansible Certified Content, this collection is entitled to support through the Ansible Automation Platform (AAP) using the Create issue button on the top right corner.
+If a support case cannot be opened with Red Hat and the collection has been obtained either from Galaxy or GitHub, there may community help available on the [Ansible Forum](https://forum.ansible.com/).
+
+## Release Notes
+
+For release notes, see [CHANGELOG.rst](https://github.com/vmware/ansible-collection-alb/blob//CHANGELOG.rst).
+
+## Licensing
+
+GNU General Public License v2.0 or later.
+
+See [LICENSE](https://github.com/vmware/ansible-collection-alb/blob//LICENSE) to see the full text.
 
 **Notes**
 Please use Python >= 3.8 if you are using avi_serviceenginegroup module as it has more than 255 arguments

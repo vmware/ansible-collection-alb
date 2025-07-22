@@ -12,7 +12,7 @@
     - se_tenant
 
 - name: Avi SE | Initial Data | Get Controller information
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_master_ctl_ip }}"
     username: "{{ se_master_ctl_username }}"
     password: "{{ se_master_ctl_password }}"
