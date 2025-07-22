@@ -105,7 +105,7 @@ options:
             - Allowed values are 1-5.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
     simultaneous_invocations:
         description:

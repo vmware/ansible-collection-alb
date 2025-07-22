@@ -59,6 +59,13 @@ options:
             - Field introduced in 21.1.5, 22.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    default_fifth_int:
+        description:
+            - Default int32 field.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
     default_first_int:
         description:
             - Default uint64 field.
@@ -66,12 +73,19 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
+    default_fourth_int:
+        description:
+            - Default int32 field.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+        type: int
     default_second_int:
         description:
             - Default int64 field.
+            - Field deprecated in 31.1.1.
             - Field introduced in 30.1.2.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 2.
         type: int
     default_string:
         description:
@@ -83,9 +97,9 @@ options:
     default_third_int:
         description:
             - Default int32 field.
+            - Field deprecated in 31.1.1.
             - Field introduced in 30.1.2.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
         type: int
     mandatory_test:
         description:
@@ -216,7 +230,9 @@ def main():
         avi_patch_value=dict(type='str',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
+        default_fifth_int=dict(type='int',),
         default_first_int=dict(type='int',),
+        default_fourth_int=dict(type='int',),
         default_second_int=dict(type='int',),
         default_string=dict(type='str',),
         default_third_int=dict(type='int',),
