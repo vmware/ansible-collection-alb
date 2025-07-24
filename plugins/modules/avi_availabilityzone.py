@@ -55,10 +55,25 @@ options:
         elements: dict
     az_datastore:
         description:
-            - Datastores associated with the az.
+            - Group of datastores associated with the az.
+            - Field deprecated in 31.2.1.
             - Field introduced in 31.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
+    az_datastores:
+        description:
+            - Group of datastores associated with the az.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    az_hosts:
+        description:
+            - Group of hosts associated with the az.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
     cloud_ref:
         description:
             - Availability zone belongs to cloud.
@@ -154,6 +169,8 @@ def main():
         avi_patch_value=dict(type='str',),
         az_clusters=dict(type='list', elements='dict',),
         az_datastore=dict(type='dict',),
+        az_datastores=dict(type='list', elements='dict',),
+        az_hosts=dict(type='list', elements='dict',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),

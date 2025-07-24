@@ -53,11 +53,25 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    se_group_infos:
+        description:
+            - Maintain information about se group.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
     se_infos:
         description:
             - Maintain information about consumed licenses against se_uuid.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    tenant_infos:
+        description:
+            - Maintain information about tenant.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     tier_usages:
@@ -67,6 +81,12 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    total_licenses_reserved:
+        description:
+            - Total of max licenses reserved as per quota config of tenant/segroup.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: int
     url:
         description:
             - Avi controller URL of the object.
@@ -123,8 +143,11 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         escrow_infos=dict(type='list', elements='dict',),
+        se_group_infos=dict(type='list', elements='dict',),
         se_infos=dict(type='list', elements='dict',),
+        tenant_infos=dict(type='list', elements='dict',),
         tier_usages=dict(type='list', elements='dict',),
+        total_licenses_reserved=dict(type='int',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

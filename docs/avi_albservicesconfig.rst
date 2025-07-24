@@ -1378,22 +1378,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Maximum service units limit for controller.
+                  - This field is deprecated.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0-100000.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0 - infinite.
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.0.
                 </div>
                                             </td>
     </tr>
@@ -1410,19 +1407,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Minimum service units that always remain reserved on controller.
+                  - This field is deprecated.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0-1000.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.0.
                 </div>
                                             </td>
     </tr>

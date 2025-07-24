@@ -95,7 +95,7 @@ start_container() {
 
 stop_container() {
   ${cont_plat} exec -t ${container} systemctl stop se_shutdown
-  ${cont_plat} stop -t 10 ${container}
+  ${cont_plat} stop -t 120 ${container}
   ret_code=$?
   if [ $ret_code -eq 0 ]; then
     write_log "[`date`] Stopped the ${container} container"

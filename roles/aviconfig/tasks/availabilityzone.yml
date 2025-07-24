@@ -16,6 +16,8 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     az_clusters: "{{ item.az_clusters | default(omit) }}"
     az_datastore: "{{ item.az_datastore | default(omit) }}"
+    az_datastores: "{{ item.az_datastores | default(omit) }}"
+    az_hosts: "{{ item.az_hosts | default(omit) }}"
     cloud_ref: "{{ item.cloud_ref | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     name: "{{ item.name | default(omit) }}"

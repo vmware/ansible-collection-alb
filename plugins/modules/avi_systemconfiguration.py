@@ -122,6 +122,13 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    enable_license_quota:
+        description:
+            - Enable license quota for the system.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     fips_mode:
         description:
             - Fips mode current state.
@@ -154,6 +161,12 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    license_quota:
+        description:
+            - License quota for the system.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     linux_configuration:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -358,11 +371,13 @@ def main():
         email_configuration=dict(type='dict',),
         enable_cors=dict(type='bool',),
         enable_host_header_check=dict(type='bool',),
+        enable_license_quota=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
         host_key_algorithm_exclude=dict(type='str',),
         kex_algorithm_exclude=dict(type='str',),
         legacy_ssl_support=dict(type='bool',),
+        license_quota=dict(type='dict',),
         linux_configuration=dict(type='dict',),
         mgmt_ip_access_control=dict(type='dict',),
         ntp_configuration=dict(type='dict',),
