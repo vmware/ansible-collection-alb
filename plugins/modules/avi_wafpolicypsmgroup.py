@@ -46,6 +46,18 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    completely_described_match_elements:
+        description:
+            - A list of all match element collections which are completely described in the psm group.
+            - Every input value which matches one of the elements in this list but is not handled by a waf psm rule, will run the match_element miss_action.
+            - Allowed values are waf_variable_args.
+            - Enum options - WAF_VARIABLE_ARGS, WAF_VARIABLE_ARGS_GET, WAF_VARIABLE_ARGS_POST, WAF_VARIABLE_ARGS_NAMES, WAF_VARIABLE_REQUEST_COOKIES,
+            - WAF_VARIABLE_QUERY_STRING, WAF_VARIABLE_REQUEST_BASENAME, WAF_VARIABLE_REQUEST_URI, WAF_VARIABLE_PATH_INFO, WAF_VARIABLE_REQUEST_HEADERS.
+            - Field introduced in 31.2.1.
+            - Maximum of 1 items allowed.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -183,6 +195,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        completely_described_match_elements=dict(type='list', elements='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         enable=dict(type='bool',),

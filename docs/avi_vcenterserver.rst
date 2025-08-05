@@ -292,7 +292,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Availabilty zone where vcenter list belongs to.
+                  - Vcenter name.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.

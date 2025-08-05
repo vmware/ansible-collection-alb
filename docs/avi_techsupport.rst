@@ -144,7 +144,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Customer case number for which this tech-upport is generated.
+                  - Customer case number for which this techsupport is generated.
                 </div>
                                 <div style="font-size: small">
                   - Useful for connected portal and other use-cases.
@@ -169,7 +169,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - User provided description to capture additional details and context regarding the tech-support invocation.
+                  - User provided description to capture additional details and context regarding the techsupport invocation.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -191,7 +191,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Total time taken for tech-support collection.
+                  - Total time taken for techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -216,7 +216,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - End timestamp of tech-support collection.
+                  - End timestamp of techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -238,7 +238,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Error logged during tech-support collection.
+                  - Error logged during techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -260,7 +260,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the tech-support level.
+                  - Name of the techsupport level.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -282,7 +282,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of tech-support invocation.
+                  - Name of techsupport invocation.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -304,7 +304,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Cluster member node on which the tech-support tarball bundle is saved.
+                  - Cluster member node on which the techsupport tarball bundle is saved.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -348,7 +348,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - State of current/last tech-support invocation.
+                  - State of current/last techsupport invocation.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -433,7 +433,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Descriptive reason for the tech-support state-change.
+                  - Descriptive reason for the techsupport state-change.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -485,7 +485,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tech-support collection object uuid specified for different objects such as se/vs/pool etc.
+                  - Techsupport collection object uuid specified for different objects such as se/vs/pool etc.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -507,7 +507,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tech-support collection output file path.
+                  - Techsupport collection output file path.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -529,7 +529,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tech-support params associated with latest tech-support collection.user passed params will have more preference.
+                  - Techsupport params associated with latest techsupport collection.
+                </div>
+                                <div style="font-size: small">
+                  - User passed params will have more preference.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -553,7 +556,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - 'customer case number for which this tech-support is generated.
+                  - 'customer case number for which this techsupport is generated.
                 </div>
                                 <div style="font-size: small">
                   - ''useful for connected portal and other use-cases.'.
@@ -579,7 +582,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - User provided description to capture additional details and context regarding the tech-support invocation.
+                  - User provided description to capture additional details and context regarding the techsupport invocation.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -602,7 +605,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Collect events based on duration, specify one from choices [m, h, d, w].i.e.
+                  - Collect events based on duration, specify one from choices [m, h, d, w].
+                </div>
+                                <div style="font-size: small">
+                  - I.e.
                 </div>
                                 <div style="font-size: small">
                   - Minutes, hours, days, weeks.
@@ -611,10 +617,13 @@ Parameters
                   - E.g.
                 </div>
                                 <div style="font-size: small">
-                  - 10m, 5h, 2d, 1we.g.
+                  - 10m, 5h, 2d, 1w.
                 </div>
                                 <div style="font-size: small">
-                  - Show tech-support debuglogs duration 30m.
+                  - E.g.
+                </div>
+                                <div style="font-size: small">
+                  - Techsupport debuglogs duration 30m.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
@@ -637,7 +646,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Specify this params to set threshold for all event files.user provided parameters will take precedence over the profile parameters.
+                  - Specify this params to set threshold for all event files.
+                </div>
+                                <div style="font-size: small">
+                  - User provided parameters will take precedence over the profile parameters.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -662,10 +674,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Collect all events agnostic of duration, days and files.this flag will have higher precedence over duration, files and daysif flag is false then
+                  - Collect all events agnostic of duration, days and files.
                 </div>
                                 <div style="font-size: small">
-                  - precedence given to duration passed while invocation.
+                  - This flag will have higher precedence over duration, files and days.
+                </div>
+                                <div style="font-size: small">
+                  - If flag is false then precedence given to duration passed while invocation.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -692,10 +707,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Collect events for the specified number of past days.e.g.
+                  - Collect events for the specified number of past days.
                 </div>
                                 <div style="font-size: small">
-                  - User specified 3, collect events for past 3 days.if have 20 files with 3 days old then collect on basis of specified number of files.
+                  - E.g.
+                </div>
+                                <div style="font-size: small">
+                  - User specified 3, collect events for past 3 days.
+                </div>
+                                <div style="font-size: small">
+                  - If have 20 files with 3 days old then collect on basis of specified number of files.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-5.
@@ -725,10 +746,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Collect events for the specified number of files.e.g.
+                  - Collect events for the specified number of files.
                 </div>
                                 <div style="font-size: small">
-                  - User specified 5, collect atmost 5 events files.if have 10 files with 2 days old then collect only specified number of files.
+                  - E.g.
+                </div>
+                                <div style="font-size: small">
+                  - User specified 5, collect atmost 5 events files.
+                </div>
+                                <div style="font-size: small">
+                  - If have 10 files with 2 days old then collect only specified number of files.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-10.
@@ -758,7 +785,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tech-support collection level.
+                  - Techsupport collection level.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
@@ -804,7 +831,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Specify pattern to collect specific info in tech-support.user can specify error patterns to filter files based on pattern only.
+                  - Specify pattern to collect specific info in techsupport.
+                </div>
+                                <div style="font-size: small">
+                  - User can specify error patterns to filter files based on pattern only.
                 </div>
                                 <div style="font-size: small">
                   - This way will reduce unnecessary collection.
@@ -853,7 +883,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tech-support collection slug; typically uuid of a vs, gslb etc.
+                  - Techsupport collection slug; typically uuid of a vs, gslb etc.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
@@ -876,7 +906,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Start timestamp of tech-support collection.
+                  - Start timestamp of techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
@@ -899,7 +929,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - X-avi-tenant of http post request for authentication.always admin for now, can be override in the future.
+                  - X-avi-tenant of http post request for authentication.
+                </div>
+                                <div style="font-size: small">
+                  - Always admin for now, can be override in the future.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -945,7 +978,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tech-support collection progress which holds value between 0-100.
+                  - Techsupport collection progress which holds value between 0-100.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0-100.
@@ -976,7 +1009,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Size of collected tech-support tarball.
+                  - Size of collected techsupport tarball.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -1001,7 +1034,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Start timestamp of tech-support collection.
+                  - Start timestamp of techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -1023,7 +1056,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Events performed for tech-support collection.
+                  - Events performed for techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -1093,7 +1126,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Duration of tech-support collection.
+                  - Duration of techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -1119,7 +1152,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - End timestamp of tech-support collection.
+                  - End timestamp of techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -1142,7 +1175,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Start timestamp of tech-support collection.
+                  - Start timestamp of techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -2236,7 +2269,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Completed set of tasks in the tech-support collection.
+                  - Completed set of tasks in the techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -2282,7 +2315,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - List of tech-support check exceptions.
+                  - List of techsupport check exceptions.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -3467,7 +3500,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tenant uuid associated with the tech-support.
+                  - Tenant uuid associated with the techsupport.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
@@ -3492,7 +3525,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Total number of tasks in the tech-support collection.
+                  - Total number of tasks in the techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -3530,7 +3563,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid identifier for the tech-support invocation.
+                  - Uuid identifier for the techsupport invocation.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -3552,7 +3585,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Warning logged during tech-support collection.
+                  - Warning logged during techsupport collection.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.

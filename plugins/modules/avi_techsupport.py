@@ -48,52 +48,52 @@ options:
         type: str
     case_number:
         description:
-            - Customer case number for which this tech-upport is generated.
+            - Customer case number for which this techsupport is generated.
             - Useful for connected portal and other use-cases.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     description:
         description:
-            - User provided description to capture additional details and context regarding the tech-support invocation.
+            - User provided description to capture additional details and context regarding the techsupport invocation.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     duration:
         description:
-            - Total time taken for tech-support collection.
+            - Total time taken for techsupport collection.
             - Field introduced in 31.2.1.
             - Unit is sec.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: int
     end_time:
         description:
-            - End timestamp of tech-support collection.
+            - End timestamp of techsupport collection.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     errors:
         description:
-            - Error logged during tech-support collection.
+            - Error logged during techsupport collection.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     level:
         description:
-            - Name of the tech-support level.
+            - Name of the techsupport level.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     name:
         description:
-            - Name of tech-support invocation.
+            - Name of techsupport invocation.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     node:
         description:
-            - Cluster member node on which the tech-support tarball bundle is saved.
+            - Cluster member node on which the techsupport tarball bundle is saved.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
@@ -105,31 +105,32 @@ options:
         type: str
     obj_state:
         description:
-            - State of current/last tech-support invocation.
+            - State of current/last techsupport invocation.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     obj_uuid:
         description:
-            - Tech-support collection object uuid specified for different objects such as se/vs/pool etc.
+            - Techsupport collection object uuid specified for different objects such as se/vs/pool etc.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     output:
         description:
-            - Tech-support collection output file path.
+            - Techsupport collection output file path.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     params:
         description:
-            - Tech-support params associated with latest tech-support collection.user passed params will have more preference.
+            - Techsupport params associated with latest techsupport collection.
+            - User passed params will have more preference.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     progress:
         description:
-            - Tech-support collection progress which holds value between 0-100.
+            - Techsupport collection progress which holds value between 0-100.
             - Allowed values are 0-100.
             - Field introduced in 31.2.1.
             - Unit is percent.
@@ -138,27 +139,27 @@ options:
         type: int
     size:
         description:
-            - Size of collected tech-support tarball.
+            - Size of collected techsupport tarball.
             - Field introduced in 31.2.1.
             - Unit is mb.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: float
     start_time:
         description:
-            - Start timestamp of tech-support collection.
+            - Start timestamp of techsupport collection.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     tasks:
         description:
-            - Events performed for tech-support collection.
+            - Events performed for techsupport collection.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     tasks_completed:
         description:
-            - Completed set of tasks in the tech-support collection.
+            - Completed set of tasks in the techsupport collection.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: int
@@ -170,14 +171,14 @@ options:
         type: dict
     tenant_ref:
         description:
-            - Tenant uuid associated with the tech-support.
+            - Tenant uuid associated with the techsupport.
             - It is a reference to an object of type tenant.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     total_tasks:
         description:
-            - Total number of tasks in the tech-support collection.
+            - Total number of tasks in the techsupport collection.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: int
@@ -187,13 +188,13 @@ options:
         type: str
     uuid:
         description:
-            - Uuid identifier for the tech-support invocation.
+            - Uuid identifier for the techsupport invocation.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     warnings:
         description:
-            - Warning logged during tech-support collection.
+            - Warning logged during techsupport collection.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list

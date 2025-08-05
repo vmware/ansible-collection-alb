@@ -144,13 +144,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Defined policy for tech-support archive rules.these are predefined files which are exception for default file size thresholduser can add file
+                  - Define the policy for techsupport archive rules.
                 </div>
                                 <div style="font-size: small">
-                  - path with custom threshold in allowed limits to be collected in bundlee.g.
+                  - These rules allow you to specify files that should be collected in the techsupport bundle, even if they exceed the default file size threshold.
                 </div>
                                 <div style="font-size: small">
-                  - A file /var/sample.log is with size 450mb needs to be collected for each invocationuser should configure and add path in techsupportprofile.
+                  - E.g.
+                </div>
+                                <div style="font-size: small">
+                  - To ensure a 450mb file, such as /var/sample.log, is collected with every invocation, configure and add its path to the techsupportprofile.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -174,119 +177,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Archive policy for file path to have specific threshold.tech-support will skip collection of file if file size is greater than threshold.
+                  - Archive policy for file path to have specific threshold.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>file_path</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Specify a file path to add archive rule.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>threshold</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Specify a threshold for file path in mb.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is mb.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 128.
-                </div>
-                                            </td>
-    </tr>
-        
-            
-                                                <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>collect_customer_files</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - A list of user-specified file paths for collectionthat are not part of the predefined yaml configuration.
-                </div>
-                                <div style="font-size: small">
-                  - This is useful forcollecting logs from third-party applications or other custom files.e.g.
-                </div>
-                                <div style="font-size: small">
-                  - A file located at /var/sample.log which is not a part of pre-define yamluser should configure this path as source in collect_customer_files so
-                </div>
-                                <div style="font-size: small">
-                  - that subsequent collectioncollect this file, once user no longer needed this file they can remove from techsupportprofile.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>files</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Archive policy for file path to have specific threshold.tech-support will skip collection of file if file size is greater than threshold.
+                  - Techsupport will skip collection of file if file size is greater than threshold.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -365,7 +259,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Specify this params to set threshold for event files.user provided parameters will take precedence over the profile parameters.
+                  - Specify this params to set threshold for event files.
+                </div>
+                                <div style="font-size: small">
+                  - User provided parameters will take precedence over the profile parameters.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -389,10 +286,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Collect all events agnostic of duration, days and files.this flag will have higher precedence over duration, files and daysif flag is false then
+                  - Collect all events agnostic of duration, days and files.
                 </div>
                                 <div style="font-size: small">
-                  - precedence given to duration passed while invocation.
+                  - This flag will have higher precedence over duration, files and days.
+                </div>
+                                <div style="font-size: small">
+                  - If flag is false then precedence given to duration passed while invocation.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -418,10 +318,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Collect events for the specified number of past days.e.g.
+                  - Collect events for the specified number of past days.
                 </div>
                                 <div style="font-size: small">
-                  - User specified 3, collect events for past 3 days.if have 20 files with 3 days old then collect on basis of specified number of files.
+                  - E.g.
+                </div>
+                                <div style="font-size: small">
+                  - User specified 3, collect events for past 3 days.
+                </div>
+                                <div style="font-size: small">
+                  - If have 20 files with 3 days old then collect on basis of specified number of files.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-5.
@@ -450,10 +356,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Collect events for the specified number of files.e.g.
+                  - Collect events for the specified number of files.
                 </div>
                                 <div style="font-size: small">
-                  - User specified 5, collect atmost 5 events files.if have 10 files with 2 days old then collect only specified number of files.
+                  - E.g.
+                </div>
+                                <div style="font-size: small">
+                  - User specified 5, collect atmost 5 events files.
+                </div>
+                                <div style="font-size: small">
+                  - If have 10 files with 2 days old then collect only specified number of files.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-10.
@@ -482,7 +394,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Max file size threshold to archive in tech-support collectionfiles above this threshold will not be collected and an warning will be flagged.
+                  - Max file size threshold to archive in techsupport collection.
+                </div>
+                                <div style="font-size: small">
+                  - Files above this threshold will not be collected and an warning will be flagged.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 128-512.
@@ -513,13 +428,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Max disk size in percent of total disk size reserved for the tech-support.the value is in percentage to make it agnostic of controller
+                  - Max disk size in percent of total disk size reserved for the techsupport.
                 </div>
                                 <div style="font-size: small">
-                  - flavors.e.g.
+                  - The value is in percentage to make it agnostic of controller flavors.
                 </div>
                                 <div style="font-size: small">
-                  - Small [disk=5 gb, ts space available = 500mb]large [ disk= 100gb, ts space available= 10gb]xl [disk=1tb, ts space available=100gb].
+                  - E.g.
+                </div>
+                                <div style="font-size: small">
+                  - Small [disk=5 gb, ts space available = 500mb] large [ disk= 100gb, ts space available= 10gb] xl [disk=1tb, ts space available=100gb].
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 10-25.
@@ -550,10 +468,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Min free disk required for the tech-support invocation.the value is in percentage to make it agnostic of controller flavors.e.g.
+                  - Min free disk required for the techsupport invocation.
                 </div>
                                 <div style="font-size: small">
-                  - Small [disk=5 gb, ts space available = 250mb]large [ disk= 100gb, ts space available= 5gb]xl [disk=1tb, ts space available=50gb].
+                  - The value is in percentage to make it agnostic of controller flavors.
+                </div>
+                                <div style="font-size: small">
+                  - E.g.
+                </div>
+                                <div style="font-size: small">
+                  - Small [disk=5 gb, ts space available = 250mb] large [ disk= 100gb, ts space available= 5gb] xl [disk=1tb, ts space available=50gb].
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 5-10.
@@ -612,7 +536,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Number of simultaneous tech-support invocation allowed.
+                  - Number of simultaneous techsupport invocation allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-2.
@@ -640,10 +564,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Generic timeout for tech-support task collection.this can be used for task, script executions etc.tweak the timeout value in cases of timeout
+                  - Generic timeout for techsupport task collection.
                 </div>
                                 <div style="font-size: small">
-                  - observation in the logs.
+                  - This can be used for task, script executions etc.
+                </div>
+                                <div style="font-size: small">
+                  - Tweak the timeout value in cases of timeout observation in the logs.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -687,7 +614,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid identifier for the tech-support profile.
+                  - Uuid identifier for the techsupport profile.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.

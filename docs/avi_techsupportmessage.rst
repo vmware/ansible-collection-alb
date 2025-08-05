@@ -144,7 +144,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tech-support status for the current invocation.
+                  - Techsupport status for the current invocation.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
@@ -166,7 +166,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tech-support status code for the current invocation.
+                  - Techsupport status code for the current invocation.
                 </div>
                                 <div style="font-size: small">
                   - Enum options - SYSERR_SUCCESS, SYSERR_FAILURE, SYSERR_OUT_OF_MEMORY, SYSERR_NO_ENT, SYSERR_INVAL, SYSERR_ACCESS, SYSERR_FAULT, SYSERR_IO,
@@ -197,7 +197,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tech-support object ref.
+                  - Techsupport object ref.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type techsupport.
@@ -238,7 +238,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid for tech-support message.
+                  - Uuid for techsupport message.
                 </div>
                                 <div style="font-size: small">
                   - Field deprecated in 31.2.1.

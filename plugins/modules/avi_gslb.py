@@ -63,6 +63,12 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
+    auto_tune_send_interval:
+        description:
+            - Automatically set the send interval value based on the load.
+            - Field introduced in 30.2.5, 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     clear_on_max_retries:
         description:
             - Max retries after which the remote site is treated as a fresh start.
@@ -458,6 +464,7 @@ def main():
         patch_level=dict(type='str', default='/site/dns_vses',
                          choices=['/site/dns_vses', '/site']),
         async_interval=dict(type='int',),
+        auto_tune_send_interval=dict(type='dict',),
         clear_on_max_retries=dict(type='int',),
         client_ip_addr_group=dict(type='dict',),
         configpb_attributes=dict(type='dict',),

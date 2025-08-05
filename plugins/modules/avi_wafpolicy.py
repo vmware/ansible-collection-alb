@@ -113,15 +113,6 @@ options:
             - Field introduced in 17.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    enable_adaptive_sampling:
-        description:
-            - Whether or not adaptive sampling should be enabled.
-            - If enabled, a varying percentage of requests will be subject to waf processing in evaluation mode.
-            - The se-group property max_cpu_load_adaptive_sampling limits the maximum load on the cpu allowed for adaptive sampling to take place.
-            - Field introduced in 31.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     enable_app_learning:
         description:
             - Enable application learning for this waf policy.
@@ -145,6 +136,15 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    enable_streaming:
+        description:
+            - If this is set, waf will let requests be streamed to the backend servers.
+            - If not set, requests and responses will be buffered up to the configured maximum values.
+            - It can only be set if the wafpolicy is not set to enforcement mode.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     failure_mode:
         description:
             - Waf policy failure mode.
@@ -154,6 +154,15 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as WAF_FAILURE_MODE_OPEN.
         type: str
+    fixed_sampling_rate:
+        description:
+            - If sampling_mode is set to fixed_sampling, this value determines the percentage of requests choosen for waf processing.
+            - Allowed values are 1-100.
+            - Field introduced in 31.2.1.
+            - Unit is percent.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+        type: int
     geo_db_ref:
         description:
             - Geo location mapping database used by this wafpolicy.
@@ -238,6 +247,14 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    sampling_mode:
+        description:
+            - If and how waf should use sampling to restrict the number of requests checked.
+            - Enum options - WAF_SAMPLING_MODE_NO_SAMPLING, WAF_SAMPLING_MODE_ADAPTIVE_SAMPLING, WAF_SAMPLING_MODE_FIXED_SAMPLING.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as WAF_SAMPLING_MODE_NO_SAMPLING.
+        type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -366,11 +383,12 @@ def main():
         created_by=dict(type='str',),
         crs_overrides=dict(type='list', elements='dict',),
         description=dict(type='str',),
-        enable_adaptive_sampling=dict(type='bool',),
         enable_app_learning=dict(type='bool',),
         enable_auto_rule_updates=dict(type='bool',),
         enable_regex_learning=dict(type='bool',),
+        enable_streaming=dict(type='bool',),
         failure_mode=dict(type='str',),
+        fixed_sampling_rate=dict(type='int',),
         geo_db_ref=dict(type='str',),
         learning_params=dict(type='dict',),
         markers=dict(type='list', elements='dict',),
@@ -382,6 +400,7 @@ def main():
         post_crs_groups=dict(type='list', elements='dict',),
         pre_crs_groups=dict(type='list', elements='dict',),
         required_data_files=dict(type='list', elements='dict',),
+        sampling_mode=dict(type='str',),
         tenant_ref=dict(type='str',),
         updated_crs_rules_in_detection_mode=dict(type='bool',),
         url=dict(type='str',),

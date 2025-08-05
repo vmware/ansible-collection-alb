@@ -15,7 +15,6 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     archive_rules: "{{ item.archive_rules | default(omit) }}"
-    collect_customer_files: "{{ item.collect_customer_files | default(omit) }}"
     event_params: "{{ item.event_params | default(omit) }}"
     file_size_threshold: "{{ item.file_size_threshold | default(omit) }}"
     max_disk_size_percent: "{{ item.max_disk_size_percent | default(omit) }}"

@@ -67,7 +67,7 @@ options:
         type: dict
     name:
         description:
-            - Availabilty zone where vcenter list belongs to.
+            - Vcenter name.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
