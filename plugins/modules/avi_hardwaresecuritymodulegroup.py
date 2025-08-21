@@ -46,6 +46,13 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    ca_certs:
+        description:
+            - List of certificates present in the ca chain that were used to sign custom client certificate.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -130,6 +137,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        ca_certs=dict(type='list', elements='dict',),
         configpb_attributes=dict(type='dict',),
         hsm=dict(type='dict', required=True),
         markers=dict(type='list', elements='dict',),

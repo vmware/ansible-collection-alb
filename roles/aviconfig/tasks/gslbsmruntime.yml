@@ -16,6 +16,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     cluster_leader: "{{ item.cluster_leader | default(omit) }}"
     cluster_uuid: "{{ item.cluster_uuid | default(omit) }}"
+    controller_size: "{{ item.controller_size | default(omit) }}"
     dns_configs: "{{ item.dns_configs | default(omit) }}"
     dns_info: "{{ item.dns_info | default(omit) }}"
     enabled: "{{ item.enabled | default(omit) }}"

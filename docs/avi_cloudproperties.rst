@@ -2484,7 +2484,7 @@ Parameters
                             <td class="elbow-placeholder"></td>
                                     <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>log_records_additional_buffer_space</b>
+                <b>log_records_allocated_size</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">int</span>
@@ -2494,22 +2494,115 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Additional buffer space (up to 10 gb) to be allocated to store logs on a controller.
+                  - Disk size to be allocated [1mb to 500gb] to store logs on a controller vm.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 0-10000.
+                  - Allowed values are 1000-500000000.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Unit is mb.
+                  - Unit is kb.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>log_records_allocation_percentage_for_events</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Percentage of allocation (log_records_allocated_size)  for events on controller node.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 10-50.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>log_records_cleanup_target_percentage</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Target percentage of allocated disk quota to reduce log file consumption to when cleanup is triggered.
+                </div>
+                                <div style="font-size: small">
+                  - When disk usage exceeds 100% of the allocated quota, cleanup will reduce consumption to this percentage of the allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 30-90.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 90.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>log_records_frequent_cleanup_event_generation_threshold</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The threshold for raising an event on frequent cleanup of logs system.
+                </div>
+                                <div style="font-size: small">
+                  - By default if two consecutive purger/ clean up runs find logs beyond allocated size then an event in raised.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 2-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 2.
                 </div>
                                             </td>
     </tr>
@@ -2530,10 +2623,7 @@ Parameters
                   - Frequency (in seconds) to clean up log files on controller node.
                 </div>
                                 <div style="font-size: small">
-                  - By default, 600 seconds.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-100000.
+                  - Allowed values are 10-100000.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -2545,7 +2635,7 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 600.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 300.
                 </div>
                                             </td>
     </tr>
@@ -4096,7 +4186,7 @@ Parameters
                   - GSLBSSLPROFILERUNTIME, GSLBSSLKEYANDCERTIFICATERUNTIME, GSLBGEOFILE, GSLBGEOFILERUNTIME, EVENTINFO, GSLBSITEHTTPTABLE, LOCALWORKERFDSVERSION,
                 </div>
                                 <div style="font-size: small">
-                  - GSLBSERVICEHEALTHSTATUS, GSLBFILEOBJECTRUNTIME, GSLBRUNTIMESUMMARY, GSLBRUNTIMEDETAIL, GSLBRUNTIMEINTERNAL.
+                  - GSLBSERVICEHEALTHSTATUS, GSLBFILEOBJECTRUNTIME, GSLBRUNTIMESUMMARY, GSLBRUNTIMEDETAIL, GSLBRUNTIMEINTERNAL, GSLBLEADERCHANGERUNTIME.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.1.1.

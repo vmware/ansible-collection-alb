@@ -145,6 +145,13 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    leader_change_info:
+        description:
+            - This field has leader change configuration info including mode, leader designate sites and other configurations for auto leader change like max
+            - short probe failures.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     leader_cluster_uuid:
         description:
             - Mark this site as leader of gslb configuration.
@@ -475,6 +482,7 @@ def main():
         fileobject_max_file_versions=dict(type='int',),
         gs_member_fqdn_resolution_on_se=dict(type='bool',),
         is_federated=dict(type='bool',),
+        leader_change_info=dict(type='dict',),
         leader_cluster_uuid=dict(type='str', required=True),
         maintenance_mode=dict(type='bool',),
         name=dict(type='str', required=True),

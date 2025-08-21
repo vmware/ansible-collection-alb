@@ -450,24 +450,48 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    log_records_additional_buffer_space:
+    log_records_allocated_size:
         description:
-            - Additional buffer space (up to 10 gb) to be allocated to store logs on a controller.
-            - Allowed values are 0-10000.
+            - Disk size to be allocated [1mb to 500gb] to store logs on a controller vm.
+            - Allowed values are 1000-500000000.
             - Field introduced in 31.2.1.
-            - Unit is mb.
+            - Unit is kb.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+        type: int
+    log_records_allocation_percentage_for_events:
+        description:
+            - Percentage of allocation (log_records_allocated_size)  for events on controller node.
+            - Allowed values are 10-50.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+        type: int
+    log_records_cleanup_target_percentage:
+        description:
+            - Target percentage of allocated disk quota to reduce log file consumption to when cleanup is triggered.
+            - When disk usage exceeds 100% of the allocated quota, cleanup will reduce consumption to this percentage of the allocation.
+            - Allowed values are 30-90.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 90.
+        type: int
+    log_records_frequent_cleanup_event_generation_threshold:
+        description:
+            - The threshold for raising an event on frequent cleanup of logs system.
+            - By default if two consecutive purger/ clean up runs find logs beyond allocated size then an event in raised.
+            - Allowed values are 2-100.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 2.
         type: int
     log_records_purge_interval:
         description:
             - Frequency (in seconds) to clean up log files on controller node.
-            - By default, 600 seconds.
-            - Allowed values are 1-100000.
+            - Allowed values are 10-100000.
             - Field introduced in 31.2.1.
             - Unit is sec.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 600.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 300.
         type: int
     max_dead_se_in_grp:
         description:
@@ -1081,7 +1105,10 @@ def main():
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
         ignore_vrf_in_networksubnetlist=dict(type='bool',),
-        log_records_additional_buffer_space=dict(type='int',),
+        log_records_allocated_size=dict(type='int',),
+        log_records_allocation_percentage_for_events=dict(type='int',),
+        log_records_cleanup_target_percentage=dict(type='int',),
+        log_records_frequent_cleanup_event_generation_threshold=dict(type='int',),
         log_records_purge_interval=dict(type='int',),
         max_dead_se_in_grp=dict(type='int',),
         max_pcap_per_tenant=dict(type='int',),

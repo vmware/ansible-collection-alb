@@ -293,6 +293,14 @@ options:
             - Allowed in essentials (allowed values- false), basic (allowed values- false) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    exclude_conn_drop_client_small_window_as_error:
+        description:
+            - Exclude connection dropped by vs due to client advertises a very small window size from the errors.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- true), basic (allowed values- true) edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     exclude_dns_policy_drop_as_significant:
         description:
             - Exclude dns policy drops from the list of errors.
@@ -861,6 +869,7 @@ def main():
         enable_server_analytics=dict(type='bool',),
         enable_vs_analytics=dict(type='bool',),
         exclude_client_close_before_request_as_error=dict(type='bool',),
+        exclude_conn_drop_client_small_window_as_error=dict(type='bool',),
         exclude_dns_policy_drop_as_significant=dict(type='bool',),
         exclude_gs_down_as_error=dict(type='bool',),
         exclude_http_error_codes=dict(type='list', elements='int',),
