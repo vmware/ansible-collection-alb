@@ -177,7 +177,7 @@ def run():
         # raise another exception and let the process crash
         except Exception as ex:
             exception = traceback.format_exc()
-            logger.error("Exception hit: {}".format(exception))
+            logger.error("Exception hit: %s", exception)
             send_response(conn, version, 255, b"", exception.encode("utf-8"))
             raise Exception("Exception hit: {}".format(exception))
 
