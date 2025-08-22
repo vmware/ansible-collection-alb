@@ -435,3 +435,4 @@ roles/avise/files/systemd/install.sh shellcheck:SC2002
 roles/avise/files/systemd/install.sh shellcheck:SC2086
 plugins/modules/avi_csrfpolicy.py yamllint!skip
 plugins/modules/avi_csrfpolicy.py ansible-doc!skip
+plugins/modules/avi_upgradeprofile.py import-3.10!skip
