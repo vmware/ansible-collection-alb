@@ -6,7 +6,6 @@ plugins/module_utils/avi_api.py pylint!skip
 plugins/module_utils/avi_api.py import-3.10!skip
 plugins/module_utils/csp_avi_api.py import-3.10!skip
 plugins/lookup/avi.py import-3.10!skip
-plugins/lookup/avi.py validate-modules:invalid-documentation
 plugins/module_utils/saml_avi_api.py import-3.10!skip
 plugins/module_utils/utils/ansible_utils.py import-3.10!skip
 plugins/module_utils/saml_avi_api.py pylint!skip
@@ -54,7 +53,6 @@ plugins/modules/avi_pulse_registration.py import-3.10!skip
 plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_pulse_registration.py validate-modules:import-error
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
-plugins/modules/deploy_se.py validate-modules:no-log-needed
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
 roles/avicontroller/templates/avicontroller.j2 shebang
 roles/avise/templates/avise.j2 shebang
@@ -424,5 +422,16 @@ plugins/modules/avi_trustedhostprofile.py validate-modules:import-error
 plugins/modules/avi_tenantsystemconfiguration.py validate-modules:import-error
 plugins/modules/avi_tenantsystemconfiguration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_bootstrap_controller.py validate-modules:no-default-for-required-parameter
+plugins/modules/avi_upgradeprofile.py validate-modules:import-error
+plugins/modules/avi_upgradeprofile.py validate-modules:incompatible-default-type
+plugins/modules/avi_upgradeprofile.py validate-modules:missing-gplv3-license
+plugins/modules/avi_pingaccessagent.py validate-modules:parameter-list-no-elements
+roles/avise/files/systemd/avi_host_server.py shebang
+roles/avise/files/systemd/avihost_service_script.sh shebang
+roles/avise/files/systemd/install.py shebang
+roles/avise/files/systemd/install.sh shebang
+roles/avise/files/systemd/install.sh shellcheck:SC2006
+roles/avise/files/systemd/install.sh shellcheck:SC2002
+roles/avise/files/systemd/install.sh shellcheck:SC2086
 plugins/modules/avi_csrfpolicy.py yamllint!skip
 plugins/modules/avi_csrfpolicy.py ansible-doc!skip
