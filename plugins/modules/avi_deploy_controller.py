@@ -7,7 +7,7 @@ __metaclass__ = type
 DOCUMENTATION = '''
 ---
 module: avi_deploy_controller
-author: chaitanyaavi (@chaitanyaavi) <chaitanya.deshpande@avinetworks.com>
+author: Rohan-sss1 (@Rohan-sss1) <rohan.suryavanshi@broadcom.com>
 
 short_description: Module is to deploy vm on vcenter
 description:

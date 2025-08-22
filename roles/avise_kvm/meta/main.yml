@@ -1,0 +1,35 @@
+---
+galaxy_info:
+  role_name: avise_kvm
+  author:
+  - Anurag Palsule <anurag.palsule@broadcom.com>
+  - Parikshit Manur <parikshit.manur@broadcom.com>
+  description: Ansible Role to setup Avi Service Engine on KVM
+  company: VMware
+  issue_tracker_url: https://github.com/vmware/ansible-collection-alb/issues
+  license: Apache-2.0
+  min_ansible_version: 2.15.0
+  platforms:
+  - name: Ubuntu
+    versions:
+    - precise
+    - trusty
+    - xenial
+  galaxy_tags:
+    - avi
+    - controller
+    - avicontroller
+    - avisdk
+    - avinetworks
+    - networks
+    - load
+    - balancer
+    - sdk
+    - lbaas
+    - lb
+    - virtualserver
+    - cloud
+    - loadbalancer
+    - gslb
+    - kvm
+dependencies: []

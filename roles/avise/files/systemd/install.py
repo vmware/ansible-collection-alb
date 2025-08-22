@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 ############################################################################
 # ========================================================================
 # Copyright 2024 VMware, Inc. All rights reserved. VMware Confidential
@@ -19,8 +19,6 @@ import sys
 import time
 import subprocess
 import shlex
-
-from avi.infrastructure.avi_logging import get_root_logger
 
 log = logging.getLogger(__name__)
 
@@ -51,9 +49,9 @@ def copy_avihost_service_to_hostroot():
     try:
         parent_folder = os.path.dirname(os.path.realpath(__file__))
         host_files = {
-            'avihost.service' : '/hostroot/etc/systemd/system/',
-            'avihost_service_script.sh' : '/hostroot/etc/systemd/system/',
-            'avi_host_server.py' : '/hostroot/usr/sbin/'
+            'avihost.service': '/hostroot/etc/systemd/system/',
+            'avihost_service_script.sh': '/hostroot/etc/systemd/system/',
+            'avi_host_server.py': '/hostroot/usr/sbin/'
         }
         replace_host_files = False
         for host_file, local_folder in host_files.items():
@@ -66,28 +64,25 @@ def copy_avihost_service_to_hostroot():
                 latest_avi_host_md5 = subprocess.check_output(shlex.split(cmd))
                 if not isinstance(latest_avi_host_md5, str):
                     latest_avi_host_md5 = latest_avi_host_md5.decode(sys.stdout.encoding)
-                latest_avi_host_md5 = latest_avi_host_md5.split(' ')[0]
+                latest_avi_host_md5 = latest_avi_host_md5.split(' ', maxsplit=1)[0]
                 cmd = 'sha512sum %s' % (local_host_file)
                 current_avi_host_md5 = None
                 try:
                     current_avi_host_md5 = subprocess.check_output(shlex.split(cmd))
                     if not isinstance(current_avi_host_md5, str):
                         current_avi_host_md5 = current_avi_host_md5.decode(sys.stdout.encoding)
-                    current_avi_host_md5 = current_avi_host_md5.split(' ')[0]
+                    current_avi_host_md5 = current_avi_host_md5.split(' ', maxsplit=1)[0]
                 except Exception as e:
                     pass
-                print_info("Receive avihost checksum from controller: %s and current is: %s" % (latest_avi_host_md5, current_avi_host_md5))
+                print_info("Receive avihost checksum from controller: %s and current is: %s" % (
+                    latest_avi_host_md5, current_avi_host_md5))
                 if latest_avi_host_md5 and current_avi_host_md5 and current_avi_host_md5 == latest_avi_host_md5:
-                    print_info(
-                        "No differences detected in file %s, controller checksum: %s and current checksum is: %s"
-                        % (host_file, latest_avi_host_md5, current_avi_host_md5)
-                    )
+                    print_info("No differences detected in file %s, controller checksum: %s and current checksum is: %s" % (
+                        host_file, latest_avi_host_md5, current_avi_host_md5))
                     continue
                 else:
-                    print_info(
-                        "Migration needed, differences detected in file %s, controller checksum: %s and current checksum is: %s"
-                        % (host_file, latest_avi_host_md5, current_avi_host_md5)
-                    )
+                    print_info("Migration needed, differences detected in file %s, controller checksum: %s and current checksum is: %s" % (
+                        host_file, latest_avi_host_md5, current_avi_host_md5))
                     replace_host_files = True
                     break
 

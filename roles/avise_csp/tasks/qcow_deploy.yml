@@ -54,7 +54,7 @@
 
     - block:
         - name: Avi SE | CSP | Image deploy | Get controller tag
-          avi_api_session:
+          vmware.alb.avi_api_session:
             controller: "{{ se_master_ctl_ip }}"
             username: "{{ se_master_ctl_username }}"
             password: "{{ se_master_ctl_password }}"
@@ -78,7 +78,7 @@
     - block:
         - name:  Avi SE | CSP | Image deploy | generate SE image if not exist on controller
           delegate_to: localhost
-          avi_api_session:
+          vmware.alb.avi_api_session:
             controller: "{{ se_master_ctl_ip }}"
             username: "{{ se_master_ctl_username }}"
             password: "{{ se_master_ctl_password }}"

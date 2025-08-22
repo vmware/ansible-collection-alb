@@ -9,7 +9,7 @@
 
 - block:
     - name:  Avi SE | VMware | Image deploy | Genarate SE image if not exist on controller
-      avi_api_session:
+      vmware.alb.avi_api_session:
         controller: '{{ se_leader_ctl_ip }}'
         username: '{{ se_leader_ctl_username }}'
         password: '{{ se_leader_ctl_password }}'
@@ -32,7 +32,7 @@
   delegate_to: localhost
 
 - name: Avi SE | VMware | Image Deploy | Get SE image on Local
-  avi_api_fileservice:
+  vmware.alb.avi_api_fileservice:
     controller: '{{ se_leader_ctl_ip }}'
     username: '{{ se_leader_ctl_username }}'
     password: '{{ se_leader_ctl_password }}'

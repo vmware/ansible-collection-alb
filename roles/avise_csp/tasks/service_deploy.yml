@@ -76,7 +76,7 @@
     delegate_to: localhost
 
   - name: Avi SE | CSP | Service deploy | Verify SE service exists
-    avi_api_session:
+    vmware.alb.avi_api_session:
       controller: "{{ se_master_ctl_ip }}"
       username: "{{ se_master_ctl_username }}"
       password: "{{ se_master_ctl_password }}"
@@ -96,7 +96,7 @@
 
 - block:
   - name: Avi SE | CSP | Service deploy | Verify SE connected to controller
-    avi_api_session:
+    vmware.alb.avi_api_session:
       controller: "{{ se_master_ctl_ip }}"
       username: "{{ se_master_ctl_username }}"
       password: "{{ se_master_ctl_password }}"
@@ -115,7 +115,7 @@
 
 - block:
   - name: Avi SE | CSP | Service deploy | Configure vnic ips
-    avi_update_se_data_vnics:
+    vmware.alb.avi_update_se_data_vnics:
       controller: "{{ se_master_ctl_ip }}"
       username: "{{ se_master_ctl_username }}"
       password: "{{ se_master_ctl_password }}"

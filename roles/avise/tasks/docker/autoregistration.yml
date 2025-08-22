@@ -37,7 +37,7 @@
   when: se_version is defined
 
 - name: Avi SE | Autoregistration | Get the cloud uuid from se_cloud_name
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_leader_ctl_ip }}"
     username: "{{ se_leader_ctl_username }}"
     password: "{{ se_leader_ctl_password }}"
@@ -50,7 +50,7 @@
   delegate_to: localhost
 
 - name: Avi SE | Autoregistration | Get a token from the Avi Controller
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_leader_ctl_ip }}"
     username: "{{ se_leader_ctl_username }}"
     password: "{{ se_leader_ctl_password }}"
@@ -70,7 +70,7 @@
 - debug: msg="Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }}"
 
 - name: Avi SE | Autoregistration | Get a se group uuid of {{ se_group_name }} from the Avi Controller
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_leader_ctl_ip }}"
     username: "{{ se_leader_ctl_username }}"
     password: "{{ se_leader_ctl_password }}"

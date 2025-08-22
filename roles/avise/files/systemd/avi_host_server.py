@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 ############################################################################
 # ========================================================================
 # Copyright 2024 VMware, Inc. All rights reserved. VMware Confidential
@@ -113,7 +112,7 @@ def create_uds_socket():
         if os.path.exists(SERVER_ADDRESS):
             exception = traceback.format_exc()
             logger.error("Failed to unlink domain stream socket: %s", exception)
-            raise Exception("Failed to unlink domain stream socket: %s" % exception)
+            raise Exception("Failed to unlink domain stream socket: {}".format(exception))
 
     # Create a UDS socket
     try:
@@ -123,10 +122,10 @@ def create_uds_socket():
         sock.listen(1)
         logger.info("Listening on %s", SERVER_ADDRESS)
         return sock
-    except OSError:
+    except Exception:
         exception = traceback.format_exc()
         logger.error("socket listen failed: %s", exception)
-        raise Exception("socket listen failed: %s" % exception)
+        raise Exception("socket listen failed: {}".format(exception))
 
 
 def run():

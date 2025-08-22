@@ -9,6 +9,8 @@
 
 - hosts: all
   become: yes
+  collections:
+    - vmware.alb
   pre_tasks:
     - name: Enable ipv4 forwarding
       sysctl: name="net.ipv4.ip_forward" value=1 sysctl_set=yes state=present reload=yes
@@ -22,9 +24,8 @@
       register: controller_initial_data
       delegate_to: localhost
   roles:
-    - role: avinetworks.avisdk
     - role: avinetworks.docker
-    - role: avinetworks.avise
+    - role: avise
       se_version: "{{ controller_initial_data.json.version.Tag }}"
       se_leader_ctl_ip: "{{ controller_ip }}"
       se_leader_ctl_username: "{{ controller_username }}"

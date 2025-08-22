@@ -9,11 +9,6 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
 - `avisdk` python library is required and can be installed by:  
 `pip install avisdk --upgrade`  
 
-## Role Dependencies
-
-- avinetworks.avisdk
-  - To install these use the following command: `ansible-galaxy install -f avinetworks.avisdk`  
-
 ## Role Variables
 
 ### Standard Parameters
