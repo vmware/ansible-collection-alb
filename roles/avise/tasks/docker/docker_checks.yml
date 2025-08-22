@@ -119,5 +119,3 @@
     - name: Include error tasks if Docker disk size is insufficient
       ansible.builtin.include_tasks: error.yml
   when: docker_size_avail is defined and docker_size_avail|int < docker_size_req|int
-
-

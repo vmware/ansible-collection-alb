@@ -4,7 +4,7 @@ vmware.alb Release Notes
 ===========================
 
 
-v31.1.1
+v31.1.2
 ======
 
 - AV-128581 - Added the installation of bs4 as a requirement to fix failure of auto… by @chandanapatnala in #160
