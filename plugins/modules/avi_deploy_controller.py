@@ -7,7 +7,7 @@ __metaclass__ = type
 DOCUMENTATION = '''
 ---
 module: avi_deploy_controller
-author: chaitanyaavi (@chaitanyaavi) <chaitanya.deshpande@avinetworks.com>
+author: Rohan-sss1 (@Rohan-sss1) <rohan.suryavanshi@broadcom.com>
 
 short_description: Module is to deploy vm on vcenter
 description:
@@ -758,10 +758,10 @@ def main():
             'avi.default-gw.CONTROLLER', module.params['con_default_gw']))
 
     command_tokens.append('--prop:%s=%s' % (
-        'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
+            'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
 
     command_tokens.append('--prop:%s=%s' % (
-        'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
+            'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
     if module.params.get('con_sysadmin_public_key', None):
         command_tokens.append('--prop:%s=%s' % (

@@ -13,7 +13,7 @@
     - se_master_ctl_version
 
 - name: Avi SE | Autoregistration | Get the cloud uuid from se_cloud_name
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_master_ctl_ip }}"
     username: "{{ se_master_ctl_username }}"
     password: "{{ se_master_ctl_password }}"
@@ -25,7 +25,7 @@
   delegate_to: localhost
 
 - name: Avi SE | Autoregistration | Get a token from the Avi Controller
-  avi_api_session:
+  vmware.alb.avi_api_session:
     controller: "{{ se_master_ctl_ip }}"
     username: "{{ se_master_ctl_username }}"
     password: "{{ se_master_ctl_password }}"
