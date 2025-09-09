@@ -57,6 +57,8 @@ plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py import-3.8!skip
 plugins/modules/avi_useraccountprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_useraccountprofile.py import-3.8!skip
+plugins/modules/avi_reportprofile.py validate-modules:missing-gplv3-license
+plugins/modules/avi_reportprofile.py import-3.8!skip
 plugins/modules/avi_cloudproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cloudproperties.py import-3.8!skip
 plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
@@ -121,6 +123,8 @@ plugins/modules/avi_botipreputationtypemapping.py validate-modules:missing-gplv3
 plugins/modules/avi_botipreputationtypemapping.py import-3.8!skip
 plugins/modules/avi_botconfigconsolidator.py validate-modules:missing-gplv3-license
 plugins/modules/avi_botconfigconsolidator.py import-3.8!skip
+plugins/modules/avi_positivesecuritypolicy.py validate-modules:missing-gplv3-license
+plugins/modules/avi_positivesecuritypolicy.py import-3.8!skip
 plugins/modules/avi_image.py validate-modules:missing-gplv3-license
 plugins/modules/avi_image.py import-3.8!skip
 plugins/modules/avi_albservicesfileupload.py validate-modules:missing-gplv3-license
@@ -131,6 +135,8 @@ plugins/modules/avi_statediffoperation.py validate-modules:missing-gplv3-license
 plugins/modules/avi_statediffoperation.py import-3.8!skip
 plugins/modules/avi_taskjournal.py validate-modules:missing-gplv3-license
 plugins/modules/avi_taskjournal.py import-3.8!skip
+plugins/modules/avi_report.py validate-modules:missing-gplv3-license
+plugins/modules/avi_report.py import-3.8!skip
 plugins/modules/avi_webhook.py validate-modules:missing-gplv3-license
 plugins/modules/avi_webhook.py import-3.8!skip
 plugins/modules/avi_gslbcrmruntime.py validate-modules:missing-gplv3-license
@@ -165,6 +171,8 @@ plugins/modules/avi_inventoryfaultconfig.py validate-modules:missing-gplv3-licen
 plugins/modules/avi_inventoryfaultconfig.py import-3.8!skip
 plugins/modules/avi_techsupport.py validate-modules:missing-gplv3-license
 plugins/modules/avi_techsupport.py import-3.8!skip
+plugins/modules/avi_applicationinsightsstate.py validate-modules:missing-gplv3-license
+plugins/modules/avi_applicationinsightsstate.py import-3.8!skip
 plugins/modules/avi_cluster.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cluster.py import-3.8!skip
 plugins/modules/avi_retentionpolicy.py validate-modules:missing-gplv3-license
@@ -179,6 +187,8 @@ plugins/modules/avi_albservicesconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesconfig.py import-3.8!skip
 plugins/modules/avi_controllersite.py validate-modules:missing-gplv3-license
 plugins/modules/avi_controllersite.py import-3.8!skip
+plugins/modules/avi_applicationinsightspolicy.py validate-modules:missing-gplv3-license
+plugins/modules/avi_applicationinsightspolicy.py import-3.8!skip
 plugins/modules/avi_natpolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_natpolicy.py import-3.8!skip
 plugins/modules/avi_analyticsprofile.py validate-modules:missing-gplv3-license

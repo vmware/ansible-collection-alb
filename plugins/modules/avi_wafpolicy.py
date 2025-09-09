@@ -85,7 +85,8 @@ options:
         type: bool
     confidence_override:
         description:
-            - Configure thresholds for confidence labels.
+            - [deprecated] configure thresholds for confidence labels.
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
@@ -115,26 +116,25 @@ options:
         type: str
     enable_app_learning:
         description:
-            - Enable application learning for this waf policy.
+            - [deprecated] enable application learning for this waf policy.
+            - Field deprecated in 31.2.1.
             - Field introduced in 18.2.3.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     enable_auto_rule_updates:
         description:
-            - Enable application learning based rule updates on the waf profile.
-            - Rules will be programmed in dedicated waf learning group.
+            - [deprecated] enable application learning based rule updates on the waf profile.rules will be programmed in dedicated waf learning group.
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     enable_regex_learning:
         description:
-            - Enable dynamic regex generation for positive security model rules.
+            - [deprecated] enable dynamic regex generation for positive security model rules.
             - This is an experimental feature and shouldnt be used in production.
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     enable_streaming:
         description:
@@ -172,7 +172,8 @@ options:
         type: str
     learning_params:
         description:
-            - Parameters for tuning application learning.
+            - [deprecated] parameters for tuning application learning.
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
@@ -185,11 +186,11 @@ options:
         elements: dict
     min_confidence:
         description:
-            - Minimum confidence label required for auto rule updates.
+            - [deprecated] minimum confidence label required for auto rule updates.
             - Enum options - CONFIDENCE_VERY_HIGH, CONFIDENCE_HIGH, CONFIDENCE_PROBABLE, CONFIDENCE_LOW, CONFIDENCE_NONE.
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as CONFIDENCE_VERY_HIGH.
         type: str
     mode:
         description:

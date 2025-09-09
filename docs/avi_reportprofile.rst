@@ -1,12 +1,12 @@
 
-.. vmware.alb.avi_alertscriptconfig:
+.. vmware.alb.avi_reportprofile:
 
 
 **********************************************
-vmware.alb.avi_alertscriptconfig
+vmware.alb.avi_reportprofile
 **********************************************
 
-**Module for setup of AlertScriptConfig Avi RESTful Object**
+**Module for setup of ReportProfile Avi RESTful Object**
 
 
 .. contents::
@@ -16,7 +16,7 @@ vmware.alb.avi_alertscriptconfig
 
 Synopsis
 --------
-- This module is used to configure AlertScriptConfig object.
+- This module is used to configure ReportProfile object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -134,29 +134,7 @@ Parameters
             <tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>action_script</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - User defined alert action script.
-                </div>
-                                <div style="font-size: small">
-                  - Please refer to kb.avinetworks.com for more information.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>configpb_attributes</b>
+                <b>collection_rules</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                             <span style="color: purple">dict / elements=dictionary </span>
@@ -166,13 +144,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Protobuf versioning for config pbs.
+                  - Collection rules for the report.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -180,7 +158,7 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>version</b>
+                <b>max_concurrent_workers</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">int</span>
@@ -190,62 +168,56 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Version sequence number that monotonically advances with each configuration update event.
+                  - Maximum number of concurrent workers used for data collection during report generation.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Allowed values are 1-10.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
     </tr>
-        
-                                                <td colspan="7">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>name</b>
+                <b>min_free_disk_required</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - A user-friendly name of the script.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>tenant_ref</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
+                                                                        <span style="color: purple">float</span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - It is a reference to an object of type tenant.
+                  - Minimum free disk required for report generation in gb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed values are 0.1-20.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is gb.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.5.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -257,13 +229,51 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Controlscript excution timeout.
+                  - Timeout for report generation in seconds.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 22.1.6.
+                  - Allowed values are 300-3600.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1800.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_concurrent_reports</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of concurrent reports allowed to be generated.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-10.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
     </tr>
@@ -285,28 +295,6 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>user_id</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Uuid of last editor user.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -317,7 +305,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Uuid identifier for the reportprofile object.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -336,18 +330,16 @@ Examples
         - vmware.alb
       vars:
         avi_credentials:
-          username: "{{ username }}"
-          password: "{{ password }}"
-          controller: "{{ controller }}"
-          api_version: "{{ api_version }}"
-      tasks:        
-        - name: Create Alert Script to perform AWS server autoscaling
-          avi_alertscriptconfig:
+          username: "avi_user"
+          password: "avi_password"
+          controller: "192.168.138.18"
+          api_version: "21.1.1"
+      tasks:
+        - name: Example to create ReportProfile object
+          avi_reportprofile:
             avi_credentials: "{{ avi_credentials }}"
-            action_script: "echo Hello"
-            name: AWS-Launch-Script
-            tenant_ref: /api/tenant?name=Demo
-
+            state: present
+            name: sample_reportprofile
 
 
 Authors

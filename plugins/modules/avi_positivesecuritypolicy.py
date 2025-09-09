@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_alertscriptconfig
+module: avi_positivesecuritypolicy
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-short_description: Module for setup of AlertScriptConfig Avi RESTful Object
+short_description: Module for setup of PositiveSecurityPolicy Avi RESTful Object
 description:
-    - This module is used to configure AlertScriptConfig object
+    - This module is used to configure PositiveSecurityPolicy object
     - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,48 +46,61 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    action_script:
-        description:
-            - User defined alert action script.
-            - Please refer to kb.avinetworks.com for more information.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 21.1.1.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    description:
+        description:
+            - Details of the positive security configuration.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: str
+    enable_positive_security_rule_updates:
+        description:
+            - Enable positive security rule generation using the application learning data rules will be programmed in a dedicated learning group.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    enable_regex_programming:
+        description:
+            - Enable dynamic regex generation for positive security rules.
+            - This is an experimental feature and shouldnt be used in production.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     name:
         description:
-            - A user-friendly name of the script.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
+            - The name of the positivesecurity configuration.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
+    positive_security_params:
+        description:
+            - Parameters for generating positive security rules.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     tenant_ref:
         description:
+            - Details of the tenant for positive security policy.
             - It is a reference to an object of type tenant.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
-    timeout:
-        description:
-            - Controlscript excution timeout.
-            - Field introduced in 22.1.6.
+            - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: int
+        type: str
     url:
         description:
             - Avi controller URL of the object.
         type: str
-    user_id:
-        description:
-            - Uuid of last editor user.
-            - Field introduced in 31.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
     uuid:
         description:
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Uuid of the positive security configuration.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -102,17 +115,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
 
-- name: Create Alert Script to perform AWS server autoscaling
-  vmware.alb.avi_alertscriptconfig:
+- name: Example to create PositiveSecurityPolicy object
+  vmware.alb.avi_positivesecuritypolicy:
     avi_credentials: "{{ avi_credentials }}"
-    action_script: "echo Hello"
-    name: AWS-Launch-Script
-    tenant_ref: /api/tenant?name=Demo
+    state: present
+    name: sample_positivesecuritypolicy
 """
 
 RETURN = '''
 obj:
-    description: AlertScriptConfig (api/alertscriptconfig) object
+    description: PositiveSecurityPolicy (api/positivesecuritypolicy) object
     returned: success, changed
     type: dict
 '''
@@ -135,13 +147,14 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        action_script=dict(type='str',),
         configpb_attributes=dict(type='dict',),
-        name=dict(type='str', required=True),
+        description=dict(type='str',),
+        enable_positive_security_rule_updates=dict(type='bool',),
+        enable_regex_programming=dict(type='bool',),
+        name=dict(type='str',),
+        positive_security_params=dict(type='dict',),
         tenant_ref=dict(type='str',),
-        timeout=dict(type='int',),
         url=dict(type='str',),
-        user_id=dict(type='str',),
         uuid=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
@@ -151,7 +164,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'alertscriptconfig',
+    return avi_ansible_api(module, 'positivesecuritypolicy',
                            set())
 
 

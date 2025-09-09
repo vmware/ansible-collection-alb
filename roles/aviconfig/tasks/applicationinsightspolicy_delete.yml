@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi AlertScriptConfig | Delete AlertScriptConfig
+- name: Avi ApplicationInsightsPolicy | Delete ApplicationInsightsPolicy
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_alertscriptconfig:
+  vmware.alb.avi_applicationinsightspolicy:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,16 +14,18 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    action_script: "{{ item.action_script | default(omit) }}"
+    application_insights_params: "{{ item.application_insights_params | default(omit) }}"
+    application_sampling_config: "{{ item.application_sampling_config | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
+    enable_application_insights: "{{ item.enable_application_insights | default(omit) }}"
+    enable_application_sampling: "{{ item.enable_application_sampling | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    timeout: "{{ item.timeout | default(omit) }}"
-    user_id: "{{ item.user_id | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))
     - (avi_config_state == "absent" or avi_role_state_mode == "absent")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.alertscriptconfig | default([]) }}"
+  with_items: "{{ avi_role_cfg.applicationinsightspolicy | default([]) }}"

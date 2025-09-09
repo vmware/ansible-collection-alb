@@ -178,31 +178,7 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>controller_size</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Possible controller size of peer controller.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>flavor</b>
+                <b>controller_flavor</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -212,70 +188,20 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Controller flavor (e/s/m/l) for this controller size.
+                  - Controller flavor of the peer site controller.
                 </div>
                                 <div style="font-size: small">
                   - Enum options - CONTROLLER_ESSENTIALS, CONTROLLER_SMALL, CONTROLLER_MEDIUM, CONTROLLER_LARGE, CONTROLLER_EXTRA_LARGE.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.1.
+                  - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>min_cpus</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Minimum number of cpu cores required.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>min_memory</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Minimum memory required.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is gb.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                                <td colspan="7">
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dns_configs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -366,6 +292,217 @@ Parameters
                                             </td>
     </tr>
                                     <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>dns_se_resource</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This field tracks the service engine resource hosting the dns virtual service.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>cores_per_socket</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>disk</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>hyper_threading</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>hypervisor_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Indicates that the se is running on a virtual machine.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>memory</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_datapath_processes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Indicates the number of active datapath processes.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_vcpus</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>qat_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usage of intel qat for crypto offloads.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - QAT_OFF, QAT_SW_ACCELERATION, QAT_HW_OFFLOAD.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as QAT_OFF.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>sockets</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dns_vs_states</b>
@@ -1845,6 +1982,29 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>agent_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Remote site watcher agent id.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>msg</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -3176,46 +3336,46 @@ Parameters
                   - SYSERR_TECH_SUPPORT_COLLECTION_PREMATURELY_STOPPED, SYSERR_TECH_SUPPORT_V1_DEPRECATED, SYSERR_TECHSUPPORT_COLLECTION_STARTED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_TECH_SUPPORT_V2_DEPRECATED, SYSERR_NET_PROF_NOT_FOUND, SYSERR_ALBSVC_FILE_UPLOAD_IN_PROGRESS, SYSERR_ALBSVC_FILE_UPLOAD_SUCCESS,
+                  - SYSERR_TECH_SUPPORT_V2_DEPRECATED, SYSERR_TECH_SUPPORT_FOLLOWER_NOT_SUPPORTED, SYSERR_NET_PROF_NOT_FOUND, SYSERR_ALBSVC_FILE_UPLOAD_IN_PROGRESS,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_FILE_UPLOAD_FAILED, SYSERR_ALBSVC_FILE_UPLOAD_STARTED, SYSERR_ALBSVC_CASE_ID_MISSING, SYSERR_ALBSVC_ASSET_ID_MISSING,
+                  - SYSERR_ALBSVC_FILE_UPLOAD_SUCCESS, SYSERR_ALBSVC_FILE_UPLOAD_FAILED, SYSERR_ALBSVC_FILE_UPLOAD_STARTED, SYSERR_ALBSVC_CASE_ID_MISSING,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_AUTH_FAILURE, SYSERR_ALBSVC_REMOTE_SERVER_ERROR, SYSERR_ALBSVC_DISCONNECTED, SYSERR_ALBSVC_DEREGISTERED,
+                  - SYSERR_ALBSVC_ASSET_ID_MISSING, SYSERR_ALBSVC_AUTH_FAILURE, SYSERR_ALBSVC_REMOTE_SERVER_ERROR, SYSERR_ALBSVC_DISCONNECTED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_CANNOT_READ_RESPONSE, SYSERR_ALBSVC_CONTROLLER_ALREADY_REGISTERED, SYSERR_ALBSVC_SESSION_NOT_SET, SYSERR_ALBSVC_CLIENT_TIME_OUT,
+                  - SYSERR_ALBSVC_DEREGISTERED, SYSERR_ALBSVC_CANNOT_READ_RESPONSE, SYSERR_ALBSVC_CONTROLLER_ALREADY_REGISTERED, SYSERR_ALBSVC_SESSION_NOT_SET,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_CONNECTION_REFUSED, SYSERR_ALBSVC_HTTP_CLIENT_ERROR, SYSERR_ALBSVC_RESOURCE_NOT_FOUND, SYSERR_ALBSVC_INVALID_QUERY_PARAM_VALUE,
+                  - SYSERR_ALBSVC_CLIENT_TIME_OUT, SYSERR_ALBSVC_CONNECTION_REFUSED, SYSERR_ALBSVC_HTTP_CLIENT_ERROR, SYSERR_ALBSVC_RESOURCE_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_INVALID_QUERY_PARAM, SYSERR_ALBSVC_FILE_UPLOAD_CONFLICT, SYSERR_ALBSVC_INTERNAL_ERROR, SYSERR_ALBSVC_PROXY_AUTH_FAILURE,
+                  - SYSERR_ALBSVC_INVALID_QUERY_PARAM_VALUE, SYSERR_ALBSVC_INVALID_QUERY_PARAM, SYSERR_ALBSVC_FILE_UPLOAD_CONFLICT, SYSERR_ALBSVC_INTERNAL_ERROR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_LOGIN_URL_NOT_FOUND, SYSERR_ALBSVC_PROXY_CONFIG_PARSE_FAILURE, SYSERR_ALBSVC_LOGIN_REQ_FAILED, SYSERR_ALBSVC_REGISTRATION_FAILED,
+                  - SYSERR_ALBSVC_PROXY_AUTH_FAILURE, SYSERR_ALBSVC_LOGIN_URL_NOT_FOUND, SYSERR_ALBSVC_PROXY_CONFIG_PARSE_FAILURE, SYSERR_ALBSVC_LOGIN_REQ_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_DATABASE_WRITE_ERROR, SYSERR_ALBSVC_DEREGISTRATION_FAILED, SYSERR_ALBSVC_MALFORMED_PAYLOAD, SYSERR_ALBSVC_CASE_GET_FAILED,
+                  - SYSERR_ALBSVC_REGISTRATION_FAILED, SYSERR_ALBSVC_DATABASE_WRITE_ERROR, SYSERR_ALBSVC_DEREGISTRATION_FAILED, SYSERR_ALBSVC_MALFORMED_PAYLOAD,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_CASE_CREATE_FAILED, SYSERR_ALBSVC_CASES_GET_FAILED, SYSERR_ALBSVC_CASE_UPDATE_FAILED, SYSERR_ALBSVC_STATUS_REQ_FAILED,
+                  - SYSERR_ALBSVC_CASE_GET_FAILED, SYSERR_ALBSVC_CASE_CREATE_FAILED, SYSERR_ALBSVC_CASES_GET_FAILED, SYSERR_ALBSVC_CASE_UPDATE_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_CRS_DOWNLOAD_FAILED, SYSERR_ALBSVC_CRS_DEPLOY_FAILED, SYSERR_ALBSVC_CRS_DATA_NOT_FOUND, SYSERR_ALBSVC_DATASTORE_READ_ERROR,
+                  - SYSERR_ALBSVC_STATUS_REQ_FAILED, SYSERR_ALBSVC_CRS_DOWNLOAD_FAILED, SYSERR_ALBSVC_CRS_DEPLOY_FAILED, SYSERR_ALBSVC_CRS_DATA_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_CRS_AUTO_DEPLOY_MALFORMED_URL, SYSERR_ALBSVC_CRS_DOWNLOAD_SIG_MISMATCH, SYSERR_ALBSVC_CRS_DOWNLOAD_FORBIDDEN,
+                  - SYSERR_ALBSVC_DATASTORE_READ_ERROR, SYSERR_ALBSVC_CRS_AUTO_DEPLOY_MALFORMED_URL, SYSERR_ALBSVC_CRS_DOWNLOAD_SIG_MISMATCH,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_DATABASE_READ_ERROR, SYSERR_ALBSVC_AVICLIENT_ERROR, SYSERR_ALBSVC_CRS_AUTODEPLOY_SUCCESS, SYSERR_ALBSVC_EMPTY_METADATA,
+                  - SYSERR_ALBSVC_CRS_DOWNLOAD_FORBIDDEN, SYSERR_ALBSVC_DATABASE_READ_ERROR, SYSERR_ALBSVC_AVICLIENT_ERROR, SYSERR_ALBSVC_CRS_AUTODEPLOY_SUCCESS,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_USERS_REQ_FAILED, SYSERR_ALBSVC_USER_DETAIL_REQ_FAILED, SYSERR_ALBSVC_CRS_URL_DECODE_FAILED, SYSERR_ALBSVC_NAME_RESOLUTION_FAILED,
+                  - SYSERR_ALBSVC_EMPTY_METADATA, SYSERR_ALBSVC_USERS_REQ_FAILED, SYSERR_ALBSVC_USER_DETAIL_REQ_FAILED, SYSERR_ALBSVC_CRS_URL_DECODE_FAILED,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_ALBSVC_x509_ERROR, SYSERR_ALBSVC_REGISTRATION_DISABLED, SYSERR_ALBSVC_FEATURE_OPT_IN_NOT_ENABLED,
+                  - SYSERR_ALBSVC_NAME_RESOLUTION_FAILED, SYSERR_ALBSVC_x509_ERROR, SYSERR_ALBSVC_REGISTRATION_DISABLED, SYSERR_ALBSVC_FEATURE_OPT_IN_NOT_ENABLED,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_ALBSVC_USER_AGENT_DB_BATCH_SIZE_EXCEEDED, SYSERR_ALBSVC_LICENSE_STATUS_CHECK_FAILED, SYSERR_ALBSVC_FEATURE_NOT_ALLOWED,
@@ -3515,34 +3675,37 @@ Parameters
                   - SYSERR_WAF_INIT_CRS_OVERRIDE_FAIL, SYSERR_WAF_INIT_INSUFFICIENT_APP_LEARNING_MEMORY, SYSERR_BOT_INIT_FAIL, SYSERR_BOT_ALLOWLIST_INIT_FAIL,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_BOT_POLICY_NOT_FOUND, SYSERR_BIND_BOT_FAILURE, SYSERR_BOT_MAPPING_NOT_FOUND, SYSERR_BOT_CONSOLIDATOR_NOT_FOUND, SYSERR_POLICY_HASH_REMOVE,
+                  - SYSERR_BOT_POLICY_NOT_FOUND, SYSERR_BIND_BOT_FAILURE, SYSERR_BOT_MAPPING_NOT_FOUND, SYSERR_BOT_CONSOLIDATOR_NOT_FOUND,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_POLICY_V4_TREE_CREATION, SYSERR_POLICY_V6_TREE_CREATION, SYSERR_POLICY_APPLOG_PROV, SYSERR_POLICY_CLIENT_IP_GROUP_UUID,
+                  - SYSERR_APPLICATION_INSIGHTS_NOT_FOUND, SYSERR_POLICY_HASH_REMOVE, SYSERR_POLICY_V4_TREE_CREATION, SYSERR_POLICY_V6_TREE_CREATION,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_POLICY_PATH_MATCH_GROUP_UUID, SYSERR_POLICY_QUERY_MATCH_GROUP_UUID, SYSERR_POLICY_UNKOWN_MATCH_ACTION, SYSERR_POLICY_INVALID_HDR_ACTIONS,
+                  - SYSERR_POLICY_APPLOG_PROV, SYSERR_POLICY_CLIENT_IP_GROUP_UUID, SYSERR_POLICY_PATH_MATCH_GROUP_UUID, SYSERR_POLICY_QUERY_MATCH_GROUP_UUID,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_POLICY_RWH_COOKIE_OPER, SYSERR_POLICY_HASH_INSERT, SYSERR_SSL_CERT_NOT_PRESENT, SYSERR_SSL_CERT_KEY_NOT_PRESENT,
+                  - SYSERR_POLICY_UNKOWN_MATCH_ACTION, SYSERR_POLICY_INVALID_HDR_ACTIONS, SYSERR_POLICY_RWH_COOKIE_OPER, SYSERR_POLICY_HASH_INSERT,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SSL_CTX_CREATION_ERR, SYSERR_SSL_CERT_READ_FAILURE, SYSERR_SSL_CERT_LOAD_TO_CTX, SYSERR_SSL_CERT_IDX_TO_CTX, SYSERR_SSL_KEY_LOAD_TO_CTX,
+                  - SYSERR_SSL_CERT_NOT_PRESENT, SYSERR_SSL_CERT_KEY_NOT_PRESENT, SYSERR_SSL_CTX_CREATION_ERR, SYSERR_SSL_CERT_READ_FAILURE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SSL_CERT_CHAIN_READ_FAILURE, SYSERR_SSL_CERT_CHAIN_ADD_FAILURE, SYSERR_SSL_KEY_READ_FAILURE, SYSERR_SSL_CERTIFICATE_AND_KEY_MISMATCH,
+                  - SYSERR_SSL_CERT_LOAD_TO_CTX, SYSERR_SSL_CERT_IDX_TO_CTX, SYSERR_SSL_KEY_LOAD_TO_CTX, SYSERR_SSL_CERT_CHAIN_READ_FAILURE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SSL_CIPHER_LIST_NOT_SET, SYSERR_SSL_CIPHER_SUITES_NOT_SET, SYSERR_SSL_PKI_CLIENT_CA, SYSERR_SSL_DHPARAM_FAILURE, SYSERR_SSL_ECDH_FAILURE,
+                  - SYSERR_SSL_CERT_CHAIN_ADD_FAILURE, SYSERR_SSL_KEY_READ_FAILURE, SYSERR_SSL_CERTIFICATE_AND_KEY_MISMATCH, SYSERR_SSL_CIPHER_LIST_NOT_SET,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SSL_HOSTMAP_FAILURE, SYSERR_SSL_SESSION_CACHE_INIT, SYSERR_SSL_SESSION_TIX_KEYS_INIT, SYSERR_SSL_PKI_CRL,
+                  - SYSERR_SSL_CIPHER_SUITES_NOT_SET, SYSERR_SSL_PKI_CLIENT_CA, SYSERR_SSL_DHPARAM_FAILURE, SYSERR_SSL_ECDH_FAILURE, SYSERR_SSL_HOSTMAP_FAILURE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_PKI_PROFILE_CONFIG_NO_CA_CERT, SYSERR_DUPLICATE_PKI_PROFILE, SYSERR_SET_SSL_STAPLE_FAILURE, SYSERR_ICAP_PROFILE_NOT_FOUND,
+                  - SYSERR_SSL_SESSION_CACHE_INIT, SYSERR_SSL_SESSION_TIX_KEYS_INIT, SYSERR_SSL_PKI_CRL, SYSERR_PKI_PROFILE_CONFIG_NO_CA_CERT,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_SSL_EVH_PARENT_NOT_FOUND, SYSERR_SSL_MEMPOOL_NAME_LEN_EXCEEDED, SYSERR_SSL_MEMPOOL_UUID_LEN_EXCEEDED, SYSERR_CONFIG_OBJ_NAME_LEN_EXCEEDED,
+                  - SYSERR_DUPLICATE_PKI_PROFILE, SYSERR_SET_SSL_STAPLE_FAILURE, SYSERR_ICAP_PROFILE_NOT_FOUND, SYSERR_SSL_EVH_PARENT_NOT_FOUND,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_SSL_MEMPOOL_NAME_LEN_EXCEEDED, SYSERR_SSL_MEMPOOL_UUID_LEN_EXCEEDED, SYSERR_CONFIG_OBJ_NAME_LEN_EXCEEDED,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_SSL_EVH_PARENT_IN_FAULT_STATE, SYSERR_SPL_OBJ_NAME_LEN_EXCEEDED, SYSERR_SSL_PKI_CRL_FILEOBJECT_NOT_FOUND,
@@ -3566,7 +3729,16 @@ Parameters
                   - SYSERR_FILE_CONTENT_DECODE_FAILED, SYSERR_RETENTION_POLICY_ERR, SYSERR_RETENTION_POLICY_SERVICE_UNAVAILABLE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_RETENTION_POLICY_INVALID_ACTION, SYSERR_SVC_FAILURE, SYSERR_SVC_SUCCESS, SYSERR_PROTOBUF_MEM_CHUNK_SIZE_EXCEEDED.
+                  - SYSERR_RETENTION_POLICY_INVALID_ACTION, SYSERR_SVC_FAILURE, SYSERR_SVC_SUCCESS, SYSERR_PROTOBUF_MEM_CHUNK_SIZE_EXCEEDED,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_REPORT_GENERATION_STARTED, SYSERR_REPORT_GENERATION_FAILED, SYSERR_CHECK_MIN_FREE_DISK_REQUIRED_REPORTING,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_CHECK_MIN_FREE_DISK_REQUIRED_REPORTING_ERR, SYSERR_CHECK_CLUSTER_REPORTING, SYSERR_CHECK_CLUSTER_REPORTING_ERR,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_CHECK_UPGRADE_IN_PROGRESS, SYSERR_CHECK_UPGRADE_IN_PROGRESS_ERR.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

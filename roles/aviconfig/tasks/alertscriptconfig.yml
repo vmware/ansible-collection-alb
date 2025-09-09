@@ -19,7 +19,7 @@
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     timeout: "{{ item.timeout | default(omit) }}"
-    user_ref: "{{ item.user_ref | default(omit) }}"
+    user_id: "{{ item.user_id | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")

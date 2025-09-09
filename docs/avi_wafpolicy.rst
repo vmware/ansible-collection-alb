@@ -5028,7 +5028,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Configure thresholds for confidence labels.
+                  - [deprecated] configure thresholds for confidence labels.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -6258,16 +6261,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable application learning for this waf policy.
+                  - [deprecated] enable application learning for this waf policy.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -6283,19 +6286,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable application learning based rule updates on the waf profile.
+                  - [deprecated] enable application learning based rule updates on the waf profile.rules will be programmed in dedicated waf learning group.
                 </div>
                                 <div style="font-size: small">
-                  - Rules will be programmed in dedicated waf learning group.
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -6311,19 +6311,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable dynamic regex generation for positive security model rules.
+                  - [deprecated] enable dynamic regex generation for positive security model rules.
                 </div>
                                 <div style="font-size: small">
                   - This is an experimental feature and shouldnt be used in production.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -6457,7 +6457,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Parameters for tuning application learning.
+                  - [deprecated] parameters for tuning application learning.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -6481,19 +6484,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - If this is set to true, waf will only learn from clients which match the learn_from_bots specification.
+                  - [deprecated] if this is set to true, waf will only learn from clients which match the learn_from_bots specification.
                 </div>
                                 <div style="font-size: small">
                   - The settings learn_from_authenticated_requests and trusted_ip_groups always take precedence.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -6510,16 +6513,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Learn the params per uri path.
+                  - [deprecated] learn the params per uri path.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -6536,19 +6539,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - If true, learning will only be performed on requests from clients who have passed the authentication process configured in the virtual service's
+                  - [deprecated] if true, learning will only be performed on requests from clients who have passed the authentication process configured in the
                 </div>
                                 <div style="font-size: small">
-                  - auth profile.
+                  - virtual service's auth profile.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -6565,10 +6568,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - If bot detection is active for this virtual service, learning will only be performed on requests from clients within the configured bot
+                  - [deprecated] if bot detection is active for this virtual service, learning will only be performed on requests from clients within the configured
                 </div>
                                 <div style="font-size: small">
-                  - classification types.
+                  - bot classification types.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.2.1.
@@ -6689,32 +6695,6 @@ Parameters
                                         <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>learn_from_urls_without_args</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - When true, the waf includes argument-less uris in its learning process.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_params</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -6725,19 +6705,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Maximum number of params programmed for an application.
+                  - [deprecated] maximum number of params programmed for an application.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 10-1000.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 100.
                 </div>
                                             </td>
     </tr>
@@ -6754,19 +6734,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Maximum number of uri paths programmed for an application.
+                  - [deprecated] maximum number of uri paths programmed for an application.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 10-10000.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 500.
                 </div>
                                             </td>
     </tr>
@@ -6783,16 +6763,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Minimum number of occurances required for a param to qualify for learning.
+                  - [deprecated] minimum number of occurances required for a param to qualify for learning.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 10000.
                 </div>
                                             </td>
     </tr>
@@ -6809,10 +6789,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Percent of the requests subjected to application learning.
+                  - [deprecated] percent of the requests subjected to application learning.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
@@ -6822,9 +6805,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
     </tr>
@@ -6841,10 +6821,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - If configured, learning will only be performed on requests from client ips within the configured ip address group.
+                  - [deprecated] if configured, learning will only be performed on requests from client ips within the configured ip address group.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type ipaddrgroup.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.1.
@@ -6867,10 +6850,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Frequency with which se publishes application learning data to controller.
+                  - [deprecated] frequency with which se publishes application learning data to controller.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-60.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.3.
@@ -6880,9 +6866,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 30.
                 </div>
                                             </td>
     </tr>
@@ -6978,19 +6961,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Minimum confidence label required for auto rule updates.
+                  - [deprecated] minimum confidence label required for auto rule updates.
                 </div>
                                 <div style="font-size: small">
                   - Enum options - CONFIDENCE_VERY_HIGH, CONFIDENCE_HIGH, CONFIDENCE_PROBABLE, CONFIDENCE_LOW, CONFIDENCE_NONE.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 31.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as CONFIDENCE_VERY_HIGH.
                 </div>
                                             </td>
     </tr>

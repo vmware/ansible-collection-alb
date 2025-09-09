@@ -89,6 +89,13 @@ options:
             - It is a reference to an object of type analyticsprofile.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    application_insights_ref:
+        description:
+            - Application insights configuration for the virtual service to learn application data.
+            - It is a reference to an object of type applicationinsightspolicy.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: str
     application_profile_ref:
         description:
             - Enable application layer specific features for the virtual service.
@@ -422,6 +429,13 @@ options:
             - The pool is an object that contains destination servers and related attributes such as load-balancing and persistence.
             - It is a reference to an object of type pool.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
+    positive_security_ref:
+        description:
+            - Positive security configuration for the virtual service to generate rules from the application data.
+            - It is a reference to an object of type positivesecuritypolicy.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     remove_listening_port_on_vs_down:
         description:
@@ -780,6 +794,7 @@ def main():
         allow_invalid_client_cert=dict(type='bool',),
         analytics_policy=dict(type='dict',),
         analytics_profile_ref=dict(type='str',),
+        application_insights_ref=dict(type='str',),
         application_profile_ref=dict(type='str',),
         azure_availability_set=dict(type='str',),
         bgp_local_preference=dict(type='int',),
@@ -830,6 +845,7 @@ def main():
         performance_limits=dict(type='dict',),
         pool_group_ref=dict(type='str',),
         pool_ref=dict(type='str',),
+        positive_security_ref=dict(type='str',),
         remove_listening_port_on_vs_down=dict(type='bool',),
         requests_rate_limit=dict(type='dict',),
         revoke_vip_route=dict(type='bool',),

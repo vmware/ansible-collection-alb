@@ -288,7 +288,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - This field contains certificate revocation list metadata.
+                  - This field contains crl metadata.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.2.1.
@@ -782,10 +782,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Timestamp when the file will be no longer needed and can be removed by the system.
+                  - Timestamp when the crl contents are no longer valid and hence crl-file will be no longer needed and can be removed by the system.
                 </div>
                                 <div style="font-size: small">
-                  - If this is set, a garbage collector process will try to remove the file after this time.
+                  - If this is set, a garbage collector process shall remove the crl-file after this time.
+                </div>
+                                <div style="font-size: small">
+                  - This field is applicable in the crl context.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -807,7 +810,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - This field indicates the file format of gslb geodb file type.
+                  - This field indicates the file format(avi/maxmind and v4/v6/v4-v6) of gslb geodb file type.
                 </div>
                                 <div style="font-size: small">
                   - Enum options - GSLB_GEODB_FILE_FORMAT_AVI, GSLB_GEODB_FILE_FORMAT_MAXMIND_CITY, GSLB_GEODB_FILE_FORMAT_MAXMIND_CITY_V6,
@@ -866,7 +869,7 @@ Parameters
                   - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
                 </div>
                                 <div style="font-size: small">
-                  - If the field is set to true, then the object is replicated across the federation.
+                  - If the field is set to true, then the object is replicated across the gslb federation.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -888,10 +891,7 @@ Parameters
                                                             </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Name of the file object.
@@ -1026,10 +1026,7 @@ Parameters
                                                             </div>
             </td>
             <td>
-                                <div style="font-size: small">
-                <b>required: true</b>
-                </div>
-                            </td>
+                                                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Type of the file.

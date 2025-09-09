@@ -257,21 +257,24 @@
   become: true
   ignore_errors: yes
 
+- name: Check if port 5099 is in use
+  shell: echo '{{ ns_res.stdout }}' | awk '{print $4}' | grep -w 5099
+  register: port_res
+  when: ns_res.rc is defined and ns_res.rc == 0
+  ignore_errors: yes
+
 - name: Set failed port
   set_fact:
-    failed_port: "{{ item.item }}"
-  when: item.rc is defined and item.rc == 0 and error is undefined
-  with_items:
-      - "{{ port_res.results }}"
+    failed_port: "5099"
+  when: port_res.rc is defined and port_res.rc == 0
 
 - block:
-    - name: Fetch the process name
-      shell: echo '{{ ns_res.stdout }}' | grep -w {{ failed_port }} | awk '{print $NF}'
+    - name: Fetch the process name using port 5099
+      shell: echo '{{ ns_res.stdout }}' | grep -w 5099 | awk '{print $NF}'
       register: proc_res
-
-    - name: Set error string to display to the user
+    - name: Set error string for user
       set_fact:
-        error_string: "Cannot create ServiceEngine as port {{ failed_port }} is in use by process {{ proc_res.stdout }} on this host"
+        error_string: "Cannot create ServiceEngine as port 5099 is in use by process {{ proc_res.stdout }} on this host"
       when: proc_res.stdout is defined
   when: failed_port is defined
 

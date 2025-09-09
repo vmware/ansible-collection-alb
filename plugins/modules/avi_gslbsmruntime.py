@@ -58,12 +58,13 @@ options:
             - Field introduced in 31.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
-    controller_size:
+    controller_flavor:
         description:
-            - Possible controller size of peer controller.
+            - Controller flavor of the peer site controller.
+            - Enum options - CONTROLLER_ESSENTIALS, CONTROLLER_SMALL, CONTROLLER_MEDIUM, CONTROLLER_LARGE, CONTROLLER_EXTRA_LARGE.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: dict
+        type: str
     dns_configs:
         description:
             - Sub domain configuration for the gslb.
@@ -260,7 +261,7 @@ def main():
         avi_patch_value=dict(type='str',),
         cluster_leader=dict(type='str',),
         cluster_uuid=dict(type='str',),
-        controller_size=dict(type='dict',),
+        controller_flavor=dict(type='str',),
         dns_configs=dict(type='list', elements='dict',),
         dns_info=dict(type='dict',),
         enabled=dict(type='bool',),
