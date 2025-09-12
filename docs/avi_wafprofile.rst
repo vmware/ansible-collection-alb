@@ -1672,6 +1672,9 @@ Parameters
                   - Allowed values are 0-5000.
                 </div>
                                 <div style="font-size: small">
+                  - Special values are 0- do not apply this restriction.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 17.2.12, 18.1.2.
                 </div>
                                 <div style="font-size: small">

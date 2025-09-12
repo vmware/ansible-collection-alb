@@ -257,6 +257,9 @@ Parameters
                   - -1 as default is maximum value.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed values are -1-+65535.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 31.2.1.
                 </div>
                                 <div style="font-size: small">
@@ -282,6 +285,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Minimum license service units reserved for consumption.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-65535.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.

@@ -1801,7 +1801,7 @@ Parameters
                   - SYSERR_RM_CLOUD_NOT_FOUND, SYSERR_RM_SEGROUP_NOT_FOUND, SYSERR_RM_SE_OFFLINE, SYSERR_RM_SE_USED, SYSERR_RM_SE_BGP_PEERS_DOWN,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_RM_SE_FLAVOR_LIMIT_REACHED, SYSERR_RM_SE_INSUFFICIENT_VNIC_SLOTS, SYSERR_VI_MGR_SEVM_VNIC_SUCCESS,
+                  - SYSERR_RM_SE_FLAVOR_LIMIT_REACHED, SYSERR_RM_SE_INSUFFICIENT_VNIC_SLOTS, SYSERR_RM_SE_SHARED_VIP_INCONSISTENCY, SYSERR_VI_MGR_SEVM_VNIC_SUCCESS,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_HW_INFO, SYSERR_VI_MGR_SEVM_CREATE_FAIL_DUPLICATE_NAME, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW,
@@ -2464,7 +2464,10 @@ Parameters
                   - SYSERR_CHECK_MIN_FREE_DISK_REQUIRED_REPORTING_ERR, SYSERR_CHECK_CLUSTER_REPORTING, SYSERR_CHECK_CLUSTER_REPORTING_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_UPGRADE_IN_PROGRESS, SYSERR_CHECK_UPGRADE_IN_PROGRESS_ERR.
+                  - SYSERR_CHECK_UPGRADE_IN_PROGRESS, SYSERR_CHECK_UPGRADE_IN_PROGRESS_ERR, SYSERR_CHECK_WAF_ENABLED_REPORTING,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_CHECK_WAF_ENABLED_REPORTING_ERR.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.6, 30.2.1.
@@ -3007,7 +3010,7 @@ Parameters
                   - SYSERR_RM_CLOUD_NOT_FOUND, SYSERR_RM_SEGROUP_NOT_FOUND, SYSERR_RM_SE_OFFLINE, SYSERR_RM_SE_USED, SYSERR_RM_SE_BGP_PEERS_DOWN,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_RM_SE_FLAVOR_LIMIT_REACHED, SYSERR_RM_SE_INSUFFICIENT_VNIC_SLOTS, SYSERR_VI_MGR_SEVM_VNIC_SUCCESS,
+                  - SYSERR_RM_SE_FLAVOR_LIMIT_REACHED, SYSERR_RM_SE_INSUFFICIENT_VNIC_SLOTS, SYSERR_RM_SE_SHARED_VIP_INCONSISTENCY, SYSERR_VI_MGR_SEVM_VNIC_SUCCESS,
                 </div>
                                 <div style="font-size: small">
                   - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_HW_INFO, SYSERR_VI_MGR_SEVM_CREATE_FAIL_DUPLICATE_NAME, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW,
@@ -3670,7 +3673,10 @@ Parameters
                   - SYSERR_CHECK_MIN_FREE_DISK_REQUIRED_REPORTING_ERR, SYSERR_CHECK_CLUSTER_REPORTING, SYSERR_CHECK_CLUSTER_REPORTING_ERR,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_UPGRADE_IN_PROGRESS, SYSERR_CHECK_UPGRADE_IN_PROGRESS_ERR.
+                  - SYSERR_CHECK_UPGRADE_IN_PROGRESS, SYSERR_CHECK_UPGRADE_IN_PROGRESS_ERR, SYSERR_CHECK_WAF_ENABLED_REPORTING,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_CHECK_WAF_ENABLED_REPORTING_ERR.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.3.
