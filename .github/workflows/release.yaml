@@ -1,7 +1,9 @@
 name: Release collection to Red Hat Automation Hub (TEST ONLY)
 
 on:
-  workflow_dispatch:   # run manually for testing
+   push:
+    branches:
+      - token_based_publish
 
 jobs:
   deploy:
