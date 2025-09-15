@@ -23,16 +23,22 @@ jobs:
       - name: Build Ansible collection
         run: ansible-galaxy collection build --force
 
-      - name: Authenticate with Red Hat SSO (HARDCODED for testing)
+      - name: Get access token from sso.redhat.com
+        id: get_token
         run: |
-          ACCESS_TOKEN=$(curl 'https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=XXXXX' --data-urlencode 'client_secret=YYYYY' --data-urlencode 'scope=openid api.iam.service_accounts")
+          response=$(curl 'https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token' \
+          --data-urlencode 'grant_type=client_credentials' \
+          --data-urlencode 'client_id=88bb9cac-3213-4906-9b28-97f1c4970574' \
+          --data-urlencode 'client_secret=Gn64GXQq0e6jgjkSOy4K7TAEbkKAXV9y' \
+          --data-urlencode 'scope=openid api.iam.service_accounts')
 
-          echo "ACCESS_TOKEN=$ACCESS_TOKEN" >> $GITHUB_ENV
-          echo  $GITHUB_ENV
+          access_token=$(echo "$response" | jq -r '.access_token')
+          echo "access_token=$access_token" >> $GITHUB_OUTPUT
+      
 
       - name: Publish to Red Hat Automation Hub
         run: |
           FILE=$(ls ./*.tar.gz | head -n 1)
           ansible-galaxy collection publish "$FILE" \
-            --server https://console.redhat.com/api/automation-hub/ \
-            --token $ACCESS_TOKEN
+            --server https://console.redhat.com/api/automation-hub/content/vmware.alb \
+            --token ${{ steps.get_token.outputs.access_token }}
