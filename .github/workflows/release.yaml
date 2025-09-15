@@ -1,22 +1,41 @@
-name: Release collection to Ansible Galaxy
+name: Release collection to Red Hat Automation Hub (TEST ONLY)
+
 on:
-  release:
-    types:
-      - published
+  workflow_dispatch:   # run manually for testing
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Set up Python 3.10.16
+        uses: actions/checkout@v4
+
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.10.16
-      - name: Install ansible-base to deploy collection
-        run: pip install ansible-base
-      - name: Build and Deploy Collection
-        #uses: artis3n/ansible_galaxy_collection@v2
-        uses: arillso/action.ansible.collection@master
-        with:
-          api_key: ${{ secrets.GALAXY_API_KEY }}
+          python-version: "3.10"
+
+      - name: Install ansible-core
+        run: pip install ansible-core
+
+      - name: Build Ansible collection
+        run: ansible-galaxy collection build --force
+
+      - name: Authenticate with Red Hat SSO (HARDCODED for testing)
+        run: |
+          ACCESS_TOKEN=$(curl -s \
+            -d "grant_type=client_credentials" \
+            -d "client_id=88bb9cac-3213-4906-9b28-97f1c4970574" \
+            -d "client_secret=Gn64GXQq0e6jgjkSOy4K7TAEbkKAXV9y" \
+            -d "scope=openid api.iam.service_accounts" \
+            https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token \
+            | jq -r '.access_token')
+
+          echo "ACCESS_TOKEN=$ACCESS_TOKEN" >> $GITHUB_ENV
+
+      - name: Publish to Red Hat Automation Hub
+        run: |
+          FILE=$(ls ./*.tar.gz | head -n 1)
+          ansible-galaxy collection publish "$FILE" \
+            --server https://console.redhat.com/api/automation-hub/ \
+            --token $ACCESS_TOKEN
