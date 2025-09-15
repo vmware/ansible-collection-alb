@@ -25,15 +25,10 @@ jobs:
 
       - name: Authenticate with Red Hat SSO (HARDCODED for testing)
         run: |
-          ACCESS_TOKEN=$(curl -s \
-            -d "grant_type=client_credentials" \
-            -d "client_id=88bb9cac-3213-4906-9b28-97f1c4970574" \
-            -d "client_secret=Gn64GXQq0e6jgjkSOy4K7TAEbkKAXV9y" \
-            -d "scope=openid api.iam.service_accounts" \
-            https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token \
-            | jq -r '.access_token')
+          ACCESS_TOKEN=$(curl 'https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=XXXXX' --data-urlencode 'client_secret=YYYYY' --data-urlencode 'scope=openid api.iam.service_accounts")
 
           echo "ACCESS_TOKEN=$ACCESS_TOKEN" >> $GITHUB_ENV
+          echo  $GITHUB_ENV
 
       - name: Publish to Red Hat Automation Hub
         run: |
