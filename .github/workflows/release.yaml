@@ -18,7 +18,9 @@ jobs:
           python-version: "3.10"
 
       - name: Install ansible-core
-        run: pip install ansible-core
+        run: |
+          pip install ansible-core
+          sudo apt-get update && sudo apt-get install -y jq
 
       - name: Build Ansible collection
         run: ansible-galaxy collection build --force
@@ -40,5 +42,11 @@ jobs:
         run: |
           FILE=$(ls ./*.tar.gz | head -n 1)
           ansible-galaxy collection publish "$FILE" \
-            --server https://console.redhat.com/api/automation-hub/content/vmware.alb \
-            --token ${{ steps.get_token.outputs.access_token }}
+            --server https://console.redhat.com/api/automation-hub/ \
+            --token "Bearer ${{ steps.get_token.outputs.access_token }}" -vvv
+
+
+
+
+
+
