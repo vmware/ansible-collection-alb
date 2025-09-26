@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
-- name: Avi FederationCheckpoint | Create or Update FederationCheckpoint
+- name: Avi TrustedHostProfile | Create or Update TrustedHostProfile
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_federationcheckpoint:
+  vmware.alb.avi_trustedhostprofile:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -15,13 +15,11 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    date: "{{ item.date | default(omit) }}"
-    description: "{{ item.description | default(omit) }}"
-    is_federated: "{{ item.is_federated | default(omit) }}"
+    hosts: "{{ item.hosts | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.federationcheckpoint | default([]) }}"
+  with_items: "{{ avi_role_cfg.trustedhostprofile | default([]) }}"

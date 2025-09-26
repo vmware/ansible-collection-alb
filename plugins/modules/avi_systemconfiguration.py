@@ -49,41 +49,46 @@ options:
         type: str
     admin_auth_configuration:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    avi_email_login_password:
+        description:
+            - Password for avi_email_login user.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: str
     common_criteria_mode:
         description:
-            - Common criteria mode's current state.
+            - Common criteria modes current state.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     controller_analytics_policy:
         description:
             - Controller metrics event dynamic thresholds can be set here.
             - Controller_cpu_high and controller_mem_high evets can take configured dynamic thresholds.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     default_license_tier:
         description:
             - Specifies the default license tier which would be used by new clouds.
             - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, ENTERPRISE_WITH_CLOUD_SERVICES.
             - Field introduced in 17.2.5.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Special default for essentials edition is essentials, basic edition is basic, enterprise is enterprise_with_cloud_services.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Special default for essentials edition is essentials, basic edition is basic, enterprise edition is enterprise_with_cloud_services.
             - Default value when not specified in API or module is interpreted by Avi Controller as ENTERPRISE_WITH_CLOUD_SERVICES.
         type: str
     dns_configuration:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     dns_virtualservice_refs:
         description:
@@ -91,123 +96,200 @@ options:
             - If no virtualservices are provided, avi vantage will provide dns services for configured applications.
             - Switching back to avi vantage from dns virtualservices is not allowed.
             - It is a reference to an object of type virtualservice.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     docker_mode:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     email_configuration:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     enable_cors:
         description:
             - Enable cors header.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    enable_host_header_check:
+        description:
+            - Validates the host header against a list of trusted domains.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    enable_license_quota:
+        description:
+            - Enable license quota for the system.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     fips_mode:
         description:
             - Fips mode current state.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     global_tenant_config:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     host_key_algorithm_exclude:
         description:
             - Users can specify comma separated list of deprecated host key algorithm.if nothing is specified, all known algorithms provided by openssh will be
             - supported.this change could only apply on the controller node.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     kex_algorithm_exclude:
         description:
             - Users can specify comma separated list of deprecated key exchange algorithm.if nothing is specified, all known algorithms provided by openssh
             - will be supported.this change could only apply on the controller node.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    legacy_ssl_support:
+        description:
+            - Allow outgoing connections from controller to servers using tls 1.0/1.1.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    license_quota:
+        description:
+            - License quota for the system.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     linux_configuration:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     mgmt_ip_access_control:
         description:
             - Configure ip access control for controller to restrict open access.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     ntp_configuration:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     portal_configuration:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     proxy_configuration:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     rekey_time_limit:
         description:
             - Users can specify and update the time limit of rekeylimit in sshd_config.if nothing is specified, the default setting will be none.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as none.
         type: str
     rekey_volume_limit:
         description:
             - Users can specify and update the size/volume limit of rekeylimit in sshd_config.if nothing is specified, the default setting will be default.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as default.
+        type: str
+    sddcmanager_fqdn:
+        description:
+            - Fqdn of sddc manager in vcf responsible for management of this alb controller cluster.
+            - Field introduced in 22.1.6,31.1.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     secure_channel_configuration:
         description:
             - Configure secure channel properties.
             - Field introduced in 18.1.4, 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     snmp_configuration:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     ssh_ciphers:
         description:
             - Allowed ciphers list for ssh to the management interface on the controller and service engines.
             - If this is not specified, all the default ciphers are allowed.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
     ssh_hmacs:
         description:
             - Allowed hmac list for ssh to the management interface on the controller and service engines.
             - If this is not specified, all the default hmacs are allowed.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
+    sync_kex_host_to_se:
+        description:
+            - Ability to sync the kexalgorithms & hostkeyalgorithms to ses.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    sync_syslog_to_se:
+        description:
+            - Ability to sync the syslog server config to ses.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    syslog_servers:
+        description:
+            - The destination syslog server ip(v4/v6) address or fqdn.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    telemetry_configuration:
+        description:
+            - Telemetry configuration.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
+    trusted_host_profiles_refs:
+        description:
+            - Trusted host profiles for host header validation.
+            - Only works when host_header_check is set to true.
+            - It is a reference to an object of type trustedhostprofile.
+            - Field introduced in 31.1.1.
+            - Maximum of 20 items allowed.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: str
+    truststore_pkiprofile_ref:
+        description:
+            - Reference to pkiprofile used for validating the ca certificates for external comminications from avi load balancer controller  this acts as trust
+            - store for avi load balancer controller.
+            - It is a reference to an object of type pkiprofile.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: str
     url:
         description:
             - Avi controller URL of the object.
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     welcome_workflow_complete:
         description:
             - This flag is set once the initial controller setup workflow is complete.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
 extends_documentation_fragment:
@@ -271,6 +353,7 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         admin_auth_configuration=dict(type='dict',),
+        avi_email_login_password=dict(type='str', no_log=True,),
         common_criteria_mode=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
         controller_analytics_policy=dict(type='dict',),
@@ -280,10 +363,14 @@ def main():
         docker_mode=dict(type='bool',),
         email_configuration=dict(type='dict',),
         enable_cors=dict(type='bool',),
+        enable_host_header_check=dict(type='bool',),
+        enable_license_quota=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
         host_key_algorithm_exclude=dict(type='str',),
         kex_algorithm_exclude=dict(type='str',),
+        legacy_ssl_support=dict(type='bool',),
+        license_quota=dict(type='dict',),
         linux_configuration=dict(type='dict',),
         mgmt_ip_access_control=dict(type='dict',),
         ntp_configuration=dict(type='dict',),
@@ -291,10 +378,17 @@ def main():
         proxy_configuration=dict(type='dict',),
         rekey_time_limit=dict(type='str',),
         rekey_volume_limit=dict(type='str',),
+        sddcmanager_fqdn=dict(type='str',),
         secure_channel_configuration=dict(type='dict',),
         snmp_configuration=dict(type='dict',),
         ssh_ciphers=dict(type='list', elements='str',),
         ssh_hmacs=dict(type='list', elements='str',),
+        sync_kex_host_to_se=dict(type='bool',),
+        sync_syslog_to_se=dict(type='bool',),
+        syslog_servers=dict(type='list', elements='dict',),
+        telemetry_configuration=dict(type='dict',),
+        trusted_host_profiles_refs=dict(type='list', elements='str',),
+        truststore_pkiprofile_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         welcome_workflow_complete=dict(type='bool',),
@@ -307,7 +401,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           set())
+                           ['avi_email_login_password'])
 
 
 if __name__ == '__main__':

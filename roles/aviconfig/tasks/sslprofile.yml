@@ -16,6 +16,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     accepted_ciphers: "{{ item.accepted_ciphers | default(omit) }}"
     accepted_versions: "{{ item.accepted_versions | default(omit) }}"
+    allow_legacy_renegotiation: "{{ item.allow_legacy_renegotiation | default(omit) }}"
     cipher_enums: "{{ item.cipher_enums | default(omit) }}"
     ciphersuites: "{{ item.ciphersuites | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
