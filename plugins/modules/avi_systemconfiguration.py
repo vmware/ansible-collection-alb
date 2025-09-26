@@ -180,6 +180,14 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    password_policy_ref:
+        description:
+            - Reference to uniform password policy.
+            - When not set, legacy password settings are used.
+            - It is a reference to an object of type passwordpolicy.
+            - Field introduced in 31.3.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: str
     portal_configuration:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -232,13 +240,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
-    sync_dns_to_se:
-        description:
-            - Ability to sync the dns to ses.
-            - Field introduced in 31.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     sync_kex_host_to_se:
         description:
             - Ability to sync the kexalgorithms & hostkeyalgorithms to ses.
@@ -381,6 +382,7 @@ def main():
         linux_configuration=dict(type='dict',),
         mgmt_ip_access_control=dict(type='dict',),
         ntp_configuration=dict(type='dict',),
+        password_policy_ref=dict(type='str',),
         portal_configuration=dict(type='dict',),
         proxy_configuration=dict(type='dict',),
         rekey_time_limit=dict(type='str',),
@@ -390,7 +392,6 @@ def main():
         snmp_configuration=dict(type='dict',),
         ssh_ciphers=dict(type='list', elements='str',),
         ssh_hmacs=dict(type='list', elements='str',),
-        sync_dns_to_se=dict(type='bool',),
         sync_kex_host_to_se=dict(type='bool',),
         sync_syslog_to_se=dict(type='bool',),
         syslog_servers=dict(type='list', elements='dict',),

@@ -19,7 +19,6 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     enable_application_insights: "{{ item.enable_application_insights | default(omit) }}"
-    enable_application_sampling: "{{ item.enable_application_sampling | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"

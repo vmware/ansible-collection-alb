@@ -24,6 +24,7 @@
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     vcenter_refs: "{{ item.vcenter_refs | default(omit) }}"
+    vsphere_zones: "{{ item.vsphere_zones | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))

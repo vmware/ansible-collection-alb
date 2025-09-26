@@ -3443,7 +3443,7 @@ Parameters
                   - Waf rule mode.
                 </div>
                                 <div style="font-size: small">
-                  - This can be detection or enforcement.
+                  - This can be either detection, enforcement or evaluation.
                 </div>
                                 <div style="font-size: small">
                   - If this is not set, the policy mode is used.
@@ -4722,7 +4722,7 @@ Parameters
                   - Waf rule mode.
                 </div>
                                 <div style="font-size: small">
-                  - This can be detection or enforcement.
+                  - This can be either detection, enforcement or evaluation.
                 </div>
                                 <div style="font-size: small">
                   - If this is not set, the policy mode is used.
@@ -5170,6 +5170,35 @@ Parameters
                                             </td>
     </tr>
                 <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>created_by</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Identifies the user type that created the configuration.
+                </div>
+                                <div style="font-size: small">
+                  - Nil for non-service users.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SERVICE_USER.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.3.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
@@ -6992,7 +7021,7 @@ Parameters
                   - Waf policy mode.
                 </div>
                                 <div style="font-size: small">
-                  - This can be detection or enforcement.
+                  - This can be either detection, enforcement or evaluation.
                 </div>
                                 <div style="font-size: small">
                   - It can be overwritten by rules if allow_mode_delegation is set.
@@ -8217,7 +8246,7 @@ Parameters
                   - Waf rule mode.
                 </div>
                                 <div style="font-size: small">
-                  - This can be detection or enforcement.
+                  - This can be either detection, enforcement or evaluation.
                 </div>
                                 <div style="font-size: small">
                   - If this is not set, the policy mode is used.
@@ -9503,7 +9532,7 @@ Parameters
                   - Waf rule mode.
                 </div>
                                 <div style="font-size: small">
-                  - This can be detection or enforcement.
+                  - This can be either detection, enforcement or evaluation.
                 </div>
                                 <div style="font-size: small">
                   - If this is not set, the policy mode is used.

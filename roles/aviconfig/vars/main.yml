@@ -7,6 +7,7 @@ avi_resource_types:
   - useraccountprofile
   - reportprofile
   - cloudproperties
+  - certjwtstore
   - systemlimits
   - upgradeprofile
   - techsupportmessage
@@ -53,6 +54,7 @@ avi_resource_types:
   - role
   - serviceauthprofile
   - trustedhostprofile
+  - passwordpolicy
   - gslb
   - albservicesfiledownload
   - poolgroupdeploymentpolicy
@@ -123,6 +125,7 @@ avi_resource_types:
   - authprofile
   - serviceengine
   - networkservice
+  - tenantbinding
   - httppolicyset
   - dnspolicy
   - vsdatascriptset

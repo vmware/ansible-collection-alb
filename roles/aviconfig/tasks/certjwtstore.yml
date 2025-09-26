@@ -1,0 +1,26 @@
+# Automatically Generated File
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+---
+- name: Avi CertJwtStore | Create or Update CertJwtStore
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  vmware.alb.avi_certjwtstore:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    jwt: "{{ item.jwt | default(omit) }}"
+    kid: "{{ item.kid | default(omit) }}"
+    last_rotated_at: "{{ item.last_rotated_at | default(omit) }}"
+    public_key_algorithm: "{{ item.public_key_algorithm | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+  when:
+    - (avi_role_state_mode == "present" and avi_config_state == "present")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.certjwtstore | default([]) }}"

@@ -41,7 +41,8 @@
 
 - name: Include error 
   include_tasks: error.yml
-  when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.4'))) and
+  when:  (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.5'))) and
+         (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.4'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.3'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.2'))) and
          (not (ansible_distribution == 'OracleLinux' and ansible_distribution_version is match('9.1'))) and

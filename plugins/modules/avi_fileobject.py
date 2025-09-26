@@ -135,6 +135,7 @@ options:
             - Name of the file object.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        required: true
         type: str
     path:
         description:
@@ -175,6 +176,7 @@ options:
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Allowed in essentials (allowed values- other_file_types), basic (allowed values- other_file_types) edition.
+        required: true
         type: str
     url:
         description:
@@ -249,13 +251,13 @@ def main():
         gslb_geodb_format=dict(type='str',),
         has_parent=dict(type='bool',),
         is_federated=dict(type='bool',),
-        name=dict(type='str',),
+        name=dict(type='str', required=True),
         path=dict(type='str',),
         read_only=dict(type='bool',),
         restrict_download=dict(type='bool',),
         size=dict(type='int',),
         tenant_ref=dict(type='str',),
-        type=dict(type='str',),
+        type=dict(type='str', required=True),
         url=dict(type='str',),
         uuid=dict(type='str',),
         version=dict(type='str',),

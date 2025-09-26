@@ -60,6 +60,8 @@ plugins/modules/avi_reportprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_reportprofile.py import-3.8!skip
 plugins/modules/avi_cloudproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cloudproperties.py import-3.8!skip
+plugins/modules/avi_certjwtstore.py validate-modules:missing-gplv3-license
+plugins/modules/avi_certjwtstore.py import-3.8!skip
 plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemlimits.py import-3.8!skip
 plugins/modules/avi_upgradeprofile.py validate-modules:missing-gplv3-license
@@ -152,6 +154,8 @@ plugins/modules/avi_serviceauthprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_serviceauthprofile.py import-3.8!skip
 plugins/modules/avi_trustedhostprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_trustedhostprofile.py import-3.8!skip
+plugins/modules/avi_passwordpolicy.py validate-modules:missing-gplv3-license
+plugins/modules/avi_passwordpolicy.py import-3.8!skip
 plugins/modules/avi_gslb.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslb.py import-3.8!skip
 plugins/modules/avi_albservicesfiledownload.py validate-modules:missing-gplv3-license
@@ -290,6 +294,8 @@ plugins/modules/avi_serviceengine.py validate-modules:missing-gplv3-license
 plugins/modules/avi_serviceengine.py import-3.8!skip
 plugins/modules/avi_networkservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_networkservice.py import-3.8!skip
+plugins/modules/avi_tenantbinding.py validate-modules:missing-gplv3-license
+plugins/modules/avi_tenantbinding.py import-3.8!skip
 plugins/modules/avi_httppolicyset.py validate-modules:missing-gplv3-license
 plugins/modules/avi_httppolicyset.py import-3.8!skip
 plugins/modules/avi_dnspolicy.py validate-modules:missing-gplv3-license

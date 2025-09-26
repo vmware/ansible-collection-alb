@@ -845,10 +845,13 @@ Parameters
                   - APPSIGNATURE_SYNC_FAILURE, IPV6_REPUTATION_DB_SYNC_SUCCESS, IPV6_REPUTATION_DB_SYNC_FAILURE, PSM_PROGRAM_FAILURE, PSM_MAX_PARAM_EVENT,
                 </div>
                                 <div style="font-size: small">
-                  - PSM_MAX_URI_EVENT, SEC_MGR_DATA_ERROR_EVENT, UACACHE_PULSE_CONN_FAILED_EVENT, ALBSERVICES_CONTROLLER_REGISTERED, ALBSERVICES_SUPPORT_CASE_CREATED,
+                  - PSM_MAX_URI_EVENT, SEC_MGR_DATA_ERROR_EVENT, UACACHE_PULSE_CONN_FAILED_EVENT, APP_INSIGHTS_MAX_URI_EVENT, APP_INSIGHTS_MAX_PARAM_EVENT,
                 </div>
                                 <div style="font-size: small">
-                  - ALBSERVICES_SUPPORT_CASE_UPDATED, ALBSERVICES_SUPPORT_CASE_FILE_ATTACHMENT_TRIGGERED, ALBSERVICES_SUPPORT_CASE_FILE_ATTACHMENT_SUCCESS,
+                  - ALBSERVICES_CONTROLLER_REGISTERED, ALBSERVICES_SUPPORT_CASE_CREATED, ALBSERVICES_SUPPORT_CASE_UPDATED,
+                </div>
+                                <div style="font-size: small">
+                  - ALBSERVICES_SUPPORT_CASE_FILE_ATTACHMENT_TRIGGERED, ALBSERVICES_SUPPORT_CASE_FILE_ATTACHMENT_SUCCESS,
                 </div>
                                 <div style="font-size: small">
                   - ALBSERVICES_SUPPORT_CASE_FILE_ATTACHMENT_FAILURE, ALBSERVICES_FILE_DOWNLOAD_TRIGGERED, ALBSERVICES_FILE_DOWNLOAD_SUCCESS,
@@ -1032,6 +1035,35 @@ Parameters
                                             </td>
     </tr>
                 <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>created_by</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Identifies the user type that created the configuration.
+                </div>
+                                <div style="font-size: small">
+                  - Nil for non-service users.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SERVICE_USER.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.3.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>

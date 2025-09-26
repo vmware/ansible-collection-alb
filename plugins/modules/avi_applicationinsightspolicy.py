@@ -78,13 +78,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    enable_application_sampling:
-        description:
-            - Enable application sampling.
-            - Field introduced in 31.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     name:
         description:
             - The name of the application insights configuration.
@@ -159,7 +152,6 @@ def main():
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         enable_application_insights=dict(type='bool',),
-        enable_application_sampling=dict(type='bool',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),

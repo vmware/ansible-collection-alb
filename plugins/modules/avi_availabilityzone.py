@@ -122,6 +122,14 @@ options:
         required: true
         type: list
         elements: str
+    vsphere_zones:
+        description:
+            - Vsphere zone associated with the az.
+            - Field introduced in 31.3.1.
+            - Maximum of 1 items allowed.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -178,6 +186,7 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
         vcenter_refs=dict(type='list', elements='str', required=True),
+        vsphere_zones=dict(type='list', elements='dict',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(

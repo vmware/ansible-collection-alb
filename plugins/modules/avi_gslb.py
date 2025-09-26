@@ -200,6 +200,7 @@ options:
             - Field introduced in 18.2.3.
             - Unit is sec.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 120.
         type: int
     short_probe_interval:
         description:

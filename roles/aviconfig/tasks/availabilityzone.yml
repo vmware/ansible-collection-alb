@@ -24,6 +24,7 @@
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     vcenter_refs: "{{ item.vcenter_refs | default(omit) }}"
+    vsphere_zones: "{{ item.vsphere_zones | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
