@@ -2620,7 +2620,7 @@ Parameters
                   - Percentage of allocation (log_records_allocated_size)  for events on controller node.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 10-50.
+                  - Allowed values are 10-70.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -2629,7 +2629,7 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 50.
                 </div>
                                             </td>
     </tr>
@@ -4102,7 +4102,10 @@ Parameters
                   - RATELIMITCONFIGURATION, VIRETRIEVEPGNAMES, VCENTERLOGIN, SEGROUPINFO, LICENSERESERVATIONINFO, REDISCOVERVCENTERPARAM, PASSWORDPOLICY,
                 </div>
                                 <div style="font-size: small">
-                  - CERTJWTSTORE, LICENSEQUOTAUSAGEINFO, TENANTBINDING, CCCREATESEREQ, CCDELETESEREQ, CCADDVNICSREQ, CCDELVNICSREQ, TCPSTATRUNTIME, UDPSTATRUNTIME,
+                  - CERTJWTSTORE, LICENSEQUOTAUSAGEINFO, MANAGEMENTSERVICEREQ, MANAGEMENTSERVICEACCESSGRANTREQ, CREATEMANAGEMENTSERVICEREQ,
+                </div>
+                                <div style="font-size: small">
+                  - CREATEMANAGEMENTSERVICEACCESSGRANTREQ, TENANTBINDING, CCCREATESEREQ, CCDELETESEREQ, CCADDVNICSREQ, CCDELVNICSREQ, TCPSTATRUNTIME, UDPSTATRUNTIME,
                 </div>
                                 <div style="font-size: small">
                   - IPSTATRUNTIME, ARPSTATRUNTIME, MBSTATRUNTIME, IPSTKQSTATSRUNTIME, MALLOCSTATRUNTIME, SHMALLOCSTATRUNTIME, CPUUSAGERUNTIME, L7GLOBALSTATSRUNTIME,
