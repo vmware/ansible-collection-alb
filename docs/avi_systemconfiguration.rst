@@ -2613,6 +2613,9 @@ Parameters
                   - Minimum license service units reserved for consumption.
                 </div>
                                 <div style="font-size: small">
+                  - Reservation is not enforced for tenant/se group.
+                </div>
+                                <div style="font-size: small">
                   - Allowed values are 0-65535.
                 </div>
                                 <div style="font-size: small">
@@ -2847,6 +2850,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Minimum license service units reserved for consumption.
+                </div>
+                                <div style="font-size: small">
+                  - Reservation is not enforced for tenant/se group.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0-65535.
