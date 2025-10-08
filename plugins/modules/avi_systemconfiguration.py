@@ -51,12 +51,6 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
-    avi_email_login_password:
-        description:
-            - Password for avi_email_login user.
-            - Field introduced in 31.2.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
     common_criteria_mode:
         description:
             - Common criteria modes current state.
@@ -353,7 +347,6 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         admin_auth_configuration=dict(type='dict',),
-        avi_email_login_password=dict(type='str', no_log=True,),
         common_criteria_mode=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
         controller_analytics_policy=dict(type='dict',),
@@ -401,7 +394,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           ['avi_email_login_password'])
+                           set())
 
 
 if __name__ == '__main__':
