@@ -171,8 +171,6 @@ plugins/modules/avi_inventoryfaultconfig.py validate-modules:missing-gplv3-licen
 plugins/modules/avi_inventoryfaultconfig.py import-3.8!skip
 plugins/modules/avi_techsupport.py validate-modules:missing-gplv3-license
 plugins/modules/avi_techsupport.py import-3.8!skip
-plugins/modules/avi_applicationinsightsstate.py validate-modules:missing-gplv3-license
-plugins/modules/avi_applicationinsightsstate.py import-3.8!skip
 plugins/modules/avi_cluster.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cluster.py import-3.8!skip
 plugins/modules/avi_retentionpolicy.py validate-modules:missing-gplv3-license

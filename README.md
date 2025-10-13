@@ -79,7 +79,6 @@ Name | Description
 [vmware.alb.avi_api_version](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_api_version.rst)|Module to create update or delete ApiVersion
 [vmware.alb.avi_apiratelimitprofile](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_apiratelimitprofile.rst)|Module to create update or delete ApiRateLimitProfile
 [vmware.alb.avi_applicationinsightspolicy](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_applicationinsightspolicy.rst)|Module to create update or delete ApplicationInsightsPolicy
-[vmware.alb.avi_applicationinsightsstate](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_applicationinsightsstate.rst)|Module to create update or delete ApplicationInsightsState
 [vmware.alb.avi_applicationpersistenceprofile](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_applicationpersistenceprofile.rst)|Module to create update or delete ApplicationPersistenceProfile
 [vmware.alb.avi_applicationprofile](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_applicationprofile.rst)|Module to create update or delete ApplicationProfile
 [vmware.alb.avi_authmappingprofile](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_authmappingprofile.rst)|Module to create update or delete AuthMappingProfile
