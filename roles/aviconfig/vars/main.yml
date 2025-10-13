@@ -64,7 +64,6 @@ avi_resource_types:
   - memorybalancerrequest
   - inventoryfaultconfig
   - techsupport
-  - applicationinsightsstate
   - cluster
   - retentionpolicy
   - controllerportalregistration
