@@ -1,6 +1,6 @@
 ---
-- name: systemd | Deploy the avise service
-  template:
+- name: Systemd | Deploy the avise service
+  ansible.builtin.template:
     src: "{{ se_service_files_path }}avise_service.j2"
     dest: /etc/systemd/system/avise.service
     mode: 0644
@@ -9,12 +9,13 @@
     - Avi SE | Services | systemd | Daemon reload
     - Avi SE | Services | Restart the avise service
 
-- name: restorecon avise SELinux context to systemd_unit_file_t
-  command: "restorecon /etc/systemd/system/avise.service -F"
+- name: Restorecon avise SELinux context to systemd_unit_file_t
+  ansible.builtin.command: "restorecon /etc/systemd/system/avise.service -F"
   register: result
   failed_when: result.rc > 0
+  changed_when: false
   become: true
-  ignore_errors: yes
+  ignore_errors: true
 
   notify:
     - Avi SE | Services | systemd | Daemon reload

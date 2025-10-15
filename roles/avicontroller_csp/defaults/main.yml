@@ -6,7 +6,7 @@ con_skip_requirements: false
 con_csp_user: ~
 con_csp_password: ~
 con_csp_qcow_image_file: controller.qcow
-con_csp_qcow_image_name: "{{ con_csp_qcow_image_file|basename }}"
+con_csp_qcow_image_name: "{{ con_csp_qcow_image_file | basename }}"
 con_csp_mgmt_ip: ~
 con_csp_mgmt_mask: ~
 con_csp_default_gw: ~
@@ -16,7 +16,7 @@ con_csp_service_name: avi-controller
 con_csp_metafile_name: avi_meta_{{ con_csp_service_name }}.yml
 con_csp_num_cpu: ~
 con_csp_memory_gb: ~
-con_csp_memory_mb: "{{ con_csp_memory_gb|int * 1024 }}"
+con_csp_memory_mb: "{{ con_csp_memory_gb | int * 1024 }}"
 con_csp_platform: csp-2100
 con_csp_compat_version: 02.02.04.00
 con_csp_vnics:

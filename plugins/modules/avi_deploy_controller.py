@@ -167,19 +167,18 @@ options:
 '''
 
 EXAMPLES = """
-- hosts: localhost
+- name: Deploy Avi Controller
+  hosts: localhost
   connection: local
-  collections:
-    - vmware.alb
   tasks:
     - name: Avi Controller | VMware | Configure VMware controller
-      import_role:
+      ansible.builtin.import_role:
         name: avicontroller_vmware
       vars:
         ovftool_path: /usr/lib/vmware-ovftool
-        vcenter_host: '{{ vcenter_host }}'
-        vcenter_user: '{{ vcenter_user }}'
-        vcenter_password: '{{ vcenter_password }}'
+        vcenter_host: host
+        vcenter_user: user
+        vcenter_password: password
         con_datacenter: 10GTest
         con_cluster: Arista
         con_mgmt_network: Mgmt_Ntwk_3
@@ -304,7 +303,7 @@ def get_ds(dc, name):
         try:
             if ds.name == name:
                 return ds
-        except:  # Ignore datastores that have issues
+        except Exception:  # Ignore datastores that have issues
             pass
     raise Exception("Failed to find %s on datacenter %s" % (name, dc.name))
 
@@ -329,7 +328,7 @@ def get_largest_free_ds(cl):
             if free_space > largest_free and ds.summary.accessible:
                 largest_free = free_space
                 largest = ds
-        except:  # Ignore datastores that have issues
+        except Exception:  # Ignore datastores that have issues
             pass
     if largest is None:
         raise Exception('Failed to find any free datastores on %s' % cl.name)

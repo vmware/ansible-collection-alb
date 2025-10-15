@@ -515,7 +515,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Maximum time, client's request will be paused for icap processing.
+                  - Maximum time, clients request will be paused for icap processing.
                 </div>
                                 <div style="font-size: small">
                   - If this timeout is exceeded, the request to the icap server will be aborted and the configured fail action is executed.
@@ -702,8 +702,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:

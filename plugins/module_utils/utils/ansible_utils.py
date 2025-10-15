@@ -10,8 +10,6 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 import os
 import re
-import sys
-import yaml
 import time
 import logging
 from copy import deepcopy
@@ -25,6 +23,15 @@ if os.environ.get('AVI_LOG_HANDLER', '') != 'syslog':
 else:
     # Ansible does not allow logging from the modules.
     log = avi_sdk_syslog_logger()
+
+try:
+    import yaml
+except ImportError:
+    yaml = None
+
+
+class InvalidRefFormat(Exception):
+    pass
 
 
 class AviCheckModeResponse(object):
@@ -123,11 +130,11 @@ def cleanup_absent_fields(obj):
     :param obj:
     :return: Purged object
     """
-    if type(obj) != dict:
+    if isinstance(obj, dict):
         return obj
     cleanup_keys = []
     for k, v in obj.items():
-        if type(v) == dict:
+        if isinstance(v, dict):
             if (('state' in v and v['state'] == 'absent') or
                     (v == "{'state': 'absent'}")):
                 cleanup_keys.append(k)
@@ -135,7 +142,7 @@ def cleanup_absent_fields(obj):
                 cleanup_absent_fields(v)
                 if not v:
                     cleanup_keys.append(k)
-        elif type(v) == list:
+        elif isinstance(v, list):
             new_list = []
             for elem in v:
                 elem = cleanup_absent_fields(elem)
@@ -151,18 +158,14 @@ def cleanup_absent_fields(obj):
                 cleanup_keys.append(k)
     for k in cleanup_keys:
         del obj[k]
-    return obj
+    return
 
 
 def get_unicode_type():
-    if sys.version_info < (3, 3):
-        return unicode
-    else:
-        return str
+    return str
 
 
 RE_REF_MATCH = re.compile(r'^/api/[\w/]+\?name\=[\w*]+[^#<>]*$')
-
 # if HTTP ref match then strip out the #name
 # HTTP_REF_MATCH = re.compile('https://[\w.0-9:-]+/api/[\w/\?.#&-]*$')
 HTTP_REF_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.+')
@@ -273,7 +276,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
     if type(x) not in [list, dict]:
         # if it is not list or dict or string then simply compare the values
         return x == y
-    if type(x) == list:
+    if isinstance(x, list):
         # should compare each item in the list and that should match
         if len(x) != len(y):
             log.debug('x has %d items y has %d', len(x), len(y))
@@ -283,7 +286,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
                 # no need to continue
                 return False
 
-    if type(x) == dict:
+    if isinstance(x, dict):
         x.pop('_last_modified', None)
         x.pop('tenant', None)
         y.pop('_last_modified', None)
@@ -303,7 +306,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
                 continue
             if isinstance(v, dict):
                 if ('state' in v) and (v['state'] == 'absent'):
-                    if type(y) == dict and k not in y:
+                    if isinstance(y, dict) and k not in y:
                         d_x_absent_ks.append(k)
                     else:
                         return False
@@ -409,8 +412,8 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
             port=api_creds.port,
             session_id=api_context['session_id'],
             csrftoken=api_context['csrftoken'],
-            ssl_cert=api_context['ssl_cert'],
-            ssl_key=api_context['ssl_key'])
+            ssl_cert=api_context.get('ssl_cert', None),
+            ssl_key=api_context.get('ssl_key', None))
     else:
         api = ApiSession.get_session(
             api_creds.controller,
@@ -573,7 +576,10 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                 patch_data = {}
                 if avi_patch_path:
                     if avi_patch_value:
-                        avi_patch_value = yaml.load(avi_patch_value)
+                        if yaml:
+                            avi_patch_value = yaml.load(avi_patch_value)
+                        else:
+                            avi_patch_value = ""
                     patch_data = {
                         "json_patch": [{
                             "op": avi_patch_op,

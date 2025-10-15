@@ -365,8 +365,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:
@@ -376,12 +377,12 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-        - name: Create an Autoscale Launch configuration.
-          avi_autoscalelaunchconfig:
-            avi_credentials: "{{ avi_credentials }}"
-            image_id: default
-            name: default-autoscalelaunchconfig
-            tenant_ref: /api/tenant?name=admin
+            - name: Create an Autoscale Launch configuration.
+              avi_autoscalelaunchconfig:
+                avi_credentials: "{{ avi_credentials }}"
+                image_id: default
+                name: default-autoscalelaunchconfig
+                tenant_ref: /api/tenant?name=admin
 
 
 

@@ -463,8 +463,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:
@@ -474,40 +475,40 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-        - name: Create a HTTP Policy set two switch between testpool1 and testpool2
-          avi_httppolicyset:
-            avi_credentials: "{{ avi_credentials }}"
-            name: test-HTTP-Policy-Set
-            tenant_ref: /api/tenant?name=admin
-            http_request_policy:
-            rules:
-              - index: 1
-                enable: true
-                name: test-test1
-                match:
-                  path:
-                    match_case: INSENSITIVE
-                    match_str:
-                      - /test1
-                    match_criteria: EQUALS
-                switching_action:
-                  action: HTTP_SWITCHING_SELECT_POOL
-                  status_code: HTTP_LOCAL_RESPONSE_STATUS_CODE_200
-                  pool_ref: "/api/pool?name=testpool1"
-              - index: 2
-                enable: true
-                name: test-test2
-                match:
-                  path:
-                    match_case: INSENSITIVE
-                    match_str:
-                      - /test2
-                    match_criteria: CONTAINS
-                switching_action:
-                  action: HTTP_SWITCHING_SELECT_POOL
-                  status_code: HTTP_LOCAL_RESPONSE_STATUS_CODE_200
-                  pool_ref: "/api/pool?name=testpool2"
-            is_internal_policy: false
+            - name: Create a HTTP Policy set two switch between testpool1 and testpool2
+              avi_httppolicyset:
+                avi_credentials: "{{ avi_credentials }}"
+                name: test-HTTP-Policy-Set
+                tenant_ref: /api/tenant?name=admin
+                http_request_policy:
+                rules:
+                  - index: 1
+                    enable: true
+                    name: test-test1
+                    match:
+                      path:
+                        match_case: INSENSITIVE
+                        match_str:
+                          - /test1
+                        match_criteria: EQUALS
+                    switching_action:
+                      action: HTTP_SWITCHING_SELECT_POOL
+                      status_code: HTTP_LOCAL_RESPONSE_STATUS_CODE_200
+                      pool_ref: "/api/pool?name=testpool1"
+                  - index: 2
+                    enable: true
+                    name: test-test2
+                    match:
+                      path:
+                        match_case: INSENSITIVE
+                        match_str:
+                          - /test2
+                        match_criteria: CONTAINS
+                    switching_action:
+                      action: HTTP_SWITCHING_SELECT_POOL
+                      status_code: HTTP_LOCAL_RESPONSE_STATUS_CODE_200
+                      pool_ref: "/api/pool?name=testpool2"
+                is_internal_policy: false
 
 
 

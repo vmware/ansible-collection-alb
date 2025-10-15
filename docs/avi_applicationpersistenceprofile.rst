@@ -266,7 +266,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - This field describes the object's replication scope.
+                  - This field describes the objects replication scope.
                 </div>
                                 <div style="font-size: small">
                   - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
@@ -359,13 +359,13 @@ Parameters
                   - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values-
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- persistence_type_client_ip_address,
                 </div>
                                 <div style="font-size: small">
-                  - persistence_type_client_ip_address,persistence_type_http_cookie), basic edition(allowed values-
+                  - persistence_type_http_cookie), basic edition(allowed values- persistence_type_client_ip_address, persistence_type_http_cookie), enterprise with
                 </div>
                                 <div style="font-size: small">
-                  - persistence_type_client_ip_address,persistence_type_http_cookie), enterprise with cloud services edition.
+                  - cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as PERSISTENCE_TYPE_CLIENT_IP_ADDRESS.
@@ -499,8 +499,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:
@@ -510,24 +511,24 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-        - name: Create an Application Persistence setting using http cookie.
-          avi_applicationpersistenceprofile:
-            avi_credentials: "{{ avi_credentials }}"
-            http_cookie_persistence_profile:
-              always_send_cookie: false
-              cookie_name: My-HTTP
-              key:
-              - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
-                name: c1276819-550c-4adf-912d-59efa5fd7269
-              - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
-                name: a080de57-77c3-4580-a3ea-e7a6493c14fd
-              - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
-                name: 60478846-33c6-484d-868d-bbc324fce4a5
-              timeout: 15
-            name: My-HTTP-Cookie
-            persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE
-            server_hm_down_recovery: HM_DOWN_PICK_NEW_SERVER
-            tenant_ref: /api/tenant?name=Demo
+            - name: Create an Application Persistence setting using http cookie.
+              avi_applicationpersistenceprofile:
+                avi_credentials: "{{ avi_credentials }}"
+                http_cookie_persistence_profile:
+                  always_send_cookie: false
+                  cookie_name: My-HTTP
+                  timeout: 15
+                  key:
+                    - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
+                      name: c1276819-550c-4adf-912d-59efa5fd7269
+                    - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
+                      name: a080de57-77c3-4580-a3ea-e7a6493c14fd
+                    - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
+                      name: 60478846-33c6-484d-868d-bbc324fce4a5
+                name: My-HTTP-Cookie
+                persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE
+                server_hm_down_recovery: HM_DOWN_PICK_NEW_SERVER
+                tenant_ref: /api/tenant?name=Demo
 
 
 

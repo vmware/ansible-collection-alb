@@ -313,7 +313,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - This field describes the object's replication scope.
+                  - This field describes the objects replication scope.
                 </div>
                                 <div style="font-size: small">
                   - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
@@ -580,8 +580,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:
