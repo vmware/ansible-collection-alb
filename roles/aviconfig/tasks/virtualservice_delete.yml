@@ -2,7 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi VirtualService | Delete VirtualService
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_virtualservice:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -19,6 +19,7 @@
     allow_invalid_client_cert: "{{ item.allow_invalid_client_cert | default(omit) }}"
     analytics_policy: "{{ item.analytics_policy | default(omit) }}"
     analytics_profile_ref: "{{ item.analytics_profile_ref | default(omit) }}"
+    application_insights_ref: "{{ item.application_insights_ref | default(omit) }}"
     application_profile_ref: "{{ item.application_profile_ref | default(omit) }}"
     azure_availability_set: "{{ item.azure_availability_set | default(omit) }}"
     bgp_local_preference: "{{ item.bgp_local_preference | default(omit) }}"
@@ -69,6 +70,7 @@
     performance_limits: "{{ item.performance_limits | default(omit) }}"
     pool_group_ref: "{{ item.pool_group_ref | default(omit) }}"
     pool_ref: "{{ item.pool_ref | default(omit) }}"
+    positive_security_ref: "{{ item.positive_security_ref | default(omit) }}"
     remove_listening_port_on_vs_down: "{{ item.remove_listening_port_on_vs_down | default(omit) }}"
     requests_rate_limit: "{{ item.requests_rate_limit | default(omit) }}"
     revoke_vip_route: "{{ item.revoke_vip_route | default(omit) }}"

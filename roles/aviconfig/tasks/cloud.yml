@@ -66,8 +66,8 @@
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_api_session:
     controller: "{{ avi_controller | default(omit) }}"
-    username: "{{ avi_username  | default(omit) }}"
-    password: "{{ avi_password  | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
     tenant: "{{ item.tenant | default(omit) }}"
     api_version: "{{ api_version | default(omit) }}"
     avi_credentials: "{{ avi_credentials | default(omit) }}"
@@ -84,7 +84,7 @@
   register: cloud_inventory
 
 - name: Avi Cloud | Waiting for VMware network discovery
-  wait_for:
+  ansible.builtin.wait_for:
     timeout: "{{ avi_role_cfg.avi_cloud_discovery_wait | default(avi_cloud_discovery_wait) | default(1) }}"
   when:
     - avi_config_state == "present"
@@ -98,8 +98,8 @@
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_cloud:
     controller: "{{ avi_controller | default(omit) }}"
-    username: "{{ avi_username  | default(omit) }}"
-    password: "{{ avi_password  | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
     tenant: "{{ item.tenant | default(omit) }}"
     state: "{{ avi_role_state_mode }}"
     api_version: "{{ api_version | default(omit) }}"

@@ -1,30 +1,31 @@
 ---
 - name: Avi SE | VMware | Find VM Folder
-  vmware_guest_find:
+  community.vmware.vmware_guest_find:
     hostname: "{{ vcenter_host }}"
     username: "{{ vcenter_user }}"
     password: "{{ vcenter_password }}"
-    validate_certs: False
+    validate_certs: false
     name: "{{ se_vmw_vm_name }}"
   delegate_to: localhost
   register: vm_facts
 
 - name: Avi SE | VMware | Get VM Info
-  vmware_vm_info:
+  community.vmware.vmware_vm_info:
     hostname: '{{ vcenter_host }}'
     username: '{{ vcenter_user }}'
     password: '{{ vcenter_password }}'
-    validate_certs: False
+    validate_certs: false
     folder: "{{ vm_facts.folders[0] }}"
   delegate_to: localhost
   register: vm_info
 
-- set_fact:
+- name: Avi SE | VMware | Set SE VM Name
+  ansible.builtin.set_fact:
     se_vm_name: "{{ item.ip_address }}"
-  with_items:
-    - "{{ vm_info.virtual_machines | json_query(query) }}"
+  loop:
+    - "{{ vm_info.virtual_machines | json_query(se_query) }}"
   vars:
-    query: "[?guest_name=='{{ se_vmw_vm_name }}']"
+    se_query: "[?guest_name=='{{ se_vmw_vm_name }}']"
 
 - name: Avi SE | VMware | Destroy SE VM
   deploy_se:
@@ -63,8 +64,8 @@
   until: se_obj.obj.results[0].se_connected == false
   delegate_to: localhost
 
-- name:  Avi SE | VMware | Service destroy | Delete SE from controller
-  avi_serviceengine:
+- name: Avi SE | VMware | Service destroy | Delete SE from controller
+  vmware.alb.avi_serviceengine:
     controller: '{{ se_leader_ctl_ip }}'
     username: '{{ se_leader_ctl_username }}'
     password: '{{ se_leader_ctl_password }}'

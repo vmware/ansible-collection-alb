@@ -2,7 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi Gslb | Delete Gslb
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_gslb:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -15,6 +15,7 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     async_interval: "{{ item.async_interval | default(omit) }}"
+    auto_tune_send_interval: "{{ item.auto_tune_send_interval | default(omit) }}"
     clear_on_max_retries: "{{ item.clear_on_max_retries | default(omit) }}"
     client_ip_addr_group: "{{ item.client_ip_addr_group | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
@@ -23,13 +24,16 @@
     enable_config_by_members: "{{ item.enable_config_by_members | default(omit) }}"
     error_resync_interval: "{{ item.error_resync_interval | default(omit) }}"
     fileobject_max_file_versions: "{{ item.fileobject_max_file_versions | default(omit) }}"
+    gs_member_fqdn_resolution_on_se: "{{ item.gs_member_fqdn_resolution_on_se | default(omit) }}"
     is_federated: "{{ item.is_federated | default(omit) }}"
+    leader_change_info: "{{ item.leader_change_info | default(omit) }}"
     leader_cluster_uuid: "{{ item.leader_cluster_uuid | default(omit) }}"
     maintenance_mode: "{{ item.maintenance_mode | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     replication_policy: "{{ item.replication_policy | default(omit) }}"
     send_interval: "{{ item.send_interval | default(omit) }}"
     send_interval_prior_to_maintenance_mode: "{{ item.send_interval_prior_to_maintenance_mode | default(omit) }}"
+    short_probe_interval: "{{ item.short_probe_interval | default(omit) }}"
     sites: "{{ item.sites | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     tenant_scoped: "{{ item.tenant_scoped | default(omit) }}"

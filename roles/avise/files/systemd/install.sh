@@ -1,0 +1,23 @@
+#!/bin/sh
+
+############################################################################
+# ========================================================================
+# Copyright 2024 VMware, Inc. All rights reserved. VMware Confidential
+# ========================================================================
+###
+
+set -e
+echo "Migrating avihost service files."
+major_version=$(grep Version /bootstrap/VERSION | awk '{split($2,a,"."); print a[1]}')
+
+BASEDIR=$(dirname "$0")
+
+python_cmd="python3"
+if [ "$major_version" -lt 20 ]; then
+    echo "using python2"
+    python_cmd="python"
+fi
+
+"$python_cmd" "$BASEDIR/install.py"
+
+echo "Completed: Migration of avihost service files."

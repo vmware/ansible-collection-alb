@@ -17,8 +17,8 @@ module: avi_wafpolicy
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of WafPolicy Avi RESTful Object
 description:
-    - This module is used to configure WafPolicy object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure WafPolicy object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -51,7 +51,7 @@ options:
             - Allow rules to overwrite the policy mode.
             - This must be set if the policy mode is set to enforcement.
             - Field introduced in 18.1.5, 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     allowlist:
@@ -59,13 +59,13 @@ options:
             - A set of rules which describe conditions under which the request will bypass the waf.
             - This will be processed in the request header phase before any other waf related code.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     application_signatures:
         description:
             - Application specific signatures.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     auto_update_crs:
         description:
@@ -73,122 +73,139 @@ options:
             - If a newer crs object is available on this controller, the system will issue the crs upgrade process for this waf policy.
             - It will not update polices if the current crs version is crs-version-not-applicable.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     bypass_static_extensions:
         description:
             - Enable the functionality to bypass waf for static file extensions.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     confidence_override:
         description:
-            - Configure thresholds for confidence labels.
+            - configure thresholds for confidence labels. [deprecated]
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     created_by:
         description:
             - Creator name.
             - Field introduced in 17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     crs_overrides:
         description:
             - Override attributes for crs rules.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     description:
         description:
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     enable_app_learning:
         description:
-            - Enable application learning for this waf policy.
+            - enable application learning for this waf policy. [deprecated]
+            - Field deprecated in 31.2.1.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool
     enable_auto_rule_updates:
         description:
-            - Enable application learning based rule updates on the waf profile.
-            - Rules will be programmed in dedicated waf learning group.
+            - enable application learning based rule updates on the waf profile.rules will be programmed in dedicated waf learning group. [deprecated]
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool
     enable_regex_learning:
         description:
-            - Enable dynamic regex generation for positive security model rules.
-            - This is an experimental feature and shouldn't be used in production.
+            - enable dynamic regex generation for positive security model rules. [deprecated]
+            - This is an experimental feature and shouldnt be used in production.
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: bool
+    enable_streaming:
+        description:
+            - If this is set, waf will let requests be streamed to the backend servers.
+            - If not set, requests and responses will be buffered up to the configured maximum values.
+            - It can only be set if the wafpolicy is not set to enforcement mode.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     failure_mode:
         description:
             - Waf policy failure mode.
-            - This can be 'open' or 'closed'.
+            - This can be open or closed.
             - Enum options - WAF_FAILURE_MODE_OPEN, WAF_FAILURE_MODE_CLOSED.
             - Field introduced in 18.1.2.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as WAF_FAILURE_MODE_OPEN.
         type: str
+    fixed_sampling_rate:
+        description:
+            - If sampling_mode is set to fixed_sampling, this value determines the percentage of requests choosen for waf processing.
+            - Allowed values are 1-100.
+            - Field introduced in 31.2.1.
+            - Unit is percent.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+        type: int
     geo_db_ref:
         description:
             - Geo location mapping database used by this wafpolicy.
             - It is a reference to an object of type geodb.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     learning_params:
         description:
-            - Parameters for tuning application learning.
+            - parameters for tuning application learning. [deprecated]
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     min_confidence:
         description:
-            - Minimum confidence label required for auto rule updates.
+            - minimum confidence label required for auto rule updates. [deprecated]
             - Enum options - CONFIDENCE_VERY_HIGH, CONFIDENCE_HIGH, CONFIDENCE_PROBABLE, CONFIDENCE_LOW, CONFIDENCE_NONE.
+            - Field deprecated in 31.2.1.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as CONFIDENCE_VERY_HIGH.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     mode:
         description:
             - Waf policy mode.
-            - This can be detection or enforcement.
+            - This can be either detection, enforcement or evaluation.
             - It can be overwritten by rules if allow_mode_delegation is set.
-            - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT.
+            - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as WAF_MODE_DETECTION_ONLY.
         type: str
     name:
         description:
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     paranoia_level:
@@ -197,7 +214,7 @@ options:
             - This is used to select rules based on the paranoia-level tag.
             - Enum options - WAF_PARANOIA_LEVEL_LOW, WAF_PARANOIA_LEVEL_MEDIUM, WAF_PARANOIA_LEVEL_HIGH, WAF_PARANOIA_LEVEL_EXTREME.
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as WAF_PARANOIA_LEVEL_LOW.
         type: str
     positive_security_model:
@@ -206,14 +223,14 @@ options:
             - This is used to describe how the request or parts of the request should look like.
             - It is executed in the request body phase of avi waf.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     post_crs_groups:
         description:
             - Waf rules are categorized in to groups based on their characterization.
             - These groups are created by the user and will be enforced after the crs groups.
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     pre_crs_groups:
@@ -221,102 +238,235 @@ options:
             - Waf rules are categorized in to groups based on their characterization.
             - These groups are created by the user and will be  enforced before the crs groups.
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     required_data_files:
         description:
             - The data files and types referred in this waf policy.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    sampling_mode:
+        description:
+            - If and how waf should use sampling to restrict the number of requests checked.
+            - Enum options - WAF_SAMPLING_MODE_NO_SAMPLING, WAF_SAMPLING_MODE_ADAPTIVE_SAMPLING, WAF_SAMPLING_MODE_FIXED_SAMPLING.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as WAF_SAMPLING_MODE_NO_SAMPLING.
+        type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     updated_crs_rules_in_detection_mode:
         description:
-            - While updating crs, the system will make sure that new rules are added in detection mode.
-            - It only has an effect if the policy is in enforcement mode.
-            - In this case, the update will set new rules into detection mode by adding crs_overrides for the new rules.
-            - If this flag is not set or if the policy mode is detection, rules will be added without new crs_overrides.
-            - This option is used for the auto_update_crs workflow as well as for the ui based crs update workflow.
+            - The functionality of this flag was moved to the new use_evaluation_mode_on_crs_update flag.
+            - Field deprecated in 31.2.1.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: bool
     url:
         description:
             - Avi controller URL of the object.
         type: str
+    use_evaluation_mode_on_crs_update:
+        description:
+            - While updating crs, the system will make sure that new rules are added in evaluation mode.
+            - A crs update will set new rules into evaluation mode by adding crs_overrides for the new rules.
+            - If this flag is not set or if the old crs object was empty, the new rules will be added without crs_overrides.
+            - This option is used for the auto_update_crs workflow as well as for the ui based crs update workflow.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     uuid:
         description:
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     waf_crs_ref:
         description:
             - Waf core ruleset used for the crs part of this policy.
             - It is a reference to an object of type wafcrs.
             - Field introduced in 18.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     waf_profile_ref:
         description:
             - Waf profile for waf policy.
             - It is a reference to an object of type wafprofile.
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-extends_documentation_fragment:
-    - vmware.alb.avi
+    # Fields from avi_common_argument_spec()
+    controller:
+        description:
+            - Avi controller hostname or IP address.
+        type: str
+        required: false
+        default: ""
+    username:
+        description:
+            - Avi username for authentication.
+        type: str
+        required: false
+        default: ""
+    password:
+        description:
+            - Avi password for authentication.
+        type: str
+        required: false
+        default: ""
+    tenant:
+        description:
+            - Tenant name.
+        type: str
+        required: false
+        default: admin
+    tenant_uuid:
+        description:
+            - Tenant UUID.
+        type: str
+        required: false
+        default: ""
+    api_version:
+        description:
+            - Avi API version to use.
+        type: str
+        required: false
+        default: "20.1.1"
+    avi_credentials:
+        description:
+            - Dictionary of Avi credentials (alternative to controller/username/password/token).
+        type: dict
+        required: false
+        suboptions:
+            controller:
+                description: Avi controller hostname or IP address.
+                type: str
+                default: ""
+            username:
+                description: Avi username.
+                type: str
+                default: ""
+            password:
+                description: Avi password.
+                type: str
+                default: ""
+            api_version:
+                description: Avi API version.
+                type: str
+                default: "20.1.1"
+            tenant:
+                description: Tenant name.
+                type: str
+                default: "admin"
+            tenant_uuid:
+                description: Tenant UUID.
+                type: str
+                default: ""
+            port:
+                description: Port of the Avi controller.
+                type: int
+            token:
+                description: Avi API token.
+                type: str
+                default: ""
+            timeout:
+                description: Timeout for API requests (in seconds).
+                type: int
+                default: 300
+            session_id:
+                description: Session ID for authentication.
+                type: str
+                default: ""
+            csrftoken:
+                description: CSRF token for authentication.
+                type: str
+                default: ""
+            ssl_cert:
+                description: SSL certificate path for HTTPS requests.
+                type: str
+                default: ""
+            ssl_key:
+                description: SSL private key path for HTTPS requests.
+                type: str
+                default: ""
+            idp_class:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_token:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_host:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+    api_context:
+        description:
+            - Optional dictionary for API context.
+        type: dict
+        required: false
+    avi_deactivate_session_cache_as_fact:
+        description:
+            - Boolean to deactivate session cache and expose it as an Ansible fact.
+        type: bool
+        required: false
+        default: false
+
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
+  tasks:
+    - name: "Create WAF policy"
+      vmware.alb.avi_wafpolicy:
+        avi_credentials: "{{ avi_credentials }}"
+        name: "vs1-waf-policy"
+        mode: "WAF_MODE_DETECTION_ONLY"
+        paranoia_level: "WAF_PARANOIA_LEVEL_LOW"
+        failure_mode: "WAF_FAILURE_MODE_OPEN"
+        crs_overrides:
+          - name: "CRS_933_Application_Attack_PHP"
+            enable: true
+        waf_profile_ref: "/api/wafprofile/?name=System-WAF-Profile"
+        waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
 
-- name: "Create WAF policy"
-  vmware.alb.avi_wafpolicy:
-    avi_credentials: "{{ avi_credentials }}"
-    name: "vs1-waf-policy"
-    mode: "WAF_MODE_DETECTION_ONLY"
-    paranoia_level: "WAF_PARANOIA_LEVEL_LOW"
-    failure_mode: "WAF_FAILURE_MODE_OPEN"
-    crs_overrides:
-      - name: "CRS_933_Application_Attack_PHP"
-        enable: true
-    waf_profile_ref: "/api/wafprofile/?name=System-WAF-Profile"
-    waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
+    - name: "Reset WAF CRS"
+      vmware.alb.avi_wafpolicy:
+        avi_credentials: "{{ avi_credentials }}"
+        name: "vs1-waf-policy"
+        avi_api_update_method: "patch"
+        avi_api_patch_op: "replace"
+        waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
+        crs_overrides: []
+        waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
 
-- name: "Reset WAF CRS"
-  vmware.alb.avi_wafpolicy:
-    avi_credentials: "{{ avi_credentials }}"
-    name: "vs1-waf-policy"
-    avi_api_update_method: "patch"
-    avi_api_patch_op: "replace"
-    waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
-    crs_overrides: []
-    waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
-
-- name: "Change Paranoia-Level to HIGH"
-  vmware.alb.avi_wafpolicy:
-    avi_credentials: "{{ avi_credentials }}"
-    name: "vs1-waf-policy"
-    avi_api_update_method: "patch"
-    avi_api_patch_op: "replace"
-    paranoia_level: "WAF_PARANOIA_LEVEL_HIGH"
-    waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
+    - name: "Change Paranoia-Level to HIGH"
+      vmware.alb.avi_wafpolicy:
+        avi_credentials: "{{ avi_credentials }}"
+        name: "vs1-waf-policy"
+        avi_api_update_method: "patch"
+        avi_api_patch_op: "replace"
+        paranoia_level: "WAF_PARANOIA_LEVEL_HIGH"
+        waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
 """
 
 RETURN = '''
@@ -357,7 +507,9 @@ def main():
         enable_app_learning=dict(type='bool',),
         enable_auto_rule_updates=dict(type='bool',),
         enable_regex_learning=dict(type='bool',),
+        enable_streaming=dict(type='bool',),
         failure_mode=dict(type='str',),
+        fixed_sampling_rate=dict(type='int',),
         geo_db_ref=dict(type='str',),
         learning_params=dict(type='dict',),
         markers=dict(type='list', elements='dict',),
@@ -369,14 +521,30 @@ def main():
         post_crs_groups=dict(type='list', elements='dict',),
         pre_crs_groups=dict(type='list', elements='dict',),
         required_data_files=dict(type='list', elements='dict',),
+        sampling_mode=dict(type='str',),
         tenant_ref=dict(type='str',),
         updated_crs_rules_in_detection_mode=dict(type='bool',),
         url=dict(type='str',),
+        use_evaluation_mode_on_crs_update=dict(type='bool',),
         uuid=dict(type='str',),
         waf_crs_ref=dict(type='str',),
         waf_profile_ref=dict(type='str', required=True),
     )
-    argument_specs.update(avi_common_argument_spec())
+    STATIC_COMMON_ARGS = dict(
+        controller=dict(type='str', required=False),
+        username=dict(type='str', required=False),
+        password=dict(type='str', required=False, no_log=True),
+        tenant=dict(type='str', required=False),
+        tenant_uuid=dict(type='str', required=False),
+        api_version=dict(type='str', required=False),
+        avi_credentials=dict(type='dict', required=False),
+        api_context=dict(type='dict', required=False),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
+    )
+    argument_specs.update(STATIC_COMMON_ARGS)
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
+
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

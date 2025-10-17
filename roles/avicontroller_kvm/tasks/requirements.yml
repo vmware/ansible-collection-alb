@@ -1,10 +1,10 @@
 ---
 - name: "Avi Controller | KVM | Requirements | Check variables"
-  assert:
+  ansible.builtin.assert:
     that:
       - "{{ item }} != None"
     msg: "{{ item }} must be provided"
-  with_items:
+  loop:
     - kvm_host_ip
     - kvm_vm_base_img
     - kvm_vm_hostname
@@ -16,28 +16,31 @@
     - kvm_host_mgmt_intf
 
 - name: "Avi Controller | KVM | Get all VM's list from KVM host"
-  virt:
+  community.libvirt.virt:
     command: list_vms
   register: vm_information
 
-- name: "Avi Controller | KVM | Check VM {{ kvm_vm_hostname }} exist or not"
-  debug:
+- name: "Avi Controller | KVM | Check VM exist or not of {{ kvm_vm_hostname }}"
+  ansible.builtin.debug:
     msg: "VM with name {{ kvm_vm_hostname }} already exist."
   when: 'kvm_vm_hostname in vm_information.list_vms'
 
 - name: "Avi Controller | KVM | Destroying the existing VM"
-  command: virsh destroy {{ kvm_vm_hostname }}
+  ansible.builtin.command: virsh destroy {{ kvm_vm_hostname }}
+  changed_when: false
   when: 'kvm_vm_hostname in vm_information.list_vms and kvm_force_mode'
 
 - name: "Avi Controller | KVM | Undefining the existing VM"
-  command: virsh undefine {{ kvm_vm_hostname }}
+  ansible.builtin.command: virsh undefine {{ kvm_vm_hostname }}
+  changed_when: false
   when: 'kvm_vm_hostname in vm_information.list_vms and kvm_force_mode'
 
 - name: "Avi Controller | KVM | Exit the execution"
-  fail:
+  ansible.builtin.fail:
     msg: "Not overwriting {{ kvm_vm_hostname }}. Exiting..."
   when: 'kvm_vm_hostname in vm_information.list_vms and not kvm_force_mode'
 
 - name: "Avi Controller | KVM | Removing the existing VM data and qcow2"
-  command: "rm -rf /root/{{ kvm_vm_hostname }} /var/lib/libvirt/images/{{ kvm_vm_hostname }}.qcow2"
+  ansible.builtin.command: "rm -rf /root/{{ kvm_vm_hostname }} /var/lib/libvirt/images/{{ kvm_vm_hostname }}.qcow2"
+  changed_when: false
   when: 'kvm_vm_hostname in vm_information.list_vms and kvm_force_mode'
