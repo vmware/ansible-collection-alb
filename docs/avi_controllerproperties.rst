@@ -2587,7 +2587,7 @@ Parameters
                   - I.e.
                 </div>
                                 <div style="font-size: small">
-                  - The systemreport will be rotated and the reports don't exceed the threshold.
+                  - The systemreport will be rotated and the reports dont exceed the threshold.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 5-50.
@@ -3309,8 +3309,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:

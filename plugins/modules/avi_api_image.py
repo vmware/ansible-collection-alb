@@ -35,20 +35,140 @@ options:
             - Timeout (in seconds) for Avi API calls.
         default: 300
         type: int
-extends_documentation_fragment:
-    - vmware.alb.avi
+
+    # Fields from avi_common_argument_spec()
+    controller:
+        description:
+            - Avi controller hostname or IP address.
+        type: str
+        required: false
+        default: ""
+    username:
+        description:
+            - Avi username for authentication.
+        type: str
+        required: false
+        default: ""
+    password:
+        description:
+            - Avi password for authentication.
+        type: str
+        required: false
+        default: ""
+    tenant:
+        description:
+            - Tenant name.
+        type: str
+        required: false
+        default: admin
+    tenant_uuid:
+        description:
+            - Tenant UUID.
+        type: str
+        required: false
+        default: ""
+    api_version:
+        description:
+            - Avi API version to use.
+        type: str
+        required: false
+        default: "18.2.6"
+    avi_credentials:
+        description:
+            - Dictionary of Avi credentials (alternative to controller/username/password/token).
+        type: dict
+        required: false
+        suboptions:
+            controller:
+                description: Avi controller hostname or IP address.
+                type: str
+                default: ""
+            username:
+                description: Avi username.
+                type: str
+                default: ""
+            password:
+                description: Avi password.
+                type: str
+                default: ""
+            api_version:
+                description: Avi API version.
+                type: str
+                default: "18.2.6"
+            tenant:
+                description: Tenant name.
+                type: str
+                default: "admin"
+            tenant_uuid:
+                description: Tenant UUID.
+                type: str
+                default: ""
+            port:
+                description: Port of the Avi controller.
+                type: int
+            token:
+                description: Avi API token.
+                type: str
+                default: ""
+            timeout:
+                description: Timeout for API requests (in seconds).
+                type: int
+                default: 300
+            session_id:
+                description: Session ID for authentication.
+                type: str
+                default: ""
+            csrftoken:
+                description: CSRF token for authentication.
+                type: str
+                default: ""
+            ssl_cert:
+                description: SSL certificate path for HTTPS requests.
+                type: str
+                default: ""
+            ssl_key:
+                description: SSL private key path for HTTPS requests.
+                type: str
+                default: ""
+            idp_class:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_token:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_host:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+    api_context:
+        description:
+            - Optional dictionary for API context.
+        type: dict
+        required: false
+    avi_deactivate_session_cache_as_fact:
+        description:
+            - Boolean to deactivate session cache and expose it as an Ansible fact.
+        type: bool
+        required: false
+        default: false
+
 '''
 
 EXAMPLES = '''
-  - name: Upload se patch image to controller
-    vmware.alb.avi_api_image:
-      avi_credentials:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        controller: "{{ controller }}"
-        api_version: "{{ api_version }}"
-      file_path: ./se_patch.pkg
-      api_version: 20.1.1
+- name: Upload se patch image to controller
+  vmware.alb.avi_api_image:
+    avi_credentials:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      controller: "{{ controller }}"
+      api_version: "{{ api_version }}"
+    file_path: ./se_patch.pkg
+    api_version: 18.2.6
 '''
 
 
@@ -90,8 +210,21 @@ def main():
         params=dict(type='dict'),
         timeout=dict(type='int', default=300)
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
+    STATIC_COMMON_ARGS = dict(
+        controller=dict(type='str', required=False),
+        username=dict(type='str', required=False),
+        password=dict(type='str', required=False, no_log=True),
+        tenant=dict(type='str', required=False),
+        tenant_uuid=dict(type='str', required=False),
+        api_version=dict(type='str', required=False),
+        avi_credentials=dict(type='dict', required=False),
+        api_context=dict(type='dict', required=False),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
+    )
+    argument_specs.update(STATIC_COMMON_ARGS)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
             'Python requests package is not installed. '

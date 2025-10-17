@@ -337,8 +337,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:
@@ -348,17 +349,17 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-        - name: Create a network profile for an UDP application
-          avi_networkprofile:
-            avi_credentials: "{{ avi_credentials }}"
-            name: System-UDP-Fast-Path
-            profile:
-              type: PROTOCOL_TYPE_UDP_FAST_PATH
-              udp_fast_path_profile:
-                per_pkt_loadbalance: false
-                session_idle_timeout: 10
-                snat: true
-            tenant_ref: /api/tenant?name=admin
+            - name: Create a network profile for an UDP application
+              avi_networkprofile:
+                avi_credentials: "{{ avi_credentials }}"
+                name: System-UDP-Fast-Path
+                profile:
+                  type: PROTOCOL_TYPE_UDP_FAST_PATH
+                  udp_fast_path_profile:
+                    per_pkt_loadbalance: false
+                    session_idle_timeout: 10
+                    snat: true
+                tenant_ref: /api/tenant?name=admin
 
 
 

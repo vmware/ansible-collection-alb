@@ -315,8 +315,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:

@@ -607,7 +607,7 @@ Parameters
                   - Example  base-image is 18.2.6 and a patch 6p1 is applied, then a patch 6p5 applied.
                 </div>
                                 <div style="font-size: small">
-                  - This field will indicate the [{'6p1', '6p1_image_uuid'}, {'6p5', '6p5_image_uuid'}] value.
+                  - This field will indicate the [{6p1, 6p1_image_uuid}, {6p5, 6p5_image_uuid}] value.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.8, 20.1.1.
@@ -1393,8 +1393,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:

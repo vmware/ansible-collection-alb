@@ -797,8 +797,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:
@@ -808,21 +809,21 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-        - name: Create a SSL Key and Certificate
-          avi_sslkeyandcertificate:
-            avi_credentials: "{{ avi_credentials }}"
-            key: |
-                -----BEGIN PRIVATE KEY-----
-                ....
-                -----END PRIVATE KEY-----
-            certificate:
-                self_signed: true
-                certificate: |
-                  -----BEGIN CERTIFICATE-----
-                  ....
-                  -----END CERTIFICATE-----
-            type: SSL_CERTIFICATE_TYPE_VIRTUALSERVICE
-            name: MyTestCert
+            - name: Create a SSL Key and Certificate
+              avi_sslkeyandcertificate:
+                avi_credentials: "{{ avi_credentials }}"
+                key: |
+                    -----BEGIN PRIVATE KEY-----
+                    ....
+                    -----END PRIVATE KEY-----
+                certificate:
+                  self_signed: true
+                  certificate: |
+                    -----BEGIN CERTIFICATE-----
+                    ....
+                    -----END CERTIFICATE-----
+                type: SSL_CERTIFICATE_TYPE_VIRTUALSERVICE
+                name: MyTestCert
 
 
 

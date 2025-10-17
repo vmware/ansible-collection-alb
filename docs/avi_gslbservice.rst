@@ -195,7 +195,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Gs member's overall health status is derived based on a combination of controller and datapath health-status inputs.
+                  - Gs members overall health status is derived based on a combination of controller and datapath health-status inputs.
                 </div>
                                 <div style="font-size: small">
                   - Note that the datapath status is determined by the association of health monitor profiles.
@@ -864,8 +864,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:

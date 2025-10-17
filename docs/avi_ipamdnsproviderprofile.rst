@@ -547,8 +547,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:
@@ -558,23 +559,23 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-        - name: Create IPAM DNS provider setting
-          avi_ipamdnsproviderprofile:
-            avi_credentials: "{{ avi_credentials }}"
-            internal_profile:
-              dns_service_domain:
-              - domain_name: ashish.local
-                num_dns_ip: 1
-                pass_through: true
-                record_ttl: 100
-              - domain_name: guru.local
-                num_dns_ip: 1
-                pass_through: true
-                record_ttl: 200
-              ttl: 300
-            name: Ashish-DNS
-            tenant_ref: /api/tenant?name=Demo
-            type: IPAMDNS_TYPE_INTERNAL
+            - name: Create IPAM DNS provider setting
+              avi_ipamdnsproviderprofile:
+                avi_credentials: "{{ avi_credentials }}"
+                internal_profile:
+                  dns_service_domain:
+                    - domain_name: ashish.local
+                      num_dns_ip: 1
+                      pass_through: true
+                      record_ttl: 100
+                    - domain_name: guru.local
+                      num_dns_ip: 1
+                      pass_through: true
+                      record_ttl: 200
+                  ttl: 300     # ← now properly aligned under `internal_profile`
+                name: Ashish-DNS
+                tenant_ref: /api/tenant?name=Demo
+                type: IPAMDNS_TYPE_INTERNAL
 
 
 

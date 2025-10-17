@@ -247,7 +247,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Rules to control which requests undergo csrf protection.if the client's request doesn't match with any rules matchtarget, bypass_csrf action is
+                  - Rules to control which requests undergo csrf protection.if the clients request doesnt match with any rules matchtarget, bypass_csrf action is
                 </div>
                                 <div style="font-size: small">
                   - applied.
@@ -376,8 +376,9 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
-      connection: local
+    - name: Deploy Controller
+      hosts: localhost
+      connection: 
       collections:
         - vmware.alb
       vars:
