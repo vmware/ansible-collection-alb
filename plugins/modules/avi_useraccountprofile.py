@@ -52,38 +52,55 @@ options:
             - Lock timeout period (in minutes).
             - Default is 30 minutes.
             - Unit is min.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 30.
         type: int
+    complexity_constraint:
+        description:
+            - Password complexity constraints for the user account profile.
+            - Field introduced in 31.3.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     credentials_timeout_threshold:
         description:
             - The time period after which credentials expire.
             - Default is 180 days.
             - Unit is days.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 180.
         type: int
+    expiration_constraint:
+        description:
+            - Password expiration settings for the user account profile.
+            - Field introduced in 31.3.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
+    lockout_constraint:
+        description:
+            - Account lockout settings for the user account profile.
+            - Field introduced in 31.3.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     login_failure_count_expiry_window:
         description:
             - The configurable time window beyond which we need to pop all the login failure timestamps from the login_failure_timestamps.
             - Special values are 0 - do not reset login_failure_counts on the basis of time.
             - Field introduced in 22.1.1.
             - Unit is min.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     max_concurrent_sessions:
         description:
             - Maximum number of concurrent sessions allowed.
             - There are unlimited sessions by default.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     max_login_failure_count:
@@ -92,19 +109,19 @@ options:
             - Default is 3 attempts.
             - Allowed values are 3-20.
             - Special values are 0- unlimited login attempts allowed.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 3.
         type: int
     max_password_history_count:
         description:
             - Maximum number of passwords to be maintained in the password history.
             - Default is 4 passwords.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
     name:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     url:
@@ -113,7 +130,7 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -161,8 +178,11 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         account_lock_timeout=dict(type='int',),
+        complexity_constraint=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         credentials_timeout_threshold=dict(type='int',),
+        expiration_constraint=dict(type='dict',),
+        lockout_constraint=dict(type='dict',),
         login_failure_count_expiry_window=dict(type='int',),
         max_concurrent_sessions=dict(type='int',),
         max_login_failure_count=dict(type='int',),
