@@ -55,6 +55,12 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 30.
         type: int
+    complexity_constraint:
+        description:
+            - Password complexity constraints for the user account profile.
+            - Field introduced in 31.3.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -69,6 +75,18 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 180.
         type: int
+    expiration_constraint:
+        description:
+            - Password expiration settings for the user account profile.
+            - Field introduced in 31.3.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
+    lockout_constraint:
+        description:
+            - Account lockout settings for the user account profile.
+            - Field introduced in 31.3.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     login_failure_count_expiry_window:
         description:
             - The configurable time window beyond which we need to pop all the login failure timestamps from the login_failure_timestamps.
@@ -160,8 +178,11 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         account_lock_timeout=dict(type='int',),
+        complexity_constraint=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         credentials_timeout_threshold=dict(type='int',),
+        expiration_constraint=dict(type='dict',),
+        lockout_constraint=dict(type='dict',),
         login_failure_count_expiry_window=dict(type='int',),
         max_concurrent_sessions=dict(type='int',),
         max_login_failure_count=dict(type='int',),
