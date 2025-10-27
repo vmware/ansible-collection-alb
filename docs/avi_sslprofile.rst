@@ -447,10 +447,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Elliptic curve cryptography namedcurves (tls supported groups)represented as defined by rfc 8422-section 5.1.1 andhttps
+                  - Elliptic curve cryptography namedcurves (tls supported groups)represented as defined by rfc 8422-section 5.1.1 and https
                 </div>
                                 <div style="font-size: small">
-                  - //www.openssl.org/docs/man1.1.0/man3/ssl_ctx_set1_curves.html.
+                  - //docs.openssl.org/master/man3/ssl_ctx_set1_curves/.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -692,10 +692,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Signature algorithms represented as defined by rfc5246-section 7.4.1.4.1 andhttps
-                </div>
-                                <div style="font-size: small">
-                  - //www.openssl.org/docs/man1.1.0/man3/ssl_ctx_set1_client_sigalgs_list.html.
+                  - Signature algorithms represented as defined by rfc5246-section 7.4.1.4.1 and https //docs.openssl.org/master/man3/ssl_ctx_set1_sigalgs/.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
