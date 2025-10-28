@@ -1111,6 +1111,29 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>audience</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Audience parameter used for jwt token validation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.3.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>authorization_endpoint</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1549,7 +1572,7 @@ Parameters
                   - Type of oauth provider when using controller oauth as oauth profile type.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - OAUTH_CSP.
+                  - Enum options - OAUTH_CSP, OAUTH_VCF.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.1.1.
