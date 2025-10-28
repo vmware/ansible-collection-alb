@@ -152,7 +152,7 @@ Parameters
                   - Virtualservices with different tags will have different active serviceengines.
                 </div>
                                 <div style="font-size: small">
-                  - If one of the serviceengines in the serviceenginegroup fails, all virtualservices will end up using the same active serviceengine.
+                  - If one of the serviceengine's in the serviceenginegroup fails, all virtualservices will end up using the same active serviceengine.
                 </div>
                                 <div style="font-size: small">
                   - Redistribution of the virtualservices can be either manual or automated when the failed serviceengine recovers.
@@ -471,7 +471,7 @@ Parameters
                   - Sync key-value cache to the new ses when vs is scaled out.
                 </div>
                                 <div style="font-size: small">
-                  - For ex  ssl sessions are stored using vss key-value cache.
+                  - For ex  ssl sessions are stored using vs's key-value cache.
                 </div>
                                 <div style="font-size: small">
                   - When the vs is scaled out, the ssl session information is synced to the new se, allowing existing ssl sessions to be reused on the new se.
@@ -581,10 +581,10 @@ Parameters
                   - CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- cloud_none, cloud_vcenter), basic edition(allowed values-
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- cloud_none,cloud_vcenter), basic edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - cloud_none, cloud_nsxt), enterprise with cloud services edition.
+                  - cloud_none,cloud_nsxt), enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as CLOUD_NONE.
@@ -811,7 +811,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Force placement on all ses in service group (mesos mode only).
+                  - Force placement on all se's in service group (mesos mode only).
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
@@ -886,7 +886,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable route health injection for source natted floating ip address using the bgp config in the vrf context.
+                  - Enable route health injection for source nat'ted floating ip address using the bgp config in the vrf context.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -1042,7 +1042,7 @@ Parameters
                   - Dns resolvable, fully qualified domain name of the virtualservice.
                 </div>
                                 <div style="font-size: small">
-                  - Only one of fqdn and dns_info configuration is allowed.
+                  - Only one of 'fqdn' and 'dns_info' configuration is allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
@@ -1828,7 +1828,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Natted floating source ip address(es) for upstream connection to servers.
+                  - Nat'ted floating source ip address(es) for upstream connection to servers.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 32 items allowed.
@@ -2189,10 +2189,10 @@ Parameters
                   - Enum options - VS_TYPE_NORMAL, VS_TYPE_VH_PARENT, VS_TYPE_VH_CHILD.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- vs_type_normal), basic edition(allowed values- vs_type_normal,
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- vs_type_normal), basic edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - vs_type_vh_parent), enterprise with cloud services edition.
+                  - vs_type_normal,vs_type_vh_parent), enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as VS_TYPE_NORMAL.
@@ -2307,7 +2307,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The exact name requested from the clients sni-enabled tls hello domain name field.
+                  - The exact name requested from the client's sni-enabled tls hello domain name field.
                 </div>
                                 <div style="font-size: small">
                   - If this is a match, the parent vs will forward the connection to this child vs.
@@ -2385,7 +2385,7 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, basic edition(allowed values- vs_type_vh_sni, vs_type_vh_enhanced), enterprise with cloud services
+                  - Allowed in enterprise edition with any value, basic edition(allowed values- vs_type_vh_sni,vs_type_vh_enhanced), enterprise with cloud services
                 </div>
                                 <div style="font-size: small">
                   - edition.
@@ -2411,7 +2411,7 @@ Parameters
                   - List of virtual service ips.
                 </div>
                                 <div style="font-size: small">
-                  - While creating a shared vs,please use vsvip_ref to point to the shared entities.
+                  - While creating a 'shared vs',please use vsvip_ref to point to the shared entities.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.1.1.
@@ -2589,9 +2589,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -2601,23 +2600,23 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create SSL Virtual Service using Pool testpool2
-              avi_virtualservice:
-                avi_credentials: "{{ avi_credentials }}"
-                name: newtestvs
-                state: present
-                performance_limits:
-                max_concurrent_connections: 1000
-                vsvip_ref: /api/vsvip/?name=vsvip-newtestvs-Default-Cloud
-                services:
-                  - port: 443
-                    enable_ssl: true
-                  - port: 80
-                ssl_profile_ref: '/api/sslprofile?name=System-Standard'
-                application_profile_ref: '/api/applicationprofile?name=System-Secure-HTTP'
-                ssl_key_and_certificate_refs:
-                  - '/api/sslkeyandcertificate?name=System-Default-Cert'
-                pool_ref: '/api/pool?name=testpool2'
+        - name: Create SSL Virtual Service using Pool testpool2
+          avi_virtualservice:
+            avi_credentials: "{{ avi_credentials }}"
+            name: newtestvs
+            state: present
+            performance_limits:
+            max_concurrent_connections: 1000
+            vsvip_ref: /api/vsvip/?name=vsvip-newtestvs-Default-Cloud
+            services:
+                - port: 443
+                  enable_ssl: true
+                - port: 80
+            ssl_profile_ref: '/api/sslprofile?name=System-Standard'
+            application_profile_ref: '/api/applicationprofile?name=System-Secure-HTTP'
+            ssl_key_and_certificate_refs:
+                - '/api/sslkeyandcertificate?name=System-Default-Cert'
+            pool_ref: '/api/pool?name=testpool2'
 
 
 

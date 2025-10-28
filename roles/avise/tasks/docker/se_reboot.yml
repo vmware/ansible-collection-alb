@@ -1,33 +1,22 @@
 ---
 - name: Checks for blocking SE
-  ansible.builtin.include_tasks: check_cloud.yml
+  include: check_cloud.yml
 
 - name: Reboot the avise service in systemd
-  ansible.builtin.service:
-    name: avise
-    enabled: true
-    state: restarted
+  service: name=avise enabled=yes state=restarted
   when: ansible_service_mgr == "systemd"
   become: true
 
 - name: Reboot the avise service in non-systemd
-  ansible.builtin.service:
-    name: avise_watcher
-    enabled: true
-    state: restarted
+  service: name=avise_watcher enabled=yes state=restarted
   when: ansible_service_mgr != "systemd"
   become: true
 
-- name: Fetch and delete log file
-  become: true
-  failed_when: true
-  block:
-    - name: Fetch log file
-      ansible.builtin.fetch:
-        src: /tmp/log
-        dest: /tmp/log
+- block:
+  - name: Fetch log file
+    fetch: src=/tmp/log dest=/tmp/log
 
-    - name: Delete log file
-      ansible.builtin.file:
-        path: /tmp/log
-        state: absent
+  - name: Delete log file
+    file: path=/tmp/log state=absent
+  become: true
+  ignore_errors: yes
