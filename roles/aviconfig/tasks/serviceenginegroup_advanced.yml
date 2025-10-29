@@ -2,7 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi ServiceEngineGroup | Update ServiceEngineGroup with advanced fields
-  no_log: "False"
+  no_log: false
   vmware.alb.avi_serviceenginegroup_advanced:
 
     controller: "{{ avi_controller | default(omit) }}"
@@ -93,7 +93,7 @@
     vss_placement_enabled: "{{ item.vss_placement_enabled | default(omit) }}"
     waf_mempool: "{{ item.waf_mempool | default(omit) }}"
     waf_mempool_size: "{{ item.waf_mempool_size | default(omit) }}"
-  with_items: "{{ avi_role_cfg.serviceenginegroup_advanced | default([]) }}"
+  loop: "{{ avi_role_cfg.serviceenginegroup_advanced | default([]) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")

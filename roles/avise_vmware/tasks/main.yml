@@ -4,36 +4,44 @@
 - name: Check ansible version
   when:
     - ansible_version.full is version_compare('2.4', '<')
-  debug: msg="This role works best with ansible version 2.4 or greater. It is recommended to use the latest ansible version for the best experience."
+  ansible.builtin.debug:
+    msg: "This role works best with ansible version 2.4 or greater. It is recommended to use the latest ansible version for the best experience."
 
 - name: Avi SE | Set facts
   block:
-    - set_fact: se_ova_deploy=true
-    - set_fact: se_autoregister=false
+    - name: Set SE OVA Deploy
+      ansible.builtin.set_fact:
+        se_ova_deploy: true
+    - name: Set SE OVA Deploy
+      ansible.builtin.set_fact:
+        se_autoregister: false
       when: se_auth_token != None
-    - set_fact: se_ova_deploy=false
+    - name: Set SE OVA Deploy
+      ansible.builtin.set_fact:
+        se_ova_deploy: false
       when: se_vmw_ova_path != None
 
 - name: Avi SE | Requirements
-  include: requirements.yml
+  ansible.builtin.include_tasks: requirements.yml
   when: not se_skip_requirements
 
 - name: Avi SE | Initial Data
-  include: initial_data.yml
+  ansible.builtin.include_tasks: initial_data.yml
 
 - name: Avi SE | VMware | Autoregistration
-  include: autoregistration.yml
+  ansible.builtin.include_tasks: autoregistration.yml
   when: se_autoregister
 
 - name: Avi SE | Destroy Vm
-  include: destroy_se.yml
+  ansible.builtin.include_tasks: destroy_se.yml
   when: state == "absent"
 
-- block:
+- name: Avi SE | VMware | Get OVA image
+  when: state == "present"
+  block:
     - name: Avi SE | VMware | Get OVA image
-      include: ova_deploy.yml
+      ansible.builtin.include_tasks: ova_deploy.yml
       when: se_ova_deploy
-
     - name: Avi SE | Verify non default se group is available
       avi_api_session:
         controller: "{{ se_leader_ctl_ip }}"
@@ -46,8 +54,6 @@
       register: se_group_data
       failed_when: se_group_data.obj.count != 1
       when: se_group_name != "Default-Group"
-
-
     - name: Avi SE | VMware | Deploy SE VM
       deploy_se:
         ovftool_path: '{{ ovftool_path }}'
@@ -79,7 +85,6 @@
         se_vmw_disk_size: '{{ se_vmw_disk_size }}'
         se_vmw_ovf_properties: '{{ se_vmw_ovf_properties }}'
       delegate_to: localhost
-
     - name: Avi SE | Verify SE Deployment
       verify_se:
         se_leader_ctl_ip: '{{ se_leader_ctl_ip }}'
@@ -98,9 +103,9 @@
         max_se_up_wait: '{{ max_se_up_wait }}'
       register: verify_output
       delegate_to: localhost
-
-    - debug: msg={{ verify_output.msg }}
-
+    - name: Debug SE OVA path
+      ansible.builtin.debug:
+        msg: "{{ verify_output.msg }}"
     - name: Avi SE | Attach SE to SE group
       avi_api_session:
         controller: "{{ se_leader_ctl_ip }}"
@@ -113,4 +118,3 @@
           add:
             se_group_ref: "/api/serviceenginegroup?name={{ se_group_name }}"
         path: "serviceengine/{{ verify_output.se_details.uuid }}"
-  when: state == "present"

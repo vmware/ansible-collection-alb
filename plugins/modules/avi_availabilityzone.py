@@ -17,8 +17,8 @@ module: avi_availabilityzone
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of AvailabilityZone Avi RESTful Object
 description:
-    - This module is used to configure AvailabilityZone object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure AvailabilityZone object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -46,25 +46,52 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    az_clusters:
+        description:
+            - Group of clusters belongs to the az.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    az_datastore:
+        description:
+            - Group of datastores associated with the az.
+            - Field deprecated in 31.2.1.
+            - Field introduced in 31.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
+    az_datastores:
+        description:
+            - Group of datastores associated with the az.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    az_hosts:
+        description:
+            - Group of hosts associated with the az.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
     cloud_ref:
         description:
             - Availability zone belongs to cloud.
             - It is a reference to an object of type cloud.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:
         description:
             - Availabilty zone where vcenter list belongs to.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -72,7 +99,7 @@ options:
             - Availabilityzone belongs to tenant.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -82,36 +109,157 @@ options:
         description:
             - Availability zone config uuid.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     vcenter_refs:
         description:
             - Group of vcenter list belong to availabilty zone.
             - It is a reference to an object of type vcenterserver.
+            - Field deprecated in 31.1.1.
             - Field introduced in 20.1.1.
             - Minimum of 1 items required.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
         elements: str
-extends_documentation_fragment:
-    - vmware.alb.avi
+    # Fields from avi_common_argument_spec()
+    controller:
+        description:
+            - Avi controller hostname or IP address.
+        type: str
+        required: false
+        default: ""
+    username:
+        description:
+            - Avi username for authentication.
+        type: str
+        required: false
+        default: ""
+    password:
+        description:
+            - Avi password for authentication.
+        type: str
+        required: false
+        default: ""
+    tenant:
+        description:
+            - Tenant name.
+        type: str
+        required: false
+        default: admin
+    tenant_uuid:
+        description:
+            - Tenant UUID.
+        type: str
+        required: false
+        default: ""
+    api_version:
+        description:
+            - Avi API version to use.
+        type: str
+        required: false
+        default: "20.1.1"
+    avi_credentials:
+        description:
+            - Dictionary of Avi credentials (alternative to controller/username/password/token).
+        type: dict
+        required: false
+        suboptions:
+            controller:
+                description: Avi controller hostname or IP address.
+                type: str
+                default: ""
+            username:
+                description: Avi username.
+                type: str
+                default: ""
+            password:
+                description: Avi password.
+                type: str
+                default: ""
+            api_version:
+                description: Avi API version.
+                type: str
+                default: "20.1.1"
+            tenant:
+                description: Tenant name.
+                type: str
+                default: "admin"
+            tenant_uuid:
+                description: Tenant UUID.
+                type: str
+                default: ""
+            port:
+                description: Port of the Avi controller.
+                type: int
+            token:
+                description: Avi API token.
+                type: str
+                default: ""
+            timeout:
+                description: Timeout for API requests (in seconds).
+                type: int
+                default: 300
+            session_id:
+                description: Session ID for authentication.
+                type: str
+                default: ""
+            csrftoken:
+                description: CSRF token for authentication.
+                type: str
+                default: ""
+            ssl_cert:
+                description: SSL certificate path for HTTPS requests.
+                type: str
+                default: ""
+            ssl_key:
+                description: SSL private key path for HTTPS requests.
+                type: str
+                default: ""
+            idp_class:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_token:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_host:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+    api_context:
+        description:
+            - Optional dictionary for API context.
+        type: dict
+        required: false
+    avi_deactivate_session_cache_as_fact:
+        description:
+            - Boolean to deactivate session cache and expose it as an Ansible fact.
+        type: bool
+        required: false
+        default: false
+
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create AvailabilityZone object
-  vmware.alb.avi_availabilityzone:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_availabilityzone
+  tasks:
+    - name: Example to create AvailabilityZone object
+      vmware.alb.avi_availabilityzone:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_availabilityzone
 """
 
 RETURN = '''
@@ -139,6 +287,10 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        az_clusters=dict(type='list', elements='dict',),
+        az_datastore=dict(type='dict',),
+        az_datastores=dict(type='list', elements='dict',),
+        az_hosts=dict(type='list', elements='dict',),
         cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         name=dict(type='str', required=True),
@@ -147,7 +299,21 @@ def main():
         uuid=dict(type='str',),
         vcenter_refs=dict(type='list', elements='str', required=True),
     )
-    argument_specs.update(avi_common_argument_spec())
+    STATIC_COMMON_ARGS = dict(
+        controller=dict(type='str', required=False),
+        username=dict(type='str', required=False),
+        password=dict(type='str', required=False, no_log=True),
+        tenant=dict(type='str', required=False),
+        tenant_uuid=dict(type='str', required=False),
+        api_version=dict(type='str', required=False),
+        avi_credentials=dict(type='dict', required=False),
+        api_context=dict(type='dict', required=False),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
+    )
+    argument_specs.update(STATIC_COMMON_ARGS)
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
+
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

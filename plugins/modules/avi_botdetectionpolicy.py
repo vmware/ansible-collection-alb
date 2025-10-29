@@ -17,8 +17,8 @@ module: avi_botdetectionpolicy
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of BotDetectionPolicy Avi RESTful Object
 description:
-    - This module is used to configure BotDetectionPolicy object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure BotDetectionPolicy object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -50,39 +50,45 @@ options:
         description:
             - Allow the user to skip botmanagement for selected requests.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     client_behavior_detector:
         description:
             - The client behavior configuration used in this policy.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Human-readable description of this bot detection policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     ip_location_detector:
         description:
             - The ip location configuration used in this policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: dict
     ip_reputation_detector:
         description:
             - The ip reputation configuration used in this policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: dict
     name:
         description:
             - The name of this bot detection policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     system_bot_mapping_ref:
@@ -90,21 +96,21 @@ options:
             - System-defined rules for classification.
             - It is a reference to an object of type botmapping.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     system_consolidator_ref:
         description:
             - The installation provides an updated ruleset for consolidating the results of different decider phases.
             - It is a reference to an object of type botconfigconsolidator.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - The unique identifier of the tenant to which this policy belongs.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -114,7 +120,7 @@ options:
         description:
             - The user-agent configuration used in this policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: dict
     user_bot_mapping_ref:
@@ -124,7 +130,7 @@ options:
             - If a rule matches, processing terminates and the system-defined rules will not run.
             - It is a reference to an object of type botmapping.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     user_consolidator_ref:
         description:
@@ -133,32 +139,152 @@ options:
             - If it successfully sets a consolidation, the system consolidator will not change it.
             - It is a reference to an object of type botconfigconsolidator.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     uuid:
         description:
             - A unique identifier to this bot detection policy.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
-extends_documentation_fragment:
-    - vmware.alb.avi
+    # Fields from avi_common_argument_spec()
+    controller:
+        description:
+            - Avi controller hostname or IP address.
+        type: str
+        required: false
+        default: ""
+    username:
+        description:
+            - Avi username for authentication.
+        type: str
+        required: false
+        default: ""
+    password:
+        description:
+            - Avi password for authentication.
+        type: str
+        required: false
+        default: ""
+    tenant:
+        description:
+            - Tenant name.
+        type: str
+        required: false
+        default: admin
+    tenant_uuid:
+        description:
+            - Tenant UUID.
+        type: str
+        required: false
+        default: ""
+    api_version:
+        description:
+            - Avi API version to use.
+        type: str
+        required: false
+        default: "20.1.1"
+    avi_credentials:
+        description:
+            - Dictionary of Avi credentials (alternative to controller/username/password/token).
+        type: dict
+        required: false
+        suboptions:
+            controller:
+                description: Avi controller hostname or IP address.
+                type: str
+                default: ""
+            username:
+                description: Avi username.
+                type: str
+                default: ""
+            password:
+                description: Avi password.
+                type: str
+                default: ""
+            api_version:
+                description: Avi API version.
+                type: str
+                default: "20.1.1"
+            tenant:
+                description: Tenant name.
+                type: str
+                default: "admin"
+            tenant_uuid:
+                description: Tenant UUID.
+                type: str
+                default: ""
+            port:
+                description: Port of the Avi controller.
+                type: int
+            token:
+                description: Avi API token.
+                type: str
+                default: ""
+            timeout:
+                description: Timeout for API requests (in seconds).
+                type: int
+                default: 300
+            session_id:
+                description: Session ID for authentication.
+                type: str
+                default: ""
+            csrftoken:
+                description: CSRF token for authentication.
+                type: str
+                default: ""
+            ssl_cert:
+                description: SSL certificate path for HTTPS requests.
+                type: str
+                default: ""
+            ssl_key:
+                description: SSL private key path for HTTPS requests.
+                type: str
+                default: ""
+            idp_class:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_token:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_host:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+    api_context:
+        description:
+            - Optional dictionary for API context.
+        type: dict
+        required: false
+    avi_deactivate_session_cache_as_fact:
+        description:
+            - Boolean to deactivate session cache and expose it as an Ansible fact.
+        type: bool
+        required: false
+        default: false
+
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create BotDetectionPolicy object
-  vmware.alb.avi_botdetectionpolicy:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_botdetectionpolicy
+  tasks:
+    - name: Example to create BotDetectionPolicy object
+      vmware.alb.avi_botdetectionpolicy:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_botdetectionpolicy
 """
 
 RETURN = '''
@@ -188,6 +314,7 @@ def main():
         avi_patch_value=dict(type='str',),
         allow_list=dict(type='dict',),
         client_behavior_detector=dict(type='dict',),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         ip_location_detector=dict(type='dict', required=True),
         ip_reputation_detector=dict(type='dict', required=True),
@@ -201,7 +328,21 @@ def main():
         user_consolidator_ref=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    STATIC_COMMON_ARGS = dict(
+        controller=dict(type='str', required=False),
+        username=dict(type='str', required=False),
+        password=dict(type='str', required=False, no_log=True),
+        tenant=dict(type='str', required=False),
+        tenant_uuid=dict(type='str', required=False),
+        api_version=dict(type='str', required=False),
+        avi_credentials=dict(type='dict', required=False),
+        api_context=dict(type='dict', required=False),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
+    )
+    argument_specs.update(STATIC_COMMON_ARGS)
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
+
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

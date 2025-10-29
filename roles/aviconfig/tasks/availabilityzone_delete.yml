@@ -2,7 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi AvailabilityZone | Delete AvailabilityZone
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_availabilityzone:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -14,6 +14,10 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    az_clusters: "{{ item.az_clusters | default(omit) }}"
+    az_datastore: "{{ item.az_datastore | default(omit) }}"
+    az_datastores: "{{ item.az_datastores | default(omit) }}"
+    az_hosts: "{{ item.az_hosts | default(omit) }}"
     cloud_ref: "{{ item.cloud_ref | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     name: "{{ item.name | default(omit) }}"

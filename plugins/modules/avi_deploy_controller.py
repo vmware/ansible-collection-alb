@@ -62,6 +62,11 @@ options:
             - Name of the object.
         required: true
         type: str
+    con_esx_host:
+        description:
+            - Optional selection of the host.
+        required: false
+        type: str
     con_disk_mode:
         description:
             - Type of disk mode.
@@ -162,19 +167,18 @@ options:
 '''
 
 EXAMPLES = """
-- hosts: localhost
+- name: Deploy Avi Controller
+  hosts: localhost
   connection: local
-  collections:
-    - vmware.alb
   tasks:
     - name: Avi Controller | VMware | Configure VMware controller
-      import_role:
+      ansible.builtin.import_role:
         name: avicontroller_vmware
       vars:
         ovftool_path: /usr/lib/vmware-ovftool
-        vcenter_host: '{{ vcenter_host }}'
-        vcenter_user: '{{ vcenter_user }}'
-        vcenter_password: '{{ vcenter_password }}'
+        vcenter_host: host
+        vcenter_user: user
+        vcenter_password: password
         con_datacenter: 10GTest
         con_cluster: Arista
         con_mgmt_network: Mgmt_Ntwk_3
@@ -299,7 +303,7 @@ def get_ds(dc, name):
         try:
             if ds.name == name:
                 return ds
-        except:  # Ignore datastores that have issues
+        except Exception:  # Ignore datastores that have issues
             pass
     raise Exception("Failed to find %s on datacenter %s" % (name, dc.name))
 
@@ -324,7 +328,7 @@ def get_largest_free_ds(cl):
             if free_space > largest_free and ds.summary.accessible:
                 largest_free = free_space
                 largest = ds
-        except:  # Ignore datastores that have issues
+        except Exception:  # Ignore datastores that have issues
             pass
     if largest is None:
         raise Exception('Failed to find any free datastores on %s' % cl.name)
@@ -486,6 +490,7 @@ def main():
             con_cluster=dict(required=False, type='str'),
             con_datastore=dict(required=False, type='str'),
             con_mgmt_network=dict(required=True, type='str'),
+            con_esx_host=dict(required=False, type='str'),
             con_disk_mode=dict(required=False, type='str', default='thin',
                                choices=['thin', 'thick', 'eagerzeroedthick']),
             con_ova_path=dict(required=True, type='str'),
@@ -751,13 +756,11 @@ def main():
         command_tokens.append('--prop:%s=%s' % (
             'avi.default-gw.CONTROLLER', module.params['con_default_gw']))
 
-    if module.params.get('con_mgmt_ip_v6_enable', None):
-        command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
+    command_tokens.append('--prop:%s=%s' % (
+        'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
 
-    if module.params.get('con_mgmt_ip_v4_enable', None) and not module.params['con_mgmt_ip_v6_enable']:
-        command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
+    command_tokens.append('--prop:%s=%s' % (
+        'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
     if module.params.get('con_sysadmin_public_key', None):
         command_tokens.append('--prop:%s=%s' % (
@@ -775,6 +778,8 @@ def main():
         command_tokens.append(
             '--vmFolder=%s' % module.params['con_vcenter_folder'])
 
+    if module.params.get('con_esx_host', None):
+        vi_string += '/%s' % (module.params['con_esx_host'])
     command_tokens.extend([ova_file, vi_string])
     ova_tool_result = module.run_command(command_tokens)
 

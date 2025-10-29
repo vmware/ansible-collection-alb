@@ -2,7 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi SSLProfile | Delete SSLProfile
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_sslprofile:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -16,6 +16,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     accepted_ciphers: "{{ item.accepted_ciphers | default(omit) }}"
     accepted_versions: "{{ item.accepted_versions | default(omit) }}"
+    allow_legacy_renegotiation: "{{ item.allow_legacy_renegotiation | default(omit) }}"
     cipher_enums: "{{ item.cipher_enums | default(omit) }}"
     ciphersuites: "{{ item.ciphersuites | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"

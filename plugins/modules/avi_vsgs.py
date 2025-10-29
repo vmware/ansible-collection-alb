@@ -17,8 +17,8 @@ module: avi_vsgs
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of VsGs Avi RESTful Object
 description:
-    - This module is used to configure VsGs object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure VsGs object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -50,46 +50,45 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     geodb_uuid:
         description:
             - Gslb geodb being associated using this object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     gs_uuid:
         description:
             - Gslb service being associated using this object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     gslb_uuid:
         description:
             - Gslb being associated using this object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     name:
         description:
             - Name of the vs-gs association object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - Tenant.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Type of the vs-gs association object.
             - Enum options - VSGS_TYPE_GSLB, VSGS_TYPE_GS, VSGS_TYPE_GEO_DB.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -99,32 +98,152 @@ options:
         description:
             - Uuid of the vs-gs association object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     vs_uuid:
         description:
             - Virtual service being associated using this object.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
-extends_documentation_fragment:
-    - vmware.alb.avi
+    # Fields from avi_common_argument_spec()
+    controller:
+        description:
+            - Avi controller hostname or IP address.
+        type: str
+        required: false
+        default: ""
+    username:
+        description:
+            - Avi username for authentication.
+        type: str
+        required: false
+        default: ""
+    password:
+        description:
+            - Avi password for authentication.
+        type: str
+        required: false
+        default: ""
+    tenant:
+        description:
+            - Tenant name.
+        type: str
+        required: false
+        default: admin
+    tenant_uuid:
+        description:
+            - Tenant UUID.
+        type: str
+        required: false
+        default: ""
+    api_version:
+        description:
+            - Avi API version to use.
+        type: str
+        required: false
+        default: "20.1.1"
+    avi_credentials:
+        description:
+            - Dictionary of Avi credentials (alternative to controller/username/password/token).
+        type: dict
+        required: false
+        suboptions:
+            controller:
+                description: Avi controller hostname or IP address.
+                type: str
+                default: ""
+            username:
+                description: Avi username.
+                type: str
+                default: ""
+            password:
+                description: Avi password.
+                type: str
+                default: ""
+            api_version:
+                description: Avi API version.
+                type: str
+                default: "20.1.1"
+            tenant:
+                description: Tenant name.
+                type: str
+                default: "admin"
+            tenant_uuid:
+                description: Tenant UUID.
+                type: str
+                default: ""
+            port:
+                description: Port of the Avi controller.
+                type: int
+            token:
+                description: Avi API token.
+                type: str
+                default: ""
+            timeout:
+                description: Timeout for API requests (in seconds).
+                type: int
+                default: 300
+            session_id:
+                description: Session ID for authentication.
+                type: str
+                default: ""
+            csrftoken:
+                description: CSRF token for authentication.
+                type: str
+                default: ""
+            ssl_cert:
+                description: SSL certificate path for HTTPS requests.
+                type: str
+                default: ""
+            ssl_key:
+                description: SSL private key path for HTTPS requests.
+                type: str
+                default: ""
+            idp_class:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_token:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+            csp_host:
+                description: Identity provider class.
+                type: str
+                required: false
+                default: ''
+    api_context:
+        description:
+            - Optional dictionary for API context.
+        type: dict
+        required: false
+    avi_deactivate_session_cache_as_fact:
+        description:
+            - Boolean to deactivate session cache and expose it as an Ansible fact.
+        type: bool
+        required: false
+        default: false
+
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create VsGs object
-  vmware.alb.avi_vsgs:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_vsgs
+  tasks:
+    - name: Example to create VsGs object
+      vmware.alb.avi_vsgs:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_vsgs
 """
 
 RETURN = '''
@@ -163,7 +282,21 @@ def main():
         uuid=dict(type='str',),
         vs_uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    STATIC_COMMON_ARGS = dict(
+        controller=dict(type='str', required=False),
+        username=dict(type='str', required=False),
+        password=dict(type='str', required=False, no_log=True),
+        tenant=dict(type='str', required=False),
+        tenant_uuid=dict(type='str', required=False),
+        api_version=dict(type='str', required=False),
+        avi_credentials=dict(type='dict', required=False),
+        api_context=dict(type='dict', required=False),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
+    )
+    argument_specs.update(STATIC_COMMON_ARGS)
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
+
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

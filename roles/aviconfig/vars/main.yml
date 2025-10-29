@@ -1,117 +1,135 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# getting lint issue here for aviconfig_resource_types:
 ---
 avi_resource_types:
-  - labelgroup
-  - systemlimits
-  - licenseledgerdetails
-  - useraccountprofile
-  - controllerproperties
-  - cloudproperties
-  - licensestatus
   - seproperties
+  - labelgroup
+  - useraccountprofile
+  - reportprofile
+  - cloudproperties
+  - systemlimits
+  - upgradeprofile
+  - techsupportmessage
+  - techsupportprofile
+  - licensestatus
+  - controllerproperties
+  - licenseledgerdetails
   - tenant
-  - webapput
-  - cloudconnectoruser
+  - ipaddrgroup
+  - stringgroup
+  - sslprofile
+  - fileobject
   - hardwaresecuritymodulegroup
   - alertscriptconfig
+  - cloudconnectoruser
   - customipamdnsprofile
-  - networkprofile
-  - stringgroup
-  - ipaddrgroup
-  - fileobject
-  - sslprofile
   - applicationpersistenceprofile
   - alertemailconfig
   - snmptrapprofile
   - autoscalelaunchconfig
+  - tenantsystemconfiguration
+  - networkprofile
   - securitypolicy
   - protocolparser
-  - jwtserverprofile
+  - wafprofile
   - wafapplicationsignatureprovider
   - errorpagebody
+  - jwtserverprofile
   - testsedatastorelevel3
   - botipreputationtypemapping
   - botconfigconsolidator
-  - tenantsystemconfiguration
-  - federationcheckpoint
-  - gslbgeodbprofile
-  - albservicesconfig
-  - siteversion
-  - statediffoperation
+  - positivesecuritypolicy
   - image
-  - controllerportalregistration
-  - systemreport
-  - dynamicdnsrecord
+  - albservicesfileupload
+  - securitymanagerdata
+  - statediffoperation
+  - taskjournal
+  - report
+  - webhook
+  - gslbcrmruntime
+  - gslbhsmruntime
+  - gslbsmruntime
+  - localworkerfdsversion
   - role
   - serviceauthprofile
-  - controllersite
-  - inventoryfaultconfig
-  - albservicesfileupload
-  - webhook
-  - securitymanagerdata
-  - cluster
+  - trustedhostprofile
+  - gslb
   - albservicesfiledownload
-  - vsgs
   - poolgroupdeploymentpolicy
+  - vsgs
+  - dynamicdnsrecord
+  - siteversion
   - memorybalancerrequest
+  - inventoryfaultconfig
+  - techsupport
+  - applicationinsightsstate
+  - cluster
+  - retentionpolicy
+  - controllerportalregistration
   - albservicesjob
-  - backupconfiguration
-  - clusterclouddetails
-  - certificatemanagementprofile
-  - ipamdnsproviderprofile
+  - ratelimitconfiguration
+  - albservicesconfig
+  - controllersite
+  - applicationinsightspolicy
+  - natpolicy
   - analyticsprofile
   - wafpolicypsmgroup
-  - wafprofile
   - botmapping
-  - csrfpolicy
-  - natpolicy
   - pkiprofile
   - ipreputationdb
   - geodb
+  - csrfpolicy
+  - gslbgeodbprofile
+  - certificatemanagementprofile
+  - clusterclouddetails
+  - backupconfiguration
+  - ipamdnsproviderprofile
   - microservicegroup
   - errorpageprofile
   - testsedatastorelevel2
-  - gslb
+  - upgradestatussummary
   - statediffsnapshot
   - upgradestatusinfo
-  - upgradestatussummary
+  - systemreport
   - authmappingprofile
-  - scheduler
-  - sslkeyandcertificate
+  - apiratelimitprofile
   - applicationprofile
   - wafpolicy
   - botdetectionpolicy
+  - sslkeyandcertificate
+  - scheduler
   - networksecuritypolicy
   - testsedatastorelevel1
-  - backup
-  - cloud
   - healthmonitor
+  - cloud
   - alertsyslogconfig
+  - backup
   - vrfcontext
-  - vcenterserver
   - prioritylabels
+  - vcenterserver
+  - webapput
   - nsxtsegmentruntime
-  - gslbservice
   - actiongroupconfig
   - availabilityzone
   - alertconfig
   - serverautoscalepolicy
   - network
+  - pool
   - serviceenginegroup
   - serviceenginegroup_advanced
-  - pool
   - trafficcloneprofile
   - vsvip
+  - poolgroup
+  - authprofile
   - serviceengine
   - networkservice
-  - poolgroup
   - httppolicyset
   - dnspolicy
   - vsdatascriptset
   - l4policyset
   - icapprofile
-  - authprofile
   - ssopolicy
   - systemconfiguration
   - virtualservice
+  - gslbservice

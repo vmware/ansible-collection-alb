@@ -1,11 +1,18 @@
 ---
-- block:
-  - name: Printing error message from log file
-    shell: "echo {{ error_string }} > /tmp/log"
-  - name: fetching log from tmp
-    fetch: src=/tmp/log dest=/tmp/log
-  - name: Delete log file from tmp
-    file: path=/tmp/log state=absent
-  - name: Set error message
-    fail: msg="{{ error_string }}"
+- name: Handle error
   become: true
+  block:
+    - name: Printing error message from log file
+      ansible.builtin.shell: "echo {{ error_string }} > /tmp/log"
+      changed_when: false
+    - name: Fetching log from tmp
+      ansible.builtin.fetch:
+        src: /tmp/log
+        dest: /tmp/log
+    - name: Delete log file from tmp
+      ansible.builtin.file:
+        path: /tmp/log
+        state: absent
+    - name: Set error message
+      ansible.builtin.fail:
+        msg: "{{ error_string }}"
