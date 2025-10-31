@@ -176,13 +176,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    replication_policy:
-        description:
-            - Policy for replicating configuration to the active follower sites.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 20.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
     send_interval:
         description:
             - Frequency with which group members communicate.
@@ -487,7 +480,6 @@ def main():
         leader_cluster_uuid=dict(type='str', required=True),
         maintenance_mode=dict(type='bool',),
         name=dict(type='str', required=True),
-        replication_policy=dict(type='dict',),
         send_interval=dict(type='int',),
         send_interval_prior_to_maintenance_mode=dict(type='int',),
         short_probe_interval=dict(type='int',),

@@ -707,7 +707,7 @@ Parameters
                   - Enum options - SERVICE_USER.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1237,91 +1237,6 @@ Parameters
                                             </td>
     </tr>
                                             <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>replication_policy</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Policy for replicating configuration to the active follower sites.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>checkpoint_uuid</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Leader's checkpoint.
-                </div>
-                                <div style="font-size: small">
-                  - Follower attempt to replicate configuration till this checkpoint.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>replication_mode</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Replication mode.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - REPLICATION_MODE_CONTINUOUS, REPLICATION_MODE_MANUAL, REPLICATION_MODE_ADAPTIVE.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as REPLICATION_MODE_CONTINUOUS.
-                </div>
-                                            </td>
-    </tr>
-        
-                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>send_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>

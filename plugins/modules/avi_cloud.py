@@ -250,11 +250,6 @@ options:
             - Default prefix for all automatically created objects in this cloud.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    openstack_configuration:
-        description:
-            - Field deprecated in 31.1.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: dict
     prefer_static_routes:
         description:
             - Prefer static routes over interface routes during virtualservice placement.
@@ -418,7 +413,6 @@ def main():
         nsxt_configuration=dict(type='dict',),
         ntp_configuration=dict(type='dict',),
         obj_name_prefix=dict(type='str',),
-        openstack_configuration=dict(type='dict',),
         prefer_static_routes=dict(type='bool',),
         proxy_configuration=dict(type='dict',),
         rancher_configuration=dict(type='dict',),

@@ -568,7 +568,7 @@ Parameters
                   - Enum options - SERVICE_USER.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1441,43 +1441,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>graceful_disable_timeout</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Used to gracefully disable a server.
-                </div>
-                                <div style="font-size: small">
-                  - Deprecated from version 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Please use graceful_disable_timeout_sec instead.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-7200.
-                </div>
-                                <div style="font-size: small">
-                  - Special values are 0 - immediate, -1 - infinite.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is min.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>

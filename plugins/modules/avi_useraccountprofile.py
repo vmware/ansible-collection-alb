@@ -58,7 +58,7 @@ options:
     complexity_constraint:
         description:
             - Password complexity constraints for the user account profile.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     configpb_attributes:
@@ -78,13 +78,13 @@ options:
     expiration_constraint:
         description:
             - Password expiration settings for the user account profile.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     lockout_constraint:
         description:
             - Account lockout settings for the user account profile.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     login_failure_count_expiry_window:

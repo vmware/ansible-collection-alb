@@ -46,13 +46,6 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    controller:
-        description:
-            - List of controller upgrade related configurable parameters.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 31.1.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: dict
     controller_params:
         description:
             - List of controller upgrade related configurable parameters.
@@ -138,7 +131,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        controller=dict(type='dict',),
         controller_params=dict(type='dict',),
         dry_run=dict(type='dict',),
         image=dict(type='dict',),

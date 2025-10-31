@@ -175,7 +175,7 @@ Parameters
                   - Password complexity constraints for the user account profile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -205,7 +205,7 @@ Parameters
                   - Allowed values are 8-64.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -234,7 +234,7 @@ Parameters
                   - Allowed values are 0-10.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -263,7 +263,7 @@ Parameters
                   - Allowed values are 0-10.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -292,7 +292,7 @@ Parameters
                   - Allowed values are 0-10.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -321,7 +321,7 @@ Parameters
                   - Allowed values are 0-10.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -353,7 +353,7 @@ Parameters
                   - Allowed values are 1-10.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -409,7 +409,7 @@ Parameters
                   - Enum options - SERVICE_USER.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -486,7 +486,7 @@ Parameters
                   - Password expiration settings for the user account profile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -519,7 +519,7 @@ Parameters
                   - Special values are 0- no password expiry.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is days.
@@ -548,7 +548,7 @@ Parameters
                   - Account lockout settings for the user account profile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -581,7 +581,7 @@ Parameters
                   - Special values are 0 - do not reset login failure counts on the basis of any evaluation window.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
@@ -619,7 +619,7 @@ Parameters
                   - Allowed values are 0-5.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -651,7 +651,7 @@ Parameters
                   - Allowed values are 600-1800.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.

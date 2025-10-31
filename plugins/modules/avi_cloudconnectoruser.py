@@ -84,13 +84,6 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    oci_credentials:
-        description:
-            - Credentials for oracle cloud infrastructure.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 18.2.1,18.1.3.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: dict
     private_key:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -180,7 +173,6 @@ def main():
         name=dict(type='str', required=True),
         nsxt_credentials=dict(type='dict',),
         obj_password=dict(type='str',),
-        oci_credentials=dict(type='dict',),
         private_key=dict(type='str', no_log=True,),
         public_key=dict(type='str',),
         tenant_ref=dict(type='str',),

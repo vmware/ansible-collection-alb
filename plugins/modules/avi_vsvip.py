@@ -136,15 +136,6 @@ options:
         description:
             - Avi controller URL of the object.
         type: str
-    use_standard_alb:
-        description:
-            - This overrides the cloud level default and needs to match the se group value in which it will be used if the se group use_standard_alb value is
-            - set.
-            - This is only used when fip is used for vs on azure cloud.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 18.2.3.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: bool
     uuid:
         description:
             - Uuid of the vsvip object.
@@ -245,7 +236,6 @@ def main():
         tenant_ref=dict(type='str',),
         tier1_lr=dict(type='str',),
         url=dict(type='str',),
-        use_standard_alb=dict(type='bool',),
         uuid=dict(type='str',),
         vip=dict(type='list', elements='dict',),
         vrf_context_ref=dict(type='str',),

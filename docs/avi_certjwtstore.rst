@@ -147,7 +147,7 @@ Parameters
                   - Protobuf versioning for config pbs.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -177,7 +177,7 @@ Parameters
                   - Enum options - SERVICE_USER.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -229,7 +229,7 @@ Parameters
                   - Jwt containing current portal certificate along with the full certificate bundle chain, signed by the private key of previous portal certificate.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -254,7 +254,7 @@ Parameters
                   - Sha256 thumbprint of the previous old portal certificate.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -279,7 +279,7 @@ Parameters
                   - Timestamp of certificate rotation.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -340,7 +340,7 @@ Parameters
                   - Public key algorithm.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -378,7 +378,7 @@ Parameters
                   - Uuid of jwt.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.

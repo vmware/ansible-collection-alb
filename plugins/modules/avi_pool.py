@@ -227,17 +227,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10.
         type: int
-    graceful_disable_timeout:
-        description:
-            - Used to gracefully disable a server.
-            - Deprecated from version 31.2.1.
-            - Please use graceful_disable_timeout_sec instead.
-            - Allowed values are 1-7200.
-            - Special values are 0 - immediate, -1 - infinite.
-            - Field deprecated in 31.2.1.
-            - Unit is min.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: int
     graceful_disable_timeout_sec:
         description:
             - Used to gracefully disable a server.
@@ -706,7 +695,6 @@ def main():
         external_autoscale_groups=dict(type='list', elements='str',),
         fail_action=dict(type='dict',),
         fewest_tasks_feedback_delay=dict(type='int',),
-        graceful_disable_timeout=dict(type='int',),
         graceful_disable_timeout_sec=dict(type='int',),
         graceful_hm_down_disable_timeout=dict(type='int',),
         gslb_pool_type=dict(type='str',),

@@ -49,13 +49,13 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:
         description:
             - Name of the tenant binding.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
@@ -63,14 +63,14 @@ options:
         description:
             - Uuid of the service engine group being shared.
             - It is a reference to an object of type serviceenginegroup.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     shared_tenant_ref:
         description:
             - Uuid of the tenant to which the object is being shared.
             - It is a reference to an object of type tenant.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
@@ -79,7 +79,7 @@ options:
             - Tenant uuid.
             - This field is used for admin tenant context.
             - It is a reference to an object of type tenant.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
@@ -89,7 +89,7 @@ options:
     uuid:
         description:
             - Uuid of the tenant binding.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:

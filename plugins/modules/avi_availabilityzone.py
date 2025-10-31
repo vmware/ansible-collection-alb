@@ -53,13 +53,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
-    az_datastore:
-        description:
-            - Group of datastores associated with the az.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 31.1.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: dict
     az_datastores:
         description:
             - Group of datastores associated with the az.
@@ -111,21 +104,10 @@ options:
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    vcenter_refs:
-        description:
-            - Group of vcenter list belong to availabilty zone.
-            - It is a reference to an object of type vcenterserver.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 20.1.1.
-            - Minimum of 1 items required.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: list
-        elements: str
     vsphere_zones:
         description:
             - Vsphere zone associated with the az.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Maximum of 1 items allowed.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
@@ -176,7 +158,6 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         az_clusters=dict(type='list', elements='dict',),
-        az_datastore=dict(type='dict',),
         az_datastores=dict(type='list', elements='dict',),
         az_hosts=dict(type='list', elements='dict',),
         cloud_ref=dict(type='str',),
@@ -185,7 +166,6 @@ def main():
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
-        vcenter_refs=dict(type='list', elements='str', required=True),
         vsphere_zones=dict(type='list', elements='dict',),
     )
     argument_specs.update(avi_common_argument_spec())

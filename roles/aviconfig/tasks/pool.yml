@@ -39,7 +39,6 @@
     external_autoscale_groups: "{{ item.external_autoscale_groups | default(omit) }}"
     fail_action: "{{ item.fail_action | default(omit) }}"
     fewest_tasks_feedback_delay: "{{ item.fewest_tasks_feedback_delay | default(omit) }}"
-    graceful_disable_timeout: "{{ item.graceful_disable_timeout | default(omit) }}"
     graceful_disable_timeout_sec: "{{ item.graceful_disable_timeout_sec | default(omit) }}"
     graceful_hm_down_disable_timeout: "{{ item.graceful_hm_down_disable_timeout | default(omit) }}"
     gslb_pool_type: "{{ item.gslb_pool_type | default(omit) }}"

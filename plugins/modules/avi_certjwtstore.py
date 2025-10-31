@@ -49,34 +49,34 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     jwt:
         description:
             - Jwt containing current portal certificate along with the full certificate bundle chain, signed by the private key of previous portal certificate.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     kid:
         description:
             - Sha256 thumbprint of the previous old portal certificate.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     last_rotated_at:
         description:
             - Timestamp of certificate rotation.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: dict
     public_key_algorithm:
         description:
             - Public key algorithm.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
@@ -87,7 +87,7 @@ options:
     uuid:
         description:
             - Uuid of jwt.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:

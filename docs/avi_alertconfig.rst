@@ -1057,7 +1057,7 @@ Parameters
                   - Enum options - SERVICE_USER.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

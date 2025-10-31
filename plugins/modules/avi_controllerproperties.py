@@ -713,41 +713,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
-    seupgrade_copy_buffer_size:
-        description:
-            - This parameter defines the buffer size during se image downloads in a segroup.
-            - It is used to pace the se downloads so that controller network/cpu bandwidth is a bounded operation.
-            - Please refer to upgradeprofile for equivalent fields.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 22.1.4.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: int
-    seupgrade_copy_pool_size:
-        description:
-            - This parameter defines the number of simultaneous se image downloads in a segroup.
-            - It is used to pace the se downloads so that controller network/cpu bandwidth is a bounded operation.
-            - A value of 0 will disable the pacing scheme and all the se(s) in the segroup will attempt to download the image.
-            - Please refer to upgradeprofile for equivalent fields.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 18.2.6.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: int
-    seupgrade_fabric_pool_size:
-        description:
-            - The pool size is used to control the number of concurrent segroup upgrades.
-            - This field value takes affect upon controller warm reboot.
-            - Please refer to upgradeprofile for equivalent fields.
-            - Allowed values are 2-20.
-            - Field deprecated in 31.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: int
-    seupgrade_segroup_min_dead_timeout:
-        description:
-            - Time to wait before marking segroup upgrade as stuck.
-            - Field deprecated in 31.1.1.
-            - Unit is sec.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: int
     shared_ssl_certificates:
         description:
             - Ssl certificates in the admin tenant can be used in non-admin tenants.
@@ -762,21 +727,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    skopeo_retry_interval:
-        description:
-            - Time interval (in seconds) between retires for skopeo commands.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 30.1.1.
-            - Unit is sec.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: int
-    skopeo_retry_limit:
-        description:
-            - Number of times to try skopeo commands for remote image registries.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 30.1.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: int
     soft_min_mem_per_se_limit:
         description:
             - Soft limit on the minimum se memory that an se needs to have on se register.
@@ -798,26 +748,6 @@ options:
             - Field introduced in 31.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
-    system_report_cleanup_interval:
-        description:
-            - Time in minutes to wait between cleanup of systemreports.
-            - Allowed values are 15-300.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 22.1.6, 30.2.1.
-            - Unit is min.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: int
-    system_report_limit:
-        description:
-            - Number of systemreports retained in the system.
-            - Once the number of system reports exceed this threshold, the oldest systemreport will be removed and the latest one retained.
-            - I.e.
-            - The systemreport will be rotated and the reports dont exceed the threshold.
-            - Allowed values are 5-50.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 22.1.6, 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: int
     telemetry_interval:
         description:
             - Period for telemetry job.
@@ -857,24 +787,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Allowed in essentials (allowed values- 5), basic (allowed values- 5) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.
-        type: int
-    upgrade_fat_se_lease_time:
-        description:
-            - Amount of time controller waits for a large-sized se (>=128gb memory) to reconnect after it is rebooted during upgrade.
-            - Please refer to upgradeprofile for equivalent fields.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 18.2.10, 20.1.1.
-            - Unit is sec.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: int
-    upgrade_lease_time:
-        description:
-            - Amount of time controller waits for a regular-sized se (<128gb memory) to reconnect after it is rebooted during upgrade.
-            - Starting 18.2.10/20.1.1, the default time has increased from 360 seconds to 600 seconds.
-            - Please refer to upgradeprofile for equivalent fields.
-            - Field deprecated in 31.1.1.
-            - Unit is sec.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     upgrade_se_per_vs_scale_ops_txn_time:
         description:
@@ -1149,26 +1061,16 @@ def main():
         secure_channel_cleanup_timeout=dict(type='int',),
         secure_channel_controller_token_timeout=dict(type='int',),
         secure_channel_se_token_timeout=dict(type='int',),
-        seupgrade_copy_buffer_size=dict(type='int',),
-        seupgrade_copy_pool_size=dict(type='int',),
-        seupgrade_fabric_pool_size=dict(type='int',),
-        seupgrade_segroup_min_dead_timeout=dict(type='int',),
         shared_ssl_certificates=dict(type='bool',),
         skip_beego_perf_collection=dict(type='bool',),
-        skopeo_retry_interval=dict(type='int',),
-        skopeo_retry_limit=dict(type='int',),
         soft_min_mem_per_se_limit=dict(type='int',),
         ssl_certificate_expiry_warning_days=dict(type='list', elements='int',),
         statecache_properties=dict(type='dict',),
-        system_report_cleanup_interval=dict(type='int',),
-        system_report_limit=dict(type='int',),
         telemetry_interval=dict(type='int',),
         unresponsive_se_reboot=dict(type='int',),
         update_dns_entry_retry_limit=dict(type='int',),
         update_dns_entry_timeout=dict(type='int',),
         upgrade_dns_ttl=dict(type='int',),
-        upgrade_fat_se_lease_time=dict(type='int',),
-        upgrade_lease_time=dict(type='int',),
         upgrade_se_per_vs_scale_ops_txn_time=dict(type='int',),
         url=dict(type='str',),
         user_agent_cache_config=dict(type='dict',),

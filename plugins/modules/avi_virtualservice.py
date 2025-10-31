@@ -399,14 +399,6 @@ options:
             - It is a reference to an object of type networksecuritypolicy.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    nsx_securitygroup:
-        description:
-            - A list of nsx groups representing the clients which can access the virtual ip of the virtual service.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 17.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: list
-        elements: str
     oauth_vs_config:
         description:
             - Virtualservice specific oauth config.
@@ -840,7 +832,6 @@ def main():
         name=dict(type='str', required=True),
         network_profile_ref=dict(type='str',),
         network_security_policy_ref=dict(type='str',),
-        nsx_securitygroup=dict(type='list', elements='str',),
         oauth_vs_config=dict(type='dict',),
         performance_limits=dict(type='dict',),
         pool_group_ref=dict(type='str',),

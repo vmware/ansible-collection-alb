@@ -49,7 +49,7 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     lockout_evaluation_period:
@@ -57,7 +57,7 @@ options:
             - Time window for evaluating failed attempts in seconds.
             - Defaults to 900 seconds.
             - Allowed values are 300-1800.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Unit is sec.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 900.
@@ -68,7 +68,7 @@ options:
             - Defaults to 3.
             - Allowed values are 0-5.
             - Special values are 0- unlimited login attempts allowed.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 3.
         type: int
@@ -77,7 +77,7 @@ options:
             - Account lockout duration in seconds.
             - Defaults to 900 seconds.
             - Allowed values are 600-1800.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Unit is sec.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 900.
@@ -87,7 +87,7 @@ options:
             - Minimum password length.
             - Defaults to 15 characters.
             - Allowed values are 8-64.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 15.
         type: int
@@ -95,7 +95,7 @@ options:
         description:
             - Minimum number of lowercase characters required.
             - Allowed values are 0-10.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
@@ -103,7 +103,7 @@ options:
         description:
             - Minimum number of numeric characters required.
             - Allowed values are 0-10.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
@@ -111,7 +111,7 @@ options:
         description:
             - Minimum number of special characters required.
             - Allowed values are 0-10.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
@@ -119,14 +119,14 @@ options:
         description:
             - Minimum number of uppercase characters required.
             - Allowed values are 0-10.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
     name:
         description:
             - Name of the password policy configuration.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
@@ -135,7 +135,7 @@ options:
             - Password expiry period in days.
             - Defaults to 365 days.
             - Allowed values are 30-730.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Unit is days.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 365.
@@ -145,7 +145,7 @@ options:
             - Number of previous passwords to remember.
             - Defaults to 5.
             - Allowed values are 1-10.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.
         type: int
@@ -153,7 +153,7 @@ options:
         description:
             - Tenant ref for the passwordpolicy.
             - It is a reference to an object of type tenant.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
@@ -163,7 +163,7 @@ options:
     uuid:
         description:
             - Unique object identifier of the passwordpolicy.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:

@@ -30,7 +30,6 @@
     leader_cluster_uuid: "{{ item.leader_cluster_uuid | default(omit) }}"
     maintenance_mode: "{{ item.maintenance_mode | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    replication_policy: "{{ item.replication_policy | default(omit) }}"
     send_interval: "{{ item.send_interval | default(omit) }}"
     send_interval_prior_to_maintenance_mode: "{{ item.send_interval_prior_to_maintenance_mode | default(omit) }}"
     short_probe_interval: "{{ item.short_probe_interval | default(omit) }}"

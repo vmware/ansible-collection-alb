@@ -17,7 +17,6 @@
     status: "{{ item.status | default(omit) }}"
     status_code: "{{ item.status_code | default(omit) }}"
     tech_support_ref: "{{ item.tech_support_ref | default(omit) }}"
-    uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))

@@ -72,13 +72,6 @@ options:
         description:
             - Avi controller URL of the object.
         type: str
-    uuid:
-        description:
-            - Uuid for techsupport message.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 18.2.3.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -128,7 +121,6 @@ def main():
         status_code=dict(type='str',),
         tech_support_ref=dict(type='str',),
         url=dict(type='str',),
-        uuid=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(

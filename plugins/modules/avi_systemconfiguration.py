@@ -185,7 +185,7 @@ options:
             - Reference to uniform password policy.
             - When not set, legacy password settings are used.
             - It is a reference to an object of type passwordpolicy.
-            - Field introduced in 31.3.1.
+            - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     portal_configuration:

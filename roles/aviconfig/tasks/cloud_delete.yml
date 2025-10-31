@@ -60,7 +60,6 @@
     nsxt_configuration: "{{ item.nsxt_configuration | default(omit) }}"
     ntp_configuration: "{{ item.ntp_configuration | default(omit) }}"
     obj_name_prefix: "{{ item.obj_name_prefix | default(omit) }}"
-    openstack_configuration: "{{ item.openstack_configuration | default(omit) }}"
     prefer_static_routes: "{{ item.prefer_static_routes | default(omit) }}"
     proxy_configuration: "{{ item.proxy_configuration | default(omit) }}"
     rancher_configuration: "{{ item.rancher_configuration | default(omit) }}"

@@ -83,13 +83,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
-    confidence_override:
-        description:
-            - [deprecated] configure thresholds for confidence labels.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 20.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -114,28 +107,6 @@ options:
             - Field introduced in 17.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    enable_app_learning:
-        description:
-            - [deprecated] enable application learning for this waf policy.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 18.2.3.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: bool
-    enable_auto_rule_updates:
-        description:
-            - [deprecated] enable application learning based rule updates on the waf profile.rules will be programmed in dedicated waf learning group.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 20.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: bool
-    enable_regex_learning:
-        description:
-            - [deprecated] enable dynamic regex generation for positive security model rules.
-            - This is an experimental feature and shouldnt be used in production.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 20.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: bool
     enable_streaming:
         description:
             - If this is set, waf will let requests be streamed to the backend servers.
@@ -170,13 +141,6 @@ options:
             - Field introduced in 21.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
-    learning_params:
-        description:
-            - [deprecated] parameters for tuning application learning.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 20.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
@@ -184,14 +148,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
-    min_confidence:
-        description:
-            - [deprecated] minimum confidence label required for auto rule updates.
-            - Enum options - CONFIDENCE_VERY_HIGH, CONFIDENCE_HIGH, CONFIDENCE_PROBABLE, CONFIDENCE_LOW, CONFIDENCE_NONE.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 20.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
     mode:
         description:
             - Waf policy mode.
@@ -262,13 +218,6 @@ options:
             - Field introduced in 17.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    updated_crs_rules_in_detection_mode:
-        description:
-            - The functionality of this flag was moved to the new use_evaluation_mode_on_crs_update flag.
-            - Field deprecated in 31.2.1.
-            - Field introduced in 22.1.3.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: bool
     url:
         description:
             - Avi controller URL of the object.
@@ -379,21 +328,15 @@ def main():
         application_signatures=dict(type='dict',),
         auto_update_crs=dict(type='bool',),
         bypass_static_extensions=dict(type='bool',),
-        confidence_override=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         crs_overrides=dict(type='list', elements='dict',),
         description=dict(type='str',),
-        enable_app_learning=dict(type='bool',),
-        enable_auto_rule_updates=dict(type='bool',),
-        enable_regex_learning=dict(type='bool',),
         enable_streaming=dict(type='bool',),
         failure_mode=dict(type='str',),
         fixed_sampling_rate=dict(type='int',),
         geo_db_ref=dict(type='str',),
-        learning_params=dict(type='dict',),
         markers=dict(type='list', elements='dict',),
-        min_confidence=dict(type='str',),
         mode=dict(type='str',),
         name=dict(type='str', required=True),
         paranoia_level=dict(type='str',),
@@ -403,7 +346,6 @@ def main():
         required_data_files=dict(type='list', elements='dict',),
         sampling_mode=dict(type='str',),
         tenant_ref=dict(type='str',),
-        updated_crs_rules_in_detection_mode=dict(type='bool',),
         url=dict(type='str',),
         use_evaluation_mode_on_crs_update=dict(type='bool',),
         uuid=dict(type='str',),

@@ -80,13 +80,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
-    default_second_int:
-        description:
-            - Default int64 field.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 30.1.2.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: int
     default_string:
         description:
             - Default string field.
@@ -94,13 +87,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as default string.
         type: str
-    default_third_int:
-        description:
-            - Default int32 field.
-            - Field deprecated in 31.1.1.
-            - Field introduced in 30.1.2.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: int
     mandatory_test:
         description:
             - Optional message for nested f_mandatory test cases defined at level1.
@@ -233,9 +219,7 @@ def main():
         default_fifth_int=dict(type='int',),
         default_first_int=dict(type='int',),
         default_fourth_int=dict(type='int',),
-        default_second_int=dict(type='int',),
         default_string=dict(type='str',),
-        default_third_int=dict(type='int',),
         mandatory_test=dict(type='dict',),
         mandatory_tests=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),

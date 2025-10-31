@@ -277,7 +277,7 @@ Parameters
                   - Enum options - SERVICE_USER.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.3.1.
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -873,37 +873,6 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Avi controller URL of the object.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>use_standard_alb</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - This overrides the cloud level default and needs to match the se group value in which it will be used if the se group use_standard_alb value is
-                </div>
-                                <div style="font-size: small">
-                  - set.
-                </div>
-                                <div style="font-size: small">
-                  - This is only used when fip is used for vs on azure cloud.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.3.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
