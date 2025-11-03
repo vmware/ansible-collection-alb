@@ -84,7 +84,8 @@ options:
     type:
         description:
             - Type of the auth profile for which these rules can be linked.
-            - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
+            - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH,
+            - AUTH_PROFILE_CLIENT_CERT.
             - Field introduced in 22.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true

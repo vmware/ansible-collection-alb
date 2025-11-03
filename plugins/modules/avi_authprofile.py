@@ -47,6 +47,12 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    client_cert:
+        description:
+            - Client cert settings.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -112,10 +118,12 @@ options:
     type:
         description:
             - Type of the auth profile.
-            - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
+            - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH,
+            - AUTH_PROFILE_CLIENT_CERT.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth), basic
-            - (allowed values- auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth) edition.
+            - Allowed in essentials (allowed values-
+            - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert), basic (allowed values-
+            - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert) edition.
         required: true
         type: str
     url:
@@ -193,6 +201,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        client_cert=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         http=dict(type='dict',),

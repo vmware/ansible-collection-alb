@@ -810,7 +810,10 @@ Parameters
                   - Type of the auth profile for which these rules can be linked.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
+                  - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH,
+                </div>
+                                <div style="font-size: small">
+                  - AUTH_PROFILE_CLIENT_CERT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 22.1.1.

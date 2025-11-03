@@ -43,6 +43,7 @@
     rekey_volume_limit: "{{ item.rekey_volume_limit | default(omit) }}"
     sddcmanager_fqdn: "{{ item.sddcmanager_fqdn | default(omit) }}"
     secure_channel_configuration: "{{ item.secure_channel_configuration | default(omit) }}"
+    service_auth_configurations: "{{ item.service_auth_configurations | default(omit) }}"
     snmp_configuration: "{{ item.snmp_configuration | default(omit) }}"
     ssh_ciphers: "{{ item.ssh_ciphers | default(omit) }}"
     ssh_hmacs: "{{ item.ssh_hmacs | default(omit) }}"

@@ -1474,6 +1474,12 @@ Parameters
                   - Service auth configurations.
                 </div>
                                 <div style="font-size: small">
+                  - Deprecated and moved it directly under systemconfiguration.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -1482,6 +1488,60 @@ Parameters
                                             </td>
     </tr>
                 <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>auth_mapping_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid of the authmappingprofile(set of auth mapping rules) to be assigned to a user on successful match.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type authmappingprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>auth_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid of the authprofile.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type authprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
                                     <td class="elbow-placeholder"></td>
                             <td class="elbow-placeholder"></td>
                                     <td colspan="5">
@@ -1526,6 +1586,9 @@ Parameters
                   - It is a reference to an object of type authmappingprofile.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -1551,6 +1614,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type serviceauthprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.1.1.
@@ -6168,6 +6234,163 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>service_auth_configurations</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Service auth configurations.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>auth_mapping_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid of the authmappingprofile(set of auth mapping rules) to be assigned to a user on successful match.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type authmappingprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>auth_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid of the authprofile.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type authprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>index</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Index used for maintaining order of serviceauthconfiguration.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>service_auth_mapping_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid of the authmappingprofile(set of auth mapping rules) to be assigned to a user on successful match.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type authmappingprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>service_auth_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid of the service auth profile.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type serviceauthprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>

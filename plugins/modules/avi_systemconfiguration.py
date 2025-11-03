@@ -222,6 +222,13 @@ options:
             - Field introduced in 18.1.4, 18.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    service_auth_configurations:
+        description:
+            - Service auth configurations.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
     snmp_configuration:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -389,6 +396,7 @@ def main():
         rekey_volume_limit=dict(type='str',),
         sddcmanager_fqdn=dict(type='str',),
         secure_channel_configuration=dict(type='dict',),
+        service_auth_configurations=dict(type='list', elements='dict',),
         snmp_configuration=dict(type='dict',),
         ssh_ciphers=dict(type='list', elements='str',),
         ssh_hmacs=dict(type='list', elements='str',),
