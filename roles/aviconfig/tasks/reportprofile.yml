@@ -16,6 +16,7 @@
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     collection_rules: "{{ item.collection_rules | default(omit) }}"
     max_concurrent_reports: "{{ item.max_concurrent_reports | default(omit) }}"
+    remote_controller: "{{ item.remote_controller | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
