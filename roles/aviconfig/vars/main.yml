@@ -54,7 +54,6 @@ avi_resource_types:
   - role
   - serviceauthprofile
   - trustedhostprofile
-  - passwordpolicy
   - gslb
   - albservicesfiledownload
   - poolgroupdeploymentpolicy

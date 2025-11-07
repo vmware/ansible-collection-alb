@@ -47,14 +47,6 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    account_lock_timeout:
-        description:
-            - Lock timeout period (in minutes).
-            - Default is 30 minutes.
-            - Unit is min.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 30.
-        type: int
     complexity_constraint:
         description:
             - Password complexity constraints for the user account profile.
@@ -67,14 +59,6 @@ options:
             - Field introduced in 21.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
-    credentials_timeout_threshold:
-        description:
-            - The time period after which credentials expire.
-            - Default is 180 days.
-            - Unit is days.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 180.
-        type: int
     expiration_constraint:
         description:
             - Password expiration settings for the user account profile.
@@ -87,37 +71,12 @@ options:
             - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
-    login_failure_count_expiry_window:
-        description:
-            - The configurable time window beyond which we need to pop all the login failure timestamps from the login_failure_timestamps.
-            - Special values are 0 - do not reset login_failure_counts on the basis of time.
-            - Field introduced in 22.1.1.
-            - Unit is min.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 0.
-        type: int
     max_concurrent_sessions:
         description:
             - Maximum number of concurrent sessions allowed.
             - There are unlimited sessions by default.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
-        type: int
-    max_login_failure_count:
-        description:
-            - Number of login attempts before lockout.
-            - Default is 3 attempts.
-            - Allowed values are 3-20.
-            - Special values are 0- unlimited login attempts allowed.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
-        type: int
-    max_password_history_count:
-        description:
-            - Maximum number of passwords to be maintained in the password history.
-            - Default is 4 passwords.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
     name:
         description:
@@ -177,16 +136,11 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        account_lock_timeout=dict(type='int',),
         complexity_constraint=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
-        credentials_timeout_threshold=dict(type='int',),
         expiration_constraint=dict(type='dict',),
         lockout_constraint=dict(type='dict',),
-        login_failure_count_expiry_window=dict(type='int',),
         max_concurrent_sessions=dict(type='int',),
-        max_login_failure_count=dict(type='int',),
-        max_password_history_count=dict(type='int',),
         name=dict(type='str', required=True),
         url=dict(type='str',),
         uuid=dict(type='str',),

@@ -134,34 +134,6 @@ Parameters
             <tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>account_lock_timeout</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Lock timeout period (in minutes).
-                </div>
-                                <div style="font-size: small">
-                  - Default is 30 minutes.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is min.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 30.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>complexity_constraint</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -445,34 +417,6 @@ Parameters
         
                                                 <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>credentials_timeout_threshold</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - The time period after which credentials expire.
-                </div>
-                                <div style="font-size: small">
-                  - Default is 180 days.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is days.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 180.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>expiration_constraint</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -667,37 +611,6 @@ Parameters
         
                                                 <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>login_failure_count_expiry_window</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - The configurable time window beyond which we need to pop all the login failure timestamps from the login_failure_timestamps.
-                </div>
-                                <div style="font-size: small">
-                  - Special values are 0 - do not reset login_failure_counts on the basis of time.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 22.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is min.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_concurrent_sessions</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -718,62 +631,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>max_login_failure_count</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Number of login attempts before lockout.
-                </div>
-                                <div style="font-size: small">
-                  - Default is 3 attempts.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 3-20.
-                </div>
-                                <div style="font-size: small">
-                  - Special values are 0- unlimited login attempts allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 3.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>max_password_history_count</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Maximum number of passwords to be maintained in the password history.
-                </div>
-                                <div style="font-size: small">
-                  - Default is 4 passwords.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 4.
                 </div>
                                             </td>
     </tr>

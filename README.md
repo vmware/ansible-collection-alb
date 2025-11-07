@@ -141,7 +141,6 @@ Name | Description
 [vmware.alb.avi_networksecuritypolicy](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_networksecuritypolicy.rst)|Module to create update or delete NetworkSecurityPolicy
 [vmware.alb.avi_networkservice](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_networkservice.rst)|Module to create update or delete NetworkService
 [vmware.alb.avi_nsxtsegmentruntime](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_nsxtsegmentruntime.rst)|Module to create update or delete NsxtSegmentRuntime
-[vmware.alb.avi_passwordpolicy](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_passwordpolicy.rst)|Module to create update or delete PasswordPolicy
 [vmware.alb.avi_pkiprofile](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_pkiprofile.rst)|Module to create update or delete PKIProfile
 [vmware.alb.avi_pool](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_pool.rst)|Module to create update or delete Pool
 [vmware.alb.avi_poolgroup](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_poolgroup.rst)|Module to create update or delete PoolGroup

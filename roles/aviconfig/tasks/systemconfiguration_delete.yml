@@ -36,7 +36,6 @@
     license_quota: "{{ item.license_quota | default(omit) }}"
     linux_configuration: "{{ item.linux_configuration | default(omit) }}"
     mgmt_ip_access_control: "{{ item.mgmt_ip_access_control | default(omit) }}"
-    password_policy_ref: "{{ item.password_policy_ref | default(omit) }}"
     portal_configuration: "{{ item.portal_configuration | default(omit) }}"
     proxy_configuration: "{{ item.proxy_configuration | default(omit) }}"
     rekey_time_limit: "{{ item.rekey_time_limit | default(omit) }}"

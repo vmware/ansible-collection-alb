@@ -180,14 +180,6 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
-    password_policy_ref:
-        description:
-            - Reference to uniform password policy.
-            - When not set, legacy password settings are used.
-            - It is a reference to an object of type passwordpolicy.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: str
     portal_configuration:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -389,7 +381,6 @@ def main():
         linux_configuration=dict(type='dict',),
         mgmt_ip_access_control=dict(type='dict',),
         ntp_configuration=dict(type='dict',),
-        password_policy_ref=dict(type='str',),
         portal_configuration=dict(type='dict',),
         proxy_configuration=dict(type='dict',),
         rekey_time_limit=dict(type='str',),

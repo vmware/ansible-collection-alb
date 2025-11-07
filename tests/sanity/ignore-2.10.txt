@@ -155,8 +155,6 @@ plugins/modules/avi_serviceauthprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_serviceauthprofile.py import-3.8!skip
 plugins/modules/avi_trustedhostprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_trustedhostprofile.py import-3.8!skip
-plugins/modules/avi_passwordpolicy.py validate-modules:missing-gplv3-license
-plugins/modules/avi_passwordpolicy.py import-3.8!skip
 plugins/modules/avi_gslb.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslb.py import-3.8!skip
 plugins/modules/avi_albservicesfiledownload.py validate-modules:missing-gplv3-license
