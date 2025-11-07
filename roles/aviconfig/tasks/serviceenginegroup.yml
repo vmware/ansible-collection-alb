@@ -2,7 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi ServiceEngineGroup | Create or Update ServiceEngineGroup
-  no_log: false
+  no_log: "False"
   vmware.alb.avi_serviceenginegroup:
 
     controller: "{{ avi_controller | default(omit) }}"
@@ -219,7 +219,7 @@
     vs_se_scaleout_additional_wait_time: "{{ item.vs_se_scaleout_additional_wait_time | default(omit) }}"
     vs_se_scaleout_ready_timeout: "{{ item.vs_se_scaleout_ready_timeout | default(omit) }}"
     vs_switchover_timeout: "{{ item.vs_switchover_timeout | default(omit) }}"
-  loop: "{{ avi_role_cfg.serviceenginegroup | default([]) }}"
+  with_items: "{{ avi_role_cfg.serviceenginegroup | default([]) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")

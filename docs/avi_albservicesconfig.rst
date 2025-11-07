@@ -1231,7 +1231,7 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- salesforce, myvmware, systest), basic (allowed values- salesforce, myvmware, systest) edition.
+                  - Allowed in essentials (allowed values- salesforce,myvmware,systest), basic (allowed values- salesforce,myvmware,systest) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as MYVMWARE.
@@ -1352,7 +1352,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable relaxed reservation norm allowing up to 2x free units( normally constrained to free license units ) to be reserved by upcoming se's.
+                  - Enable relaxed reservation norm allowing up to 2x free units( normally constrained to free license units ) to be reserved by upcoming se’s.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.1.1.
@@ -2109,9 +2109,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:

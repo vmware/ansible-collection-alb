@@ -18,8 +18,8 @@ module: avi_gslb
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of Gslb Avi RESTful Object
 description:
-    - This module is used to configure Gslb object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure Gslb object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -255,238 +255,118 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
-    # Fields from avi_common_argument_spec()
-    controller:
-        description:
-            - Avi controller hostname or IP address.
-        type: str
-        required: false
-        default: ""
-    username:
-        description:
-            - Avi username for authentication.
-        type: str
-        required: false
-        default: ""
-    password:
-        description:
-            - Avi password for authentication.
-        type: str
-        required: false
-        default: ""
-    tenant:
-        description:
-            - Tenant name.
-        type: str
-        required: false
-        default: admin
-    tenant_uuid:
-        description:
-            - Tenant UUID.
-        type: str
-        required: false
-        default: ""
-    api_version:
-        description:
-            - Avi API version to use.
-        type: str
-        required: false
-        default: "20.1.1"
-    avi_credentials:
-        description:
-            - Dictionary of Avi credentials (alternative to controller/username/password/token).
-        type: dict
-        required: false
-        suboptions:
-            controller:
-                description: Avi controller hostname or IP address.
-                type: str
-                default: ""
-            username:
-                description: Avi username.
-                type: str
-                default: ""
-            password:
-                description: Avi password.
-                type: str
-                default: ""
-            api_version:
-                description: Avi API version.
-                type: str
-                default: "20.1.1"
-            tenant:
-                description: Tenant name.
-                type: str
-                default: "admin"
-            tenant_uuid:
-                description: Tenant UUID.
-                type: str
-                default: ""
-            port:
-                description: Port of the Avi controller.
-                type: int
-            token:
-                description: Avi API token.
-                type: str
-                default: ""
-            timeout:
-                description: Timeout for API requests (in seconds).
-                type: int
-                default: 300
-            session_id:
-                description: Session ID for authentication.
-                type: str
-                default: ""
-            csrftoken:
-                description: CSRF token for authentication.
-                type: str
-                default: ""
-            ssl_cert:
-                description: SSL certificate path for HTTPS requests.
-                type: str
-                default: ""
-            ssl_key:
-                description: SSL private key path for HTTPS requests.
-                type: str
-                default: ""
-            idp_class:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_token:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_host:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-    api_context:
-        description:
-            - Optional dictionary for API context.
-        type: dict
-        required: false
-    avi_deactivate_session_cache_as_fact:
-        description:
-            - Boolean to deactivate session cache and expose it as an Ansible fact.
-        type: bool
-        required: false
-        default: false
-
+extends_documentation_fragment:
+    - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Example to create Gslb object
-      vmware.alb.avi_gslb:
-        name: "test-gslb"
-        avi_credentials: "{{ avi_credentials }}"
-        sites:
-          - name: "test-site1"
-            username: "gslb_username"
-            password: "gslb_password"
-            ip_addresses:
-              - type: "V4"
-                addr: "192.168.138.18"
-            enabled: true
-            member_type: "GSLB_ACTIVE_MEMBER"
-            port: 443
-            cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
-          - name: "test-site2"
-            username: "gslb_username"
-            password: "gslb_password"
-            ip_addresses:
-              - type: "V4"
-                addr: "192.168.138.19"
-            enabled: true
-            member_type: "GSLB_ACTIVE_MEMBER"
-            port: 443
-            cluster_uuid: "cluster-0c37ae8d-ab62-410c-ad3e-06fa831950b1"
-        dns_configs:
-          - domain_name: "test1.com"
-          - domain_name: "test2.com"
-        leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
 
-    - name: Update Gslb site's configurations (Patch Add Operation)
-      vmware.alb.avi_gslb:
-        avi_credentials: "{{ avi_credentials }}"
-        avi_api_update_method: patch
-        avi_api_patch_op: add
-        leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
-        name: "test-gslb"
-        dns_configs:
-          - domain_name: "temp1.com"
-          - domain_name: "temp2.com"
-        sites:
-          - name: "test-site1"
-            username: "gslb_username"
-            password: "gslb_password"
-            ip_addresses:
-              - type: "V4"
-                addr: "192.168.138.20"
-            enabled: true
-            member_type: "GSLB_ACTIVE_MEMBER"
-            port: 283
-            cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
+- name: Example to create Gslb object
+  vmware.alb.avi_gslb:
+    name: "test-gslb"
+    avi_credentials: "{{ avi_credentials }}"
+    sites:
+      - name: "test-site1"
+        username: "gslb_username"
+        password: "gslb_password"
+        ip_addresses:
+          - type: "V4"
+            addr: "192.168.138.18"
+        enabled: True
+        member_type: "GSLB_ACTIVE_MEMBER"
+        port: 443
+        cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
+      - name: "test-site2"
+        username: "gslb_username"
+        password: "gslb_password"
+        ip_addresses:
+          - type: "V4"
+            addr: "192.168.138.19"
+        enabled: True
+        member_type: "GSLB_ACTIVE_MEMBER"
+        port: 443
+        cluster_uuid: "cluster-0c37ae8d-ab62-410c-ad3e-06fa831950b1"
+    dns_configs:
+      - domain_name: "test1.com"
+      - domain_name: "test2.com"
+    leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
 
-    - name: Update Gslb site's configurations (Patch Replace Operation)
-      vmware.alb.avi_gslb:
-        avi_credentials: "{{ avi_credentials }}"
-        # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
-        leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
-        name: "test-gslb"
-        avi_api_update_method: patch
-        avi_api_patch_op: replace
-        dns_configs:
-          - domain_name: "test3.com"
-          - domain_name: "temp3.com"
-        sites:
-          - name: "test-site1"
-            username: "gslb_username"
-            password: "gslb_password"
-            ip_addresses:
-              - type: "V4"
-                addr: "192.168.138.21"
-            enabled: true
-            member_type: "GSLB_ACTIVE_MEMBER"
-            port: 283
-            cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
+- name: Update Gslb site's configurations (Patch Add Operation)
+  vmware.alb.avi_gslb:
+    avi_credentials: "{{ avi_credentials }}"
+    avi_api_update_method: patch
+    avi_api_patch_op: add
+    leader_cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
+    name: "test-gslb"
+    dns_configs:
+      - domain_name: "temp1.com"
+      - domain_name: "temp2.com"
+    sites:
+      - name: "test-site1"
+        username: "gslb_username"
+        password: "gslb_password"
+        ip_addresses:
+          - type: "V4"
+            addr: "192.168.138.20"
+        enabled: True
+        member_type: "GSLB_ACTIVE_MEMBER"
+        port: 283
+        cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
 
-    - name: Delete Gslb site's den_vses configurations (Patch Delete(dns_vses) Operation)
-      vmware.alb.avi_gslb:
-        avi_credentials: "{{ avi_credentials }}"
-        # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
-        leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
-        name: "test-gslb"
-        avi_api_update_method: patch
-        avi_api_patch_op: delete
-        dns_configs:
-        sites:
-          - ip_addresses: "192.168.138.22"
-          - ip_addresses: "192.168.138.23"
+- name: Update Gslb site's configurations (Patch Replace Operation)
+  vmware.alb.avi_gslb:
+    avi_credentials: "{{ avi_credentials }}"
+    # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
+    leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
+    name: "test-gslb"
+    avi_api_update_method: patch
+    avi_api_patch_op: replace
+    dns_configs:
+      - domain_name: "test3.com"
+      - domain_name: "temp3.com"
+    sites:
+      - name: "test-site1"
+        username: "gslb_username"
+        password: "gslb_password"
+        ip_addresses:
+          - type: "V4"
+            addr: "192.168.138.21"
+        enabled: True
+        member_type: "GSLB_ACTIVE_MEMBER"
+        port: 283
+        cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
 
-    - name: Delete Gslb complete site's configurations (Patch Delete(site) Operation)
-      vmware.alb.avi_gslb:
-        avi_credentials: "{{ avi_credentials }}"
-        avi_api_update_method: patch
-        avi_api_patch_op: delete
-        patch_level: '/site'
-        name: gslb.lab2.local
-        leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
-        dns_configs:
-        sites:
-          - ip_addresses: 192.168.138.24
+- name: Delete Gslb site's den_vses configurations (Patch Delete(dns_vses) Operation)
+  vmware.alb.avi_gslb:
+    avi_credentials: "{{ avi_credentials }}"
+    # On basis of cluster leader uuid dns_configs is set for that perticular leader cluster
+    leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
+    name: "test-gslb"
+    avi_api_update_method: patch
+    avi_api_patch_op: delete
+    dns_configs:
+    sites:
+      - ip_addresses: "192.168.138.22"
+      - ip_addresses: "192.168.138.23"
+
+- name: Delete Gslb complete site's configurations (Patch Delete(site) Operation)
+  vmware.alb.avi_gslb:
+    avi_credentials: "{{ avi_credentials }}"
+    avi_api_update_method: patch
+    avi_api_patch_op: delete
+    patch_level: '/site'
+    name: gslb.lab2.local
+    leader_cluster_uuid: "cluster-84aa795f-8f09-42bb-97a4-5103f4a53da9"
+    dns_configs:
+    sites:
+      - ip_addresses: 192.168.138.24
 """
 
 RETURN = '''
@@ -619,21 +499,7 @@ def main():
         uuid=dict(type='str',),
         view_id=dict(type='int',),
     )
-    STATIC_COMMON_ARGS = dict(
-        controller=dict(type='str', required=False),
-        username=dict(type='str', required=False),
-        password=dict(type='str', required=False, no_log=True),
-        tenant=dict(type='str', required=False),
-        tenant_uuid=dict(type='str', required=False),
-        api_version=dict(type='str', required=False),
-        avi_credentials=dict(type='dict', required=False),
-        api_context=dict(type='dict', required=False),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
-    )
-    argument_specs.update(STATIC_COMMON_ARGS)
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
-
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

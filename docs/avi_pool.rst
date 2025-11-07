@@ -1938,10 +1938,10 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- lb_algorithm_least_connections, lb_algorithm_round_robin, lb_algorithm_consistent_hash), basic (allowed
+                  - Allowed in essentials (allowed values- lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash), basic (allowed
                 </div>
                                 <div style="font-size: small">
-                  - values- lb_algorithm_least_connections, lb_algorithm_round_robin, lb_algorithm_consistent_hash) edition.
+                  - values- lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as LB_ALGORITHM_LEAST_CONNECTIONS.
@@ -5650,9 +5650,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -5662,35 +5661,35 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create a Pool with two servers and HTTP monitor
-              avi_pool:
-                avi_credentials: "{{ avi_credentials }}"
-                name: testpool1
-                description: testpool1
-                state: present
-                health_monitor_refs:
-                  - '/api/healthmonitor?name=System-HTTP'
-                servers:
-                  - ip:
-                      addr: 192.168.138.11
-                      type: V4
-                  - ip:
-                      addr: 192.168.138.12
-                      type: V4
+        - name: Create a Pool with two servers and HTTP monitor
+          avi_pool:
+            avi_credentials: "{{ avi_credentials }}"
+            name: testpool1
+            description: testpool1
+            state: present
+            health_monitor_refs:
+                - '/api/healthmonitor?name=System-HTTP'
+            servers:
+                - ip:
+                    addr: 192.168.138.11
+                    type: V4
+                - ip:
+                    addr: 192.168.138.12
+                    type: V4
 
-            - name: Patch pool with a single server using patch op and avi_credentials
-              avi_pool:
-                avi_credentials: "{{ avi_credentials }}"
-                avi_api_update_method: patch
-                avi_api_patch_op: delete
-                name: test-pool
-                servers:
-                  - ip:
-                    addr: 192.168.138.13
-                    type: 'V4'
-              register: pool
-              when:
-                - state | default("present") == "present"
+        - name: Patch pool with a single server using patch op and avi_credentials
+          avi_pool:
+            avi_credentials: "{{ avi_credentials }}"
+            avi_api_update_method: patch
+            avi_api_patch_op: delete
+            name: test-pool
+            servers:
+              - ip:
+                addr: 192.168.138.13
+                type: 'V4'
+          register: pool
+          when:
+            - state | default("present") == "present"
 
 
 

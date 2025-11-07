@@ -18,8 +18,8 @@ module: avi_sslkeyandcertificate
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of SSLKeyAndCertificate Avi RESTful Object
 description:
-    - This module is used to configure SSLKeyAndCertificate object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure SSLKeyAndCertificate object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -220,154 +220,34 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    # Fields from avi_common_argument_spec()
-    controller:
-        description:
-            - Avi controller hostname or IP address.
-        type: str
-        required: false
-        default: ""
-    username:
-        description:
-            - Avi username for authentication.
-        type: str
-        required: false
-        default: ""
-    password:
-        description:
-            - Avi password for authentication.
-        type: str
-        required: false
-        default: ""
-    tenant:
-        description:
-            - Tenant name.
-        type: str
-        required: false
-        default: admin
-    tenant_uuid:
-        description:
-            - Tenant UUID.
-        type: str
-        required: false
-        default: ""
-    api_version:
-        description:
-            - Avi API version to use.
-        type: str
-        required: false
-        default: "20.1.1"
-    avi_credentials:
-        description:
-            - Dictionary of Avi credentials (alternative to controller/username/password/token).
-        type: dict
-        required: false
-        suboptions:
-            controller:
-                description: Avi controller hostname or IP address.
-                type: str
-                default: ""
-            username:
-                description: Avi username.
-                type: str
-                default: ""
-            password:
-                description: Avi password.
-                type: str
-                default: ""
-            api_version:
-                description: Avi API version.
-                type: str
-                default: "20.1.1"
-            tenant:
-                description: Tenant name.
-                type: str
-                default: "admin"
-            tenant_uuid:
-                description: Tenant UUID.
-                type: str
-                default: ""
-            port:
-                description: Port of the Avi controller.
-                type: int
-            token:
-                description: Avi API token.
-                type: str
-                default: ""
-            timeout:
-                description: Timeout for API requests (in seconds).
-                type: int
-                default: 300
-            session_id:
-                description: Session ID for authentication.
-                type: str
-                default: ""
-            csrftoken:
-                description: CSRF token for authentication.
-                type: str
-                default: ""
-            ssl_cert:
-                description: SSL certificate path for HTTPS requests.
-                type: str
-                default: ""
-            ssl_key:
-                description: SSL private key path for HTTPS requests.
-                type: str
-                default: ""
-            idp_class:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_token:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_host:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-    api_context:
-        description:
-            - Optional dictionary for API context.
-        type: dict
-        required: false
-    avi_deactivate_session_cache_as_fact:
-        description:
-            - Boolean to deactivate session cache and expose it as an Ansible fact.
-        type: bool
-        required: false
-        default: false
-
+extends_documentation_fragment:
+    - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Create a SSL Key and Certificate
-      vmware.alb.avi_sslkeyandcertificate:
-        avi_credentials: "{{ avi_credentials }}"
-        key: |
-            -----BEGIN PRIVATE KEY-----
-            ....
-            -----END PRIVATE KEY-----
-        certificate:
-          self_signed: true
-          certificate: |
-            -----BEGIN CERTIFICATE-----
-            ....
-            -----END CERTIFICATE-----
-        type: SSL_CERTIFICATE_TYPE_VIRTUALSERVICE
-        name: MyTestCert
+
+- name: Create a SSL Key and Certificate
+  vmware.alb.avi_sslkeyandcertificate:
+    avi_credentials: "{{ avi_credentials }}"
+    key: |
+        -----BEGIN PRIVATE KEY-----
+        ....
+        -----END PRIVATE KEY-----
+    certificate:
+        self_signed: true
+        certificate: |
+          -----BEGIN CERTIFICATE-----
+          ....
+          -----END CERTIFICATE-----
+    type: SSL_CERTIFICATE_TYPE_VIRTUALSERVICE
+    name: MyTestCert
 """
 
 RETURN = '''
@@ -403,7 +283,7 @@ def main():
         created_by=dict(type='str',),
         dynamic_params=dict(type='list', elements='dict',),
         enable_ocsp_stapling=dict(type='bool',),
-        enckey_base64=dict(type='str', no_log=True,),
+        enckey_base64=dict(type='str',),
         enckey_name=dict(type='str',),
         format=dict(type='str',),
         hardwaresecuritymodulegroup_ref=dict(type='str',),
@@ -411,7 +291,7 @@ def main():
         is_federated=dict(type='bool',),
         key=dict(type='str', no_log=True,),
         key_base64=dict(type='bool',),
-        key_params=dict(type='dict', no_log=True,),
+        key_params=dict(type='dict',),
         key_passphrase=dict(type='str', no_log=True,),
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
@@ -425,21 +305,7 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    STATIC_COMMON_ARGS = dict(
-        controller=dict(type='str', required=False),
-        username=dict(type='str', required=False),
-        password=dict(type='str', required=False, no_log=True),
-        tenant=dict(type='str', required=False),
-        tenant_uuid=dict(type='str', required=False),
-        api_version=dict(type='str', required=False),
-        avi_credentials=dict(type='dict', required=False),
-        api_context=dict(type='dict', required=False),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
-    )
-    argument_specs.update(STATIC_COMMON_ARGS)
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
-
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -447,7 +313,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'sslkeyandcertificate',
-                           {'key_passphrase', 'key', 'key_params', 'enckey_base64'})
+                           ['key', 'key_passphrase'])
 
 
 if __name__ == '__main__':

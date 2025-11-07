@@ -885,9 +885,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -897,23 +896,23 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create an IP Address Group configuration
-              avi_ipaddrgroup:
-                avi_credentials: "{{ avi_credentials }}"
-                name: Client-Source-Block
-                prefixes:
-                  - ip_addr:
-                      addr: 192.168.138.18
-                      type: V4
-                    mask: 8
-                  - ip_addr:
-                      addr: 192.168.20.11
-                      type: V4
-                    mask: 12
-                  - ip_addr:
-                      addr: 192.168.20.12
-                      type: V4
-                    mask: 16
+        - name: Create an IP Address Group configuration
+          avi_ipaddrgroup:
+            avi_credentials: "{{ avi_credentials }}"
+            name: Client-Source-Block
+            prefixes:
+            - ip_addr:
+                addr: 192.168.138.18
+                type: V4
+              mask: 8
+            - ip_addr:
+                addr: 192.168.20.11
+                type: V4
+              mask: 12
+            - ip_addr:
+                addr: 192.168.20.12
+                type: V4
+              mask: 16
 
 
 

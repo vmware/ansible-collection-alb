@@ -2,7 +2,7 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi UpgradeProfile | Delete UpgradeProfile
-  no_log: "{{ avi_role_config_log_mode | default('false') }}"
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_upgradeprofile:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -14,6 +14,7 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    controller: "{{ item.controller | default(omit) }}"
     controller_params: "{{ item.controller_params | default(omit) }}"
     dry_run: "{{ item.dry_run | default(omit) }}"
     image: "{{ item.image | default(omit) }}"

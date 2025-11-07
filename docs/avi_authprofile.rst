@@ -2515,10 +2515,10 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...), basic (allowed
+                  - Allowed in essentials (allowed values- auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth), basic
                 </div>
                                 <div style="font-size: small">
-                  - values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...) edition.
+                  - (allowed values- auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth) edition.
                 </div>
                                             </td>
     </tr>
@@ -2566,9 +2566,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -2578,32 +2577,32 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create user authorization profile based on the LDAP
-              avi_authprofile:
-                avi_credentials: "{{ avi_credentials }}"
+        - name: Create user authorization profile based on the LDAP
+          avi_authprofile:
+            avi_credentials: "{{ avi_credentials }}"
 
-                ldap:
-                  base_dn: dc=avi,dc=local
-                  bind_as_administrator: true
-                  port: 389
-                  security_mode: AUTH_LDAP_SECURE_NONE
-                  server:
-                    - 192.168.12.18
-                  settings:
-                    admin_bind_dn: user@avi.local
-                    group_filter: (objectClass=*)
-                    group_member_attribute: member
-                    group_member_is_full_dn: true
-                    group_search_dn: dc=avi,dc=local
-                    group_search_scope: AUTH_LDAP_SCOPE_SUBTREE
-                    ignore_referrals: true
-                    password: password
-                    user_id_attribute: samAccountname
-                    user_search_dn: dc=avi,dc=local
-                    user_search_scope: AUTH_LDAP_SCOPE_ONE
-                name: ProdAuth
-                tenant_ref: /api/tenant?name=admin
-                type: AUTH_PROFILE_LDAP
+            ldap:
+              base_dn: dc=avi,dc=local
+              bind_as_administrator: true
+              port: 389
+              security_mode: AUTH_LDAP_SECURE_NONE
+              server:
+              - 192.168.12.18
+              settings:
+                admin_bind_dn: user@avi.local
+                group_filter: (objectClass=*)
+                group_member_attribute: member
+                group_member_is_full_dn: true
+                group_search_dn: dc=avi,dc=local
+                group_search_scope: AUTH_LDAP_SCOPE_SUBTREE
+                ignore_referrals: true
+                password: password
+                user_id_attribute: samAccountname
+                user_search_dn: dc=avi,dc=local
+                user_search_scope: AUTH_LDAP_SCOPE_ONE
+            name: ProdAuth
+            tenant_ref: /api/tenant?name=admin
+            type: AUTH_PROFILE_LDAP
 
 
 

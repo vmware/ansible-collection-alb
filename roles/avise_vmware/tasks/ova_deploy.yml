@@ -1,17 +1,15 @@
 ---
-# Manage getting ova image from controller to local to be used by ovftool for deployment on
+# Manage getting ova image from controller to local to be used by ovftool for deployment on 
 # VMware Cloud
 
+
 - name: Avi SE | VMware | Image deploy | Verify ova exists on controller
-  ansible.builtin.stat:
-    path: "{{ se_image_path }}/{{ se_vmw_ova_image_file }}"
+  stat: path={{ se_image_path }}/{{ se_vmw_ova_image_file }}
   register: se_ova_status
 
-- name: Avi SE | VMware | Image deploy | Generate SE image if not exist on controller
-  when: (not se_ova_status.stat.exists) or (se_vmw_ova_force_mode)
-  block:
-    - name: Avi SE | VMware | Image deploy | Genarate SE image if not exist on controller
-      vmware.alb.avi_api_session:
+- block:
+    - name:  Avi SE | VMware | Image deploy | Genarate SE image if not exist on controller
+      avi_api_session:
         controller: '{{ se_leader_ctl_ip }}'
         username: '{{ se_leader_ctl_username }}'
         password: '{{ se_leader_ctl_password }}'
@@ -22,15 +20,14 @@
         data:
           file_format: ova
       delegate_to: localhost
+  when: (not se_ova_status.stat.exists) or (se_vmw_ova_force_mode)
 
 - name: Avi SE | VMware | Verify SE image on Controller
-  ansible.builtin.stat:
-    path: "{{ se_image_path }}/{{ se_vmw_ova_image_file }}"
+  stat: path={{ se_image_path }}/{{ se_vmw_ova_image_file }}
   register: se_ova_status
 
 - name: Avi SE | VMware | Verify SE image on Local
-  ansible.builtin.stat:
-    path: "{{ se_vmw_ova_download_path }}/{{ se_vmw_ova_image_name }}"
+  stat: path={{ se_vmw_ova_download_path }}/{{ se_vmw_ova_image_name }}
   register: se_ova_local_status
   delegate_to: localhost
 
@@ -47,15 +44,9 @@
   when: not se_ova_local_status.stat.exists
 
 - name: Avi SE | VMware | Verify SE image on Local
-  delegate_to: localhost
   block:
-    - name: Verify SE image on Local
-      ansible.builtin.stat:
-        path: "{{ se_vmw_ova_download_path }}/{{ se_vmw_ova_image_name }}"
+    - stat: path={{ se_vmw_ova_download_path }}/{{ se_vmw_ova_image_name }}
       register: se_ova_local_status
-    - name: Set SE OVA path
-      ansible.builtin.set_fact:
-        se_vmw_ova_path:{{ se_ova_local_status.stat.path }}
-    - name: Debug SE OVA path
-      ansible.builtin.debug:
-        msg: '{{ se_vmw_ova_path }}'
+    - set_fact: se_vmw_ova_path={{ se_ova_local_status.stat.path }}
+    - debug: msg='{{ se_vmw_ova_path }}'
+  delegate_to: localhost

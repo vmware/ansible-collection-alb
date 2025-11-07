@@ -1,12 +1,9 @@
 ---
 - name: Checks for blocking SE
-  ansible.builtin.include_tasks: check_cloud.yml
+  include_tasks: check_cloud.yml
 
 - name: Check if Avi SE is running in systemd
-  ansible.builtin.service:
-    name: avise
-    state: started
-    enabled: true
+  command: "systemctl status avise"
   when: ansible_service_mgr == "systemd"
   register: result
   failed_when: result.rc > 0
@@ -14,10 +11,7 @@
   become: true
 
 - name: Check if Avi SE is running in non-systemd
-  ansible.builtin.service:
-    name: avise_watcher
-    state: started
-    enabled: true
+  command: "service avise_watcher status"
   when: ansible_service_mgr != "systemd"
   register: result
   failed_when: result.rc > 0
@@ -25,9 +19,7 @@
   become: true
 
 - name: Check if se_agent is running
-  ansible.builtin.shell: >
-    set -o pipefail && \
-    "ps -aef | grep se_agent | grep -v grep | wc -l"
+  shell: "ps -aef | grep se_agent | grep -v grep | wc -l"
   register: result
   failed_when: result.stdout|int != 1
   changed_when: false

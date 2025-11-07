@@ -551,9 +551,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -563,15 +562,15 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create Alert Syslog object to forward all events to external syslog server
-              avi_alertsyslogconfig:
-                avi_credentials: "{{ avi_credentials }}"
-                name: Roberts-syslog
-                syslog_servers:
-                  - syslog_server: 192.168.15.11
-                    syslog_server_port: 514
-                    udp: true
-                tenant_ref: /api/tenant?name=admin
+        - name: Create Alert Syslog object to forward all events to external syslog server
+          avi_alertsyslogconfig:
+            avi_credentials: "{{ avi_credentials }}"
+            name: Roberts-syslog
+            syslog_servers:
+            - syslog_server: 192.168.15.11
+              syslog_server_port: 514
+              udp: true
+            tenant_ref: /api/tenant?name=admin
 
 
 

@@ -18,8 +18,8 @@ module: avi_pool
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of Pool Avi RESTful Object
 description:
-    - This module is used to configure Pool object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure Pool object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -341,8 +341,8 @@ options:
             - LB_ALGORITHM_LEAST_LOAD, LB_ALGORITHM_FEWEST_SERVERS, LB_ALGORITHM_RANDOM, LB_ALGORITHM_FEWEST_TASKS, LB_ALGORITHM_NEAREST_SERVER,
             - LB_ALGORITHM_CORE_AFFINITY, LB_ALGORITHM_TOPOLOGY.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- lb_algorithm_least_connections, lb_algorithm_round_robin, lb_algorithm_consistent_hash), basic (allowed
-            - values- lb_algorithm_least_connections, lb_algorithm_round_robin, lb_algorithm_consistent_hash) edition.
+            - Allowed in essentials (allowed values- lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash), basic (allowed
+            - values- lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as LB_ALGORITHM_LEAST_CONNECTIONS.
         type: str
     lb_algorithm_consistent_hash_hdr:
@@ -612,168 +612,48 @@ options:
             - It is a reference to an object of type vrfcontext.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    # Fields from avi_common_argument_spec()
-    controller:
-        description:
-            - Avi controller hostname or IP address.
-        type: str
-        required: false
-        default: ""
-    username:
-        description:
-            - Avi username for authentication.
-        type: str
-        required: false
-        default: ""
-    password:
-        description:
-            - Avi password for authentication.
-        type: str
-        required: false
-        default: ""
-    tenant:
-        description:
-            - Tenant name.
-        type: str
-        required: false
-        default: admin
-    tenant_uuid:
-        description:
-            - Tenant UUID.
-        type: str
-        required: false
-        default: ""
-    api_version:
-        description:
-            - Avi API version to use.
-        type: str
-        required: false
-        default: "20.1.1"
-    avi_credentials:
-        description:
-            - Dictionary of Avi credentials (alternative to controller/username/password/token).
-        type: dict
-        required: false
-        suboptions:
-            controller:
-                description: Avi controller hostname or IP address.
-                type: str
-                default: ""
-            username:
-                description: Avi username.
-                type: str
-                default: ""
-            password:
-                description: Avi password.
-                type: str
-                default: ""
-            api_version:
-                description: Avi API version.
-                type: str
-                default: "20.1.1"
-            tenant:
-                description: Tenant name.
-                type: str
-                default: "admin"
-            tenant_uuid:
-                description: Tenant UUID.
-                type: str
-                default: ""
-            port:
-                description: Port of the Avi controller.
-                type: int
-            token:
-                description: Avi API token.
-                type: str
-                default: ""
-            timeout:
-                description: Timeout for API requests (in seconds).
-                type: int
-                default: 300
-            session_id:
-                description: Session ID for authentication.
-                type: str
-                default: ""
-            csrftoken:
-                description: CSRF token for authentication.
-                type: str
-                default: ""
-            ssl_cert:
-                description: SSL certificate path for HTTPS requests.
-                type: str
-                default: ""
-            ssl_key:
-                description: SSL private key path for HTTPS requests.
-                type: str
-                default: ""
-            idp_class:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_token:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_host:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-    api_context:
-        description:
-            - Optional dictionary for API context.
-        type: dict
-        required: false
-    avi_deactivate_session_cache_as_fact:
-        description:
-            - Boolean to deactivate session cache and expose it as an Ansible fact.
-        type: bool
-        required: false
-        default: false
-
+extends_documentation_fragment:
+    - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Create a Pool with two servers and HTTP monitor
-      vmware.alb.avi_pool:
-        avi_credentials: "{{ avi_credentials }}"
-        name: testpool1
-        description: testpool1
-        state: present
-        health_monitor_refs:
-          - '/api/healthmonitor?name=System-HTTP'
-        servers:
-          - ip:
-              addr: 192.168.138.11
-              type: V4
-          - ip:
-              addr: 192.168.138.12
-              type: V4
 
-    - name: Patch pool with a single server using patch op and avi_credentials
-      vmware.alb.avi_pool:
-        avi_credentials: "{{ avi_credentials }}"
-        avi_api_update_method: patch
-        avi_api_patch_op: delete
-        name: test-pool
-        servers:
-          - ip:
-            addr: 192.168.138.13
-            type: 'V4'
-      register: pool
-      when:
-        - state | default("present") == "present"
+- name: Create a Pool with two servers and HTTP monitor
+  vmware.alb.avi_pool:
+    avi_credentials: "{{ avi_credentials }}"
+    name: testpool1
+    description: testpool1
+    state: present
+    health_monitor_refs:
+        - '/api/healthmonitor?name=System-HTTP'
+    servers:
+        - ip:
+            addr: 192.168.138.11
+            type: V4
+        - ip:
+            addr: 192.168.138.12
+            type: V4
+
+- name: Patch pool with a single server using patch op and avi_credentials
+  vmware.alb.avi_pool:
+    avi_credentials: "{{ avi_credentials }}"
+    avi_api_update_method: patch
+    avi_api_patch_op: delete
+    name: test-pool
+    servers:
+      - ip:
+        addr: 192.168.138.13
+        type: 'V4'
+  register: pool
+  when:
+    - state | default("present") == "present"
 """
 
 RETURN = '''
@@ -869,7 +749,7 @@ def main():
         service_metadata=dict(type='str',),
         sni_enabled=dict(type='bool',),
         sp_gs_info=dict(type='dict',),
-        ssl_key_and_certificate_ref=dict(type='str', no_log=True,),
+        ssl_key_and_certificate_ref=dict(type='str',),
         ssl_profile_ref=dict(type='str',),
         tenant_ref=dict(type='str',),
         tier1_lr=dict(type='str',),
@@ -879,21 +759,7 @@ def main():
         uuid=dict(type='str',),
         vrf_ref=dict(type='str',),
     )
-    STATIC_COMMON_ARGS = dict(
-        controller=dict(type='str', required=False),
-        username=dict(type='str', required=False),
-        password=dict(type='str', required=False, no_log=True),
-        tenant=dict(type='str', required=False),
-        tenant_uuid=dict(type='str', required=False),
-        api_version=dict(type='str', required=False),
-        avi_credentials=dict(type='dict', required=False),
-        api_context=dict(type='dict', required=False),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
-    )
-    argument_specs.update(STATIC_COMMON_ARGS)
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
-
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -901,7 +767,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'pool',
-                           {'ssl_key_and_certificate_ref'})
+                           set())
 
 
 if __name__ == '__main__':

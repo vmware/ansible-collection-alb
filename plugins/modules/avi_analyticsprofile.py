@@ -18,8 +18,8 @@ module: avi_analyticsprofile
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of AnalyticsProfile Avi RESTful Object
 description:
-    - This module is used to configure AnalyticsProfile object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure AnalyticsProfile object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -744,195 +744,75 @@ options:
             - Uuid of the analytics profile.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    # Fields from avi_common_argument_spec()
-    controller:
-        description:
-            - Avi controller hostname or IP address.
-        type: str
-        required: false
-        default: ""
-    username:
-        description:
-            - Avi username for authentication.
-        type: str
-        required: false
-        default: ""
-    password:
-        description:
-            - Avi password for authentication.
-        type: str
-        required: false
-        default: ""
-    tenant:
-        description:
-            - Tenant name.
-        type: str
-        required: false
-        default: admin
-    tenant_uuid:
-        description:
-            - Tenant UUID.
-        type: str
-        required: false
-        default: ""
-    api_version:
-        description:
-            - Avi API version to use.
-        type: str
-        required: false
-        default: "20.1.1"
-    avi_credentials:
-        description:
-            - Dictionary of Avi credentials (alternative to controller/username/password/token).
-        type: dict
-        required: false
-        suboptions:
-            controller:
-                description: Avi controller hostname or IP address.
-                type: str
-                default: ""
-            username:
-                description: Avi username.
-                type: str
-                default: ""
-            password:
-                description: Avi password.
-                type: str
-                default: ""
-            api_version:
-                description: Avi API version.
-                type: str
-                default: "20.1.1"
-            tenant:
-                description: Tenant name.
-                type: str
-                default: "admin"
-            tenant_uuid:
-                description: Tenant UUID.
-                type: str
-                default: ""
-            port:
-                description: Port of the Avi controller.
-                type: int
-            token:
-                description: Avi API token.
-                type: str
-                default: ""
-            timeout:
-                description: Timeout for API requests (in seconds).
-                type: int
-                default: 300
-            session_id:
-                description: Session ID for authentication.
-                type: str
-                default: ""
-            csrftoken:
-                description: CSRF token for authentication.
-                type: str
-                default: ""
-            ssl_cert:
-                description: SSL certificate path for HTTPS requests.
-                type: str
-                default: ""
-            ssl_key:
-                description: SSL private key path for HTTPS requests.
-                type: str
-                default: ""
-            idp_class:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_token:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_host:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-    api_context:
-        description:
-            - Optional dictionary for API context.
-        type: dict
-        required: false
-    avi_deactivate_session_cache_as_fact:
-        description:
-            - Boolean to deactivate session cache and expose it as an Ansible fact.
-        type: bool
-        required: false
-        default: false
-
+extends_documentation_fragment:
+    - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Create a custom Analytics profile object
-      vmware.alb.avi_analyticsprofile:
-        avi_credentials: "{{ avi_credentials }}"
-        apdex_response_threshold: 500
-        apdex_response_tolerated_factor: 4.0
-        apdex_rtt_threshold: 250
-        apdex_rtt_tolerated_factor: 4.0
-        apdex_rum_threshold: 5000
-        apdex_rum_tolerated_factor: 4.0
-        apdex_server_response_threshold: 400
-        apdex_server_response_tolerated_factor: 4.0
-        apdex_server_rtt_threshold: 125
-        apdex_server_rtt_tolerated_factor: 4.0
-        conn_lossy_ooo_threshold: 50
-        conn_lossy_timeo_rexmt_threshold: 20
-        conn_lossy_total_rexmt_threshold: 50
-        conn_lossy_zero_win_size_event_threshold: 2
-        conn_server_lossy_ooo_threshold: 50
-        conn_server_lossy_timeo_rexmt_threshold: 20
-        conn_server_lossy_total_rexmt_threshold: 50
-        conn_server_lossy_zero_win_size_event_threshold: 2
-        enable_se_analytics: true
-        enable_server_analytics: true
-        exclude_client_close_before_request_as_error: false
-        exclude_persistence_change_as_error: false
-        exclude_server_tcp_reset_as_error: false
-        exclude_syn_retransmit_as_error: false
-        exclude_tcp_reset_as_error: false
-        hs_event_throttle_window: 1209600
-        hs_max_anomaly_penalty: 10
-        hs_max_resources_penalty: 25
-        hs_max_security_penalty: 100
-        hs_min_dos_rate: 1000
-        hs_performance_boost: 20
-        hs_pscore_traffic_threshold_l4_client: 10.0
-        hs_pscore_traffic_threshold_l4_server: 10.0
-        hs_security_certscore_expired: 0.0
-        hs_security_certscore_gt30d: 5.0
-        hs_security_certscore_le07d: 2.0
-        hs_security_certscore_le30d: 4.0
-        hs_security_chain_invalidity_penalty: 1.0
-        hs_security_cipherscore_eq000b: 0.0
-        hs_security_cipherscore_ge128b: 5.0
-        hs_security_cipherscore_lt128b: 3.5
-        hs_security_encalgo_score_none: 0.0
-        hs_security_encalgo_score_rc4: 2.5
-        hs_security_hsts_penalty: 0.0
-        hs_security_nonpfs_penalty: 1.0
-        hs_security_selfsignedcert_penalty: 1.0
-        hs_security_ssl30_score: 3.5
-        hs_security_tls10_score: 5.0
-        hs_security_tls11_score: 5.0
-        hs_security_tls12_score: 5.0
-        hs_security_weak_signature_algo_penalty: 1.0
-        name: jason-analytics-profile
-        tenant_ref: /api/tenant?name=Demo
+
+- name: Create a custom Analytics profile object
+  vmware.alb.avi_analyticsprofile:
+    avi_credentials: "{{ avi_credentials }}"
+    apdex_response_threshold: 500
+    apdex_response_tolerated_factor: 4.0
+    apdex_rtt_threshold: 250
+    apdex_rtt_tolerated_factor: 4.0
+    apdex_rum_threshold: 5000
+    apdex_rum_tolerated_factor: 4.0
+    apdex_server_response_threshold: 400
+    apdex_server_response_tolerated_factor: 4.0
+    apdex_server_rtt_threshold: 125
+    apdex_server_rtt_tolerated_factor: 4.0
+    conn_lossy_ooo_threshold: 50
+    conn_lossy_timeo_rexmt_threshold: 20
+    conn_lossy_total_rexmt_threshold: 50
+    conn_lossy_zero_win_size_event_threshold: 2
+    conn_server_lossy_ooo_threshold: 50
+    conn_server_lossy_timeo_rexmt_threshold: 20
+    conn_server_lossy_total_rexmt_threshold: 50
+    conn_server_lossy_zero_win_size_event_threshold: 2
+    enable_se_analytics: true
+    enable_server_analytics: true
+    exclude_client_close_before_request_as_error: false
+    exclude_persistence_change_as_error: false
+    exclude_server_tcp_reset_as_error: false
+    exclude_syn_retransmit_as_error: false
+    exclude_tcp_reset_as_error: false
+    hs_event_throttle_window: 1209600
+    hs_max_anomaly_penalty: 10
+    hs_max_resources_penalty: 25
+    hs_max_security_penalty: 100
+    hs_min_dos_rate: 1000
+    hs_performance_boost: 20
+    hs_pscore_traffic_threshold_l4_client: 10.0
+    hs_pscore_traffic_threshold_l4_server: 10.0
+    hs_security_certscore_expired: 0.0
+    hs_security_certscore_gt30d: 5.0
+    hs_security_certscore_le07d: 2.0
+    hs_security_certscore_le30d: 4.0
+    hs_security_chain_invalidity_penalty: 1.0
+    hs_security_cipherscore_eq000b: 0.0
+    hs_security_cipherscore_ge128b: 5.0
+    hs_security_cipherscore_lt128b: 3.5
+    hs_security_encalgo_score_none: 0.0
+    hs_security_encalgo_score_rc4: 2.5
+    hs_security_hsts_penalty: 0.0
+    hs_security_nonpfs_penalty: 1.0
+    hs_security_selfsignedcert_penalty: 1.0
+    hs_security_ssl30_score: 3.5
+    hs_security_tls10_score: 5.0
+    hs_security_tls11_score: 5.0
+    hs_security_tls12_score: 5.0
+    hs_security_weak_signature_algo_penalty: 1.0
+    name: jason-analytics-profile
+    tenant_ref: /api/tenant?name=Demo
 """
 
 RETURN = '''
@@ -1050,21 +930,7 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    STATIC_COMMON_ARGS = dict(
-        controller=dict(type='str', required=False),
-        username=dict(type='str', required=False),
-        password=dict(type='str', required=False, no_log=True),
-        tenant=dict(type='str', required=False),
-        tenant_uuid=dict(type='str', required=False),
-        api_version=dict(type='str', required=False),
-        avi_credentials=dict(type='dict', required=False),
-        api_context=dict(type='dict', required=False),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
-    )
-    argument_specs.update(STATIC_COMMON_ARGS)
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
-
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
