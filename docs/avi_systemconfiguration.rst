@@ -5800,9 +5800,6 @@ Parameters
                   - Allowed values are 6-32.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.1.1.
-                </div>
-                                <div style="font-size: small">
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
