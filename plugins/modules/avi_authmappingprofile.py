@@ -46,6 +46,13 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    allow_unlabelled_access:
+        description:
+            - Allow access to unlabelled objects.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -58,6 +65,16 @@ options:
             - Field introduced in 22.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
+    dynamic_role_filters:
+        description:
+            - Filters for granular object access control based on object labels.
+            - Multiple filters are merged using the and operator.
+            - If empty, all objects according to the privileges will be accessible to the user.
+            - Field introduced in 32.1.1.
+            - Maximum of 4 items allowed.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: dict
     mapping_rules:
         description:
             - Rules list for tenant or role mapping.
@@ -145,8 +162,10 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        allow_unlabelled_access=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
+        dynamic_role_filters=dict(type='list', elements='dict',),
         mapping_rules=dict(type='list', elements='dict', required=True),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),

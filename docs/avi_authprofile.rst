@@ -1243,6 +1243,9 @@ Parameters
                   - Instance uuid of the csp service.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -1680,6 +1683,9 @@ Parameters
                   - Organization id for oauth.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -1752,6 +1758,9 @@ Parameters
                   - Uuid value of csp service.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -1773,6 +1782,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Name of the csp service.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.1.1.
