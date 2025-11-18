@@ -448,6 +448,44 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>checks_base_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Base timeout value for all upgrade pre-checks operations.
+                </div>
+                                <div style="font-size: small">
+                  - The timeout value for applicable checks is a multiple of checks_base_timeout.
+                </div>
+                                <div style="font-size: small">
+                  - For example, config export timeout = [multiplier] * checks_base_timeout.
+                </div>
+                                <div style="font-size: small">
+                  - (the multiplier varies by operation.).
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 60.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>export_config_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -464,6 +502,9 @@ Parameters
                   - Allowed values are 600-5400.
                 </div>
                                 <div style="font-size: small">
+                  - Field deprecated in 32.1.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -471,9 +512,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 3600.
                 </div>
                                             </td>
     </tr>
