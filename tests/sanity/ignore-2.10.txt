@@ -305,6 +305,8 @@ plugins/modules/avi_icapprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_icapprofile.py import-3.8!skip
 plugins/modules/avi_ssopolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_ssopolicy.py import-3.8!skip
+plugins/modules/avi_sspinstance.py validate-modules:missing-gplv3-license
+plugins/modules/avi_sspinstance.py import-3.8!skip
 plugins/modules/avi_systemconfiguration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemconfiguration.py import-3.8!skip
 plugins/modules/avi_virtualservice.py validate-modules:missing-gplv3-license

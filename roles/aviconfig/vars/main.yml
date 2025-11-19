@@ -130,6 +130,7 @@ avi_resource_types:
   - l4policyset
   - icapprofile
   - ssopolicy
+  - sspinstance
   - systemconfiguration
   - virtualservice
   - gslbservice

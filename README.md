@@ -170,6 +170,7 @@ Name | Description
 [vmware.alb.avi_sslkeyandcertificate](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_sslkeyandcertificate.rst)|Module to create update or delete SSLKeyAndCertificate
 [vmware.alb.avi_sslprofile](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_sslprofile.rst)|Module to create update or delete SSLProfile
 [vmware.alb.avi_ssopolicy](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_ssopolicy.rst)|Module to create update or delete SSOPolicy
+[vmware.alb.avi_sspinstance](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_sspinstance.rst)|Module to create update or delete SspInstance
 [vmware.alb.avi_statediffoperation](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_statediffoperation.rst)|Module to create update or delete StatediffOperation
 [vmware.alb.avi_statediffsnapshot](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_statediffsnapshot.rst)|Module to create update or delete StatediffSnapshot
 [vmware.alb.avi_stringgroup](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_stringgroup.rst)|Module to create update or delete StringGroup
