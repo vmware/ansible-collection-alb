@@ -325,6 +325,15 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    event_manager_file_modified_ts_filter:
+        description:
+            - Stated time duration beyond which event manager disregards files whose modified timestamp from current time is later.
+            - Allowed values are 1-1800.
+            - Field introduced in 30.2.6.
+            - Unit is sec.
+            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 180.
+        type: int
     event_manager_max_goroutines:
         description:
             - Maximum number of goroutines for event manager process.
@@ -996,6 +1005,7 @@ def main():
         enable_memory_balancer=dict(type='bool',),
         enable_per_process_stop=dict(type='bool',),
         enable_resmgr_log_cache_print=dict(type='bool',),
+        event_manager_file_modified_ts_filter=dict(type='int',),
         event_manager_max_goroutines=dict(type='int',),
         event_manager_max_subscribers=dict(type='int',),
         event_manager_processing_time_threshold=dict(type='int',),
