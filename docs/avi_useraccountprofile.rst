@@ -141,7 +141,10 @@ Parameters
                                                             </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Password complexity constraints for the user account profile.
@@ -424,7 +427,10 @@ Parameters
                                                             </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Password expiration settings for the user account profile.
@@ -460,9 +466,6 @@ Parameters
                   - Allowed values are 30-730.
                 </div>
                                 <div style="font-size: small">
-                  - Special values are 0- no password expiry.
-                </div>
-                                <div style="font-size: small">
                   - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
@@ -486,7 +489,10 @@ Parameters
                                                             </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
                   - Account lockout settings for the user account profile.

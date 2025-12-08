@@ -442,9 +442,13 @@ def is_ipv6_address(controller_ip):
         return False
 
 
-def controller_wait(controller_ip, round_wait=10, wait_time=3600):
+def controller_wait(controller_ip, round_wait=10, wait_time=3600, ssl_verify=False):
     """
     It waits for controller to come up for a given wait_time (default 1 hour).
+    :param controller_ip: IP address of the controller
+    :param round_wait: Wait time between retries in seconds
+    :param wait_time: Total wait time in seconds
+    :param ssl_verify: Whether to verify SSL certificates (default: False)
     :return: controller_up: Boolean value for controller up state.
     """
     count = 0
@@ -460,7 +464,7 @@ def controller_wait(controller_ip, round_wait=10, wait_time=3600):
         if count >= max_count:
             break
         try:
-            r = requests.get(path, timeout=10, verify=False)
+            r = requests.get(path, timeout=10, verify=ssl_verify)
             # Check for controller response for login URI.
             if r.status_code in (500, 502, 503) and count < max_count:
                 time.sleep(10)
@@ -841,7 +845,8 @@ def main():
     # Wait for controller tcontroller_waito come up for given con_wait_time
     if controller_ip:
         controller_up = controller_wait(controller_ip, module.params['round_wait'],
-                                        module.params['con_wait_time'])
+                                        module.params['con_wait_time'],
+                                        module.params['ssl_verify'])
         if not controller_up:
             return module.fail_json(
                 msg='Something wrong with the controller. The Controller is not in the up state.')

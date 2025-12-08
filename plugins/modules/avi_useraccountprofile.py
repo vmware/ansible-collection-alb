@@ -52,6 +52,7 @@ options:
             - Password complexity constraints for the user account profile.
             - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
+        required: true
         type: dict
     configpb_attributes:
         description:
@@ -64,12 +65,14 @@ options:
             - Password expiration settings for the user account profile.
             - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
+        required: true
         type: dict
     lockout_constraint:
         description:
             - Account lockout settings for the user account profile.
             - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
+        required: true
         type: dict
     max_concurrent_sessions:
         description:
@@ -136,10 +139,10 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        complexity_constraint=dict(type='dict',),
+        complexity_constraint=dict(type='dict', required=True),
         configpb_attributes=dict(type='dict',),
-        expiration_constraint=dict(type='dict',),
-        lockout_constraint=dict(type='dict',),
+        expiration_constraint=dict(type='dict', required=True),
+        lockout_constraint=dict(type='dict', required=True),
         max_concurrent_sessions=dict(type='int',),
         name=dict(type='str', required=True),
         url=dict(type='str',),
