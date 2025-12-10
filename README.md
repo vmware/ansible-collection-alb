@@ -70,7 +70,7 @@ Support is available for versions of this collection that are published as Red H
 Getting Support
 As Red Hat Ansible Certified Content, this collection is entitled to support through Ansible Automation Platform (AAP) using the Create issue button on the top right corner.
 If a support case cannot be opened with Red Hat, or if the collection was obtained from Galaxy or GitHub, community assistance may be available on the Ansible Forum.
-For users working directly with the source code, bugs, feature requests, and enhancement suggestions may also be submitted through the collection’s GitHub Issues section.
+For users working directly with the source code, bugs, feature requests, and enhancement suggestions may also be submitted through the collection's GitHub Issues section.
 
 ### Modules
 Name | Description
