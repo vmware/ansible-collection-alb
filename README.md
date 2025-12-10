@@ -17,11 +17,6 @@ This collection has been tested against following Ansible versions: **>=2.9.10**
 
 ## Installation and Usage
 
-Ansible must be installed
-```
-pip install ansible
-```
-
 Install ALB collection using `ansible-galaxy` CLI:
 ```
 ansible-galaxy collection install vmware.alb
