@@ -14,6 +14,7 @@ plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license # ignore license check
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license # ignore license check
 plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:missing-gplv3-license # ignore license check
+plugins/lookup/avi.py validate-modules:missing-gplv3-license # ignore license check
 plugins/modules/avi_seproperties.py validate-modules:missing-gplv3-license # ignore license check
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license # ignore license check
 plugins/modules/avi_useraccountprofile.py validate-modules:missing-gplv3-license # ignore license check

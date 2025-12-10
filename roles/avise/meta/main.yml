@@ -1,0 +1,8 @@
+---
+# metadata file for avise vmware role
+galaxy_info:
+  author: Avi Networks <http://avinetworks.com/>
+  description: Configuration for avise
+  role_name: avise
+  min_ansible_version: '2.9'
+  license: Apache 2.0

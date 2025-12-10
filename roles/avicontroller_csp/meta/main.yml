@@ -1,0 +1,8 @@
+---
+# metadata file for avi controller role
+galaxy_info:
+  author: Avi Networks <http://avinetworks.com/>, Avi SDK Team <avi-sdk@avinetworks.com>
+  description: Configuration for avi controller
+  license: Apache 2.0
+  min_ansible_version: '2.9'
+  role_name: avicontroller

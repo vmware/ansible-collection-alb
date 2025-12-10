@@ -236,7 +236,7 @@ EXAMPLES = '''
         is_superuser: true
         default_tenant_ref: "/api/tenant?name=admin"
 
-    - name: User creation
+    - name: New User creation
       vmware.alb.avi_user:
         avi_credentials: "{{ avi_credentials }}"
         name: "testuser"
