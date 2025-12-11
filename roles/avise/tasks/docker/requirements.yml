@@ -242,7 +242,7 @@
         error_string: "ServiceEngine needs minimum 1GB per core, available cores {{ se_cores }} and available memory {{ se_memory_gb }} GB"
 
 - name: Include error tasks
-  ansible.builtin.ansible.builtin.include_tasks: error.yml
+  ansible.builtin.include_tasks: error.yml
   when: se_memory_gb|int < se_cores|int
 
 
@@ -329,7 +329,7 @@
 
 # Moved the include_tasks outside of the block
 - name: Include error tasks
-  ansible.builtin.ansible.builtin.include_tasks: error.yml
+  ansible.builtin.include_tasks: error.yml
   when:
     - failed_port is defined
     - proc_res.stdout is defined  # Optional: if you only want to include error.yml when proc_res.stdout is defined
