@@ -337,10 +337,10 @@ Parameters
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- salesforce, myvmware, systest), basic edition(allowed values-
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- salesforce,myvmware,systest), basic edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - salesforce, myvmware, systest), enterprise with cloud services edition.
+                  - salesforce,myvmware,systest), enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as MYVMWARE.
@@ -746,9 +746,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:

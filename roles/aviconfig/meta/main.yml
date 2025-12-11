@@ -1,8 +1,0 @@
----
-# metadata file for aviconfig role
-galaxy_info:
-  author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
-  description: Configuration for Avi load balancer
-  license: Apache 2.0
-  min_ansible_version: '2.9'
-  role_name: aviconfig

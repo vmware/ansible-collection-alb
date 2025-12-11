@@ -221,7 +221,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The controller site clusters rest api port number.
+                  - The controller site cluster's rest api port number.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-65535.
@@ -312,9 +312,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:

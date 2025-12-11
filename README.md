@@ -17,6 +17,11 @@ This collection has been tested against following Ansible versions: **>=2.9.10**
 
 ## Installation and Usage
 
+Ansible must be installed
+```
+pip install ansible
+```
+
 Install ALB collection using `ansible-galaxy` CLI:
 ```
 ansible-galaxy collection install vmware.alb
@@ -54,18 +59,6 @@ After ALB collection installation we need to install the required python librari
 ```
 pip install -r ~/.ansible/collections/ansible_collections/vmware/alb/requirements.txt
 ```
-
-### Support
-This section provides information about what is supported and how to obtain assistance for this collection.
-The vmware.alb Ansible Collection provides automation for VMware NSX Advanced Load Balancer (ALB) environments, including virtual services, pools, GSLB configuration, networking objects, security policies, service engines, and system-level operations. Some features may require the VMware OVF Tool to be installed on the automation host.
-
-Supported Versions
-Support is available for versions of this collection that are published as Red Hat Ansible Certified Content within the Ansible Automation Platform (AAP). Versions obtained from Ansible Galaxy or GitHub are community-supported.
-
-Getting Support
-As Red Hat Ansible Certified Content, this collection is entitled to support through Ansible Automation Platform (AAP) using the Create issue button on the top right corner.
-If a support case cannot be opened with Red Hat, or if the collection was obtained from Galaxy or GitHub, community assistance may be available on the Ansible Forum.
-For users working directly with the source code, bugs, feature requests, and enhancement suggestions may also be submitted through the collection's GitHub Issues section.
 
 ### Modules
 Name | Description
@@ -207,25 +200,25 @@ Refer [testing](https://github.com/vmware/ansible-collection-alb/blob/30.2.6/tes
 
 Examples
 --------
-- name: Example to create a Pool object
-  hosts: localhost
-    connection: local
-  collections:
-    - vmware.alb
-  tasks:
-    - name: Example to create a Pool object
-      avi_pool:
-        avi_credentials:
-          username: "admin"
-          password: "something"
-          controller: "192.168.15.18"
-          api_version: "21.1.1"
-        name: app1-pool
-        lb_algorithm: LB_ALGORITHM_LEAST_LOAD
-        servers:
-        - ip:
-          addr: "192.168.12.15"
-          type: 'V4'
+
+    - hosts: localhost
+      connection: local
+      collections:
+        - vmware.alb
+      tasks:
+        - name: Example to create a Pool object
+          avi_pool:
+            avi_credentials:
+              username: "admin"
+              password: "something"
+              controller: "192.168.15.18"
+              api_version: "21.1.1"
+            name: app1-pool
+            lb_algorithm: LB_ALGORITHM_LEAST_LOAD
+            servers:
+            - ip:
+                 addr: "192.168.12.15"
+                 type: 'V4'
 
 Example usage of external credentials/variable file while using alb module
 ```
@@ -238,8 +231,7 @@ avi_credentials:
 ```
 ```
 # example.yml
-- name: Deploy Controller
-  hosts: localhost
+- hosts: localhost
   connection: local
   collections:
     - vmware.alb
@@ -270,14 +262,13 @@ avi_config:
 ```
 ```
 # collection.yml
-- name: Deploy Controller
-  hosts: localhost
+- hosts: localhost
   connection: local
   collections:
     - vmware.alb
   tasks:
     - name: Create pool using aviconfig role
-      ansible.builtin.import_role:
+      import_role:
         name: aviconfig
       vars:
           avi_config_file: "config.yml"
