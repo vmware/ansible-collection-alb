@@ -46,31 +46,37 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    configpb_attributes:
+        description:
+            - Protobuf versioning for config pbs.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     description:
         description:
             - Human-readable description of this consolidator.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     name:
         description:
             - The name of this consolidator.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
     script:
         description:
             - Script that consolidates results from all bot decision components.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - The unique identifier of the tenant to which this consolidator belongs.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -80,7 +86,7 @@ options:
         description:
             - A unique identifier for this consolidator.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -127,6 +133,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         name=dict(type='str', required=True),
         script=dict(type='str',),

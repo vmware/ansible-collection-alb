@@ -40,7 +40,7 @@ se_logs_disk_gb: 5
 
 # If se_dpdk set to true, will configure host for DPDK
 se_dpdk: false
-se_dpdk_klms_file: dpdk_klms.tar.gz
+
 se_dpdk_supported_nics: "82599|82598|X540|X710|XL710"
 se_dpdk_pre: ~
 se_dpdk_post: ~
