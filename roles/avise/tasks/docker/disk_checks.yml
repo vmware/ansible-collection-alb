@@ -169,7 +169,7 @@
   when: u_sysdisk_mount.stdout is defined and se_disk_mount.stdout is defined and u_sysdisk_mount.stdout == se_disk_mount.stdout
   become: true
   block:
-    - name: Axecute docker container
+    - name: Execute docker container
       ansible.builtin.command: "{{ se_deploy_type }} exec avise du -s -BG /vol/"
       changed_when: false
       register: check_dir
@@ -236,7 +236,7 @@
   when: u_logdisk_mount.stdout is defined and se_log_mount.stdout is defined and u_logdisk_mount.stdout == se_log_mount.stdout
   become: true
   block:
-    - name: Axecute dokcer container
+    - name: Execute dokcer container
       ansible.builtin.command: "{{ se_deploy_type }} exec avise du -s -BG /vol_logs/"
       changed_when: false
       register: check_dir
@@ -249,7 +249,7 @@
       changed_when: false
       register: temp
       when: check_dir.rc == 0
-    - name: Set se used logsd k
+    - name: Set se used logsdisk
       ansible.builtin.set_fact:
         se_used_logsdisk: "{{ temp.stdout }}"
       changed_when: false
