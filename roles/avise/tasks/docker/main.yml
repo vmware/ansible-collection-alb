@@ -15,4 +15,5 @@
   when: se_action != "verify"
 
 - name: Avi SE actions
-  ansible.builtin.include_tasks: "se_{{ se_action }}.yml"
+  ansible.builtin.include_tasks:
+   file: "se_{{ se_action }}.yml"
