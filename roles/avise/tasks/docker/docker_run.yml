@@ -21,6 +21,8 @@
       ansible.builtin.shell: >
         set -o pipefail && \
         cat {{ service_file }} | sed -n -e 's/^.*docker run //p'
+      args:
+        executable: /bin/bash
       changed_when: false
       register: out
       when: se_deploy_type == "docker"
@@ -28,13 +30,17 @@
       ansible.builtin.shell: >
         set -o pipefail && \
         cat {{ service_file }} | sed -n -e 's/^.*podman run //p'
+      args:
+        executable: /bin/bash
       changed_when: false
       register: out
       when: se_deploy_type == "podman"
     - name: Check for existance of cloud uuid
       ansible.builtin.shell: >
         set -o pipefail && \
-        "echo {{ out.stdout }} | grep CLOUD_UUID="
+        echo {{ out.stdout }} | grep CLOUD_UUID=
+      args:
+        executable: /bin/bash
       changed_when: false
       register: res
       ignore_errors: true
@@ -51,9 +57,11 @@
         path: /usr/sbin/avise
       register: param_file
     - name: Read docker run params
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        cat /usr/sbin/avise | sed -n -e 's/^\s*se_docker_run_params=//p' | tr -d '"'
+      ansible.builtin.shell: |
+          set -o pipefail
+          sed -n 's/^\s*se_docker_run_params=//p' /usr/sbin/avise | tr -d '"'
+      args:
+          executable: /bin/bash
       changed_when: false
       register: out
       when: param_file.stat.exists

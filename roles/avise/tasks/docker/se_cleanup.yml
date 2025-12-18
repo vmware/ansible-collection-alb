@@ -4,9 +4,7 @@
   when: se_action == "cleanup"
 
 - name: Cleanup avise_watcher service
-  when:
-    - ansible_service_mgr != "systemd"
-  failed_when: true
+  when: ansible_service_mgr != "systemd"
   become: true
   block:
     - name: Avi SE | Docker | Cleanup | Stop avise_watcher service
@@ -44,12 +42,11 @@
         - /etc/rc6.d/K99avise_watcher
 
 - name: Cleanup avise_watcher service
-  when:
-    - ansible_service_mgr == "systemd"
-  failed_when: true
+  when: ansible_service_mgr == "systemd"
+  ignore_errors: true
   become: true
   block:
-    - name: Cleanup avise service
+    - name: Cleanup avise_watcher service
       ansible.builtin.service:
         name: avise
         enabled: false
@@ -65,7 +62,7 @@
 
 - name: Cleanup avihost service
   when: ansible_service_mgr == "systemd" and se_action == "cleanup"
-  failed_when: true
+  ignore_errors: true
   become: true
   block:
     - name: Cleanup avihost service
@@ -97,14 +94,14 @@
     - name: Stop and Remove the containers
       ansible.builtin.shell: >
         set -o pipefail && \
-        "{{ se_deploy_type }} stop {{ item }} && {{ se_deploy_type }} rm -f {{ item }}"
+        {{ se_deploy_type }} stop {{ item }} && {{ se_deploy_type }} rm -f {{ item }}
       changed_when: false
       loop:
         - "{{ se_running_containers.stdout_lines }}"
     - name: Get list of docker images
       ansible.builtin.shell: >
         set -o pipefail && \
-        "{{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | awk '{print $3}'"
+        {{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | awk '{print $3}'
       changed_when: false
       register: docker_images
       when: se_action == "cleanup"
@@ -116,6 +113,7 @@
 
 - name: Clean up other files
   become: true
+  ignore_errors: true
   block:
     - name: Clean up other files
       ansible.builtin.file:
@@ -130,5 +128,5 @@
   loop:
     - "{{ se_existing_run_params.split() | map('regex_search', '(.*)opt/avi/se/(.*)') | select('string') | list }}"
   when: se_existing_run_params is defined and se_existing_ver is defined and se_existing_ver == se_version
-  failed_when: true
+  ignore_errors: true
   become: true

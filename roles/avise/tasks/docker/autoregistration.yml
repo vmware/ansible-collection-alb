@@ -71,7 +71,7 @@
 
 - name: "Avi SE | Autoregistration | Append the token to the docker environment variables."
   ansible.builtin.debug:
-    msg: "Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }}"
+    msg: "Received Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }}"
 
 - name: Avi SE | Autoregistration | Get a se group uuid from the Avi Controller of {{ se_group_name }}
   vmware.alb.avi_api_session:

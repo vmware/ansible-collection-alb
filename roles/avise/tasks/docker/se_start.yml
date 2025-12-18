@@ -6,7 +6,7 @@
   become: true
   ansible.builtin.shell: >
     set -o pipefail && \
-    {{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l
+    {{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l || true
   changed_when: false
   register: se_docker_match
 
