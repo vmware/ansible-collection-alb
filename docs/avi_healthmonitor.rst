@@ -5888,6 +5888,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create a HTTPS health monitor
           avi_healthmonitor:

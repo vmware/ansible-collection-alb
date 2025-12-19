@@ -13183,6 +13183,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create a HTTP Policy set two switch between testpool1 and testpool2
           avi_httppolicyset:

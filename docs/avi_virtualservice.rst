@@ -16142,6 +16142,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create SSL Virtual Service using Pool testpool2
           avi_virtualservice:

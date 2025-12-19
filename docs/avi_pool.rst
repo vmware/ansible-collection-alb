@@ -5652,6 +5652,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create a Pool with two servers and HTTP monitor
           avi_pool:

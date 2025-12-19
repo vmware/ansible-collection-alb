@@ -1705,6 +1705,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create a network security policy to block clients represented by ip group known_attackers
           avi_networksecuritypolicy:

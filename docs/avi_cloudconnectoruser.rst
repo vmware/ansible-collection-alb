@@ -803,6 +803,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create a Cloud connector user that is used for integration into cloud platforms
           avi_cloudconnectoruser:

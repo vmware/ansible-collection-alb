@@ -590,6 +590,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create Alert Syslog object to forward all events to external syslog server
           avi_alertsyslogconfig:

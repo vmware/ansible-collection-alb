@@ -707,6 +707,31 @@ Parameters
                 </div>
                                             </td>
     </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vcf_org_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Vcf organization identifier.
+                </div>
+                                <div style="font-size: small">
+                  - This field is automatically populated exclusively for tenants associated with vcf organizations.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
         
     </table>
     <br/>
@@ -726,6 +751,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create Tenant using Service Engines in provider mode
           avi_tenant:

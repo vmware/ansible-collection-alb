@@ -363,6 +363,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create a Microservice Group that can be used for setting up Network security policy
           avi_microservicegroup:

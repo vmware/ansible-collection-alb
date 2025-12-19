@@ -108,6 +108,13 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    vcf_org_id:
+        description:
+            - Vcf organization identifier.
+            - This field is automatically populated exclusively for tenants associated with vcf organizations.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -169,6 +176,7 @@ def main():
         name=dict(type='str', required=True),
         url=dict(type='str',),
         uuid=dict(type='str',),
+        vcf_org_id=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
