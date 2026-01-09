@@ -3091,6 +3091,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create vsvip for virtualservice for newtestvs
           avi_vsvip:

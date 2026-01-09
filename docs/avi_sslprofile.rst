@@ -941,6 +941,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create SSL profile with list of allowed ciphers
           avi_sslprofile:

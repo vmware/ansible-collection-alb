@@ -1047,6 +1047,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create an Application Persistence setting using http cookie.
           avi_applicationpersistenceprofile:

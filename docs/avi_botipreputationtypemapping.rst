@@ -451,6 +451,7 @@ Examples
           password: "avi_password"
           controller: "192.168.138.18"
           api_version: "21.1.1"
+          tenant: "admin"
       tasks:
         - name: Example to create BotIPReputationTypeMapping object
           avi_botipreputationtypemapping:

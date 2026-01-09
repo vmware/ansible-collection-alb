@@ -9984,6 +9984,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: "Create WAF policy"
           avi_wafpolicy:
