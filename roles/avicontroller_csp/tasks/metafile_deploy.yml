@@ -1,11 +1,11 @@
 ---
 - name: Avi Controller | CSP | Metafile deploy | Get CSP version
-  ansible.builtin.uri:
+  uri:
     url: "https://{{ inventory_hostname }}/api/running/resources/resource/{{ con_csp_platform }}"
     method: GET
     user: "{{ con_csp_user }}"
     password: "{{ con_csp_password }}"
-    force_basic_auth: true
+    force_basic_auth: yes
     headers:
       Accept: '*/*'
     validate_certs: false
@@ -15,16 +15,16 @@
   delegate_to: localhost
 
 - name: Avi Controller | CSP | Metafile deploy | Set CSP version
-  ansible.builtin.set_fact:
-    con_csp_resource_info: "{{ con_csp_resource_rsp.content | from_json }}"
+  set_fact:
+    con_csp_resource_info: "{{ con_csp_resource_rsp.content|from_json }}"
 
 - name: Avi Controller | CSP | Metafile deploy | See if the metafile already exists
-  ansible.builtin.uri:
+  uri:
     url: "https://{{ inventory_hostname }}/api/operational/repository/image/{{ con_csp_metafile_name }}/_operations/get_image"
     method: POST
     user: "{{ con_csp_user }}"
     password: "{{ con_csp_password }}"
-    force_basic_auth: true
+    force_basic_auth: yes
     headers:
       Accept: '*/*'
     validate_certs: false
@@ -33,39 +33,31 @@
   register: con_csp_metafile_exists
   delegate_to: localhost
 
-- name: Avi Controller | CSP | Metafile deploy | Get metafile exists content
-  when: con_csp_metafile_exists.status == 200
-  block:
-    - name: Avi Controller | CSP | Metafile deploy | Get metafile exists content
-      ansible.builtin.set_fact:
-        con_csp_metafile_exists_json: "{{ con_csp_metafile_exists.content | from_json }}"
+- block:
 
     - name: Avi Controller | CSP | Metafile deploy | Get metafile exists content
-      ansible.builtin.debug:
-        msg: "Metafile {{ con_csp_metafile_exists_json['question_xml:output']['name'] }} already exists."
+      set_fact:
+        con_csp_metafile_exists_json: "{{ con_csp_metafile_exists.content|from_json }}"
+
+    - debug: msg="Metafile {{ con_csp_metafile_exists_json['question_xml:output']['name'] }} already exists."
       when: con_csp_resource_info['resource:resource'].csp_version >= "02.04"
 
-    - name: Avi Controller | CSP | Metafile deploy | Get metafile exists content
-      ansible.builtin.debug:
-        msg: "Metafile {{ con_csp_metafile_exists_json.output.name }} already exists."
+    - debug: msg="Metafile {{ con_csp_metafile_exists_json.output.name }} already exists."
       when: con_csp_resource_info['resource:resource'].csp_version < "02.04"
 
-- name: Avi Controller | CSP | Metafile deploy | Create metafile
-  when: con_csp_metafile_exists.status != 200
-  block:
+  when: con_csp_metafile_exists.status == 200
+
+- block:
     - name: Avi Controller | CSP | Metafile deploy | Create metafile content
-      ansible.builtin.template:
+      template:
         src: avi_meta_controller.j2
         dest: /tmp/{{ con_csp_metafile_name }}
-        owner: root
-        group: root
-        mode: '0600'
       delegate_to: localhost
       register: con_avi_metafile
-    - name: Avi Controller | CSP | Metafile deploy | Deploy metafile to the CSP device of {{ con_csp_metafile_name }}
-      ansible.builtin.command: >-
+    - name: Avi Controller | CSP | Metafile deploy | Deploy metafile {{ con_csp_metafile_name }} to the CSP device
+      shell: >-
         sshpass -p {{ con_csp_password }} scp -o StrictHostKeyChecking=no /tmp/{{ con_csp_metafile_name }}
         {{ con_csp_user }}@{{ inventory_hostname }}:/osp/repository
-      changed_when: false
       delegate_to: localhost
       failed_when: false
+  when: con_csp_metafile_exists.status != 200

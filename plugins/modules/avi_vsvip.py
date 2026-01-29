@@ -18,8 +18,8 @@ module: avi_vsvip
 author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of VsVip Avi RESTful Object
 description:
-    - This module is used to configure VsVip object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure VsVip object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -175,158 +175,38 @@ options:
             - Field introduced in 17.2.9, 18.1.2.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: str
-    # Fields from avi_common_argument_spec()
-    controller:
-        description:
-            - Avi controller hostname or IP address.
-        type: str
-        required: false
-        default: ""
-    username:
-        description:
-            - Avi username for authentication.
-        type: str
-        required: false
-        default: ""
-    password:
-        description:
-            - Avi password for authentication.
-        type: str
-        required: false
-        default: ""
-    tenant:
-        description:
-            - Tenant name.
-        type: str
-        required: false
-        default: admin
-    tenant_uuid:
-        description:
-            - Tenant UUID.
-        type: str
-        required: false
-        default: ""
-    api_version:
-        description:
-            - Avi API version to use.
-        type: str
-        required: false
-        default: "18.2.6"
-    avi_credentials:
-        description:
-            - Dictionary of Avi credentials (alternative to controller/username/password/token).
-        type: dict
-        required: false
-        suboptions:
-            controller:
-                description: Avi controller hostname or IP address.
-                type: str
-                default: ""
-            username:
-                description: Avi username.
-                type: str
-                default: ""
-            password:
-                description: Avi password.
-                type: str
-                default: ""
-            api_version:
-                description: Avi API version.
-                type: str
-                default: "18.2.6"
-            tenant:
-                description: Tenant name.
-                type: str
-                default: "admin"
-            tenant_uuid:
-                description: Tenant UUID.
-                type: str
-                default: ""
-            port:
-                description: Port of the Avi controller.
-                type: int
-            token:
-                description: Avi API token.
-                type: str
-                default: ""
-            timeout:
-                description: Timeout for API requests (in seconds).
-                type: int
-                default: 300
-            session_id:
-                description: Session ID for authentication.
-                type: str
-                default: ""
-            csrftoken:
-                description: CSRF token for authentication.
-                type: str
-                default: ""
-            ssl_cert:
-                description: SSL certificate path for HTTPS requests.
-                type: str
-                default: ""
-            ssl_key:
-                description: SSL private key path for HTTPS requests.
-                type: str
-                default: ""
-            idp_class:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_token:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_host:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-    api_context:
-        description:
-            - Optional dictionary for API context.
-        type: dict
-        required: false
-    avi_deactivate_session_cache_as_fact:
-        description:
-            - Boolean to deactivate session cache and expose it as an Ansible fact.
-        type: bool
-        required: false
-        default: false
-
+extends_documentation_fragment:
+    - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Create vsvip for virtualservice for newtestvs
-      vmware.alb.avi_vsvip:
-        name: vsvip-newtestvs-Default-Cloud
-        avi_credentials: "{{ avi_credentials }}"
-        api_context: '{{ avi_api_context | default(omit) }}'
-        vrf_context_ref: /api/vrfcontext/?name=global
-        tenant_ref: /api/tenant/?name=admin
-        cloud_ref: /api/cloud/?name=Default-Cloud
-        vip:
-          - vip_id: '1'
-            avi_allocated_fip: false
-            auto_allocate_ip: false
-            enabled: true
-            auto_allocate_floating_ip: false
-            avi_allocated_vip: false
-            auto_allocate_ip_type: V4_ONLY
-            ip_address:
-              type: V4
-              addr: 192.168.138.18
+
+- name: Create vsvip for virtualservice for newtestvs
+  vmware.alb.avi_vsvip:
+    name: vsvip-newtestvs-Default-Cloud
+    avi_credentials: "{{ avi_credentials }}"
+    api_context: '{{avi_api_context | default(omit)}}'
+    vrf_context_ref: /api/vrfcontext/?name=global
+    tenant_ref: /api/tenant/?name=admin
+    cloud_ref: /api/cloud/?name=Default-Cloud
+    vip:
+    - vip_id: '1'
+      avi_allocated_fip: false
+      auto_allocate_ip: false
+      enabled: true
+      auto_allocate_floating_ip: false
+      avi_allocated_vip: false
+      auto_allocate_ip_type: V4_ONLY
+      ip_address:
+        type: V4
+        addr: 192.168.138.18
 """
 
 RETURN = '''
@@ -373,21 +253,7 @@ def main():
         vrf_context_ref=dict(type='str',),
         vsvip_cloud_config_cksum=dict(type='str',),
     )
-    STATIC_COMMON_ARGS = dict(
-        controller=dict(type='str', required=False),
-        username=dict(type='str', required=False),
-        password=dict(type='str', required=False, no_log=True),
-        tenant=dict(type='str', required=False),
-        tenant_uuid=dict(type='str', required=False),
-        api_version=dict(type='str', required=False),
-        avi_credentials=dict(type='dict', required=False),
-        api_context=dict(type='dict', required=False),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
-    )
-    argument_specs.update(STATIC_COMMON_ARGS)
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
-
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

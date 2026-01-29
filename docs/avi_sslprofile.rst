@@ -210,16 +210,19 @@ Parameters
                   - TLS_RSA_WITH_3DES_EDE_CBC_SHA, TLS_AES_256_GCM_SHA384...
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - tls_ecdhe_ecdsa_with_aes_256_gcm_sha384, tls_ecdhe_rsa_with_aes_128_gcm_sha256, tls_ecdhe_rsa_with_aes_256_gcm_sha384, ...), basic edition(allowed
+                  - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,tls_ecdhe_rsa_with_aes_128_gcm_sha256,tls_ecdhe_rsa_with_aes_256_gcm_sha384,tls_ecdhe_ecdsa_with_aes_128_cbc_sha256,tls_ecdhe_ecdsa_with_aes_256_cbc_sha384,tls_ecdhe_rsa_with_aes_128_cbc_sha256,tls_ecdhe_rsa_with_aes_256_cbc_sha384,tls_rsa_with_aes_128_gcm_sha256,tls_rsa_with_aes_256_gcm_sha384,tls_rsa_with_aes_128_cbc_sha256,tls_rsa_with_aes_256_cbc_sha256,tls_ecdhe_ecdsa_with_aes_128_cbc_sha,tls_ecdhe_ecdsa_with_aes_256_cbc_sha,tls_ecdhe_rsa_with_aes_128_cbc_sha,tls_ecdhe_rsa_with_aes_256_cbc_sha,tls_rsa_with_aes_128_cbc_sha,tls_rsa_with_aes_256_cbc_sha,tls_rsa_with_3des_ede_cbc_sha),
                 </div>
                                 <div style="font-size: small">
-                  - values- tls_ecdhe_ecdsa_with_aes_128_gcm_sha256, tls_ecdhe_ecdsa_with_aes_256_gcm_sha384, tls_ecdhe_rsa_with_aes_128_gcm_sha256,
+                  - basic edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - tls_ecdhe_rsa_with_aes_256_gcm_sha384, ...), enterprise with cloud services edition.
+                  - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,tls_ecdhe_rsa_with_aes_128_gcm_sha256,tls_ecdhe_rsa_with_aes_256_gcm_sha384,tls_ecdhe_ecdsa_with_aes_128_cbc_sha256,tls_ecdhe_ecdsa_with_aes_256_cbc_sha384,tls_ecdhe_rsa_with_aes_128_cbc_sha256,tls_ecdhe_rsa_with_aes_256_cbc_sha384,tls_rsa_with_aes_128_gcm_sha256,tls_rsa_with_aes_256_gcm_sha384,tls_rsa_with_aes_128_cbc_sha256,tls_rsa_with_aes_256_cbc_sha256,tls_ecdhe_ecdsa_with_aes_128_cbc_sha,tls_ecdhe_ecdsa_with_aes_256_cbc_sha,tls_ecdhe_rsa_with_aes_128_cbc_sha,tls_ecdhe_rsa_with_aes_256_cbc_sha,tls_rsa_with_aes_128_cbc_sha,tls_rsa_with_aes_256_cbc_sha,tls_rsa_with_3des_ede_cbc_sha),
+                </div>
+                                <div style="font-size: small">
+                  - enterprise with cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -513,7 +516,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Send close notify alert message for a clean shutdown of the ssl connection.
+                  - Send 'close notify' alert message for a clean shutdown of the ssl connection.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -704,9 +707,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -716,46 +718,46 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create SSL profile with list of allowed ciphers
-              avi_sslprofile:
-                avi_credentials: "{{ avi_credentials }}"
-                accepted_ciphers: >
-                  ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA:
-                  ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:
-                  AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:
-                  AES256-SHA:DES-CBC3-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:
-                  ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA
-                accepted_versions:
-                  - type: SSL_VERSION_TLS1
-                  - type: SSL_VERSION_TLS1_1
-                  - type: SSL_VERSION_TLS1_2
-                cipher_enums:
-                  - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-                  - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
-                  - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
-                  - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-                  - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-                  - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-                  - TLS_RSA_WITH_AES_128_GCM_SHA256
-                  - TLS_RSA_WITH_AES_256_GCM_SHA384
-                  - TLS_RSA_WITH_AES_128_CBC_SHA256
-                  - TLS_RSA_WITH_AES_256_CBC_SHA256
-                  - TLS_RSA_WITH_AES_128_CBC_SHA
-                  - TLS_RSA_WITH_AES_256_CBC_SHA
-                  - TLS_RSA_WITH_3DES_EDE_CBC_SHA
-                  - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
-                  - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-                  - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-                  - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-                  - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-                  - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
-                name: PFS-BOTH-RSA-EC
-                send_close_notify: true
-                ssl_rating:
-                  compatibility_rating: SSL_SCORE_EXCELLENT
-                  performance_rating: SSL_SCORE_EXCELLENT
-                  security_score: '100.0'
-                tenant_ref: /api/tenant?name=Demo
+        - name: Create SSL profile with list of allowed ciphers
+          avi_sslprofile:
+            avi_credentials: "{{ avi_credentials }}"
+            accepted_ciphers: >
+              ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA:
+              ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:
+              AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:
+              AES256-SHA:DES-CBC3-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:
+              ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA
+            accepted_versions:
+            - type: SSL_VERSION_TLS1
+            - type: SSL_VERSION_TLS1_1
+            - type: SSL_VERSION_TLS1_2
+            cipher_enums:
+            - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+            - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+            - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+            - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+            - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+            - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+            - TLS_RSA_WITH_AES_128_GCM_SHA256
+            - TLS_RSA_WITH_AES_256_GCM_SHA384
+            - TLS_RSA_WITH_AES_128_CBC_SHA256
+            - TLS_RSA_WITH_AES_256_CBC_SHA256
+            - TLS_RSA_WITH_AES_128_CBC_SHA
+            - TLS_RSA_WITH_AES_256_CBC_SHA
+            - TLS_RSA_WITH_3DES_EDE_CBC_SHA
+            - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+            - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+            - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+            - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+            - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+            - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+            name: PFS-BOTH-RSA-EC
+            send_close_notify: true
+            ssl_rating:
+              compatibility_rating: SSL_SCORE_EXCELLENT
+              performance_rating: SSL_SCORE_EXCELLENT
+              security_score: '100.0'
+            tenant_ref: /api/tenant?name=Demo
 
 
 

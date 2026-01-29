@@ -1,31 +1,30 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
-# getting lint issue here for aviconfig_resource_types:
 ---
 avi_resource_types:
-  - seproperties
   - labelgroup
-  - useraccountprofile
-  - cloudproperties
   - systemlimits
-  - licensestatus
-  - controllerproperties
   - licenseledgerdetails
+  - useraccountprofile
+  - controllerproperties
+  - cloudproperties
+  - licensestatus
+  - seproperties
   - tenant
-  - ipaddrgroup
-  - stringgroup
-  - sslprofile
-  - fileobject
+  - webapput
+  - cloudconnectoruser
   - hardwaresecuritymodulegroup
   - alertscriptconfig
-  - cloudconnectoruser
   - customipamdnsprofile
+  - networkprofile
+  - stringgroup
+  - ipaddrgroup
+  - fileobject
+  - sslprofile
   - applicationpersistenceprofile
   - alertemailconfig
   - snmptrapprofile
   - autoscalelaunchconfig
-  - tenantsystemconfiguration
-  - networkprofile
   - securitypolicy
   - protocolparser
   - jwtserverprofile
@@ -34,80 +33,80 @@ avi_resource_types:
   - testsedatastorelevel3
   - botipreputationtypemapping
   - botconfigconsolidator
+  - tenantsystemconfiguration
   - federationcheckpoint
-  - image
-  - albservicesfileupload
-  - securitymanagerdata
-  - statediffoperation
   - gslbgeodbprofile
+  - albservicesconfig
+  - siteversion
+  - statediffoperation
+  - image
   - taskjournal
-  - webapput
-  - webhook
+  - controllerportalregistration
+  - dynamicdnsrecord
   - role
   - serviceauthprofile
-  - albservicesfiledownload
-  - poolgroupdeploymentpolicy
-  - vsgs
-  - dynamicdnsrecord
-  - siteversion
-  - memorybalancerrequest
-  - inventoryfaultconfig
-  - cluster
-  - controllerportalregistration
-  - albservicesjob
-  - albservicesconfig
   - controllersite
-  - wafprofile
-  - natpolicy
+  - inventoryfaultconfig
+  - albservicesfileupload
+  - webhook
+  - securitymanagerdata
+  - cluster
+  - albservicesfiledownload
+  - vsgs
+  - poolgroupdeploymentpolicy
+  - memorybalancerrequest
+  - albservicesjob
+  - backupconfiguration
+  - clusterclouddetails
+  - certificatemanagementprofile
+  - ipamdnsproviderprofile
   - analyticsprofile
   - wafpolicypsmgroup
+  - wafprofile
   - botmapping
   - csrfpolicy
+  - natpolicy
   - pkiprofile
   - ipreputationdb
   - geodb
-  - certificatemanagementprofile
-  - clusterclouddetails
-  - backupconfiguration
-  - ipamdnsproviderprofile
   - microservicegroup
   - errorpageprofile
   - testsedatastorelevel2
   - gslb
-  - upgradestatussummary
   - statediffsnapshot
   - upgradestatusinfo
+  - upgradestatussummary
   - systemreport
   - authmappingprofile
+  - scheduler
+  - sslkeyandcertificate
   - applicationprofile
   - wafpolicy
   - botdetectionpolicy
-  - sslkeyandcertificate
-  - scheduler
   - networksecuritypolicy
   - testsedatastorelevel1
-  - healthmonitor
-  - cloud
-  - alertsyslogconfig
   - backup
-  - gslbservice
+  - cloud
+  - healthmonitor
+  - alertsyslogconfig
   - vrfcontext
-  - prioritylabels
   - vcenterserver
+  - prioritylabels
   - nsxtsegmentruntime
+  - gslbservice
   - actiongroupconfig
   - availabilityzone
   - alertconfig
   - serverautoscalepolicy
   - network
-  - pool
   - serviceenginegroup
   - serviceenginegroup_advanced
+  - pool
   - trafficcloneprofile
   - vsvip
-  - poolgroup
   - serviceengine
   - networkservice
+  - poolgroup
   - httppolicyset
   - dnspolicy
   - vsdatascriptset

@@ -507,7 +507,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tenant_uuid from dns vss tenant_uuid.
+                  - Tenant_uuid from dns vs's tenant_uuid.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
@@ -682,9 +682,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:

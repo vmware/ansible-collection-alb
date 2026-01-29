@@ -23,8 +23,7 @@
     non_significant_log_throttle: 100
     algo: "PLACEMENT_ALGO_DISTRIBUTED"
   register: result
-- name: "Avi SE Group | Assert Group Created"
-  ansible.builtin.assert:
+- assert:
     that:
       - result is changed
       - result.obj.name == "Test-Default-Group"
@@ -56,8 +55,7 @@
     non_significant_log_throttle: 80
     algo: "PLACEMENT_ALGO_DISTRIBUTED"
   register: updated_result
-- name: "Avi SE Group | Assert Group Updated"
-  ansible.builtin.assert:
+- assert:
     that:
       - updated_result is changed
       - updated_result.obj is defined
@@ -77,8 +75,7 @@
     uuid: "{{ updated_result.obj.uuid }}"
     state: "absent"
   register: delete_result
-- name: "Avi SE Group | Assert Group Deleted"
-  ansible.builtin.assert:
+- assert:
     that:
       - delete_result is changed
       - delete_result.old_obj.name == "Test-Updated-Group"

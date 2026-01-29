@@ -160,7 +160,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Common criteria modes current state.
+                  - Common criteria mode's current state.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
@@ -759,9 +759,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -771,11 +770,19 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
+        - hosts: all
+          vars:
+            avi_credentials:
+              username: "admin"
+              password: "something"
+              controller: "192.168.15.18"
+              api_version: "21.1.1"
+          tasks:
             - name: Example to create SystemConfiguration object
               vmware.alb.avi_systemconfiguration:
                 avi_credentials: "{{ avi_credentials }}"
                 state: present
-                welcome_workflow_complete: true
+                welcome_workflow_complete: True
                 dns_configuration:
                   search_domain: ''
                   server_list:

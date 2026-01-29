@@ -198,7 +198,7 @@ Parameters
                   - By default, port is appended for non-default ports.
                 </div>
                                 <div style="font-size: small">
-                  - This setting will apply for pools rewrite host header to server name, rewrite host header to sni features and servers rewrite host header
+                  - This setting will apply for pool's 'rewrite host header to server name', 'rewrite host header to sni' features and server's 'rewrite host header'
                 </div>
                                 <div style="font-size: small">
                   - settings as well as http healthmonitors attached to pools.
@@ -539,7 +539,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Traffic sent to servers will use this destination server port unless overridden by the servers specific port attribute.
+                  - Traffic sent to servers will use this destination server port unless overridden by the server's specific port attribute.
                 </div>
                                 <div style="font-size: small">
                   - The ssl checkbox enables avi to server encryption.
@@ -1109,7 +1109,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - The load balancing algorithm will pick a server within the pools list of available servers.
+                  - The load balancing algorithm will pick a server within the pool's list of available servers.
                 </div>
                                 <div style="font-size: small">
                   - Values lb_algorithm_nearest_server and lb_algorithm_topology are only allowed for gslb pool.
@@ -1124,13 +1124,13 @@ Parameters
                   - LB_ALGORITHM_CORE_AFFINITY, LB_ALGORITHM_TOPOLOGY.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- lb_algorithm_least_connections, lb_algorithm_round_robin,
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - lb_algorithm_consistent_hash), basic edition(allowed values- lb_algorithm_least_connections, lb_algorithm_round_robin,
+                  - lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash), basic edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - lb_algorithm_consistent_hash), enterprise with cloud services edition.
+                  - lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash), enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as LB_ALGORITHM_LEAST_CONNECTIONS.
@@ -1482,7 +1482,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Manually select the networks and subnets used to provide reachability to the pools servers.
+                  - Manually select the networks and subnets used to provide reachability to the pool's servers.
                 </div>
                                 <div style="font-size: small">
                   - Specify the subnet using the following syntax  10-1-1-0/24.
@@ -2022,7 +2022,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Do not translate the clients destination port when sending the connection to the server.
+                  - Do not translate the client's destination port when sending the connection to the server.
                 </div>
                                 <div style="font-size: small">
                   - Monitor port needs to be specified for health monitors.
@@ -2125,9 +2125,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -2137,35 +2136,35 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create a Pool with two servers and HTTP monitor
-              avi_pool:
-                avi_credentials: "{{ avi_credentials }}"
-                name: testpool1
-                description: testpool1
-                state: present
-                health_monitor_refs:
-                  - '/api/healthmonitor?name=System-HTTP'
-                servers:
-                  - ip:
-                      addr: 192.168.138.11
-                      type: V4
-                  - ip:
-                      addr: 192.168.138.12
-                      type: V4
+        - name: Create a Pool with two servers and HTTP monitor
+          avi_pool:
+            avi_credentials: "{{ avi_credentials }}"
+            name: testpool1
+            description: testpool1
+            state: present
+            health_monitor_refs:
+                - '/api/healthmonitor?name=System-HTTP'
+            servers:
+                - ip:
+                    addr: 192.168.138.11
+                    type: V4
+                - ip:
+                    addr: 192.168.138.12
+                    type: V4
 
-            - name: Patch pool with a single server using patch op and avi_credentials
-              avi_pool:
-                avi_credentials: "{{ avi_credentials }}"
-                avi_api_update_method: patch
-                avi_api_patch_op: delete
-                name: test-pool
-                servers:
-                  - ip:
-                    addr: 192.168.138.13
-                    type: 'V4'
-              register: pool
-              when:
-                - state | default("present") == "present"
+        - name: Patch pool with a single server using patch op and avi_credentials
+          avi_pool:
+            avi_credentials: "{{ avi_credentials }}"
+            avi_api_update_method: patch
+            avi_api_patch_op: delete
+            name: test-pool
+            servers:
+              - ip:
+                addr: 192.168.138.13
+                type: 'V4'
+          register: pool
+          when:
+            - state | default("present") == "present"
 
 
 

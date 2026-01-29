@@ -313,7 +313,7 @@ Parameters
                   - An alert is expired and deleted after the expiry time has elapsed.
                 </div>
                                 <div style="font-size: small">
-                  - The original event triggering the alert remains in the events log.
+                  - The original event triggering the alert remains in the event's log.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-31536000.
@@ -614,9 +614,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
