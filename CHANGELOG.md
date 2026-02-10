@@ -1,5 +1,13 @@
 # Changelog
 
+## 31.2.2
+- No functional changes; version bump only.
+
+## 31.1.2
+- Added the installation of bs4 as a requirement to fix failure of auto… sync pr
+- Fixes ansible module doc
+
+
 ## 30.2.6
 ### Major Changes
 - **Ansible 2.18 Support**: Added support for Ansible 2.18 version
