@@ -1,8 +1,11 @@
 ---
+# @AI-Modified: 2026-01-23 - Fixed file mode to 0640 to address ansible:S2612
 - name: Avi SE | Services | upstart | Deploy the avise service
   ansible.builtin.copy:
     src: upstart/avise.conf
     dest: /etc/init/avise.conf
-    mode: 0644
+    mode: "0640"
+    owner: root
+    group: root
   become: true
   notify: Avi SE | Services | Restart the avise service

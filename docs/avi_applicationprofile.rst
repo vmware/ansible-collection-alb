@@ -18796,6 +18796,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
             - name: Create an Application Profile for HTTP application enabled for SSL traffic
               avi_applicationprofile:

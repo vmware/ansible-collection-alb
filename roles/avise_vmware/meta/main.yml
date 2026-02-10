@@ -1,0 +1,9 @@
+---
+# metadata file for avise_vmware vmware role
+# @AI-Modified: 2026-01-23 - Updated min_ansible_version and changed HTTP to HTTPS to address security hotspots
+galaxy_info:
+  description: Configuration for avise_vmware
+  role_name: avise_vmware
+  author: Avi Networks <https://avinetworks.com/>
+  license: Apache 2.0
+  min_ansible_version: '2.14'

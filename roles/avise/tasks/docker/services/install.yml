@@ -1,16 +1,53 @@
 ---
+# @AI-Modified: 2026-01-23 - Added validation to address security hotspots
 - name: Set container env for non-systemd
   ansible.builtin.set_fact:
     se_env_variables_extras: "{{ se_env_variables_extras + ['NON_SYSTEMD=1'] }}"
   when: ansible_service_mgr != "systemd"
 
+- name: Validate service files path
+  ansible.builtin.assert:
+    that:
+      - se_service_files_path is defined
+      - se_service_files_path | length > 0
+      - "'..' not in se_service_files_path"
+      - se_service_files_path is match('^[a-zA-Z0-9/_.-]*$')
+    fail_msg: "Invalid service files path: {{ se_service_files_path | default('undefined') }}"
+
+# @AI-Modified: 2026-01-23 - Added owner/group and changed mode to address ansible:S2612
 - name: Copy template to remote machine
   ansible.builtin.template:
-    src: "{{ se_service_files_path }}avise.j2"
+    src: "avise.j2"
     dest: /usr/sbin/avise
-    mode: "0755"
+    mode: "0750"
+    owner: root
+    group: root
   become: true
   notify: Avi SE | Services | Restart the avise service
 
-- name: Include the corresponding service
-  ansible.builtin.include_tasks: "{{ ansible_service_mgr }}/install.yml"
+- name: Validate service manager
+  ansible.builtin.assert:
+    that:
+      - ansible_service_mgr is defined
+      - ansible_service_mgr in ['systemd', 'sysvinit', 'upstart', 'openrc', 'service']
+    fail_msg: "Unsupported or invalid service manager: {{ ansible_service_mgr | default('undefined') }}"
+
+- name: Include the corresponding service | systemd
+  ansible.builtin.include_tasks: "systemd/install.yml"
+  when: ansible_service_mgr == 'systemd'
+
+- name: Include the corresponding service | sysvinit
+  ansible.builtin.include_tasks: "sysvinit/install.yml"
+  when: ansible_service_mgr == 'sysvinit'
+
+- name: Include the corresponding service | upstart
+  ansible.builtin.include_tasks: "upstart/install.yml"
+  when: ansible_service_mgr == 'upstart'
+
+- name: Include the corresponding service | openrc
+  ansible.builtin.include_tasks: "openrc/install.yml"
+  when: ansible_service_mgr == 'openrc'
+
+- name: Include the corresponding service | service
+  ansible.builtin.include_tasks: "service/install.yml"
+  when: ansible_service_mgr == 'service'

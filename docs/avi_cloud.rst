@@ -11266,6 +11266,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
             - name: Create a VMware cloud with write access mode
               avi_cloud:

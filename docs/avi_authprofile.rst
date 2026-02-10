@@ -2577,6 +2577,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
             - name: Create user authorization profile based on the LDAP
               avi_authprofile:

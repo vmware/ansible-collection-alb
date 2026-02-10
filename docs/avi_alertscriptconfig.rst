@@ -341,6 +341,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
             - name: Create Alert Script to perform AWS server autoscaling
               avi_alertscriptconfig:
