@@ -54,7 +54,7 @@
   delegate_to: localhost
   when: run_deploy_module is defined
 - name: Avi VMware | Add NIC
-  community.vmware.vmware_guest_network:
+  vmware_guest_network:
     hostname: "{{ vcenter_host | default(omit) }}"
     username: "{{ vcenter_user | default(omit) }}"
     password: "{{ vcenter_password | default(omit) }}"

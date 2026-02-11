@@ -16,6 +16,16 @@ import warnings
 logger = logging.getLogger(__name__)
 warnings.filterwarnings('ignore')
 
+# @AI-Modified: 2026-01-23 - Added constants to avoid duplicating literal strings
+# Log and error message format constants
+STATUS_CODE_MSG_FORMAT = 'Status Code %s msg %s'
+STATUS_CODE_INVALID_SAML_FORMAT = 'Status Code %s msg Invalid SAML credentials %s'
+ERROR_STATUS_CODE_MSG_FORMAT = "Error status code %s msg %s"
+AUTH_USER_PREFIX_FORMAT = 'authenticating user %s prefix %s'
+AUTH_SUCCESS_FORMAT = "authentication success for user %s"
+RETRY_GIVING_UP_FORMAT = "Giving up after %d retries connection failure %s"
+CONTENT_TYPE_JSON = 'application/json'
+
 
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, sessionDict, APIError
@@ -81,9 +91,10 @@ if ApiSession and sessionDict and APIError:
                 saml_controller_url = self.prefix + self.SAML_URL_SUFFIX
                 logger.info("Getting SAML request from url: %s", saml_controller_url)
                 resp = controller_session.get(saml_controller_url, allow_redirects=True)
+                # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                 if resp.status_code != 200:
-                    logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                    raise APIError('Status Code %s msg %s' % (
+                    logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                    raise APIError(STATUS_CODE_MSG_FORMAT % (
                         resp.status_code, resp.text), resp)
                 # Getting IDP session
                 idp_session = requests.Session()
@@ -110,22 +121,25 @@ if ApiSession and sessionDict and APIError:
                                 "sent to IDP.", saml_controller_url)
                     idp_resp = idp_session.post(assertion_url, headers=headers,
                                                 data=saml_data, allow_redirects=False)
+                # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                 if idp_resp.status_code not in (200, 301, 302):
-                    logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                    raise APIError('Status Code %s msg %s' % (
+                    logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                    raise APIError(STATUS_CODE_MSG_FORMAT % (
                         resp.status_code, resp.text), resp)
                 if "SAMLResponse" not in idp_resp.text:
                     # credentials payload for given IDP
                     parsed_uri = urllib.parse.urlparse(assertion_url)
                     auth_url = "{}://{}/SAAS/API/1.0/REST/auth/system/login".format(parsed_uri.scheme, parsed_uri.netloc)
                     auth = {'username': username, 'password': password, 'issueToken': 'true'}
-                    idp_session.headers.update({'content-type': 'application/json'})
-                    idp_session.headers.update({'accept': 'application/json'})
+                    # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
+                    idp_session.headers.update({'content-type': CONTENT_TYPE_JSON})
+                    idp_session.headers.update({'accept': CONTENT_TYPE_JSON})
                     idp_session.verify = False
                     auth_resp = idp_session.post(auth_url, json=auth)
+                    # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                     if auth_resp.status_code != 200:
-                        logger.error('Status Code %s msg %s', auth_resp.status_code, auth_resp.text)
-                        raise APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, auth_resp.status_code, auth_resp.text)
+                        raise APIError(STATUS_CODE_MSG_FORMAT % (
                             auth_resp.status_code, auth_resp.text), auth_resp)
                     json_response = json.loads(auth_resp.content)
                     idp_token = json_response['sessionToken']
@@ -133,9 +147,10 @@ if ApiSession and sessionDict and APIError:
                     idp_session.headers.update({"authorization": basic_auth_header})
                     idp_resp = idp_session.post(assertion_url, headers=headers,
                                                 data=saml_data, allow_redirects=True)
+                    # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                     if idp_resp.status_code not in (200, 301, 302):
-                        logger.error('Status Code %s msg %s', idp_resp.status_code, idp_resp.text)
-                        raise APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, idp_resp.status_code, idp_resp.text)
+                        raise APIError(STATUS_CODE_MSG_FORMAT % (
                             idp_resp.status_code, idp_resp.text), resp)
                     from bs4 import BeautifulSoup
                     saml_resp = BeautifulSoup(idp_resp.text, features="html.parser")
@@ -145,7 +160,8 @@ if ApiSession and sessionDict and APIError:
                         raise APIError("SAML request not generated by controller.")
                 return controller_session, idp_resp
         else:
-            def saml_assertion(self, username, password):
+            # @AI-Modified: 2026-01-23 - Removed unused username/password parameters
+            def saml_assertion(self):
                 return None, None
         if ConnectionError and ChunkedEncodingError:
             def authenticate_session(self):
@@ -159,7 +175,8 @@ if ApiSession and sessionDict and APIError:
                     password = self.avi_credentials.password
                 else:
                     raise APIError("No user password provided")
-                logger.debug('authenticating user %s prefix %s', self.avi_credentials.username, self.prefix)
+                # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
+                logger.debug(AUTH_USER_PREFIX_FORMAT, self.avi_credentials.username, self.prefix)
                 self.cookies.clear()
                 try:
                     # Assert SAML response
@@ -191,16 +208,16 @@ if ApiSession and sessionDict and APIError:
                                 'api': self,
                                 'connected': True
                             }
-                        logger.debug("authentication success for user %s", self.avi_credentials.username)
+                        logger.debug(AUTH_SUCCESS_FORMAT, self.avi_credentials.username)
                         return
                     # Check for bad request and invalid credentials response code
                     elif rsp.status_code in [401, 403]:
-                        logger.error('Status Code %s msg %s', rsp.status_code, rsp.text)
-                        err = APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, rsp.status_code, rsp.text)
+                        err = APIError(STATUS_CODE_MSG_FORMAT % (
                             rsp.status_code, rsp.text), rsp)
                     else:
-                        logger.error("Error status code %s msg %s", rsp.status_code, rsp.text)
-                        err = APIError('Status Code %s msg %s' % (
+                        logger.error(ERROR_STATUS_CODE_MSG_FORMAT, rsp.status_code, rsp.text)
+                        err = APIError(STATUS_CODE_MSG_FORMAT % (
                             rsp.status_code, rsp.text), rsp)
                 except (ConnectionError, SSLError, ChunkedEncodingError) as e:
                     if not self.retry_conxn_errors:
@@ -214,7 +231,7 @@ if ApiSession and sessionDict and APIError:
                 self.num_session_retries += 1
                 if self.num_session_retries > self.max_session_retries:
                     self.num_session_retries = 0
-                    logger.error("Giving up after %d retries connection failure %s", self.max_session_retries, True)
+                    logger.error(RETRY_GIVING_UP_FORMAT, self.max_session_retries, True)
                     raise err
                 self.authenticate_session()
                 return
@@ -310,9 +327,10 @@ if ApiSession and sessionDict and APIError:
                 saml_controller_url = self.prefix + self.SAML_URL_SUFFIX
                 logger.info("Getting SAML request from url: %s", saml_controller_url)
                 resp = controller_session.get(saml_controller_url, allow_redirects=True)
+                # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                 if resp.status_code != 200:
-                    logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                    raise APIError('Status Code %s msg %s' % (
+                    logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                    raise APIError(STATUS_CODE_MSG_FORMAT % (
                         resp.status_code, resp.text), resp)
                 # Getting IDP session
                 idp_session = requests.Session()
@@ -339,48 +357,52 @@ if ApiSession and sessionDict and APIError:
                     idp_resp = idp_session.post(assertion_url, headers=headers,
                                                 data=saml_data,
                                                 allow_redirects=False)
+                # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                 if resp.status_code not in (200, 301, 302):
-                    logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                    raise APIError('Status Code %s msg %s' % (
+                    logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                    raise APIError(STATUS_CODE_MSG_FORMAT % (
                         resp.status_code, resp.text), resp)
                 if "SAMLResponse" not in idp_resp.text:
                     redirect_url = idp_resp.headers['Location']
                     idp_resp = idp_session.get(redirect_url, allow_redirects=False)
+                    # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                     if resp.status_code not in (200, 301, 302):
-                        logger.error('Status Code %s msg %s' , resp.status_code, resp.text)
-                        raise APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                        raise APIError(STATUS_CODE_MSG_FORMAT % (
                             resp.status_code, resp.text), resp)
                     query_string = idp_resp.headers['Location'].split('=')[1]
                     data = {"return": query_string}
                     json_data = json.dumps(data)
-                    headers = {'content-type': 'application/json'}
+                    headers = {'content-type': CONTENT_TYPE_JSON}
                     parsed_uri = urllib.parse.urlparse(assertion_url)
                     # This needs to be modified for other IDPs.
                     auth_url = "{}://{}/access/auth".format(parsed_uri.scheme,
                                                             parsed_uri.netloc)
                     resp = idp_session.post(auth_url, headers=headers,
                                             data=json_data)
+                    # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                     if resp.status_code in [401, 403]:
-                        logger.error('Status Code %s msg Invalid SAML credentials %s', resp.status_code, resp.text)
-                        raise APIError('Status Code %s msg Invalid SAML credentials %s' % (resp.status_code, resp.text), resp)
+                        logger.error(STATUS_CODE_INVALID_SAML_FORMAT, resp.status_code, resp.text)
+                        raise APIError(STATUS_CODE_INVALID_SAML_FORMAT % (resp.status_code, resp.text), resp)
                     elif resp.status_code != 200:
-                        logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                        raise APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                        raise APIError(STATUS_CODE_MSG_FORMAT % (
                             resp.status_code, resp.text), resp)
                     # credentials payload for given IDP
                     credentials_tuple = [('username', 'login', username), ('password', 'password', password)]
+                    # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                     for state in credentials_tuple:
                         bearer = "Bearer " + resp.text.split('jwt":"')[1][:-3]
-                        headers = {'content-type': 'application/json', 'authorization': bearer}
+                        headers = {'content-type': CONTENT_TYPE_JSON, 'authorization': bearer}
                         user_data = {'state': state[0], 'payload': {state[1]: state[2]}}
                         json_data = json.dumps(user_data)
                         resp = idp_session.put(auth_url, headers=headers, data=json_data)
                         if resp.status_code in [401, 403]:
-                            logger.error('Status Code %s msg Invalid SAML credentials %s', resp.status_code, resp.text)
-                            raise APIError('Status Code %s msg Invalid SAML credentials %s' % (resp.status_code, resp.text), resp)
+                            logger.error(STATUS_CODE_INVALID_SAML_FORMAT, resp.status_code, resp.text)
+                            raise APIError(STATUS_CODE_INVALID_SAML_FORMAT % (resp.status_code, resp.text), resp)
                         elif resp.status_code != 200:
-                            logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                            raise APIError('Status Code %s msg %s' % (resp.status_code, resp.text), resp)
+                            logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                            raise APIError(STATUS_CODE_MSG_FORMAT % (resp.status_code, resp.text), resp)
                     data = json.loads(resp.text)
                     try:
                         token = data["request"]["params"]["saml_request_params_token"]
@@ -389,13 +411,15 @@ if ApiSession and sessionDict and APIError:
                     url = data["request"]["uri"]
                     params = {'saml_request_params_token': token}
                     resp = idp_session.get(url, params=params)
+                    # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                     if resp.status_code != 200:
-                        logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                        raise APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                        raise APIError(STATUS_CODE_MSG_FORMAT % (
                             resp.status_code, resp.text), resp)
                 return controller_session, resp
         else:
-            def saml_assertion(self, username, password):
+            # @AI-Modified: 2026-01-23 - Removed unused username/password parameters
+            def saml_assertion(self):
                 return None, None
 
         if ConnectionError and ChunkedEncodingError:
@@ -410,7 +434,8 @@ if ApiSession and sessionDict and APIError:
                     password = self.avi_credentials.password
                 else:
                     raise APIError("No user password provided")
-                logger.debug('authenticating user %s prefix %s', self.avi_credentials.username, self.prefix)
+                # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
+                logger.debug(AUTH_USER_PREFIX_FORMAT, self.avi_credentials.username, self.prefix)
                 self.cookies.clear()
                 try:
                     # Assert SAML response
@@ -439,16 +464,16 @@ if ApiSession and sessionDict and APIError:
                                 'api': self,
                                 'connected': True
                             }
-                        logger.debug("authentication success for user %s", self.avi_credentials.username)
+                        logger.debug(AUTH_SUCCESS_FORMAT, self.avi_credentials.username)
                         return
                     # Check for bad request and invalid credentials response code
                     elif rsp.status_code in [401, 403]:
-                        logger.error('Status Code %s msg %s', rsp.status_code, rsp.text)
-                        err = APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, rsp.status_code, rsp.text)
+                        err = APIError(STATUS_CODE_MSG_FORMAT % (
                             rsp.status_code, rsp.text), rsp)
                     else:
-                        logger.error("Error status code %s msg %s", rsp.status_code, rsp.text)
-                        err = APIError('Status Code %s msg %s' % (
+                        logger.error(ERROR_STATUS_CODE_MSG_FORMAT, rsp.status_code, rsp.text)
+                        err = APIError(STATUS_CODE_MSG_FORMAT % (
                             rsp.status_code, rsp.text), rsp)
                 except (ConnectionError, SSLError, ChunkedEncodingError) as e:
                     if not self.retry_conxn_errors:
@@ -462,7 +487,7 @@ if ApiSession and sessionDict and APIError:
                 self.num_session_retries += 1
                 if self.num_session_retries > self.max_session_retries:
                     self.num_session_retries = 0
-                    logger.error("Giving up after %d retries connection failure %s", self.max_session_retries, True)
+                    logger.error(RETRY_GIVING_UP_FORMAT, self.max_session_retries, True)
                     raise err
                 self.authenticate_session()
                 return
@@ -557,9 +582,10 @@ if ApiSession and sessionDict and APIError:
                 saml_controller_url = self.prefix + self.SAML_URL_SUFFIX
                 logger.info("Getting SAML request from url: %s", saml_controller_url)
                 resp = controller_session.get(saml_controller_url, allow_redirects=True)
+                # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                 if resp.status_code != 200:
-                    logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                    raise APIError('Status Code %s msg %s' % (
+                    logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                    raise APIError(STATUS_CODE_MSG_FORMAT % (
                         resp.status_code, resp.text), resp)
                 saml_request_match = re.search(OktaSAMLApiSession.saml_request_regex, resp.text, re.M | re.S)
                 if not saml_request_match:
@@ -587,9 +613,10 @@ if ApiSession and sessionDict and APIError:
                     logger.info("Controller url %s generated SAML request is being "
                                 "sent to IDP.", saml_controller_url)
                     resp = idp_session.get(assertion_url, allow_redirects=False)
+                # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                 if resp.status_code not in (200, 301, 302):
-                    logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                    raise APIError('Status Code %s msg %s' % (
+                    logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                    raise APIError(STATUS_CODE_MSG_FORMAT % (
                         resp.status_code, resp.text), resp)
                 if "SAMLResponse" not in resp.text:
                     user_data = {"username": username,
@@ -597,16 +624,17 @@ if ApiSession and sessionDict and APIError:
                                              "multiOptionalFactorEnroll": True},
                                  "password": password}
                     json_data = json.dumps(user_data)
-                    headers = {'content-type': 'application/json'}
+                    # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
+                    headers = {'content-type': CONTENT_TYPE_JSON}
                     resp = idp_session.post(base_url + "/api/v1/authn",
                                             headers=headers,
                                             data=json_data)
                     if resp.status_code in [401, 403]:
-                        logger.error('Status Code %s msg Invalid SAML credentials %s', resp.status_code, resp.text)
-                        raise APIError('Status Code %s msg Invalid SAML credentials %s' % (resp.status_code, resp.text), resp)
+                        logger.error(STATUS_CODE_INVALID_SAML_FORMAT, resp.status_code, resp.text)
+                        raise APIError(STATUS_CODE_INVALID_SAML_FORMAT % (resp.status_code, resp.text), resp)
                     elif resp.status_code != 200:
-                        logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                        raise APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                        raise APIError(STATUS_CODE_MSG_FORMAT % (
                             resp.status_code, resp.text), resp)
                     data = json.loads(resp.text)
                     try:
@@ -619,13 +647,15 @@ if ApiSession and sessionDict and APIError:
                               'token': token,
                               'redirectUrl': redirect_url}
                     resp = idp_session.get(new_url, params=params, allow_redirects=True)
+                    # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
                     if resp.status_code not in (200, 301, 302):
-                        logger.error('Status Code %s msg %s', resp.status_code, resp.text)
-                        raise APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, resp.status_code, resp.text)
+                        raise APIError(STATUS_CODE_MSG_FORMAT % (
                             resp.status_code, resp.text), resp)
                 return controller_session, resp
         else:
-            def saml_assertion(self, username, password):
+            # @AI-Modified: 2026-01-23 - Removed unused username/password parameters
+            def saml_assertion(self):
                 return None, None
 
         if ConnectionError and ChunkedEncodingError:
@@ -640,7 +670,8 @@ if ApiSession and sessionDict and APIError:
                     password = self.avi_credentials.password
                 else:
                     raise APIError("No user password provided")
-                logger.debug('authenticating user %s prefix %s', self.avi_credentials.username, self.prefix)
+                # @AI-Modified: 2026-01-23 - Use constants for duplicated literals
+                logger.debug(AUTH_USER_PREFIX_FORMAT, self.avi_credentials.username, self.prefix)
                 self.cookies.clear()
                 try:
                     # Assert SAML response
@@ -674,17 +705,17 @@ if ApiSession and sessionDict and APIError:
                                 'api': self,
                                 'connected': True
                             }
-                        logger.debug("authentication success for user %s", self.avi_credentials.username)
+                        logger.debug(AUTH_SUCCESS_FORMAT, self.avi_credentials.username)
                         return
                     # Check for bad request and invalid credentials response code
                     elif rsp.status_code in [401, 403]:
-                        logger.error('Status Code %s msg %s', rsp.status_code, rsp.text)
-                        err = APIError('Status Code %s msg %s' % (
+                        logger.error(STATUS_CODE_MSG_FORMAT, rsp.status_code, rsp.text)
+                        err = APIError(STATUS_CODE_MSG_FORMAT % (
                             rsp.status_code, rsp.text), rsp)
                         raise err
                     else:
-                        logger.error("Error status code %s msg %s", rsp.status_code, rsp.text)
-                        err = APIError('Status Code %s msg %s' % (
+                        logger.error(ERROR_STATUS_CODE_MSG_FORMAT, rsp.status_code, rsp.text)
+                        err = APIError(STATUS_CODE_MSG_FORMAT % (
                             rsp.status_code, rsp.text), rsp)
                 except (ConnectionError, SSLError, ChunkedEncodingError) as e:
                     if not self.retry_conxn_errors:
@@ -698,7 +729,7 @@ if ApiSession and sessionDict and APIError:
                 self.num_session_retries += 1
                 if self.num_session_retries > self.max_session_retries:
                     self.num_session_retries = 0
-                    logger.error("Giving up after %d retries connection failure %s", self.max_session_retries, True)
+                    logger.error(RETRY_GIVING_UP_FORMAT, self.max_session_retries, True)
                     raise err
                 self.authenticate_session()
                 return

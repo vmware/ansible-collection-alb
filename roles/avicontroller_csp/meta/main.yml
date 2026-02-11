@@ -1,0 +1,9 @@
+---
+# metadata file for avi controller role
+# @AI-Modified: 2026-01-23 - Updated min_ansible_version and changed HTTP to HTTPS to address security hotspots
+galaxy_info:
+  author: Avi Networks <https://avinetworks.com/>, Avi SDK Team <avi-sdk@avinetworks.com>
+  description: Configuration for avi controller
+  license: Apache 2.0
+  min_ansible_version: '2.14'
+  role_name: avicontroller

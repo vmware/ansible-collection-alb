@@ -611,6 +611,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
             - name: Create Tenant using Service Engines in provider mode
               avi_tenant:

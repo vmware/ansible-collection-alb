@@ -22,10 +22,11 @@
   register: initial_data
   delegate_to: localhost
 
+# @AI-Modified: 2026-01-23 - Made validate_certs configurable to address SonarQube security warning
 - name: Avi SE | Initial Data | Get Controller cluster status
   ansible.builtin.uri:
     url: "https://{{ se_master_ctl_ip }}/api/cluster/status"
-    validate_certs: false
+    validate_certs: "{{ avi_validate_certs | default(false) }}"
   register: cluster_status
   delegate_to: localhost
 

@@ -1,0 +1,10 @@
+# Binary dependencies for vmware.alb collection
+# OVF Tool is required for deploying VMs to VMware vCenter
+# Download from: https://developer.vmware.com/web/tool/ovf-tool
+#
+# Note: ovftool is a proprietary VMware binary and must be installed separately
+# It is not available through standard package managers
+
+# The following line documents the requirement but cannot be automatically installed
+# Users must download and install ovftool manually from VMware
+ovftool [platform:rpm platform:dpkg doc]

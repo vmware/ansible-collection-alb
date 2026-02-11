@@ -1,6 +1,6 @@
 ---
 - name: Avi SE | VMware | Find VM Folder
-  community.vmware.vmware_guest_find:
+  vmware_guest_find:
     hostname: "{{ vcenter_host }}"
     username: "{{ vcenter_user }}"
     password: "{{ vcenter_password }}"
@@ -10,7 +10,7 @@
   register: vm_facts
 
 - name: Avi SE | VMware | Get VM Info
-  community.vmware.vmware_vm_info:
+  vmware_vm_info:
     hostname: '{{ vcenter_host }}'
     username: '{{ vcenter_user }}'
     password: '{{ vcenter_password }}'

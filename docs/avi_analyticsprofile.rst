@@ -4389,6 +4389,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
             - name: Create a custom Analytics profile object
               avi_analyticsprofile:
