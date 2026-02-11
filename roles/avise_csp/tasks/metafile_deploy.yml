@@ -1,11 +1,11 @@
 ---
 - name: Avi SE | CSP | Metafile deploy | See if the metafile already exists
-  ansible.builtin.uri:
+  uri:
     url: "https://{{ se_csp_host }}/api/operational/repository/image/{{ se_csp_metafile_name }}/_operations/get_image"
     method: POST
     user: "{{ se_csp_user }}"
     password: "{{ se_csp_password }}"
-    force_basic_auth: true
+    force_basic_auth: yes
     headers:
       Accept: '*/*'
     validate_certs: false
@@ -14,37 +14,28 @@
   register: se_avi_metafile_exists
   delegate_to: localhost
 
-- name: Avi SE | CSP | Metafile deploy | Debug metafile existence
-  ansible.builtin.debug:
-    msg: "Metafile {{ se_avi_metafile_exists_json.output.name }} already exists."
+- debug: msg="Metafile {{ se_avi_metafile_exists_json.output.name }} already exists."
   vars:
-    se_avi_metafile_exists_json: "{{ se_avi_metafile_exists.content | from_json }}"
+    se_avi_metafile_exists_json: "{{ se_avi_metafile_exists.content|from_json }}"
   when: se_avi_metafile_exists.status == 200 and se_csp_resource_info['resource:resource'].csp_version is version_compare("02.04", "<")
 
-- name: Avi SE | CSP | Metafile deploy | Debug metafile existence (new version)
-  ansible.builtin.debug:
-    msg: "Metafile {{ se_avi_metafile_exists_json['question_xml:output']['name'] }} already exists."
+- debug: msg="Metafile {{ se_avi_metafile_exists_json['question_xml:output']['name'] }} already exists."
   vars:
-    se_avi_metafile_exists_json: "{{ se_avi_metafile_exists.content | from_json }}"
+    se_avi_metafile_exists_json: "{{ se_avi_metafile_exists.content|from_json }}"
   when: se_avi_metafile_exists.status == 200 and se_csp_resource_info['resource:resource'].csp_version is version_compare("02.04", ">=")
 
-- name: Avi SE | CSP | Metafile deploy | Create metafile
-  when: se_avi_metafile_exists.status != 200
-  block:
+- block:
     - name: Avi SE | CSP | Metafile deploy | Autoregistration
-      ansible.builtin.include_tasks: ../autoregistration.yml
+      include: ../autoregistration.yml
       when: se_autoregister
     - name: Avi SE | CSP | Metafile deploy | Create metafile content
-      ansible.builtin.template:
+      template:
         src: avi_meta_se.j2
         dest: /tmp/{{ se_csp_metafile_name }}
-        owner: root
-        group: root
-        mode: '0600'
       delegate_to: localhost
       register: se_avi_metafile
-    - name: Avi SE | CSP | Metafile deploy | Deploy metafile to the CSP device of {{ se_csp_metafile_name }}
-      ansible.builtin.command: sshpass -p {{ se_csp_password }} scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /tmp/{{ se_csp_metafile_name }} {{ se_csp_user }}@{{ se_csp_host }}:/osp/repository
-      changed_when: false
+    - name: Avi SE | CSP | Metafile deploy | Deploy metafile {{ se_csp_metafile_name }} to the CSP device
+      shell: sshpass -p {{ se_csp_password }} scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /tmp/{{ se_csp_metafile_name }} {{ se_csp_user }}@{{ se_csp_host }}:/osp/repository
       delegate_to: localhost
       failed_when: false
+  when: se_avi_metafile_exists.status != 200

@@ -1,7 +1,4 @@
 ---
 # Deactivate and stop firewalld as it will break the SE
 - name: Avi SE | Prepare | Deactivate and stop Firewalld
-  ansible.builtin.service:
-    name: "firewalld"
-    state: "stopped"
-    enabled: false
+  service: name="firewalld" state="stopped" enabled="no"

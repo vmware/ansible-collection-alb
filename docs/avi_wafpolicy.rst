@@ -452,7 +452,7 @@ Parameters
                   - Enable dynamic regex generation for positive security model rules.
                 </div>
                                 <div style="font-size: small">
-                  - This is an experimental feature and shouldnt be used in production.
+                  - This is an experimental feature and shouldn't be used in production.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
@@ -481,7 +481,7 @@ Parameters
                   - Waf policy failure mode.
                 </div>
                                 <div style="font-size: small">
-                  - This can be open or closed.
+                  - This can be 'open' or 'closed'.
                 </div>
                                 <div style="font-size: small">
                   - Enum options - WAF_FAILURE_MODE_OPEN, WAF_FAILURE_MODE_CLOSED.
@@ -960,9 +960,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -972,37 +971,37 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: "Create WAF policy"
-              avi_wafpolicy:
-                avi_credentials: "{{ avi_credentials }}"
-                name: "vs1-waf-policy"
-                mode: "WAF_MODE_DETECTION_ONLY"
-                paranoia_level: "WAF_PARANOIA_LEVEL_LOW"
-                failure_mode: "WAF_FAILURE_MODE_OPEN"
-                crs_overrides:
-                  - name: "CRS_933_Application_Attack_PHP"
-                    enable: true
-                waf_profile_ref: "/api/wafprofile/?name=System-WAF-Profile"
-                waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
+        - name: "Create WAF policy"
+          avi_wafpolicy:
+            avi_credentials: "{{ avi_credentials }}"
+            name: "vs1-waf-policy"
+            mode: "WAF_MODE_DETECTION_ONLY"
+            paranoia_level: "WAF_PARANOIA_LEVEL_LOW"
+            failure_mode: "WAF_FAILURE_MODE_OPEN"
+            crs_overrides:
+              - name: "CRS_933_Application_Attack_PHP"
+                enable: true
+            waf_profile_ref: "/api/wafprofile/?name=System-WAF-Profile"
+            waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
 
-            - name: "Reset WAF CRS"
-              avi_wafpolicy:
-                avi_credentials: "{{ avi_credentials }}"
-                name: "vs1-waf-policy"
-                avi_api_update_method: "patch"
-                avi_api_patch_op: "replace"
-                waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
-                crs_overrides: []
-                waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
+        - name: "Reset WAF CRS"
+          avi_wafpolicy:
+            avi_credentials: "{{ avi_credentials }}"
+            name: "vs1-waf-policy"
+            avi_api_update_method: "patch"
+            avi_api_patch_op: "replace"
+            waf_crs_ref: "/api/wafcrs?name=CRS-2021-1"
+            crs_overrides: []
+            waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
 
-            - name: "Change Paranoia-Level to HIGH"
-              avi_wafpolicy:
-                avi_credentials: "{{ avi_credentials }}"
-                name: "vs1-waf-policy"
-                avi_api_update_method: "patch"
-                avi_api_patch_op: "replace"
-                paranoia_level: "WAF_PARANOIA_LEVEL_HIGH"
-                waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
+        - name: "Change Paranoia-Level to HIGH"
+          avi_wafpolicy:
+            avi_credentials: "{{ avi_credentials }}"
+            name: "vs1-waf-policy"
+            avi_api_update_method: "patch"
+            avi_api_patch_op: "replace"
+            paranoia_level: "WAF_PARANOIA_LEVEL_HIGH"
+            waf_profile_ref: "/api/wafprofile/?name=vs1-waf-profile"
 
 
 

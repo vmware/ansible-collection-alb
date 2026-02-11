@@ -167,18 +167,19 @@ options:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: localhost
+- hosts: localhost
   connection: local
+  collections:
+    - vmware.alb
   tasks:
     - name: Avi Controller | VMware | Configure VMware controller
-      ansible.builtin.import_role:
+      import_role:
         name: avicontroller_vmware
       vars:
         ovftool_path: /usr/lib/vmware-ovftool
-        vcenter_host: host
-        vcenter_user: user
-        vcenter_password: password
+        vcenter_host: '{{ vcenter_host }}'
+        vcenter_user: '{{ vcenter_user }}'
+        vcenter_password: '{{ vcenter_password }}'
         con_datacenter: 10GTest
         con_cluster: Arista
         con_mgmt_network: Mgmt_Ntwk_3
@@ -303,7 +304,7 @@ def get_ds(dc, name):
         try:
             if ds.name == name:
                 return ds
-        except Exception:  # Ignore datastores that have issues
+        except:  # Ignore datastores that have issues
             pass
     raise Exception("Failed to find %s on datacenter %s" % (name, dc.name))
 
@@ -328,7 +329,7 @@ def get_largest_free_ds(cl):
             if free_space > largest_free and ds.summary.accessible:
                 largest_free = free_space
                 largest = ds
-        except Exception:  # Ignore datastores that have issues
+        except:  # Ignore datastores that have issues
             pass
     if largest is None:
         raise Exception('Failed to find any free datastores on %s' % cl.name)
@@ -757,10 +758,10 @@ def main():
             'avi.default-gw.CONTROLLER', module.params['con_default_gw']))
 
     command_tokens.append('--prop:%s=%s' % (
-        'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
+            'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
 
     command_tokens.append('--prop:%s=%s' % (
-        'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
+            'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
     if module.params.get('con_sysadmin_public_key', None):
         command_tokens.append('--prop:%s=%s' % (

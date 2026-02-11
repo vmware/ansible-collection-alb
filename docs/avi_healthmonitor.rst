@@ -462,7 +462,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - This field describes the objects replication scope.
+                  - This field describes the object's replication scope.
                 </div>
                                 <div style="font-size: small">
                   - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
@@ -927,13 +927,13 @@ Parameters
                   - HEALTH_MONITOR_LDAP, HEALTH_MONITOR_LDAPS...
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- health_monitor_ping, health_monitor_tcp, health_monitor_udp),
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp),
                 </div>
                                 <div style="font-size: small">
-                  - basic edition(allowed values- health_monitor_ping, health_monitor_tcp, health_monitor_udp, health_monitor_http, ...), enterprise with cloud
+                  - basic edition(allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp,health_monitor_http,health_monitor_https), enterprise with
                 </div>
                                 <div style="font-size: small">
-                  - services edition.
+                  - cloud services edition.
                 </div>
                                             </td>
         </tr>
@@ -1000,9 +1000,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -1012,20 +1011,20 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create a HTTPS health monitor
-              avi_healthmonitor:
-                avi_credentials: "{{ avi_credentials }}"
-                https_monitor:
-                  http_request: HEAD / HTTP/1.0
-                  http_response_code:
-                    - HTTP_2XX
-                    - HTTP_3XX
-                receive_timeout: 4
-                failed_checks: 3
-                send_interval: 10
-                successful_checks: 3
-                type: HEALTH_MONITOR_HTTPS
-                name: MyWebsite-HTTPS
+        - name: Create a HTTPS health monitor
+          avi_healthmonitor:
+            avi_credentials: "{{ avi_credentials }}"
+            https_monitor:
+              http_request: HEAD / HTTP/1.0
+              http_response_code:
+                - HTTP_2XX
+                - HTTP_3XX
+            receive_timeout: 4
+            failed_checks: 3
+            send_interval: 10
+            successful_checks: 3
+            type: HEALTH_MONITOR_HTTPS
+            name: MyWebsite-HTTPS
 
 
 

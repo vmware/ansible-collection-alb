@@ -1,32 +1,24 @@
 ---
 # Verify if firewalld service is installed/present
 - name: Avi Controller | Docker | Family | Verify Firewalld is present
-  ansible.builtin.systemd:
-    name: firewalld
+  command: systemctl is-enabled firewalld  # noqa 303
   register: result
   failed_when: false
   changed_when: false
 
 # Disable and stop firewalld
 - name: Avi Controller | Docker | Family | Disable and stop Firewalld
-  ansible.builtin.service:
-    name: "firewalld"
-    state: "stopped"
-    enabled: false
-  when: result.status == "enabled"
+  service: name="firewalld" state="stopped" enabled="no"
+  when: result.stdout == "enabled"
 
 # Verify if snmpd service is installed/present and enable
 - name: Avi Controller | Docker | Family | Verify snmpd is present
-  ansible.builtin.systemd:
-    name: snmpd
+  command: systemctl is-enabled snmpd  # noqa 303
   register: snmpd_result
   failed_when: false
   changed_when: false
 
 # Disable and stop snmpd
 - name: Avi Controller | Docker | Family | Disable and stop snmpd
-  ansible.builtin.service:
-    name: "snmpd"
-    state: "stopped"
-    enabled: false
-  when: snmpd_result.status == "enabled"
+  service: name="snmpd" state="stopped" enabled="no"
+  when: snmpd_result.stdout == "enabled"
