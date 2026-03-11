@@ -42,182 +42,61 @@ options:
         default: present
         choices: ["absent","present"]
         type: str
-    # Fields from avi_common_argument_spec()
-    controller:
-        description:
-            - Avi controller hostname or IP address.
-        type: str
-        required: false
-        default: ""
-    username:
-        description:
-            - Avi username for authentication.
-        type: str
-        required: false
-        default: ""
-    password:
-        description:
-            - Avi password for authentication.
-        type: str
-        required: false
-        default: ""
-    tenant:
-        description:
-            - Tenant name.
-        type: str
-        required: false
-        default: admin
-    tenant_uuid:
-        description:
-            - Tenant UUID.
-        type: str
-        required: false
-        default: ""
-    api_version:
-        description:
-            - Avi API version to use.
-        type: str
-        required: false
-        default: "18.2.6"
-    avi_credentials:
-        description:
-            - Dictionary of Avi credentials (alternative to controller/username/password/token).
-        type: dict
-        required: false
-        suboptions:
-            controller:
-                description: Avi controller hostname or IP address.
-                type: str
-                default: ""
-            username:
-                description: Avi username.
-                type: str
-                default: ""
-            password:
-                description: Avi password.
-                type: str
-                default: ""
-            api_version:
-                description: Avi API version.
-                type: str
-                default: "18.2.6"
-            tenant:
-                description: Tenant name.
-                type: str
-                default: "admin"
-            tenant_uuid:
-                description: Tenant UUID.
-                type: str
-                default: ""
-            port:
-                description: Port of the Avi controller.
-                type: int
-            token:
-                description: Avi API token.
-                type: str
-                default: ""
-            timeout:
-                description: Timeout for API requests (in seconds).
-                type: int
-                default: 300
-            session_id:
-                description: Session ID for authentication.
-                type: str
-                default: ""
-            csrftoken:
-                description: CSRF token for authentication.
-                type: str
-                default: ""
-            ssl_cert:
-                description: SSL certificate path for HTTPS requests.
-                type: str
-                default: ""
-            ssl_key:
-                description: SSL private key path for HTTPS requests.
-                type: str
-                default: ""
-            idp_class:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_token:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_host:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-    api_context:
-        description:
-            - Optional dictionary for API context.
-        type: dict
-        required: false
-    avi_deactivate_session_cache_as_fact:
-        description:
-            - Boolean to deactivate session cache and expose it as an Ansible fact.
-        type: bool
-        required: false
-        default: false
-
-
+extends_documentation_fragment:
+    - vmware.alb.avi
 '''
 
 EXAMPLES = '''
-- name: Patch GSLB Service to add a new member and group
-  hosts: all
-  vars:
-    avi_credentials:
-      username: "{{ username }}"
-      password: "{{ password }}"
-      controller: "{{ controller }}"
-      api_version: "{{ api_version }}"
-  tasks:
-    - name: Patch GSLB Service to add a new member and group
-      vmware.alb.avi_gslbservice_patch_member:
-        avi_credentials: "{{ avi_credentials }}"
-        name: gs-3
-        api_version: 17.2.1
-        data:
-          group:
-            name: newfoo
-            priority: 60
-            members:
-              - enabled: true
-                ip:
-                  addr: 10.30.10.66
-                  type: V4
-                ratio: 3
+  - hosts: all
+    vars:
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
 
-    - name: Patch GSLB Service to delete an existing member
-      vmware.alb.avi_gslbservice_patch_member:
-        avi_credentials: "{{ avi_credentials }}"
-        name: gs-3
-        state: absent
-        api_version: 17.2.1
-        data:
-          group:
-            name: newfoo
-            members:
-              - enabled: true
-                ip:
-                  addr: 10.30.10.68
-                  type: V4
-                ratio: 3
+  - name: Patch GSLB Service to add a new member and group
+    vmware.alb.avi_gslbservice_patch_member:
+      avi_credentials: "{{ avi_credentials }}"
+      name: gs-3
+      api_version: 17.2.1
+      data:
+        group:
+          name: newfoo
+          priority: 60
+          members:
+            - enabled: true
+              ip:
+                addr:  10.30.10.66
+                type: V4
+              ratio: 3
 
-    - name: Update priority of GSLB Service Pool
-      vmware.alb.avi_gslbservice_patch_member:
-        avi_credentials: "{{ avi_credentials }}"
-        name: gs-3
-        state: present
-        api_version: 17.2.1
-        data:
-          group:
-            name: newfoo
-            priority: 42
+  - name: Patch GSLB Service to delete an existing member
+    vmware.alb.avi_gslbservice_patch_member:
+      avi_credentials: "{{ avi_credentials }}"
+      name: gs-3
+      state: absent
+      api_version: 17.2.1
+      data:
+        group:
+          name: newfoo
+          members:
+            - enabled: true
+              ip:
+                addr:  10.30.10.68
+                type: V4
+              ratio: 3
+
+  - name: Update priority of GSLB Service Pool
+    vmware.alb.avi_gslbservice_patch_member:
+      avi_credentials: "{{ avi_credentials }}"
+      name: gs-3
+      state: present
+      api_version: 17.2.1
+      data:
+        group:
+          name: newfoo
+          priority: 42
 '''
 
 
@@ -228,6 +107,8 @@ obj:
     type: dict
 '''
 
+import json
+import time
 from ansible.module_utils.basic import AnsibleModule
 from copy import deepcopy
 
@@ -256,17 +137,11 @@ def delete_member(module, check_mode, api, tenant, tenant_uuid,
                   if group['name'] == data['group']['name']]
         if groups:
             changed = any(
-                m['ip']['addr'] in patched_member_ids
-                for m in groups[0].get('members', [])
-                if 'fqdn' not in m
-            )
-
+                [(lambda g: g['ip']['addr'] in patched_member_ids)(m)
+                    for m in groups[0].get('members', []) if 'fqdn' not in m])
             changed = changed or any(
-                m['fqdn'] in patched_member_fqdns
-                for m in groups[0].get('members', [])
-                if 'fqdn' in m
-            )
-
+                [(lambda g: g['fqdn'] in patched_member_fqdns)(m)
+                    for m in groups[0].get('members', []) if 'fqdn' in m])
     if check_mode or not changed:
         return changed, rsp
     # should not come here if not found
@@ -362,21 +237,7 @@ def main():
         state=dict(default='present',
                    choices=['absent', 'present'])
     )
-
-    STATIC_COMMON_ARGS = dict(
-        controller=dict(type='str', required=False),
-        username=dict(type='str', required=False),
-        password=dict(type='str', required=False, no_log=True),
-        tenant=dict(type='str', required=False),
-        tenant_uuid=dict(type='str', required=False),
-        api_version=dict(type='str', required=False),
-        avi_credentials=dict(type='dict', required=False),
-        api_context=dict(type='dict', required=False),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
-    )
-    argument_specs.update(STATIC_COMMON_ARGS)
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(

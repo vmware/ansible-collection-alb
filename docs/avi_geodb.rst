@@ -218,7 +218,7 @@ Parameters
                   - Custom mappings of geo values.
                 </div>
                                 <div style="font-size: small">
-                  - All mappings which start with the prefix system- (any case) are reserved for system default objects and may be overwritten.
+                  - All mappings which start with the prefix 'system-' (any case) are reserved for system default objects and may be overwritten.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 21.1.1.
@@ -329,9 +329,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:

@@ -10,6 +10,8 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 import os
 import re
+import sys
+import yaml
 import time
 import logging
 from copy import deepcopy
@@ -23,15 +25,6 @@ if os.environ.get('AVI_LOG_HANDLER', '') != 'syslog':
 else:
     # Ansible does not allow logging from the modules.
     log = avi_sdk_syslog_logger()
-
-try:
-    import yaml
-except ImportError:
-    yaml = None
-
-
-class InvalidRefFormat(Exception):
-    pass
 
 
 class AviCheckModeResponse(object):
@@ -130,11 +123,11 @@ def cleanup_absent_fields(obj):
     :param obj:
     :return: Purged object
     """
-    if isinstance(obj, dict):
+    if type(obj) != dict:
         return obj
     cleanup_keys = []
     for k, v in obj.items():
-        if isinstance(v, dict):
+        if type(v) == dict:
             if (('state' in v and v['state'] == 'absent') or
                     (v == "{'state': 'absent'}")):
                 cleanup_keys.append(k)
@@ -142,7 +135,7 @@ def cleanup_absent_fields(obj):
                 cleanup_absent_fields(v)
                 if not v:
                     cleanup_keys.append(k)
-        elif isinstance(v, list):
+        elif type(v) == list:
             new_list = []
             for elem in v:
                 elem = cleanup_absent_fields(elem)
@@ -158,21 +151,24 @@ def cleanup_absent_fields(obj):
                 cleanup_keys.append(k)
     for k in cleanup_keys:
         del obj[k]
-    return
+    return obj
 
 
 def get_unicode_type():
-    return str
+    if sys.version_info < (3, 3):
+        return unicode
+    else:
+        return str
 
 
 RE_REF_MATCH = re.compile(r'^/api/[\w/]+\?name\=[\w*]+[^#<>]*$')
+
 # if HTTP ref match then strip out the #name
 # HTTP_REF_MATCH = re.compile('https://[\w.0-9:-]+/api/[\w/\?.#&-]*$')
 HTTP_REF_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.+')
 HTTP_REF_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.+')
 HTTP_REF_W_NAME_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.*#.+')
 HTTP_REF_W_NAME_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.*#.+')
-
 
 def ref_n_str_cmp(x, y):
     """
@@ -276,7 +272,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
     if type(x) not in [list, dict]:
         # if it is not list or dict or string then simply compare the values
         return x == y
-    if isinstance(x, list):
+    if type(x) == list:
         # should compare each item in the list and that should match
         if len(x) != len(y):
             log.debug('x has %d items y has %d', len(x), len(y))
@@ -286,7 +282,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
                 # no need to continue
                 return False
 
-    if isinstance(x, dict):
+    if type(x) == dict:
         x.pop('_last_modified', None)
         x.pop('tenant', None)
         y.pop('_last_modified', None)
@@ -306,7 +302,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
                 continue
             if isinstance(v, dict):
                 if ('state' in v) and (v['state'] == 'absent'):
-                    if isinstance(y, dict) and k not in y:
+                    if type(y) == dict and k not in y:
                         d_x_absent_ks.append(k)
                     else:
                         return False
@@ -576,10 +572,7 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                 patch_data = {}
                 if avi_patch_path:
                     if avi_patch_value:
-                        if yaml:
-                            avi_patch_value = yaml.load(avi_patch_value)
-                        else:
-                            avi_patch_value = ""
+                        avi_patch_value = yaml.load(avi_patch_value)
                     patch_data = {
                         "json_patch": [{
                             "op": avi_patch_op,

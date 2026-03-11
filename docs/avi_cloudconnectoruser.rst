@@ -445,9 +445,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -457,15 +456,15 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create a Cloud connector user that is used for integration into cloud platforms
-              avi_cloudconnectoruser:
-                avi_credentials: "{{ avi_credentials }}"
-                name: root
-                private_key: |
-                  -----BEGIN RSA PRIVATE KEY-----
-                  -----END RSA PRIVATE KEY-----'
-                public_key: 'ssh-rsa ...'
-                tenant_ref: /api/tenant?name=admin
+        - name: Create a Cloud connector user that is used for integration into cloud platforms
+          avi_cloudconnectoruser:
+            avi_credentials: "{{ avi_credentials }}"
+            name: root
+            private_key: |
+              -----BEGIN RSA PRIVATE KEY-----
+              -----END RSA PRIVATE KEY-----'
+            public_key: 'ssh-rsa ...'
+            tenant_ref: /api/tenant?name=admin
 
 
 
