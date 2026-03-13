@@ -305,9 +305,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -317,12 +316,12 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create a Microservice Group that can be used for setting up Network security policy
-              avi_microservicegroup:
-                avi_credentials: "{{ avi_credentials }}"
-                description: Group created by my Secure My App UI.
-                name: vs-msg-marketing
-                tenant_ref: /api/tenant?name=admin
+        - name: Create a Microservice Group that can be used for setting up Network security policy
+          avi_microservicegroup:
+            avi_credentials: "{{ avi_credentials }}"
+            description: Group created by my Secure My App UI.
+            name: vs-msg-marketing
+            tenant_ref: /api/tenant?name=admin
 
 
 

@@ -1191,10 +1191,10 @@ Parameters
                   - CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- cloud_none, cloud_vcenter), basic edition(allowed values-
+                  - Allowed in enterprise edition with any value, essentials edition(allowed values- cloud_none,cloud_vcenter), basic edition(allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - cloud_none, cloud_nsxt), enterprise with cloud services edition.
+                  - cloud_none,cloud_nsxt), enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as CLOUD_NONE.
@@ -1210,9 +1210,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -1222,25 +1221,25 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create a VMware cloud with write access mode
-              avi_cloud:
-                avi_credentials: "{{ avi_credentials }}"
-                apic_mode: false
-                dhcp_enabled: true
-                enable_vip_static_routes: false
-                license_type: LIC_CORES
-                mtu: 1500
-                name: VCenter Cloud
-                prefer_static_routes: false
-                tenant_ref: /api/tenant?name=admin
-                vcenter_configuration:
-                  datacenter_ref: /api/vimgrdcruntime/datacenter-2-10.10.20.100
-                  management_network: /api/vimgrnwruntime/dvportgroup-103-10.10.20.100
-                  password: password
-                  privilege: WRITE_ACCESS
-                  username: user
-                  vcenter_url: 192.168.15.18
-                vtype: CLOUD_VCENTER
+        - name: Create a VMware cloud with write access mode
+          avi_cloud:
+            avi_credentials: "{{ avi_credentials }}"
+            apic_mode: false
+            dhcp_enabled: true
+            enable_vip_static_routes: false
+            license_type: LIC_CORES
+            mtu: 1500
+            name: VCenter Cloud
+            prefer_static_routes: false
+            tenant_ref: /api/tenant?name=admin
+            vcenter_configuration:
+              datacenter_ref: /api/vimgrdcruntime/datacenter-2-10.10.20.100
+              management_network: /api/vimgrnwruntime/dvportgroup-103-10.10.20.100
+              password: password
+              privilege: WRITE_ACCESS
+              username: user
+              vcenter_url: 192.168.15.18
+            vtype: CLOUD_VCENTER
 
 
 

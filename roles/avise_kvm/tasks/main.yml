@@ -1,8 +1,8 @@
 ---
 - name: "Avi SE | KVM | Deploy VM | When state = present"
-  ansible.builtin.include_tasks: deploy_se.yml
+  include: deploy_se.yml
   when: state == "create"
 
 - name: "Avi SE | KVM | Destroy VM | When state = absent"
-  ansible.builtin.include_tasks: teardown_kvm_vm.yml
+  include: teardown_kvm_vm.yml
   when: state == "delete"

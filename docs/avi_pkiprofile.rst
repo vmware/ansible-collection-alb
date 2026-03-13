@@ -313,7 +313,7 @@ Parameters
                   - When enabled, avi will not trust intermediate and root certs presented by a client.
                 </div>
                                 <div style="font-size: small">
-                  - Instead, only the chain certs configured in the certificate authority section will be used to verify trust of the clients cert.
+                  - Instead, only the chain certs configured in the certificate authority section will be used to verify trust of the client's cert.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials edition(allowed values- true), basic edition(allowed values- true), enterprise with
@@ -342,7 +342,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - This field describes the objects replication scope.
+                  - This field describes the object's replication scope.
                 </div>
                                 <div style="font-size: small">
                   - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
@@ -502,9 +502,8 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
-      connection: 
+    - hosts: localhost
+      connection: local
       collections:
         - vmware.alb
       vars:

@@ -1,8 +1,0 @@
----
-# metadata file for avi controller vmware role
-galaxy_info:
-  author: Avi Networks <http://avinetworks.com/>
-  description: Configuration for avi controller vmware
-  role_name: avicontroller_vmware
-  min_ansible_version: '2.9'
-  license: Apache 2.0

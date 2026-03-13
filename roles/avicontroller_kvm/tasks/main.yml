@@ -1,8 +1,8 @@
 ---
 - name: "Avi Controller | KVM | Deploy VM"
-  ansible.builtin.include_tasks: deploy_controller.yml
+  include: deploy_controller.yml
   when: state == "create"
 
 - name: "Avi Controller | KVM | Destroy VM"
-  ansible.builtin.include_tasks: teardown_kvm_vm.yml
+  include: teardown_kvm_vm.yml
   when: state == "delete"
