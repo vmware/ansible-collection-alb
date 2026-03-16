@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_applicationpersistenceprofile
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ApplicationPersistenceProfile Avi RESTful Object
 description:
     - This module is used to configure ApplicationPersistenceProfile object.
@@ -111,8 +111,8 @@ options:
             - Enum options - PERSISTENCE_TYPE_CLIENT_IP_ADDRESS, PERSISTENCE_TYPE_HTTP_COOKIE, PERSISTENCE_TYPE_TLS, PERSISTENCE_TYPE_CLIENT_IPV6_ADDRESS,
             - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE, PERSISTENCE_TYPE_APP_DIAMETER.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- persistence_type_client_ip_address, persistence_type_http_cookie), basic (allowed values-
-            - persistence_type_client_ip_address, persistence_type_http_cookie) edition.
+            - Allowed in essentials (allowed values- persistence_type_client_ip_address,persistence_type_http_cookie), basic (allowed values-
+            - persistence_type_client_ip_address,persistence_type_http_cookie) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as PERSISTENCE_TYPE_CLIENT_IP_ADDRESS.
         type: str
     persistence_update_interval:
@@ -146,127 +146,8 @@ options:
             - Uuid of the persistence profile.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    # Fields from avi_common_argument_spec()
-    controller:
-        description:
-            - Avi controller hostname or IP address.
-        type: str
-        required: false
-        default: ""
-    username:
-        description:
-            - Avi username for authentication.
-        type: str
-        required: false
-        default: ""
-    password:
-        description:
-            - Avi password for authentication.
-        type: str
-        required: false
-        default: ""
-    tenant:
-        description:
-            - Tenant name.
-        type: str
-        required: false
-        default: admin
-    tenant_uuid:
-        description:
-            - Tenant UUID.
-        type: str
-        required: false
-        default: ""
-    api_version:
-        description:
-            - Avi API version to use.
-        type: str
-        required: false
-        default: "20.1.1"
-    avi_credentials:
-        description:
-            - Dictionary of Avi credentials (alternative to controller/username/password/token).
-        type: dict
-        required: false
-        suboptions:
-            controller:
-                description: Avi controller hostname or IP address.
-                type: str
-                default: ""
-            username:
-                description: Avi username.
-                type: str
-                default: ""
-            password:
-                description: Avi password.
-                type: str
-                default: ""
-            api_version:
-                description: Avi API version.
-                type: str
-                default: "20.1.1"
-            tenant:
-                description: Tenant name.
-                type: str
-                default: "admin"
-            tenant_uuid:
-                description: Tenant UUID.
-                type: str
-                default: ""
-            port:
-                description: Port of the Avi controller.
-                type: int
-            token:
-                description: Avi API token.
-                type: str
-                default: ""
-            timeout:
-                description: Timeout for API requests (in seconds).
-                type: int
-                default: 300
-            session_id:
-                description: Session ID for authentication.
-                type: str
-                default: ""
-            csrftoken:
-                description: CSRF token for authentication.
-                type: str
-                default: ""
-            ssl_cert:
-                description: SSL certificate path for HTTPS requests.
-                type: str
-                default: ""
-            ssl_key:
-                description: SSL private key path for HTTPS requests.
-                type: str
-                default: ""
-            idp_class:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_token:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_host:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-    api_context:
-        description:
-            - Optional dictionary for API context.
-        type: dict
-        required: false
-    avi_deactivate_session_cache_as_fact:
-        description:
-            - Boolean to deactivate session cache and expose it as an Ansible fact.
-        type: bool
-        required: false
-        default: false
-
+extends_documentation_fragment:
+    - vmware.alb.avi
 '''
 
 EXAMPLES = """
@@ -285,7 +166,6 @@ EXAMPLES = """
         http_cookie_persistence_profile:
           always_send_cookie: false
           cookie_name: My-HTTP
-          timeout: 15
           key:
             - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
               name: c1276819-550c-4adf-912d-59efa5fd7269
@@ -293,6 +173,7 @@ EXAMPLES = """
               name: a080de57-77c3-4580-a3ea-e7a6493c14fd
             - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
               name: 60478846-33c6-484d-868d-bbc324fce4a5
+          timeout: 15
         name: My-HTTP-Cookie
         persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE
         server_hm_down_recovery: HM_DOWN_PICK_NEW_SERVER
@@ -341,21 +222,7 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    STATIC_COMMON_ARGS = dict(
-        controller=dict(type='str', required=False),
-        username=dict(type='str', required=False),
-        password=dict(type='str', required=False, no_log=True),
-        tenant=dict(type='str', required=False),
-        tenant_uuid=dict(type='str', required=False),
-        api_version=dict(type='str', required=False),
-        avi_credentials=dict(type='dict', required=False),
-        api_context=dict(type='dict', required=False),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
-    )
-    argument_specs.update(STATIC_COMMON_ARGS)
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
-
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

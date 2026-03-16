@@ -1793,7 +1793,10 @@ Parameters
                   - SYSERR_CHECK_UPGRADE_IN_PROGRESS, SYSERR_CHECK_UPGRADE_IN_PROGRESS_ERR, SYSERR_CHECK_WAF_ENABLED_REPORTING,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_WAF_ENABLED_REPORTING_ERR, SYSERR_CHECK_REPORT_SE_GROUP_VERSION, SYSERR_CHECK_REPORT_LOWER_SE_GROUP_VERSION.
+                  - SYSERR_CHECK_WAF_ENABLED_REPORTING_ERR, SYSERR_CHECK_REPORT_SE_GROUP_VERSION, SYSERR_CHECK_REPORT_LOWER_SE_GROUP_VERSION,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_CHECK_REPORT_DATA_SAMPLES, SYSERR_CHECK_REPORT_DATA_SAMPLES_ERR.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3091,7 +3094,10 @@ Parameters
                   - SYSERR_CHECK_UPGRADE_IN_PROGRESS, SYSERR_CHECK_UPGRADE_IN_PROGRESS_ERR, SYSERR_CHECK_WAF_ENABLED_REPORTING,
                 </div>
                                 <div style="font-size: small">
-                  - SYSERR_CHECK_WAF_ENABLED_REPORTING_ERR, SYSERR_CHECK_REPORT_SE_GROUP_VERSION, SYSERR_CHECK_REPORT_LOWER_SE_GROUP_VERSION.
+                  - SYSERR_CHECK_WAF_ENABLED_REPORTING_ERR, SYSERR_CHECK_REPORT_SE_GROUP_VERSION, SYSERR_CHECK_REPORT_LOWER_SE_GROUP_VERSION,
+                </div>
+                                <div style="font-size: small">
+                  - SYSERR_CHECK_REPORT_DATA_SAMPLES, SYSERR_CHECK_REPORT_DATA_SAMPLES_ERR.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -4155,7 +4161,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:

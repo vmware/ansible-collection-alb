@@ -23,18 +23,21 @@
     - kvm_total_num_vfs
 
 - name: "Avi SE | KVM | Check vm exist or not for {{ kvm_vm_hostname }}"
-  ansible.builtin.command: virsh dominfo {{ kvm_vm_hostname }}
+  ansible.builtin.command:
+    cmd: "virsh dominfo {{ kvm_vm_hostname }}"
   changed_when: false
   register: domain_information
   ignore_errors: true
 
 - name: "Avi SE | KVM | Destroying the existing VM"
-  ansible.builtin.command: "virsh destroy {{ kvm_vm_hostname }}"
+  ansible.builtin.command:
+    cmd: "virsh destroy {{ kvm_vm_hostname }}"
   changed_when: false
   when: 'domain_information.stdout | length > 0 and kvm_force_mode'
 
 - name: "Avi SE | KVM | Removing the existing VM"
-  ansible.builtin.command: "virsh undefine {{ kvm_vm_hostname }}"
+  ansible.builtin.command:
+    cmd: "virsh undefine {{ kvm_vm_hostname }}"
   changed_when: false
   when: 'domain_information.stdout | length > 0 and kvm_force_mode'
 
@@ -66,7 +69,9 @@
   ansible.builtin.file:
     path: "/root/{{ kvm_vm_hostname }}"
     state: directory
-    mode: "0644"
+    mode: '0770'
+    owner: root
+    group: root
 
 - name: "Avi SE | KVM | Get the cloud uuid from Default-Cloud"
   avi_api_session:
@@ -128,7 +133,8 @@
     dest: "/root/{{ kvm_vm_hostname }}"
     remote_src: false
     owner: root
-    mode: "0644"
+    group: root
+    mode: 'g=r,u+w,o='
   when: 'kvm_vm_base_img is undefined'
 
 - name: "Avi SE | KVM | Set SE authentication token"

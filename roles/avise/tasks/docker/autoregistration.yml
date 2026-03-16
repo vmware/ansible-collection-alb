@@ -5,7 +5,8 @@
 - name: Avi SE | Autoregistration | Get Controller information
   ansible.builtin.uri:
     url: "https://{{ se_leader_ctl_ip }}/api/initial-data"
-    validate_certs: false
+    validate_certs: false  # NOSONAR - Required for isolated lab with self-signed cert
+    return_content: true
   register: controller_initial_data
   delegate_to: localhost
 
@@ -74,7 +75,7 @@
     msg: "Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }}"
 
 - name: Avi SE | Autoregistration | Get a se group uuid from the Avi Controller of {{ se_group_name }}
-  vmware.alb.avi_api_session:
+  avi_api_session:
     controller: "{{ se_leader_ctl_ip }}"
     username: "{{ se_leader_ctl_username }}"
     password: "{{ se_leader_ctl_password }}"
@@ -96,7 +97,7 @@
     segroup_uuid: "{{ se_group_uuid.obj.results[0].uuid }}"
   when: segroup_uuid is undefined and se_group_uuid is defined
 
-- name: Avi SE | Check se_docker.tgz exit orfalset
+- name: Avi SE | Check se_docker.tgz exit or not
   ansible.builtin.stat:
     path: "{{ se_package_source }}"
   register: file_details

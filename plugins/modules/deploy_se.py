@@ -479,7 +479,7 @@ def main():
             se_vmw_mgmt_mask=dict(required=False, type='str'),
             se_vmw_default_gw=dict(required=False, type='str'),
             se_vmw_sysadmin_public_key=dict(required=False, type='str'),
-            se_auth_token=dict(required=True, type='str', no_log=True),
+            se_auth_token=dict(required=True, type='str'),
             se_cluster_uuid=dict(required=True, type='str'),
             se_leader_ctl_ip=dict(required=True, type='str'),
             se_vmw_number_of_cpus=dict(required=False, type='int'),

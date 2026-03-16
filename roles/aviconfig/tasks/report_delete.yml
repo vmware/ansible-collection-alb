@@ -1,5 +1,5 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi Report | Delete Report
   no_log: "{{ avi_role_config_log_mode | default('false') }}"

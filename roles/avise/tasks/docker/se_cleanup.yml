@@ -4,9 +4,7 @@
   when: se_action == "cleanup"
 
 - name: Cleanup avise_watcher service
-  when:
-    - ansible_service_mgr != "systemd"
-  failed_when: true
+  when: ansible_service_mgr != "systemd"
   become: true
   block:
     - name: Avi SE | Docker | Cleanup | Stop avise_watcher service
@@ -44,28 +42,28 @@
         - /etc/rc6.d/K99avise_watcher
 
 - name: Cleanup avise_watcher service
-  when:
-    - ansible_service_mgr == "systemd"
-  failed_when: true
+  when: ansible_service_mgr == "systemd"
   become: true
   block:
-    - name: Cleanup avise service
+    - name: Cleanup avise_watcher service
       ansible.builtin.service:
         name: avise
         enabled: false
         state: stopped
+      failed_when: false
     - name: Remove avise file
       ansible.builtin.file:
         path: /usr/sbin/avise
         state: absent
+      failed_when: false
     - name: Remove service file
       ansible.builtin.file:
         path: /etc/systemd/system/avise.service
         state: absent
+      failed_when: false
 
 - name: Cleanup avihost service
   when: ansible_service_mgr == "systemd" and se_action == "cleanup"
-  failed_when: true
   become: true
   block:
     - name: Cleanup avihost service
@@ -73,18 +71,22 @@
         name: avihost
         enabled: false
         state: stopped
+      failed_when: false
     - name: Remove avihost server file
       ansible.builtin.file:
         path: /usr/sbin/avi_host_server.py
         state: absent
+      failed_when: false
     - name: Remove service file
       ansible.builtin.file:
         path: /etc/systemd/system/avihost.service
         state: absent
+      failed_when: false
     - name: Remove service script file
       ansible.builtin.file:
         path: /etc/systemd/system/avihost_service_script.sh
         state: absent
+      failed_when: false
 
 - name: Get list of running se containers
   when: se_action == "cleanup"
@@ -97,22 +99,27 @@
     - name: Stop and Remove the containers
       ansible.builtin.shell: >
         set -o pipefail && \
-        "{{ se_deploy_type }} stop {{ item }} && {{ se_deploy_type }} rm -f {{ item }}"
+        {{ se_deploy_type }} stop {{ item }} && {{ se_deploy_type }} rm -f {{ item }}
+      args:
+        executable: /bin/bash
       changed_when: false
-      loop:
-        - "{{ se_running_containers.stdout_lines }}"
+      loop: "{{ se_running_containers.stdout_lines }}"
+      when: se_running_containers.stdout_lines | length > 0
     - name: Get list of docker images
       ansible.builtin.shell: >
         set -o pipefail && \
-        "{{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | awk '{print $3}'"
+        {{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | awk '{print $3}'
+      args:
+        executable: /bin/bash
       changed_when: false
       register: docker_images
       when: se_action == "cleanup"
+      failed_when: false
     - name: Remove the images
       ansible.builtin.command: "{{ se_deploy_type }} rmi -f {{ item }}"
       changed_when: false
-      loop:
-        - "{{ docker_images.stdout_lines }}"
+      loop: "{{ docker_images.stdout_lines | default([]) }}"
+      when: docker_images.stdout_lines is defined and docker_images.stdout_lines | length > 0
 
 - name: Clean up other files
   become: true
@@ -121,14 +128,13 @@
       ansible.builtin.file:
         path: "{{ se_package_dest }}"
         state: absent
-      failed_when: true
+      failed_when: false
 
 - name: Clean up se files
   ansible.builtin.file:
     path: "{{ item.split(':') | map('regex_search', '(.*)opt/avi/se/(.*)') | select('string') | first }}"
     state: absent
-  loop:
-    - "{{ se_existing_run_params.split() | map('regex_search', '(.*)opt/avi/se/(.*)') | select('string') | list }}"
+  loop: "{{ se_existing_run_params.split() | map('regex_search', '(.*)opt/avi/se/(.*)') | select('string') | list }}"
   when: se_existing_run_params is defined and se_existing_ver is defined and se_existing_ver == se_version
-  failed_when: true
+  failed_when: false
   become: true

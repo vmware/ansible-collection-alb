@@ -5717,10 +5717,10 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- health_monitor_ping, health_monitor_tcp, health_monitor_udp), basic (allowed values- health_monitor_ping,
+                  - Allowed in essentials (allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp), basic (allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - health_monitor_tcp, health_monitor_udp, health_monitor_http, ...) edition.
+                  - health_monitor_ping,health_monitor_tcp,health_monitor_udp,health_monitor_http,health_monitor_https) edition.
                 </div>
                                             </td>
     </tr>
@@ -5851,7 +5851,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -5861,20 +5861,20 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create a HTTPS health monitor
-              avi_healthmonitor:
-                avi_credentials: "{{ avi_credentials }}"
-                https_monitor:
-                  http_request: HEAD / HTTP/1.0
-                  http_response_code:
-                    - HTTP_2XX
-                    - HTTP_3XX
-                receive_timeout: 4
-                failed_checks: 3
-                send_interval: 10
-                successful_checks: 3
-                type: HEALTH_MONITOR_HTTPS
-                name: MyWebsite-HTTPS
+        - name: Create a HTTPS health monitor
+          avi_healthmonitor:
+            avi_credentials: "{{ avi_credentials }}"
+            https_monitor:
+              http_request: HEAD / HTTP/1.0
+              http_response_code:
+                - HTTP_2XX
+                - HTTP_3XX
+            receive_timeout: 4
+            failed_checks: 3
+            send_interval: 10
+            successful_checks: 3
+            type: HEALTH_MONITOR_HTTPS
+            name: MyWebsite-HTTPS
 
 
 
