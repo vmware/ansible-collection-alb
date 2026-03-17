@@ -158,6 +158,64 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enforced_report_period</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The period for report generation.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - REPORT_PERIOD_LAST_24_HOURS, REPORT_PERIOD_LAST_7_DAYS, REPORT_PERIOD_LAST_30_DAYS.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as REPORT_PERIOD_LAST_7_DAYS.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enforced_report_samples</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Minimum data samples required for report generation.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 200-5000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 2000.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_concurrent_workers</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -326,7 +384,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:

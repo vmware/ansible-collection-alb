@@ -8,7 +8,9 @@
   ansible.builtin.template:
     src: "{{ se_service_files_path }}avise.j2"
     dest: /usr/sbin/avise
-    mode: "0755"
+    mode: "0750"
+    owner: root
+    group: root
   become: true
   notify: Avi SE | Services | Restart the avise service
 

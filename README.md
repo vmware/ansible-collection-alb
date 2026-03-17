@@ -2,7 +2,7 @@
 
 [![Apache licensed](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/vmware/ansible-collection-alb/blob/eng/LICENSE)
 [![Collection](https://img.shields.io/badge/collection-vmware.alb-blue.svg)](https://galaxy.ansible.com/vmware/alb/)
-[![CI](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml/badge.svg?branch=31.2.1)](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml)
+[![CI](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml/badge.svg?branch=)](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml)
 
 <!--start requires_ansible-->
 ## Ansible version compatibility
@@ -16,11 +16,6 @@ This collection has been tested against following Ansible versions: **>=2.9.10**
 * Collection supports >= 3.5
 
 ## Installation and Usage
-
-Ansible must be installed
-```
-pip install ansible
-```
 
 Install ALB collection using `ansible-galaxy` CLI:
 ```
@@ -60,6 +55,18 @@ After ALB collection installation we need to install the required python librari
 pip install -r ~/.ansible/collections/ansible_collections/vmware/alb/requirements.txt
 ```
 
+### Support
+This section provides information about what is supported and how to obtain assistance for this collection.
+The vmware.alb Ansible Collection provides automation for VMware NSX Advanced Load Balancer (ALB) environments, including virtual services, pools, GSLB configuration, networking objects, security policies, service engines, and system-level operations. Some features may require the VMware OVF Tool to be installed on the automation host.
+
+Supported Versions
+Support is available for versions of this collection that are published as Red Hat Ansible Certified Content within the Ansible Automation Platform (AAP). Versions obtained from Ansible Galaxy or GitHub are community-supported.
+
+Getting Support
+As Red Hat Ansible Certified Content, this collection is entitled to support through Ansible Automation Platform (AAP) using the Create issue button on the top right corner.
+If a support case cannot be opened with Red Hat, or if the collection was obtained from Galaxy or GitHub, community assistance may be available on the Ansible Forum.
+For users working directly with the source code, bugs, feature requests, and enhancement suggestions may also be submitted through the collection's GitHub Issues section.
+
 ### Modules
 Name | Description
 --- | ---
@@ -79,7 +86,6 @@ Name | Description
 [vmware.alb.avi_api_version](https://github.com/vmware/ansible-collection-alb/blob/31.2.1/docs/avi_api_version.rst)|Module to create update or delete ApiVersion
 [vmware.alb.avi_apiratelimitprofile](https://github.com/vmware/ansible-collection-alb/blob/31.2.1/docs/avi_apiratelimitprofile.rst)|Module to create update or delete ApiRateLimitProfile
 [vmware.alb.avi_applicationinsightspolicy](https://github.com/vmware/ansible-collection-alb/blob/31.2.1/docs/avi_applicationinsightspolicy.rst)|Module to create update or delete ApplicationInsightsPolicy
-[vmware.alb.avi_applicationinsightsstate](https://github.com/vmware/ansible-collection-alb/blob/31.2.1/docs/avi_applicationinsightsstate.rst)|Module to create update or delete ApplicationInsightsState
 [vmware.alb.avi_applicationpersistenceprofile](https://github.com/vmware/ansible-collection-alb/blob/31.2.1/docs/avi_applicationpersistenceprofile.rst)|Module to create update or delete ApplicationPersistenceProfile
 [vmware.alb.avi_applicationprofile](https://github.com/vmware/ansible-collection-alb/blob/31.2.1/docs/avi_applicationprofile.rst)|Module to create update or delete ApplicationProfile
 [vmware.alb.avi_authmappingprofile](https://github.com/vmware/ansible-collection-alb/blob/31.2.1/docs/avi_authmappingprofile.rst)|Module to create update or delete AuthMappingProfile
@@ -210,7 +216,7 @@ Name | Description
 
 ### Testing with `ansible-test`
 
-Refer [testing](https://github.com/vmware/ansible-collection-alb/blob//testing.md) for more information.
+Refer [testing](https://github.com/vmware/ansible-collection-alb/blob/31.2.1/testing.md) for more information.
 
 ## Publishing New Version
 
@@ -295,6 +301,10 @@ avi_config:
           # For importing credentials from external file in modules,
           # please use vars_files parameter as shown in previous example
 ```
+
+## Release Notes
+
+For release notes, see [CHANGELOG.rst](https://github.com/vmware/ansible-collection-alb/blob/31.2.1/CHANGELOG.rst).
 
 **Notes**
 Please use Python >= 3.8 if you are using avi_serviceenginegroup module as it has more than 255 arguments
