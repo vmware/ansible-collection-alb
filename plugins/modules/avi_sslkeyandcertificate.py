@@ -324,7 +324,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'sslkeyandcertificate',
-                           {'key', 'key_passphrase', 'enckey_base64', 'key_params'})
+                           {'enckey_base64', 'key', 'key_params', 'key_passphrase'})
 
 
 if __name__ == '__main__':

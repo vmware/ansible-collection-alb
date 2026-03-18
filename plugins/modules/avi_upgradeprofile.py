@@ -52,7 +52,7 @@ options:
             - Field deprecated in 31.2.1.
             - Field introduced in 31.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-        type: dict
+        type: str
     controller_params:
         description:
             - List of controller upgrade related configurable parameters.
@@ -148,7 +148,6 @@ def main():
         api_version=dict(type='str', default='18.2.6'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
-        controller=dict(type='dict',),
         controller_params=dict(type='dict',),
         dry_run=dict(type='dict',),
         image=dict(type='dict',),

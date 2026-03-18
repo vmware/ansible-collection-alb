@@ -208,7 +208,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'cloudconnectoruser',
-                           {'azure_userpass', 'obj_password', 'password', 'private_key'})
+                           {'password', 'private_key', 'azure_userpass', 'obj_password'})
 
 
 if __name__ == '__main__':
