@@ -8,7 +8,6 @@ avi_resource_types:
   - reportprofile
   - cloudproperties
   - systemlimits
-  - upgradeprofile
   - techsupportmessage
   - techsupportprofile
   - licensestatus
