@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_serviceauthprofile
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ServiceAuthProfile Avi RESTful Object
 description:
-    - This module is used to configure ServiceAuthProfile object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure ServiceAuthProfile object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -50,41 +50,40 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Description for the service auth profile.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     name:
         description:
             - Name of the service auth profile.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     service_oauth_profile:
         description:
             - Oauth profile - common endpoint information for service authentication.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - Tenant ref for the service auth profile.
             - It is a reference to an object of type tenant.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Type of the service auth profile.
             - Enum options - SERVICE_AUTH_OAUTH.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     url:
@@ -95,26 +94,27 @@ options:
         description:
             - Uuid of the service auth profile.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create ServiceAuthProfile object
-  vmware.alb.avi_serviceauthprofile:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_serviceauthprofile
+  tasks:
+    - name: Example to create ServiceAuthProfile object
+      vmware.alb.avi_serviceauthprofile:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_serviceauthprofile
 """
 
 RETURN = '''

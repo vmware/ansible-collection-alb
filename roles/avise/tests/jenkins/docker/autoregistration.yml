@@ -3,27 +3,30 @@
 # these tasks will automatically register the service engine to the controller
 
 - name: Avi SE | Autoregistration | Check if required login vars are defined
-  assert:
+  ansible.builtin.assert:
     that:
       - item != None
-  with_items:
+  loop:
     - se_leader_ctl_ip
     - se_leader_ctl_username
     - se_leader_ctl_password
 
 - name: Avi SE | Autoregistration | Get Controller information
-  uri:
+  ansible.builtin.uri:
     url: "https://{{ se_leader_ctl_ip }}/api/initial-data"
-    validate_certs: no
+    validate_certs: false  # NOSONAR - Required for isolated lab with self-signed cert
+    return_content: true
   register: controller_initial_data
   delegate_to: localhost
 
 - name: Avi SE | Autoregistration | Set Controller version information
-  set_fact:
+  ansible.builtin.set_fact:
     controller_api_version: "{{ controller_initial_data.json.version.Version }}"
   when: controller_initial_data
 
-- debug: msg="You are running Controller verison {{ controller_api_version }}"
+- name: Avi SE | Autoregistration | Debug Controller version
+  ansible.builtin.debug:
+    msg: "You are running Controller verison {{ controller_api_version }}"
 
 - name: Avi SE | Autoregistration | Get the cloud uuid from se_cloud_name
   avi_api_session:
@@ -50,7 +53,9 @@
   delegate_to: localhost
 
 - name: Avi SE | Autoregistration | Append the token to the docker environment variables.
-  set_fact:
+  ansible.builtin.set_fact:
     se_auth_token: "{{ se_authtoken.obj.auth_token }}"
 
-- debug: msg="Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }}"
+- name: Avi SE | Autoregistration | Debug Authentication Token
+  ansible.builtin.debug:
+    msg: "Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }}"

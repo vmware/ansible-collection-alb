@@ -1,10 +1,10 @@
 ---
 - name: Avi SE | VMware | Requirements | Check variables
-  assert:
+  ansible.builtin.assert:
     that:
       - "{{ item }} != None"
     msg: "{{ item }} must be provided"
-  with_items:
+  loop:
     - se_leader_ctl_ip
     - se_leader_ctl_username
     - se_leader_ctl_password
@@ -15,11 +15,11 @@
   when: not se_skip_requirements
 
 - name: Avi SE | VMware | Requirements | Validate Sizing
-  assert:
+  ansible.builtin.assert:
     that:
       - "{{ item.expr }}"
     msg: "{{ item.msg }}"
-  with_items:
+  loop:
     - expr: se_vmw_number_of_cpus|int >= 1
       msg: "Must have 1 or more CPU"
     - expr: se_vmw_memory|int >= 1024

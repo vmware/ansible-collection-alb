@@ -1,11 +1,12 @@
-.. vmware.alb.avi_federationcheckpoint:
+
+.. vmware.alb.avi_trustedhostprofile:
 
 
 **********************************************
-vmware.alb.avi_federationcheckpoint
+vmware.alb.avi_trustedhostprofile
 **********************************************
 
-**Module for setup of FederationCheckpoint Avi RESTful Object**
+**Module for setup of TrustedHostProfile Avi RESTful Object**
 
 
 .. contents::
@@ -15,7 +16,7 @@ vmware.alb.avi_federationcheckpoint
 
 Synopsis
 --------
-- This module is used to configure FederationCheckpoint object.
+- This module is used to configure TrustedHostProfile object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -26,12 +27,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="7">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +53,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +77,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +100,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +116,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -130,14 +131,14 @@ Parameters
                 </div>
             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+            <tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -146,102 +147,77 @@ Parameters
                   - Protobuf versioning for config pbs.
                 </div>
                                 <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>created_by</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Identifies the user type that created the configuration.
+                </div>
+                                <div style="font-size: small">
+                  - Nil for non-service users.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SERVICE_USER.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>version</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version sequence number that monotonically advances with each configuration update event.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - edition.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>date</b>
+                <b>hosts</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Date when the checkpoint was created.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>description</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Description for this checkpoint.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>is_federated</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - This field describes the object's replication scope.
-                </div>
-                                <div style="font-size: small">
-                  - If the field is set to false, then the object is visible within the controller-cluster and its associated service-engines.
-                </div>
-                                <div style="font-size: small">
-                  - If the field is set to true, then the object is replicated across the federation.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
-                </div>
-                                            </td>
-        </tr>
-                <tr>
-            <td colspan="2">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>name</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                 <div style="font-size: small">
@@ -250,50 +226,174 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the checkpoint.
+                  - List of host ip(v4/v6) addresses or fqdns.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Minimum of 1 items required.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 20 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>tenant_ref</b>
+                <b>host</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tenant that this object belongs to.
+                  - Any valid ipv4, ipv6, or domain address.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>port</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Optionally specify the port number.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Trustedhostprofile name.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tenant_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tenant ref for trusted host profile.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -302,40 +402,40 @@ Parameters
                   - Avi controller URL of the object.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid of the checkpoint.
+                  - Trustedhostprofile uuid.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.1.
+                  - Field introduced in 31.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-            </table>
+    </tr>
+        
+    </table>
     <br/>
-
 
 Examples
 --------
 
 .. code-block:: yaml
 
-    - hosts: localhost
+    - name: Deploy Controller
+      hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -345,19 +445,17 @@ Examples
           password: "avi_password"
           controller: "192.168.138.18"
           api_version: "21.1.1"
+          tenant: "admin"
       tasks:
-        - name: Example to create FederationCheckpoint object
-          avi_federationcheckpoint:
+        - name: Example to create TrustedHostProfile object
+          avi_trustedhostprofile:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_federationcheckpoint
+            name: sample_trustedhostprofile
 
 
 Authors
 ~~~~~~~
-- Gaurav Rastogi (grastogi@vmware.com)
-- Sandeep Bandi (sbandi@vmware.com)
-- Amol Shinde (samol@vmware.com)
-
-
-
+- Anurag Palsule (anurag.palsule@broadcom.com)
+- Parikshit Manur (parikshit.manur@broadcom.com)
+- Rohan Suryavanshi (rohan.suryavanshi@broadcom.com)

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: not supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -45,27 +45,28 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-  - hosts: all
-    vars:
-      avi_credentials:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        controller: "{{ controller }}"
-        api_version: "{{ api_version }}"
+- name: Update user account
+  hosts: all
+  vars:
+    avi_credentials:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      controller: "{{ controller }}"
+      api_version: "{{ api_version }}"
+  tasks:
+    - name: Update user password
+      vmware.alb.avi_useraccount:
+        avi_credentials: "{{ avi_credentials }}"
+        full_name: "abc xyz"
+        email: "abc@xyz.com"
+        old_password: "{{ avi_credentials.password }}"
+        force_change: false
 
-  - name: Update user password
-    vmware.alb.avi_useraccount:
-      avi_credentials: "{{ avi_credentials }}"
-      full_name: "abc xyz"
-      email: "abc@xyz.com"
-      old_password: "{{ avi_credentials.password }}"
-      force_change: false
-
-  - name: Update user password using avi_credentials
-    vmware.alb.avi_useraccount:
-      avi_credentials: "{{ avi_credentials }}"
-      old_password: "{{ avi_credentials.password }}"
-      force_change: false
+    - name: Update user password using avi_credentials
+      vmware.alb.avi_useraccount:
+        avi_credentials: "{{ avi_credentials }}"
+        old_password: "{{ avi_credentials.password }}"
+        force_change: false
 '''
 
 RETURN = '''
@@ -75,15 +76,11 @@ obj:
     type: dict
 '''
 
-import json
-import time
 from ansible.module_utils.basic import AnsibleModule
-from copy import deepcopy
 
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
+        avi_common_argument_spec, ansible_return)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
     HAS_REQUESTS = True

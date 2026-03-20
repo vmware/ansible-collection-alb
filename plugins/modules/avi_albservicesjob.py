@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_albservicesjob
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ALBServicesJob Avi RESTful Object
 description:
-    - This module is used to configure ALBServicesJob object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure ALBServicesJob object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -50,86 +50,85 @@ options:
         description:
             - The command to be triggered by the albservicesjob.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     end_time:
         description:
             - Time at which the albservicesjob ended.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:
         description:
             - The name of the albservicesjob.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     params:
         description:
             - Job params.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     pulse_job_id:
         description:
             - A unique identifier for this job entry on the pulse cloud services.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     pulse_sync_status:
         description:
             - Status of sync to pulse cloud services(result uploads/state updates).
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool
     result:
         description:
             - Job result.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     start_time:
         description:
             - Time at which the albservicesjob started.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     status:
         description:
             - The status of the albservicesjob.
             - Enum options - UNDETERMINED, PENDING, IN_PROGRESS, COMPLETED, FAILED, NOT_ENABLED.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as PENDING.
         type: str
     status_update_time:
         description:
             - Time at which the status of albservicesjob updated.
             - Field introduced in 22.1.6.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - The unique identifier of the tenant to which this albservicesjob belongs.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     token:
         description:
             - Job token.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -139,26 +138,27 @@ options:
         description:
             - A unique identifier for this albservicesjob entry.
             - Field introduced in 21.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create ALBServicesJob object
-  vmware.alb.avi_albservicesjob:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_albservicesjob
+  tasks:
+    - name: Example to create ALBServicesJob object
+      vmware.alb.avi_albservicesjob:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_albservicesjob
 """
 
 RETURN = '''

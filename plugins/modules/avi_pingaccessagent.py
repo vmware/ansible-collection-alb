@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 18.2.2
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -116,19 +116,20 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Example to create PingAccessAgent object
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create PingAccessAgent object
-  vmware.alb.avi_pingaccessagent:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_pingaccessagent
+  tasks:
+    - name: Example to create PingAccessAgent object
+      vmware.alb.avi_pingaccessagent:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_pingaccessagent
 """
 
 RETURN = '''
