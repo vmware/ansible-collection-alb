@@ -14,7 +14,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_user
-author: Shrikant Chaudhari (@gitshrikant) <shrikant.chaudhari@avinetworks.com>
+author: Parikshit Manur (parikshit.manur@broadcom.com)
 short_description: Avi User Module
 description:
     - This module can be used for creation, updation and deletion of a user.

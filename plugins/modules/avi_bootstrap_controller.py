@@ -14,7 +14,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_bootstrap_controller
-author: Shrikant Chaudhari (@gitshrikant) <shrikant.chaudhari@avinetworks.com>
+author: Parikshit Manur (parikshit.manur@broadcom.com)
 short_description: avi bootstrap controller module.
 description:
     - This module can be used for initializing the password of a user.

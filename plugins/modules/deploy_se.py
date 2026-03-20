@@ -8,7 +8,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: deploy_se
-author: shubhamavi (@shubhamavi) <shubhamavi@vmware.com>
+author: Parikshit Manur (parikshit.manur@broadcom.com)
 short_description: Module for deploying se
 description:
     - This module is used to deploy an se

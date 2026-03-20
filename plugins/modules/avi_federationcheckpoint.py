@@ -14,7 +14,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_federationcheckpoint
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (parikshit.manur@broadcom.com)
 short_description: Module for setup of FederationCheckpoint Avi RESTful Object
 description:
     - This module is used to configure FederationCheckpoint object

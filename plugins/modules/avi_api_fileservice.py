@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_api_fileservice
-author: Chaitanya Deshpande (@chaitanyaavi) <chaitanya.deshpande@avinetworks.com>
+author: Parikshit Manur (parikshit.manur@broadcom.com)
 
 short_description: Avi API Module for fileservice
 description:
