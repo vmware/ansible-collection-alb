@@ -26,7 +26,6 @@
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     tier1_lr: "{{ item.tier1_lr | default(omit) }}"
-    use_standard_alb: "{{ item.use_standard_alb | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     vip: "{{ item.vip | default(omit) }}"
     vrf_context_ref: "{{ item.vrf_context_ref | default(omit) }}"

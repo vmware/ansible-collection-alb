@@ -50,65 +50,73 @@ options:
     azure_serviceprincipal:
         description:
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     azure_userpass:
         description:
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     gcp_credentials:
         description:
             - Credentials for google cloud platform.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
+    last_password_rotation:
+        description:
+            - Timestamp (unix epoch in seconds) of last successful password rotation.
+            - Used to determine when next rotation is due based on cc_user_password_expiry_days.
+            - Field introduced in 32.1.1.
+            - Unit is sec.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: int
     name:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
+        type: str
+    new_password_enc:
+        description:
+            - New password stored temporarily during rotation.
+            - Cleared after successful rotation.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     nsxt_credentials:
         description:
             - Credentials to talk to nsx-t manager.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, basic, enterprise with cloud services edition.
         type: dict
     obj_password:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    oci_credentials:
-        description:
-            - Credentials for oracle cloud infrastructure.
-            - Field introduced in 18.2.1,18.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: dict
     private_key:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     public_key:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tencent_credentials:
         description:
             - Credentials for tencent cloud.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     url:
         description:
@@ -116,13 +124,13 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     vcenter_credentials:
         description:
             - Credentials to talk to vcenter.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -177,10 +185,11 @@ def main():
         azure_userpass=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         gcp_credentials=dict(type='dict',),
+        last_password_rotation=dict(type='int',),
         name=dict(type='str', required=True),
+        new_password_enc=dict(type='str', no_log=True,),
         nsxt_credentials=dict(type='dict',),
         obj_password=dict(type='str',),
-        oci_credentials=dict(type='dict',),
         private_key=dict(type='str', no_log=True,),
         public_key=dict(type='str',),
         tenant_ref=dict(type='str',),
@@ -197,7 +206,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'cloudconnectoruser',
-                           ['password', 'private_key'])
+                           ['new_password_enc', 'password', 'private_key'])
 
 
 if __name__ == '__main__':
