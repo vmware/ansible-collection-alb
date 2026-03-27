@@ -24,6 +24,7 @@ options:
         description:
             - New password to initialize controller password.
         type: str
+        required: true
     ssh_key_pair:
         description:
             - AWS/Azure ssh key pair to login on the controller instance.
@@ -112,7 +113,7 @@ def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600):
 
 def main():
     argument_specs = dict(
-        password=dict(type='str', no_log=True, default=''),
+        password=dict(type='str', required=True, no_log=True),
         ssh_key_pair=dict(type='str', required=True, no_log=True),
         force_mode=dict(type='bool', default=False),
         # Max time to wait for controller up state

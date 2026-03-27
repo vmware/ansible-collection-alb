@@ -349,7 +349,7 @@ def main():
         username=dict(type='str', default=''),
         tenant_uuid=dict(type='str', default=''),
         tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=False),
+        password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
         api_version=dict(type='str', default='18.2.6'),
         avi_credentials=dict(type='dict',),
@@ -404,7 +404,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           {'host_key_algorithm_exclude', 'rekey_volume_limit', 'rekey_time_limit', 'avi_email_login_password'})
+                           {'rekey_time_limit', 'host_key_algorithm_exclude', 'avi_email_login_password', 'rekey_volume_limit'})
 
 
 if __name__ == '__main__':

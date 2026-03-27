@@ -73,7 +73,10 @@ Parameters
                                                             </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
                   - New password to initialize controller password.

@@ -59,12 +59,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
-    download_message:
-        description:
-            - Downloads success / failure message.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
     file_type:
         description:
             - Software / crs/ inventory.
@@ -78,6 +72,12 @@ options:
             - Field introduced in 30.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
+        type: str
+    message:
+        description:
+            - Downloads success / failure message.
+            - Field introduced in 30.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     metadata:
         description:
@@ -168,16 +168,16 @@ def main():
         username=dict(type='str', default=''),
         tenant_uuid=dict(type='str', default=''),
         tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=False),
+        password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
         api_version=dict(type='str', default='18.2.6'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         configpb_attributes=dict(type='dict',),
         destination_dir=dict(type='str', required=True),
-        download_message=dict(type='str',),
         file_type=dict(type='str', required=True),
         file_uri=dict(type='str', required=True),
+        message=dict(type='str',),
         metadata=dict(type='dict',),
         name=dict(type='str', required=True),
         status=dict(type='str',),

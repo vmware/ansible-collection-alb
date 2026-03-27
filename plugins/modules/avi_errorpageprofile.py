@@ -137,7 +137,7 @@ def main():
         username=dict(type='str', default=''),
         tenant_uuid=dict(type='str', default=''),
         tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=False),
+        password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
         api_version=dict(type='str', default='18.2.6'),
         avi_credentials=dict(type='dict',),
