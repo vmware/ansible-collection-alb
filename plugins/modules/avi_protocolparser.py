@@ -14,7 +14,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_protocolparser
-author: Parikshit Manur (parikshit.manur@broadcom.com)
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ProtocolParser Avi RESTful Object
 description:
     - This module is used to configure ProtocolParser object.

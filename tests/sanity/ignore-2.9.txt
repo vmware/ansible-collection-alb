@@ -54,7 +54,6 @@ plugins/modules/avi_bootstrap_controller.py validate-modules:no-default-for-requ
 plugins/lookup/avi.py import-3.11!skip
 plugins/lookup/avi.py import-3.12!skip
 plugins/lookup/avi.py import-3.13!skip
-plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed
 plugins/modules/avi_pingaccessagent.py validate-modules:parameter-list-no-elements
 plugins/modules/deploy_se.py validate-modules:no-log-needed
 plugins/modules/avi_pingaccessagent.py validate-modules:doc-elements-mismatch

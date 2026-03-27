@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_saml_api_session
-author: Parikshit Manur (parikshit.manur@broadcom.com)
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Avi API Module
 description:
     - This module is useful to get SAML session after successful SAML authentication from a given IDP.

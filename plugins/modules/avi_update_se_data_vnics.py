@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_update_se_data_vnics
-author: Parikshit Manur (parikshit.manur@broadcom.com)
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Avi API Module for update data vnics and vlan interfaces.
 description:
     - Module to update Service Engine's data vnics/vlans configurations.
