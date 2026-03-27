@@ -63,7 +63,6 @@ plugins/modules/avi_useraccountprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_reportprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cloudproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemlimits.py validate-modules:missing-gplv3-license
-plugins/modules/avi_upgradeprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_techsupportmessage.py validate-modules:missing-gplv3-license
 plugins/modules/avi_techsupportprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_licensestatus.py validate-modules:missing-gplv3-license
