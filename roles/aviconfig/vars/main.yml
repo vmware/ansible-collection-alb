@@ -3,19 +3,19 @@
 ---
 avi_resource_types:
   - labelgroup
-  - systemlimits
-  - licenseledgerdetails
   - useraccountprofile
-  - controllerproperties
   - cloudproperties
+  - controllerproperties
   - licensestatus
+  - licenseledgerdetails
   - seproperties
+  - systemlimits
   - tenant
-  - webapput
   - cloudconnectoruser
   - hardwaresecuritymodulegroup
   - alertscriptconfig
   - customipamdnsprofile
+  - federationcheckpoint
   - networkprofile
   - stringgroup
   - ipaddrgroup
@@ -33,33 +33,34 @@ avi_resource_types:
   - testsedatastorelevel3
   - botipreputationtypemapping
   - botconfigconsolidator
-  - tenantsystemconfiguration
-  - federationcheckpoint
-  - gslbgeodbprofile
-  - albservicesconfig
-  - siteversion
-  - statediffoperation
   - image
-  - taskjournal
-  - controllerportalregistration
-  - dynamicdnsrecord
   - role
-  - serviceauthprofile
-  - controllersite
-  - inventoryfaultconfig
-  - albservicesfileupload
+  - statediffoperation
   - webhook
-  - securitymanagerdata
-  - cluster
   - albservicesfiledownload
-  - vsgs
+  - taskjournal
   - poolgroupdeploymentpolicy
-  - memorybalancerrequest
+  - gslbgeodbprofile
+  - cluster
+  - siteversion
+  - webapput
+  - securitymanagerdata
+  - controllersite
+  - serviceauthprofile
+  - controllerportalregistration
   - albservicesjob
+  - tenantsystemconfiguration
+  - vsgs
+  - inventoryfaultconfig
+  - albservicesconfig
+  - albservicesfileupload
+  - memorybalancerrequest
+  - dynamicdnsrecord
   - backupconfiguration
   - clusterclouddetails
   - certificatemanagementprofile
   - ipamdnsproviderprofile
+  - gslb
   - analyticsprofile
   - wafpolicypsmgroup
   - wafprofile
@@ -72,12 +73,11 @@ avi_resource_types:
   - microservicegroup
   - errorpageprofile
   - testsedatastorelevel2
-  - gslb
-  - statediffsnapshot
-  - upgradestatusinfo
   - upgradestatussummary
-  - systemreport
   - authmappingprofile
+  - upgradestatusinfo
+  - statediffsnapshot
+  - systemreport
   - scheduler
   - sslkeyandcertificate
   - applicationprofile
@@ -90,8 +90,8 @@ avi_resource_types:
   - healthmonitor
   - alertsyslogconfig
   - vrfcontext
-  - vcenterserver
   - prioritylabels
+  - vcenterserver
   - nsxtsegmentruntime
   - gslbservice
   - actiongroupconfig
@@ -99,14 +99,14 @@ avi_resource_types:
   - alertconfig
   - serverautoscalepolicy
   - network
+  - pool
   - serviceenginegroup
   - serviceenginegroup_advanced
-  - pool
   - trafficcloneprofile
   - vsvip
+  - poolgroup
   - serviceengine
   - networkservice
-  - poolgroup
   - httppolicyset
   - dnspolicy
   - vsdatascriptset
