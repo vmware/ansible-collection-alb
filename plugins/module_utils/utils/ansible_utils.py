@@ -223,7 +223,7 @@ def ref_n_str_cmp(x, y):
         y_name = parts[1] if len(parts) > 1 else ''
         # is just string but y is a url so match either uuid or name
     result = (x in (y, y_name, y_uuid))
-    if not result and "obj_password" not in [x, y, y_name]:
+    if not result and "password" not in [x, y, y_name]:
         log.debug('x: %s y: %s y_name %s y_uuid %s',
                   x, y, y_name, y_uuid)
     return result
@@ -467,7 +467,8 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
         # As per API response, name is always same as username regardless of full_name
         obj['name'] = obj['username']
 
-    log.info('passed object %s ', obj)
+    if "password" not in obj:
+        log.info('passed object %s ', obj)
 
     if uuid:
         # Get the object based on uuid.
