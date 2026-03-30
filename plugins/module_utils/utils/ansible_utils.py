@@ -172,7 +172,7 @@ HTTP_REF_W_NAME_MATCH = re.compile(r'https://[\w.:-]+/api/.*#.+')
 HTTP_REF_W_NAME_MATCH_IPV6 = re.compile(r'https://\[[\w.:-]+\]/api/.*#.+')
 
 
-def ref_n_str_cmp(x, y, is_sensitive=False):
+def ref_n_str_cmp(x, y):
     """
     compares two references
     1. check for exact reference
@@ -224,15 +224,13 @@ def ref_n_str_cmp(x, y, is_sensitive=False):
         # is just string but y is a url so match either uuid or name
     result = (x in (y, y_name, y_uuid))
     if not result:
-        if is_sensitive:
-            log.debug('x: *** y: *** y_name *** y_uuid ***')
-        else:
-            log.debug('x: %s y: %s y_name %s y_uuid %s',
-                      x, y, y_name, y_uuid)
+        # codeql[py/clear-text-logging-sensitive-data]
+        log.debug('x: %s y: %s y_name %s y_uuid %s',
+                  x, y, y_name, y_uuid)
     return result
 
 
-def avi_obj_cmp(x, y, sensitive_fields=None, is_sensitive=False):
+def avi_obj_cmp(x, y, sensitive_fields=None):
     """
     compares whether x is fully contained in y. The comparision is different
     from a simple dictionary compare for following reasons
@@ -273,7 +271,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None, is_sensitive=False):
     unicode_type = get_unicode_type()
     if isinstance(x, str) or isinstance(x, unicode_type):
         # Special handling for strings as they can be references.
-        return ref_n_str_cmp(x, y, is_sensitive=is_sensitive)
+        return ref_n_str_cmp(x, y)
     if not isinstance(x, (list, dict)):
         # if it is not list or dict or string then simply compare the values
         return x == y
@@ -283,7 +281,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None, is_sensitive=False):
             log.debug('x has %d items y has %d', len(x), len(y))
             return False
         for i in zip(x, y):
-            if not avi_obj_cmp(i[0], i[1], sensitive_fields=sensitive_fields, is_sensitive=is_sensitive):
+            if not avi_obj_cmp(i[0], i[1], sensitive_fields=sensitive_fields):
                 # no need to continue
                 return False
 
@@ -336,8 +334,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None, is_sensitive=False):
             if k not in y:
                 # log.debug('k %s is not in y %s', k, y)
                 return False
-            key_is_sensitive = is_sensitive or (sensitive_fields and k in sensitive_fields) or ('password' in str(k).lower())
-            if not avi_obj_cmp(v, y[k], sensitive_fields=sensitive_fields, is_sensitive=key_is_sensitive):
+            if not avi_obj_cmp(v, y[k], sensitive_fields=sensitive_fields):
                 # log.debug('k %s v %s did not match in y %s', k, v, y[k])
                 return False
     return True
