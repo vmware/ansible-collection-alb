@@ -1,5 +1,5 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi Cloud | Setup Cloud
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -20,6 +20,7 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     custom_tags: "{{ item.custom_tags | default(omit) }}"
     dhcp_enabled: "{{ item.dhcp_enabled | default(omit) }}"
+    disable_metrics_polling: "{{ item.disable_metrics_polling | default(omit) }}"
     dns_provider_ref: "{{ item.dns_provider_ref | default(omit) }}"
     dns_resolution_on_se: "{{ item.dns_resolution_on_se | default(omit) }}"
     dns_resolvers: "{{ item.dns_resolvers | default(omit) }}"
@@ -43,7 +44,6 @@
     nsxt_configuration: "{{ item.nsxt_configuration | default(omit) }}"
     ntp_configuration: "{{ item.ntp_configuration | default(omit) }}"
     obj_name_prefix: "{{ item.obj_name_prefix | default(omit) }}"
-    openstack_configuration: "{{ item.openstack_configuration | default(omit) }}"
     prefer_static_routes: "{{ item.prefer_static_routes | default(omit) }}"
     proxy_configuration: "{{ item.proxy_configuration | default(omit) }}"
     rancher_configuration: "{{ item.rancher_configuration | default(omit) }}"
@@ -66,8 +66,8 @@
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_api_session:
     controller: "{{ avi_controller | default(omit) }}"
-    username: "{{ avi_username  | default(omit) }}"
-    password: "{{ avi_password  | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
     tenant: "{{ item.tenant | default(omit) }}"
     api_version: "{{ api_version | default(omit) }}"
     avi_credentials: "{{ avi_credentials | default(omit) }}"
@@ -84,7 +84,7 @@
   register: cloud_inventory
 
 - name: Avi Cloud | Waiting for VMware network discovery
-  wait_for:
+  ansible.builtin.wait_for:
     timeout: "{{ avi_role_cfg.avi_cloud_discovery_wait | default(avi_cloud_discovery_wait) | default(1) }}"
   when:
     - avi_config_state == "present"
@@ -98,8 +98,8 @@
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_cloud:
     controller: "{{ avi_controller | default(omit) }}"
-    username: "{{ avi_username  | default(omit) }}"
-    password: "{{ avi_password  | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
     tenant: "{{ item.tenant | default(omit) }}"
     state: "{{ avi_role_state_mode }}"
     api_version: "{{ api_version | default(omit) }}"
@@ -113,6 +113,7 @@
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     custom_tags: "{{ item.custom_tags | default(omit) }}"
     dhcp_enabled: "{{ item.dhcp_enabled | default(omit) }}"
+    disable_metrics_polling: "{{ item.disable_metrics_polling | default(omit) }}"
     dns_provider_ref: "{{ item.dns_provider_ref | default(omit) }}"
     dns_resolution_on_se: "{{ item.dns_resolution_on_se | default(omit) }}"
     dns_resolvers: "{{ item.dns_resolvers | default(omit) }}"
@@ -136,7 +137,6 @@
     nsxt_configuration: "{{ item.nsxt_configuration | default(omit) }}"
     ntp_configuration: "{{ item.ntp_configuration | default(omit) }}"
     obj_name_prefix: "{{ item.obj_name_prefix | default(omit) }}"
-    openstack_configuration: "{{ item.openstack_configuration | default(omit) }}"
     prefer_static_routes: "{{ item.prefer_static_routes | default(omit) }}"
     proxy_configuration: "{{ item.proxy_configuration | default(omit) }}"
     rancher_configuration: "{{ item.rancher_configuration | default(omit) }}"

@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 18.2.2
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -116,19 +116,20 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Example to create PingAccessAgent object
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create PingAccessAgent object
-  vmware.alb.avi_pingaccessagent:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_pingaccessagent
+  tasks:
+    - name: Example to create PingAccessAgent object
+      vmware.alb.avi_pingaccessagent:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_pingaccessagent
 """
 
 RETURN = '''
@@ -158,7 +159,7 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
-        markers=dict(type='list',),
+        markers=dict(type='list', elements='dict'),
         name=dict(type='str', required=True),
         pingaccess_pool_ref=dict(type='str', required=True),
         primary_server=dict(type='dict', required=True),
@@ -166,8 +167,18 @@ def main():
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='18.2.6'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

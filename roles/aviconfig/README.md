@@ -136,11 +136,3 @@ There are many more examples located at [https://github.com/avinetworks/devops/t
 ## License
 
 Apache 2.0
-
-## Author Information
-
-Gaurav Rastogi
-
-github: grastogi23
-
-[https://www.linkedin.com/in/grrastogi]

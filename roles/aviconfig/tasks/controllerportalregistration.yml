@@ -1,5 +1,5 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi ControllerPortalRegistration | Create or Update ControllerPortalRegistration
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -17,6 +17,7 @@
     asset: "{{ item.asset | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     portal_auth: "{{ item.portal_auth | default(omit) }}"
+    site_info: "{{ item.site_info | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:

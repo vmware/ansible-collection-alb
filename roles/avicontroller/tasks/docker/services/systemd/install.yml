@@ -1,9 +1,11 @@
 ---
 - name: Avi Controller | Services | systemd | Deploy the avicontroller service
-  template:
+  ansible.builtin.template:
     src: avicontroller.service.j2
     dest: /etc/systemd/system/avicontroller.service
-    mode: 0644
+    mode: "0640"
+    owner: root
+    group: root
   register: avicontroller_service
   notify:
     - Avi Controller | Services | systemd | Daemon reload
