@@ -223,6 +223,8 @@ def ref_n_str_cmp(x, y):
         y_name = parts[1] if len(parts) > 1 else ''
         # is just string but y is a url so match either uuid or name
     result = (x in (y, y_name, y_uuid))
+    if not result:
+        log.debug('x: %s y: %s',x, y)
     return result
 
 
