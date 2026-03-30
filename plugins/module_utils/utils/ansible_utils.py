@@ -224,7 +224,7 @@ def ref_n_str_cmp(x, y):
         # is just string but y is a url so match either uuid or name
     result = (x in (y, y_name, y_uuid))
     if not result:
-        log.debug('x: %s y: %s',x, y)
+        log.debug('ref_n_str_cmp mismatch for provided values')
     return result
 
 
