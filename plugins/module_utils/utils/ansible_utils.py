@@ -165,11 +165,11 @@ def get_unicode_type():
 RE_REF_MATCH = re.compile(r'^/api/[\w/]+\?name\=[\w*]+[^#<>]*$')
 
 # if HTTP ref match then strip out the #name
-# HTTP_REF_MATCH = re.compile('https://[\w.0-9:-]+/api/[\w/\?.#&-]*$')
-HTTP_REF_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.+')
-HTTP_REF_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.+')
-HTTP_REF_W_NAME_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.*#.+')
-HTTP_REF_W_NAME_MATCH_IPV6 = re.compile(r'https://[[\w.0-9:-]+]/api/.*#.+')
+# HTTP_REF_MATCH = re.compile('https://[\w.:-]+/api/[\w/\?.#&-]*$')
+HTTP_REF_MATCH = re.compile(r'https://[\w.:-]+/api/.+')
+HTTP_REF_MATCH_IPV6 = re.compile(r'https://\[[\w.:-]+\]/api/.+')
+HTTP_REF_W_NAME_MATCH = re.compile(r'https://[\w.:-]+/api/.*#.+')
+HTTP_REF_W_NAME_MATCH_IPV6 = re.compile(r'https://\[[\w.:-]+\]/api/.*#.+')
 
 
 def ref_n_str_cmp(x, y):
@@ -223,7 +223,7 @@ def ref_n_str_cmp(x, y):
         y_name = parts[1] if len(parts) > 1 else ''
         # is just string but y is a url so match either uuid or name
     result = (x in (y, y_name, y_uuid))
-    if not result:
+    if not result and "password" not in [x, y, y_name]:
         log.debug('x: %s y: %s y_name %s y_uuid %s',
                   x, y, y_name, y_uuid)
     return result
