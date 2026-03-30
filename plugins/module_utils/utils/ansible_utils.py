@@ -467,8 +467,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
         # As per API response, name is always same as username regardless of full_name
         obj['name'] = obj['username']
 
-    if "password" not in obj:
-        log.info('passed object %s ', obj)
+    if "password" in obj:
+        obj.pop('password')
+    log.info('passed object %s ', obj)
 
     if uuid:
         # Get the object based on uuid.
@@ -598,6 +599,8 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                         rsp = None
         if changed:
             log.debug('EXISTING OBJ %s', existing_obj)
+            if "password" in obj:
+                obj.pop('password')
             log.debug('NEW OBJ %s', obj)
     else:
         changed = True
