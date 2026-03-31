@@ -713,10 +713,6 @@ avi_config:
         allow_basic_authentication: true
         disable_remote_cli_shell: false
         enable_clickjacking_protection: true
-        enable_http: false
-        enable_https: true
-        password_strength_check: false
-        redirect_to_https: true
         sslkeyandcertificate_refs:
           - /api/sslkeyandcertificate/?name=System-Default-Portal-Cert-EC256
         sslprofile_ref: /api/sslprofile/?name=System-Standard-Portal
