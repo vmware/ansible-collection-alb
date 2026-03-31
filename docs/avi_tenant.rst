@@ -602,7 +602,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -612,16 +612,16 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create Tenant using Service Engines in provider mode
-              avi_tenant:
-                avi_credentials: "{{ avi_credentials }}"
-                config_settings:
-                  se_in_provider_context: false
-                  tenant_access_to_provider_se: true
-                  tenant_vrf: false
-                description: VCenter, Open Stack, AWS Virtual services
-                local: true
-                name: Demo
+        - name: Create Tenant using Service Engines in provider mode
+          avi_tenant:
+            avi_credentials: "{{ avi_credentials }}"
+            config_settings:
+              se_in_provider_context: false
+              tenant_access_to_provider_se: true
+              tenant_vrf: false
+            description: VCenter, Open Stack, AWS Virtual services
+            local: true
+            name: Demo
 
 
 

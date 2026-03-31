@@ -6,38 +6,36 @@
   when: se_existing_run_params is defined
   block:
     - name: Read existing cloud uuid
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        echo "{{ se_existing_run_params }}" | sed -e 's/CLOUD_UUID=/\\n/g' | awk 'FNR == 2 {print $1}'
+      ansible.builtin.shell: |
+          set -o pipefail
+          echo "{{ se_existing_run_params }}" | sed 's/CLOUD_UUID=/\n/g' | awk 'FNR == 2 {print $1}'
+      args:
+        executable: /bin/bash
       changed_when: false
       register: c_uuid
-
     - name: Read existing controller IP
       ansible.builtin.shell: >
         set -o pipefail && \
         echo "{{ se_existing_run_params }}" | sed -e 's/CONTROLLERIP=/\\n/g' | awk 'FNR == 2 {print $1}'
+      args:
+        executable: /bin/bash
       changed_when: false
       register: cip
-
     - name: Read existing cloud name
       ansible.builtin.shell: >
         set -o pipefail && \
         echo "{{ se_existing_run_params }}" | sed -e 's/CLOUD_NAME=/\\n/g' | awk 'FNR == 2 {print $1}'
+      args:
+        executable: /bin/bash
       changed_when: false
       register: cname
 
 - name: Check cloud parameters
-  when: >
-    se_service_file.stat.exists and
-    (c_uuid.stdout is defined) and
-    (cname.stdout is defined) and
-    (cip.stdout is defined) and
-    (c_uuid.stdout | string) != (cloud_uuid | string)
+  when: se_service_file.stat.exists and (c_uuid.stdout is defined) and (cname.stdout is defined) and (cip.stdout is defined) and (c_uuid.stdout | string) != (cloud_uuid | string)
   block:
     - name: Check the cloud uuids
       ansible.builtin.set_fact:
         error_string: "Cannot create ServiceEngine since it is running on Cloud '{{ cname.stdout }}' on Controller '{{ cip.stdout }}'"
-
     - name: Include error tasks
       ansible.builtin.include_tasks: error.yml
 

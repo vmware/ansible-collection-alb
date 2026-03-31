@@ -16,7 +16,7 @@
     - kvm_host_mgmt_intf
 
 - name: "Avi Controller | KVM | Get all VM's list from KVM host"
-  community.libvirt.virt:
+  virt:
     command: list_vms
   register: vm_information
 
