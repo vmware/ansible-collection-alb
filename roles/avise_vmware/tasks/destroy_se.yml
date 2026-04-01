@@ -5,6 +5,7 @@
     username: "{{ vcenter_user }}"
     password: "{{ vcenter_password }}"
     validate_certs: false
+    return_content: true
     name: "{{ se_vmw_vm_name }}"
   delegate_to: localhost
   register: vm_facts
@@ -15,6 +16,7 @@
     username: '{{ vcenter_user }}'
     password: '{{ vcenter_password }}'
     validate_certs: false
+    return_content: true
     folder: "{{ vm_facts.folders[0] }}"
   delegate_to: localhost
   register: vm_info

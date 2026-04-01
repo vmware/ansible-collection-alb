@@ -332,7 +332,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -342,12 +342,12 @@ Examples
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
       tasks:        
-            - name: Create Alert Script to perform AWS server autoscaling
-              avi_alertscriptconfig:
-                avi_credentials: "{{ avi_credentials }}"
-                action_script: "echo Hello"
-                name: AWS-Launch-Script
-                tenant_ref: /api/tenant?name=Demo
+        - name: Create Alert Script to perform AWS server autoscaling
+          avi_alertscriptconfig:
+            avi_credentials: "{{ avi_credentials }}"
+            action_script: "echo Hello"
+            name: AWS-Launch-Script
+            tenant_ref: /api/tenant?name=Demo
 
 
 

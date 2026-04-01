@@ -85,7 +85,8 @@
 - name: "Avi Controller | KVM | Validate controller is up"
   ansible.builtin.uri:
     url: 'https://{{ ctrl_mgmt_ip }}/#!/login'
-    validate_certs: false
+    validate_certs: false  # NOSONAR - Required for isolated lab with self-signed cert
+    return_content: true
   retries: 120
   delay: 30
   register: ctrl_status

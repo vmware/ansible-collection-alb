@@ -10,14 +10,17 @@
       ansible.builtin.file:
         path: /etc/systemd/system/containerd.service.d
         state: directory
-        mode: '0755'
-
+        mode: '0750'
+        owner: root
+        group: root
       when: ansible_service_mgr == "systemd"
     - name: Override file for containerd
       ansible.builtin.copy:
         src: files/override.conf
         dest: /etc/systemd/system/containerd.service.d/override.conf
-        mode: '0755'
+        mode: '0640'
+        owner: root
+        group: root
       when: ansible_service_mgr == "systemd"
   roles:
     - role: avinetworks.docker

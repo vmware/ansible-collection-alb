@@ -1,4 +1,4 @@
-# Copyright 2021 VMware, Inc.
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 """
@@ -10,6 +10,7 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 import os
 import re
+import yaml
 import time
 import logging
 from copy import deepcopy
@@ -23,11 +24,6 @@ if os.environ.get('AVI_LOG_HANDLER', '') != 'syslog':
 else:
     # Ansible does not allow logging from the modules.
     log = avi_sdk_syslog_logger()
-
-try:
-    import yaml
-except ImportError:
-    yaml = None
 
 
 class InvalidRefFormat(Exception):
@@ -130,7 +126,7 @@ def cleanup_absent_fields(obj):
     :param obj:
     :return: Purged object
     """
-    if isinstance(obj, dict):
+    if not isinstance(obj, dict):
         return obj
     cleanup_keys = []
     for k, v in obj.items():
@@ -158,14 +154,16 @@ def cleanup_absent_fields(obj):
                 cleanup_keys.append(k)
     for k in cleanup_keys:
         del obj[k]
-    return
+    return obj
 
 
 def get_unicode_type():
+    """Return the unicode type; Python 2 is deprecated, so always str."""
     return str
 
 
 RE_REF_MATCH = re.compile(r'^/api/[\w/]+\?name\=[\w*]+[^#<>]*$')
+
 # if HTTP ref match then strip out the #name
 # HTTP_REF_MATCH = re.compile('https://[\w.0-9:-]+/api/[\w/\?.#&-]*$')
 HTTP_REF_MATCH = re.compile(r'https://[\w.0-9:-]+/api/.+')
@@ -195,7 +193,7 @@ def ref_n_str_cmp(x, y):
     Returns
         True if they are equivalent else False
     """
-    if type(y) in (int, float, bool, int, complex):
+    if isinstance(y, (int, float, bool, complex)):
         y = str(y)
         x = str(x)
     unicode_type = get_unicode_type()
@@ -273,7 +271,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
     if isinstance(x, str) or isinstance(x, unicode_type):
         # Special handling for strings as they can be references.
         return ref_n_str_cmp(x, y)
-    if type(x) not in [list, dict]:
+    if not isinstance(x, (list, dict)):
         # if it is not list or dict or string then simply compare the values
         return x == y
     if isinstance(x, list):
@@ -580,10 +578,7 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                 patch_data = {}
                 if avi_patch_path:
                     if avi_patch_value:
-                        if yaml:
-                            avi_patch_value = yaml.load(avi_patch_value)
-                        else:
-                            avi_patch_value = ""
+                        avi_patch_value = yaml.load(avi_patch_value)
                     patch_data = {
                         "json_patch": [{
                             "op": avi_patch_op,
