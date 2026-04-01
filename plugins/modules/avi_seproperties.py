@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_seproperties
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of SeProperties Avi RESTful Object
 description:
-    - This module is used to configure SeProperties object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure SeProperties object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -51,20 +51,19 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     se_agent_properties:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     se_bootup_properties:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     se_runtime_properties:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     url:
         description:
@@ -72,7 +71,7 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as default.
         type: str
 extends_documentation_fragment:
@@ -80,19 +79,20 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create SeProperties object
-  vmware.alb.avi_seproperties:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_seproperties
+  tasks:
+    - name: Example to create SeProperties object
+      vmware.alb.avi_seproperties:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_seproperties
 """
 
 RETURN = '''

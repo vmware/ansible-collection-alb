@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_cluster
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of Cluster Avi RESTful Object
 description:
-    - This module is used to configure Cluster object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure Cluster object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -48,27 +48,27 @@ options:
         type: str
     name:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     nodes:
         description:
             - Minimum of 1 items required.
             - Maximum of 7 items allowed.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
         elements: dict
     rejoin_nodes_automatically:
         description:
             - Re-join cluster nodes automatically in the event one of the node is reset to factory.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -76,39 +76,38 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     virtual_ip:
         description:
-            - A v4 virtual ip address.
-            - This v4 ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - A v4 virtual ip address for the cluster that always points to the v4 ip of the leader node in cluster.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     virtual_ip6:
         description:
-            - A v6 virtual ip address.
-            - This v6 ip address will be dynamically reconfigured so that it always is the ip of the cluster leader.
+            - A v6 virtual ip address for the cluster that always points to the v6 ip of the leader node in cluster.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create Cluster object
-  vmware.alb.avi_cluster:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_cluster
+  tasks:
+    - name: Example to create Cluster object
+      vmware.alb.avi_cluster:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_cluster
 """
 
 RETURN = '''

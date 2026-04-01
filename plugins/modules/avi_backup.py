@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_backup
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of Backup Avi RESTful Object
 description:
-    - This module is used to configure Backup object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure Backup object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -51,39 +51,39 @@ options:
         description:
             - Backupconfiguration information.
             - It is a reference to an object of type backupconfiguration.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     file_name:
         description:
             - The file name of backup.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     local_file_url:
         description:
             - Url to download the backup file.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     remote_file_url:
         description:
             - Url to download the backup file.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     scheduler_ref:
         description:
             - Scheduler information.
             - It is a reference to an object of type scheduler.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     timestamp:
         description:
             - Unix timestamp of when the backup file is created.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -91,26 +91,27 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create Backup object
-  vmware.alb.avi_backup:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_backup
+  tasks:
+    - name: Example to create Backup object
+      vmware.alb.avi_backup:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_backup
 """
 
 RETURN = '''

@@ -1,4 +1,4 @@
-# Copyright 2021 VMware, Inc.
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 """
@@ -10,7 +10,6 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 import os
 import re
-import sys
 import yaml
 import time
 import logging
@@ -25,6 +24,10 @@ if os.environ.get('AVI_LOG_HANDLER', '') != 'syslog':
 else:
     # Ansible does not allow logging from the modules.
     log = avi_sdk_syslog_logger()
+
+
+class InvalidRefFormat(Exception):
+    pass
 
 
 class AviCheckModeResponse(object):
@@ -123,11 +126,11 @@ def cleanup_absent_fields(obj):
     :param obj:
     :return: Purged object
     """
-    if type(obj) != dict:
+    if not isinstance(obj, dict):
         return obj
     cleanup_keys = []
     for k, v in obj.items():
-        if type(v) == dict:
+        if isinstance(v, dict):
             if (('state' in v and v['state'] == 'absent') or
                     (v == "{'state': 'absent'}")):
                 cleanup_keys.append(k)
@@ -135,7 +138,7 @@ def cleanup_absent_fields(obj):
                 cleanup_absent_fields(v)
                 if not v:
                     cleanup_keys.append(k)
-        elif type(v) == list:
+        elif isinstance(v, list):
             new_list = []
             for elem in v:
                 elem = cleanup_absent_fields(elem)
@@ -155,10 +158,8 @@ def cleanup_absent_fields(obj):
 
 
 def get_unicode_type():
-    if sys.version_info < (3, 3):
-        return unicode
-    else:
-        return str
+    """Return the unicode type; Python 2 is deprecated, so always str."""
+    return str
 
 
 RE_REF_MATCH = re.compile(r'^/api/[\w/]+\?name\=[\w*]+[^#<>]*$')
@@ -192,7 +193,7 @@ def ref_n_str_cmp(x, y):
     Returns
         True if they are equivalent else False
     """
-    if type(y) in (int, float, bool, int, complex):
+    if isinstance(y, (int, float, bool, complex)):
         y = str(y)
         x = str(x)
     unicode_type = get_unicode_type()
@@ -270,10 +271,10 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
     if isinstance(x, str) or isinstance(x, unicode_type):
         # Special handling for strings as they can be references.
         return ref_n_str_cmp(x, y)
-    if type(x) not in [list, dict]:
+    if not isinstance(x, (list, dict)):
         # if it is not list or dict or string then simply compare the values
         return x == y
-    if type(x) == list:
+    if isinstance(x, list):
         # should compare each item in the list and that should match
         if len(x) != len(y):
             log.debug('x has %d items y has %d', len(x), len(y))
@@ -283,7 +284,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
                 # no need to continue
                 return False
 
-    if type(x) == dict:
+    if isinstance(x, dict):
         x.pop('_last_modified', None)
         x.pop('tenant', None)
         y.pop('_last_modified', None)
@@ -303,7 +304,7 @@ def avi_obj_cmp(x, y, sensitive_fields=None):
                 continue
             if isinstance(v, dict):
                 if ('state' in v) and (v['state'] == 'absent'):
-                    if type(y) == dict and k not in y:
+                    if isinstance(y, dict) and k not in y:
                         d_x_absent_ks.append(k)
                     else:
                         return False
@@ -421,7 +422,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
             port=api_creds.port,
             idp_class=idp,
             csp_host=api_creds.csp_host,
-            csp_token=api_creds.csp_token,)
+            csp_token=api_creds.csp_token,
+            ssl_cert=api_creds.ssl_cert,
+            ssl_key=api_creds.ssl_key)
     state = module.params['state']
     # Get the api version.
     avi_update_method = module.params.get('avi_api_update_method', 'put')
@@ -479,7 +482,6 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
     elif name:
         params = {'include_refs': '', 'include_name': ''}
         if obj.get('cloud_ref', None):
-            # this is the case when gets have to be scoped with cloud
             cloud = obj['cloud_ref'].split('name=')[1]
             params['cloud_ref.name'] = cloud
         existing_obj = api.get_object_by_name(
@@ -490,6 +492,10 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
         # is actually in admin tenant.
         if existing_obj and 'tenant_ref' in obj and 'tenant_ref' in existing_obj:
             # https://10.10.25.42/api/tenant/admin#admin
+            # Commenting this check for this JIRA AV-252058. Added fix for 'tenant_ref' to accept with and without '/'. Removed the validation check.
+            # if not obj.get('tenant_ref').startswith("/api/tenant/?name=") and obj.get('tenant_ref') is not None:
+            #     raise InvalidRefFormat(
+            #         f"Invalid tenant_ref format: {obj['tenant_ref']}. Expected format: /api/tenant/?name=<name> (specifying the tenant name by name).")
             existing_obj_tenant = existing_obj['tenant_ref'].split('#')[1]
             obj_tenant = obj['tenant_ref'].split('name=')[1]
             if obj_tenant != existing_obj_tenant:
@@ -569,7 +575,7 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                 patch_data = {}
                 if avi_patch_path:
                     if avi_patch_value:
-                        avi_patch_value = yaml.load(avi_patch_value)
+                        avi_patch_value = yaml.load(avi_patch_value, Loader=yaml.SafeLoader)
                     patch_data = {
                         "json_patch": [{
                             "op": avi_patch_op,
@@ -613,7 +619,7 @@ def avi_common_argument_spec():
         controller=dict(default=os.environ.get('AVI_CONTROLLER', '')),
         username=dict(default=os.environ.get('AVI_USERNAME', '')),
         password=dict(default=os.environ.get('AVI_PASSWORD', ''), no_log=True),
-        api_version=dict(default='18.2.6', type='str'),
+        api_version=dict(default='20.1.1', type='str'),
         tenant=dict(default='admin'),
         tenant_uuid=dict(default='', type='str'),
         port=dict(type='int'),
@@ -623,7 +629,9 @@ def avi_common_argument_spec():
         csrftoken=dict(default='', type='str', no_log=True),
         idp_class=dict(default='', type='str'),
         csp_host=dict(default='', type='str', no_log=True),
-        csp_token=dict(default='', type='str', no_log=True)
+        csp_token=dict(default='', type='str', no_log=True),
+        ssl_cert=dict(default='', type='str', no_log=True),
+        ssl_key=dict(default='', type='str', no_log=True)
     )
 
     return dict(
@@ -632,7 +640,7 @@ def avi_common_argument_spec():
         password=dict(default=os.environ.get('AVI_PASSWORD', ''), no_log=True),
         tenant=dict(default='admin'),
         tenant_uuid=dict(default=''),
-        api_version=dict(default='18.2.6', type='str'),
+        api_version=dict(default='20.1.1', type='str'),
         avi_credentials=dict(default=None, type='dict',
                              options=credentials_spec),
         api_context=dict(type='dict'),

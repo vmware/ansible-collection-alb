@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_tenant
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of Tenant Avi RESTful Object
 description:
-    - This module is used to configure Tenant object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure Tenant object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -51,35 +51,34 @@ options:
         description:
             - Key/value tenant attributes.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     config_settings:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     created_by:
         description:
             - Creator of this tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     description:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     enforce_label_group:
         description:
             - The referred label groups are enforced on the tenant if this is set to true.if this is set to false, the label groups are suggested for the
             - tenant.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     label_group_refs:
@@ -88,17 +87,17 @@ options:
             - This is strictly enforced only if enforce_label_group is set to true.
             - It is a reference to an object of type labelgroup.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
     local:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     name:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     url:
@@ -107,31 +106,39 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
+    vcf_org_id:
+        description:
+            - Vcf organization identifier.
+            - This field is automatically populated exclusively for tenants associated with vcf organizations.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create Tenant using Service Engines in provider mode
-  vmware.alb.avi_tenant:
-    avi_credentials: "{{ avi_credentials }}"
-    config_settings:
-      se_in_provider_context: false
-      tenant_access_to_provider_se: true
-      tenant_vrf: false
-    description: VCenter, Open Stack, AWS Virtual services
-    local: true
-    name: Demo
+  tasks:
+    - name: Create Tenant using Service Engines in provider mode
+      vmware.alb.avi_tenant:
+        avi_credentials: "{{ avi_credentials }}"
+        config_settings:
+          se_in_provider_context: false
+          tenant_access_to_provider_se: true
+          tenant_vrf: false
+        description: VCenter, Open Stack, AWS Virtual services
+        local: true
+        name: Demo
 """
 
 RETURN = '''
@@ -170,6 +177,7 @@ def main():
         name=dict(type='str', required=True),
         url=dict(type='str',),
         uuid=dict(type='str',),
+        vcf_org_id=dict(type='str',),
     )
     argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(

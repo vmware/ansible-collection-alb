@@ -3,7 +3,7 @@
 
 # module_check: supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
@@ -14,7 +14,7 @@ DOCUMENTATION = \
     '''
 ---
 module: avi_serviceenginegroup
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ServiceEngineGroup Avi RESTful Object
 description:
     - This module is used to configure ServiceEngineGroup object
@@ -1610,11 +1610,9 @@ extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
-EXAMPLES = \
-    """
-- hosts: localhost
-  collections:
-    - vmware.alb
+EXAMPLES = """
+- name: Example to create ServiceEngineGroup object
+  hosts: localhost
   vars:
     avi_credentials:
       username: "{{ username }}"
@@ -1639,7 +1637,7 @@ obj:
 from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, avi_ansible_api, ansible_return)
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_geodb
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of GeoDB Avi RESTful Object
 description:
-    - This module is used to configure GeoDB object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure GeoDB object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -50,35 +50,35 @@ options:
         description:
             - Description.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     files:
         description:
             - Geo database files.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     is_federated:
         description:
             - This field indicates that this object is replicated across gslb federation.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     mappings:
         description:
             - Custom mappings of geo values.
-            - All mappings which start with the prefix 'system-' (any case) are reserved for system default objects and may be overwritten.
+            - All mappings which start with the prefix system- (any case) are reserved for system default objects and may be overwritten.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Geo database name.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -86,7 +86,7 @@ options:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -96,26 +96,27 @@ options:
         description:
             - Uuid of this object.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create GeoDB object
-  vmware.alb.avi_geodb:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_geodb
+  tasks:
+    - name: Example to create GeoDB object
+      vmware.alb.avi_geodb:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_geodb
 """
 
 RETURN = '''

@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 18.2.2
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -18,8 +18,8 @@ module: avi_securitypolicy
 author: Chaitanya Deshpande (@chaitanyaavi) <chaitanya.deshpande@avinetworks.com>
 short_description: Module for setup of SecurityPolicy Avi RESTful Object
 description:
-    - This module is used to configure SecurityPolicy object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure SecurityPolicy object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -51,55 +51,53 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Security policy is used to specify various configuration information used to perform distributed denial of service (ddos) attacks detection and
             - mitigation.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     dns_amplification_denyports:
         description:
             - Source ports and port ranges to deny in dns amplification attacks.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     dns_attacks:
         description:
             - Attacks utilizing the dns protocol operations.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     dns_policy_index:
         description:
             - Index of the dns policy to use for the mitigation rules applied to the dns attacks.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - The name of the security policy.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     network_security_policy_index:
         description:
             - Index of the network security policy to use for the mitigation rules applied to the attacks.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
     oper_mode:
@@ -107,27 +105,27 @@ options:
             - Mode of dealing with the attacks - perform detection only, or detect and mitigate the attacks.
             - Enum options - DETECTION, MITIGATION.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as DETECTION.
         type: str
     tcp_attacks:
         description:
             - Attacks utilizing the tcp protocol operations.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - Tenancy of the security policy.
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     udp_attacks:
         description:
             - Attacks utilizing the udp protocol operations.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     url:
         description:
@@ -137,26 +135,27 @@ options:
         description:
             - The uuid of the security policy.
             - Field introduced in 18.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create SecurityPolicy object
-  vmware.alb.avi_securitypolicy:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_securitypolicy
+  tasks:
+    - name: Example to create SecurityPolicy object
+      vmware.alb.avi_securitypolicy:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_securitypolicy
 """
 
 RETURN = '''

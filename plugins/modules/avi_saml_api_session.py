@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: not supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -33,56 +33,58 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-  - hosts: all
-    vars:
-      avi_credentials:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        controller: "{{ controller }}"
-        api_version: "{{ api_version }}"
-      idp_class: "{{ idp_class }}"
+- name: Get SAML Session
+  hosts: all
+  vars:
+    avi_credentials:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      controller: "{{ controller }}"
+      api_version: "{{ api_version }}"
+    idp_class: "{{ idp_class }}"
+  tasks:
+    - name: Get SAML Session
+      vmware.alb.avi_saml_api_session:
+        idp_class: "{{ idp_class }}"
+        avi_credentials: "{{ avi_credentials }}"
+      register: saml_api_session
 
-  - name: Get SAML Session
-    vmware.alb.avi_saml_api_session:
-      idp_class: "{{ idp_class }}"
-      avi_credentials: "{{ avi_credentials }}"
-    register: saml_api_session
+    - name: Set SAML API Context
+      ansible.builtin.set_fact:
+        saml_api_context: "{{ saml_api_session.ansible_facts.avi_api_context }}"
 
-  - set_fact:
-      saml_api_context: "{{ saml_api_session.ansible_facts.avi_api_context }}"
+    - name: Create Pool
+      vmware.alb.avi_pool:
+        api_context: "{{ saml_api_context | default(omit) }}"
+        avi_credentials: "{{ avi_credentials }}"
+        state: "{{ state | default(present) }}"
+        name: vs-simple-pool
+        lb_algorithm: LB_ALGORITHM_ROUND_ROBIN
+        servers:
+          - ip:
+              addr: 10.90.64.12
+              type: 'V4'
+          - ip:
+              addr: 10.90.64.11
+              type: 'V4'
+          - ip:
+              addr: 10.90.64.13
+              type: 'V4'
 
-  - name: Create Pool
-    vmware.alb.avi_pool:
-      api_context: "{{ saml_api_context | default(omit) }}"
-      avi_credentials: "{{ avi_credentials }}"
-      state: "{{ state | default(present) }}"
-      name: vs-simple-pool
-      lb_algorithm: LB_ALGORITHM_ROUND_ROBIN
-      servers:
-      - ip:
-          addr: 10.90.64.12
-          type: 'V4'
-      - ip:
-          addr: 10.90.64.11
-          type: 'V4'
-      - ip:
-          addr: 10.90.64.13
-          type: 'V4'
-
-  - name: Create Virtual Service
-    vmware.alb.avi_virtualservice:
-      api_context: "{{ saml_api_context | default(omit) }}"
-      avi_credentials: "{{ avi_credentials }}"
-      state: "{{ state | default(present) }}"
-      name: vs-simple
-      services:
-      - port: 80
-      pool_ref: '/api/pool?name=vs-simple-pool'
-      vip:
-      - ip_address:
-          addr: 10.90.64.244
-          type: 'V4'
-        vip_id: '1'
+    - name: Create Virtual Service
+      vmware.alb.avi_virtualservice:
+        api_context: "{{ saml_api_context | default(omit) }}"
+        avi_credentials: "{{ avi_credentials }}"
+        state: "{{ state | default(present) }}"
+        name: vs-simple
+        services:
+          - port: 80
+        pool_ref: '/api/pool?name=vs-simple-pool'
+        vip:
+          - ip_address:
+              addr: 10.90.64.244
+              type: 'V4'
+            vip_id: '1'
 '''
 
 
@@ -96,11 +98,9 @@ obj:
 from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
+        avi_common_argument_spec, ansible_return)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
-    from pkg_resources import parse_version
     from requests import ConnectionError
     from ssl import SSLError
     from requests.exceptions import ChunkedEncodingError

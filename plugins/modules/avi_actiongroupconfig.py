@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_actiongroupconfig
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ActionGroupConfig Avi RESTful Object
 description:
-    - This module is used to configure ActionGroupConfig object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure ActionGroupConfig object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -50,69 +50,64 @@ options:
         description:
             - Reference of the action script configuration to be used.
             - It is a reference to an object of type alertscriptconfig.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     autoscale_trigger_notification:
         description:
             - Trigger notification to autoscale manager.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-            - cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     email_config_ref:
         description:
             - Select the email notification configuration to use when sending alerts via email.
             - It is a reference to an object of type alertemailconfig.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     external_only:
         description:
             - Generate alert only to external destinations.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-            - cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        required: true
         type: bool
     level:
         description:
             - When an alert is generated, mark its priority via the alert level.
             - Enum options - ALERT_LOW, ALERT_MEDIUM, ALERT_HIGH.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as ALERT_LOW.
-        required: true
         type: str
     name:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     snmp_trap_profile_ref:
         description:
             - Select the snmp trap notification to use when sending alerts via snmp trap.
             - It is a reference to an object of type snmptrapprofile.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     syslog_config_ref:
         description:
             - Select the syslog notification configuration to use when sending alerts via syslog.
             - It is a reference to an object of type alertsyslogconfig.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -120,26 +115,27 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create ActionGroupConfig object
-  vmware.alb.avi_actiongroupconfig:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_actiongroupconfig
+  tasks:
+    - name: Example to create ActionGroupConfig object
+      vmware.alb.avi_actiongroupconfig:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_actiongroupconfig
 """
 
 RETURN = '''
@@ -172,8 +168,8 @@ def main():
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         email_config_ref=dict(type='str',),
-        external_only=dict(type='bool', required=True),
-        level=dict(type='str', required=True),
+        external_only=dict(type='bool',),
+        level=dict(type='str',),
         name=dict(type='str', required=True),
         snmp_trap_profile_ref=dict(type='str',),
         syslog_config_ref=dict(type='str',),

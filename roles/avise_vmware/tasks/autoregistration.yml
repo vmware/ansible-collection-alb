@@ -3,10 +3,10 @@
 # these tasks will automatically register the service engine to the controller
 
 - name: Avi SE | Autoregistration | Check if required login vars are defined
-  assert:
+  ansible.builtin.assert:
     that:
       - item != None
-  with_items:
+  loop:
     - se_leader_ctl_ip
     - se_leader_ctl_username
     - se_leader_ctl_password
@@ -44,15 +44,15 @@
     tenant: "{{ se_tenant }}"
     api_version: "{{ se_leader_ctl_version }}"
     http_method: get
-    path: securetoken-generate?cloud_uuid={{ se_cloud_data.obj.results[0].uuid}}
+    path: securetoken-generate?cloud_uuid={{ se_cloud_data.obj.results[0].uuid }}
   register: se_authtoken
   delegate_to: localhost
 
 - name: Avi SE | Autoregistration | Append the token to the docker environment variables.
-  set_fact:
+  ansible.builtin.set_fact:
     se_auth_token: "{{ se_authtoken.obj.auth_token }}"
     se_cluster_uuid: "{{ se_cluster_data.obj.node_info.cluster_uuid }}"
 
-- debug: |
-    msg="Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }} for 
-    cluster {{ se_cluster_uuid }}"
+- name: Avi SE | Autoregistration | Print auth token
+  ansible.builtin.debug:
+    msg: "Recieved Authentication {{ se_auth_token }} from {{ se_leader_ctl_ip }} for cluster {{ se_cluster_uuid }}"
