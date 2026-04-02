@@ -14,6 +14,7 @@
     api_context: "{{ avi_api_context | default(omit) }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    cloud_config_cksum: "{{ item.cloud_config_cksum | default(omit) }}"
     cloud_ref: "{{ item.cloud_ref | default(omit) }}"
     cluster_type: "{{ item.cluster_type | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
@@ -21,6 +22,7 @@
     deployment_info: "{{ item.deployment_info | default(omit) }}"
     metadata: "{{ item.metadata | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     version_info: "{{ item.version_info | default(omit) }}"
   when:

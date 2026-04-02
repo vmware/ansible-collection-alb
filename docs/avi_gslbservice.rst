@@ -2018,7 +2018,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - If enabled, provide the srv targets resolved ip in the response srv gslb service.
+                  - If enabled, the srv targets resolved ip addresses are included in the answer section of the dns response for a gslb service of type srv.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.1.1.
@@ -2309,7 +2309,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - This field indicates that for a cname query, respond with resolved cnames in the additional section with a records.
+                  - This field indicates that for a cname query, respond with resolved cnames in the answer section with a and aaaa records.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.5.

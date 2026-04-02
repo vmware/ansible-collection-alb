@@ -133,7 +133,7 @@ options:
         type: bool
     include_additional_records:
         description:
-            - If enabled, provide the srv targets resolved ip in the response srv gslb service.
+            - If enabled, the srv targets resolved ip addresses are included in the answer section of the dns response for a gslb service of type srv.
             - Field introduced in 31.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -200,7 +200,7 @@ options:
         type: str
     resolve_cname:
         description:
-            - This field indicates that for a cname query, respond with resolved cnames in the additional section with a records.
+            - This field indicates that for a cname query, respond with resolved cnames in the answer section with a and aaaa records.
             - Field introduced in 18.2.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.

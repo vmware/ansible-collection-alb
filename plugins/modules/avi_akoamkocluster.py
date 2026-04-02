@@ -46,6 +46,12 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    cloud_config_cksum:
+        description:
+            - Checksum of the cloud configuration for akoamkocluster object.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     cloud_ref:
         description:
             - Cloud reference uuid in avi controller.
@@ -91,6 +97,13 @@ options:
             - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
+        type: str
+    tenant_ref:
+        description:
+            - Tenant that ako/amko cluster belongs to.
+            - It is a reference to an object of type tenant.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -154,6 +167,7 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        cloud_config_cksum=dict(type='str',),
         cloud_ref=dict(type='str',),
         cluster_type=dict(type='str',),
         configpb_attributes=dict(type='dict',),
@@ -161,6 +175,7 @@ def main():
         deployment_info=dict(type='dict',),
         metadata=dict(type='dict',),
         name=dict(type='str', required=True),
+        tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         version_info=dict(type='dict',),
