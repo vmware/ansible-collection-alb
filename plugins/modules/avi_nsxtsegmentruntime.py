@@ -231,6 +231,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         cloud_ref=dict(type='str',),
         dhcp6_ranges=dict(type='list', elements='str',),
         dhcp_enabled=dict(type='bool',),
@@ -254,7 +263,8 @@ def main():
         vlan_ids=dict(type='list', elements='str',),
         vrf_context_ref=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

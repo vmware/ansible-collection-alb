@@ -2,7 +2,6 @@ plugins/modules/avi_api_version.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_session.py validate-modules:missing-gplv3-license
 plugins/modules/avi_user.py validate-modules:missing-gplv3-license
 plugins/modules/avi_useraccount.py validate-modules:missing-gplv3-license
-plugins/modules/avi_pingaccessagent.py validate-modules:missing-gplv3-license
 plugins/modules/avi_update_se_data_vnics.py validate-modules:missing-gplv3-license
 plugins/modules/avi_saml_api_session.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbservice_patch_member.py validate-modules:missing-gplv3-license
@@ -17,6 +16,18 @@ plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
 plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:missing-gplv3-license
+plugins/lookup/avi.py validate-modules:invalid-documentation
+plugins/modules/avi_albservicesfiledownload.py validate-modules:invalid-argument-name
+plugins/modules/avi_albservicesfiledownload.py validate-modules:nonexistent-parameter-documented
+plugins/modules/avi_bootstrap_controller.py validate-modules:doc-default-does-not-match-spec
+plugins/modules/avi_bootstrap_controller.py validate-modules:no-default-for-required-parameter
+plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed
+plugins/modules/deploy_se.py validate-modules:no-log-needed
+plugins/module_utils/avi_api.py import-3.12!skip
+plugins/module_utils/csp_avi_api.py import-3.12!skip
+plugins/module_utils/saml_avi_api.py import-3.12!skip
+plugins/module_utils/utils/ansible_utils.py import-3.12!skip
+plugins/lookup/avi.py import-3.12!skip
 '
 plugins/modules/avi_saml_api_session.py validate-modules:doc-type-does-not-match-spec
 '

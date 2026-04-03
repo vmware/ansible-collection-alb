@@ -240,6 +240,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         datascript=dict(type='list', elements='dict',),
@@ -256,14 +265,15 @@ def main():
         rate_limiters=dict(type='list', elements='dict',),
         snat_ip6s=dict(type='list', elements='dict',),
         snat_ips=dict(type='list', elements='dict',),
-        ssl_key_certificate_refs=dict(type='list', elements='str',),
+        ssl_key_certificate_refs=dict(type='list', no_log=True, elements='str',),
         ssl_profile_refs=dict(type='list', elements='str',),
         string_group_refs=dict(type='list', elements='str',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -271,7 +281,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'vsdatascriptset',
-                           set())
+                           {'ssl_key_certificate_refs'})
 
 
 if __name__ == '__main__':

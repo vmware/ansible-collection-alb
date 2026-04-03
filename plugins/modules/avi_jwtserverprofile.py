@@ -164,11 +164,20 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         configpb_attributes=dict(type='dict',),
         controller_internal_auth=dict(type='dict',),
         is_federated=dict(type='bool',),
         issuer=dict(type='str',),
-        jwks_keys=dict(type='str',),
+        jwks_keys=dict(type='str', no_log=True,),
         jwt_profile_type=dict(type='str',),
         name=dict(type='str', required=True),
         protected_resource_config=dict(type='dict',),
@@ -176,7 +185,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -184,7 +194,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'jwtserverprofile',
-                           set())
+                           {'jwks_keys'})
 
 
 if __name__ == '__main__':

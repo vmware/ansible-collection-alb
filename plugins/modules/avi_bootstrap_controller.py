@@ -23,8 +23,8 @@ options:
     password:
         description:
             - New password to initialize controller password.
-        required: true
         type: str
+        required: true
     ssh_key_pair:
         description:
             - AWS/Azure ssh key pair to login on the controller instance.
@@ -114,14 +114,23 @@ def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600):
 def main():
     argument_specs = dict(
         password=dict(type='str', required=True, no_log=True),
-        ssh_key_pair=dict(type='str', required=True),
+        ssh_key_pair=dict(type='str', required=True, no_log=True),
         force_mode=dict(type='bool', default=False),
         # Max time to wait for controller up state
         con_wait_time=dict(type='int', default=3600),
         # Retry after every rount_wait time to check for controller state.
         round_wait=dict(type='int', default=10),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(

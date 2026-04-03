@@ -765,6 +765,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         active_standby_se_tag=dict(type='str',),
         advertise_down_vs=dict(type='bool',),
         allow_invalid_client_cert=dict(type='bool',),
@@ -836,7 +845,7 @@ def main():
         snat_ip=dict(type='list', elements='dict',),
         snat_ip6_addresses=dict(type='list', elements='dict',),
         sp_pool_refs=dict(type='list', elements='str',),
-        ssl_key_and_certificate_refs=dict(type='list', elements='str',),
+        ssl_key_and_certificate_refs=dict(type='list', no_log=True, elements='str',),
         ssl_profile_ref=dict(type='str',),
         ssl_profile_selectors=dict(type='list', elements='dict',),
         ssl_sess_cache_avg_size=dict(type='int',),
@@ -864,7 +873,8 @@ def main():
         waf_policy_ref=dict(type='str',),
         weight=dict(type='int',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -872,7 +882,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'virtualservice',
-                           set())
+                           {'ssl_key_and_certificate_refs'})
 
 
 if __name__ == '__main__':

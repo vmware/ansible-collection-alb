@@ -365,6 +365,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         admin_auth_configuration=dict(type='dict',),
         avi_email_login_password=dict(type='str', no_log=True,),
         common_criteria_mode=dict(type='bool',),
@@ -380,7 +389,7 @@ def main():
         enable_license_quota=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
-        host_key_algorithm_exclude=dict(type='str',),
+        host_key_algorithm_exclude=dict(type='str', no_log=True,),
         intelligent_assist_enabled=dict(type='bool',),
         kex_algorithm_exclude=dict(type='str',),
         legacy_ssl_support=dict(type='bool',),
@@ -391,8 +400,8 @@ def main():
         password_policy_managed_at_ops=dict(type='bool',),
         portal_configuration=dict(type='dict',),
         proxy_configuration=dict(type='dict',),
-        rekey_time_limit=dict(type='str',),
-        rekey_volume_limit=dict(type='str',),
+        rekey_time_limit=dict(type='str', no_log=True,),
+        rekey_volume_limit=dict(type='str', no_log=True,),
         sddcmanager_fqdn=dict(type='str',),
         secure_channel_configuration=dict(type='dict',),
         service_auth_configurations=dict(type='list', elements='dict',),
@@ -409,7 +418,8 @@ def main():
         uuid=dict(type='str',),
         welcome_workflow_complete=dict(type='bool',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -417,7 +427,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           {'avi_email_login_password'})
+                           {'rekey_time_limit', 'rekey_volume_limit', 'host_key_algorithm_exclude', 'avi_email_login_password'})
 
 
 if __name__ == '__main__':

@@ -282,6 +282,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         ca_certs=dict(type='list', elements='dict',),
         certificate=dict(type='dict', required=True),
         certificate_base64=dict(type='bool',),
@@ -290,7 +299,7 @@ def main():
         created_by=dict(type='str',),
         dynamic_params=dict(type='list', elements='dict',),
         enable_ocsp_stapling=dict(type='bool',),
-        enckey_base64=dict(type='str',),
+        enckey_base64=dict(type='str', no_log=True,),
         enckey_name=dict(type='str',),
         format=dict(type='str',),
         hardwaresecuritymodulegroup_ref=dict(type='str',),
@@ -298,7 +307,7 @@ def main():
         is_federated=dict(type='bool',),
         key=dict(type='str', no_log=True,),
         key_base64=dict(type='bool',),
-        key_params=dict(type='dict',),
+        key_params=dict(type='dict', no_log=True,),
         key_passphrase=dict(type='str', no_log=True,),
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
@@ -313,7 +322,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -321,7 +331,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'sslkeyandcertificate',
-                           {'key', 'key_passphrase'})
+                           {'key', 'enckey_base64', 'key_params', 'key_passphrase'})
 
 
 if __name__ == '__main__':

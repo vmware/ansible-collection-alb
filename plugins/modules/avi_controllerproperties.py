@@ -1020,6 +1020,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         alert_manager_use_evms=dict(type='bool',),
         allow_admin_network_updates=dict(type='bool',),
         allow_ip_forwarding=dict(type='bool',),
@@ -1035,7 +1044,7 @@ def main():
         attach_ip_retry_interval=dict(type='int',),
         attach_ip_retry_limit=dict(type='int',),
         bm_use_ansible=dict(type='bool',),
-        cc_user_password_expiry_days=dict(type='int',),
+        cc_user_password_expiry_days=dict(type='int', no_log=True,),
         cc_user_password_rotation_job_period=dict(type='int',),
         cert_rotation_jwt_retention_days=dict(type='int',),
         check_vsvip_fqdn_syntax=dict(type='bool',),
@@ -1077,7 +1086,7 @@ def main():
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
         ignore_vrf_in_networksubnetlist=dict(type='bool',),
-        intelligent_assist_project_key=dict(type='str',),
+        intelligent_assist_project_key=dict(type='str', no_log=True,),
         log_records_allocated_size=dict(type='int',),
         log_records_allocation_percentage_for_events=dict(type='int',),
         log_records_cleanup_target_percentage=dict(type='int',),
@@ -1143,7 +1152,8 @@ def main():
         warmstart_se_reconnect_wait_time=dict(type='int',),
         warmstart_vs_resync_wait_time=dict(type='int',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -1151,7 +1161,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'portal_token'})
+                           {'cc_user_password_expiry_days', 'portal_token', 'intelligent_assist_project_key'})
 
 
 if __name__ == '__main__':
