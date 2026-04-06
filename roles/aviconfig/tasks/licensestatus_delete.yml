@@ -19,6 +19,7 @@
     legacy_license_grace_period: "{{ item.legacy_license_grace_period | default(omit) }}"
     saas_status: "{{ item.saas_status | default(omit) }}"
     service_update: "{{ item.service_update | default(omit) }}"
+    ssp_license_reported_at: "{{ item.ssp_license_reported_at | default(omit) }}"
     support_legacy_license: "{{ item.support_legacy_license | default(omit) }}"
     tenant_uuid: "{{ item.tenant_uuid | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"

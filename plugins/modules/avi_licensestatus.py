@@ -76,6 +76,12 @@ options:
             - Field introduced in 21.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    ssp_license_reported_at:
+        description:
+            - Timestamp of last successful license report to ssp.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     support_legacy_license:
         description:
             - Indicates if legacy licenses are supported.
@@ -159,6 +165,7 @@ def main():
         legacy_license_grace_period=dict(type='str',),
         saas_status=dict(type='dict',),
         service_update=dict(type='dict',),
+        ssp_license_reported_at=dict(type='str',),
         support_legacy_license=dict(type='bool',),
         url=dict(type='str',),
         uuid=dict(type='str',),
