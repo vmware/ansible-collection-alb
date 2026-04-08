@@ -39,6 +39,8 @@ avi_resource_types:
   - botipreputationtypemapping
   - botconfigconsolidator
   - positivesecuritypolicy
+  - role
+  - trustedhostprofile
   - image
   - albservicesfileupload
   - securitymanagerdata
@@ -50,9 +52,7 @@ avi_resource_types:
   - gslbhsmruntime
   - gslbsmruntime
   - localworkerfdsversion
-  - role
   - serviceauthprofile
-  - trustedhostprofile
   - gslb
   - albservicesfiledownload
   - poolgroupdeploymentpolicy
@@ -86,11 +86,11 @@ avi_resource_types:
   - microservicegroup
   - errorpageprofile
   - testsedatastorelevel2
+  - authmappingprofile
   - upgradestatussummary
   - statediffsnapshot
   - upgradestatusinfo
   - systemreport
-  - authmappingprofile
   - apiratelimitprofile
   - applicationprofile
   - wafpolicy

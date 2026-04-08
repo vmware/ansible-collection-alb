@@ -87,6 +87,8 @@ plugins/modules/avi_testsedatastorelevel3.py validate-modules:missing-gplv3-lice
 plugins/modules/avi_botipreputationtypemapping.py validate-modules:missing-gplv3-license
 plugins/modules/avi_botconfigconsolidator.py validate-modules:missing-gplv3-license
 plugins/modules/avi_positivesecuritypolicy.py validate-modules:missing-gplv3-license
+plugins/modules/avi_role.py validate-modules:missing-gplv3-license
+plugins/modules/avi_trustedhostprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_image.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesfileupload.py validate-modules:missing-gplv3-license
 plugins/modules/avi_securitymanagerdata.py validate-modules:missing-gplv3-license
@@ -98,9 +100,7 @@ plugins/modules/avi_gslbcrmruntime.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbhsmruntime.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbsmruntime.py validate-modules:missing-gplv3-license
 plugins/modules/avi_localworkerfdsversion.py validate-modules:missing-gplv3-license
-plugins/modules/avi_role.py validate-modules:missing-gplv3-license
 plugins/modules/avi_serviceauthprofile.py validate-modules:missing-gplv3-license
-plugins/modules/avi_trustedhostprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslb.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesfiledownload.py validate-modules:missing-gplv3-license
 plugins/modules/avi_poolgroupdeploymentpolicy.py validate-modules:missing-gplv3-license
@@ -134,11 +134,11 @@ plugins/modules/avi_ipamdnsproviderprofile.py validate-modules:missing-gplv3-lic
 plugins/modules/avi_microservicegroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_errorpageprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_testsedatastorelevel2.py validate-modules:missing-gplv3-license
+plugins/modules/avi_authmappingprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_upgradestatussummary.py validate-modules:missing-gplv3-license
 plugins/modules/avi_statediffsnapshot.py validate-modules:missing-gplv3-license
 plugins/modules/avi_upgradestatusinfo.py validate-modules:missing-gplv3-license
 plugins/modules/avi_systemreport.py validate-modules:missing-gplv3-license
-plugins/modules/avi_authmappingprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_apiratelimitprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_applicationprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_wafpolicy.py validate-modules:missing-gplv3-license
