@@ -914,6 +914,14 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1500.
         type: int
+    vs_se_license_reservation_fail:
+        description:
+            - Time to wait before marking license reservation operation for an se as failed.
+            - Field introduced in 32.1.1.
+            - Unit is sec.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 30.
+        type: int
     vs_se_ping_fail:
         description:
             - Unit is sec.
@@ -1143,6 +1151,7 @@ def main():
         vs_se_bootup_fail=dict(type='int',),
         vs_se_bootup_fail_patch=dict(type='int',),
         vs_se_create_fail=dict(type='int',),
+        vs_se_license_reservation_fail=dict(type='int',),
         vs_se_ping_fail=dict(type='int',),
         vs_se_vnic_fail=dict(type='int',),
         vs_se_vnic_ip_fail=dict(type='int',),
@@ -1161,7 +1170,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'intelligent_assist_project_key', 'cc_user_password_expiry_days', 'portal_token'})
+                           {'intelligent_assist_project_key', 'portal_token', 'cc_user_password_expiry_days'})
 
 
 if __name__ == '__main__':

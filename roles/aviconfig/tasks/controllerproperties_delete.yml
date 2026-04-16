@@ -127,6 +127,7 @@
     vs_se_bootup_fail: "{{ item.vs_se_bootup_fail | default(omit) }}"
     vs_se_bootup_fail_patch: "{{ item.vs_se_bootup_fail_patch | default(omit) }}"
     vs_se_create_fail: "{{ item.vs_se_create_fail | default(omit) }}"
+    vs_se_license_reservation_fail: "{{ item.vs_se_license_reservation_fail | default(omit) }}"
     vs_se_ping_fail: "{{ item.vs_se_ping_fail | default(omit) }}"
     vs_se_vnic_fail: "{{ item.vs_se_vnic_fail | default(omit) }}"
     vs_se_vnic_ip_fail: "{{ item.vs_se_vnic_ip_fail | default(omit) }}"
