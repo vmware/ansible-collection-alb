@@ -102,6 +102,7 @@ avi_resource_types:
   - healthmonitor
   - cloud
   - alertsyslogconfig
+  - sessionkeyforwarder
   - backup
   - vrfcontext
   - prioritylabels

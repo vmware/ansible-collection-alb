@@ -81,6 +81,7 @@
     service_metadata: "{{ item.service_metadata | default(omit) }}"
     service_pool_select: "{{ item.service_pool_select | default(omit) }}"
     services: "{{ item.services | default(omit) }}"
+    session_key_forwarder_ref: "{{ item.session_key_forwarder_ref | default(omit) }}"
     sideband_profile: "{{ item.sideband_profile | default(omit) }}"
     snat_ip: "{{ item.snat_ip | default(omit) }}"
     snat_ip6_addresses: "{{ item.snat_ip6_addresses | default(omit) }}"

@@ -150,6 +150,7 @@ plugins/modules/avi_testsedatastorelevel1.py validate-modules:missing-gplv3-lice
 plugins/modules/avi_healthmonitor.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cloud.py validate-modules:missing-gplv3-license
 plugins/modules/avi_alertsyslogconfig.py validate-modules:missing-gplv3-license
+plugins/modules/avi_sessionkeyforwarder.py validate-modules:missing-gplv3-license
 plugins/modules/avi_backup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_vrfcontext.py validate-modules:missing-gplv3-license
 plugins/modules/avi_prioritylabels.py validate-modules:missing-gplv3-license

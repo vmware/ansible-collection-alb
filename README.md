@@ -173,6 +173,7 @@ Name | Description
 [vmware.alb.avi_serviceenginegroup](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_serviceenginegroup.rst)|Module to create update or delete Serviceenginegroup
 [vmware.alb.avi_serviceenginegroup](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_serviceenginegroup.rst)|Module to create update or delete ServiceEngineGroup
 [vmware.alb.avi_serviceenginegroup_advanced](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_serviceenginegroup_advanced.rst)|Module to create update or delete ServiceenginegroupAdvanced
+[vmware.alb.avi_sessionkeyforwarder](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_sessionkeyforwarder.rst)|Module to create update or delete SessionKeyForwarder
 [vmware.alb.avi_siteversion](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_siteversion.rst)|Module to create update or delete SiteVersion
 [vmware.alb.avi_snmptrapprofile](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_snmptrapprofile.rst)|Module to create update or delete SnmpTrapProfile
 [vmware.alb.avi_sslkeyandcertificate](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_sslkeyandcertificate.rst)|Module to create update or delete SSLKeyAndCertificate

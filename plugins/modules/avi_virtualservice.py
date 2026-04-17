@@ -492,6 +492,13 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    session_key_forwarder_ref:
+        description:
+            - Session key forwarder profile for the virtual service for the session key forwarding.
+            - It is a reference to an object of type sessionkeyforwarder.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     sideband_profile:
         description:
             - Sideband configuration to be used for this virtualservice.it can be used for sending traffic to sideband vips for external inspection etc.
@@ -841,6 +848,7 @@ def main():
         service_metadata=dict(type='str',),
         service_pool_select=dict(type='list', elements='dict',),
         services=dict(type='list', elements='dict',),
+        session_key_forwarder_ref=dict(type='str',),
         sideband_profile=dict(type='dict',),
         snat_ip=dict(type='list', elements='dict',),
         snat_ip6_addresses=dict(type='list', elements='dict',),

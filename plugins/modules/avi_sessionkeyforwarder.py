@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_certjwtstore
+module: avi_sessionkeyforwarder
 author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
-short_description: Module for setup of CertJwtStore Avi RESTful Object
+short_description: Module for setup of SessionKeyForwarder Avi RESTful Object
 description:
-    - This module is used to configure CertJwtStore object.
+    - This module is used to configure SessionKeyForwarder object.
     - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -49,66 +49,77 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 32.1.1.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
-    jwt:
+    enable:
         description:
-            - Jwt containing current portal certificate along with the full certificate bundle chain, signed by the private key of previous portal certificate.
-            - Field introduced in 32.1.1.
+            - Enable or disable session key forwarder.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    ip_ports:
+        description:
+            - Ip addresses and ports to be used for connection with session key forwarder.
+            - At least one entry required; maximum 16 (matches the per-core stats slot limit).
+            - Field introduced in 32.2.1.
+            - Minimum of 1 items required.
+            - Maximum of 16 items allowed.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        required: true
+        type: list
+        elements: dict
+    name:
+        description:
+            - Name of the session key forwarder profile.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    key:
+    pki_profile_ref:
         description:
-            - Private key.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: str
-    key_passphrase:
-        description:
-            - Private key passphrase.
-            - Field introduced in 32.1.1.
+            - Pki profile used to validate the ssl certificate presented by a server.
+            - It is a reference to an object of type pkiprofile.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    kid:
+    ssl_key_and_certificate_ref:
         description:
-            - Sha256 thumbprint of the previous old portal certificate.
-            - Field introduced in 32.1.1.
+            - Service engines will present this ssl certificate to the server.
+            - It is a reference to an object of type sslkeyandcertificate.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
         type: str
-    last_rotated_at:
+    ssl_profile_ref:
         description:
-            - Timestamp of certificate rotation.
-            - Field introduced in 32.1.1.
+            - Ssl profile defines ciphers and ssl versions to be used for session key forwarder.
+            - It is a reference to an object of type sslprofile.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: dict
-    public_key_algorithm:
-        description:
-            - Public key algorithm.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
         type: str
-    type:
+    tenant_ref:
         description:
-            - Type of ssl certificate.
-            - Enum options - SSL_CERTIFICATE_TYPE_VIRTUALSERVICE, SSL_CERTIFICATE_TYPE_SYSTEM, SSL_CERTIFICATE_TYPE_CA, SSL_CERTIFICATE_TYPE_CLIENT,
-            - SSL_CERTIFICATE_TYPE_SECURE_CHANNEL.
-            - Field introduced in 32.1.1.
+            - Tenant reference for the session key forwarder object.
+            - It is a reference to an object of type tenant.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
             - Avi controller URL of the object.
         type: str
+    use_mgmt:
+        description:
+            - If enabled, connection with session key forwarder will use the management network.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     uuid:
         description:
-            - Uuid of jwt.
-            - Field introduced in 32.1.1.
+            - Uuid of the session key forwarder profile.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -125,16 +136,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
   tasks:
-    - name: Example to create CertJwtStore object
-      vmware.alb.avi_certjwtstore:
+    - name: Example to create SessionKeyForwarder object
+      vmware.alb.avi_sessionkeyforwarder:
         avi_credentials: "{{ avi_credentials }}"
         state: present
-        name: sample_certjwtstore
+        name: sample_sessionkeyforwarder
 """
 
 RETURN = '''
 obj:
-    description: CertJwtStore (api/certjwtstore) object
+    description: SessionKeyForwarder (api/sessionkeyforwarder) object
     returned: success, changed
     type: dict
 '''
@@ -167,14 +178,15 @@ def main():
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         configpb_attributes=dict(type='dict',),
-        jwt=dict(type='str', required=True),
-        key=dict(type='str', no_log=True, required=True),
-        key_passphrase=dict(type='str', no_log=True,),
-        kid=dict(type='str', required=True),
-        last_rotated_at=dict(type='dict', required=True),
-        public_key_algorithm=dict(type='str', required=True),
-        type=dict(type='str',),
+        enable=dict(type='bool',),
+        ip_ports=dict(type='list', elements='dict', required=True),
+        name=dict(type='str', required=True),
+        pki_profile_ref=dict(type='str',),
+        ssl_key_and_certificate_ref=dict(type='str', no_log=True,),
+        ssl_profile_ref=dict(type='str',),
+        tenant_ref=dict(type='str',),
         url=dict(type='str',),
+        use_mgmt=dict(type='bool',),
         uuid=dict(type='str',),
     )
     if HAS_REQUESTS:
@@ -185,8 +197,8 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'certjwtstore',
-                           {'key', 'key_passphrase'})
+    return avi_ansible_api(module, 'sessionkeyforwarder',
+                           {'ssl_key_and_certificate_ref'})
 
 
 if __name__ == '__main__':
