@@ -19,6 +19,7 @@
     compressed: "{{ item.compressed | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     created: "{{ item.created | default(omit) }}"
+    update_interval: "{{ item.update_interval | default(omit) }}"
     crl_info: "{{ item.crl_info | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
     events: "{{ item.events | default(omit) }}"

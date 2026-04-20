@@ -80,6 +80,12 @@ options:
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    update_interval:
+        description:
+            - This field indicates the interval (in seconds) at which the crl file will be updated by fetching.
+            - The contents from the server_url specified in the crl_info field.
+            - This field is applicable in the crl context.
+        type: int
     crl_info:
         description:
             - This field contains crl metadata.
@@ -365,6 +371,7 @@ def main():
         compressed=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
         created=dict(type='str',),
+        update_interval=dict(type='int',),
         crl_info=dict(type='dict',),
         description=dict(type='str',),
         events=dict(type='list', elements='dict',),
