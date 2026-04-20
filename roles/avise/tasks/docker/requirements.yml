@@ -300,9 +300,6 @@
       ansible.builtin.file:
         path: "{{ item }}"
         state: absent
-        owner: root
-        group: root
-        mode: '0600'
       when: item != None
       loop:
         - "{{ se_disk_path }}"
@@ -311,9 +308,6 @@
       ansible.builtin.file:
         path: "{{ item }}"
         state: directory
-        owner: root
-        group: root
-        mode: '0600'
       when: item != None
       loop:
         - "{{ se_disk_path }}"

@@ -281,13 +281,13 @@ Parameters
                   - VS_DATASCRIPT_EVT_CLIENT_SSL_PRE_CONNECT, VS_DATASCRIPT_EVT_CLIENT_SSL_CLIENT_HELLO, VS_DATASCRIPT_EVT_SERVER_SSL_SERVER_HELLO,
                 </div>
                                 <div style="font-size: small">
-                  - VS_DATASCRIPT_EVT_SERVER_SSL_HANDSHAKE_DONE, VS_DATASCRIPT_EVT_DNS_REQ, VS_DATASCRIPT_EVT_DNS_RESP, VS_DATASCRIPT_EVT_L4_REQUEST,
+                  - VS_DATASCRIPT_EVT_SERVER_SSL_HANDSHAKE_DONE, VS_DATASCRIPT_EVT_CLIENT_SSL_CLIENT_CERT, VS_DATASCRIPT_EVT_DNS_REQ, VS_DATASCRIPT_EVT_DNS_RESP,
                 </div>
                                 <div style="font-size: small">
-                  - VS_DATASCRIPT_EVT_L4_RESPONSE, VS_DATASCRIPT_EVT_CLIENT_CLOSED, VS_DATASCRIPT_EVT_SERVER_CLOSED, VS_DATASCRIPT_EVT_SERVER_CONNECTED,
+                  - VS_DATASCRIPT_EVT_L4_REQUEST, VS_DATASCRIPT_EVT_L4_RESPONSE, VS_DATASCRIPT_EVT_CLIENT_CLOSED, VS_DATASCRIPT_EVT_SERVER_CLOSED,
                 </div>
                                 <div style="font-size: small">
-                  - VS_DATASCRIPT_EVT_L4_LB_DONE, VS_DATASCRIPT_EVT_L4_LB_FAILED, VS_DATASCRIPT_EVT_MAX.
+                  - VS_DATASCRIPT_EVT_SERVER_CONNECTED, VS_DATASCRIPT_EVT_L4_LB_DONE, VS_DATASCRIPT_EVT_L4_LB_FAILED, VS_DATASCRIPT_EVT_MAX.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

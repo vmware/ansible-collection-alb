@@ -3,7 +3,7 @@
   ansible.builtin.copy:
     src: upstart/avise.conf
     dest: /etc/init/avise.conf
-    mode: "0640"
+    mode: "0644"
     owner: root
     group: root
   become: true
