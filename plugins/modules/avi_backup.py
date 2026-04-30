@@ -64,6 +64,12 @@ options:
             - Url to download the backup file.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    name:
+        description:
+            - Name of the backup.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     remote_file_url:
         description:
             - Url to download the backup file.
@@ -151,6 +157,7 @@ def main():
         backup_config_ref=dict(type='str',),
         file_name=dict(type='str', required=True),
         local_file_url=dict(type='str',),
+        name=dict(type='str',),
         remote_file_url=dict(type='str',),
         scheduler_ref=dict(type='str',),
         tenant_ref=dict(type='str',),
