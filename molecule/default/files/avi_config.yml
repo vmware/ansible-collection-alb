@@ -240,7 +240,6 @@ avi_config:
   controllerproperties:
     - allow_ip_forwarding: false
       allow_unauthenticated_apis: false
-      allow_unauthenticated_nodes: false
       api_idle_timeout: 15
       appviewx_compat_mode: false
       attach_ip_retry_interval: 360

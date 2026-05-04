@@ -73,11 +73,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    allow_unauthenticated_nodes:
-        description:
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     api_idle_timeout:
         description:
             - Allowed values are 0-1440.
@@ -1041,7 +1036,6 @@ def main():
         allow_admin_network_updates=dict(type='bool',),
         allow_ip_forwarding=dict(type='bool',),
         allow_unauthenticated_apis=dict(type='bool',),
-        allow_unauthenticated_nodes=dict(type='bool',),
         api_idle_timeout=dict(type='int',),
         api_perf_logging_threshold=dict(type='int',),
         appviewx_compat_mode=dict(type='bool',),
