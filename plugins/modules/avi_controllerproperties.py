@@ -648,6 +648,15 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1440.
         type: int
+    promoted_log_fields:
+        description:
+            - Fields to promote from extended to necessary tier for log indexing.
+            - Promoted fields are indexed in opensearch and included in default api responses.
+            - Supports dot-notation for nested fields (e.g., waf_log.status).
+            - Changes require log subsystem restart to take effect.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     query_host_fail:
         description:
             - Unit is sec.
@@ -1108,6 +1117,7 @@ def main():
         postgres_vacuum_period=dict(type='int',),
         process_locked_useraccounts_timeout_period=dict(type='int',),
         process_pki_profile_timeout_period=dict(type='int',),
+        promoted_log_fields=dict(type='dict',),
         query_host_fail=dict(type='int',),
         resmgr_log_caching_period=dict(type='int',),
         restrict_cloud_read_access=dict(type='bool',),
@@ -1164,7 +1174,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'intelligent_assist_project_key', 'portal_token', 'cc_user_password_expiry_days'})
+                           {'portal_token', 'cc_user_password_expiry_days', 'intelligent_assist_project_key'})
 
 
 if __name__ == '__main__':

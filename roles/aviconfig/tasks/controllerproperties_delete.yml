@@ -90,6 +90,7 @@
     postgres_vacuum_period: "{{ item.postgres_vacuum_period | default(omit) }}"
     process_locked_useraccounts_timeout_period: "{{ item.process_locked_useraccounts_timeout_period | default(omit) }}"
     process_pki_profile_timeout_period: "{{ item.process_pki_profile_timeout_period | default(omit) }}"
+    promoted_log_fields: "{{ item.promoted_log_fields | default(omit) }}"
     query_host_fail: "{{ item.query_host_fail | default(omit) }}"
     resmgr_log_caching_period: "{{ item.resmgr_log_caching_period | default(omit) }}"
     restrict_cloud_read_access: "{{ item.restrict_cloud_read_access | default(omit) }}"
