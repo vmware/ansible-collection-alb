@@ -96,6 +96,14 @@ options:
             - Field introduced in 21.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    known_hosts_file_ref:
+        description:
+            - Reference to a fileobject of type known_hosts whose file body is openssh known_hosts file used for host key verification when uploading backups
+            - over sftp or scp.
+            - It is a reference to an object of type fileobject.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     maximum_backups_stored:
         description:
             - Rotate the backup files based on this count.
@@ -231,6 +239,7 @@ def main():
         backup_passphrase=dict(type='str', no_log=True,),
         bundle_mode=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
+        known_hosts_file_ref=dict(type='str',),
         maximum_backups_stored=dict(type='int',),
         name=dict(type='str', required=True),
         remote_directory=dict(type='str',),
@@ -254,7 +263,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'backupconfiguration',
-                           {'backup_passphrase', 'aws_access_key', 'aws_secret_access'})
+                           {'aws_access_key', 'backup_passphrase', 'aws_secret_access'})
 
 
 if __name__ == '__main__':

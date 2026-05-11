@@ -22,6 +22,7 @@
     backup_passphrase: "{{ item.backup_passphrase | default(omit) }}"
     bundle_mode: "{{ item.bundle_mode | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    known_hosts_file_ref: "{{ item.known_hosts_file_ref | default(omit) }}"
     maximum_backups_stored: "{{ item.maximum_backups_stored | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     remote_directory: "{{ item.remote_directory | default(omit) }}"
