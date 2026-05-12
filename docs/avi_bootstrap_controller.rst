@@ -118,6 +118,25 @@ Parameters
                 </div>
                                             </td>
     </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ssh_user_known_hosts_file</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Path to the known_hosts file containing the controller's SSH host key fingerprint.
+                </div>
+                                            </td>
+    </tr>
         
     </table>
     <br/>

@@ -46,6 +46,11 @@ options:
             - Wait for controller to come up for given round_wait.
         default: 10
         type: int
+    ssh_user_known_hosts_file:
+        description:
+            - Path to the known_hosts file containing the controller's SSH host key fingerprint.
+        type: str
+        required: true
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -85,21 +90,21 @@ except ImportError:
     HAS_REQUESTS = False
 
 
-def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600):
+def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600, verify=True):
     """
     It waits for controller to come up for a given wait_time (default 1 hour).
     :return: controller_up: Boolean value for controller up state.
     """
     count = 0
     max_count = wait_time / round_wait
-    ctrl_port = port if port else 80
-    path = "http://{1}:{2}{3}".format(controller_ip, ctrl_port, "/api/cluster/runtime")
+    ctrl_port = port if port else 443
+    path = "https://{0}:{1}{2}".format(controller_ip, ctrl_port, "/api/cluster/runtime")
     ctrl_status = False
     while True:
         if count >= max_count:
             break
         try:
-            r = requests.get(path, timeout=10, verify=False)
+            r = requests.get(path, timeout=10, verify=verify)
             # Check for controller response for login URI.
             if r.json()['cluster_state']['state'] == 'CLUSTER_UP_NO_HA':
                 ctrl_status = True
@@ -120,6 +125,7 @@ def main():
         con_wait_time=dict(type='int', default=3600),
         # Retry after every rount_wait time to check for controller state.
         round_wait=dict(type='int', default=10),
+        ssh_user_known_hosts_file=dict(type='str', required=True),
         api_context=dict(type='dict',),
         username=dict(type='str', default=''),
         tenant_uuid=dict(type='str', default=''),
@@ -141,9 +147,10 @@ def main():
     new_password = module.params.get('password')
     key_pair = module.params.get('ssh_key_pair')
     force_mode = module.params.get('force_mode')
+    verify_cert = api_creds.ssl_cert if api_creds.ssl_cert else True
     # Wait for controller to come up for given con_wait_time
     controller_up = controller_wait(api_creds.controller, api_creds.port, module.params['round_wait'],
-                                    module.params['con_wait_time'])
+                                    module.params['con_wait_time'], verify=verify_cert)
     if not controller_up:
         return module.fail_json(
             msg='Something wrong with the controller. The Controller is not in the up state.')
@@ -158,7 +165,11 @@ def main():
             module.exit_json(msg="Already initialized controller password with a given password.", changed=False)
         except Exception as e:
             pass
-    cmd = "ssh -o \"StrictHostKeyChecking no\" -t -i " + key_pair + " admin@" + \
+    known_hosts_file = module.params.get('ssh_user_known_hosts_file')
+    ssh_opts = "-t -i " + key_pair
+    if known_hosts_file:
+        ssh_opts = "-o \"UserKnownHostsFile={0}\" ".format(known_hosts_file) + ssh_opts
+    cmd = "ssh " + ssh_opts + " admin@" + \
           api_creds.controller + " \"ls /opt/avi/scripts/initialize_admin_user.py && echo -e '" + \
           api_creds.controller + "\\n" + new_password + "' | sudo /opt/avi/scripts/initialize_admin_user.py\""
     process = subprocess.Popen(cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE, shell=True)
