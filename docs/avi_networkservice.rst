@@ -1134,6 +1134,44 @@ Parameters
                 </div>
                                             </td>
     </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>routing_segmentation_mss</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum segment size (mss) to use for segmentation ofgro'd/lro'd tcp packets in routing service.
+                </div>
+                                <div style="font-size: small">
+                  - When oversizedpackets with df bit set exceed egress mtu, they will besegmented using hardware tso with this mss value.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 536-9000.
+                </div>
+                                <div style="font-size: small">
+                  - Special values are 0- auto.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is bytes.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
         
                                                 <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
