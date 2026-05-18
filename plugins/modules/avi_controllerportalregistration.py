@@ -49,24 +49,30 @@ options:
     asset:
         description:
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:
         description:
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     portal_auth:
         description:
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
+    site_info:
+        description:
+            - Site information for the controller registration.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -75,7 +81,7 @@ options:
     uuid:
         description:
             - Field introduced in 18.2.6.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -125,6 +131,7 @@ def main():
         asset=dict(type='dict',),
         name=dict(type='str', required=True),
         portal_auth=dict(type='dict',),
+        site_info=dict(type='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),

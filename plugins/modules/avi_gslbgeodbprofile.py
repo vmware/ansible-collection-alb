@@ -51,13 +51,20 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
+    distance_computation_algorithm:
+        description:
+            - Algorithm to be used for computing distance between geo locations.only applicable when load balancing algorithm is gslb_algorithm_geo.
+            - Enum options - GSLB_DISTANCE_AVI_OPTIMISED, GSLB_DISTANCE_HAVERSINE.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as GSLB_DISTANCE_AVI_OPTIMISED.
         type: str
     entries:
         description:
@@ -65,7 +72,7 @@ options:
             - An entry can either be a geodb file or an ip address group with geo properties.
             - Field introduced in 17.1.1.
             - Minimum of 1 items required.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
         elements: dict
@@ -73,29 +80,28 @@ options:
         description:
             - This field indicates that this object is replicated across gslb federation.
             - Field introduced in 17.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - A user-friendly name for the geodb profile.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -105,7 +111,7 @@ options:
         description:
             - Uuid of the geodb profile.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -154,6 +160,7 @@ def main():
         avi_patch_value=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
+        distance_computation_algorithm=dict(type='str',),
         entries=dict(type='list', elements='dict', required=True),
         is_federated=dict(type='bool',),
         markers=dict(type='list', elements='dict',),

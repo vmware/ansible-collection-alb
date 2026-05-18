@@ -50,74 +50,80 @@ options:
     addrs:
         description:
             - Configure ip address(es).
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     country_codes:
         description:
             - Populate the ip address ranges from the geo database for this country.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
     description:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     ip_ports:
         description:
             - Configure (ip address, port) tuple(s).
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     marathon_app_name:
         description:
             - Populate ip addresses from tasks of this marathon app.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     marathon_service_port:
         description:
             - Task port associated with marathon service port.
             - If marathon app has multiple service ports, this is required.
             - Else, the first task port is used.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Name of the ip address group.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
+    nsx_groups:
+        description:
+            - An nsx group that maps to a dynamic collection of ip addresses, derived from its definition in nsx.
+            - Field introduced in 32.1.1.
+            - Maximum of 1 items allowed.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: str
     prefixes:
         description:
             - Configure ip address prefix(es).
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     ranges:
         description:
             - Configure ip address range(s).
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -126,7 +132,7 @@ options:
     uuid:
         description:
             - Uuid of the ip address group.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -194,6 +200,7 @@ def main():
         marathon_service_port=dict(type='int',),
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
+        nsx_groups=dict(type='list', elements='str',),
         prefixes=dict(type='list', elements='dict',),
         ranges=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),

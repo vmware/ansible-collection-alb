@@ -62,6 +62,11 @@ options:
             - Name of the object.
         required: true
         type: str
+    con_esx_host:
+        description:
+            - Optional selection of the host.
+        required: false
+        type: str
     con_disk_mode:
         description:
             - Type of disk mode.
@@ -437,9 +442,13 @@ def is_ipv6_address(controller_ip):
         return False
 
 
-def controller_wait(controller_ip, round_wait=10, wait_time=3600):
+def controller_wait(controller_ip, round_wait=10, wait_time=3600, ssl_verify=False):
     """
     It waits for controller to come up for a given wait_time (default 1 hour).
+    :param controller_ip: IP address of the controller
+    :param round_wait: Wait time between retries in seconds
+    :param wait_time: Total wait time in seconds
+    :param ssl_verify: Whether to verify SSL certificates (default: False)
     :return: controller_up: Boolean value for controller up state.
     """
     count = 0
@@ -455,7 +464,7 @@ def controller_wait(controller_ip, round_wait=10, wait_time=3600):
         if count >= max_count:
             break
         try:
-            r = requests.get(path, timeout=10, verify=False)
+            r = requests.get(path, timeout=10, verify=ssl_verify)
             # Check for controller response for login URI.
             if r.status_code in (500, 502, 503) and count < max_count:
                 time.sleep(10)
@@ -486,6 +495,7 @@ def main():
             con_cluster=dict(required=False, type='str'),
             con_datastore=dict(required=False, type='str'),
             con_mgmt_network=dict(required=True, type='str'),
+            con_esx_host=dict(required=False, type='str'),
             con_disk_mode=dict(required=False, type='str', default='thin',
                                choices=['thin', 'thick', 'eagerzeroedthick']),
             con_ova_path=dict(required=True, type='str'),
@@ -751,12 +761,10 @@ def main():
         command_tokens.append('--prop:%s=%s' % (
             'avi.default-gw.CONTROLLER', module.params['con_default_gw']))
 
-    if module.params.get('con_mgmt_ip_v6_enable', None):
-        command_tokens.append('--prop:%s=%s' % (
+    command_tokens.append('--prop:%s=%s' % (
             'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
 
-    if module.params.get('con_mgmt_ip_v4_enable', None) and not module.params['con_mgmt_ip_v6_enable']:
-        command_tokens.append('--prop:%s=%s' % (
+    command_tokens.append('--prop:%s=%s' % (
             'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
     if module.params.get('con_sysadmin_public_key', None):
@@ -775,6 +783,8 @@ def main():
         command_tokens.append(
             '--vmFolder=%s' % module.params['con_vcenter_folder'])
 
+    if module.params.get('con_esx_host', None):
+        vi_string += '/%s' % (module.params['con_esx_host'])
     command_tokens.extend([ova_file, vi_string])
     ova_tool_result = module.run_command(command_tokens)
 
@@ -835,7 +845,8 @@ def main():
     # Wait for controller tcontroller_waito come up for given con_wait_time
     if controller_ip:
         controller_up = controller_wait(controller_ip, module.params['round_wait'],
-                                        module.params['con_wait_time'])
+                                        module.params['con_wait_time'],
+                                        module.params['ssl_verify'])
         if not controller_up:
             return module.fail_json(
                 msg='Something wrong with the controller. The Controller is not in the up state.')

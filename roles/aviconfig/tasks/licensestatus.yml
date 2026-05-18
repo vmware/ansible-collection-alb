@@ -14,9 +14,12 @@
     api_context: "{{ avi_api_context | default(omit) }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    cls_status: "{{ item.cls_status | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    legacy_license_grace_period: "{{ item.legacy_license_grace_period | default(omit) }}"
     saas_status: "{{ item.saas_status | default(omit) }}"
     service_update: "{{ item.service_update | default(omit) }}"
+    support_legacy_license: "{{ item.support_legacy_license | default(omit) }}"
     tenant_uuid: "{{ item.tenant_uuid | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
