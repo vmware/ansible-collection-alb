@@ -212,7 +212,7 @@ Name | Description
 
 ### Testing with `ansible-test`
 
-Refer [testing](https://github.com/vmware/ansible-collection-alb/blob//testing.md) for more information.
+Refer [testing](https://github.com/vmware/ansible-collection-alb/blob/32.1.1/testing.md) for more information.
 
 ## Publishing New Version
 
