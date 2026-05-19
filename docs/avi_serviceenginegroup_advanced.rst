@@ -767,7 +767,7 @@ Parameters
                   - Allowed values are 0-2.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -1050,7 +1050,7 @@ Parameters
                   - Note   brief packet reordering or loss may occur upon toggle.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -1196,7 +1196,7 @@ Parameters
                   - Minimum time to wait on server between taking sampleswhen sampling the navigation timing data from the end user client.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
@@ -1224,7 +1224,7 @@ Parameters
                   - Percentage of navigation timing data from the end user client, used for sampling to get client insights.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -1249,7 +1249,7 @@ Parameters
                   - Minimum time to wait on server between taking sampleswhen sampling the resource timing data from the end user client.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
@@ -1277,7 +1277,7 @@ Parameters
                   - Percentage of resource timing data from the end user client used for sampling to get client insight.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.

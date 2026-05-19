@@ -585,7 +585,7 @@ options:
         description:
             - Used for testing se datastore upgrade 2.0 functionality.
             - It is a reference to an object of type testsedatastorelevel1.
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     topology_policies:
@@ -788,7 +788,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='18.2.6'),
+        api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         active_standby_se_tag=dict(type='str',),

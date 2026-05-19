@@ -147,7 +147,7 @@ Parameters
                   - Check if the patch rollback is possible on this node.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -172,7 +172,7 @@ Parameters
                   - Check if the rollback is possible on this node.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -197,7 +197,7 @@ Parameters
                   - End time of upgrade operations.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -222,7 +222,7 @@ Parameters
                   - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -244,7 +244,7 @@ Parameters
                   - Name of the system such as cluster name, se group name and se name.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -269,7 +269,7 @@ Parameters
                   - Enum options - NODE_CONTROLLER_CLUSTER, NODE_SE_GROUP, NODE_SE_TYPE.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -294,7 +294,7 @@ Parameters
                   - It is a reference to an object of type cloud.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -316,7 +316,7 @@ Parameters
                   - Current status of the upgrade operations.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -340,7 +340,7 @@ Parameters
                   - The last time the state changed.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -401,7 +401,7 @@ Parameters
                   - Descriptive reason for the state-change.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -459,7 +459,7 @@ Parameters
                   - UPGRADE_PRE_CHECK_STARTED, UPGRADE_PRE_CHECK_IN_PROGRESS, UPGRADE_PRE_CHECK_SUCCESS, UPGRADE_PRE_CHECK_ERROR, UPGRADE_PRE_CHECK_WARNING.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -485,7 +485,7 @@ Parameters
                   - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -507,7 +507,7 @@ Parameters
                   - Start time of upgrade operations.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -529,7 +529,7 @@ Parameters
                   - Upgrade tasks completed.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -554,7 +554,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -576,7 +576,7 @@ Parameters
                   - Total upgrade tasks.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -604,7 +604,7 @@ Parameters
                   - EVAL_SEGROUP_RESUME, EVAL_RESTORE, RESTORE, UPGRADE_DRYRUN.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -642,7 +642,7 @@ Parameters
                   - Uuid identifier for the system such as cluster, se group and se.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -664,7 +664,7 @@ Parameters
                   - Current base image applied to this node.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

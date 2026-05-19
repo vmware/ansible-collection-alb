@@ -1522,7 +1522,7 @@ Parameters
                   - Use vnic_rpc_retry_interval serviceenginegroup instead.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
@@ -2406,7 +2406,7 @@ Parameters
                   - Deprecated.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 18.2.6.
+                  - Field deprecated in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2429,7 +2429,7 @@ Parameters
                   - Deprecated.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 18.2.6.
+                  - Field deprecated in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2452,7 +2452,7 @@ Parameters
                   - Deprecated.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 18.2.6.
+                  - Field deprecated in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2475,7 +2475,7 @@ Parameters
                   - Deprecated.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 18.2.6.
+                  - Field deprecated in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

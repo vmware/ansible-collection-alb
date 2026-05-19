@@ -285,7 +285,7 @@ options:
             - Minimum api timeout value.if this value is not 60, it will be the default timeout for all apis that do not have a specific timeout.if an api has
             - a specific timeout but is less than this value, this value will become the new timeout.
             - Allowed values are 60-3600.
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Unit is sec.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
@@ -1022,7 +1022,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='18.2.6'),
+        api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         alert_manager_use_evms=dict(type='bool',),

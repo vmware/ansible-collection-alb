@@ -602,7 +602,7 @@ Parameters
                   - Queries for fqdns that are subdomains of this domain and do not have any dns record in avi are dropped or nxdomain response sent.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 18.2.6.
+                  - Field deprecated in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.1.6,17.2.2.
@@ -724,7 +724,7 @@ Parameters
                   - Dns zones hosted on this virtual service.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 100 items allowed.
@@ -758,7 +758,7 @@ Parameters
                   - If not configured, it is inherited from the dns service profile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -788,7 +788,7 @@ Parameters
                   - For domains which are present, soa parameters are sent in answer section of response if query type is soa.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -821,7 +821,7 @@ Parameters
                   - If even that is not configured, the domain name is used instead.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -16888,7 +16888,7 @@ Parameters
                   - Field deprecated in 18.2.10, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -16923,7 +16923,7 @@ Parameters
                   - Field deprecated in 18.2.10, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -16958,7 +16958,7 @@ Parameters
                   - Field deprecated in 18.2.10, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -16993,7 +16993,7 @@ Parameters
                   - Field deprecated in 18.2.10, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -17315,7 +17315,7 @@ Parameters
                   - If enabled, an http request on an ssl port will result in connection close instead of a 400 response.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 18.2.6.
+                  - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.

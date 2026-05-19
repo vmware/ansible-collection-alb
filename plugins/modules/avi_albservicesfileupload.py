@@ -49,32 +49,32 @@ options:
     case_id:
         description:
             - Salesforce alphanumeric caseid to attach uploaded file to.
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     error:
         description:
             - Error reported during file upload.
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     file_path:
         description:
             - Stores output file path, for upload to aws s3.
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     name:
         description:
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     s3_directory:
         description:
             - Custom aws s3 directory path to upload file.
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     status:
@@ -83,13 +83,13 @@ options:
             - Enum options - SYSERR_SUCCESS, SYSERR_FAILURE, SYSERR_OUT_OF_MEMORY, SYSERR_NO_ENT, SYSERR_INVAL, SYSERR_ACCESS, SYSERR_FAULT, SYSERR_IO,
             - SYSERR_TIMEOUT, SYSERR_NOT_SUPPORTED, SYSERR_NOT_READY, SYSERR_UPGRADE_IN_PROGRESS, SYSERR_WARM_START_IN_PROGRESS, SYSERR_TRY_AGAIN,
             - SYSERR_NOT_UPGRADING, SYSERR_PENDING, SYSERR_EVENT_GEN_FAILURE, SYSERR_CONFIG_PARAM_MISSING, SYSERR_RANGE, SYSERR_FAILED...
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
@@ -152,7 +152,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='18.2.6'),
+        api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         case_id=dict(type='str',),

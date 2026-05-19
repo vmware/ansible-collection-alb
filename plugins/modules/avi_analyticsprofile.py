@@ -654,7 +654,7 @@ options:
         description:
             - Score assigned when supporting tls1.3 encryption protocol.
             - Allowed values are 0-5.
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Allowed in essentials (allowed values- 5.0), basic (allowed values- 5.0) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.0.
@@ -847,7 +847,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='18.2.6'),
+        api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         apdex_response_threshold=dict(type='int',),

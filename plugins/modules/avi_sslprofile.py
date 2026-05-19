@@ -86,7 +86,7 @@ options:
     ciphersuites:
         description:
             - Tls 1.3 ciphers suites represented as defined by u(https //www.openssl.org/docs/man1.1.1/man1/ciphers.html).
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Special default for essentials edition is tls_aes_256_gcm_sha384-tls_aes_128_gcm_sha256, basic edition is
             - tls_aes_256_gcm_sha384-tls_aes_128_gcm_sha256, enterprise edition is tls_aes_256_gcm_sha384-tls_chacha20_poly1305_sha256-tls_aes_128_gcm_sha256.
@@ -120,7 +120,7 @@ options:
     enable_early_data:
         description:
             - Enable early data processing for tls1.3 connections.
-            - Field introduced in 18.2.6.
+            - Field introduced in 20.1.7.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Allowed in essentials (allowed values- false), basic (allowed values- false) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -293,7 +293,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='18.2.6'),
+        api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         accepted_ciphers=dict(type='str',),

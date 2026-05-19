@@ -16,15 +16,15 @@
 
 - debug: msg="You are running Controller verison {{ controller_api_version }}"
 
-- name: Avi SE | VMware | Initial Data | Set SE image path for controller version < 18.2.6
+- name: Avi SE | VMware | Initial Data | Set SE image path for controller version < 20.1.7
   set_fact:
     se_image_path: "/opt/avi/se_ova"
-  when: controller_api_version < "18.2.6"
+  when: controller_api_version < "20.1.7"
 
-- name: Avi SE | CSP | Image deploy | Set SE image path for controller version >= 18.2.6
+- name: Avi SE | CSP | Image deploy | Set SE image path for controller version >= 20.1.7
   set_fact:
     se_image_path: "/host/pkgs/{{ controller_initial_data.json.version.Tag }}"
-  when: controller_api_version >= "18.2.6"
+  when: controller_api_version >= "20.1.7"
 
 - name: Avi SE | Autoregistration | Set se_version
   set_fact:
@@ -115,13 +115,13 @@
     shell: >
       sshpass -p "{{ se_leader_ctl_password }}" ssh -t -o ConnectTimeout=54000 "{{ se_leader_ctl_username }}"@"{{ se_leader_ctl_ip }}"
       'echo "{{ se_leader_ctl_password }}" | sudo -S python3 /opt/avi/bootstrap/generate_se_docker.py'
-    when: (file_exist.stdout == "0") and (se_leader_ctl_password is defined) and controller_api_version < "18.2.6"
+    when: (file_exist.stdout == "0") and (se_leader_ctl_password is defined) and controller_api_version < "20.1.7"
 
   - name: Avi SE | Autoregistration | Generate se_docker.tgz on the controller
     shell: >
       sshpass -p "{{ se_leader_ctl_password }}" ssh -t -o ConnectTimeout=54000 "{{ se_leader_ctl_username }}"@"{{ se_leader_ctl_ip }}"
       'echo "{{ se_leader_ctl_password }}" | sudo -S python3 /opt/avi/bootstrap/generate_se_docker.py -sdp "{{ se_image_path }}" -sd "{{ se_image_path }}"'
-    when: (file_exist.stdout == "0") and (se_leader_ctl_password is defined) and controller_api_version >= "18.2.6"
+    when: (file_exist.stdout == "0") and (se_leader_ctl_password is defined) and controller_api_version >= "20.1.7"
 
   - name: Avi SE | Copy Generated se_docker.tgz to tmp
     shell: >

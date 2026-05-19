@@ -120,7 +120,7 @@ def main():
         tenant_uuid=dict(type='str', default=''),
         tenant=dict(type='str', default='admin'),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='18.2.6'),
+        api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
