@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_networkprofile
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of NetworkProfile Avi RESTful Object
 description:
-    - This module is used to configure NetworkProfile object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure NetworkProfile object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -51,44 +51,43 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     connection_mirror:
         description:
             - When enabled, avi mirrors all tcp fastpath connections to standby.
             - Applicable only in legacy ha mode.
             - Field introduced in 18.1.3,18.2.1.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, basic, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- false) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     description:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - The name of the network profile.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     profile:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -97,32 +96,33 @@ options:
     uuid:
         description:
             - Uuid of the network profile.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create a network profile for an UDP application
-  vmware.alb.avi_networkprofile:
-    avi_credentials: "{{ avi_credentials }}"
-    name: System-UDP-Fast-Path
-    profile:
-      type: PROTOCOL_TYPE_UDP_FAST_PATH
-      udp_fast_path_profile:
-        per_pkt_loadbalance: false
-        session_idle_timeout: 10
-        snat: true
-    tenant_ref: /api/tenant?name=admin
+  tasks:
+    - name: Create a network profile for an UDP application
+      vmware.alb.avi_networkprofile:
+        avi_credentials: "{{ avi_credentials }}"
+        name: System-UDP-Fast-Path
+        profile:
+          type: PROTOCOL_TYPE_UDP_FAST_PATH
+          udp_fast_path_profile:
+            per_pkt_loadbalance: false
+            session_idle_timeout: 10
+            snat: true
+        tenant_ref: /api/tenant?name=admin
 """
 
 RETURN = '''
@@ -150,6 +150,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         configpb_attributes=dict(type='dict',),
         connection_mirror=dict(type='bool',),
         description=dict(type='str',),
@@ -160,7 +169,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

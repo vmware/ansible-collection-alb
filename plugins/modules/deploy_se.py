@@ -207,7 +207,6 @@ obj:
 
 
 import atexit
-import json
 try:
     from urllib import quote
 except ImportError:
@@ -215,7 +214,6 @@ except ImportError:
 try:
     import requests
     import os
-    import time
     from pyVim.connect import SmartConnectNoSSL, Disconnect
     from pyVmomi import vim, vmodl
     HAS_IMPORT = True
@@ -481,7 +479,7 @@ def main():
             se_vmw_mgmt_mask=dict(required=False, type='str'),
             se_vmw_default_gw=dict(required=False, type='str'),
             se_vmw_sysadmin_public_key=dict(required=False, type='str'),
-            se_auth_token=dict(required=True, type='str'),
+            se_auth_token=dict(required=True, type='str', no_log=True),
             se_cluster_uuid=dict(required=True, type='str'),
             se_leader_ctl_ip=dict(required=True, type='str'),
             se_vmw_number_of_cpus=dict(required=False, type='int'),

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ## Usage: avicontroller [options] ARG1
 ## Description: This script manages and provides manage of the Avi Controller service.
@@ -18,19 +18,19 @@ populate_container_platform()
   cont_plat_sock="/var/run/docker.sock"
 
   # Possible values for $distribution which we support
-  # "ubuntu" (or) "ol" (or) "rhel" (or) "centos"
+  # "ubuntu" (or) "ol" (or) "rhel"
   distribution=$(grep "^ID=" /etc/os-release | cut -d"=" -f2 | sed 's/"//g')
 
   # Possible known values for $version which we support
   # On Ubuntu:
-  #   version = "16.04" (or) "18.04" (or) "20.04"
-  # On RHEL / OL / CENTOS:
-  #   version = "7.*" (or) "8.*"
+  #   version = "24.04" (or) "22.04"
+  # On RHEL / OL :
+  #   version = "8.*" (or) "9.*"
   version=$(grep "^VERSION_ID=" /etc/os-release | cut -d"=" -f2 | sed 's/"//g')
 
-  # cont_plat is podman only on OL / RHEL / CENTOS 8.*
-  if [[ $distribution == "ol" || $distribution == "centos" || $distribution == "rhel" ]]; then
-    if [[ $version =~ 8.* ]]; then
+  # cont_plat is podman only on OL / RHEL 8.* or 9.*
+  if [[ $distribution == "ol" || $distribution == "rhel" ]]; then
+    if [[ $version =~ ^8.* ||  $version =~ ^9.* ]]; then
       cont_plat="podman"
       cont_plat_sock="/run/podman/podman.sock"
     fi
@@ -91,6 +91,30 @@ prestart() {
   # Clean up any running or existing avicontroller containers
   write_log "[`date`] Performing ${container} pre-start step."
   remove_container
+
+  if [ $cont_plat == "podman" ]; then
+      # During an upgrade from AVI version x to y, if podman assigned the prefix localhost/ to image x while loading it
+      # and image y was loaded with a different prefix (e.g., docker.io/), the system might attempt to pull localhost/<image-name>:y, which doesn't exist.
+      # To handle this, we tag the actual image with the expected name defined in AVI_RUN_PARAMS to ensure consistency and avoid pull errors.
+      image_version_tag=`echo ${controller_docker_run_params} | awk '{ print $NF }' | awk -F: '{ print $2 }'`
+      actual_image_name=`podman images | grep $image_version_tag | grep "avinetworks/controller" | awk '{ printf "%s:%s",$1,$2 }'`
+      expected_image_name=`echo ${controller_docker_run_params} | awk '{ print $NF }'`
+
+      write_log "[`date`] Controller image name from podman images: ${actual_image_name}"
+      write_log "[`date`] Controller image name from AVI_RUN_PARAMS: ${expected_image_name}"
+
+      if [[ -n "$expected_image_name" && -n "$actual_image_name" ]]; then
+          if [[ ! "$actual_image_name" =~ ^avinetworks/* && ! "$expected_image_name" =~ ^avinetworks/* ]]; then
+              if [[ "$expected_image_name" != "$actual_image_name" ]]; then
+                  write_log "[`date`] Trying to tag image ${actual_image_name} with ${expected_image_name}"
+                  podman tag $actual_image_name $expected_image_name
+                  write_log "[`date`] Trying to untag image ${expected_image_name} with ${actual_image_name}"
+                  podman untag $expected_image_name $actual_image_name
+              fi
+          fi
+      fi
+  fi
+
   start_container
 }
 

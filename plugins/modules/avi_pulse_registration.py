@@ -31,8 +31,8 @@ options:
         description:
             - Token which is used to login to pulse from controller for the specific user.
             - For generation of the jwt_token paste the related link in Incognito window to prevent IdP from considering any existing valid login session
-            - If controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ctrllogin
-            - If controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ccctrllogin
+            - If controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.pulse.broadcom.com/portal/controller/auth/ctrllogin
+            - If controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.pulse.broadcom.com/portal/controller/auth/ccctrllogin
             - jwt_token is valid for 365 days.
         required: true
         type: str
@@ -184,8 +184,7 @@ import time
 from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, AviCheckModeResponse, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
+        avi_common_argument_spec, AviCheckModeResponse, avi_obj_cmp)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
     HAS_REQUESTS = True
@@ -220,9 +219,19 @@ def main():
         enable_user_agent_db_sync=dict(type='bool', default=False),
         use_tls=dict(type='bool', default=False),
         waf_config=dict(type='dict', options=waf_spec),
-        case_config=dict(type='dict', options=case_spec)
+        case_config=dict(type='dict', options=case_spec),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
@@ -247,7 +256,7 @@ def main():
     description = module.params.get('description', None)
     email = module.params.get('email', None)
     account_id = module.params.get('account_id', None)
-    portal_url = 'https://portal.avipulse.vmware.com'
+    portal_url = 'https://portal.pulse.broadcom.com'
     optins = module.params.get('optins', None)
     enable_cleanup_of_attached_files = module.params.get('enable_cleanup_of_attached_files', None)
     enable_appsignature_sync = module.params.get('enable_appsignature_sync', None)

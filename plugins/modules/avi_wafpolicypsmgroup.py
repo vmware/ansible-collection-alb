@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_wafpolicypsmgroup
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of WafPolicyPSMGroup Avi RESTful Object
 description:
-    - This module is used to configure WafPolicyPSMGroup object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure WafPolicyPSMGroup object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -46,24 +46,35 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    completely_described_match_elements:
+        description:
+            - A list of all match element collections which are completely described in the psm group.
+            - Every input value which matches one of the elements in this list but is not handled by a waf psm rule, will run the match_element miss_action.
+            - Allowed values are waf_variable_args.
+            - Enum options - WAF_VARIABLE_ARGS, WAF_VARIABLE_ARGS_GET, WAF_VARIABLE_ARGS_POST, WAF_VARIABLE_ARGS_NAMES, WAF_VARIABLE_REQUEST_COOKIES,
+            - WAF_VARIABLE_QUERY_STRING, WAF_VARIABLE_REQUEST_BASENAME, WAF_VARIABLE_REQUEST_URI, WAF_VARIABLE_PATH_INFO, WAF_VARIABLE_REQUEST_HEADERS.
+            - Field introduced in 31.2.1.
+            - Maximum of 1 items allowed.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: list
+        elements: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Free-text comment about this group.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     enable:
         description:
             - Enable or disable this waf rule group.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     hit_action:
@@ -72,30 +83,38 @@ options:
             - Allowed actions are waf_action_no_op and waf_action_allow_parameter.
             - Enum options - WAF_ACTION_NO_OP, WAF_ACTION_BLOCK, WAF_ACTION_ALLOW_PARAMETER.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as WAF_ACTION_ALLOW_PARAMETER.
         type: str
     is_learning_group:
         description:
             - This field indicates that this group is used for learning.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    location_match_miss_action:
+        description:
+            - If there is no location matching the request, this action will be executed.
+            - Allowed actions are waf_action_no_op and waf_action_block.
+            - Enum options - WAF_ACTION_NO_OP, WAF_ACTION_BLOCK, WAF_ACTION_ALLOW_PARAMETER.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as WAF_ACTION_NO_OP.
+        type: str
     locations:
         description:
             - Positive security model locations.
             - These are used to partition the application name space.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     miss_action:
@@ -104,14 +123,14 @@ options:
             - Allowed actions are waf_action_no_op and waf_action_block.
             - Enum options - WAF_ACTION_NO_OP, WAF_ACTION_BLOCK, WAF_ACTION_ALLOW_PARAMETER.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as WAF_ACTION_NO_OP.
         type: str
     name:
         description:
             - User defined name of the group.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -119,7 +138,7 @@ options:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -129,26 +148,27 @@ options:
         description:
             - Uuid of this object.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create WafPolicyPSMGroup object
-  vmware.alb.avi_wafpolicypsmgroup:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_wafpolicypsmgroup
+  tasks:
+    - name: Example to create WafPolicyPSMGroup object
+      vmware.alb.avi_wafpolicypsmgroup:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_wafpolicypsmgroup
 """
 
 RETURN = '''
@@ -176,11 +196,22 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
+        completely_described_match_elements=dict(type='list', elements='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         enable=dict(type='bool',),
         hit_action=dict(type='str',),
         is_learning_group=dict(type='bool',),
+        location_match_miss_action=dict(type='str',),
         locations=dict(type='list', elements='dict',),
         markers=dict(type='list', elements='dict',),
         miss_action=dict(type='str',),
@@ -189,7 +220,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

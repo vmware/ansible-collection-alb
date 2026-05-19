@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.2
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_vsvip
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of VsVip Avi RESTful Object
 description:
-    - This module is used to configure VsVip object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure VsVip object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -52,7 +52,7 @@ options:
             - Local_pref to be used for vsvip advertised.
             - Applicable only over ibgp.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: int
     bgp_num_as_path_prepend:
         description:
@@ -60,28 +60,27 @@ options:
             - Applicable only over ebgp.
             - Allowed values are 1-10.
             - Field introduced in 30.2.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: int
     bgp_peer_labels:
         description:
             - Select bgp peers, using peer label, for vsvip advertisement.
             - Field introduced in 20.1.5.
             - Maximum of 128 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: str
     cloud_ref:
         description:
             - It is a reference to an object of type cloud.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     dns_info:
         description:
@@ -89,15 +88,15 @@ options:
             - This takes effect only if dns profile isassociated with cloud.
             - Field introduced in 17.1.1.
             - Maximum of 1000 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     east_west_placement:
         description:
             - Force placement on all service engines in the service engine group (container clouds only).
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-            - cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- false), basic (allowed values- false) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     ipam_selector:
@@ -105,58 +104,49 @@ options:
             - Determines the set of ipam networks to use for this vsvip.
             - Selector type must be selector_ipam and only one label is supported.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Name for the vsvip object.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tier1_lr:
         description:
             - This sets the placement scope of virtualservice to given tier1 logical router in nsx-t.
             - Field introduced in 20.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
             - Avi controller URL of the object.
         type: str
-    use_standard_alb:
-        description:
-            - This overrides the cloud level default and needs to match the se group value in which it will be used if the se group use_standard_alb value is
-            - set.
-            - This is only used when fip is used for vs on azure cloud.
-            - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-        type: bool
     uuid:
         description:
             - Uuid of the vsvip object.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     vip:
         description:
             - List of virtual service ips and other shareable entities.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     vrf_context_ref:
@@ -165,47 +155,48 @@ options:
             - This is used to provide the isolation of the set of networks the application is attached to.
             - It is a reference to an object of type vrfcontext.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     vsvip_cloud_config_cksum:
         description:
             - Checksum of cloud configuration for vsvip.
             - Internally set by cloud connector.
             - Field introduced in 17.2.9, 18.1.2.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create vsvip for virtualservice for newtestvs
-  vmware.alb.avi_vsvip:
-    name: vsvip-newtestvs-Default-Cloud
-    avi_credentials: "{{ avi_credentials }}"
-    api_context: '{{avi_api_context | default(omit)}}'
-    vrf_context_ref: /api/vrfcontext/?name=global
-    tenant_ref: /api/tenant/?name=admin
-    cloud_ref: /api/cloud/?name=Default-Cloud
-    vip:
-    - vip_id: '1'
-      avi_allocated_fip: false
-      auto_allocate_ip: false
-      enabled: true
-      auto_allocate_floating_ip: false
-      avi_allocated_vip: false
-      auto_allocate_ip_type: V4_ONLY
-      ip_address:
-        type: V4
-        addr: 192.168.138.18
+  tasks:
+    - name: Create vsvip for virtualservice for newtestvs
+      vmware.alb.avi_vsvip:
+        name: vsvip-newtestvs-Default-Cloud
+        avi_credentials: "{{ avi_credentials }}"
+        api_context: '{{avi_api_context | default(omit)}}'
+        vrf_context_ref: /api/vrfcontext/?name=global
+        tenant_ref: /api/tenant/?name=admin
+        cloud_ref: /api/cloud/?name=Default-Cloud
+        vip:
+        - vip_id: '1'
+          avi_allocated_fip: false
+          auto_allocate_ip: false
+          enabled: true
+          auto_allocate_floating_ip: false
+          avi_allocated_vip: false
+          auto_allocate_ip_type: V4_ONLY
+          ip_address:
+            type: V4
+            addr: 192.168.138.18
 """
 
 RETURN = '''
@@ -233,6 +224,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         bgp_local_preference=dict(type='int',),
         bgp_num_as_path_prepend=dict(type='int',),
         bgp_peer_labels=dict(type='list', elements='str',),
@@ -246,13 +246,13 @@ def main():
         tenant_ref=dict(type='str',),
         tier1_lr=dict(type='str',),
         url=dict(type='str',),
-        use_standard_alb=dict(type='bool',),
         uuid=dict(type='str',),
         vip=dict(type='list', elements='dict',),
         vrf_context_ref=dict(type='str',),
         vsvip_cloud_config_cksum=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

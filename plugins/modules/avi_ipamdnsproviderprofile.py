@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_ipamdnsproviderprofile
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of IpamDnsProviderProfile Avi RESTful Object
 description:
-    - This module is used to configure IpamDnsProviderProfile object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure IpamDnsProviderProfile object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -49,90 +49,88 @@ options:
     allocate_ip_in_vrf:
         description:
             - If this flag is set, only allocate ip from networks in the virtual service vrf.
-            - Applicable for avi vantage ipam only.
+            - Applicable for avi ipam only.
             - Field introduced in 17.2.4.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     aws_profile:
         description:
             - Provider details if type is aws.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     azure_profile:
         description:
             - Provider details if type is microsoft azure.
             - Field introduced in 17.2.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     custom_profile:
         description:
             - Provider details if type is custom.
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     gcp_profile:
         description:
             - Provider details if type is google cloud.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     infoblox_profile:
         description:
             - Provider details if type is infoblox.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     internal_profile:
         description:
             - Provider details if type is avi.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Name for the ipam/dns provider profile.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     oci_profile:
         description:
             - Provider details for oracle cloud.
             - Field introduced in 18.2.1,18.1.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     openstack_profile:
         description:
             - Provider details if type is openstack.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     proxy_configuration:
         description:
             - Field introduced in 17.1.1.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tencent_profile:
         description:
             - Provider details for tencent cloud.
             - Field introduced in 18.2.3.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     type:
         description:
@@ -140,8 +138,8 @@ options:
             - Enum options - IPAMDNS_TYPE_INFOBLOX, IPAMDNS_TYPE_AWS, IPAMDNS_TYPE_OPENSTACK, IPAMDNS_TYPE_GCP, IPAMDNS_TYPE_INFOBLOX_DNS, IPAMDNS_TYPE_CUSTOM,
             - IPAMDNS_TYPE_CUSTOM_DNS, IPAMDNS_TYPE_AZURE, IPAMDNS_TYPE_OCI, IPAMDNS_TYPE_TENCENT, IPAMDNS_TYPE_INTERNAL, IPAMDNS_TYPE_INTERNAL_DNS,
             - IPAMDNS_TYPE_AWS_DNS, IPAMDNS_TYPE_AZURE_DNS.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- ipamdns_type_internal), basic edition(allowed values-
-            - ipamdns_type_internal), enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Allowed in essentials (allowed values- ipamdns_type_internal), basic (allowed values- ipamdns_type_internal) edition.
         required: true
         type: str
     url:
@@ -151,38 +149,39 @@ options:
     uuid:
         description:
             - Uuid of the ipam/dns provider profile.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create IPAM DNS provider setting
-  vmware.alb.avi_ipamdnsproviderprofile:
-    avi_credentials: "{{ avi_credentials }}"
-    internal_profile:
-      dns_service_domain:
-      - domain_name: ashish.local
-        num_dns_ip: 1
-        pass_through: true
-        record_ttl: 100
-      - domain_name: guru.local
-        num_dns_ip: 1
-        pass_through: true
-        record_ttl: 200
-      ttl: 300
-    name: Ashish-DNS
-    tenant_ref: /api/tenant?name=Demo
-    type: IPAMDNS_TYPE_INTERNAL
+  tasks:
+    - name: Create IPAM DNS provider setting
+      vmware.alb.avi_ipamdnsproviderprofile:
+        avi_credentials: "{{ avi_credentials }}"
+        internal_profile:
+          dns_service_domain:
+          - domain_name: ashish.local
+            num_dns_ip: 1
+            pass_through: true
+            record_ttl: 100
+          - domain_name: guru.local
+            num_dns_ip: 1
+            pass_through: true
+            record_ttl: 200
+          ttl: 300
+        name: Ashish-DNS
+        tenant_ref: /api/tenant?name=Demo
+        type: IPAMDNS_TYPE_INTERNAL
 """
 
 RETURN = '''
@@ -210,6 +209,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         allocate_ip_in_vrf=dict(type='bool',),
         aws_profile=dict(type='dict',),
         azure_profile=dict(type='dict',),
@@ -229,7 +237,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

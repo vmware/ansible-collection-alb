@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_dynamicdnsrecord
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of DynamicDnsRecord Avi RESTful Object
 description:
-    - This module is used to configure DynamicDnsRecord object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure DynamicDnsRecord object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -53,47 +53,47 @@ options:
             - Default is round-robin.
             - Enum options - DNS_RECORD_RESPONSE_ROUND_ROBIN, DNS_RECORD_RESPONSE_CONSISTENT_HASH.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as DNS_RECORD_RESPONSE_ROUND_ROBIN.
         type: str
     cname:
         description:
             - Canonical name in cname record.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
     delegated:
         description:
             - Configured fqdns are delegated domains (i.e.
             - They represent a zone cut).
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     description:
         description:
             - Details of dns record.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     dns_vs_uuid:
         description:
             - Uuid of the dns vs.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     fqdn:
         description:
             - Fully qualified domain name.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     ip6_address:
         description:
             - Ipv6 address in aaaa record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     ip_address:
@@ -101,35 +101,35 @@ options:
             - Ip address in a record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     metadata:
         description:
             - Internal metadata for the dns record.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     mx_records:
         description:
             - Mx record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Dynamicdnsrecord name, needed for a top level uuid protobuf, for display in shell.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     ns:
         description:
             - Name server information in ns record.
             - Field introduced in 20.1.3.
             - Maximum of 13 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     num_records_in_response:
@@ -139,35 +139,35 @@ options:
             - Allowed values are 0-20.
             - Special values are 0- return all records.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: int
     service_locators:
         description:
             - Service locator info in srv record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     tenant_ref:
         description:
-            - Tenant_uuid from dns vs's tenant_uuid.
+            - Tenant_uuid from dns vss tenant_uuid.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     ttl:
         description:
             - Time to live for this dns record.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: int
     txt_records:
         description:
             - Text record.
             - Field introduced in 20.1.3.
             - Maximum of 4 items allowed.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: list
         elements: dict
     type:
@@ -177,7 +177,7 @@ options:
             - DNS_RECORD_TXT, DNS_RECORD_RP, DNS_RECORD_DNSKEY, DNS_RECORD_AAAA, DNS_RECORD_SRV, DNS_RECORD_OPT, DNS_RECORD_RRSIG, DNS_RECORD_AXFR,
             - DNS_RECORD_ANY.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -187,7 +187,7 @@ options:
         description:
             - Uuid of the dns record.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
     wildcard_match:
         description:
@@ -195,7 +195,7 @@ options:
             - request.
             - Default is false.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
 extends_documentation_fragment:
@@ -203,19 +203,20 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create DynamicDnsRecord object
-  vmware.alb.avi_dynamicdnsrecord:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_dynamicdnsrecord
+  tasks:
+    - name: Example to create DynamicDnsRecord object
+      vmware.alb.avi_dynamicdnsrecord:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_dynamicdnsrecord
 """
 
 RETURN = '''
@@ -243,6 +244,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         algorithm=dict(type='str',),
         cname=dict(type='dict',),
         delegated=dict(type='bool',),
@@ -265,7 +275,8 @@ def main():
         uuid=dict(type='str',),
         wildcard_match=dict(type='bool',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

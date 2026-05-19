@@ -107,8 +107,6 @@ obj:
     type: dict
 '''
 
-import json
-import time
 from ansible.module_utils.basic import AnsibleModule
 from copy import deepcopy
 
@@ -136,12 +134,8 @@ def delete_member(module, check_mode, api, tenant, tenant_uuid,
         groups = [group for group in existing_obj.get('groups', [])
                   if group['name'] == data['group']['name']]
         if groups:
-            changed = any(
-                [(lambda g: g['ip']['addr'] in patched_member_ids)(m)
-                    for m in groups[0].get('members', []) if 'fqdn' not in m])
-            changed = changed or any(
-                [(lambda g: g['fqdn'] in patched_member_fqdns)(m)
-                    for m in groups[0].get('members', []) if 'fqdn' in m])
+            changed = any((m['ip']['addr'] in patched_member_ids) for m in groups[0].get('members', []) if 'fqdn' not in m)
+            changed = changed or any((m['fqdn'] in patched_member_fqdns) for m in groups[0].get('members', []) if 'fqdn' in m)
     if check_mode or not changed:
         return changed, rsp
     # should not come here if not found
@@ -235,9 +229,19 @@ def main():
         data=dict(type='dict'),
         name=dict(type='str', required=True),
         state=dict(default='present',
-                   choices=['absent', 'present'])
+                   choices=['absent', 'present']),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(

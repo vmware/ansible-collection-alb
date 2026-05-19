@@ -142,7 +142,7 @@ obj:
 from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, avi_ansible_api, ansible_return)
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -166,8 +166,18 @@ def main():
         avi_patch_value=dict(type='str',),
         user_profile_ref=dict(type='str'),
         default_tenant_ref=dict(type='str', default='/api/tenant?name=admin'),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(

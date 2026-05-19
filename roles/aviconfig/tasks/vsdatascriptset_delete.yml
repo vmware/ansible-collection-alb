@@ -28,6 +28,8 @@
     pool_refs: "{{ item.pool_refs | default(omit) }}"
     protocol_parser_refs: "{{ item.protocol_parser_refs | default(omit) }}"
     rate_limiters: "{{ item.rate_limiters | default(omit) }}"
+    snat_ip6s: "{{ item.snat_ip6s | default(omit) }}"
+    snat_ips: "{{ item.snat_ips | default(omit) }}"
     ssl_key_certificate_refs: "{{ item.ssl_key_certificate_refs | default(omit) }}"
     ssl_profile_refs: "{{ item.ssl_profile_refs | default(omit) }}"
     string_group_refs: "{{ item.string_group_refs | default(omit) }}"

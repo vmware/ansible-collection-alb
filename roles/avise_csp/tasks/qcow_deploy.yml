@@ -47,10 +47,10 @@
   when: se_image_exists.status == 200 and se_csp_resource_info['resource:resource'].csp_version is version_compare("02.04", ">=")
 
 - block:
-    - name: Avi SE | CSP | Image deploy | Set SE image path for controller version < 18.2.6
+    - name: Avi SE | CSP | Image deploy | Set SE image path for controller version < 20.1.7
       set_fact:
         se_image_path: "/opt/avi/se_ova"
-      when: se_master_ctl_version is version_compare("18.2.6", "<")
+      when: se_master_ctl_version is version_compare("20.1.7", "<")
 
     - block:
         - name: Avi SE | CSP | Image deploy | Get controller tag
@@ -65,11 +65,11 @@
           register: data_res
           delegate_to: localhost
 
-        - name: Avi SE | CSP | Image deploy | Set SE image path for controller version >= 18.2.6
+        - name: Avi SE | CSP | Image deploy | Set SE image path for controller version >= 20.1.7
           set_fact:
             se_image_path: "/host/pkgs/{{ data_res.obj.version.Tag }}"
 
-      when: se_master_ctl_version is version_compare("18.2.6", ">=")
+      when: se_master_ctl_version is version_compare("20.1.7", ">=")
 
     - name: Avi SE | CSP | Image deploy | Verify qcow exists on controller
       stat:
