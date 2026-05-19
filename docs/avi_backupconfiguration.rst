@@ -461,7 +461,7 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic (allowed values- scp,sftp) edition.
+                  - Allowed in basic (allowed values- scp, sftp) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as SCP.

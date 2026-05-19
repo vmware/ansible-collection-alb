@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.2
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_vsvip
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of VsVip Avi RESTful Object
 description:
-    - This module is used to configure VsVip object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure VsVip object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -169,33 +169,34 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create vsvip for virtualservice for newtestvs
-  vmware.alb.avi_vsvip:
-    name: vsvip-newtestvs-Default-Cloud
-    avi_credentials: "{{ avi_credentials }}"
-    api_context: '{{avi_api_context | default(omit)}}'
-    vrf_context_ref: /api/vrfcontext/?name=global
-    tenant_ref: /api/tenant/?name=admin
-    cloud_ref: /api/cloud/?name=Default-Cloud
-    vip:
-    - vip_id: '1'
-      avi_allocated_fip: false
-      auto_allocate_ip: false
-      enabled: true
-      auto_allocate_floating_ip: false
-      avi_allocated_vip: false
-      auto_allocate_ip_type: V4_ONLY
-      ip_address:
-        type: V4
-        addr: 192.168.138.18
+  tasks:
+    - name: Create vsvip for virtualservice for newtestvs
+      vmware.alb.avi_vsvip:
+        name: vsvip-newtestvs-Default-Cloud
+        avi_credentials: "{{ avi_credentials }}"
+        api_context: '{{avi_api_context | default(omit)}}'
+        vrf_context_ref: /api/vrfcontext/?name=global
+        tenant_ref: /api/tenant/?name=admin
+        cloud_ref: /api/cloud/?name=Default-Cloud
+        vip:
+        - vip_id: '1'
+          avi_allocated_fip: false
+          auto_allocate_ip: false
+          enabled: true
+          auto_allocate_floating_ip: false
+          avi_allocated_vip: false
+          auto_allocate_ip_type: V4_ONLY
+          ip_address:
+            type: V4
+            addr: 192.168.138.18
 """
 
 RETURN = '''
@@ -223,6 +224,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='18.2.6'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         bgp_local_preference=dict(type='int',),
         bgp_num_as_path_prepend=dict(type='int',),
         bgp_peer_labels=dict(type='list', elements='str',),
@@ -241,7 +251,8 @@ def main():
         vrf_context_ref=dict(type='str',),
         vsvip_cloud_config_cksum=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

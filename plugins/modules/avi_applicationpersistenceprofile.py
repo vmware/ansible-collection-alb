@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_applicationpersistenceprofile
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ApplicationPersistenceProfile Avi RESTful Object
 description:
-    - This module is used to configure ApplicationPersistenceProfile object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure ApplicationPersistenceProfile object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -111,8 +111,8 @@ options:
             - Enum options - PERSISTENCE_TYPE_CLIENT_IP_ADDRESS, PERSISTENCE_TYPE_HTTP_COOKIE, PERSISTENCE_TYPE_TLS, PERSISTENCE_TYPE_CLIENT_IPV6_ADDRESS,
             - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE, PERSISTENCE_TYPE_APP_DIAMETER.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- persistence_type_client_ip_address,persistence_type_http_cookie), basic (allowed values-
-            - persistence_type_client_ip_address,persistence_type_http_cookie) edition.
+            - Allowed in essentials (allowed values- persistence_type_client_ip_address, persistence_type_http_cookie), basic (allowed values-
+            - persistence_type_client_ip_address, persistence_type_http_cookie) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as PERSISTENCE_TYPE_CLIENT_IP_ADDRESS.
         type: str
     persistence_update_interval:
@@ -151,32 +151,33 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create an Application Persistence setting using http cookie.
-  vmware.alb.avi_applicationpersistenceprofile:
-    avi_credentials: "{{ avi_credentials }}"
-    http_cookie_persistence_profile:
-      always_send_cookie: false
-      cookie_name: My-HTTP
-      key:
-      - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
-        name: c1276819-550c-4adf-912d-59efa5fd7269
-      - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
-        name: a080de57-77c3-4580-a3ea-e7a6493c14fd
-      - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
-        name: 60478846-33c6-484d-868d-bbc324fce4a5
-      timeout: 15
-    name: My-HTTP-Cookie
-    persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE
-    server_hm_down_recovery: HM_DOWN_PICK_NEW_SERVER
-    tenant_ref: /api/tenant?name=Demo
+  tasks:
+    - name: Create an Application Persistence setting using http cookie.
+      vmware.alb.avi_applicationpersistenceprofile:
+        avi_credentials: "{{ avi_credentials }}"
+        http_cookie_persistence_profile:
+          always_send_cookie: false
+          cookie_name: My-HTTP
+          key:
+          - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
+            name: c1276819-550c-4adf-912d-59efa5fd7269
+          - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
+            name: a080de57-77c3-4580-a3ea-e7a6493c14fd
+          - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
+            name: 60478846-33c6-484d-868d-bbc324fce4a5
+          timeout: 15
+        name: My-HTTP-Cookie
+        persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE
+        server_hm_down_recovery: HM_DOWN_PICK_NEW_SERVER
+        tenant_ref: /api/tenant?name=Demo
 """
 
 RETURN = '''
@@ -204,6 +205,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='18.2.6'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         app_cookie_persistence_profile=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
@@ -221,7 +231,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

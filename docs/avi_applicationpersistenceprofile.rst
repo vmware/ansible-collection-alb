@@ -934,10 +934,10 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- persistence_type_client_ip_address,persistence_type_http_cookie), basic (allowed values-
+                  - Allowed in essentials (allowed values- persistence_type_client_ip_address, persistence_type_http_cookie), basic (allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - persistence_type_client_ip_address,persistence_type_http_cookie) edition.
+                  - persistence_type_client_ip_address, persistence_type_http_cookie) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as PERSISTENCE_TYPE_CLIENT_IP_ADDRESS.

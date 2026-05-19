@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.2
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_controllerproperties
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ControllerProperties Avi RESTful Object
 description:
-    - This module is used to configure ControllerProperties object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure ControllerProperties object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -975,19 +975,20 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create ControllerProperties object
-  vmware.alb.avi_controllerproperties:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_controllerproperties
+  tasks:
+    - name: Example to create ControllerProperties object
+      vmware.alb.avi_controllerproperties:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_controllerproperties
 """
 
 RETURN = '''
@@ -1015,6 +1016,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='18.2.6'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         alert_manager_use_evms=dict(type='bool',),
         allow_admin_network_updates=dict(type='bool',),
         allow_ip_forwarding=dict(type='bool',),
@@ -1030,7 +1040,7 @@ def main():
         attach_ip_retry_interval=dict(type='int',),
         attach_ip_retry_limit=dict(type='int',),
         bm_use_ansible=dict(type='bool',),
-        cc_user_password_expiry_days=dict(type='int',),
+        cc_user_password_expiry_days=dict(type='int', no_log=True,),
         cc_user_password_rotation_job_period=dict(type='int',),
         cert_rotation_jwt_retention_days=dict(type='int',),
         check_vsvip_fqdn_syntax=dict(type='bool',),
@@ -1137,7 +1147,8 @@ def main():
         warmstart_se_reconnect_wait_time=dict(type='int',),
         warmstart_vs_resync_wait_time=dict(type='int',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -1145,7 +1156,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           ['portal_token'])
+                           {'portal_token', 'cc_user_password_expiry_days'})
 
 
 if __name__ == '__main__':

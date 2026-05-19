@@ -1718,7 +1718,7 @@ def main():
         hardwaresecuritymodulegroup_ref=dict(type='str'),
         heap_minimum_config_memory=dict(type='int'),
         hm_on_standby=dict(type='bool'),
-        host_attribute_key=dict(type='str'),
+        host_attribute_key=dict(type='str', no_log=True),
         host_attribute_value=dict(type='str'),
         host_gateway_monitor=dict(type='bool'),
         http_rum_console_log=dict(type='bool'),
@@ -1858,8 +1858,18 @@ def main():
         vs_se_scaleout_additional_wait_time=dict(type='int'),
         vs_se_scaleout_ready_timeout=dict(type='int'),
         vs_switchover_timeout=dict(type='int'),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='18.2.6'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs,
                            supports_check_mode=True)
     if not HAS_REQUESTS:

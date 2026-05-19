@@ -1930,10 +1930,10 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash), basic (allowed
+                  - Allowed in essentials (allowed values- lb_algorithm_least_connections, lb_algorithm_round_robin, lb_algorithm_consistent_hash), basic (allowed
                 </div>
                                 <div style="font-size: small">
-                  - values- lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash) edition.
+                  - values- lb_algorithm_least_connections, lb_algorithm_round_robin, lb_algorithm_consistent_hash) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as LB_ALGORITHM_LEAST_CONNECTIONS.

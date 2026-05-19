@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_authprofile
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of AuthProfile Avi RESTful Object
 description:
-    - This module is used to configure AuthProfile object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure AuthProfile object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -121,9 +121,8 @@ options:
             - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH,
             - AUTH_PROFILE_CLIENT_CERT.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values-
-            - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert), basic (allowed values-
-            - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert) edition.
+            - Allowed in essentials (allowed values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...), basic (allowed
+            - values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...) edition.
         required: true
         type: str
     url:
@@ -140,40 +139,41 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
+  tasks:
+    - name: Create user authorization profile based on the LDAP
+      vmware.alb.avi_authprofile:
+        avi_credentials: "{{ avi_credentials }}"
 
-- name: Create user authorization profile based on the LDAP
-  vmware.alb.avi_authprofile:
-    avi_credentials: "{{ avi_credentials }}"
-
-    ldap:
-      base_dn: dc=avi,dc=local
-      bind_as_administrator: true
-      port: 389
-      security_mode: AUTH_LDAP_SECURE_NONE
-      server:
-      - 192.168.12.18
-      settings:
-        admin_bind_dn: user@avi.local
-        group_filter: (objectClass=*)
-        group_member_attribute: member
-        group_member_is_full_dn: true
-        group_search_dn: dc=avi,dc=local
-        group_search_scope: AUTH_LDAP_SCOPE_SUBTREE
-        ignore_referrals: true
-        password: password
-        user_id_attribute: samAccountname
-        user_search_dn: dc=avi,dc=local
-        user_search_scope: AUTH_LDAP_SCOPE_ONE
-    name: ProdAuth
-    tenant_ref: /api/tenant?name=admin
-    type: AUTH_PROFILE_LDAP
+        ldap:
+          base_dn: dc=avi,dc=local
+          bind_as_administrator: true
+          port: 389
+          security_mode: AUTH_LDAP_SECURE_NONE
+          server:
+          - 192.168.12.18
+          settings:
+            admin_bind_dn: user@avi.local
+            group_filter: (objectClass=*)
+            group_member_attribute: member
+            group_member_is_full_dn: true
+            group_search_dn: dc=avi,dc=local
+            group_search_scope: AUTH_LDAP_SCOPE_SUBTREE
+            ignore_referrals: true
+            password: password
+            user_id_attribute: samAccountname
+            user_search_dn: dc=avi,dc=local
+            user_search_scope: AUTH_LDAP_SCOPE_ONE
+        name: ProdAuth
+        tenant_ref: /api/tenant?name=admin
+        type: AUTH_PROFILE_LDAP
 """
 
 RETURN = '''
@@ -201,6 +201,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='18.2.6'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         client_cert=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
@@ -217,7 +226,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

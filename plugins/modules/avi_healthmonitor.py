@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_healthmonitor
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of HealthMonitor Avi RESTful Object
 description:
-    - This module is used to configure HealthMonitor object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure HealthMonitor object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -274,8 +274,8 @@ options:
             - HEALTH_MONITOR_POP3, HEALTH_MONITOR_POP3S, HEALTH_MONITOR_IMAP, HEALTH_MONITOR_IMAPS, HEALTH_MONITOR_FTP, HEALTH_MONITOR_FTPS,
             - HEALTH_MONITOR_LDAP, HEALTH_MONITOR_LDAPS...
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp), basic (allowed values-
-            - health_monitor_ping,health_monitor_tcp,health_monitor_udp,health_monitor_http,health_monitor_https) edition.
+            - Allowed in essentials (allowed values- health_monitor_ping, health_monitor_tcp, health_monitor_udp), basic (allowed values- health_monitor_ping,
+            - health_monitor_tcp, health_monitor_udp, health_monitor_http, ...) edition.
         required: true
         type: str
     udp_monitor:
@@ -296,28 +296,29 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create a HTTPS health monitor
-  vmware.alb.avi_healthmonitor:
-    avi_credentials: "{{ avi_credentials }}"
-    https_monitor:
-      http_request: HEAD / HTTP/1.0
-      http_response_code:
-        - HTTP_2XX
-        - HTTP_3XX
-    receive_timeout: 4
-    failed_checks: 3
-    send_interval: 10
-    successful_checks: 3
-    type: HEALTH_MONITOR_HTTPS
-    name: MyWebsite-HTTPS
+  tasks:
+    - name: Create a HTTPS health monitor
+      vmware.alb.avi_healthmonitor:
+        avi_credentials: "{{ avi_credentials }}"
+        https_monitor:
+          http_request: HEAD / HTTP/1.0
+          http_response_code:
+            - HTTP_2XX
+            - HTTP_3XX
+        receive_timeout: 4
+        failed_checks: 3
+        send_interval: 10
+        successful_checks: 3
+        type: HEALTH_MONITOR_HTTPS
+        name: MyWebsite-HTTPS
 """
 
 RETURN = '''
@@ -345,6 +346,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='18.2.6'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         allow_duplicate_monitors=dict(type='bool',),
         authentication=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
@@ -385,7 +395,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

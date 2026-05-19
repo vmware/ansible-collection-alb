@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_cloud
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of Cloud Avi RESTful Object
 description:
-    - This module is used to configure Cloud object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure Cloud object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -327,7 +327,7 @@ options:
             - Enum options - CLOUD_NONE, CLOUD_VCENTER, CLOUD_OPENSTACK, CLOUD_AWS, CLOUD_VCA, CLOUD_APIC, CLOUD_MESOS, CLOUD_LINUXSERVER, CLOUD_DOCKER_UCP,
             - CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- cloud_none,cloud_vcenter), basic (allowed values- cloud_none,cloud_nsxt) edition.
+            - Allowed in essentials (allowed values- cloud_none, cloud_vcenter), basic (allowed values- cloud_none, cloud_nsxt) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as CLOUD_NONE.
         type: str
 extends_documentation_fragment:
@@ -335,33 +335,34 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create a VMware cloud with write access mode
-  vmware.alb.avi_cloud:
-    avi_credentials: "{{ avi_credentials }}"
-    apic_mode: false
-    dhcp_enabled: true
-    enable_vip_static_routes: false
-    license_type: LIC_CORES
-    mtu: 1500
-    name: VCenter Cloud
-    prefer_static_routes: false
-    tenant_ref: /api/tenant?name=admin
-    vcenter_configuration:
-      datacenter_ref: /api/vimgrdcruntime/datacenter-2-10.10.20.100
-      management_network: /api/vimgrnwruntime/dvportgroup-103-10.10.20.100
-      password: password
-      privilege: WRITE_ACCESS
-      username: user
-      vcenter_url: 192.168.15.18
-    vtype: CLOUD_VCENTER
+  tasks:
+    - name: Create a VMware cloud with write access mode
+      vmware.alb.avi_cloud:
+        avi_credentials: "{{ avi_credentials }}"
+        apic_mode: false
+        dhcp_enabled: true
+        enable_vip_static_routes: false
+        license_type: LIC_CORES
+        mtu: 1500
+        name: VCenter Cloud
+        prefer_static_routes: false
+        tenant_ref: /api/tenant?name=admin
+        vcenter_configuration:
+          datacenter_ref: /api/vimgrdcruntime/datacenter-2-10.10.20.100
+          management_network: /api/vimgrnwruntime/dvportgroup-103-10.10.20.100
+          password: password
+          privilege: WRITE_ACCESS
+          username: user
+          vcenter_url: 192.168.15.18
+        vtype: CLOUD_VCENTER
 """
 
 RETURN = '''
@@ -389,6 +390,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='18.2.6'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         autoscale_polling_interval=dict(type='int',),
         aws_configuration=dict(type='dict',),
         azure_configuration=dict(type='dict',),
@@ -435,7 +445,8 @@ def main():
         vmc_deployment=dict(type='bool',),
         vtype=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
