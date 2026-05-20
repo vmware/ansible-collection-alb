@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_pool
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of Pool Avi RESTful Object
 description:
-    - This module is used to configure Pool object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure Pool object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -64,7 +64,7 @@ options:
         description:
             - Allows the option to append port to hostname in the host header while sending a request to the server.
             - By default, port is appended for non-default ports.
-            - This setting will apply for pool's 'rewrite host header to server name', 'rewrite host header to sni' features and server's 'rewrite host header'
+            - This setting will apply for pools rewrite host header to server name, rewrite host header to sni features and servers rewrite host header
             - settings as well as http healthmonitors attached to pools.
             - Enum options - NON_DEFAULT_80_443, NEVER, ALWAYS.
             - Field introduced in 21.1.1.
@@ -157,7 +157,7 @@ options:
         type: str
     default_server_port:
         description:
-            - Traffic sent to servers will use this destination server port unless overridden by the server's specific port attribute.
+            - Traffic sent to servers will use this destination server port unless overridden by the servers specific port attribute.
             - The ssl checkbox enables avi to server encryption.
             - Allowed values are 1-65535.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -315,14 +315,14 @@ options:
         type: bool
     lb_algorithm:
         description:
-            - The load balancing algorithm will pick a server within the pool's list of available servers.
+            - The load balancing algorithm will pick a server within the pools list of available servers.
             - Values lb_algorithm_nearest_server and lb_algorithm_topology are only allowed for gslb pool.
             - Enum options - LB_ALGORITHM_LEAST_CONNECTIONS, LB_ALGORITHM_ROUND_ROBIN, LB_ALGORITHM_FASTEST_RESPONSE, LB_ALGORITHM_CONSISTENT_HASH,
             - LB_ALGORITHM_LEAST_LOAD, LB_ALGORITHM_FEWEST_SERVERS, LB_ALGORITHM_RANDOM, LB_ALGORITHM_FEWEST_TASKS, LB_ALGORITHM_NEAREST_SERVER,
             - LB_ALGORITHM_CORE_AFFINITY, LB_ALGORITHM_TOPOLOGY.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values-
-            - lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash), basic edition(allowed values-
-            - lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash), enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- lb_algorithm_least_connections, lb_algorithm_round_robin,
+            - lb_algorithm_consistent_hash), basic edition(allowed values- lb_algorithm_least_connections, lb_algorithm_round_robin,
+            - lb_algorithm_consistent_hash), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as LB_ALGORITHM_LEAST_CONNECTIONS.
         type: str
     lb_algorithm_consistent_hash_hdr:
@@ -419,7 +419,7 @@ options:
         type: str
     placement_networks:
         description:
-            - Manually select the networks and subnets used to provide reachability to the pool's servers.
+            - Manually select the networks and subnets used to provide reachability to the pools servers.
             - Specify the subnet using the following syntax  10-1-1-0/24.
             - Use static routes in vrf configuration when pool servers are not directly connected but routable from the service engine.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -566,7 +566,7 @@ options:
         type: str
     use_service_port:
         description:
-            - Do not translate the client's destination port when sending the connection to the server.
+            - Do not translate the clients destination port when sending the connection to the server.
             - Monitor port needs to be specified for health monitors.
             - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -598,43 +598,44 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
+  tasks:
+    - name: Create a Pool with two servers and HTTP monitor
+      vmware.alb.avi_pool:
+        avi_credentials: "{{ avi_credentials }}"
+        name: testpool1
+        description: testpool1
+        state: present
+        health_monitor_refs:
+            - '/api/healthmonitor?name=System-HTTP'
+        servers:
+            - ip:
+                addr: 192.168.138.11
+                type: V4
+            - ip:
+                addr: 192.168.138.12
+                type: V4
 
-- name: Create a Pool with two servers and HTTP monitor
-  vmware.alb.avi_pool:
-    avi_credentials: "{{ avi_credentials }}"
-    name: testpool1
-    description: testpool1
-    state: present
-    health_monitor_refs:
-        - '/api/healthmonitor?name=System-HTTP'
-    servers:
-        - ip:
-            addr: 192.168.138.11
-            type: V4
-        - ip:
-            addr: 192.168.138.12
-            type: V4
-
-- name: Patch pool with a single server using patch op and avi_credentials
-  vmware.alb.avi_pool:
-    avi_credentials: "{{ avi_credentials }}"
-    avi_api_update_method: patch
-    avi_api_patch_op: delete
-    name: test-pool
-    servers:
-      - ip:
-        addr: 192.168.138.13
-        type: 'V4'
-  register: pool
-  when:
-    - state | default("present") == "present"
+    - name: Patch pool with a single server using patch op and avi_credentials
+      vmware.alb.avi_pool:
+        avi_credentials: "{{ avi_credentials }}"
+        avi_api_update_method: patch
+        avi_api_patch_op: delete
+        name: test-pool
+        servers:
+          - ip:
+            addr: 192.168.138.13
+            type: 'V4'
+      register: pool
+      when:
+        - state | default("present") == "present"
 """
 
 RETURN = '''
@@ -662,6 +663,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         analytics_policy=dict(type='dict',),
         analytics_profile_ref=dict(type='str',),
         append_port=dict(type='str',),
@@ -728,7 +738,7 @@ def main():
         service_metadata=dict(type='str',),
         sni_enabled=dict(type='bool',),
         sp_gs_info=dict(type='dict',),
-        ssl_key_and_certificate_ref=dict(type='str',),
+        ssl_key_and_certificate_ref=dict(type='str', no_log=True,),
         ssl_profile_ref=dict(type='str',),
         tenant_ref=dict(type='str',),
         tier1_lr=dict(type='str',),
@@ -738,7 +748,8 @@ def main():
         uuid=dict(type='str',),
         vrf_ref=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

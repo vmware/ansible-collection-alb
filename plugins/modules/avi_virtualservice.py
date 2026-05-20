@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_virtualservice
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of VirtualService Avi RESTful Object
 description:
-    - This module is used to configure VirtualService object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure VirtualService object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -52,7 +52,7 @@ options:
             - This configuration only applies if the virtualservice is in legacy active standby ha mode and load distribution among active standby is enabled.
             - This field is used to tag the virtualservice so that virtualservices with the same tag will share the same active serviceengine.
             - Virtualservices with different tags will have different active serviceengines.
-            - If one of the serviceengine's in the serviceenginegroup fails, all virtualservices will end up using the same active serviceengine.
+            - If one of the serviceengines in the serviceenginegroup fails, all virtualservices will end up using the same active serviceengine.
             - Redistribution of the virtualservices can be either manual or automated when the failed serviceengine recovers.
             - Redistribution is based on the auto redistribute property of the serviceenginegroup.
             - Enum options - ACTIVE_STANDBY_SE_1, ACTIVE_STANDBY_SE_2.
@@ -141,7 +141,7 @@ options:
         description:
             - (this is a beta feature).
             - Sync key-value cache to the new ses when vs is scaled out.
-            - For ex  ssl sessions are stored using vs's key-value cache.
+            - For ex  ssl sessions are stored using vss key-value cache.
             - When the vs is scaled out, the ssl session information is synced to the new se, allowing existing ssl sessions to be reused on the new se.
             - Field introduced in 17.2.7, 18.1.1.
             - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
@@ -171,8 +171,8 @@ options:
         description:
             - Enum options - CLOUD_NONE, CLOUD_VCENTER, CLOUD_OPENSTACK, CLOUD_AWS, CLOUD_VCA, CLOUD_APIC, CLOUD_MESOS, CLOUD_LINUXSERVER, CLOUD_DOCKER_UCP,
             - CLOUD_RANCHER, CLOUD_OSHIFT_K8S, CLOUD_AZURE, CLOUD_GCP, CLOUD_NSXT.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- cloud_none,cloud_vcenter), basic edition(allowed values-
-            - cloud_none,cloud_nsxt), enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- cloud_none, cloud_vcenter), basic edition(allowed values-
+            - cloud_none, cloud_nsxt), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as CLOUD_NONE.
         type: str
     configpb_attributes:
@@ -233,7 +233,7 @@ options:
         elements: dict
     east_west_placement:
         description:
-            - Force placement on all se's in service group (mesos mode only).
+            - Force placement on all ses in service group (mesos mode only).
             - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
             - cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -253,7 +253,7 @@ options:
         type: bool
     enable_rhi_snat:
         description:
-            - Enable route health injection for source nat'ted floating ip address using the bgp config in the vrf context.
+            - Enable route health injection for source natted floating ip address using the bgp config in the vrf context.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: bool
     enable_session:
@@ -295,7 +295,7 @@ options:
     fqdn:
         description:
             - Dns resolvable, fully qualified domain name of the virtualservice.
-            - Only one of 'fqdn' and 'dns_info' configuration is allowed.
+            - Only one of fqdn and dns_info configuration is allowed.
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
         type: str
     host_name_xlate:
@@ -509,7 +509,7 @@ options:
         type: dict
     snat_ip:
         description:
-            - Nat'ted floating source ip address(es) for upstream connection to servers.
+            - Natted floating source ip address(es) for upstream connection to servers.
             - Maximum of 32 items allowed.
             - Allowed in enterprise edition with any value, basic, enterprise with cloud services edition.
         type: list
@@ -613,8 +613,8 @@ options:
         description:
             - Specify if this is a normal virtual service, or if it is the parent or child of an sni-enabled virtual hosted virtual service.
             - Enum options - VS_TYPE_NORMAL, VS_TYPE_VH_PARENT, VS_TYPE_VH_CHILD.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- vs_type_normal), basic edition(allowed values-
-            - vs_type_normal,vs_type_vh_parent), enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- vs_type_normal), basic edition(allowed values- vs_type_normal,
+            - vs_type_vh_parent), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as VS_TYPE_NORMAL.
         type: str
     url:
@@ -644,7 +644,7 @@ options:
         type: str
     vh_domain_name:
         description:
-            - The exact name requested from the client's sni-enabled tls hello domain name field.
+            - The exact name requested from the clients sni-enabled tls hello domain name field.
             - If this is a match, the parent vs will forward the connection to this child vs.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
@@ -667,14 +667,14 @@ options:
             - Specify if the virtual hosting vs is of type sni or enhanced.
             - Enum options - VS_TYPE_VH_SNI, VS_TYPE_VH_ENHANCED.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, basic edition(allowed values- vs_type_vh_sni,vs_type_vh_enhanced), enterprise with cloud services
+            - Allowed in enterprise edition with any value, basic edition(allowed values- vs_type_vh_sni, vs_type_vh_enhanced), enterprise with cloud services
             - edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as VS_TYPE_VH_SNI.
         type: str
     vip:
         description:
             - List of virtual service ips.
-            - While creating a 'shared vs',please use vsvip_ref to point to the shared entities.
+            - While creating a shared vs,please use vsvip_ref to point to the shared entities.
             - Field introduced in 17.1.1.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
         type: list
@@ -728,31 +728,32 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create SSL Virtual Service using Pool testpool2
-  vmware.alb.avi_virtualservice:
-    avi_credentials: "{{ avi_credentials }}"
-    name: newtestvs
-    state: present
-    performance_limits:
-    max_concurrent_connections: 1000
-    vsvip_ref: /api/vsvip/?name=vsvip-newtestvs-Default-Cloud
-    services:
-        - port: 443
-          enable_ssl: true
-        - port: 80
-    ssl_profile_ref: '/api/sslprofile?name=System-Standard'
-    application_profile_ref: '/api/applicationprofile?name=System-Secure-HTTP'
-    ssl_key_and_certificate_refs:
-        - '/api/sslkeyandcertificate?name=System-Default-Cert'
-    pool_ref: '/api/pool?name=testpool2'
+  tasks:
+    - name: Create SSL Virtual Service using Pool testpool2
+      vmware.alb.avi_virtualservice:
+        avi_credentials: "{{ avi_credentials }}"
+        name: newtestvs
+        state: present
+        performance_limits:
+        max_concurrent_connections: 1000
+        vsvip_ref: /api/vsvip/?name=vsvip-newtestvs-Default-Cloud
+        services:
+            - port: 443
+              enable_ssl: true
+            - port: 80
+        ssl_profile_ref: '/api/sslprofile?name=System-Standard'
+        application_profile_ref: '/api/applicationprofile?name=System-Secure-HTTP'
+        ssl_key_and_certificate_refs:
+            - '/api/sslkeyandcertificate?name=System-Default-Cert'
+        pool_ref: '/api/pool?name=testpool2'
 """
 
 RETURN = '''
@@ -780,6 +781,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         active_standby_se_tag=dict(type='str',),
         advertise_down_vs=dict(type='bool',),
         allow_invalid_client_cert=dict(type='bool',),
@@ -850,7 +860,7 @@ def main():
         snat_ip=dict(type='list', elements='dict',),
         snat_ip6_addresses=dict(type='list', elements='dict',),
         sp_pool_refs=dict(type='list', elements='str',),
-        ssl_key_and_certificate_refs=dict(type='list', elements='str',),
+        ssl_key_and_certificate_refs=dict(type='list', no_log=True, elements='str',),
         ssl_profile_ref=dict(type='str',),
         ssl_profile_selectors=dict(type='list', elements='dict',),
         ssl_sess_cache_avg_size=dict(type='int',),
@@ -878,7 +888,8 @@ def main():
         waf_policy_ref=dict(type='str',),
         weight=dict(type='int',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

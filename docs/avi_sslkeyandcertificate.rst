@@ -1,3 +1,4 @@
+
 .. vmware.alb.avi_sslkeyandcertificate:
 
 
@@ -26,12 +27,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="7">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +53,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +77,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +100,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +116,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -130,14 +131,14 @@ Parameters
                 </div>
             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+            <tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ca_certs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -149,15 +150,53 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ca_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - It is a reference to an object of type sslkeyandcertificate.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>certificate</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                 <div style="font-size: small">
@@ -169,15 +208,787 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>certificate</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>certificate_signing_request</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>chain_verified</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>days_until_expire</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Valid range  1-3650.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-3650.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 365.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>expiry_status</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - SSL_CERTIFICATE_GOOD, SSL_CERTIFICATE_EXPIRY_WARNING, SSL_CERTIFICATE_EXPIRED.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SSL_CERTIFICATE_GOOD.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>fingerprint</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>issuer</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>common_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>country</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>distinguished_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>email_address</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>locality</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>organization</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>organization_unit</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>state</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>key_params</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>algorithm</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - SSL_KEY_ALGORITHM_RSA, SSL_KEY_ALGORITHM_EC.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SSL_KEY_ALGORITHM_RSA.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ec_params</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>curve</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - SSL_KEY_EC_CURVE_SECP256R1, SSL_KEY_EC_CURVE_SECP384R1, SSL_KEY_EC_CURVE_SECP521R1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SSL_KEY_EC_CURVE_SECP256R1.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>rsa_params</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>exponent</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 65537.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>key_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - SSL_KEY_1024_BITS, SSL_KEY_2048_BITS, SSL_KEY_3072_BITS, SSL_KEY_4096_BITS.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SSL_KEY_2048_BITS.
+                </div>
+                                            </td>
+    </tr>
+        
+            
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>not_after</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>not_before</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>public_key</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>self_signed</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>serial_number</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>signature</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>signature_algorithm</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>subject</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>common_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>country</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>distinguished_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>email_address</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>locality</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>organization</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>organization_unit</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>state</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>subject_alt_names</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Subjectaltname that provides additional subject identities.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>text</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>version</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>certificate_base64</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -192,15 +1003,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>certificate_management_profile_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -212,15 +1022,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -238,15 +1047,51 @@ Parameters
                   - edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>version</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf version number.
+                </div>
+                                <div style="font-size: small">
+                  - Gets incremented if there is se diff of federated diff in config pbs.this field will be a monotonically increasing number indicating the number
+                </div>
+                                <div style="font-size: small">
+                  - of config update operations.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>created_by</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -258,15 +1103,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dynamic_params</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -278,15 +1122,90 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>is_dynamic</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>is_sensitive</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>value</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_ocsp_stapling</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -307,15 +1226,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enckey_base64</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -330,15 +1248,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enckey_name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -353,15 +1270,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>format</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -379,15 +1295,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as SSL_PEM.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>hardwaresecuritymodulegroup_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -399,15 +1314,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>import_key_to_hsm</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -425,15 +1339,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>is_federated</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -451,15 +1364,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>key</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -471,15 +1383,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>key_base64</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -494,15 +1405,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>key_params</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -511,15 +1421,146 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>algorithm</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - SSL_KEY_ALGORITHM_RSA, SSL_KEY_ALGORITHM_EC.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SSL_KEY_ALGORITHM_RSA.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ec_params</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>curve</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - SSL_KEY_EC_CURVE_SECP256R1, SSL_KEY_EC_CURVE_SECP384R1, SSL_KEY_EC_CURVE_SECP521R1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SSL_KEY_EC_CURVE_SECP256R1.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>rsa_params</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>exponent</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 65537.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>key_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - SSL_KEY_1024_BITS, SSL_KEY_2048_BITS, SSL_KEY_3072_BITS, SSL_KEY_4096_BITS.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SSL_KEY_2048_BITS.
+                </div>
+                                            </td>
+    </tr>
+        
+            
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>key_passphrase</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -531,15 +1572,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>markers</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -557,15 +1597,71 @@ Parameters
                   - edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>key</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>values</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Values for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Multiple values will be evaluated as or.
+                </div>
+                                <div style="font-size: small">
+                  - Example  key = value1 or key = value2.
+                </div>
+                                <div style="font-size: small">
+                  - Behavior for match is key = * if this field is empty.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                 <div style="font-size: small">
@@ -577,15 +1673,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ocsp_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -600,15 +1695,184 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>failed_ocsp_jobs_retry_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Describes the time interval after which the next ocsp job needs to be scheduled in case of the ocsp job failures.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 60-86400.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3600.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_tries</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of times the failed ocsp jobs can be scheduled.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ocsp_req_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Interval between the ocsp queries.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 60-31536000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 86400.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ocsp_resp_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time in seconds that the system waits for a reply from the ocsp responder before dropping the connection.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>responder_url_lists</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of responder urls configured by user to do failover/override the aia extension contained in the ocsp responder's ssl/tls certificate.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>url_action</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Describes the type of action to take with the responder urls.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - OCSP_RESPONDER_URL_FAILOVER, OCSP_RESPONDER_URL_OVERRIDE.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as OCSP_RESPONDER_URL_FAILOVER.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ocsp_error_status</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -644,15 +1908,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as OCSP_ERR_CERTSTATUS_DISABLED.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ocsp_responder_url_list_from_certs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -667,15 +1930,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ocsp_response_info</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -690,15 +1952,213 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>cert_status</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Revocation status of the certificate.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - OCSP_CERTSTATUS_GOOD, OCSP_CERTSTATUS_REVOKED, OCSP_CERTSTATUS_UNKNOWN.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>next_update</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The time at or before which newer information will be available about the status of the certificate.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ocsp_resp_from_responder_url</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The ocsp responder url from which the response is received.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ocsp_response</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Signed ocsp response received from the ca's ocsp responder.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>revocation_reason</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The reason for the revocation of the certificate.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - OCSP_REVOCATION_REASON_UNSPECIFIED, OCSP_REVOCATION_REASON_KEY_COMPROMISE, OCSP_REVOCATION_REASON_CA_COMPROMISE,
+                </div>
+                                <div style="font-size: small">
+                  - OCSP_REVOCATION_REASON_AFFILIATION_CHANGED, OCSP_REVOCATION_REASON_SUPERSEDED, OCSP_REVOCATION_REASON_CESSATION_OF_OPERATION,
+                </div>
+                                <div style="font-size: small">
+                  - OCSP_REVOCATION_REASON_CERTIFICATE_HOLD, OCSP_REVOCATION_REASON_REMOVE_FROM_CRL, OCSP_REVOCATION_REASON_PRIVILEGE_WITHDRAWN,
+                </div>
+                                <div style="font-size: small">
+                  - OCSP_REVOCATION_REASON_AA_COMPROMISE.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>revocation_time</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Iso 8601 compatible timestamp at which the certificate was revoked or placed on hold.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>this_update</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The most recent time at which the status being indicated is known by the ocsp responder to have been correct.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                </div>
+                                <div style="font-size: small">
+                  - edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>status</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -713,15 +2173,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as SSL_CERTIFICATE_FINISHED.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -733,15 +2192,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>type</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -753,15 +2211,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -770,15 +2227,14 @@ Parameters
                   - Avi controller URL of the object.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -787,17 +2243,18 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-            </table>
+    </tr>
+        
+    </table>
     <br/>
-
 
 Examples
 --------
 
 .. code-block:: yaml
 
-    - hosts: localhost
+    - name: Deploy Controller
+      hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -807,6 +2264,7 @@ Examples
           password: "{{ password }}"
           controller: "{{ controller }}"
           api_version: "{{ api_version }}"
+          tenant: "{{ admin }}"
       tasks:        
         - name: Create a SSL Key and Certificate
           avi_sslkeyandcertificate:
@@ -828,9 +2286,6 @@ Examples
 
 Authors
 ~~~~~~~
-- Gaurav Rastogi (grastogi@vmware.com)
-- Sandeep Bandi (sbandi@vmware.com)
-- Amol Shinde (samol@vmware.com)
-
-
-
+- Anurag Palsule (anurag.palsule@broadcom.com)
+- Parikshit Manur (parikshit.manur@broadcom.com)
+- Rohan Suryavanshi (rohan.suryavanshi@broadcom.com)
