@@ -167,19 +167,18 @@ options:
 '''
 
 EXAMPLES = """
-- hosts: localhost
+- name: Deploy Avi Controller
+  hosts: localhost
   connection: local
-  collections:
-    - vmware.alb
   tasks:
     - name: Avi Controller | VMware | Configure VMware controller
-      import_role:
+      ansible.builtin.import_role:
         name: avicontroller_vmware
       vars:
         ovftool_path: /usr/lib/vmware-ovftool
-        vcenter_host: '{{ vcenter_host }}'
-        vcenter_user: '{{ vcenter_user }}'
-        vcenter_password: '{{ vcenter_password }}'
+        vcenter_host: "{% raw %}{{ vcenter_host }}{% endraw %}"
+        vcenter_user: "{% raw %}{{ vvcenter_user }}{% endraw %}"
+        vcenter_password: "{% raw %}{{ vcenter_password }}{% endraw %}"
         con_datacenter: 10GTest
         con_cluster: Arista
         con_mgmt_network: Mgmt_Ntwk_3
@@ -304,7 +303,7 @@ def get_ds(dc, name):
         try:
             if ds.name == name:
                 return ds
-        except:  # Ignore datastores that have issues
+        except Exception:  # Ignore datastores that have issues
             pass
     raise Exception("Failed to find %s on datacenter %s" % (name, dc.name))
 
@@ -329,7 +328,7 @@ def get_largest_free_ds(cl):
             if free_space > largest_free and ds.summary.accessible:
                 largest_free = free_space
                 largest = ds
-        except:  # Ignore datastores that have issues
+        except Exception:  # Ignore datastores that have issues
             pass
     if largest is None:
         raise Exception('Failed to find any free datastores on %s' % cl.name)
@@ -445,6 +444,9 @@ def is_ipv6_address(controller_ip):
 def controller_wait(controller_ip, round_wait=10, wait_time=3600):
     """
     It waits for controller to come up for a given wait_time (default 1 hour).
+    :param controller_ip: IP address of the controller
+    :param round_wait: Wait time between retries in seconds
+    :param wait_time: Total wait time in seconds
     :return: controller_up: Boolean value for controller up state.
     """
     count = 0
@@ -758,10 +760,10 @@ def main():
             'avi.default-gw.CONTROLLER', module.params['con_default_gw']))
 
     command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
+        'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
 
     command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
+        'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
     if module.params.get('con_sysadmin_public_key', None):
         command_tokens.append('--prop:%s=%s' % (

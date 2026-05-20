@@ -40,7 +40,7 @@ options:
         description:
             - Avi API version of to use for Avi API and objects.
         type: str
-        default: 18.2.6
+        default: 20.1.1
     avi_credentials:
         description:
             - Avi Credentials dictionary which can be used in lieu of enumerating Avi Controller login details.
@@ -61,7 +61,7 @@ options:
                 description:
                   - Avi controller version
                 type: str
-                default: 18.2.6
+                default: 20.1.1
             tenant:
                 description:
                   - Avi controller tenant

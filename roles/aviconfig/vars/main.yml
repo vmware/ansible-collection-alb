@@ -2,29 +2,29 @@
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 avi_resource_types:
+  - seproperties
   - labelgroup
   - useraccountprofile
   - cloudproperties
-  - controllerproperties
-  - licensestatus
-  - licenseledgerdetails
-  - seproperties
   - systemlimits
+  - licensestatus
+  - controllerproperties
+  - licenseledgerdetails
   - tenant
-  - cloudconnectoruser
+  - ipaddrgroup
+  - stringgroup
+  - sslprofile
+  - fileobject
   - hardwaresecuritymodulegroup
   - alertscriptconfig
+  - cloudconnectoruser
   - customipamdnsprofile
-  - federationcheckpoint
-  - networkprofile
-  - stringgroup
-  - ipaddrgroup
-  - fileobject
-  - sslprofile
   - applicationpersistenceprofile
   - alertemailconfig
   - snmptrapprofile
   - autoscalelaunchconfig
+  - tenantsystemconfiguration
+  - networkprofile
   - securitypolicy
   - protocolparser
   - jwtserverprofile
@@ -33,67 +33,66 @@ avi_resource_types:
   - testsedatastorelevel3
   - botipreputationtypemapping
   - botconfigconsolidator
+  - federationcheckpoint
   - image
-  - role
-  - statediffoperation
-  - webhook
-  - albservicesfiledownload
-  - taskjournal
-  - poolgroupdeploymentpolicy
-  - gslbgeodbprofile
-  - cluster
-  - siteversion
-  - webapput
+  - albservicesfileupload
   - securitymanagerdata
-  - controllersite
+  - statediffoperation
+  - gslbgeodbprofile
+  - taskjournal
+  - webapput
+  - webhook
+  - role
   - serviceauthprofile
+  - albservicesfiledownload
+  - poolgroupdeploymentpolicy
+  - vsgs
+  - dynamicdnsrecord
+  - siteversion
+  - memorybalancerrequest
+  - inventoryfaultconfig
+  - cluster
   - controllerportalregistration
   - albservicesjob
-  - tenantsystemconfiguration
-  - vsgs
-  - inventoryfaultconfig
   - albservicesconfig
-  - albservicesfileupload
-  - memorybalancerrequest
-  - dynamicdnsrecord
-  - backupconfiguration
-  - clusterclouddetails
-  - certificatemanagementprofile
-  - ipamdnsproviderprofile
-  - gslb
+  - controllersite
+  - wafprofile
+  - natpolicy
   - analyticsprofile
   - wafpolicypsmgroup
-  - wafprofile
   - botmapping
   - csrfpolicy
-  - natpolicy
   - pkiprofile
   - ipreputationdb
   - geodb
+  - certificatemanagementprofile
+  - clusterclouddetails
+  - backupconfiguration
+  - ipamdnsproviderprofile
   - microservicegroup
   - errorpageprofile
   - testsedatastorelevel2
+  - gslb
   - upgradestatussummary
-  - authmappingprofile
-  - upgradestatusinfo
   - statediffsnapshot
+  - upgradestatusinfo
   - systemreport
-  - scheduler
-  - sslkeyandcertificate
+  - authmappingprofile
   - applicationprofile
   - wafpolicy
   - botdetectionpolicy
+  - sslkeyandcertificate
+  - scheduler
   - networksecuritypolicy
   - testsedatastorelevel1
-  - backup
-  - cloud
   - healthmonitor
+  - cloud
   - alertsyslogconfig
+  - backup
   - vrfcontext
   - prioritylabels
   - vcenterserver
   - nsxtsegmentruntime
-  - gslbservice
   - actiongroupconfig
   - availabilityzone
   - alertconfig
@@ -116,3 +115,4 @@ avi_resource_types:
   - ssopolicy
   - systemconfiguration
   - virtualservice
+  - gslbservice

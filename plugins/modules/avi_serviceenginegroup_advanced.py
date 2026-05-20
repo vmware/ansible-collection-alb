@@ -3,7 +3,7 @@
 
 # module_check: supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 from __future__ import absolute_import, division, print_function
 
@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {
 DOCUMENTATION = """
 ---
 module: avi_serviceenginegroup_advanced
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ServiceEngineGroup Avi RESTful Object
 description:
     - This module is used to configure ServiceEngineGroup object's advanced features
@@ -690,9 +690,8 @@ extends_documentation_fragment:
 """
 
 EXAMPLES = """
-- hosts: localhost
-  collections:
-    - vmware.alb
+- name: Example to configure ServiceEngineGroup object's advanced fields
+  hosts: localhost
   vars:
     avi_credentials:
       username: "{{ username }}"
@@ -820,8 +819,18 @@ def main():
         vss_placement_enabled=dict(type="bool"),
         waf_mempool=dict(type="bool"),
         waf_mempool_size=dict(type="int"),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(

@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_gslbservice
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of GslbService Avi RESTful Object
 description:
-    - This module is used to configure GslbService object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure GslbService object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -63,7 +63,7 @@ options:
         type: dict
     controller_health_status_enabled:
         description:
-            - Gs member's overall health status is derived based on a combination of controller and datapath health-status inputs.
+            - Gs members overall health status is derived based on a combination of controller and datapath health-status inputs.
             - Note that the datapath status is determined by the association of health monitor profiles.
             - Only the controller provided status is determined through this configuration.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
@@ -251,19 +251,20 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create GslbService object
-  vmware.alb.avi_gslbservice:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_gslbservice
+  tasks:
+    - name: Example to create GslbService object
+      vmware.alb.avi_gslbservice:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_gslbservice
 """
 
 RETURN = '''
@@ -291,6 +292,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         application_persistence_profile_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         controller_health_status_enabled=dict(type='bool',),
@@ -320,7 +330,8 @@ def main():
         uuid=dict(type='str',),
         wildcard_match=dict(type='bool',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
