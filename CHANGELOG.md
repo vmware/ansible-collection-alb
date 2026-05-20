@@ -2,6 +2,15 @@
 
 ## 30.2.7
 
+### Enhancements
+- Upgraded Python version from 3.9 to 3.12 in CI workflow
+- Upgraded Ansible version from 2.15.0 to 2.16.0 in CI matrix
+- Updated minimum Ansible requirement to `>=2.16.0` in `meta/runtime.yml`
+
+### Bug Fixes
+- Fixed `cleanup_absent_fields` in `ansible_utils.py` — function was incorrectly returning `None` instead of the processed object, causing data loss in object cleanup operations
+- Fixed `verify_se.py` to import `ApiSession` from the collection module path (`ansible_collections.vmware.alb.plugins.module_utils.avi_api`) instead of the legacy `avi.sdk` path
+
 
 ## 32.1.1
 
