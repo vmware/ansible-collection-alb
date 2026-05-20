@@ -76,7 +76,7 @@ try:
 except ImportError:
     HAS_REQUESTS = False
 try:
-    from avi.sdk.avi_api import ApiSession, AviCredentials
+    from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, AviCredentials
     from avi.sdk.utils.ansible_utils import avi_common_argument_spec
     HAS_AVI = True
 except ImportError:

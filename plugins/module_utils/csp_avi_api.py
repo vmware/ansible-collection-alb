@@ -7,7 +7,7 @@ __metaclass__ = type
 import logging
 import time
 
-from avi.sdk.avi_api import ApiSession, APIError
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, APIError
 
 from requests import ConnectionError
 from requests.exceptions import ChunkedEncodingError
