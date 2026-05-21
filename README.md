@@ -2,7 +2,7 @@
 
 [![Apache licensed](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/vmware/ansible-collection-alb/blob/eng/LICENSE)
 [![Collection](https://img.shields.io/badge/collection-vmware.alb-blue.svg)](https://galaxy.ansible.com/vmware/alb/)
-[![CI](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml/badge.svg?branch=32.1.1)](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml)
+[![CI](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml/badge.svg?branch=30.2.7)](https://github.com/vmware/ansible-collection-alb/actions/workflows/ci.yaml)
 
 <!--start requires_ansible-->
 ## Ansible version compatibility
@@ -201,7 +201,7 @@ Name | Description
 
 ### Testing with `ansible-test`
 
-Refer [testing](https://github.com/vmware/ansible-collection-alb/blob/32.1.1/testing.md) for more information.
+Refer [testing](https://github.com/vmware/ansible-collection-alb/blob/30.2.7/testing.md) for more information.
 
 ## Publishing New Version
 
