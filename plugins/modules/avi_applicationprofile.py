@@ -196,7 +196,7 @@ EXAMPLES = """
             max_cache_size: 0
             max_object_size: 4194304
             mime_types_group_refs:
-            - admin:System-Cacheable-Resource-Types
+              - admin:System-Cacheable-Resource-Types
             min_object_size: 100
             query_cacheable: false
             xcache_header: true

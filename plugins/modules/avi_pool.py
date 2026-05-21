@@ -320,9 +320,9 @@ options:
             - Enum options - LB_ALGORITHM_LEAST_CONNECTIONS, LB_ALGORITHM_ROUND_ROBIN, LB_ALGORITHM_FASTEST_RESPONSE, LB_ALGORITHM_CONSISTENT_HASH,
             - LB_ALGORITHM_LEAST_LOAD, LB_ALGORITHM_FEWEST_SERVERS, LB_ALGORITHM_RANDOM, LB_ALGORITHM_FEWEST_TASKS, LB_ALGORITHM_NEAREST_SERVER,
             - LB_ALGORITHM_CORE_AFFINITY, LB_ALGORITHM_TOPOLOGY.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- lb_algorithm_least_connections, lb_algorithm_round_robin,
-            - lb_algorithm_consistent_hash), basic edition(allowed values- lb_algorithm_least_connections, lb_algorithm_round_robin,
-            - lb_algorithm_consistent_hash), enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values-
+            - lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash), basic edition(allowed values-
+            - lb_algorithm_least_connections,lb_algorithm_round_robin,lb_algorithm_consistent_hash), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as LB_ALGORITHM_LEAST_CONNECTIONS.
         type: str
     lb_algorithm_consistent_hash_hdr:
@@ -614,14 +614,14 @@ EXAMPLES = """
         description: testpool1
         state: present
         health_monitor_refs:
-            - '/api/healthmonitor?name=System-HTTP'
+          - '/api/healthmonitor?name=System-HTTP'
         servers:
-            - ip:
-                addr: 192.168.138.11
-                type: V4
-            - ip:
-                addr: 192.168.138.12
-                type: V4
+          - ip:
+              addr: 192.168.138.11
+              type: V4
+          - ip:
+              addr: 192.168.138.12
+              type: V4
 
     - name: Patch pool with a single server using patch op and avi_credentials
       vmware.alb.avi_pool:

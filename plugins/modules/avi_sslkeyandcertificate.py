@@ -244,11 +244,11 @@ EXAMPLES = """
             ....
             -----END PRIVATE KEY-----
         certificate:
-            self_signed: true
-            certificate: |
-              -----BEGIN CERTIFICATE-----
-              ....
-              -----END CERTIFICATE-----
+          self_signed: true
+          certificate: |
+            -----BEGIN CERTIFICATE-----
+            ....
+            -----END CERTIFICATE-----
         type: SSL_CERTIFICATE_TYPE_VIRTUALSERVICE
         name: MyTestCert
 """

@@ -207,25 +207,25 @@ Refer [testing](https://github.com/vmware/ansible-collection-alb/blob/30.2.7/tes
 
 Examples
 --------
-
-    - hosts: localhost
-      connection: local
-      collections:
-        - vmware.alb
-      tasks:
-        - name: Example to create a Pool object
-          avi_pool:
-            avi_credentials:
-              username: "admin"
-              password: "something"
-              controller: "192.168.15.18"
-              api_version: "21.1.1"
-            name: app1-pool
-            lb_algorithm: LB_ALGORITHM_LEAST_LOAD
-            servers:
-            - ip:
-                 addr: "192.168.12.15"
-                 type: 'V4'
+- name: Example to create a Pool object
+  hosts: localhost
+    connection: local
+  collections:
+    - vmware.alb
+  tasks:
+    - name: Example to create a Pool object
+      avi_pool:
+        avi_credentials:
+          username: "admin"
+          password: "something"
+          controller: "192.168.15.18"
+          api_version: "21.1.1"
+        name: app1-pool
+        lb_algorithm: LB_ALGORITHM_LEAST_LOAD
+        servers:
+        - ip:
+          addr: "192.168.12.15"
+          type: 'V4'
 
 Example usage of external credentials/variable file while using alb module
 ```
@@ -238,7 +238,8 @@ avi_credentials:
 ```
 ```
 # example.yml
-- hosts: localhost
+- name: Deploy Controller
+  hosts: localhost
   connection: local
   collections:
     - vmware.alb
@@ -269,13 +270,14 @@ avi_config:
 ```
 ```
 # collection.yml
-- hosts: localhost
+- name: Deploy Controller
+  hosts: localhost
   connection: local
   collections:
     - vmware.alb
   tasks:
     - name: Create pool using aviconfig role
-      import_role:
+      ansible.builtin.import_role:
         name: aviconfig
       vars:
           avi_config_file: "config.yml"

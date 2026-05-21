@@ -249,11 +249,13 @@ class ApiSession(Session):
             "controller_ip: %s, username: %s, tenant: %s, "
             "tenant_uuid: %s, verify: %s, port: %s, timeout: %s, "
             "api_version: %s, retry_conxn_errors: %s, data_log: %s,"
+            "avi_credentials: %s, session_id: %s, csrftoken: %s,"
             "lazy_authentication: %s, max_api_retries: %s",
             controller_ip, username, tenant,
             tenant_uuid, verify, port,
             timeout, api_version, retry_conxn_errors,
-            data_log, lazy_authentication, max_api_retries)
+            data_log, avi_credentials, session_id,
+            csrftoken, lazy_authentication, max_api_retries)
         if not avi_credentials:
             tenant = tenant if tenant else "admin"
             self.avi_credentials = AviCredentials(
@@ -1138,7 +1140,7 @@ class ApiSession(Session):
 
     def is_ipv6_address(self, controller_ip):
         try:
-            logger.info('Verifing Controller IP %s', controller_ip)
+            logger.info('Verifing IPV6 Controller IP %s', controller_ip)
             ip = ipaddress.ip_address(controller_ip)
             return ip.version == self.IPV6
         except ValueError as ve:

@@ -89,6 +89,7 @@ avi_resource_types:
   - cloud
   - alertsyslogconfig
   - backup
+  - gslbservice
   - vrfcontext
   - prioritylabels
   - vcenterserver
@@ -115,4 +116,3 @@ avi_resource_types:
   - ssopolicy
   - systemconfiguration
   - virtualservice
-  - gslbservice

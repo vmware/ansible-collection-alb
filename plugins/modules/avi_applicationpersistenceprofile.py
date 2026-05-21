@@ -106,9 +106,9 @@ options:
             - Method used to persist clients to the same server for a duration of time or a session.
             - Enum options - PERSISTENCE_TYPE_CLIENT_IP_ADDRESS, PERSISTENCE_TYPE_HTTP_COOKIE, PERSISTENCE_TYPE_TLS, PERSISTENCE_TYPE_CLIENT_IPV6_ADDRESS,
             - PERSISTENCE_TYPE_CUSTOM_HTTP_HEADER, PERSISTENCE_TYPE_APP_COOKIE, PERSISTENCE_TYPE_GSLB_SITE.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- persistence_type_client_ip_address,
-            - persistence_type_http_cookie), basic edition(allowed values- persistence_type_client_ip_address, persistence_type_http_cookie), enterprise with
-            - cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values-
+            - persistence_type_client_ip_address,persistence_type_http_cookie), basic edition(allowed values-
+            - persistence_type_client_ip_address,persistence_type_http_cookie), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as PERSISTENCE_TYPE_CLIENT_IP_ADDRESS.
         required: true
         type: str
@@ -164,12 +164,12 @@ EXAMPLES = """
           always_send_cookie: false
           cookie_name: My-HTTP
           key:
-          - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
-            name: c1276819-550c-4adf-912d-59efa5fd7269
-          - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
-            name: a080de57-77c3-4580-a3ea-e7a6493c14fd
-          - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
-            name: 60478846-33c6-484d-868d-bbc324fce4a5
+            - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
+              name: c1276819-550c-4adf-912d-59efa5fd7269
+            - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
+              name: a080de57-77c3-4580-a3ea-e7a6493c14fd
+            - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
+              name: 60478846-33c6-484d-868d-bbc324fce4a5
           timeout: 15
         name: My-HTTP-Cookie
         persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE

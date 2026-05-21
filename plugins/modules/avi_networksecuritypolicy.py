@@ -139,17 +139,17 @@ EXAMPLES = """
         avi_credentials: "{{ avi_credentials }}"
         name: vs-gurutest-ns
         rules:
-        - action: NETWORK_SECURITY_POLICY_ACTION_TYPE_DENY
-          age: 0
-          enable: true
-          index: 1
-          log: false
-          match:
-            client_ip:
-              group_refs:
-              - Demo:known_attackers
-              match_criteria: IS_IN
-          name: Rule 1
+          - action: NETWORK_SECURITY_POLICY_ACTION_TYPE_DENY
+            age: 0
+            enable: true
+            index: 1
+            log: false
+            match:
+              client_ip:
+                group_refs:
+                  - Demo:known_attackers
+                match_criteria: IS_IN
+            name: Rule 1
         tenant_ref: /api/tenant?name=Demo
 """
 

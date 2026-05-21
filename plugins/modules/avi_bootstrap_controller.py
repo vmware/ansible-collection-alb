@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: not supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -23,6 +23,7 @@ options:
     password:
         description:
             - New password to initialize controller password.
+        required: true
         type: str
     ssh_key_pair:
         description:
@@ -50,17 +51,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-  - name: Initialize user password
-    vmware.alb.avi_bootstrap_controller:
-      avi_credentials:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        controller: "{{ controller }}"
-        api_version: "{{ api_version }}"
-      ssh_key_pair: "/path/to/key-pair-file.pem"
-      password: new_password
-      con_wait_time: 3600
-      round_wait: 10
+- name: Initialize user password
+  vmware.alb.avi_bootstrap_controller:
+  avi_credentials:
+    username: "{{ username }}"
+    password: "{{ password }}"
+    controller: "{{ controller }}"
+    api_version: "{{ api_version }}"
+  ssh_key_pair: "/path/to/key-pair-file.pem"
+  password: new_password
+  con_wait_time: 3600
+  round_wait: 10
 '''
 
 RETURN = '''

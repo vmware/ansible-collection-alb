@@ -123,9 +123,9 @@ options:
         description:
             - Type of the auth profile.
             - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml,
-            - auth_profile_jwt, ...), basic edition(allowed values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...),
-            - enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values-
+            - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth), basic edition(allowed values-
+            - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth), enterprise with cloud services edition.
         required: true
         type: str
     url:
@@ -161,7 +161,7 @@ EXAMPLES = """
           port: 389
           security_mode: AUTH_LDAP_SECURE_NONE
           server:
-          - 192.168.12.18
+            - 192.168.12.18
           settings:
             admin_bind_dn: user@avi.local
             group_filter: (objectClass=*)

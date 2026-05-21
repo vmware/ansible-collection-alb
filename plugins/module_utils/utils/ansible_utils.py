@@ -57,8 +57,8 @@ def ansible_return(module, rsp, changed, req=None, existing_obj=None,
     if rsp is not None and rsp.status_code > 299 and not \
             any(error in rsp.text for error in SKIP_DELETE_ERROR):
         return module.fail_json(
-            msg='Error %d Msg %s req: %s ' % (
-                rsp.status_code, rsp.text, req))
+            msg='Error %d Msg %s req: %s api_context:%s ' % (
+                rsp.status_code, rsp.text, req, api_context))
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)
     key = '%s:%s:%s' % (api_creds.controller, api_creds.username,

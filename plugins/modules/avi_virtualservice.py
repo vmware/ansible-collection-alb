@@ -613,8 +613,8 @@ options:
         description:
             - Specify if this is a normal virtual service, or if it is the parent or child of an sni-enabled virtual hosted virtual service.
             - Enum options - VS_TYPE_NORMAL, VS_TYPE_VH_PARENT, VS_TYPE_VH_CHILD.
-            - Allowed in enterprise edition with any value, essentials edition(allowed values- vs_type_normal), basic edition(allowed values- vs_type_normal,
-            - vs_type_vh_parent), enterprise with cloud services edition.
+            - Allowed in enterprise edition with any value, essentials edition(allowed values- vs_type_normal), basic edition(allowed values-
+            - vs_type_normal, vs_type_vh_parent), enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as VS_TYPE_NORMAL.
         type: str
     url:
@@ -746,13 +746,13 @@ EXAMPLES = """
         max_concurrent_connections: 1000
         vsvip_ref: /api/vsvip/?name=vsvip-newtestvs-Default-Cloud
         services:
-            - port: 443
-              enable_ssl: true
-            - port: 80
+          - port: 443
+            enable_ssl: true
+          - port: 80
         ssl_profile_ref: '/api/sslprofile?name=System-Standard'
         application_profile_ref: '/api/applicationprofile?name=System-Secure-HTTP'
         ssl_key_and_certificate_refs:
-            - '/api/sslkeyandcertificate?name=System-Default-Cert'
+          - '/api/sslkeyandcertificate?name=System-Default-Cert'
         pool_ref: '/api/pool?name=testpool2'
 """
 

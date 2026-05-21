@@ -24,7 +24,7 @@ class CSPApiSession(ApiSession):
                  port=None, timeout=60, api_version=None,
                  retry_conxn_errors=True, data_log=False,
                  avi_credentials=None, session_id=None, csrftoken=None,
-                 lazy_authentication=False, max_api_retries=None, csp_host=CSP_HOST, csp_token=None, user_hdrs=dict):
+                 lazy_authentication=False, max_api_retries=None, csp_host=CSP_HOST, csp_token=None, user_hdrs=None):
 
         super(CSPApiSession, self).__init__(
             controller_ip, username, password, token,
@@ -67,7 +67,7 @@ class CSPApiSession(ApiSession):
             elif rsp.status_code in [401, 403]:
                 logger.error("Error status code %s msg %s", rsp.status_code,
                              rsp.text)
-                err = APIError('Failed: %s Status Code %s msg %s' % (
+                err = APIError('Failed: %s Status Code %s msg %s', (
                     rsp.url, rsp.status_code, rsp.text), rsp)
                 raise err
             else:
