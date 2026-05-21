@@ -1,12 +1,12 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi Config | Fetch cloud status before deletion
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
   vmware.alb.avi_api_session:
     controller: "{{ avi_controller | default(omit) }}"
-    username: "{{ avi_username  | default(omit) }}"
-    password: "{{ avi_password  | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
     api_version: "{{ api_version | default(omit) }}"
     avi_credentials: "{{ avi_credentials | default(omit) }}"
     http_method: get
@@ -17,7 +17,7 @@
   register: cloud_res
 
 - name: Avi Cloud | Delete Cloud
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_cloud:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
