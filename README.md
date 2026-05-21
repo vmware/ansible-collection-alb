@@ -296,5 +296,9 @@ avi_config:
           # please use vars_files parameter as shown in previous example
 ```
 
+## Release Notes
+
+For release notes, see [CHANGELOG.md](https://github.com/vmware/ansible-collection-alb/blob/32.1.1/CHANGELOG.md).
+
 **Notes**
 Please use Python >= 3.8 if you are using avi_serviceenginegroup module as it has more than 255 arguments
