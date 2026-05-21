@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_api_image
-author: Sandeep Bandi (@sabandi) <sabandi@vmware.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Avi API Module for image
 description:
     - This module can be used for calling image resources to upload upgrade/patch files
