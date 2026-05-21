@@ -349,7 +349,7 @@ Parameters
                   - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -400,7 +400,7 @@ Parameters
                   - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -448,7 +448,7 @@ Parameters
                   - This field identifies se group options that need to be applied during the upgrade operations.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -477,7 +477,7 @@ Parameters
                   - Enum options - ROLLBACK_UPGRADE_OPS_ON_ERROR, SUSPEND_UPGRADE_OPS_ON_ERROR, CONTINUE_UPGRADE_OPS_ON_ERROR.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -505,7 +505,7 @@ Parameters
                   - Disable non-disruptive mechanism.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -539,7 +539,7 @@ Parameters
                   - It is a reference to an object of type serviceenginegroup.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -566,7 +566,7 @@ Parameters
                   - It is a reference to an object of type image.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -590,7 +590,7 @@ Parameters
                   - This is flag when set as true skips few optional must check.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -614,7 +614,7 @@ Parameters
                   - Apply upgrade operations such as upgrade/patch to controller and all se groups.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -718,7 +718,7 @@ Parameters
                   - The last time the state changed.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -782,7 +782,7 @@ Parameters
                   - Descriptive reason for the state-change.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -842,7 +842,7 @@ Parameters
                   - UPGRADE_PRE_CHECK_STARTED, UPGRADE_PRE_CHECK_IN_PROGRESS, UPGRADE_PRE_CHECK_SUCCESS, UPGRADE_PRE_CHECK_ERROR, UPGRADE_PRE_CHECK_WARNING.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -937,7 +937,7 @@ Parameters
                   - List of all events node wise.(not in use).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -963,7 +963,7 @@ Parameters
                   - Time taken to complete upgrade event in seconds.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
@@ -991,7 +991,7 @@ Parameters
                   - Task end time.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1016,7 +1016,7 @@ Parameters
                   - Ip of the node.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1089,7 +1089,7 @@ Parameters
                   - Upgrade event message if any.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1114,7 +1114,7 @@ Parameters
                   - Task start time.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1139,7 +1139,7 @@ Parameters
                   - Upgrade event status.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1218,7 +1218,7 @@ Parameters
                   - Time taken to complete upgrade event in seconds.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
@@ -1246,7 +1246,7 @@ Parameters
                   - Task end time.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1271,7 +1271,7 @@ Parameters
                   - Ip of the node.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1344,7 +1344,7 @@ Parameters
                   - Upgrade event message if any.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1369,7 +1369,7 @@ Parameters
                   - Task start time.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1394,7 +1394,7 @@ Parameters
                   - Upgrade event status.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1462,7 +1462,7 @@ Parameters
                   - PATCH_CONTROLLER_HEALTH_CHECK.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -4127,7 +4127,7 @@ Parameters
                   - The last time the state changed.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -4194,7 +4194,7 @@ Parameters
                   - Descriptive reason for the state-change.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -4256,7 +4256,7 @@ Parameters
                   - UPGRADE_PRE_CHECK_STARTED, UPGRADE_PRE_CHECK_IN_PROGRESS, UPGRADE_PRE_CHECK_SUCCESS, UPGRADE_PRE_CHECK_ERROR, UPGRADE_PRE_CHECK_WARNING.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -4908,7 +4908,8 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
+    - name: Deploy Controller
+      hosts: localhost
       connection: local
       collections:
         - vmware.alb

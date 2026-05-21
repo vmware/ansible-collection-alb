@@ -852,142 +852,142 @@ avi_config:
       name: Test-webhook
       tenant_ref: /api/tenant?name=admin
 
-# AV-86449 20.1.1 Controller is returning 500 while updating the SSLKeyAndCertificate object
-#  sslkeyandcertificate:
-#    - name: sslcert_portal
-#      tenant: admin
-#      key: |
-#        -----BEGIN PRIVATE KEY-----
-#        MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBALfkdjOAsQDmCuwo
-#        XdCTVjWfRqA6vFoPhvunpF3+h1ismebFMEQmZLjFF9njWLamZheJDNjoWtKf2A53
-#        e1Re+zBdvuhvtS1RmkqUoiEkEEH3OfxFlEIudxq5N1uTITGEYSD6bDVZhMSO6A2A
-#        BOvJU1093C8ad3fRc6lsvB6/hiArAgMBAAECgYAuAkYkmqUukV/YOD1IqyRdpC0a
-#        d7eaXNor6oSwU7dvUzfqShnKY0S+CenuxPf0MuvGJa8GMhRPMFjxPamosV7tDVH6
-#        1jZ2Zl4wo0siMk9x0/1uCeRuaj6ok4q2I5kuInyhoEMssJScek0DYtgD+toCjPY5
-#        2uAEjWPfiHLlTh2xwQJBAOErTTdf4A7Mhgtnebi9THosxrsiNgJpVRG50AHx6TlF
-#        2LbhgF4JSSM0vAMRfWazEmjvfYepLF9WODfGGJtkLosCQQDRElDaqyFgZWW2jlx0
-#        xnl4gRnixjnYEolm7YIZ3j3SkLP2Fzyg6K0B+tQ2+AonhFbmlf/qfP5AKeL8j8Pl
-#        iqjhAkAFEjiW+q3NJ4YNU7NGGd1TExcWt9qHi1/DGnA42v3psE0FMWb2tzbSeCmT
-#        2Bz+5yGPA3XMTF8XdpWli+yZ81OpAkAo5pFkxffImO2WEjGqMq3O0krTH35vc+jn
-#        du1tzBmCGQbrzM3ymLJH4d8kRdAOvQgXIh8nq3495TPfvuxO+pphAkA05TNWagth
-#        epSEtvECW8IGWemk+BZH6xB26jqx7EZbapJi/qmJlGaoaJvZvTtTnfgNb4U0X/FX
-#        YWEO+ECVfyNL
-#        -----END PRIVATE KEY-----
-#      certificate:
-#        self_signed: false
-#        certificate: |
-#          -----BEGIN CERTIFICATE-----
-#          MIICjDCCAfWgAwIBAgIJAKkX1I191s88MA0GCSqGSIb3DQEBCwUAMF8xCzAJBgNV
-#          BAYTAlVTMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
-#          aWRnaXRzIFB0eSBMdGQxGDAWBgNVBAMMD3JzYXNlcnZlcmltcG9ydDAeFw0xNjEx
-#          MjIwMjI0MTVaFw0zMDA4MDEwMjI0MTVaMF8xCzAJBgNVBAYTAlVTMRMwEQYDVQQI
-#          DApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQx
-#          GDAWBgNVBAMMD3JzYXNlcnZlcmltcG9ydDCBnzANBgkqhkiG9w0BAQEFAAOBjQAw
-#          gYkCgYEAt+R2M4CxAOYK7Chd0JNWNZ9GoDq8Wg+G+6ekXf6HWKyZ5sUwRCZkuMUX
-#          2eNYtqZmF4kM2Oha0p/YDnd7VF77MF2+6G+1LVGaSpSiISQQQfc5/EWUQi53Grk3
-#          W5MhMYRhIPpsNVmExI7oDYAE68lTXT3cLxp3d9FzqWy8Hr+GICsCAwEAAaNQME4w
-#          HQYDVR0OBBYEFLRoTXgpr8xZ78rbgQiTaEUtiiDpMB8GA1UdIwQYMBaAFLRoTXgp
-#          r8xZ78rbgQiTaEUtiiDpMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADgYEA
-#          SA7/1GiysobFZPR5D4NuCxH4b2JaeQNzKbzp0x8zMrkrpnyi3W2vbbphuTODBaXZ
-#          870SscDK9t1ZbYF3cVShfsYoPgMTUgmUd06AiBo7jK8w4h3PphDg1PCxMXrbRWJw
-#          V9tDYJIOUUKSfoDxbV3rHy6QNngnD89t6opPIGsqkis=
-#          -----END CERTIFICATE-----
-#      type: SSL_CERTIFICATE_TYPE_SYSTEM
+      # AV-86449 20.1.1 Controller is returning 500 while updating the SSLKeyAndCertificate object
+      #  sslkeyandcertificate:
+      #    - name: sslcert_portal
+      #      tenant: admin
+      #      key: |
+      #        -----BEGIN PRIVATE KEY-----
+      #        MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBALfkdjOAsQDmCuwo
+      #        XdCTVjWfRqA6vFoPhvunpF3+h1ismebFMEQmZLjFF9njWLamZheJDNjoWtKf2A53
+      #        e1Re+zBdvuhvtS1RmkqUoiEkEEH3OfxFlEIudxq5N1uTITGEYSD6bDVZhMSO6A2A
+      #        BOvJU1093C8ad3fRc6lsvB6/hiArAgMBAAECgYAuAkYkmqUukV/YOD1IqyRdpC0a
+      #        d7eaXNor6oSwU7dvUzfqShnKY0S+CenuxPf0MuvGJa8GMhRPMFjxPamosV7tDVH6
+      #        1jZ2Zl4wo0siMk9x0/1uCeRuaj6ok4q2I5kuInyhoEMssJScek0DYtgD+toCjPY5
+      #        2uAEjWPfiHLlTh2xwQJBAOErTTdf4A7Mhgtnebi9THosxrsiNgJpVRG50AHx6TlF
+      #        2LbhgF4JSSM0vAMRfWazEmjvfYepLF9WODfGGJtkLosCQQDRElDaqyFgZWW2jlx0
+      #        xnl4gRnixjnYEolm7YIZ3j3SkLP2Fzyg6K0B+tQ2+AonhFbmlf/qfP5AKeL8j8Pl
+      #        iqjhAkAFEjiW+q3NJ4YNU7NGGd1TExcWt9qHi1/DGnA42v3psE0FMWb2tzbSeCmT
+      #        2Bz+5yGPA3XMTF8XdpWli+yZ81OpAkAo5pFkxffImO2WEjGqMq3O0krTH35vc+jn
+      #        du1tzBmCGQbrzM3ymLJH4d8kRdAOvQgXIh8nq3495TPfvuxO+pphAkA05TNWagth
+      #        epSEtvECW8IGWemk+BZH6xB26jqx7EZbapJi/qmJlGaoaJvZvTtTnfgNb4U0X/FX
+      #        YWEO+ECVfyNL
+      #        -----END PRIVATE KEY-----
+      #      certificate:
+      #        self_signed: false
+      #        certificate: |
+      #          -----BEGIN CERTIFICATE-----
+      #          MIICjDCCAfWgAwIBAgIJAKkX1I191s88MA0GCSqGSIb3DQEBCwUAMF8xCzAJBgNV
+      #          BAYTAlVTMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
+      #          aWRnaXRzIFB0eSBMdGQxGDAWBgNVBAMMD3JzYXNlcnZlcmltcG9ydDAeFw0xNjEx
+      #          MjIwMjI0MTVaFw0zMDA4MDEwMjI0MTVaMF8xCzAJBgNVBAYTAlVTMRMwEQYDVQQI
+      #          DApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQx
+      #          GDAWBgNVBAMMD3JzYXNlcnZlcmltcG9ydDCBnzANBgkqhkiG9w0BAQEFAAOBjQAw
+      #          gYkCgYEAt+R2M4CxAOYK7Chd0JNWNZ9GoDq8Wg+G+6ekXf6HWKyZ5sUwRCZkuMUX
+      #          2eNYtqZmF4kM2Oha0p/YDnd7VF77MF2+6G+1LVGaSpSiISQQQfc5/EWUQi53Grk3
+      #          W5MhMYRhIPpsNVmExI7oDYAE68lTXT3cLxp3d9FzqWy8Hr+GICsCAwEAAaNQME4w
+      #          HQYDVR0OBBYEFLRoTXgpr8xZ78rbgQiTaEUtiiDpMB8GA1UdIwQYMBaAFLRoTXgp
+      #          r8xZ78rbgQiTaEUtiiDpMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADgYEA
+      #          SA7/1GiysobFZPR5D4NuCxH4b2JaeQNzKbzp0x8zMrkrpnyi3W2vbbphuTODBaXZ
+      #          870SscDK9t1ZbYF3cVShfsYoPgMTUgmUd06AiBo7jK8w4h3PphDg1PCxMXrbRWJw
+      #          V9tDYJIOUUKSfoDxbV3rHy6QNngnD89t6opPIGsqkis=
+      #          -----END CERTIFICATE-----
+      #      type: SSL_CERTIFICATE_TYPE_SYSTEM
 
-#  serviceenginegroup:
-#    - name: Test-Default-Group
-#      tenant_ref: "/api/tenant/?name=admin"
-#      cloud_ref: "/api/cloud/?name=Default-Cloud"
-#      archive_shm_limit: 8
-#      udf_log_throttle: 100
-#      ingress_access_data: SG_INGRESS_ACCESS_ALL
-#      vcpus_per_se: 1
-#      disable_tso: false
-#      se_sb_dedicated_core: false
-#      async_ssl: false
-#      se_name_prefix: Avi_new
-#      auto_redistribute_active_standby_load: false
-#      auto_rebalance: false
-#      aggressive_failure_detection: false
-#      vs_scaleout_timeout: 30
-#      auto_rebalance_interval: 300
-#      active_standby: false
-#      se_tunnel_mode: 0
-#      ignore_rtt_threshold: 5000
-#      extra_shared_config_memory: 0
-#      se_tunnel_udp_port: 1550
-#      disable_gro: false
-#      vs_scalein_timeout: 30
-#      hm_on_standby: true
-#      ha_mode: HA_MODE_SHARED
-#      se_sb_threads: 1
-#      se_udp_encap_ipc: 0
-#      min_cpu_usage: 30
-#      disk_per_se: 10
-#      cpu_reserve: false
-#      disable_csum_offloads: false
-#      log_disksz: 10000
-#      cpu_socket_affinity: false
-#      se_probe_port: 7
-#      ingress_access_mgmt: SG_INGRESS_ACCESS_ALL
-#      extra_config_multiplier: 0
-#      distribute_load_active_standby: false
-#      max_vs_per_se: 10
-#      async_ssl_threads: 1
-#      connection_memory_percentage: 50
-#      placement_mode: PLACEMENT_MODE_AUTO
-#      max_scaleout_per_vs: 4
-#      vs_scalein_timeout_for_upgrade: 30
-#      vcenter_folder: AviSeFolder
-#      os_reserved_memory: 0
-#      se_bandwidth_type: SE_BANDWIDTH_UNLIMITED
-#      waf_mempool: true
-#      se_thread_multiplier: 1
-#      se_deprovision_delay: 120
-#      dedicated_dispatcher_core: false
-#      per_app: false
-#      se_vs_hb_max_vs_in_pkt: 256
-#      vcenter_datastores_include: false
-#      realtime_se_metrics:
-#        duration: 0
-#        enabled: true
-#      non_significant_log_throttle: 100
-#      max_cpu_usage: 80
-#      min_scaleout_per_vs: 2
-#      se_vs_hb_max_pkts_in_batch: 8
-#      host_gateway_monitor: false
-#      buffer_se: 1
-#      mem_reserve: true
-#      flow_table_new_syn_max_entries: 0
-#      vcenter_datastore_mode: VCENTER_DATASTORE_ANY
-#      num_flow_cores_sum_changes_to_ignore: 8
-#      least_load_core_selection: true
-#      max_se: 11
-#      significant_log_throttle: 100
-#      waf_mempool_size: 64
-#      license_type: LIC_CORES
-#      algo: PLACEMENT_ALGO_DISTRIBUTED
-#      memory_per_se: 2048
-#      vs_host_redundancy: true
-#      vnic_dhcp_ip_check_interval: 6
-#      vnic_dhcp_ip_max_retries: 10
-#      vnic_ip_delete_interval: 5
-#      vnic_probe_interval: 5
-#      sdb_flush_interval: 100
-#      sdb_pipeline_size: 100
-#      sdb_scan_count: 600
-#      ignore_docker_mac_change: true
-#      se_emulated_cores: 0
-#      se_dump_core_on_assert: false
-#      se_packet_buffer_max: 0
-#      se_dp_if_state_poll_interval: 10
-#      baremetal_dispatcher_handles_flows: false
+      #  serviceenginegroup:
+      #    - name: Test-Default-Group
+      #      tenant_ref: "/api/tenant/?name=admin"
+      #      cloud_ref: "/api/cloud/?name=Default-Cloud"
+      #      archive_shm_limit: 8
+      #      udf_log_throttle: 100
+      #      ingress_access_data: SG_INGRESS_ACCESS_ALL
+      #      vcpus_per_se: 1
+      #      disable_tso: false
+      #      se_sb_dedicated_core: false
+      #      async_ssl: false
+      #      se_name_prefix: Avi_new
+      #      auto_redistribute_active_standby_load: false
+      #      auto_rebalance: false
+      #      aggressive_failure_detection: false
+      #      vs_scaleout_timeout: 30
+      #      auto_rebalance_interval: 300
+      #      active_standby: false
+      #      se_tunnel_mode: 0
+      #      ignore_rtt_threshold: 5000
+      #      extra_shared_config_memory: 0
+      #      se_tunnel_udp_port: 1550
+      #      disable_gro: false
+      #      vs_scalein_timeout: 30
+      #      hm_on_standby: true
+      #      ha_mode: HA_MODE_SHARED
+      #      se_sb_threads: 1
+      #      se_udp_encap_ipc: 0
+      #      min_cpu_usage: 30
+      #      disk_per_se: 10
+      #      cpu_reserve: false
+      #      disable_csum_offloads: false
+      #      log_disksz: 10000
+      #      cpu_socket_affinity: false
+      #      se_probe_port: 7
+      #      ingress_access_mgmt: SG_INGRESS_ACCESS_ALL
+      #      extra_config_multiplier: 0
+      #      distribute_load_active_standby: false
+      #      max_vs_per_se: 10
+      #      async_ssl_threads: 1
+      #      connection_memory_percentage: 50
+      #      placement_mode: PLACEMENT_MODE_AUTO
+      #      max_scaleout_per_vs: 4
+      #      vs_scalein_timeout_for_upgrade: 30
+      #      vcenter_folder: AviSeFolder
+      #      os_reserved_memory: 0
+      #      se_bandwidth_type: SE_BANDWIDTH_UNLIMITED
+      #      waf_mempool: true
+      #      se_thread_multiplier: 1
+      #      se_deprovision_delay: 120
+      #      dedicated_dispatcher_core: false
+      #      per_app: false
+      #      se_vs_hb_max_vs_in_pkt: 256
+      #      vcenter_datastores_include: false
+      #      realtime_se_metrics:
+      #        duration: 0
+      #        enabled: true
+      #      non_significant_log_throttle: 100
+      #      max_cpu_usage: 80
+      #      min_scaleout_per_vs: 2
+      #      se_vs_hb_max_pkts_in_batch: 8
+      #      host_gateway_monitor: false
+      #      buffer_se: 1
+      #      mem_reserve: true
+      #      flow_table_new_syn_max_entries: 0
+      #      vcenter_datastore_mode: VCENTER_DATASTORE_ANY
+      #      num_flow_cores_sum_changes_to_ignore: 8
+      #      least_load_core_selection: true
+      #      max_se: 11
+      #      significant_log_throttle: 100
+      #      waf_mempool_size: 64
+      #      license_type: LIC_CORES
+      #      algo: PLACEMENT_ALGO_DISTRIBUTED
+      #      memory_per_se: 2048
+      #      vs_host_redundancy: true
+      #      vnic_dhcp_ip_check_interval: 6
+      #      vnic_dhcp_ip_max_retries: 10
+      #      vnic_ip_delete_interval: 5
+      #      vnic_probe_interval: 5
+      #      sdb_flush_interval: 100
+      #      sdb_pipeline_size: 100
+      #      sdb_scan_count: 600
+      #      ignore_docker_mac_change: true
+      #      se_emulated_cores: 0
+      #      se_dump_core_on_assert: false
+      #      se_packet_buffer_max: 0
+      #      se_dp_if_state_poll_interval: 10
+      #      baremetal_dispatcher_handles_flows: false
 
-#  gslbgeodbprofile:
-#    - name: test-profile
-#      tenant_ref: '/api/tenant?name=admin'
-#      entries:
-#      - priority: 10
-#        file:
-#          format: GSLB_GEODB_FILE_FORMAT_AVI
-#          filename: AviGeoDb.txt.gz
+      #  gslbgeodbprofile:
+      #    - name: test-profile
+      #      tenant_ref: '/api/tenant?name=admin'
+      #      entries:
+      #      - priority: 10
+      #        file:
+      #          format: GSLB_GEODB_FILE_FORMAT_AVI
+      #          filename: AviGeoDb.txt.gz

@@ -3025,7 +3025,7 @@ Parameters
                   - Allowed values are 0-5.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
@@ -4407,7 +4407,8 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
+    - name: Deploy Controller
+      hosts: localhost
       connection: local
       collections:
         - vmware.alb

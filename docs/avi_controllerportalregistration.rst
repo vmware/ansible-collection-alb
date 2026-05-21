@@ -144,7 +144,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -168,7 +168,7 @@ Parameters
                   - Asset id corresponding to this controller cluster, returned on a successful registration.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -191,7 +191,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -210,7 +210,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -234,7 +234,7 @@ Parameters
                   - Access token to authenticate customer portal rest calls.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -286,7 +286,7 @@ Parameters
                   - Cloud services instance url.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -309,7 +309,7 @@ Parameters
                   - Signed jwt to refresh the access token.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -425,7 +425,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -460,7 +460,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -476,7 +476,8 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
+    - name: Deploy Controller
+      hosts: localhost
       connection: local
       collections:
         - vmware.alb

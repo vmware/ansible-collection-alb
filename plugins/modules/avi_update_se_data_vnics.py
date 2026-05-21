@@ -38,15 +38,15 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-  - name: Update data vnics and vlan interfaces
-    vmware.alb.avi_update_se_data_vnics:
-      avi_credentials:
-        controller: "{{ controller }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-        api_version: "{{ api_version }}"
-      se_name: "10.10.20.30"
-      data_vnics_config:
+- name: Update data vnics and vlan interfaces
+  vmware.alb.avi_update_se_data_vnics:
+    avi_credentials:
+      controller: "{{ controller }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      api_version: "{{ api_version }}"
+    se_name: "10.10.20.30"
+    data_vnics_config:
       - if_name: "eth1"
         is_asm: false
         can_se_dp_takeover: true

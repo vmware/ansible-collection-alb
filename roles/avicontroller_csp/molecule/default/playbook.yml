@@ -2,4 +2,4 @@
 - name: Converge
   hosts: all
   roles:
-    - role: avinetworks.avicontroller-csp
+    - role: vmware.alb.avicontroller_csp

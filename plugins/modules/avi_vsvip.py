@@ -182,21 +182,21 @@ EXAMPLES = """
       vmware.alb.avi_vsvip:
         name: vsvip-newtestvs-Default-Cloud
         avi_credentials: "{{ avi_credentials }}"
-        api_context: '{{avi_api_context | default(omit)}}'
+        api_context: '{{ avi_api_context | default(omit) }}'
         vrf_context_ref: /api/vrfcontext/?name=global
         tenant_ref: /api/tenant/?name=admin
         cloud_ref: /api/cloud/?name=Default-Cloud
         vip:
-        - vip_id: '1'
-          avi_allocated_fip: false
-          auto_allocate_ip: false
-          enabled: true
-          auto_allocate_floating_ip: false
-          avi_allocated_vip: false
-          auto_allocate_ip_type: V4_ONLY
-          ip_address:
-            type: V4
-            addr: 192.168.138.18
+          - vip_id: '1'
+            avi_allocated_fip: false
+            auto_allocate_ip: false
+            enabled: true
+            auto_allocate_floating_ip: false
+            avi_allocated_vip: false
+            auto_allocate_ip_type: V4_ONLY
+            ip_address:
+              type: V4
+              addr: 192.168.138.18
 """
 
 RETURN = '''
