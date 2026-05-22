@@ -92,7 +92,11 @@ se_env_variables_all: "{{ se_env_variables_extras + se_env_variables_default }}"
 se_env_variables_string: "{% for env_var in se_env_variables_all | reject('match', '^$') %} -e {{ env_var }}{% endfor %}"
 cpu_constraint: ""
 
-# !!!! BEWARE: This is to completely override everything passed into the service template for the docker run. DON'T EDIT THIS UNLESS YOU KNOW WHAT YOUR DOING!!!!!
-AVI_RUN_PARAMS: "--name=avise --pids-limit -1 -v /run/xtables.lock:/run/xtables.lock -m {{ se_memory_mb | int }}m {{ cpu_constraint }} -d{{ se_env_variables_string }} --net=host{{ se_mounts_string }} --privileged=true {{ se_image }}"
+# !!!! BEWARE: This is to completely override everything passed into the service template
+# for the docker run. DON'T EDIT THIS UNLESS YOU KNOW WHAT YOUR DOING!!!!!
+AVI_RUN_PARAMS: >-
+  --name=avise --pids-limit -1
+  -v /run/xtables.lock:/run/xtables.lock -m {{ se_memory_mb | int }}m {{ cpu_constraint }}
+  -d{{ se_env_variables_string }} --net=host{{ se_mounts_string }} --privileged=true {{ se_image }}
 AVI_EXECUTABLE: "/usr/sbin/avise"
 se_service_files_path: ""

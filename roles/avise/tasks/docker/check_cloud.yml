@@ -31,7 +31,12 @@
       register: cname
 
 - name: Check cloud parameters
-  when: se_service_file.stat.exists and (c_uuid.stdout is defined) and (cname.stdout is defined) and (cip.stdout is defined) and (c_uuid.stdout | string) != (cloud_uuid | string)
+  when:
+    - se_service_file.stat.exists
+    - c_uuid.stdout is defined
+    - cname.stdout is defined
+    - cip.stdout is defined
+    - (c_uuid.stdout | string) != (cloud_uuid | string)
   block:
     - name: Check the cloud uuids
       ansible.builtin.set_fact:
