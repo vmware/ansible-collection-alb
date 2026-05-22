@@ -44,7 +44,10 @@
       delegate_to: localhost
       register: se_avi_metafile
     - name: Avi SE | CSP | Metafile deploy | Deploy metafile to the CSP device of {{ se_csp_metafile_name }}
-      ansible.builtin.command: sshpass -p {{ se_csp_password }} scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /tmp/{{ se_csp_metafile_name }} {{ se_csp_user }}@{{ se_csp_host }}:/osp/repository
+      ansible.builtin.command: >
+        sshpass -p {{ se_csp_password }} scp -o UserKnownHostsFile=/dev/null
+        -o StrictHostKeyChecking=no /tmp/{{ se_csp_metafile_name }}
+        {{ se_csp_user }}@{{ se_csp_host }}:/osp/repository
       changed_when: false
       delegate_to: localhost
       failed_when: false

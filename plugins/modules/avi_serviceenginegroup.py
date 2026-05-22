@@ -1612,9 +1612,8 @@ extends_documentation_fragment:
 
 EXAMPLES = \
     """
-- hosts: localhost
-  collections:
-    - vmware.alb
+- name: Example to create ServiceEngineGroup object
+  hosts: localhost
   vars:
     avi_credentials:
       username: "{{ username }}"
