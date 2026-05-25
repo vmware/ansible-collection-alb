@@ -53,7 +53,8 @@
   register: tenant_res
 
 - name: Avi Config | Create Tenant
-  ansible.builtin.include_tasks: "tenant.yml"
+  ansible.builtin.include_tasks:
+    file: "tenant.yml"
   vars:
     avi_role_state_mode: present
   when:
@@ -77,7 +78,8 @@
   register: cloud_res
 
 - name: Avi Config | Create no access cloud
-  ansible.builtin.include_tasks: "no_access_cloud.yml"
+  ansible.builtin.include_tasks:
+    file: "no_access_cloud.yml"
   vars:
     avi_role_state_mode: present
   when:
@@ -86,7 +88,8 @@
     - cloud_res.results[0].obj.count == 0
 
 - name: Avi Config | Create no access cloud before delete
-  ansible.builtin.include_tasks: "no_access_cloud.yml"
+  ansible.builtin.include_tasks:
+    file: "no_access_cloud.yml"
   vars:
     avi_role_state_mode: present
   when:
@@ -96,7 +99,8 @@
     - avi_config_state == "absent"
 
 - name: Avi Config | Create Network
-  ansible.builtin.include_tasks: "network.yml"
+  ansible.builtin.include_tasks:
+    file: "network.yml"
   vars:
     avi_role_state_mode: present
 
@@ -111,7 +115,8 @@
     loop_var: outer_item
 
 - name: Include Avi Resource Create or Update Tasks
-  ansible.builtin.include_tasks: "{{ outer_item }}.yml"
+  ansible.builtin.include_tasks:
+    file: "{{ outer_item }}.yml"
   vars:
     avi_role_state_mode: present
     update_sysconfig_dns_vs_ref: false
@@ -124,7 +129,8 @@
     loop_var: outer_item
 
 - name: Update Systemconfiguration DNS VS reference
-  ansible.builtin.include_tasks: "systemconfiguration.yml"
+  ansible.builtin.include_tasks:
+    file: "systemconfiguration.yml"
   vars:
     avi_role_state_mode: present
     update_sysconfig_dns_vs_ref: true
@@ -134,7 +140,8 @@
     - avi_role_cfg.systemconfiguration is defined
 
 - name: Delete Systemconfiguration DNS VS reference
-  ansible.builtin.include_tasks: "systemconfiguration_delete.yml"
+  ansible.builtin.include_tasks:
+    file: "systemconfiguration_delete.yml"
   vars:
     avi_role_state_mode: absent
   when:
@@ -142,7 +149,8 @@
     - avi_role_cfg.systemconfiguration is defined
 
 - name: Include Avi Resource Deletion Tasks
-  ansible.builtin.include_tasks: "{{ outer_item }}_delete.yml"
+  ansible.builtin.include_tasks:
+    file: "{{ outer_item }}_delete.yml"
   vars:
     avi_role_state_mode: absent
   when:

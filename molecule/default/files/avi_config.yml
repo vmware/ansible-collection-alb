@@ -189,8 +189,13 @@ avi_config:
         username: "{{ lookup('env', 'VCENTER_USERNAME') }}"
   cloudproperties:
     - cc_vtypes:
+        - CLOUD_OPENSTACK
         - CLOUD_AWS
+        - CLOUD_VCA
+        - CLOUD_MESOS
+        - CLOUD_DOCKER_UCP
         - CLOUD_RANCHER
+        - CLOUD_OSHIFT_K8S
         - CLOUD_LINUXSERVER
         - CLOUD_AZURE
       hyp_props:
@@ -205,6 +210,16 @@ avi_config:
         - htypes:
             - VMWARE_ESX
           vtype: CLOUD_VCENTER
+        - flavor_props:
+            - id: all
+              max_ips_per_nic: 11
+              name: all
+              public: true
+          htypes:
+            - KVM
+            - VMWARE_ESX
+            - VMWARE_VSAN
+          vtype: CLOUD_OPENSTACK
         - flavor_props:
             - cost: "{u'reserved': {u'yrTerm1Convertible.noUpfront': u'0.008', u'yrTerm3Convertible.allUpfront': u'0.005', u'yrTerm3Convertible.partialUpfront': u'0.005', u'yrTerm1Convertible.partialUpfront': u'0.008', u'yrTerm1Standard.partialUpfront': u'0.007', u'yrTerm3Standard.noUpfront': u'0.005', u'yrTerm3Convertible.noUpfront': u'0.006', u'yrTerm3Standard.allUpfront': u'0.004', u'yrTerm1Convertible.allUpfront': u'0.008', u'yrTerm1Standard.allUpfront': u'0.007', u'yrTerm3Standard.partialUpfront': u'0.005', u'yrTerm1Standard.noUpfront': u'0.007'}, u'ondemand': u'0.0116'}"
               disk_gb: 0
@@ -228,8 +243,14 @@ avi_config:
           htypes:
             - XEN
           vtype: CLOUD_AWS
+        - vtype: CLOUD_MESOS
+        - vtype: CLOUD_DOCKER_UCP
         - vtype: CLOUD_RANCHER
+        - vtype: CLOUD_OSHIFT_K8S
         - vtype: CLOUD_LINUXSERVER
+        - htypes:
+            - VMWARE_ESX
+          vtype: CLOUD_VCA
         - flavor_props:
             - id: all
               max_ips_per_nic: 150
