@@ -16,14 +16,6 @@ plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
 plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:missing-gplv3-license
-plugins/lookup/avi.py validate-modules:invalid-documentation
-plugins/modules/avi_albservicesfiledownload.py validate-modules:invalid-argument-name
-plugins/modules/avi_albservicesfiledownload.py validate-modules:nonexistent-parameter-documented
-plugins/module_utils/avi_api.py import-3.12!skip
-plugins/module_utils/csp_avi_api.py import-3.12!skip
-plugins/module_utils/saml_avi_api.py import-3.12!skip
-plugins/module_utils/utils/ansible_utils.py import-3.12!skip
-plugins/lookup/avi.py import-3.12!skip
 plugins/modules/avi_seproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_useraccountprofile.py validate-modules:missing-gplv3-license

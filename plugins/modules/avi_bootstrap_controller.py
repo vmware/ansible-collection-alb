@@ -23,7 +23,6 @@ options:
     password:
         description:
             - New password to initialize controller password.
-        required: true
         type: str
     ssh_key_pair:
         description:
