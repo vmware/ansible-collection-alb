@@ -172,15 +172,6 @@
         docker_size_avail: "{{ size_avail.stdout | int * 1024 }}"
       when: format.stdout == "MB"
 
-<<<<<<< HEAD
-- block:
-  - name: Set error message
-    set_fact:
-      error_string: "Docker disk size is not sufficient, available is {{ docker_size_avail|int / (1024 * 1024) }} GB, required disk size is {{ docker_size_req|int / (1024 * 1024) }} GB"
-  - name: Include error.yml
-    include: error.yml
-  when: docker_size_avail is defined and docker_size_avail|int < docker_size_req|int
-=======
 - name: Check Docker disk size
   when: docker_size_avail is defined and docker_size_avail|int < docker_size_req|int
   block:
@@ -191,4 +182,3 @@
           required disk size is {{ (docker_size_req | int) / (1024 * 1024) }} GB
     - name: Include error tasks if Docker disk size is insufficient
       ansible.builtin.include_tasks: error.yml
->>>>>>> d44054bf77 (#AV-267496 - Fix ansible-lint issue in ansible collection (#9071))
