@@ -21,7 +21,7 @@
       ansible.builtin.copy:
         src: "{{ se_package_source }}"
         dest: "{{ se_package_dest }}"
-        mode: "0640"
+        mode: "0644"
         owner: root
         group: root
     - name: Load docker image

@@ -18,7 +18,7 @@
       ansible.builtin.copy:
         src: files/override.conf
         dest: /etc/systemd/system/containerd.service.d/override.conf
-        mode: '0640'
+        mode: '0644'
         owner: root
         group: root
       when: ansible_service_mgr == "systemd"

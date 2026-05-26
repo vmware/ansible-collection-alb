@@ -4,7 +4,7 @@
   ansible.builtin.copy:
     src: "{{ con_package_source }}"
     dest: "{{ con_package_dest }}"
-    mode: "0640"
+    mode: "0644"
     owner: root
     group: root
 
