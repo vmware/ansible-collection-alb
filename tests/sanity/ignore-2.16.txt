@@ -131,7 +131,6 @@ plugins/modules/avi_virtualservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_licensestatus.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbservice.py validate-modules:missing-gplv3-license
-plugins/lookup/avi.py validate-modules:invalid-documentation
 plugins/modules/avi_albservicesfiledownload.py validate-modules:invalid-argument-name
 plugins/modules/avi_albservicesfiledownload.py validate-modules:nonexistent-parameter-documented
 plugins/module_utils/avi_api.py import-3.12!skip
