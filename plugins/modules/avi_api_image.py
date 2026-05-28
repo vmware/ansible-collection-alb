@@ -48,7 +48,7 @@ EXAMPLES = '''
       controller: "{{ controller }}"
       api_version: "{{ api_version }}"
     file_path: ./se_patch.pkg
-    api_version: 20.1.1
+    api_version: 20.1.7
 '''
 
 

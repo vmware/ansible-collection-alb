@@ -2632,10 +2632,13 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...), basic (allowed
+                  - Allowed in essentials (allowed values-
                 </div>
                                 <div style="font-size: small">
-                  - values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...) edition.
+                  - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert), basic (allowed values-
+                </div>
+                                <div style="font-size: small">
+                  - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert) edition.
                 </div>
                                             </td>
     </tr>
@@ -2683,7 +2686,8 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
+    - name: Deploy Controller
+      hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -2705,7 +2709,7 @@ Examples
               port: 389
               security_mode: AUTH_LDAP_SECURE_NONE
               server:
-              - 192.168.12.18
+                - 192.168.12.18
               settings:
                 admin_bind_dn: user@avi.local
                 group_filter: (objectClass=*)

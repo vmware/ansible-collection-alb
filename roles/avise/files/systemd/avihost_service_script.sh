@@ -1,4 +1,5 @@
-#!/bin/bash -x
+#!/usr/bin/env bash
+
 ############################################################################
 # ========================================================================
 # Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.

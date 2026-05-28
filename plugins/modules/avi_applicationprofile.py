@@ -161,8 +161,8 @@ options:
             - Enum options - APPLICATION_PROFILE_TYPE_L4, APPLICATION_PROFILE_TYPE_HTTP, APPLICATION_PROFILE_TYPE_SYSLOG, APPLICATION_PROFILE_TYPE_DNS,
             - APPLICATION_PROFILE_TYPE_SSL, APPLICATION_PROFILE_TYPE_SIP, APPLICATION_PROFILE_TYPE_DIAMETER.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- application_profile_type_l4), basic (allowed values- application_profile_type_l4,
-            - application_profile_type_http) edition.
+            - Allowed in essentials (allowed values- application_profile_type_l4), basic (allowed values-
+            - application_profile_type_l4,application_profile_type_http) edition.
         required: true
         type: str
     url:
@@ -202,7 +202,7 @@ EXAMPLES = """
             max_cache_size: 0
             max_object_size: 4194304
             mime_types_group_refs:
-            - admin:System-Cacheable-Resource-Types
+              - admin:System-Cacheable-Resource-Types
             min_object_size: 100
             query_cacheable: false
             xcache_header: true

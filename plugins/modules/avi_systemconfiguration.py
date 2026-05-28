@@ -320,26 +320,18 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
   tasks:
-    - hosts: all
-      vars:
-        avi_credentials:
-          username: "admin"
-          password: "something"
-          controller: "192.168.15.18"
-          api_version: "21.1.1"
-      tasks:
-        - name: Example to create SystemConfiguration object
-          vmware.alb.avi_systemconfiguration:
-            avi_credentials: "{{ avi_credentials }}"
-            state: present
-            welcome_workflow_complete: True
-            dns_configuration:
-              search_domain: ''
-              server_list:
-                - type: V4
-                  addr: "8.8.8.8"
-                - type: DNS
-                  addr: "dns.rainpole.com"
+    - name: Example to create SystemConfiguration object
+      vmware.alb.avi_systemconfiguration:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        welcome_workflow_complete: true
+        dns_configuration:
+          search_domain: ''
+          server_list:
+            - type: V4
+              addr: "8.8.8.8"
+            - type: DNS
+              addr: "dns.rainpole.com"
 """
 
 RETURN = '''

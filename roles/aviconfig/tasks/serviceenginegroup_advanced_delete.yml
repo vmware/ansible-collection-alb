@@ -1,8 +1,8 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi ServiceEngineGroup
-  no_log: "False"
+  no_log: false
   vmware.alb.avi_serviceenginegroup_advanced:
 
     controller: "{{ avi_controller | default(omit) }}"
@@ -12,7 +12,7 @@
     api_version: "{{ api_version | default(omit) }}"
     avi_credentials: "{{ avi_credentials | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-  with_items: "{{ avi_role_cfg.serviceenginegroup_advanced | default([]) }}"
+  loop: "{{ avi_role_cfg.serviceenginegroup_advanced | default([]) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))

@@ -20,6 +20,10 @@ description:
     - This module can be used for initializing the password of a user.
     - This module is useful for setting up admin password for Controller bootstrap.
 options:
+    password:
+        description:
+            - New password to initialize controller password.
+        type: str
     ssh_key_pair:
         description:
             - AWS/Azure ssh key pair to login on the controller instance.

@@ -1,4 +1,4 @@
 ---
 - name: Verify SSH connectivity to SE hosts
-  ping:
+  ansible.builtin.ping:
   become: true

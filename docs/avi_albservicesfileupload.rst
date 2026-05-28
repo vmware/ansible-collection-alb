@@ -147,7 +147,7 @@ Parameters
                   - Salesforce alphanumeric caseid to attach uploaded file to.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -169,7 +169,7 @@ Parameters
                   - Error reported during file upload.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -194,7 +194,7 @@ Parameters
                   - Stores output file path, for upload to aws s3.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -216,7 +216,7 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -238,7 +238,7 @@ Parameters
                   - Custom aws s3 directory path to upload file.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -269,7 +269,7 @@ Parameters
                   - SYSERR_NOT_UPGRADING, SYSERR_PENDING, SYSERR_EVENT_GEN_FAILURE, SYSERR_CONFIG_PARAM_MISSING, SYSERR_RANGE, SYSERR_FAILED...
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -291,7 +291,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -339,7 +339,8 @@ Examples
 
 .. code-block:: yaml
 
-    - hosts: localhost
+    - name: Deploy Controller
+      hosts: localhost
       connection: local
       collections:
         - vmware.alb

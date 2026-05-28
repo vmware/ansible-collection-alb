@@ -3,7 +3,7 @@
 
 # module_check: supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
@@ -14,7 +14,7 @@ DOCUMENTATION = \
     '''
 ---
 module: avi_serviceenginegroup
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of ServiceEngineGroup Avi RESTful Object
 description:
     - This module is used to configure ServiceEngineGroup object
@@ -1612,9 +1612,8 @@ extends_documentation_fragment:
 
 EXAMPLES = \
     """
-- hosts: localhost
-  collections:
-    - vmware.alb
+- name: Example to create ServiceEngineGroup object
+  hosts: localhost
   vars:
     avi_credentials:
       username: "{{ username }}"
@@ -1866,7 +1865,7 @@ def main():
         controller=dict(type='str', default=''),
         api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
     )
     if HAS_REQUESTS:
         argument_specs.update(avi_common_argument_spec())

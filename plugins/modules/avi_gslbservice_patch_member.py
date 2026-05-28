@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_gslbservice_patch_member
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Avi API Module
 description:
     - This module can be used for calling any resources defined in Avi REST API. U(https://avinetworks.com/)
@@ -47,56 +47,57 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-  - hosts: all
-    vars:
-      avi_credentials:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        controller: "{{ controller }}"
-        api_version: "{{ api_version }}"
+- name: Patch GSLB Service to add a new member and group
+  hosts: all
+  vars:
+    avi_credentials:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      controller: "{{ controller }}"
+      api_version: "{{ api_version }}"
+  tasks:
+    - name: Patch GSLB Service to add a new member and group
+      vmware.alb.avi_gslbservice_patch_member:
+        avi_credentials: "{{ avi_credentials }}"
+        name: gs-3
+        api_version: 17.2.1
+        data:
+          group:
+            name: newfoo
+            priority: 60
+            members:
+              - enabled: true
+                ip:
+                  addr: 10.30.10.66
+                  type: V4
+                ratio: 3
 
-  - name: Patch GSLB Service to add a new member and group
-    vmware.alb.avi_gslbservice_patch_member:
-      avi_credentials: "{{ avi_credentials }}"
-      name: gs-3
-      api_version: 17.2.1
-      data:
-        group:
-          name: newfoo
-          priority: 60
-          members:
-            - enabled: true
-              ip:
-                addr:  10.30.10.66
-                type: V4
-              ratio: 3
+    - name: Patch GSLB Service to delete an existing member
+      vmware.alb.avi_gslbservice_patch_member:
+        avi_credentials: "{{ avi_credentials }}"
+        name: gs-3
+        state: absent
+        api_version: 17.2.1
+        data:
+          group:
+            name: newfoo
+            members:
+              - enabled: true
+                ip:
+                  addr: 10.30.10.68
+                  type: V4
+                ratio: 3
 
-  - name: Patch GSLB Service to delete an existing member
-    vmware.alb.avi_gslbservice_patch_member:
-      avi_credentials: "{{ avi_credentials }}"
-      name: gs-3
-      state: absent
-      api_version: 17.2.1
-      data:
-        group:
-          name: newfoo
-          members:
-            - enabled: true
-              ip:
-                addr:  10.30.10.68
-                type: V4
-              ratio: 3
-
-  - name: Update priority of GSLB Service Pool
-    vmware.alb.avi_gslbservice_patch_member:
-      avi_credentials: "{{ avi_credentials }}"
-      name: gs-3
-      state: present
-      api_version: 17.2.1
-      data:
-        group:
-          name: newfoo
-          priority: 42
+    - name: Update priority of GSLB Service Pool
+      vmware.alb.avi_gslbservice_patch_member:
+        avi_credentials: "{{ avi_credentials }}"
+        name: gs-3
+        state: present
+        api_version: 17.2.1
+        data:
+          group:
+            name: newfoo
+            priority: 42
 '''
 
 

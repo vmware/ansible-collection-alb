@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -93,43 +93,44 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-  - hosts: all
-    vars:
-      avi_credentials:
-        username: "{{ username }}"
-        password: "{{ password }}"
-        controller: "{{ controller }}"
-        api_version: "{{ api_version }}"
+- name: User creation
+  hosts: all
+  vars:
+    avi_credentials:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      controller: "{{ controller }}"
+      api_version: "{{ api_version }}"
+  tasks:
+    - name: User creation
+      vmware.alb.avi_user:
+        avi_credentials: "{{ avi_credentials }}"
+        name: "testuser"
+        obj_username: "testuser"
+        obj_password: "test123"
+        email: "test@abc.com"
+        access:
+          - role_ref: "/api/role?name=Tenant-Admin"
+            tenant_ref: "/api/tenant/admin#admin"
+        user_profile_ref: "/api/useraccountprofile?name=Default-User-Account-Profile"
+        is_active: true
+        is_superuser: true
+        default_tenant_ref: "/api/tenant?name=admin"
 
-  - name: user creation
-    vmware.alb.avi_user:
-      avi_credentials: "{{ avi_credentials }}"
-      name: "testuser"
-      obj_username: "testuser"
-      obj_password: "test123"
-      email: "test@abc.com"
-      access:
-        - role_ref: "/api/role?name=Tenant-Admin"
-          tenant_ref: "/api/tenant/admin#admin"
-      user_profile_ref: "/api/useraccountprofile?name=Default-User-Account-Profile"
-      is_active: true
-      is_superuser: true
-      default_tenant_ref: "/api/tenant?name=admin"
-
-  - name: user creation
-    vmware.alb.avi_user:
-      avi_credentials: "{{ avi_credentials }}"
-      name: "testuser"
-      obj_username: "testuser2"
-      obj_password: "password"
-      email: "testuser2@abc.test"
-      access:
-        - role_ref: "https://192.0.2.10/api/role?name=Tenant-Admin"
-          tenant_ref: "https://192.0.2.10/api/tenant/admin#admin"
-      user_profile_ref: "https://192.0.2.10/api/useraccountprofile?name=Default-User-Account-Profile"
-      is_active: true
-      is_superuser: true
-      default_tenant_ref: "https://192.0.2.10/api/tenant?name=admin"
+    - name: New User creation
+      vmware.alb.avi_user:
+        avi_credentials: "{{ avi_credentials }}"
+        name: "testuser"
+        obj_username: "testuser2"
+        obj_password: "password"
+        email: "testuser2@abc.test"
+        access:
+          - role_ref: "https://192.0.2.10/api/role?name=Tenant-Admin"
+            tenant_ref: "https://192.0.2.10/api/tenant/admin#admin"
+        user_profile_ref: "https://192.0.2.10/api/useraccountprofile?name=Default-User-Account-Profile"
+        is_active: true
+        is_superuser: true
+        default_tenant_ref: "https://192.0.2.10/api/tenant?name=admin"
 '''
 
 RETURN = '''
