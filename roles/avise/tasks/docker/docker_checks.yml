@@ -23,11 +23,12 @@
     - name: Check if Docker is running
       ansible.builtin.shell: >
         set -o pipefail && \
-        ps -ef | grep docker | grep -v grep | wc -l || true
+        ps -ef | grep docker | grep -v grep | wc -l
       args:
         executable: /bin/bash
       register: result
       changed_when: false
+      failed_when: false
 
 - name: Check Docker status
   when: se_deploy_type == "docker" and result.stdout == "0"
@@ -43,7 +44,7 @@
     set -o pipefail && \
     {{ se_deploy_type }} --version | awk '{print $3}' | sed -e 's/,//'
   args:
-        executable: /bin/bash
+    executable: /bin/bash
   changed_when: false
   register: result
 
@@ -72,10 +73,11 @@
     - name: Verify the Docker storage
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} info | grep 'Data loop file:' | awk '{print $4}' || true
+        {{ se_deploy_type }} info | grep 'Data loop file:' | awk '{print $4}'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: docker_dir
     - name: Set Docker disk directory
       ansible.builtin.set_fact:
@@ -89,10 +91,11 @@
     - name: Get Docker directory
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} info | grep '^ Root Dir:' | awk '{print $3}' || true
+        {{ se_deploy_type }} info | grep '^ Root Dir:' | awk '{print $3}'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: docker_dir
     - name: Set Docker disk directory
       ansible.builtin.set_fact:
@@ -106,10 +109,11 @@
     - name: Get Docker directory
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} info | grep 'docker Root Dir:' | awk '{print $4}' || true
+        {{ se_deploy_type }} info | grep 'docker Root Dir:' | awk '{print $4}'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: docker_dir
     - name: Set Docker disk directory
       ansible.builtin.set_fact:
@@ -123,10 +127,11 @@
     - name: Get Docker disk available size
       ansible.builtin.shell: >
         set -o pipefail && \
-        df {{ docker_disk_dir }} -P | grep -iv Used | awk '{print $4}' || true
+        df {{ docker_disk_dir }} -P | grep -iv Used | awk '{print $4}'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: size_avail
     - name: Set Docker size
       ansible.builtin.set_fact:
@@ -139,18 +144,20 @@
     - name: Get available size
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $4}' || true
+        {{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $4}'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: size_avail
     - name: Get available size format
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $5}' || true
+        {{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $5}'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: format
     - name: Set Docker available size in TB
       ansible.builtin.set_fact:

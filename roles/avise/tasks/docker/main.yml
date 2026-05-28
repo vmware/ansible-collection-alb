@@ -16,4 +16,4 @@
 
 - name: Avi SE actions
   ansible.builtin.include_tasks:
-   file: "se_{{ se_action }}.yml"
+    file: "se_{{ se_action }}.yml"

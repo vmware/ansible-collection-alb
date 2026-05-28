@@ -6,8 +6,11 @@
   become: true
   ansible.builtin.shell: >
     set -o pipefail && \
-    {{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l || true
+    {{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l
+  args:
+    executable: /bin/bash
   changed_when: false
+  failed_when: false
   register: se_docker_match
 
 - name: Copy SE image
@@ -18,7 +21,9 @@
       ansible.builtin.copy:
         src: "{{ se_package_source }}"
         dest: "{{ se_package_dest }}"
-        mode: "0755"
+        mode: "0640"
+        owner: root
+        group: root
     - name: Load docker image
       ansible.builtin.command: "{{ se_deploy_type }} load -i {{ se_package_dest }}"
       changed_when: false

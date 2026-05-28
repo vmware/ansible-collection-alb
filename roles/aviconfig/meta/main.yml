@@ -1,7 +1,7 @@
 ---
 # metadata file for aviconfig role
 galaxy_info:
-  author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+  author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
   description: Configuration for Avi load balancer
   license: Apache 2.0
   min_ansible_version: '2.9'

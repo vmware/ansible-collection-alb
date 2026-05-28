@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: not supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_api_image
-author: Sandeep Bandi (@sabandi) <sabandi@vmware.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Avi API Module for image
 description:
     - This module can be used for calling image resources to upload upgrade/patch files
@@ -35,128 +35,8 @@ options:
             - Timeout (in seconds) for Avi API calls.
         default: 300
         type: int
-
-    # Fields from avi_common_argument_spec()
-    controller:
-        description:
-            - Avi controller hostname or IP address.
-        type: str
-        required: false
-        default: ""
-    username:
-        description:
-            - Avi username for authentication.
-        type: str
-        required: false
-        default: ""
-    password:
-        description:
-            - Avi password for authentication.
-        type: str
-        required: false
-        default: ""
-    tenant:
-        description:
-            - Tenant name.
-        type: str
-        required: false
-        default: admin
-    tenant_uuid:
-        description:
-            - Tenant UUID.
-        type: str
-        required: false
-        default: ""
-    api_version:
-        description:
-            - Avi API version to use.
-        type: str
-        required: false
-        default: "18.2.6"
-    avi_credentials:
-        description:
-            - Dictionary of Avi credentials (alternative to controller/username/password/token).
-        type: dict
-        required: false
-        suboptions:
-            controller:
-                description: Avi controller hostname or IP address.
-                type: str
-                default: ""
-            username:
-                description: Avi username.
-                type: str
-                default: ""
-            password:
-                description: Avi password.
-                type: str
-                default: ""
-            api_version:
-                description: Avi API version.
-                type: str
-                default: "18.2.6"
-            tenant:
-                description: Tenant name.
-                type: str
-                default: "admin"
-            tenant_uuid:
-                description: Tenant UUID.
-                type: str
-                default: ""
-            port:
-                description: Port of the Avi controller.
-                type: int
-            token:
-                description: Avi API token.
-                type: str
-                default: ""
-            timeout:
-                description: Timeout for API requests (in seconds).
-                type: int
-                default: 300
-            session_id:
-                description: Session ID for authentication.
-                type: str
-                default: ""
-            csrftoken:
-                description: CSRF token for authentication.
-                type: str
-                default: ""
-            ssl_cert:
-                description: SSL certificate path for HTTPS requests.
-                type: str
-                default: ""
-            ssl_key:
-                description: SSL private key path for HTTPS requests.
-                type: str
-                default: ""
-            idp_class:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_token:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-            csp_host:
-                description: Identity provider class.
-                type: str
-                required: false
-                default: ''
-    api_context:
-        description:
-            - Optional dictionary for API context.
-        type: dict
-        required: false
-    avi_deactivate_session_cache_as_fact:
-        description:
-            - Boolean to deactivate session cache and expose it as an Ansible fact.
-        type: bool
-        required: false
-        default: false
-
+extends_documentation_fragment:
+    - vmware.alb.avi
 '''
 
 EXAMPLES = '''
@@ -168,7 +48,7 @@ EXAMPLES = '''
       controller: "{{ controller }}"
       api_version: "{{ api_version }}"
     file_path: ./se_patch.pkg
-    api_version: 18.2.6
+    api_version: 20.1.1
 '''
 
 
@@ -189,15 +69,14 @@ except ImportError:
     HAS_LIB = False
 
 try:
-    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec)
+    from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import avi_common_argument_spec
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
 try:
-    from avi.sdk.avi_api import ApiSession, AviCredentials
+    from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, AviCredentials
     from avi.sdk.utils.ansible_utils import avi_common_argument_spec
     HAS_AVI = True
 except ImportError:
@@ -208,23 +87,20 @@ def main():
     argument_specs = dict(
         file_path=dict(type='str', required=True),
         params=dict(type='dict'),
-        timeout=dict(type='int', default=300)
+        timeout=dict(type='int', default=300),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
     )
     if HAS_REQUESTS:
         argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
-    STATIC_COMMON_ARGS = dict(
-        controller=dict(type='str', required=False),
-        username=dict(type='str', required=False),
-        password=dict(type='str', required=False, no_log=True),
-        tenant=dict(type='str', required=False),
-        tenant_uuid=dict(type='str', required=False),
-        api_version=dict(type='str', required=False),
-        avi_credentials=dict(type='dict', required=False),
-        api_context=dict(type='dict', required=False),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', required=False),
-    )
-    argument_specs.update(STATIC_COMMON_ARGS)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
             'Python requests package is not installed. '

@@ -34,7 +34,6 @@
         enabled: false
       when: ansible_distribution == "Redhat"
   roles:
-    - role: avinetworks.avisdk
     - role: avinetworks.docker
     - role: avinetworks.avise
       se_leader_ctl_ip: "{{ controller_ip }}"

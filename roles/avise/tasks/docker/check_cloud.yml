@@ -10,7 +10,7 @@
           set -o pipefail
           echo "{{ se_existing_run_params }}" | sed 's/CLOUD_UUID=/\n/g' | awk 'FNR == 2 {print $1}'
       args:
-          executable: /bin/bash
+        executable: /bin/bash
       changed_when: false
       register: c_uuid
     - name: Read existing controller IP
@@ -18,7 +18,7 @@
         set -o pipefail && \
         echo "{{ se_existing_run_params }}" | sed -e 's/CONTROLLERIP=/\\n/g' | awk 'FNR == 2 {print $1}'
       args:
-          executable: /bin/bash
+        executable: /bin/bash
       changed_when: false
       register: cip
     - name: Read existing cloud name
@@ -26,7 +26,7 @@
         set -o pipefail && \
         echo "{{ se_existing_run_params }}" | sed -e 's/CLOUD_NAME=/\\n/g' | awk 'FNR == 2 {print $1}'
       args:
-          executable: /bin/bash
+        executable: /bin/bash
       changed_when: false
       register: cname
 

@@ -61,7 +61,7 @@
           set -o pipefail
           sed -n 's/^\s*se_docker_run_params=//p' /usr/sbin/avise | tr -d '"'
       args:
-          executable: /bin/bash
+        executable: /bin/bash
       changed_when: false
       register: out
       when: param_file.stat.exists

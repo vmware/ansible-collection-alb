@@ -176,9 +176,9 @@ EXAMPLES = """
         name: avicontroller_vmware
       vars:
         ovftool_path: /usr/lib/vmware-ovftool
-        vcenter_host: host
-        vcenter_user: user
-        vcenter_password: password
+        vcenter_host: "{% raw %}{{ vcenter_host }}{% endraw %}"
+        vcenter_user: "{% raw %}{{ vvcenter_user }}{% endraw %}"
+        vcenter_password: "{% raw %}{{ vcenter_password }}{% endraw %}"
         con_datacenter: 10GTest
         con_cluster: Arista
         con_mgmt_network: Mgmt_Ntwk_3
@@ -444,6 +444,9 @@ def is_ipv6_address(controller_ip):
 def controller_wait(controller_ip, round_wait=10, wait_time=3600):
     """
     It waits for controller to come up for a given wait_time (default 1 hour).
+    :param controller_ip: IP address of the controller
+    :param round_wait: Wait time between retries in seconds
+    :param wait_time: Total wait time in seconds
     :return: controller_up: Boolean value for controller up state.
     """
     count = 0

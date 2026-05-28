@@ -1,8 +1,8 @@
 ---
-# metadata file for avise vmware role
+# metadata file for avise role
 galaxy_info:
-  author: Avi Networks <http://avinetworks.com/>
-  description: Configuration for avise
-  role_name: avise
-  min_ansible_version: '2.9'
+  author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+  description: Configuration for Avi load balancer
   license: Apache 2.0
+  min_ansible_version: '2.9'
+  role_name: avise

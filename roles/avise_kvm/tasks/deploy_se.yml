@@ -11,13 +11,17 @@
   ansible.builtin.template:
     src: avi_meta-data.j2
     dest: /root/{{ kvm_vm_hostname }}/avi_meta-data
-    mode: "0644"
+    mode: "0640"
+    owner: root
+    group: root
 
 - name: "Avi SE | KVM | Generate the user-data config file for VM"
   ansible.builtin.template:
     src: user-data.j2
     dest: /root/{{ kvm_vm_hostname }}/user-data
-    mode: "0644"
+    mode: "0640"
+    owner: root
+    group: root
 
 - name: "Avi SE | KVM | Copy se.qcow2 file into /root/{{ kvm_vm_hostname }}"
   ansible.builtin.copy:
@@ -25,7 +29,8 @@
     dest: "/root/{{ kvm_vm_hostname }}/se.qcow2"
     remote_src: false
     owner: root
-    mode: "0644"
+    group: root
+    mode: "0640"
   when: kvm_vm_base_img is defined
 
 - name: "Avi SE | KVM | Copy se.qcow2 file into /var/lib/libvirt/images/"
@@ -34,7 +39,8 @@
     dest: "{{ image }}"
     remote_src: true
     owner: root
-    mode: "0644"
+    group: root
+    mode: "0640"
   when: kvm_vm_base_img is defined
 
 - name: "Avi SE | KVM | Set the path of USER DATA file"
@@ -45,13 +51,15 @@
   ansible.builtin.set_fact:
     avi_meta_data: /root/{{ kvm_vm_hostname }}/avi_meta-data
 
+# @AI-Modified: 2026-01-23 - Added group and changed mode to address ansible:S2612
 - name: "Avi SE | KVM | Copy se.qcow2 file into /root/{{ kvm_vm_hostname }}"
   ansible.builtin.copy:
     src: "/root/{{ kvm_vm_hostname }}/se.qcow2"
     dest: "{{ image }}"
     remote_src: true
     owner: root
-    mode: "0644"
+    group: root
+    mode: "0640"
   when: kvm_vm_base_img is undefined
 
 - name: "Avi SE | KVM | Get interface Names from the list of kvm_virt_intf_name"
