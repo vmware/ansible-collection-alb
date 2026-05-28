@@ -53,7 +53,7 @@
   register: tenant_res
 
 - name: Avi Config | Create Tenant
-  ansible.builtin.include_tasks: 
+  ansible.builtin.include_tasks:
     file: "tenant.yml"
   vars:
     avi_role_state_mode: present
