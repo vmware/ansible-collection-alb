@@ -18,7 +18,7 @@ avi_resource_types:
   - ipaddrgroup
   - stringgroup
   - sslprofile
-  - fileobject
+  - apischema
   - hardwaresecuritymodulegroup
   - alertscriptconfig
   - cloudconnectoruser
@@ -39,6 +39,7 @@ avi_resource_types:
   - botipreputationtypemapping
   - botconfigconsolidator
   - positivesecuritypolicy
+  - labelprofile
   - role
   - trustedhostprofile
   - image
@@ -65,6 +66,7 @@ avi_resource_types:
   - cluster
   - retentionpolicy
   - controllerportalregistration
+  - apispecgenerate
   - albservicesjob
   - ratelimitconfiguration
   - albservicesconfig
@@ -74,14 +76,9 @@ avi_resource_types:
   - analyticsprofile
   - wafpolicypsmgroup
   - botmapping
-  - pkiprofile
-  - ipreputationdb
-  - geodb
-  - csrfpolicy
-  - gslbgeodbprofile
+  - apipath
   - certificatemanagementprofile
   - clusterclouddetails
-  - backupconfiguration
   - ipamdnsproviderprofile
   - microservicegroup
   - errorpageprofile
@@ -92,18 +89,26 @@ avi_resource_types:
   - upgradestatusinfo
   - systemreport
   - apiratelimitprofile
+  - fileobject
+  - sslkeyandcertificate
+  - testsedatastorelevel1
+  - pkiprofile
+  - ipreputationdb
+  - geodb
+  - csrfpolicy
+  - apipolicy
+  - gslbgeodbprofile
+  - backupconfiguration
+  - cloud
+  - healthmonitor
+  - alertsyslogconfig
   - applicationprofile
+  - sessionkeyforwarder
+  - tlsprofile
+  - networksecuritypolicy
   - wafpolicy
   - botdetectionpolicy
-  - sslkeyandcertificate
   - scheduler
-  - networksecuritypolicy
-  - testsedatastorelevel1
-  - healthmonitor
-  - cloud
-  - alertsyslogconfig
-  - sessionkeyforwarder
-  - backup
   - vrfcontext
   - prioritylabels
   - vcenterserver
@@ -111,6 +116,7 @@ avi_resource_types:
   - akoamkocluster
   - nsxtsegmentruntime
   - actiongroupconfig
+  - backup
   - availabilityzone
   - alertconfig
   - serverautoscalepolicy

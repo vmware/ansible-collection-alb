@@ -102,6 +102,7 @@
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     time_tracker_props: "{{ item.time_tracker_props | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
+    waap_classification_disabled_penalty: "{{ item.waap_classification_disabled_penalty | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))

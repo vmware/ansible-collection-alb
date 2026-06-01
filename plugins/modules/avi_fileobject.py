@@ -46,6 +46,12 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    api_spec_detail:
+        description:
+            - Further details about the file object.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     checksum:
         description:
             - Sha1 checksum of the file.
@@ -60,6 +66,12 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
+    completed_events:
+        description:
+            - Number of completed events.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: int
     compressed:
         description:
             - This field indicates whether the file is gzip-compressed.
@@ -89,6 +101,19 @@ options:
         description:
             - Description of the file.
             - Field introduced in 20.1.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
+    duration:
+        description:
+            - Time taken to complete the operation in seconds.
+            - Field introduced in 32.2.1.
+            - Unit is sec.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: int
+    end_time:
+        description:
+            - End time.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     events:
@@ -121,6 +146,13 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    history:
+        description:
+            - File object processing events history for the version specified.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: dict
     is_federated:
         description:
             - This field describes the objects replication scope.
@@ -137,12 +169,26 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
+    obj_state:
+        description:
+            - State of the file object.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     path:
         description:
             - Path to the file.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    progress:
+        description:
+            - Percentage of completed events.
+            - Allowed values are 0-100.
+            - Field introduced in 32.2.1.
+            - Unit is percent.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: int
     read_only:
         description:
             - Enforce read-only on the file.
@@ -161,6 +207,19 @@ options:
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
+    start_time:
+        description:
+            - Start time.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
+    task_events:
+        description:
+            - File object processing events for the version specified.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: dict
     tenant_ref:
         description:
             - Tenant that this object belongs to.
@@ -168,11 +227,17 @@ options:
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    total_events:
+        description:
+            - Total number of events.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: int
     type:
         description:
             - Type of the file.
             - Enum options - OTHER_FILE_TYPES, IP_REPUTATION, GEO_DB, TECH_SUPPORT, HSMPACKAGES, IPAMDNSSCRIPTS, CONTROLLER_IMAGE, CRL_DATA,
-            - IP_REPUTATION_IPV6, GSLB_GEO_DB, CSRF_JS, KNOWN_HOSTS.
+            - IP_REPUTATION_IPV6, GSLB_GEO_DB, CSRF_JS, KNOWN_HOSTS, OPEN_API_SPEC.
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
@@ -248,24 +313,34 @@ def main():
         api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
+        api_spec_detail=dict(type='dict',),
         checksum=dict(type='str',),
         child_refs=dict(type='list', elements='str',),
+        completed_events=dict(type='int',),
         compressed=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
         created=dict(type='str',),
         crl_info=dict(type='dict',),
         description=dict(type='str',),
+        duration=dict(type='int',),
+        end_time=dict(type='str',),
         events=dict(type='list', elements='dict',),
         expires_at=dict(type='str',),
         gslb_geodb_format=dict(type='str',),
         has_parent=dict(type='bool',),
+        history=dict(type='list', elements='dict',),
         is_federated=dict(type='bool',),
         name=dict(type='str', required=True),
+        obj_state=dict(type='dict',),
         path=dict(type='str',),
+        progress=dict(type='int',),
         read_only=dict(type='bool',),
         restrict_download=dict(type='bool',),
         size=dict(type='int',),
+        start_time=dict(type='str',),
+        task_events=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
+        total_events=dict(type='int',),
         type=dict(type='str', required=True),
         url=dict(type='str',),
         uuid=dict(type='str',),

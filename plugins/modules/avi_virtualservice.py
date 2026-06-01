@@ -87,6 +87,13 @@ options:
             - It is a reference to an object of type analyticsprofile.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    api_policy_ref:
+        description:
+            - Api policy configuration for the virtual service to apply api protection.
+            - It is a reference to an object of type apipolicy.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     application_insights_ref:
         description:
             - Application insights configuration for the virtual service to learn application data.
@@ -330,6 +337,13 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    label_profile_ref:
+        description:
+            - Label profile configuration for the virtual service to categorize api endpoints.
+            - It is a reference to an object of type labelprofile.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     ldap_vs_config:
         description:
             - Application-specific ldap config.
@@ -786,6 +800,7 @@ def main():
         allow_invalid_client_cert=dict(type='bool',),
         analytics_policy=dict(type='dict',),
         analytics_profile_ref=dict(type='str',),
+        api_policy_ref=dict(type='str',),
         application_insights_ref=dict(type='str',),
         application_profile_ref=dict(type='str',),
         azure_availability_set=dict(type='str',),
@@ -823,6 +838,7 @@ def main():
         ign_pool_net_reach=dict(type='bool',),
         jwt_config=dict(type='dict',),
         l4_policies=dict(type='list', elements='dict',),
+        label_profile_ref=dict(type='str',),
         ldap_vs_config=dict(type='dict',),
         limit_doser=dict(type='bool',),
         markers=dict(type='list', elements='dict',),

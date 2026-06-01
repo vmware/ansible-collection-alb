@@ -927,6 +927,44 @@ Parameters
                                         <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tls_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tls authentication mode for outbound ldap connections.
+                </div>
+                                <div style="font-size: small">
+                  - Options  tls_mode_disabled (no verification, default), tls_mode_tls (server certificate verification), tls_mode_mtls (mtls with a client
+                </div>
+                                <div style="font-size: small">
+                  - certificate), or tls_mode_verify_only (certificate chain verification only).
+                </div>
+                                <div style="font-size: small">
+                  - Tls_mode_tls, tls_mode_mtls, and tls_mode_verify_only are effective only when security_mode is auth_ldap_secure_use_ldaps.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - TLS_MODE_DISABLED, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_VERIFY_ONLY.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as TLS_MODE_DISABLED.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>user_bind</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1791,6 +1829,41 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tls_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tls authentication mode for outbound jwks connections during token validation.
+                </div>
+                                <div style="font-size: small">
+                  - Options  tls_mode_disabled (no verification, default), tls_mode_tls (server verification), tls_mode_mtls (enforces mtls with a client
+                </div>
+                                <div style="font-size: small">
+                  - certificate), or tls_mode_verify_only (certificate chain verification only).
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - TLS_MODE_DISABLED, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_VERIFY_ONLY.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as TLS_MODE_DISABLED.
                 </div>
                                             </td>
     </tr>

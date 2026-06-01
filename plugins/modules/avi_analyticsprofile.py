@@ -675,6 +675,13 @@ options:
             - Uuid of the analytics profile.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    waap_classification_disabled_penalty:
+        description:
+            - Penalty points per disabled orphan/zombie classification in waap.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 50.0.
+        type: float
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -870,6 +877,7 @@ def main():
         time_tracker_props=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
+        waap_classification_disabled_penalty=dict(type='float',),
     )
     if HAS_REQUESTS:
         argument_specs.update(avi_common_argument_spec())

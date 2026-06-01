@@ -547,7 +547,10 @@ Parameters
                   - PERMISSION_POSITIVESECURITYPOLICY, PERMISSION_TENANTBINDING, PERMISSION_INTELLIGENT_ASSIST, PERMISSION_AKOAMKOCLUSTER,
                 </div>
                                 <div style="font-size: small">
-                  - PERMISSION_SESSIONKEYFORWARDER.
+                  - PERMISSION_SESSIONKEYFORWARDER, PERMISSION_LABELPROFILE, PERMISSION_APIPATH, PERMISSION_APISCHEMA, PERMISSION_APIPOLICY,
+                </div>
+                                <div style="font-size: small">
+                  - PERMISSION_APISPECGENERATE, PERMISSION_TLSPROFILE.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
