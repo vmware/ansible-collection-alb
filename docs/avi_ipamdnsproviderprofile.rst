@@ -3751,8 +3751,7 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
+    - hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -3769,14 +3768,14 @@ Examples
             avi_credentials: "{{ avi_credentials }}"
             internal_profile:
               dns_service_domain:
-                - domain_name: ashish.local
-                  num_dns_ip: 1
-                  pass_through: true
-                  record_ttl: 100
-                - domain_name: guru.local
-                  num_dns_ip: 1
-                  pass_through: true
-                  record_ttl: 200
+              - domain_name: ashish.local
+                num_dns_ip: 1
+                pass_through: true
+                record_ttl: 100
+              - domain_name: guru.local
+                num_dns_ip: 1
+                pass_through: true
+                record_ttl: 200
               ttl: 300
             name: Ashish-DNS
             tenant_ref: /api/tenant?name=Demo

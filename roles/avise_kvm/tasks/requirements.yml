@@ -1,10 +1,10 @@
 ---
 - name: Avi SE | KVM | Requirements | Check variables
-  ansible.builtin.assert:
+  assert:
     that:
       - "{{ item }} != None"
     msg: "{{ item }} must be provided"
-  loop:
+  with_items:
     - kvm_host_ip
     - kvm_vm_hostname
     - kvm_host_username
@@ -22,56 +22,48 @@
     - kvm_virt_intf_name
     - kvm_total_num_vfs
 
-- name: "Avi SE | KVM | Check vm exist or not for {{ kvm_vm_hostname }}"
-  ansible.builtin.command:
-    cmd: "virsh dominfo {{ kvm_vm_hostname }}"
-  changed_when: false
+- name: "Avi SE | KVM | Check vm {{ kvm_vm_hostname }} exist or not"
+  command: virsh dominfo {{ kvm_vm_hostname }}
   register: domain_information
-  ignore_errors: true
+  ignore_errors: yes
 
 - name: "Avi SE | KVM | Destroying the existing VM"
-  ansible.builtin.command:
-    cmd: "virsh destroy {{ kvm_vm_hostname }}"
-  changed_when: false
+  command: "virsh destroy {{ kvm_vm_hostname }}"
   when: 'domain_information.stdout | length > 0 and kvm_force_mode'
 
 - name: "Avi SE | KVM | Removing the existing VM"
-  ansible.builtin.command:
-    cmd: "virsh undefine {{ kvm_vm_hostname }}"
-  changed_when: false
+  command: "virsh undefine {{ kvm_vm_hostname }}"
   when: 'domain_information.stdout | length > 0 and kvm_force_mode'
 
 - name: "Avi SE | KVM | Exit the execution"
-  ansible.builtin.fail:
+  fail:
     msg: "Not overwriting {{ kvm_vm_hostname }}. Exiting..."
   when: 'domain_information.stdout | length > 0 and not kvm_force_mode'
 
 - name: "Avi SE | KVM | Removing the existing VM data and qcow2"
-  ansible.builtin.file:
+  file:
     path: "{{ item }}"
     state: absent
-  loop:
+  with_items:
     - "/root/{{ kvm_vm_hostname }}"
     - "/var/lib/libvirt/images/{{ kvm_vm_hostname }}.qcow2"
   when: 'domain_information.stdout | length > 0 and kvm_force_mode'
 
 - name: "Avi SE | KVM | Validate total no of vfs and total intf names are equal or not"
-  ansible.builtin.fail:
+  fail:
     msg: " Total no of vfs {{ kvm_total_num_vfs }} is not equal to the total no of kvm_virt_intf_name {{ kvm_virt_intf_name | length }}"
   when: kvm_total_num_vfs != kvm_virt_intf_name | length
 
 - name: "Avi SE | KVM | Check pinning support on host"
-  ansible.builtin.fail:
+  fail:
     msg: "Pinning is not supportable for the os version {{ hostvars[inventory_hostname].ansible_distribution_version }}"
   when: 'hostvars[inventory_hostname].ansible_distribution_version | float == 16.04 and kvm_pinning'
 
 - name: "Avi SE | KVM | Create directory on KVM Host"
-  ansible.builtin.file:
-    path: "/root/{{ kvm_vm_hostname }}"
-    state: directory
-    mode: '0770'
-    owner: root
-    group: root
+  file:
+   path: "/root/{{ kvm_vm_hostname }}"
+   state: directory
+   mode: 0644
 
 - name: "Avi SE | KVM | Get the cloud uuid from Default-Cloud"
   avi_api_session:
@@ -127,21 +119,19 @@
   when: 'kvm_vm_base_img is undefined'
   delegate_to: localhost
 
-- name: "Avi SE | KVM | Copy se.qcow2 file on KVM host into /root/{{ kvm_vm_hostname }}"
-  ansible.builtin.copy:
+- name: "Avi SE | KVM | Copy se.qcow2 file into /root/{{ kvm_vm_hostname }} on KVM host"
+  copy:
     src: "/tmp/se.qcow2"
     dest: "/root/{{ kvm_vm_hostname }}"
-    remote_src: false
+    remote_src: no
     owner: root
-    group: root
-    mode: 'g=r,u+w,o='
+    mode: 0644
   when: 'kvm_vm_base_img is undefined'
 
 - name: "Avi SE | KVM | Set SE authentication token"
-  ansible.builtin.set_fact:
+  set_fact:
     se_auth_token: "{{ se_authtoken.obj.auth_token }}"
   when: 'se_auth_token is undefined'
 
 - name: "Avi SE | KVM | Print auth token"
-  ansible.builtin.debug:
-    msg: "Recieved Authentication {{ se_auth_token }} from {{ se_kvm_ctrl_ip }}"
+  debug: msg="Recieved Authentication {{ se_auth_token }} from {{ se_kvm_ctrl_ip }}"

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_gslbservice_patch_member
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Avi API Module
 description:
     - This module can be used for calling any resources defined in Avi REST API. U(https://avinetworks.com/)
@@ -47,57 +47,56 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-- name: Patch GSLB Service to add a new member and group
-  hosts: all
-  vars:
-    avi_credentials:
-      username: "{{ username }}"
-      password: "{{ password }}"
-      controller: "{{ controller }}"
-      api_version: "{{ api_version }}"
-  tasks:
-    - name: Patch GSLB Service to add a new member and group
-      vmware.alb.avi_gslbservice_patch_member:
-        avi_credentials: "{{ avi_credentials }}"
-        name: gs-3
-        api_version: 17.2.1
-        data:
-          group:
-            name: newfoo
-            priority: 60
-            members:
-              - enabled: true
-                ip:
-                  addr: 10.30.10.66
-                  type: V4
-                ratio: 3
+  - hosts: all
+    vars:
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
 
-    - name: Patch GSLB Service to delete an existing member
-      vmware.alb.avi_gslbservice_patch_member:
-        avi_credentials: "{{ avi_credentials }}"
-        name: gs-3
-        state: absent
-        api_version: 17.2.1
-        data:
-          group:
-            name: newfoo
-            members:
-              - enabled: true
-                ip:
-                  addr: 10.30.10.68
-                  type: V4
-                ratio: 3
+  - name: Patch GSLB Service to add a new member and group
+    vmware.alb.avi_gslbservice_patch_member:
+      avi_credentials: "{{ avi_credentials }}"
+      name: gs-3
+      api_version: 17.2.1
+      data:
+        group:
+          name: newfoo
+          priority: 60
+          members:
+            - enabled: true
+              ip:
+                addr:  10.30.10.66
+                type: V4
+              ratio: 3
 
-    - name: Update priority of GSLB Service Pool
-      vmware.alb.avi_gslbservice_patch_member:
-        avi_credentials: "{{ avi_credentials }}"
-        name: gs-3
-        state: present
-        api_version: 17.2.1
-        data:
-          group:
-            name: newfoo
-            priority: 42
+  - name: Patch GSLB Service to delete an existing member
+    vmware.alb.avi_gslbservice_patch_member:
+      avi_credentials: "{{ avi_credentials }}"
+      name: gs-3
+      state: absent
+      api_version: 17.2.1
+      data:
+        group:
+          name: newfoo
+          members:
+            - enabled: true
+              ip:
+                addr:  10.30.10.68
+                type: V4
+              ratio: 3
+
+  - name: Update priority of GSLB Service Pool
+    vmware.alb.avi_gslbservice_patch_member:
+      avi_credentials: "{{ avi_credentials }}"
+      name: gs-3
+      state: present
+      api_version: 17.2.1
+      data:
+        group:
+          name: newfoo
+          priority: 42
 '''
 
 
@@ -230,19 +229,9 @@ def main():
         data=dict(type='dict'),
         name=dict(type='str', required=True),
         state=dict(default='present',
-                   choices=['absent', 'present']),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
+                   choices=['absent', 'present'])
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(

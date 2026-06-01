@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_pool
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of Pool Avi RESTful Object
 description:
-    - This module is used to configure Pool object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure Pool object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -609,44 +609,43 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Create a Pool with two servers and HTTP monitor
-      vmware.alb.avi_pool:
-        avi_credentials: "{{ avi_credentials }}"
-        name: testpool1
-        description: testpool1
-        state: present
-        health_monitor_refs:
-          - '/api/healthmonitor?name=System-HTTP'
-        servers:
-          - ip:
-              addr: 192.168.138.11
-              type: V4
-          - ip:
-              addr: 192.168.138.12
-              type: V4
 
-    - name: Patch pool with a single server using patch op and avi_credentials
-      vmware.alb.avi_pool:
-        avi_credentials: "{{ avi_credentials }}"
-        avi_api_update_method: patch
-        avi_api_patch_op: delete
-        name: test-pool
-        servers:
-          - ip:
-            addr: 192.168.138.13
-            type: 'V4'
-      register: pool
-      when:
-        - state | default("present") == "present"
+- name: Create a Pool with two servers and HTTP monitor
+  vmware.alb.avi_pool:
+    avi_credentials: "{{ avi_credentials }}"
+    name: testpool1
+    description: testpool1
+    state: present
+    health_monitor_refs:
+        - '/api/healthmonitor?name=System-HTTP'
+    servers:
+        - ip:
+            addr: 192.168.138.11
+            type: V4
+        - ip:
+            addr: 192.168.138.12
+            type: V4
+
+- name: Patch pool with a single server using patch op and avi_credentials
+  vmware.alb.avi_pool:
+    avi_credentials: "{{ avi_credentials }}"
+    avi_api_update_method: patch
+    avi_api_patch_op: delete
+    name: test-pool
+    servers:
+      - ip:
+        addr: 192.168.138.13
+        type: 'V4'
+  register: pool
+  when:
+    - state | default("present") == "present"
 """
 
 RETURN = '''
@@ -674,15 +673,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         analytics_policy=dict(type='dict',),
         analytics_profile_ref=dict(type='str',),
         append_port=dict(type='str',),
@@ -750,7 +740,7 @@ def main():
         service_metadata=dict(type='str',),
         sni_enabled=dict(type='bool',),
         sp_gs_info=dict(type='dict',),
-        ssl_key_and_certificate_ref=dict(type='str', no_log=True,),
+        ssl_key_and_certificate_ref=dict(type='str',),
         ssl_profile_ref=dict(type='str',),
         tenant_ref=dict(type='str',),
         tier1_lr=dict(type='str',),
@@ -760,8 +750,7 @@ def main():
         uuid=dict(type='str',),
         vrf_ref=dict(type='str',),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -769,7 +758,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'pool',
-                           {'ssl_key_and_certificate_ref'})
+                           set())
 
 
 if __name__ == '__main__':

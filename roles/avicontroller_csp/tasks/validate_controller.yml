@@ -1,13 +1,12 @@
 ---
 # Validate if controller is up and running
 - name: Avi Controller | CSP | Validate controller service
-  ansible.builtin.uri:
+  uri:
     url: 'https://{{ con_csp_mgmt_ip }}/#!/login'
-    validate_certs: false  # NOSONAR - Required for isolated lab with self-signed cert
-    return_content: true
+    validate_certs: no
   retries: 120
   delay: 30
   register: task_result
   until: task_result.status == 200
-  ignore_errors: true
+  ignore_errors: yes
   delegate_to: localhost

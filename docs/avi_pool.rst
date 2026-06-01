@@ -5651,8 +5651,7 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
+    - hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -5671,14 +5670,14 @@ Examples
             description: testpool1
             state: present
             health_monitor_refs:
-              - '/api/healthmonitor?name=System-HTTP'
+                - '/api/healthmonitor?name=System-HTTP'
             servers:
-              - ip:
-                  addr: 192.168.138.11
-                  type: V4
-              - ip:
-                  addr: 192.168.138.12
-                  type: V4
+                - ip:
+                    addr: 192.168.138.11
+                    type: V4
+                - ip:
+                    addr: 192.168.138.12
+                    type: V4
 
         - name: Patch pool with a single server using patch op and avi_credentials
           avi_pool:

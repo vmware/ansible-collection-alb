@@ -2796,8 +2796,7 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
+    - hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -2820,7 +2819,7 @@ Examples
                 ip_addresses:
                   - type: "V4"
                     addr: "192.168.138.18"
-                enabled: true
+                enabled: True
                 member_type: "GSLB_ACTIVE_MEMBER"
                 port: 443
                 cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
@@ -2830,7 +2829,7 @@ Examples
                 ip_addresses:
                   - type: "V4"
                     addr: "192.168.138.19"
-                enabled: true
+                enabled: True
                 member_type: "GSLB_ACTIVE_MEMBER"
                 port: 443
                 cluster_uuid: "cluster-0c37ae8d-ab62-410c-ad3e-06fa831950b1"
@@ -2856,7 +2855,7 @@ Examples
                 ip_addresses:
                   - type: "V4"
                     addr: "192.168.138.20"
-                enabled: true
+                enabled: True
                 member_type: "GSLB_ACTIVE_MEMBER"
                 port: 283
                 cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"
@@ -2879,7 +2878,7 @@ Examples
                 ip_addresses:
                   - type: "V4"
                     addr: "192.168.138.21"
-                enabled: true
+                enabled: True
                 member_type: "GSLB_ACTIVE_MEMBER"
                 port: 283
                 cluster_uuid: "cluster-d4ee5fcc-3e0a-4d4f-9ae6-4182bc605829"

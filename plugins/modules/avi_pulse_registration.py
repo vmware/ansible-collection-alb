@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -70,37 +70,37 @@ options:
         description:
             - Enable to clean up the attached files.
         type: bool
-        default: false
+        default: False
     enable_appsignature_sync:
         description:
             - Enable to receive application specific signature updates.
         type: bool
-        default: false
+        default: False
     enable_ip_reputation:
         description:
             - Enable to receive IP reputation updates.
         type: bool
-        default: false
+        default: False
     enable_pulse_case_management:
         description:
             - Enable for pulse case management.
         type: bool
-        default: false
+        default: False
     enable_pulse_waf_management:
         description:
             - Enable to receive WAF CRS updates.
         type: bool
-        default: false
+        default: False
     enable_user_agent_db_sync:
         description:
             - Enable to receive bot management updates.
         type: bool
-        default: false
+        default: False
     use_tls:
         description:
             - Enable to allow secure end to end communication between controller and NSX alb services.
         type: bool
-        default: false
+        default: False
     waf_config:
         description:
             - Dictionary which is used to set the default values to be used for WAF management.
@@ -109,12 +109,12 @@ options:
                 description:
                     - Enable event notifications when new WAF signatures/CRS versions are available.
                 type: bool
-                default: false
+                default: False
             enable_auto_download_waf_signatures:
                 description:
                     - Enable to automatically download new WAF signatures/CRS version to the controller.
                 type: bool
-                default: false
+                default: False
         type: dict
     case_config:
         description:
@@ -124,20 +124,21 @@ options:
                 description:
                     - Enable pro-active support case creation when a controller failure occurs.
                 type: bool
-                default: false
+                default: False
             enable_auto_case_creation_on_se_failure:
                 description:
                     - Enable pro-active support case creation when a service engine failure occurs.
                 type: bool
-                default: false
+                default: False
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- name: Register for Avi Pulse
-  hosts: localhost
+- hosts: localhost
+  collections:
+    - vmware.alb
   vars:
     avi_credentials:
       username: "{{ username }}"
@@ -155,19 +156,19 @@ EXAMPLES = """
         email: 'user@gmail.com'
         account_id: '123456789'
         optins: present
-        enable_pulse_case_management: true
+        enable_pulse_case_management: True
         case_config:
-          enable_auto_case_creation_on_controller_failure: false
-          enable_auto_case_creation_on_se_failure: true
-        enable_pulse_waf_management: true
+          enable_auto_case_creation_on_controller_failure: False
+          enable_auto_case_creation_on_se_failure: True
+        enable_pulse_waf_management: True
         waf_config:
-          enable_waf_signatures_notifications: true
-          enable_auto_download_waf_signatures: true
-        enable_user_agent_db_sync: false
-        enable_ip_reputation: true
-        enable_appsignature_sync: true
+          enable_waf_signatures_notifications: True
+          enable_auto_download_waf_signatures: True
+        enable_user_agent_db_sync: False
+        enable_ip_reputation: True
+        enable_appsignature_sync: True
     - name: Sleep for 7 seconds and continue with play
-      ansible.builtin.wait_for:
+      wait_for:
         timeout: 7
       delegate_to: localhost
 """
@@ -218,19 +219,9 @@ def main():
         enable_user_agent_db_sync=dict(type='bool', default=False),
         use_tls=dict(type='bool', default=False),
         waf_config=dict(type='dict', options=waf_spec),
-        case_config=dict(type='dict', options=case_spec),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
+        case_config=dict(type='dict', options=case_spec)
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(

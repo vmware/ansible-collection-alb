@@ -2,25 +2,19 @@
 - name: Converge
   hosts: all
   pre_tasks:
-    - name: Upgrade python
-      ansible.builtin.package:
+    - name: upgrade python
+      package:
         name: python
-        state: present
-    - name: Create containerd folder
-      ansible.builtin.file:
+        state: latest
+    - name: create containerd folder
+      file:
         path: /etc/systemd/system/containerd.service.d
         state: directory
-        mode: '0750'
-        owner: root
-        group: root
       when: ansible_service_mgr == "systemd"
-    - name: Override file for containerd
-      ansible.builtin.copy:
+    - name: override file for containerd
+      copy:
         src: files/override.conf
         dest: /etc/systemd/system/containerd.service.d/override.conf
-        mode: '0644'
-        owner: root
-        group: root
       when: ansible_service_mgr == "systemd"
   roles:
     - role: avinetworks.docker
