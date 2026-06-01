@@ -1,5 +1,5 @@
 # Automatically Generated File
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi SSLKeyAndCertificate | Upload or Update SSL certificate - always changed due to sensitve field
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -49,8 +49,8 @@
     - molecule-idempotence-notest
 
 
-- name: Check certs
-  ansible.builtin.stat:
+- name: check certs
+  stat:
     path: "{{ site_dir }}/applications/{{ app_name }}/{{ item.name }}.crt"
   register: check_certs
   with_items: "{{ avi_role_cfg.sslkeyandcertificate | default([]) }}"
@@ -59,12 +59,11 @@
     - item.certificate.certificate is undefined
 
 - name: Avi SSLKeyAndCertificate | create self-signed SSL cert if not present
-  ansible.builtin.command:
-    cmd: >
-      openssl req -new -nodes -x509 -subj "/C=US/ST=CA/L=San Francisco/O=IT/CN={{ item.1.name }}"
-      -days 3650 -keyout "{{ site_dir }}"/applications/"{{ app_name }}"/"{{ item.1.name }}".key -out
-      "{{ site_dir }}"/applications/"{{ app_name }}"/"{{ item.1.name }}".crt -extensions
-      v3_ca creates="{{ site_dir }}"/applications/"{{ app_name }}"/"{{ item.1.name }}".crt
+  command: >
+    openssl req -new -nodes -x509 -subj "/C=US/ST=CA/L=San Francisco/O=IT/CN={{ item.1.name }}"
+    -days 3650 -keyout "{{ site_dir }}"/applications/"{{ app_name }}"/"{{ item.1.name }}".key -out
+    "{{ site_dir }}"/applications/"{{ app_name }}"/"{{ item.1.name }}".crt -extensions
+    v3_ca creates="{{ site_dir }}"/applications/"{{ app_name }}"/"{{ item.1.name }}".crt
   args:
     creates: "{{ site_dir/applications/app_name/item.1.name.crt }}"
   with_indexed_items: "{{ avi_role_cfg.sslkeyandcertificate | default([]) }}"
@@ -76,7 +75,7 @@
     - molecule-idempotence-notest
 
 - name: Avi SSLKeyAndCertificate | Add self signed certificates
-  ansible.builtin.set_fact:
+  set_fact:
     keycert:
       api_version: "{{ api_version | default(omit) }}"
       avi_credentials: "{{ avi_credentials | default(omit) }}"

@@ -1,58 +1,25 @@
 ---
 - name: Checks for blocking SE
-  ansible.builtin.include_tasks: check_cloud.yml
+  include_tasks: check_cloud.yml
 
 - name: Check if Avi SE is running in systemd
+  command: "systemctl status avise"
   when: ansible_service_mgr == "systemd"
+  register: result
+  failed_when: result.rc > 0
+  changed_when: false
   become: true
-  block:
-    - name: Check if avise service is active
-      ansible.builtin.systemd:
-        name: avise.service
-      register: service_status
-      failed_when: false
-      changed_when: false
-    - name: Verify service is running
-      ansible.builtin.assert:
-        that:
-          - service_status.status.ActiveState == "active"
-        fail_msg: >
-          Service avise is not running.
-          {% if service_status.status.ActiveState == "inactive" %}
-          Status: inactive (service exists but is stopped)
-          {% elif not service_status.status %}
-          Service does not exist
-          {% else %}
-          Status: {{ service_status.status.ActiveState | default('unknown') }} (SubState: {{ service_status.status.SubState | default('unknown') }})
-          {% endif %}
-        success_msg: "Service avise is running"
 
 - name: Check if Avi SE is running in non-systemd
+  command: "service avise_watcher status"
   when: ansible_service_mgr != "systemd"
+  register: result
+  failed_when: result.rc > 0
+  changed_when: false
   become: true
-  block:
-    - name: Check if avise_watcher service is running
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        ps -aef | grep avise_watcher | grep -v grep | wc -l
-      args:
-        executable: /bin/bash
-      changed_when: false
-      register: watcher_status
-      failed_when: false
-    - name: Verify service is running
-      ansible.builtin.assert:
-        that:
-          - watcher_status.stdout|int > 0
-        fail_msg: "Service avise_watcher is not running"
-        success_msg: "Service avise_watcher is running"
 
 - name: Check if se_agent is running
-  ansible.builtin.shell: >
-    set -o pipefail && \
-    ps -aef | grep se_agent | grep -v grep | wc -l
-  args:
-    executable: /bin/bash
+  shell: "ps -aef | grep se_agent | grep -v grep | wc -l"
   register: result
   failed_when: result.stdout|int != 1
   changed_when: false

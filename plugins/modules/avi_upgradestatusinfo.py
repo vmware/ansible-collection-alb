@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_upgradestatusinfo
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of UpgradeStatusInfo Avi RESTful Object
 description:
-    - This module is used to configure UpgradeStatusInfo object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure UpgradeStatusInfo object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -73,33 +73,33 @@ options:
     duration:
         description:
             - Duration of upgrade operation in seconds.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     enable_patch_rollback:
         description:
             - Check if the patch rollback is possible on this node.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     enable_rollback:
         description:
             - Check if the rollback is possible on this node.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     end_time:
         description:
             - End time of upgrade operation.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     enqueue_time:
         description:
             - Enqueue time of upgrade operation.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     fips_mode:
@@ -125,39 +125,39 @@ options:
         description:
             - Image uuid for identifying the current base image.
             - It is a reference to an object of type image.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     name:
         description:
             - Name of the system such as cluster name, se group name and se name.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     node_type:
         description:
             - Type of the system such as controller_cluster, se_group or se.
             - Enum options - NODE_CONTROLLER_CLUSTER, NODE_SE_GROUP, NODE_SE_TYPE.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     obj_cloud_ref:
         description:
             - Cloud that this object belongs to.
             - It is a reference to an object of type cloud.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     obj_state:
         description:
             - Current status of the upgrade operation.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     params:
         description:
             - Parameters associated with the upgrade operation.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     patch_image_path:
@@ -168,16 +168,16 @@ options:
         type: str
     patch_image_ref:
         description:
-            - Image uuid for identifying the current patch.example  base-image is 20.1.7 and a patch 6p1 is applied, then this field will indicate the 6p1
+            - Image uuid for identifying the current patch.example  base-image is 18.2.6 and a patch 6p1 is applied, then this field will indicate the 6p1
             - value.
             - It is a reference to an object of type image.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     patch_list:
         description:
             - List of patches applied to this node.
-            - Example  base-image is 20.1.7 and a patch 6p1 is applied, then a patch 6p5 applied.
+            - Example  base-image is 18.2.6 and a patch 6p1 is applied, then a patch 6p5 applied.
             - This field will indicate the [{6p1, 6p1_image_uuid}, {6p5, 6p5_image_uuid}] value.
             - Field introduced in 18.2.8, 20.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -192,8 +192,8 @@ options:
     patch_version:
         description:
             - Current patch version applied to this node.
-            - Example  base-image is 20.1.7 and a patch 6p1 is applied, then this field will indicate the 6p1 value.
-            - Field introduced in 20.1.7.
+            - Example  base-image is 18.2.6 and a patch 6p1 is applied, then this field will indicate the 6p1 value.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     prev_image_path:
@@ -216,19 +216,19 @@ options:
         type: str
     previous_image_ref:
         description:
-            - Image uuid for identifying previous base image.example  base-image was 18.2.5 and an upgrade was done to 20.1.7, then this field will indicate
+            - Image uuid for identifying previous base image.example  base-image was 18.2.5 and an upgrade was done to 18.2.6, then this field will indicate
             - the 18.2.5 value.
             - It is a reference to an object of type image.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     previous_patch_image_ref:
         description:
-            - Image uuid for identifying previous patch.example  base-image was 20.1.7 with a patch 6p1.
+            - Image uuid for identifying previous patch.example  base-image was 18.2.6 with a patch 6p1.
             - Upgrade was initiated to 18.2.8 with patch 8p1.
-            - The previous_image field will contain 20.1.7 and this field will indicate the 6p1 value.
+            - The previous_image field will contain 18.2.6 and this field will indicate the 6p1 value.
             - It is a reference to an object of type image.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     previous_patch_list:
@@ -240,17 +240,17 @@ options:
         elements: dict
     previous_patch_version:
         description:
-            - Previous patch version applied to this node.example  base-image was 20.1.7 with a patch 6p1.
+            - Previous patch version applied to this node.example  base-image was 18.2.6 with a patch 6p1.
             - Upgrade was initiated to 18.2.8 with patch 8p1.
-            - The previous_image field will contain 20.1.7 and this field will indicate the 6p1 value.
-            - Field introduced in 20.1.7.
+            - The previous_image field will contain 18.2.6 and this field will indicate the 6p1 value.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     previous_version:
         description:
-            - Previous version prior to upgrade.example  base-image was 18.2.5 and an upgrade was done to 20.1.7, then this field will indicate the 18.2.5
+            - Previous version prior to upgrade.example  base-image was 18.2.5 and an upgrade was done to 18.2.6, then this field will indicate the 18.2.5
             - value.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     progress:
@@ -290,7 +290,7 @@ options:
     se_upgrade_events:
         description:
             - Serviceenginegroup upgrade errors.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
@@ -305,13 +305,13 @@ options:
     seg_status:
         description:
             - Detailed segroup status.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     start_time:
         description:
             - Start time of upgrade operation.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     statediff_ref:
@@ -324,7 +324,7 @@ options:
     system:
         description:
             - Flag is set only in the cluster if the upgrade is initiated as a system-upgrade.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool
     system_report_refs:
@@ -338,26 +338,26 @@ options:
     tasks_completed:
         description:
             - Completed set of tasks in the upgrade operation.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     tenant_ref:
         description:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     total_tasks:
         description:
             - Total number of tasks in the upgrade operation.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     upgrade_events:
         description:
             - Events performed for upgrade operation.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
@@ -366,7 +366,7 @@ options:
             - Upgrade operations requested.
             - Enum options - UPGRADE, PATCH, ROLLBACK, ROLLBACKPATCH, SEGROUP_RESUME, EVAL_UPGRADE, EVAL_PATCH, EVAL_ROLLBACK, EVAL_ROLLBACKPATCH,
             - EVAL_SEGROUP_RESUME, EVAL_RESTORE, RESTORE, UPGRADE_DRYRUN.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     upgrade_readiness:
@@ -382,13 +382,13 @@ options:
     uuid:
         description:
             - Uuid identifier for the system such as cluster, se group and se.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     version:
         description:
             - Current base image applied to this node.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -396,20 +396,19 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Example to create UpgradeStatusInfo object
-      vmware.alb.avi_upgradestatusinfo:
-        avi_credentials: "{{ avi_credentials }}"
-        state: present
-        name: sample_upgradestatusinfo
+
+- name: Example to create UpgradeStatusInfo object
+  vmware.alb.avi_upgradestatusinfo:
+    avi_credentials: "{{ avi_credentials }}"
+    state: present
+    name: sample_upgradestatusinfo
 """
 
 RETURN = '''
@@ -437,15 +436,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         after_reboot_rollback_fnc=dict(type='str',),
         after_reboot_task_name=dict(type='str',),
         clean=dict(type='bool',),
@@ -499,8 +489,7 @@ def main():
         uuid=dict(type='str',),
         version=dict(type='str',),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

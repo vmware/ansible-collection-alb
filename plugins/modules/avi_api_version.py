@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: not supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -26,14 +26,14 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-- name: Get AVI API version
-  vmware.alb.avi_api_version:
-    avi_credentials:
-      username: "{{ username }}"
-      password: "{{ password }}"
-      controller: "{{ controller }}"
-      api_version: "{{ api_version }}"
-    tenant: ""
+  - name: Get AVI API version
+    vmware.alb.avi_api_version:
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
+      tenant: ""
     register: avi_controller_version
 '''
 
@@ -57,17 +57,8 @@ except ImportError:
 
 
 def main():
-    argument_specs = dict(api_context=dict(type='dict',),
-                          username=dict(type='str', default=''),
-                          tenant_uuid=dict(type='str', default=''),
-                          tenant=dict(type='str', default='admin'),
-                          password=dict(type='str', default='', no_log=True),
-                          controller=dict(type='str', default=''),
-                          api_version=dict(type='str', default='20.1.7'),
-                          avi_credentials=dict(type='dict',),
-                          avi_deactivate_session_cache_as_fact=dict(type='bool', default=False))
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs = dict()
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(

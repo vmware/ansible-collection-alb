@@ -595,20 +595,19 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
+    - hosts: localhost
       connection: local
       collections:
         - vmware.alb
       tasks:
         - name: Avi Controller | VMware | Configure VMware controller
-          ansible.builtin.import_role:
+          import_role:
             name: avicontroller_vmware
           vars:
             ovftool_path: /usr/lib/vmware-ovftool
-            vcenter_host: "{{ vcenter_host | default(omit) }}"
-            vcenter_user: "{{ vcenter_user | default(omit) }}"
-            vcenter_password: "{{ vcenter_password | default(omit) }}"
+            vcenter_host: "{{ vcenter_host }}"
+            vcenter_user: "{{ vcenter_user }}"
+            vcenter_password: "{{ vcenter_password }}"
             con_datacenter: 10GTest
             con_cluster: Arista
             con_mgmt_network: Mgmt_Ntwk_3

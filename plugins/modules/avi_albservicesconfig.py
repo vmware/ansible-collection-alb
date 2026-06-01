@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_albservicesconfig
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of ALBServicesConfig Avi RESTful Object
 description:
-    - This module is used to configure ALBServicesConfig object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure ALBServicesConfig object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -98,7 +98,7 @@ options:
             - Enum options - MODE_UNKNOWN, SALESFORCE, SYSTEST, MYVMWARE, BROADCOM.
             - Field introduced in 20.1.2.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- salesforce, myvmware, systest), basic (allowed values- salesforce, myvmware, systest) edition.
+            - Allowed in essentials (allowed values- salesforce,myvmware,systest), basic (allowed values- salesforce,myvmware,systest) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as MYVMWARE.
         type: str
     name:
@@ -111,14 +111,14 @@ options:
         description:
             - Time interval in minutes.
             - Allowed values are 5-60.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10.
         type: int
     portal_url:
         description:
             - The fqdn or ip address of the pulse cloud services.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
@@ -182,7 +182,7 @@ options:
         type: dict
     uuid:
         description:
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     waf_config:
@@ -197,20 +197,19 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Example to create ALBServicesConfig object
-      vmware.alb.avi_albservicesconfig:
-        avi_credentials: "{{ avi_credentials }}"
-        state: present
-        name: sample_albservicesconfig
+
+- name: Example to create ALBServicesConfig object
+  vmware.alb.avi_albservicesconfig:
+    avi_credentials: "{{ avi_credentials }}"
+    state: present
+    name: sample_albservicesconfig
 """
 
 RETURN = '''
@@ -238,15 +237,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         app_signature_config=dict(type='dict', required=True),
         asset_contact=dict(type='dict',),
         case_config=dict(type='dict', required=True),
@@ -270,8 +260,7 @@ def main():
         uuid=dict(type='str',),
         waf_config=dict(type='dict', required=True),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

@@ -3,23 +3,24 @@
   hosts: all
   vars:
     cluster_uuid: "{{uuid}}"
-    avi_role_config_log_mode: false
+    avi_role_config_log_mode: 'false'
   vars_files:
     - files/creds.yml
+  collections:
+    - vmware.alb
   tasks:
     - name: Get cloud information
-      vmware.alb.avi_api_session:
+      avi_api_session:
         avi_credentials: "{{ avi_credentials }}"
         http_method: get
         path: cluster
       register: get_result
 
-    - name: Set cluster UUID
-      ansible.builtin.set_fact:
+    - set_fact:
         cluster_uuid: "{{ get_result.obj.uuid }}"
 
     - name: "Avi Application | Config Role"
-      ansible.builtin.include_role:
+      include_role:
         name: "aviconfig"
       vars:
         avi_config_file: files/avi_config.yml

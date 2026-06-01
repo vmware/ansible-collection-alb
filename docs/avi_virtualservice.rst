@@ -16184,8 +16184,7 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
+    - hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -16206,13 +16205,13 @@ Examples
             max_concurrent_connections: 1000
             vsvip_ref: /api/vsvip/?name=vsvip-newtestvs-Default-Cloud
             services:
-              - port: 443
-                enable_ssl: true
-              - port: 80
+                - port: 443
+                  enable_ssl: true
+                - port: 80
             ssl_profile_ref: '/api/sslprofile?name=System-Standard'
             application_profile_ref: '/api/applicationprofile?name=System-Secure-HTTP'
             ssl_key_and_certificate_refs:
-              - '/api/sslkeyandcertificate?name=System-Default-Cert'
+                - '/api/sslkeyandcertificate?name=System-Default-Cert'
             pool_ref: '/api/pool?name=testpool2'
 
 

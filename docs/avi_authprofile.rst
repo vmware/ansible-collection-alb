@@ -2686,8 +2686,7 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
+    - hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -2709,7 +2708,7 @@ Examples
               port: 389
               security_mode: AUTH_LDAP_SECURE_NONE
               server:
-                - 192.168.12.18
+              - 192.168.12.18
               settings:
                 admin_bind_dn: user@avi.local
                 group_filter: (objectClass=*)

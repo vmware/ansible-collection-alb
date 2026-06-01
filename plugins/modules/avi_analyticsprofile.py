@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_analyticsprofile
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of AnalyticsProfile Avi RESTful Object
 description:
-    - This module is used to configure AnalyticsProfile object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure AnalyticsProfile object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -654,7 +654,7 @@ options:
         description:
             - Score assigned when supporting tls1.3 encryption protocol.
             - Allowed values are 0-5.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Allowed in essentials (allowed values- 5.0), basic (allowed values- 5.0) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.0.
@@ -749,71 +749,70 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Create a custom Analytics profile object
-      vmware.alb.avi_analyticsprofile:
-        avi_credentials: "{{ avi_credentials }}"
-        apdex_response_threshold: 500
-        apdex_response_tolerated_factor: 4.0
-        apdex_rtt_threshold: 250
-        apdex_rtt_tolerated_factor: 4.0
-        apdex_rum_threshold: 5000
-        apdex_rum_tolerated_factor: 4.0
-        apdex_server_response_threshold: 400
-        apdex_server_response_tolerated_factor: 4.0
-        apdex_server_rtt_threshold: 125
-        apdex_server_rtt_tolerated_factor: 4.0
-        conn_lossy_ooo_threshold: 50
-        conn_lossy_timeo_rexmt_threshold: 20
-        conn_lossy_total_rexmt_threshold: 50
-        conn_lossy_zero_win_size_event_threshold: 2
-        conn_server_lossy_ooo_threshold: 50
-        conn_server_lossy_timeo_rexmt_threshold: 20
-        conn_server_lossy_total_rexmt_threshold: 50
-        conn_server_lossy_zero_win_size_event_threshold: 2
-        enable_se_analytics: true
-        enable_server_analytics: true
-        exclude_client_close_before_request_as_error: false
-        exclude_persistence_change_as_error: false
-        exclude_server_tcp_reset_as_error: false
-        exclude_syn_retransmit_as_error: false
-        exclude_tcp_reset_as_error: false
-        hs_event_throttle_window: 1209600
-        hs_max_anomaly_penalty: 10
-        hs_max_resources_penalty: 25
-        hs_max_security_penalty: 100
-        hs_min_dos_rate: 1000
-        hs_performance_boost: 20
-        hs_pscore_traffic_threshold_l4_client: 10.0
-        hs_pscore_traffic_threshold_l4_server: 10.0
-        hs_security_certscore_expired: 0.0
-        hs_security_certscore_gt30d: 5.0
-        hs_security_certscore_le07d: 2.0
-        hs_security_certscore_le30d: 4.0
-        hs_security_chain_invalidity_penalty: 1.0
-        hs_security_cipherscore_eq000b: 0.0
-        hs_security_cipherscore_ge128b: 5.0
-        hs_security_cipherscore_lt128b: 3.5
-        hs_security_encalgo_score_none: 0.0
-        hs_security_encalgo_score_rc4: 2.5
-        hs_security_hsts_penalty: 0.0
-        hs_security_nonpfs_penalty: 1.0
-        hs_security_selfsignedcert_penalty: 1.0
-        hs_security_ssl30_score: 3.5
-        hs_security_tls10_score: 5.0
-        hs_security_tls11_score: 5.0
-        hs_security_tls12_score: 5.0
-        hs_security_weak_signature_algo_penalty: 1.0
-        name: jason-analytics-profile
-        tenant_ref: /api/tenant?name=Demo
+
+- name: Create a custom Analytics profile object
+  vmware.alb.avi_analyticsprofile:
+    avi_credentials: "{{ avi_credentials }}"
+    apdex_response_threshold: 500
+    apdex_response_tolerated_factor: 4.0
+    apdex_rtt_threshold: 250
+    apdex_rtt_tolerated_factor: 4.0
+    apdex_rum_threshold: 5000
+    apdex_rum_tolerated_factor: 4.0
+    apdex_server_response_threshold: 400
+    apdex_server_response_tolerated_factor: 4.0
+    apdex_server_rtt_threshold: 125
+    apdex_server_rtt_tolerated_factor: 4.0
+    conn_lossy_ooo_threshold: 50
+    conn_lossy_timeo_rexmt_threshold: 20
+    conn_lossy_total_rexmt_threshold: 50
+    conn_lossy_zero_win_size_event_threshold: 2
+    conn_server_lossy_ooo_threshold: 50
+    conn_server_lossy_timeo_rexmt_threshold: 20
+    conn_server_lossy_total_rexmt_threshold: 50
+    conn_server_lossy_zero_win_size_event_threshold: 2
+    enable_se_analytics: true
+    enable_server_analytics: true
+    exclude_client_close_before_request_as_error: false
+    exclude_persistence_change_as_error: false
+    exclude_server_tcp_reset_as_error: false
+    exclude_syn_retransmit_as_error: false
+    exclude_tcp_reset_as_error: false
+    hs_event_throttle_window: 1209600
+    hs_max_anomaly_penalty: 10
+    hs_max_resources_penalty: 25
+    hs_max_security_penalty: 100
+    hs_min_dos_rate: 1000
+    hs_performance_boost: 20
+    hs_pscore_traffic_threshold_l4_client: 10.0
+    hs_pscore_traffic_threshold_l4_server: 10.0
+    hs_security_certscore_expired: 0.0
+    hs_security_certscore_gt30d: 5.0
+    hs_security_certscore_le07d: 2.0
+    hs_security_certscore_le30d: 4.0
+    hs_security_chain_invalidity_penalty: 1.0
+    hs_security_cipherscore_eq000b: 0.0
+    hs_security_cipherscore_ge128b: 5.0
+    hs_security_cipherscore_lt128b: 3.5
+    hs_security_encalgo_score_none: 0.0
+    hs_security_encalgo_score_rc4: 2.5
+    hs_security_hsts_penalty: 0.0
+    hs_security_nonpfs_penalty: 1.0
+    hs_security_selfsignedcert_penalty: 1.0
+    hs_security_ssl30_score: 3.5
+    hs_security_tls10_score: 5.0
+    hs_security_tls11_score: 5.0
+    hs_security_tls12_score: 5.0
+    hs_security_weak_signature_algo_penalty: 1.0
+    name: jason-analytics-profile
+    tenant_ref: /api/tenant?name=Demo
 """
 
 RETURN = '''
@@ -841,15 +840,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         apdex_response_threshold=dict(type='int',),
         apdex_response_tolerated_factor=dict(type='float',),
         apdex_rtt_threshold=dict(type='int',),
@@ -940,8 +930,7 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

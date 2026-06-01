@@ -1,4 +1,4 @@
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -26,6 +26,7 @@ from ssl import SSLError
 
 logger = logging.getLogger(__name__)
 
+global sessionDict
 sessionDict = {}
 
 
@@ -35,7 +36,7 @@ def avi_timedelta(td):
     does not have total_seconds method
     :param td timedelta object
     """
-    if not isinstance(td, timedelta):
+    if type(td) != timedelta:
         raise TypeError()
     if sys.version_info >= (2, 7):
         ts = td.total_seconds()
@@ -138,7 +139,7 @@ class ApiResponse(Response):
 
     @staticmethod
     def to_avi_response(resp):
-        if isinstance(resp, Response):
+        if type(resp) == Response:
             return ApiResponse(resp)
         return resp
 
@@ -181,7 +182,7 @@ class AviCredentials(object):
         if m.params['password']:
             self.password = m.params['password']
         if (m.params['api_version'] and
-                (m.params['api_version'] != '20.1.7')):
+                (m.params['api_version'] != '20.1.1')):
             self.api_version = m.params['api_version']
         if m.params['tenant']:
             self.tenant = m.params['tenant']
@@ -244,18 +245,17 @@ class ApiSession(Session):
         """
 
         super(ApiSession, self).__init__()
-        logger.debug(
-            "Creating session with following values:\n "
-            "controller_ip: %s, username: %s, tenant: %s, "
-            "tenant_uuid: %s, verify: %s, port: %s, timeout: %s, "
-            "api_version: %s, retry_conxn_errors: %s, data_log: %s,"
-            "avi_credentials: %s, session_id: %s, csrftoken: %s,"
-            "lazy_authentication: %s, max_api_retries: %s",
-            controller_ip, username, tenant,
-            tenant_uuid, verify, port,
-            timeout, api_version, retry_conxn_errors,
-            data_log, avi_credentials, session_id,
-            csrftoken, lazy_authentication, max_api_retries)
+        logger.debug("Creating session with following values:\n "
+                     "controller_ip: %s, username: %s, tenant: %s, "
+                     "tenant_uuid: %s, verify: %s, port: %s, timeout: %s, "
+                     "api_version: %s, retry_conxn_errors: %s, data_log: %s,"
+                     "avi_credentials: %s, session_id: %s, csrftoken: %s,"
+                     "lazy_authentication: %s, max_api_retries: %s"
+                     % (controller_ip, username, tenant,
+                        tenant_uuid, verify, port,
+                        timeout, api_version, retry_conxn_errors,
+                        data_log, avi_credentials, session_id,
+                        csrftoken, lazy_authentication, max_api_retries))
         if not avi_credentials:
             tenant = tenant if tenant else "admin"
             self.avi_credentials = AviCredentials(
@@ -453,7 +453,7 @@ class ApiSession(Session):
         if not idp_class:
             idp_class = ApiSession
         else:
-            if "ApiSession" not in str(idp_class.__base__):
+            if not ("ApiSession" in str(idp_class.__base__)):
                 raise APIError("idp_class {} not valid class. Please provide "
                                "correct idp class. Base class of idp class is "
                                "{}".format(idp_class, str(idp_class.__base__)))
@@ -553,8 +553,8 @@ class ApiSession(Session):
                 return
             # Check for bad request and invalid credentials response code
             elif rsp.status_code in [401, 403]:
-                logger.error(
-                    'Status Code %s msg %s', rsp.status_code, rsp.text)
+                logger.error('Status Code %s msg %s' % (
+                    rsp.status_code, rsp.text))
                 err = APIError('Failed: %s Status Code %s msg %s' % (
                     rsp.url, rsp.status_code, rsp.text), rsp)
                 raise err
@@ -576,8 +576,8 @@ class ApiSession(Session):
         self.num_session_retries += 1
         if self.num_session_retries > self.max_session_retries:
             self.num_session_retries = 0
-            logger.error("giving up after %d retries connection failure %s",
-                         self.max_session_retries, True)
+            logger.error("giving up after %d retries connection failure %s" % (
+                self.max_session_retries, True))
             raise err
         self.authenticate_session()
         return
@@ -672,7 +672,7 @@ class ApiSession(Session):
             except KeyError:
                 pass
         try:
-            if (data is not None) and isinstance(data, dict):
+            if (data is not None) and (type(data) == dict):
                 resp = fn(fullpath, data=json.dumps(data), headers=api_hdrs,
                           timeout=timeout, cookies=cookies, **kwargs)
             else:
@@ -726,8 +726,8 @@ class ApiSession(Session):
                     err = APIError('Failed: %s Status Code %s msg %s' % (
                         resp.url, resp.status_code, resp.text), resp)
                 logger.error(
-                    "giving up after %d retries conn failure %s err %s",
-                    self.max_session_retries, connection_error, err)
+                    "giving up after %d retries conn failure %s err %s" % (
+                        self.max_session_retries, connection_error, err))
                 raise err
             # should restore the updated_hdrs to one passed down
             resp = self._api(api_name, path, tenant, tenant_uuid, data,
@@ -807,7 +807,7 @@ class ApiSession(Session):
                 params=params, **kwargs)
         if resp.status_code > 499 or 'Invalid version' in resp.text:
             logger.error('Error in get object by name for %s named %s. '
-                         'Error: %s', path, name, resp.text)
+                         'Error: %s' % (path, name, resp.text))
             raise AviServerError(resp.text, rsp=resp)
         elif resp.status_code > 299:
             return obj
@@ -818,8 +818,8 @@ class ApiSession(Session):
                 # For apis returning single object eg. api/cluster
                 obj = resp.json()
         except IndexError:
-            logger.warning(
-                'Warning: Object Not found for %s named %s', path, name)
+            logger.warning('Warning: Object Not found for %s named %s' %
+                           (path, name))
             obj = None
         self._update_session_last_used()
         return obj
