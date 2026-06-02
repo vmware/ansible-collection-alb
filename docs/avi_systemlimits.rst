@@ -250,7 +250,7 @@ Parameters
                   - Maximum number of api paths per api policy.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.1.
+                  - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

@@ -46,77 +46,9 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    configpb_attributes:
-        description:
-            - Protobuf versioning for config pbs.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
-    destination_dir:
-        description:
-            - Destination of the file to be saved.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: str
-    file_type:
-        description:
-            - Software / crs/ inventory.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: str
-    file_uri:
-        description:
-            - File uri on the cloud bucket.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: str
-    message:
-        description:
-            - Downloads success / failure message.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
-    metadata:
-        description:
-            - Metadata of the file from pulse.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
-    name:
-        description:
-            - The name of the file with which it is saved to the disk.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: str
-    status:
-        description:
-            - Status of file download.
-            - Enum options - SYSERR_SUCCESS, SYSERR_FAILURE, SYSERR_OUT_OF_MEMORY, SYSERR_NO_ENT, SYSERR_INVAL, SYSERR_ACCESS, SYSERR_FAULT, SYSERR_IO,
-            - SYSERR_TIMEOUT, SYSERR_NOT_SUPPORTED, SYSERR_NOT_READY, SYSERR_UPGRADE_IN_PROGRESS, SYSERR_WARM_START_IN_PROGRESS, SYSERR_TRY_AGAIN,
-            - SYSERR_NOT_UPGRADING, SYSERR_PENDING, SYSERR_EVENT_GEN_FAILURE, SYSERR_CONFIG_PARAM_MISSING, SYSERR_RANGE, SYSERR_FAILED...
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
-    tenant_ref:
-        description:
-            - Tenant uuid associated with the object.
-            - It is a reference to an object of type tenant.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
     url:
         description:
             - Avi controller URL of the object.
-        type: str
-    uuid:
-        description:
-            - Unique id of the object.
-            - Field introduced in 30.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -173,17 +105,7 @@ def main():
         api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
-        configpb_attributes=dict(type='dict',),
-        destination_dir=dict(type='str', required=True),
-        file_type=dict(type='str', required=True),
-        file_uri=dict(type='str', required=True),
-        message=dict(type='str',),
-        metadata=dict(type='dict',),
-        name=dict(type='str', required=True),
-        status=dict(type='str',),
-        tenant_ref=dict(type='str',),
         url=dict(type='str',),
-        uuid=dict(type='str',),
     )
     if HAS_REQUESTS:
         argument_specs.update(avi_common_argument_spec())

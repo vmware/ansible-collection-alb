@@ -65,7 +65,6 @@ options:
             - Whether this schema allows additional properties.
             - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     array_item_type:
         description:
@@ -155,7 +154,6 @@ options:
             - If true, all items in the array must be unique.
             - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     url:
         description:

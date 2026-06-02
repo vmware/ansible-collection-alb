@@ -6,6 +6,7 @@ avi_resource_types:
   - labelgroup
   - useraccountprofile
   - reportprofile
+  - albservicesfiledownload
   - cloudproperties
   - certjwtstore
   - systemlimits
@@ -55,7 +56,6 @@ avi_resource_types:
   - localworkerfdsversion
   - serviceauthprofile
   - gslb
-  - albservicesfiledownload
   - poolgroupdeploymentpolicy
   - vsgs
   - dynamicdnsrecord
