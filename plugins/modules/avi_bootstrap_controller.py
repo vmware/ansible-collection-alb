@@ -77,7 +77,6 @@ try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import avi_common_argument_spec
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
-
     import subprocess
     import requests
     HAS_REQUESTS = True
@@ -93,7 +92,7 @@ def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600):
     count = 0
     max_count = wait_time / round_wait
     ctrl_port = port if port else 80
-    path = "http://{1}:{2}{3}".format(controller_ip, ctrl_port, "/api/cluster/runtime")
+    path = "http://{0}:{1}{2}".format(controller_ip, ctrl_port, "/api/cluster/runtime")
     ctrl_status = False
     while True:
         if count >= max_count:

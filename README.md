@@ -87,7 +87,6 @@ Name | Description
 [vmware.alb.avi_availabilityzone](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_availabilityzone.rst)|Module to create update or delete AvailabilityZone
 [vmware.alb.avi_backup](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_backup.rst)|Module to create update or delete Backup
 [vmware.alb.avi_backupconfiguration](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_backupconfiguration.rst)|Module to create update or delete BackupConfiguration
-[vmware.alb.avi_bootstrap_controller](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_bootstrap_controller.rst)|Module to create update or delete BootstrapController
 [vmware.alb.avi_botconfigconsolidator](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_botconfigconsolidator.rst)|Module to create update or delete BotConfigConsolidator
 [vmware.alb.avi_botdetectionpolicy](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_botdetectionpolicy.rst)|Module to create update or delete BotDetectionPolicy
 [vmware.alb.avi_botipreputationtypemapping](https://github.com/vmware/ansible-collection-alb/blob//docs/avi_botipreputationtypemapping.rst)|Module to create update or delete BotIPReputationTypeMapping
