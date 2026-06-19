@@ -7255,16 +7255,19 @@ Parameters
                   - Message digest algorithm used for ntp authentication.
                 </div>
                                 <div style="font-size: small">
-                  - Default is ntp_auth_algorithm_md5.
+                  - Default is ntp_auth_algorithm_sha256.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - NTP_AUTH_ALGORITHM_MD5, NTP_AUTH_ALGORITHM_SHA1.
+                  - Use of md5 or sha1 requires allow_legacy_sha1_ntp_auth to be enabled in systemconfiguration.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - NTP_AUTH_ALGORITHM_MD5, NTP_AUTH_ALGORITHM_SHA1, NTP_AUTH_ALGORITHM_SHA256.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as NTP_AUTH_ALGORITHM_MD5.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as NTP_AUTH_ALGORITHM_SHA256.
                 </div>
                                             </td>
     </tr>

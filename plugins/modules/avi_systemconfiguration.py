@@ -51,12 +51,27 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    allow_legacy_sha1_ntp_auth:
+        description:
+            - Allow ntp authentication using legacy md5 or sha1 algorithms.
+            - When enabled, configuring md5 or sha1 ntp keys is permitted but a warning event is generated in the controller ui.
+            - When disabled (default), only sha256 or stronger is accepted and configuring md5 or sha1 results in an api error.
+            - Field introduced in 32.1.3.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     avi_email_login_password:
         description:
             - Password for avi_email_login user.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
+    certificate_security_policy:
+        description:
+            - Certificate security policy for the system.
+            - Field introduced in 32.1.3.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     common_criteria_mode:
         description:
             - Common criteria modes current state.
@@ -367,7 +382,9 @@ def main():
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
         admin_auth_configuration=dict(type='dict',),
+        allow_legacy_sha1_ntp_auth=dict(type='bool',),
         avi_email_login_password=dict(type='str', no_log=True,),
+        certificate_security_policy=dict(type='dict',),
         common_criteria_mode=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
         controller_analytics_policy=dict(type='dict',),

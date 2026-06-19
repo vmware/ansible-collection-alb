@@ -16,7 +16,9 @@
     avi_api_patch_op: delete
     ntp_configuration: {}
     admin_auth_configuration: "{{ item.admin_auth_configuration | default(omit) }}"
+    allow_legacy_sha1_ntp_auth: "{{ item.allow_legacy_sha1_ntp_auth | default(omit) }}"
     avi_email_login_password: "{{ item.avi_email_login_password | default(omit) }}"
+    certificate_security_policy: "{{ item.certificate_security_policy | default(omit) }}"
     common_criteria_mode: "{{ item.common_criteria_mode | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     controller_analytics_policy: "{{ item.controller_analytics_policy | default(omit) }}"

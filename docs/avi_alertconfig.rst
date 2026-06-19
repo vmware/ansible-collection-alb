@@ -947,7 +947,10 @@ Parameters
                   - CONTROLSCRIPT_EXECUTION_FAILURE, SYSTEM_LIMIT_BEYOND_SUPPORTED_CONFIG, SYSTEM_LIMIT_WITHIN_SUPPORTED_CONFIG, SYSTEM_CONFIG_SYNC_FAILURE,
                 </div>
                                 <div style="font-size: small">
-                  - SE_AUTOSCALER_ACTIONS_GENERATED, PASSWORD_ROTATION_COMPLETED, PASSWORD_ROTATION_FAILED, PASSWORD_ROTATION_BOTH_PASSWORDS_INVALID.
+                  - SE_AUTOSCALER_ACTIONS_GENERATED, PASSWORD_ROTATION_COMPLETED, PASSWORD_ROTATION_FAILED, PASSWORD_ROTATION_BOTH_PASSWORDS_INVALID,
+                </div>
+                                <div style="font-size: small">
+                  - NTP_WEAK_AUTH_ALGORITHM_CONFIGURED.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
