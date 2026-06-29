@@ -550,7 +550,7 @@ Parameters
                   - PERMISSION_SESSIONKEYFORWARDER, PERMISSION_LABELPROFILE, PERMISSION_APIPATH, PERMISSION_APISCHEMA, PERMISSION_APIPOLICY,
                 </div>
                                 <div style="font-size: small">
-                  - PERMISSION_APISPECGENERATE, PERMISSION_TLSPROFILE.
+                  - PERMISSION_APISPECGENERATE.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

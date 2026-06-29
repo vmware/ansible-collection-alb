@@ -76,7 +76,7 @@ options:
         description:
             - List of types that are part of the oneof, any_of or all_of.
             - Field introduced in 32.2.1.
-            - Maximum of 32 items allowed.
+            - Maximum of 64 items allowed.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
@@ -121,7 +121,7 @@ options:
         description:
             - List of properties for this object schema.
             - Field introduced in 32.2.1.
-            - Maximum of 256 items allowed.
+            - Maximum of 512 items allowed.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict

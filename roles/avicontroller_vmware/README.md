@@ -11,7 +11,8 @@ Role Variables
 |vcenter_host|Yes||VMware host IP|
 |vcenter_user|Yes||VMware user name|
 |vcenter_password|Yes||VMware password|
-|ssl_verify|No|False|ovftool sslverify option|
+|ssl_verify|No|True|ovftool sslverify option|
+|skip_manifest_check|No|False|Skip OVA SHA manifest integrity check|
 |state|No|present|Option to specify create or destroy the infra|
 |con_datacenter|No|Picked first from the list|Name of VMware datacenter|
 |con_cluster|No|Picked from the first in the list of given datacenters clusters|Name of a cluster in the datacenter|

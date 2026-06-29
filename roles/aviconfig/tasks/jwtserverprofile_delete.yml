@@ -14,6 +14,7 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    allowed_algorithms: "{{ item.allowed_algorithms | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
     controller_internal_auth: "{{ item.controller_internal_auth | default(omit) }}"
     is_federated: "{{ item.is_federated | default(omit) }}"

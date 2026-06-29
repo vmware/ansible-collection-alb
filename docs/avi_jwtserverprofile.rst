@@ -134,6 +134,46 @@ Parameters
             <tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>allowed_algorithms</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed signing algorithms when the matched jwk omits the alg field (rfc 7517 §4.4).
+                </div>
+                                <div style="font-size: small">
+                  - If the jwk carries alg, that value always wins and this list is ignored.
+                </div>
+                                <div style="font-size: small">
+                  - An empty list rejects all such tokens (secure default).
+                </div>
+                                <div style="font-size: small">
+                  - Only applicable when jwt profile type is client_auth.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - JWS_ALG_RS256, JWS_ALG_RS384, JWS_ALG_RS512, JWS_ALG_PS256, JWS_ALG_PS384, JWS_ALG_PS512, JWS_ALG_ES256, JWS_ALG_ES384,
+                </div>
+                                <div style="font-size: small">
+                  - JWS_ALG_ES512.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 9 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

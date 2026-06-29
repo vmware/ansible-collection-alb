@@ -46,6 +46,19 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    allowed_algorithms:
+        description:
+            - Allowed signing algorithms when the matched jwk omits the alg field (rfc 7517 §4.4).
+            - If the jwk carries alg, that value always wins and this list is ignored.
+            - An empty list rejects all such tokens (secure default).
+            - Only applicable when jwt profile type is client_auth.
+            - Enum options - JWS_ALG_RS256, JWS_ALG_RS384, JWS_ALG_RS512, JWS_ALG_PS256, JWS_ALG_PS384, JWS_ALG_PS512, JWS_ALG_ES256, JWS_ALG_ES384,
+            - JWS_ALG_ES512.
+            - Field introduced in 32.2.1.
+            - Maximum of 9 items allowed.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -173,6 +186,7 @@ def main():
         api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
+        allowed_algorithms=dict(type='list', elements='str',),
         configpb_attributes=dict(type='dict',),
         controller_internal_auth=dict(type='dict',),
         is_federated=dict(type='bool',),

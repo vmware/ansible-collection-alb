@@ -501,6 +501,28 @@ options:
             - Default value when not specified in API or module is interpreted by Avi Controller as
             - b083b897e50a49103446ed6112aad3fd2e956eca572e1d8b807a3e2338fdd0dc/stage.
         type: str
+    ipgls_client_cache_size:
+        description:
+            - Size of the ipgls client cache.
+            - This cache stores country code lookups for ip addresses to reduce grpc calls to the ipgls service.
+            - Set to 0 to disable caching.
+            - Allowed values are 0-1000000.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 10000.
+        type: int
+    ipgls_client_cache_ttl_minutes:
+        description:
+            - Ttl for entries in the ipgls client cache.
+            - After this duration, cached ip geolocation data will expire and require a fresh lookup.
+            - Lower values provide fresher data but increase load on ipgls service.
+            - Higher values reduce load but may serve stale geolocation data.
+            - Allowed values are 1-1440.
+            - Field introduced in 32.2.1.
+            - Unit is min.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
     log_records_allocated_size:
         description:
             - Disk size to be allocated [1mb to 500gb] to store logs on a controller vm.
@@ -1098,6 +1120,8 @@ def main():
         gslb_purge_sleep_time_ms=dict(type='int',),
         ignore_vrf_in_networksubnetlist=dict(type='bool',),
         intelligent_assist_project_key=dict(type='str', no_log=True,),
+        ipgls_client_cache_size=dict(type='int',),
+        ipgls_client_cache_ttl_minutes=dict(type='int',),
         log_records_allocated_size=dict(type='int',),
         log_records_allocation_percentage_for_events=dict(type='int',),
         log_records_cleanup_target_percentage=dict(type='int',),

@@ -90,6 +90,7 @@ plugins/modules/avi_inventoryfaultconfig.py validate-modules:missing-gplv3-licen
 plugins/modules/avi_techsupport.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cluster.py validate-modules:missing-gplv3-license
 plugins/modules/avi_retentionpolicy.py validate-modules:missing-gplv3-license
+plugins/modules/avi_albservicesstatus.py validate-modules:missing-gplv3-license
 plugins/modules/avi_controllerportalregistration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_apispecgenerate.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesjob.py validate-modules:missing-gplv3-license
@@ -129,7 +130,6 @@ plugins/modules/avi_healthmonitor.py validate-modules:missing-gplv3-license
 plugins/modules/avi_alertsyslogconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_applicationprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_sessionkeyforwarder.py validate-modules:missing-gplv3-license
-plugins/modules/avi_tlsprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_networksecuritypolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_wafpolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_botdetectionpolicy.py validate-modules:missing-gplv3-license

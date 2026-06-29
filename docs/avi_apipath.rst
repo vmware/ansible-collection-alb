@@ -757,7 +757,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 256 items allowed.
+                  - Maximum of 1024 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -907,6 +907,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SCHEMA_TYPE_UNDEFINED.
                 </div>
                                             </td>
     </tr>
@@ -1264,7 +1267,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 256 items allowed.
+                  - Maximum of 1024 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1415,6 +1418,9 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SCHEMA_TYPE_UNDEFINED.
+                </div>
                                             </td>
     </tr>
         
@@ -1441,7 +1447,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 64 items allowed.
+                  - Maximum of 128 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1687,7 +1693,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 256 items allowed.
+                  - Maximum of 1024 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1838,6 +1844,9 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SCHEMA_TYPE_UNDEFINED.
+                </div>
                                             </td>
     </tr>
         
@@ -1943,7 +1952,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 16 items allowed.
+                  - Maximum of 128 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2123,7 +2132,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 256 items allowed.
+                  - Maximum of 1024 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2278,6 +2287,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SCHEMA_TYPE_UNDEFINED.
                 </div>
                                             </td>
     </tr>
@@ -2388,7 +2400,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 16 items allowed.
+                  - Maximum of 128 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2568,7 +2580,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 256 items allowed.
+                  - Maximum of 1024 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2723,6 +2735,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SCHEMA_TYPE_UNDEFINED.
                 </div>
                                             </td>
     </tr>
@@ -3027,7 +3042,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 256 items allowed.
+                  - Maximum of 1024 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3182,6 +3197,9 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SCHEMA_TYPE_UNDEFINED.
                 </div>
                                             </td>
     </tr>

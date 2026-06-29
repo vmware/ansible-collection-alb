@@ -956,7 +956,10 @@ Parameters
                   - SYSTEM_LIMIT_WITHIN_SUPPORTED_CONFIG, SYSTEM_CONFIG_SYNC_FAILURE, SE_AUTOSCALER_ACTIONS_GENERATED, PASSWORD_ROTATION_COMPLETED,
                 </div>
                                 <div style="font-size: small">
-                  - PASSWORD_ROTATION_FAILED, PASSWORD_ROTATION_BOTH_PASSWORDS_INVALID.
+                  - PASSWORD_ROTATION_FAILED, PASSWORD_ROTATION_BOTH_PASSWORDS_INVALID, NTP_WEAK_AUTH_ALGORITHM_CONFIGURED, OPEN_API_SPEC_DELETE_CLEANUP_STARTED,
+                </div>
+                                <div style="font-size: small">
+                  - OPEN_API_SPEC_DELETE_CLEANUP_COMPLETED.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

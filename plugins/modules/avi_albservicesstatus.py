@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_tlsprofile
+module: avi_albservicesstatus
 author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
-short_description: Module for setup of TLSProfile Avi RESTful Object
+short_description: Module for setup of ALBServicesStatus Avi RESTful Object
 description:
-    - This module is used to configure TLSProfile object.
+    - This module is used to configure ALBServicesStatus object.
     - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,57 +46,81 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    certificate_ref:
+    asset_details:
         description:
-            - Client certificate (and private key) presented to the remote server during the tls handshake.
-            - Needed when a consumer requests mtls tls_mode against this tls profile.
-            - It is a reference to an object of type sslkeyandcertificate.
-            - Field introduced in 32.2.1.
+            - Asset details corresponding to this controller cluster, on registering with pulse.
+            - Field introduced in 22.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
+        type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
-    description:
+    connected_at:
         description:
-            - Human-readable description for this tls profile.
-            - Field introduced in 32.2.1.
+            - Timestamp of last successful connection.
+            - Field introduced in 22.1.3.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
+    connectivity_status:
+        description:
+            - Connectivity status of controller with albservices.
+            - Enum options - ALBSERVICES_CONNECTIVITY_UNKNOWN, ALBSERVICES_DISCONNECTED, ALBSERVICES_CONNECTED.
+            - Field introduced in 18.2.6.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as ALBSERVICES_CONNECTIVITY_UNKNOWN.
+        type: str
+    error:
+        description:
+            - Descriptive error message.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     name:
         description:
-            - Name of the tls profile.
+            - Name of the albservicesstatus object.
             - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    pki_profile_ref:
+    registration_status:
         description:
-            - Pki profile containing the ca certificates used to validate the tls certificate presented by the remote server.
-            - Needed when a consumer (e.g.
-            - Authprofile) requests tls, mtls, or verify_only tls_mode against this tls profile.
-            - It is a reference to an object of type pkiprofile.
-            - Field introduced in 32.2.1.
+            - Registration status of the controller with albservices.
+            - Enum options - ALBSERVICES_REGISTRATION_UNKNOWN, ALBSERVICES_REGISTERED, ALBSERVICES_DEREGISTERED.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as ALBSERVICES_REGISTRATION_UNKNOWN.
         type: str
+    services_health:
+        description:
+            - Health of hosted services.
+            - Field introduced in 20.1.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: dict
     tenant_ref:
         description:
-            - Tenant that this object belongs to.
+            - Tenant uuid associated with the object.
             - It is a reference to an object of type tenant.
-            - Field introduced in 32.2.1.
+            - Field introduced in 30.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    tenant_status:
+        description:
+            - Tenant based status information.
+            - Field introduced in 30.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     url:
         description:
             - Avi controller URL of the object.
         type: str
     uuid:
         description:
-            - Uuid of the tls profile.
-            - Field introduced in 32.2.1.
+            - Unique identifier of customer portal status object in the database and datastore.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -113,16 +137,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
   tasks:
-    - name: Example to create TLSProfile object
-      vmware.alb.avi_tlsprofile:
+    - name: Example to create ALBServicesStatus object
+      vmware.alb.avi_albservicesstatus:
         avi_credentials: "{{ avi_credentials }}"
         state: present
-        name: sample_tlsprofile
+        name: sample_albservicesstatus
 """
 
 RETURN = '''
 obj:
-    description: TLSProfile (api/tlsprofile) object
+    description: ALBServicesStatus (api/albservicesstatus) object
     returned: success, changed
     type: dict
 '''
@@ -154,12 +178,16 @@ def main():
         api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
-        certificate_ref=dict(type='str',),
+        asset_details=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
-        description=dict(type='str',),
+        connected_at=dict(type='dict',),
+        connectivity_status=dict(type='str',),
+        error=dict(type='str',),
         name=dict(type='str', required=True),
-        pki_profile_ref=dict(type='str',),
+        registration_status=dict(type='str',),
+        services_health=dict(type='list', elements='dict',),
         tenant_ref=dict(type='str',),
+        tenant_status=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
@@ -171,7 +199,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'tlsprofile',
+    return avi_ansible_api(module, 'albservicesstatus',
                            set())
 
 

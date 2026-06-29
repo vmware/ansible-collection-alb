@@ -71,6 +71,8 @@
     gslb_purge_sleep_time_ms: "{{ item.gslb_purge_sleep_time_ms | default(omit) }}"
     ignore_vrf_in_networksubnetlist: "{{ item.ignore_vrf_in_networksubnetlist | default(omit) }}"
     intelligent_assist_project_key: "{{ item.intelligent_assist_project_key | default(omit) }}"
+    ipgls_client_cache_size: "{{ item.ipgls_client_cache_size | default(omit) }}"
+    ipgls_client_cache_ttl_minutes: "{{ item.ipgls_client_cache_ttl_minutes | default(omit) }}"
     log_records_allocated_size: "{{ item.log_records_allocated_size | default(omit) }}"
     log_records_allocation_percentage_for_events: "{{ item.log_records_allocation_percentage_for_events | default(omit) }}"
     log_records_cleanup_target_percentage: "{{ item.log_records_cleanup_target_percentage | default(omit) }}"

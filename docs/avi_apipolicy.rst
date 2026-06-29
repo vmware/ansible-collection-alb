@@ -661,19 +661,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - List of api policy actions to run on this label.
+                  - Check-disable toggle actions for this label.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_POLICY_DEACTIVATE_PATH_PARAM_CHECK, API_POLICY_DEACTIVATE_QUERY_PARAM_CHECK, API_POLICY_ACTION_DEACTIVATE_HEADER_CHECK,
+                  - Each entry turns off an entire validation check category for requests carrying this label.
                 </div>
                                 <div style="font-size: small">
-                  - API_POLICY_ACTION_DEACTIVATE_REQUEST_BODY_CHECK, API_POLICY_ACTION_UNKNOWN_QUERY_PARAM_PASS, API_POLICY_ACTION_UNKNOWN_QUERY_PARAM_LEARN,
+                  - Enum options - API_POLICY_LABEL_ACTION_DEACTIVATE_PATH_PARAM_CHECK, API_POLICY_LABEL_ACTION_DEACTIVATE_QUERY_PARAM_CHECK,
                 </div>
                                 <div style="font-size: small">
-                  - API_POLICY_ACTION_UNKNOWN_QUERY_PARAM_FLAG, API_POLICY_ACTION_UNKNOWN_QUERY_PARAM_REJECT, API_POLICY_ACTION_UNKNOWN_REQUEST_CONTENT_TYPE_PASS,
-                </div>
-                                <div style="font-size: small">
-                  - API_POLICY_ACTION_UNKNOWN_REQUEST_CONTENT_TYPE_FLAG, API_POLICY_ACTION_UNKNOWN_REQUEST_CONTENT_TYPE_REJECT.
+                  - API_POLICY_LABEL_ACTION_DEACTIVATE_HEADER_CHECK, API_POLICY_LABEL_ACTION_DEACTIVATE_REQUEST_BODY_CHECK.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.

@@ -1,12 +1,12 @@
 
-.. vmware.alb.avi_retentionpolicy:
+.. vmware.alb.avi_albservicesstatus:
 
 
 **********************************************
-vmware.alb.avi_retentionpolicy
+vmware.alb.avi_albservicesstatus
 **********************************************
 
-**Module for setup of RetentionPolicy Avi RESTful Object**
+**Module for setup of ALBServicesStatus Avi RESTful Object**
 
 
 .. contents::
@@ -16,7 +16,7 @@ vmware.alb.avi_retentionpolicy
 
 Synopsis
 --------
-- This module is used to configure RetentionPolicy object.
+- This module is used to configure ALBServicesStatus object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -134,48 +134,20 @@ Parameters
             <tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>enabled</b>
+                <b>asset_details</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enables the policy.
+                  - Asset details corresponding to this controller cluster, on registering with pulse.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>history</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - History of previous runs.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 10 items allowed.
+                  - Field introduced in 22.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -186,33 +158,7 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>duration</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Action duration.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is sec.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>end_time</b>
+                <b>asset_id</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -222,33 +168,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Action end time.
+                  - Asset id corresponding to this controller cluster, returned on a successful registration.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>messages</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Action messages.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 22.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -258,7 +181,7 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>start_time</b>
+                <b>email</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -268,10 +191,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Action start time.
+                  - Email id of the portal user.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 22.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -281,7 +204,32 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>status</b>
+                <b>keyless_license</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Keyless license subscription details for the controller.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>license_token</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -291,829 +239,107 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Action status.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - SYSERR_SUCCESS, SYSERR_FAILURE, SYSERR_OUT_OF_MEMORY, SYSERR_NO_ENT, SYSERR_INVAL, SYSERR_ACCESS, SYSERR_FAULT, SYSERR_IO,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_TIMEOUT, SYSERR_NOT_SUPPORTED, SYSERR_NOT_READY, SYSERR_UPGRADE_IN_PROGRESS, SYSERR_WARM_START_IN_PROGRESS, SYSERR_TRY_AGAIN,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_NOT_UPGRADING, SYSERR_PENDING, SYSERR_EVENT_GEN_FAILURE, SYSERR_CONFIG_PARAM_MISSING, SYSERR_RANGE, SYSERR_FAILED, SYSERR_BAD_REQUEST,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_TEST1, SYSERR_TEST2, SYSERR_QUEUE_TRANSPORT_FAILURE, SYSERR_QUEUE_RETRY_TASK, SYSERR_QUEUE_FULL, SYSERR_DATASTORE_TRANSPORT_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_DATASTORE_UNKNOWN_FAILURE, SYSERR_DATASTORE_OBJECT_DOES_NOT_EXIST, SYSERR_DATASTORE_REFERENCE_DOES_NOT_EXIST, SYSERR_DATASTORE_DB_LOCKED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_DATASTORE_LOCK_FAILURE, SYSERR_DATASTORE_TBL_NOT_EXIST, SYSERR_DATABASE_OBJECT_DOES_NOT_EXIST,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_DATABASE_OBJECT_MODIFICATION_NOT_ALLOWED_FOR_NON_ADMIN, SYSERR_SVC_COMMON_OBJECT_NOT_IN_CACHED_VIEW, SYSERR_RPC_CANCELED_BY_CLIENT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RPC_TIMED_OUT, SYSERR_RPC_SEND_FAILED, SYSERR_RPC_CANCELED_BY_TRANSACTION_CLEANUP, SYSERR_NO_MULTICAST_RECEIVERS, SYSERR_RPC_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RPC_CONNECT_FAILED, SYSERR_CONTROLLER_NOT_READY, SYSERR_VERSION_MISMATCH, SYSERR_ALREADY_REGISTERED, SYSERR_SE_GRP_CHANGE_REBOOT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_INVALID_METHOD, SYSERR_DESERIALIZATION, SYSERR_SERIALIZATION, SYSERR_ENQUEUE, SYSERR_DEQUEUE, SYSERR_INVALID_READ_LEVEL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ADD_HM_PHM_OBJECT_NOT_FOUND, SYSERR_CREATE_INVALID_PERSISTENCE_TYPE, SYSERR_VS_INVALID_METHOD, SYSERR_VS_NOT_PRESENT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VS_INVALID_REQUEST, SYSERR_VS_NOT_ENOUGH_RESOURCES, SYSERR_VS_SE_NOT_AVAILABLE, SYSERR_VS_VNIC_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VS_DELETE_WHILE_STILL_BEING_REFERRED, SYSERR_INVALID_HEALTH_MONITOR_TYPE, SYSERR_VS_SE_ASSIGNMENT_FAILED, SYSERR_VS_INVALID_OBJECT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VS_SERVICE_ENGINE_DOWN, SYSERR_VS_RPC_FAILURE, SYSERR_VS_NOT_BOUND, SYSERR_VS_DISABLED, SYSERR_VS_INTERNAL_ERROR, SYSERR_VS_SCALEOUT_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VS_SCALEIN_ERROR, SYSERR_VS_MIGRATE_ERROR, SYSERR_VS_MIGRATE_SCALEOUT_ERROR, SYSERR_VS_MIGRATE_SCALEIN_ERROR, SYSERR_VS_AWAIT_STATIC_SE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VS_MIN_SE_NOT_ASSIGNED, SYSERR_VS_SE_NOT_AT_CURRENT_VERSION, SYSERR_VS_RUNTIME_ABSENT, SYSERR_VS_STATEDB_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VS_SNI_CHILD_PARENT_SELIST_MISMATCH, SYSERR_VS_SNI_PARENT_NOT_FOUND, SYSERR_VS_SNI_CHILD_PARENT_SEGROUP_MISMATCH,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VS_STATS_INDEX_NOT_AVAILABLE, SYSERR_VS_UPDATE_FAILED, SYSERR_VS_CREATE_FAILED, SYSERR_VS_GEO_DATABASES_NOT_LOADED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VS_FQDN_LEN_EXCEEDED, SYSERR_VS_STATIC_FQDN_LEN_EXCEEDED, SYSERR_VS_DNS_TXT_RDATA_LEN_EXCEEDED, SYSERR_SE_MGR_VNIC_ALLOC_FAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SE_MGR_VNIC_NOT_FOUND, SYSERR_SE_MGR_UNKNOWN_SE, SYSERR_SE_MGR_UNKNOWN_STATE_TRANSITION, SYSERR_SE_MGR_SE_OFFLINE_HB_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SE_UPGRADE_IN_PROGRESS, SYSERR_SE_NOT_CONNECTED, SYSERR_RM_RES_UNAVAIL, SYSERR_RM_RES_UNAVAIL_NOTIFY, SYSERR_RM_RES_NOT_INUSE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_CONSUMER_NOT_FOUND, SYSERR_RM_REACHABILITY_FAILED, SYSERR_RM_RELEASE_SE_UNAVAIL, SYSERR_RM_UNKNOWN_SE_GROUP, SYSERR_RM_NO_SE_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_PARTIAL_SE_FOUND, SYSERR_RM_AWAIT_VM_CREATE, SYSERR_RM_AWAIT_VNIC_ADD, SYSERR_RM_AWAIT_BOOTUP, SYSERR_RM_RESOURCE_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_CANNOT_SPAWN_SE, SYSERR_RM_RES_NOT_NEEDED, SYSERR_RM_RES_INFRA_DELETED, SYSERR_RM_RES_USER_DELETED, SYSERR_RM_RES_USER_REBOOTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_RES_CRASHED, SYSERR_RM_RES_CONN_LOST, SYSERR_RM_RES_VIP_REACH_LOST, SYSERR_RM_VS_PROCESSING, SYSERR_RM_VNIC_IP_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_STATIC_NO_POOL, SYSERR_RM_STATIC_POOL_EXHAUSTED, SYSERR_RM_VIP_MULT_NETWORKS, SYSERR_RM_SRVR_MULT_NETWORKS, SYSERR_RM_VIP_NO_NETWORK,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_SRVR_NO_NETWORK, SYSERR_RM_MAX_PARALLEL_SE_CREATE, SYSERR_RM_MAX_SE_CREATE_ATTEMPTS, SYSERR_RM_MULT_SE_CRASH,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_VS_SE_CREATE_IN_PROG, SYSERR_RM_VS_SE_BOOTUP_IN_PROG, SYSERR_RM_VS_SE_VNIC_ADD_IN_PROG, SYSERR_RM_VS_SE_VNIC_IP_IN_PROG,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_NO_SUITABLE_HOST, SYSERR_RM_NO_SE_IN_SE_GRP, SYSERR_RM_ALL_SE_IN_SE_GRP_DOWN, SYSERR_RM_NO_SE_IN_SE_GRP_SRVR_ACC,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_NO_SE_IN_SE_GRP_VIP_ACC, SYSERR_RM_ALL_SE_IN_SE_GRP_MAX_VS, SYSERR_RM_ALL_SE_IN_SE_GRP_NW_ACC_MAX_VS, SYSERR_RM_VIP_SE_NW_ACC,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_VIP_SE_MAX_VS, SYSERR_RM_VIP_SE_GRP_MISMATCH, SYSERR_RM_VIP_SE_PENDING_OP, SYSERR_RM_MULT_MGMT_SUBNET, SYSERR_RM_MAX_SE_IN_GRP,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_BOOTUP_FAILURE, SYSERR_RM_PENDING_VNIC_OP, SYSERR_RM_SE_MGMT_NO_STATIC_IPS_CONFIGURED, SYSERR_RM_SE_MGMT_STATIC_IPS_EXHAUSTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_NO_MGMT_SUBNET, SYSERR_RM_MGMT_DHCP_FAILURE, SYSERR_RM_CANNOT_ADD_VNICS, SYSERR_RM_CONSUMER_RESOURCES_SATISFIED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_DATA_DHCP_FAILURE, SYSERR_RM_QUERY_HOST_IN_PROGRESS, SYSERR_RM_INSUFFICIENT_BUFFER_SE, SYSERR_RM_NO_DEFAULT_GW_SE_MGMT_NW,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_PARENT_SE_NW_ACC, SYSERR_RM_PARENT_SE_MAX_VS, SYSERR_RM_PARENT_SE_GRP_MISMATCH, SYSERR_RM_DEF_GW_INCORRECT, SYSERR_RM_NETWORK_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_ALL_SE_IN_SE_GRP_USED, SYSERR_RM_SE_GRP_PENDING_OP, SYSERR_RM_ALL_SE_IN_SE_GRP_DISABLED, SYSERR_RM_VS_SE_PING_CHECK_IN_PROG,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_CONSUMER_PENDING_TASK, SYSERR_RM_SE_GRP_VIP_NW_ACC, SYSERR_RM_SE_GRP_NW_ACC, SYSERR_RM_SE_GRP_MAX_VS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_ALL_SE_IN_SE_GRP_GW_DOWN, SYSERR_RM_SE_GW_DOWN, SYSERR_RM_SE_DISCONNECTED, SYSERR_RM_RES_USER_DISABLED_FORCE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_VS_SE_ATTACH_IP_IN_PROG, SYSERR_RM_LICENSE_EXCEEDED_CANNOT_SPAWN_SE, SYSERR_RM_RES_SWTICHOVER_FORCE, SYSERR_RM_HA_HOST_UNAVAILABLE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_RES_USER_DISABLED, SYSERR_RM_NO_BGP_PEER_ADVERTISE_VIP, SYSERR_RM_NO_BGP_PEER_ADVERTISE_SNAT, SYSERR_RM_SRVR_NETWORK_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_VRF_NOT_FOUND, SYSERR_RM_BGP_NETWORK_NOT_FOUND, SYSERR_RM_VIP_NETWORK_NOT_FOUND, SYSERR_RM_READ_MISSING_FILTER,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_CLOUD_NOT_FOUND, SYSERR_RM_SEGROUP_NOT_FOUND, SYSERR_RM_SE_OFFLINE, SYSERR_RM_SE_USED, SYSERR_RM_SE_BGP_PEERS_DOWN,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_SE_FLAVOR_LIMIT_REACHED, SYSERR_RM_SE_INSUFFICIENT_VNIC_SLOTS, SYSERR_RM_SE_SHARED_VIP_INCONSISTENCY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RM_VS_LICENSE_RESERVATION_IN_PROG, SYSERR_VI_MGR_SEVM_VNIC_SUCCESS, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_HW_INFO,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_DUPLICATE_NAME, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_CPU,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MEM, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_LEASE, SYSERR_VI_MGR_SEVM_CREATE_FAIL_OVF_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_NO_HOST_VM_NETWORK, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_PROGRESS, SYSERR_VI_MGR_SEVM_CREATE_FAIL_ABORTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_CREATE_FAILURE, SYSERR_VI_MGR_SEVM_CREATE_FAIL_POWER_ON, SYSERR_VI_MGR_SEVM_VNIC_NO_VM, SYSERR_VI_MGR_SEVM_VNIC_MAC_ADDR_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_VNIC_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_NO_PG_PORTS, SYSERR_VI_MGR_SEVM_DELETE_FAILURE, SYSERR_VI_MGR_SEVM_CREATE_LIMIT_REACHED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_SET_MGMT_IP_FAILED, SYSERR_VI_MGR_SEVM_CREATE_ACCESS_ERROR, SYSERR_VI_MGR_SEVM_CREATE_NO_IMAGE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_VINFRA_UNINITIALIZED, SYSERR_VI_MGR_SEVM_CREATE_NO_HOST, SYSERR_VI_MGR_SEVM_CREATE_FAIL_NO_MGMT_NW_PORTS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_INVALID_DATA, SYSERR_VI_MGR_SEVM_CREATE_FAIL_MULTIPLE_MGMT_NW, SYSERR_VI_MGR_SEVM_VCENTER_CONN_FAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_TIMED_OUT, SYSERR_VI_MGR_SEVM_NO_SOURCE_CLONE, SYSERR_VI_MGR_SEVM_NO_AVAILABILITY_ZONE, SYSERR_VI_MGR_SEVM_FLAVOR_UNAVAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_SEVM_DELETED, SYSERR_VI_MGR_SEVM_VINFRA_FAILURE, SYSERR_VI_MGR_SEVM_VNIC_FAILURE_QUESTION, SYSERR_VI_MGR_LOGIN_FAIL_NO_VCENTER,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_VI_MGR_LOGIN_FAIL_USER_CREDENTIALS, SYSERR_VI_MGR_VCENTER_VERSION_MISMATCH, SYSERR_RM_LICENSE_QUOTA_LIMIT_EXCEEDED_CANNOT_SPAWN_SE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_DB_CACHE_TBL_NOT_FOUND, SYSERR_DB_CACHE_OBJ_NOT_FOUND, SYSERR_DB_QUERY_QUEUED, SYSERR_DB_QUERY_BATCHED, SYSERR_DB_UPDATE_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_DB_QUERY_FAILED, SYSERR_DB_ENQUEUE_FULL, SYSERR_OS_AGENT_Q_FULL, SYSERR_OS_AGENT_OPENSTACK_UNINITIALIZED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_OS_AGENT_OPENSTACK_ACCESSERR, SYSERR_OS_AGENT_OPENSTACK_RESOURCEERR, SYSERR_OS_AGENT_TENANT_ABSENT, SYSERR_OS_AGENT_INVALID_DATA,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CC_SVC_Q_FULL, SYSERR_CC_AGENT_UNINITIALIZED, SYSERR_CC_AGENT_ACCESSERR, SYSERR_CC_AGENT_RESOURCEERR, SYSERR_CC_AGENT_TENANT_ACCESSERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CC_AGENT_TENANT_ABSENT, SYSERR_CC_SVC_INVALID_DATA, SYSERR_CC_OS_AGENT_NEUTRON_HOST_ACCESSERR, SYSERR_CC_NO_FLAVOR, SYSERR_CC_AGENT_ABSENT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CC_AGENT_CONFIG_FAILURE, SYSERR_CC_AGENT_DECONFIG_FAILURE, SYSERR_CC_AGENT_NON_INFRA_SEVM, SYSERR_MESOS_DISCOVERY_DEPLOYMENT_FAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MESOS_DISCOVERY_TIMEOUT, SYSERR_MARATHON_APP_TERMINATED, SYSERR_MARATHON_INACCESSIBLE, SYSERR_FLEET_API_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MESOS_SSH_CMD_TIMEOUT, SYSERR_MESOS_SSH_ABORTED, SYSERR_MESOS_SSH_FAILURE, SYSERR_MESOS_SSH_NOTFOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CC_AGENT_VNIC_NO_IPS_AVAILABLE, SYSERR_CC_AGENT_VNIC_NO_SUBNETWORK, SYSERR_CC_AGENT_VNIC_FAILURE, SYSERR_CC_AGENT_SCALE_IN_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CC_AGENT_DS_FAILED, SYSERR_CC_AGENT_SCALE_OUT_FAILED, SYSERR_CC_TOO_BUSY, SYSERR_CC_AGENT_NOT_IMPLEMENTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CC_AGENT_METHOD_NOT_IMPLEMENTED, SYSERR_CC_AGENT_GENERIC_FAILURE, SYSERR_RUM_TOOMANYSAMPLES, SYSERR_METRICS_TOO_MANY_MSG,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_METRICS_TOO_MANY_MSG_ACROSS_ENTITIES, SYSERR_ANOMALYZER_NOT_ENOUGH_SAMPLES, SYSERR_AUTOSCALE_REASON_INTELLIGENT_AUTOSCALE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_REASON_CONFIG_UPDATE, SYSERR_AUTOSCALE_REASON_POOL_STATE_CHANGE, SYSERR_AUTOSCALE_REASON_ALERT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_AUTOSCALEIN_FAILED_LIMIT_EXCEEDED, SYSERR_AUTOSCALEOUT_FAILED_LIMIT_EXCEEDED, SYSERR_AUTOSCALE_IGNORED_AS_WITHIN_COOLDOWN,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_ORCHESTRATION_TIMEOUT, SYSERR_AUTOSCALE_REASON_NOT_ENOUGH_SERVERS, SYSERR_AUTOSCALE_REASON_TOO_MANY_SERVERS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_REASON_ORCHESTRATION_FAILED, SYSERR_AUTOSCALE_REASON_MANUAL, SYSERR_AUTOSCALE_POLICY_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_AUTOSCALE_REASON_GARBAGE_COLLECTION, SYSERR_AUTOSCALE_SCHEDULED_SCALEIN, SYSERR_AUTOSCALE_SCHEDULED_SCALEOUT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_FIELD_NAME_NOT_SET, SYSERR_LICENSE_FILE_NOT_FOUND, SYSERR_LICENSE_FIELD_VALID_UNTIL_NOT_SET, SYSERR_LICENSE_INVALID_TIERS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_FIELD_LICENSE_ID_NOT_PRESENT, SYSERR_LICENSE_INVALID_VERSION, SYSERR_LICENSE_DECRYPTION_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_ENFORCEMENT_KEY_NOT_VALID, SYSERR_LICENSE_INVALID_SERIALKEY, SYSERR_LICENSE_INVALID_METRICS, SYSERR_LICENSE_GRPC_NOT_READY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LATEST_LICENSE_ALREADY_DEPLOYED, SYSERR_LICENSE_MGR_GRPC_NOT_READY, SYSERR_LICENSE_TRANSACTION_TENANT_REQUIRED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_TRANSACTION_INSUFFICIENT_RESOURCES, SYSERR_LICENSE_TRANSACTION_PER_TENANT_NOT_SUPPORTED, SYSERR_FLOATING_LICENSE_NOT_SUPPORTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_MGR_CANNOT_DELETE_LICENSE, SYSERR_LICENSE_MGR_LICENSE_TIER_NOT_FOUND, SYSERR_LICENSE_EXPIRED, SYSERR_LICENSE_LEDGER_UPDATE_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_TRANSACTION_INSUFFICIENT_SAAS_LICENSE, SYSERR_LICENSE_TRANSACTION_MAX_SERVICE_UNITS_LIMIT, SYSERR_LICENSE_SAAS_UNSUBSCRIBED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_SAAS_SYNC_RPC_ERROR, SYSERR_LICENSE_SAAS_SYNC_CONNECT_ERROR, SYSERR_LICENSE_SAAS_SYNC_SERVER_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_SAAS_SYNC_INSUFFICIENT_LICENSE, SYSERR_LICENSE_TRANSACTION_INCORRECT_TIER, SYSERR_LICENSE_TRANSACTION_DATASTORE_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_INVALID_TIER, SYSERR_TRIAL_OR_EVAL_LICENSE_ADDITION_NOT_ALLOWED, SYSERR_LICENSE_INVALID_CLUSTER_UUID,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_SAAS_LICENSE_INSTALLATION_FAILED, SYSERR_LICENSE_TRANSACTION_SERVICE_UNITS_REQUIRED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_TRANSACTION_SEGROUP_LIMIT_EXCEEDED, SYSERR_LICENSE_TRANSACTION_TENANT_LIMIT_EXCEEDED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LICENSE_TRANSACTION_SYSTEM_LIMIT_EXCEEDED, SYSERR_LICENSE_TRANSACTION_RESERVATION_VIOLATION, SYSERR_LICENSE_CLS_ID_NOT_SET,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_INVALID_LICENSE_WARNING_DATE, SYSERR_INVALID_LICENSE_EXPIRATION_DATE, SYSERR_LICENSE_SERIAL_KEY_DEPRECATED, SYSERR_SEAGENT_OBJ_INACTIVE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SEAGENT_OBJ_AWAITING_DP_PROGRAMMING, SYSERR_SEAGENT_OBJ_ACTIVE, SYSERR_SEAGENT_OBJ_GRAPHDB_ERROR, SYSERR_SEAGENT_OBJ_DP_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SEAGENT_OBJ_DISABLED_RULE_POOL, SYSERR_SEAGENT_EASTWEST_VS_SUBNET_ERROR, SYSERR_SEAGENT_OBJ_NOT_FOUND, SYSERR_SEAGENT_VS_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SEAGENT_VS_VRF_ERROR, SYSERR_SEAGENT_VS_SELIST_LIMIT_ERROR, SYSERR_SEAGENT_VS_SELIST_SE_INTF_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SEAGENT_VS_CHILD_PARENT_UUID_MISSING, SYSERR_SEDP_PARENT_VS_NOT_EXIST_FOR_CHILD, SYSERR_SEAGENT_TENANT_CREATE_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SEAGENT_TENANT_UPDATE_FAILED, SYSERR_SEAGENT_VS_INTERFACE_ERROR, SYSERR_SEAGENT_INSUFFICIENT_MEMORY, SYSERR_SEDP_VNIC_CREATION_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SEDP_VNIC_ATTACH_FAILURE, SYSERR_SEDP_VNIC_IF_CREATION_FAILURE, SYSERR_SEDP_VNIC_START_FAILURE, SYSERR_SEDP_VNIC_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SEDP_VNIC_MISMATCH_VRF, SYSERR_SEDP_VNIC_IP_ADDR_ADD_FAILURE, SYSERR_SEDP_VNIC_IP_ADDR_DEL_FAILURE, SYSERR_SEDP_VNIC_OWNER_CORE_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SEDP_VNIC_MAIN_VNIC_NOT_FOUND, SYSERR_SEDP_VNIC_MEMBER_VNIC_NOT_FOUND, SYSERR_SEDP_VNIC_VLAN_FILTER_ADD_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SEDP_VNIC_VLAN_FILTER_REMOVE_FAILURE, SYSERR_SEDP_VNIC_UNKNOWN_MSG_TYPE, SYSERR_SEDP_VNIC_PCAP_INIT_FAILURE, SYSERR_GSLB_INVALID_MTYPE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_INVALID_SITE_CREDENTIALS, SYSERR_GSLB_OBJECT_NOT_FOUND, SYSERR_GSLB_INVALID_OPS, SYSERR_GSLB_PARTIAL_SUCCESS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_FQDN_CONFLICT, SYSERR_GSLB_CLEANUP_IN_PROGRESS, SYSERR_GSLB_METHOD_NOP, SYSERR_GSLB_API_NOT_SUPPORTED_FOR_UNFEDERATED_OBJECTS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_STATEDB_ERR, SYSERR_GSLB_SERVICE_MEMBER_VIPS_NOT_IN_SYNC, SYSERR_GSLB_SERVICE_MEMBER_DISABLED, SYSERR_GSLB_SITE_DISABLED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SERVICE_DISABLED, SYSERR_GSLB_HM_PROXY_DOWN, SYSERR_GSLB_DNS_DISABLED, SYSERR_GSLB_SERVICE_NON_AVI_VIP_INFO_UNAVAILABLE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SERVICE_DATAPATH_STATUS_UNAVAILABLE, SYSERR_GSLB_SERVICE_MEMBER_SERVICES_NOT_IN_SYNC,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SERVICE_INCONSISTENT_APPLICATION_PROFILE, SYSERR_GSLB_SERVICE_INVALID_APPLICATION_PROFILE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SERVICE_SP_INCONSISTENT_CONFIGURED_SERVERS, SYSERR_GSLB_SERVICE_SP_INCONSISTENT_OPERATIONAL_SERVERS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SERVICE_SP_ALL_SERVERS_DOWN, SYSERR_GSLB_SERVICE_SP_SOME_SERVERS_DOWN, SYSERR_GSLB_CONFIGURED_VS_IS_NOT_A_DNS_VS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_NOT_CONFIGURED, SYSERR_GSLB_INVALID_SENDER, SYSERR_GSLB_INVALID_SENDER_STATE, SYSERR_GSLB_INVALID_RX_ID, SYSERR_GSLB_INVALID_VIEW_ID,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_GROUP_CONFLICT, SYSERR_GSLB_INVALID_MTYPE_AT_FOLLOWER, SYSERR_GSLB_LEADER_NOT_IN_LIST, SYSERR_GSLB_SERVICE_CTRL_STATUS_UNAVAILABLE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SITE_FSM_NULL, SYSERR_GSLB_SITE_FSM_DISABLE_IN_PROGRESS, SYSERR_GSLB_SITE_FSM_DISABLED, SYSERR_GSLB_SITE_FSM_JOIN_IN_PROGRESS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SITE_FSM_INIT, SYSERR_GSLB_SITE_FSM_UNREACHABLE, SYSERR_GSLB_SITE_FSM_LEAVE_IN_PROGRESS, SYSERR_GSLB_SITE_FSM_MMODE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SITE_ACTIVE_TO_PASSIVE_TRANSITION, SYSERR_GSLB_SITE_PASSIVE_TO_ACTIVE_TRANSITION, SYSERR_GSLB_SITE_MAX_RETRIES_DONE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_TIMEOUT, SYSERR_GSLB_CONNECTION_TIMEOUT, SYSERR_GSLB_CONNECTION_REFUSED_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SERVICE_CTRL_STATUS_NA_DUE_TO_UNREACHABLE_SITE, SYSERR_GSLB_SERVICE_SP_NO_CONFIGURED_SERVERS, SYSERR_GSLB_INVALID_OBJECT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SERVICE_POOL_DISABLED, SYSERR_GSLB_SERVICE_CREATE_FAILED, SYSERR_GSLB_SERVICE_UPDATE_FAILED, SYSERR_GSLB_GSLB_GEO_FILE_NOT_PRESENT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SERVICE_MEMBER_VS_SERVICES_NOT_IN_SYNC, SYSERR_GSLB_SERVICE_MEMBER_VS_SP_POOL_NOT_IN_SYNC, SYSERR_FILE_NOT_PRESENT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLB_SERVICE_STATUS_UNKNOWN_IN_PASSIVE_SITE, SYSERR_DNS_POLICY_CREATE_FAIL, SYSERR_DNS_POLICY_UPDATE_FAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LCM_CORE_NOT_COPIED_DUE_TO_MAX_LIMIT, SYSERR_LCM_CORE_NOT_COPIED_INSUFFICIENT_DISK_SIZE, SYSERR_LCM_SKIP_SIMILAR_CORE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LCM_CORE_NOT_COPIED_DUE_TO_ERRORS, SYSERR_LCM_STOP, SYSERR_POOL_SERVER_CAPEST_BREACHED, SYSERR_POOL_CREATE_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_POOL_UPDATE_FAILED_INCONSISTENT, SYSERR_POOL_UPDATE_FAILED, SYSERR_POOL_SERVER_STATE_UPDATE_FAILED, SYSERR_POOL_UPDATE_SERVER_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_POOL_UPDATE_LB_ALGO_NO_STATE, SYSERR_SHM_HASH_INSERT_FAILED, SYSERR_SE_RPC_PROXY_STREAM_NOT_CONNECTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SE_RPC_PROXY_STREAM_WRITE_FAILED, SYSERR_SE_RPC_PROXY_UNABLE_TO_FIND_SYNC_RPC, SYSERR_PRST_PROF_OBJECT_TYPE_MISMATCH,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_PRST_PROF_OBJECT_NOT_FOUND, SYSERR_PRST_PROF_NULL, SYSERR_PRST_PROF_OBJECT_PRESENT, SYSERR_MS_OBJECT_EXISTS, SYSERR_MS_OBJECT_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MS_GRP_OBJECT_EXISTS, SYSERR_MS_GRP_OBJECT_NOT_FOUND, SYSERR_HTTP_POLICY_CREATE_FAILED, SYSERR_HTTP_POLICY_CREATE_EXISTS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_HTTP_POLICY_CREATE_SHM_INSERT, SYSERR_HTTP_POLICY_UPDATE_FAILED, SYSERR_STR_GRP_REGISTER_INVAL, SYSERR_STR_GRP_DEREGISTER_INVAL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_AG_CREATE_POST_FAILED, SYSERR_AG_CREATE_PRE_FAILED, SYSERR_AG_UPDATE_FAILED, SYSERR_APP_PROF_UPDATE_TYPE_MISMATCH,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_APP_PROF_CREATE_INVALID_TYPE, SYSERR_APP_PROF_UPDATE_PRESERVE_CLIENT_IP_CHANGED, SYSERR_APP_PROF_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_POOL_GRP_MEMBER_NOT_FOUND, SYSERR_POOL_GRP_UPDATE_FAILED, SYSERR_POOL_GRP_CREATE_FAILED, SYSERR_POOL_GRP_UPDATE_FAILED_INCONSISTENT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_L4PS_CONNPOL_POOL_FAILED, SYSERR_L4PS_CONNPOL_POOL_GRP_FAILED, SYSERR_L4PS_CONNPOL_IP_GRP_FAILED, SYSERR_L4PS_CREATE_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ANT_PROF_NOT_FOUND, SYSERR_LB_CHASH_INVALID_TYPE, SYSERR_SEC_POLICY_NOT_FOUND, SYSERR_TECH_SUPPORT_COLLECTION_NOT_DONE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_TECH_SUPPORT_COLLECTION_SUCCESS, SYSERR_TECH_SUPPORT_COLLECTION_STARTED, SYSERR_TECH_SUPPORT_COLLECTION_ONGOING,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_TECH_SUPPORT_COLLECTION_IN_PROGRESS, SYSERR_TECH_SUPPORT_COLLECTION_SUCCESS_WITH_ERRORS, SYSERR_TECH_SUPPORT_COLLECTION_ABORTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_TECH_SUPPORT_COLLECTION_STATUS_FILE_NOT_FOUND, SYSERR_TECH_SUPPORT_INVALID_FILENAME, SYSERR_TECH_SUPPORT_COLLECTION_STATUS_IN_PROGRESS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_TECH_SUPPORT_INPUT_INVALID_LEVEL, SYSERR_TECH_SUPPORT_INPUT_INVALID_SLUG, SYSERR_DATASCRIPT_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_TECH_SUPPORT_COLLECTION_PREMATURELY_STOPPED, SYSERR_TECH_SUPPORT_V1_DEPRECATED, SYSERR_TECHSUPPORT_COLLECTION_STARTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_TECH_SUPPORT_V2_DEPRECATED, SYSERR_TECH_SUPPORT_FOLLOWER_NOT_SUPPORTED, SYSERR_TECH_SUPPORT_INVALID_DURATION_FORMAT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_NET_PROF_NOT_FOUND, SYSERR_ALBSVC_FILE_UPLOAD_IN_PROGRESS, SYSERR_ALBSVC_FILE_UPLOAD_SUCCESS, SYSERR_ALBSVC_FILE_UPLOAD_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_FILE_UPLOAD_STARTED, SYSERR_ALBSVC_CASE_ID_MISSING, SYSERR_ALBSVC_ASSET_ID_MISSING, SYSERR_ALBSVC_AUTH_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_REMOTE_SERVER_ERROR, SYSERR_ALBSVC_DISCONNECTED, SYSERR_ALBSVC_DEREGISTERED, SYSERR_ALBSVC_CANNOT_READ_RESPONSE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_CONTROLLER_ALREADY_REGISTERED, SYSERR_ALBSVC_SESSION_NOT_SET, SYSERR_ALBSVC_CLIENT_TIME_OUT, SYSERR_ALBSVC_CONNECTION_REFUSED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_HTTP_CLIENT_ERROR, SYSERR_ALBSVC_RESOURCE_NOT_FOUND, SYSERR_ALBSVC_INVALID_QUERY_PARAM_VALUE, SYSERR_ALBSVC_INVALID_QUERY_PARAM,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_FILE_UPLOAD_CONFLICT, SYSERR_ALBSVC_INTERNAL_ERROR, SYSERR_ALBSVC_PROXY_AUTH_FAILURE, SYSERR_ALBSVC_LOGIN_URL_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_PROXY_CONFIG_PARSE_FAILURE, SYSERR_ALBSVC_LOGIN_REQ_FAILED, SYSERR_ALBSVC_REGISTRATION_FAILED, SYSERR_ALBSVC_DATABASE_WRITE_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_DEREGISTRATION_FAILED, SYSERR_ALBSVC_MALFORMED_PAYLOAD, SYSERR_ALBSVC_CASE_GET_FAILED, SYSERR_ALBSVC_CASE_CREATE_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_CASES_GET_FAILED, SYSERR_ALBSVC_CASE_UPDATE_FAILED, SYSERR_ALBSVC_STATUS_REQ_FAILED, SYSERR_ALBSVC_CRS_DOWNLOAD_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_CRS_DEPLOY_FAILED, SYSERR_ALBSVC_CRS_DATA_NOT_FOUND, SYSERR_ALBSVC_DATASTORE_READ_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_CRS_AUTO_DEPLOY_MALFORMED_URL, SYSERR_ALBSVC_CRS_DOWNLOAD_SIG_MISMATCH, SYSERR_ALBSVC_CRS_DOWNLOAD_FORBIDDEN,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_DATABASE_READ_ERROR, SYSERR_ALBSVC_AVICLIENT_ERROR, SYSERR_ALBSVC_CRS_AUTODEPLOY_SUCCESS, SYSERR_ALBSVC_EMPTY_METADATA,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_USERS_REQ_FAILED, SYSERR_ALBSVC_USER_DETAIL_REQ_FAILED, SYSERR_ALBSVC_CRS_URL_DECODE_FAILED, SYSERR_ALBSVC_NAME_RESOLUTION_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_x509_ERROR, SYSERR_ALBSVC_REGISTRATION_DISABLED, SYSERR_ALBSVC_FEATURE_OPT_IN_NOT_ENABLED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_USER_AGENT_DB_BATCH_SIZE_EXCEEDED, SYSERR_ALBSVC_LICENSE_STATUS_CHECK_FAILED, SYSERR_ALBSVC_FEATURE_NOT_ALLOWED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_NO_TENANT_INFO_IN_CTX, SYSERR_ALBSVC_DATABASE_UPDATE_ERROR, SYSERR_ALBSVC_ALREADY_DEREGISTERED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_FILE_DOWNLOAD_IN_PROGRESS, SYSERR_ALBSVC_FILE_DOWNLOAD_SUCCESS, SYSERR_ALBSVC_FILE_DOWNLOAD_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ALBSVC_FILE_DOWNLOAD_STARTED, SYSERR_ALBSVC_CLOUD_LICENSING_ENABLED, SYSERR_ALBSVC_SITE_ID_MISSING, SYSERR_ALBSVC_DATASTORE_WRITE_ERROR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_SYSTEM_STARTED, SYSERR_UPGRADE_CONTROLLER_STARTED, SYSERR_UPGRADE_SEGROUP_STARTED, SYSERR_RESUME_SEGROUP_STARTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_PATCH_SYSTEM_STARTED, SYSERR_PATCH_CONTROLLER_STARTED, SYSERR_PATCH_SEGROUP_STARTED, SYSERR_PATCHSEGROUP_RESUME_STARTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ROLLBACK_SYSTEM_STARTED, SYSERR_ROLLBACK_CONTROLLER_STARTED, SYSERR_ROLLBACK_SEGROUP_STARTED, SYSERR_ROLLBACKPATCH_SYSTEM_STARTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ROLLBACKPATCH_CONTROLLER_STARTED, SYSERR_ROLLBACKPATCH_SEGROUP_STARTED, SYSERR_UPGRADE_OPS_VS_DISRUPTION_WARNINGS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_COMPLIANCE_MODE_TRANSITION_STARTED, SYSERR_UPGRADE_OPS_COMPLIANCE_MODE_ERROR_RECOVERY_STARTED, SYSERR_CONCURRENT_UPGRADE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RESTORE_CONTROLLER_STARTED, SYSERR_EVAL_UPGRADE_SYSTEM_STARTED, SYSERR_EVAL_UPGRADE_CONTROLLER_STARTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_EVAL_UPGRADE_SEGROUP_STARTED, SYSERR_EVAL_RESUME_SEGROUP_STARTED, SYSERR_EVAL_PATCH_SYSTEM_STARTED, SYSERR_EVAL_PATCH_CONTROLLER_STARTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_EVAL_PATCH_SEGROUP_STARTED, SYSERR_EVAL_PATCHSEGROUP_RESUME_STARTED, SYSERR_EVAL_ROLLBACK_SYSTEM_STARTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_EVAL_ROLLBACK_CONTROLLER_STARTED, SYSERR_EVAL_ROLLBACK_SEGROUP_STARTED, SYSERR_EVAL_ROLLBACKPATCH_SYSTEM_STARTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_EVAL_ROLLBACKPATCH_CONTROLLER_STARTED, SYSERR_EVAL_ROLLBACKPATCH_SEGROUP_STARTED, SYSERR_EVAL_RESTORE_CONTROLLER_STARTED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_IN_PROGRESS, SYSERR_UPGRADE_OPS_CHECK_LICENSE, SYSERR_UPGRADE_OPS_CHECK_CLUSTER_STATE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_CLUSTER_DISK_SPACE, SYSERR_UPGRADE_OPS_CHECK_SE_GROUP_INPROGRESS, SYSERR_UPGRADE_OPS_CHECK_VERSION_COMPATIBILITY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_SE_REACHABILITY, SYSERR_UPGRADE_OPS_CHECK_SE_GROUP_CLOUD_READY, SYSERR_UPGRADE_OPS_CHECK_SE_DISK_SPACE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_VS_DISRUPUTION, SYSERR_UPGRADE_OPS_CHECK_ROLLBACK_BASICS, SYSERR_UPGRADE_OPS_CHECK_CONTROLLER_VERSION_ROLLBACK,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_SE_VERSION_ROLLBACK, SYSERR_UPGRADE_OPS_CHECK_CONTROLLER_ROLLBACK, SYSERR_UPGRADE_OPS_CHECK_SE_GROUP_ROLLBACK,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_SYSTEM_ROLLBACK, SYSERR_UPGRADE_OPS_CHECK_IMAGE_VERSION, SYSERR_UPGRADE_OPS_CHECK_DOCKER_DISK_SPACE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_ACTIVE_VERSIONS, SYSERR_UPGRADE_OPS_CHECK_BACKUP, SYSERR_UPGRADE_OPS_CHECK_SE_GROUP_ERROR_RECOVERY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_SE_GROUP_SUSPENDED, SYSERR_UPGRADE_OPS_CHECK_SYSTEM_FLAG, SYSERR_UPGRADE_OPS_PREVIEW_RESPONSE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_PREVIOUS_PARTITION_COMPATIBILITY, SYSERR_UPGRADE_OPS_CHECK_IMAGE_COMPATIBILITY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_CONTROLLER_PATCH_COMPATIBILITY, SYSERR_UPGRADE_OPS_CHECK_SE_PATCH_COMPATIBILITY, SYSERR_UPGRADE_OPS_CHECK_SE_ROLLBACK_V1,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_ALERTS, SYSERR_UPGRADE_OPS_CHECK_DOCKER_IMAGE, SYSERR_UPGRADE_OPS_CHECK_UPGRADE_STATE_FOR_RESUME_OPS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_PATCH_IMAGE, SYSERR_UPGRADE_OPS_CHECK_ALLOW_SE_GROUP_ROLLBACK, SYSERR_UPGRADE_OPS_CHECK_SKIP_SE_GROUPS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_CHECK_CLOUD_COMPATIBILITY, SYSERR_UPGRADE_OPS_CHECK_SKIP_ALL_SE_GROUPS, SYSERR_UPGRADE_OPS_CHECK_MAND_PATCH_ROLLBACK,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_GSLB_FEATURE_CHECK, SYSERR_UPGRADE_OPS_CONFIGURATION_CHECK, SYSERR_UPGRADE_OPS_AVI_ESSENTIALS_CHECK,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ROLLBACK_OPS_CHECK_VS_DISRUPUTION, SYSERR_UPGRADE_OPS_CHECK_SE_LINUX_ENABLED, SYSERR_UPGRADE_OPS_CHECK_PREVIOUS_DOCKER_IMAGE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_DOCKER_VERSION_CHECK, SYSERR_UPGRADE_OPS_IP_TYPE_CHECK, SYSERR_UPGRADE_OPS_CHECK_SE_LICENSE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPGRADE_OPS_AVI_CLOUD_SERVICES_CHECK, SYSERR_CHECK_LICENSE, SYSERR_CHECK_CLUSTER_STATE, SYSERR_CHECK_CLUSTER_DISK_SPACE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_SE_GROUP_UPGRADE_OPS_INPROGRESS, SYSERR_CHECK_VERSION_COMPATIBILITY, SYSERR_CHECK_SE_REACHABILITY, SYSERR_CHECK_SE_GROUP_CLOUD_READY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_SE_DISK_SPACE, SYSERR_CHECK_VS_DISRUPUTION, SYSERR_CHECK_ROLLBACK_BASICS, SYSERR_CHECK_CONTROLLER_VERSION_ROLLBACK,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_SE_VERSION_ROLLBACK, SYSERR_CHECK_CONTROLLER_ROLLBACK, SYSERR_CHECK_SE_GROUP_ROLLBACK, SYSERR_CHECK_SYSTEM_ROLLBACK,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_IMAGE_VERSION, SYSERR_CHECK_DOCKER_DISK_SPACE, SYSERR_CHECK_ACTIVE_VERSIONS, SYSERR_CHECK_BACKUP,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_SE_GROUP_ERROR_RECOVERY, SYSERR_CHECK_SE_GROUP_SUSPENDED, SYSERR_CHECK_SYSTEM_FLAG, SYSERR_CHECK_PREVIOUS_PARTITION_COMPATIBILITY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_IMAGE_COMPATIBILITY, SYSERR_CHECK_CONTROLLER_PATCH_COMPATIBILITY, SYSERR_CHECK_SE_PATCH_COMPATIBILITY, SYSERR_CHECK_SE_ROLLBACK_V1,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_ALERTS, SYSERR_CHECK_DOCKER_IMAGE, SYSERR_CHECK_UPGRADE_STATE_FOR_RESUME_OPS, SYSERR_CHECK_PATCH_IMAGE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_ALLOW_SE_GROUP_ROLLBACK, SYSERR_CHECK_SKIP_SE_GROUPS, SYSERR_CHECK_CLOUD_COMPATIBILITY, SYSERR_CHECK_SKIP_ALL_SE_GROUPS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_MAND_PATCH_ROLLBACK, SYSERR_GSLB_FEATURE_CHECK, SYSERR_CONFIGURATION_CHECK, SYSERR_AVI_ESSENTIALS_CHECK,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_SE_LINUX_ENABLED, SYSERR_CHECK_PREVIOUS_DOCKER_IMAGE, SYSERR_DOCKER_VERSION_CHECK, SYSERR_IP_TYPE_CHECK, SYSERR_CHECK_SE_LICENSE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CONFIG_CHECK, SYSERR_GSLB_MANUAL_RESUME_CHECK, SYSERR_CHECK_K8S_ACCESS, SYSERR_CHECK_IMAGE_AVAILABILITY, SYSERR_CHECK_POD_IMAGE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_REMOTE_IMAGE_REF, SYSERR_CHECK_CONTROLLER_PACKAGE, SYSERR_CHECK_PATCH_PACKAGE, SYSERR_CHECK_CONSENT, SYSERR_CHECK_CONFIG_VERSION,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_CONFIG_FIPS, SYSERR_CHECK_CONFIG_FILES, SYSERR_CHECK_CONFIG_IMAGES, SYSERR_CHECK_CONFIG, SYSERR_CHECK_CONFIG_SE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_CONFIG_ENV, SYSERR_CHECK_CONFIG_ACTIVE_VERSIONS, SYSERR_CHECK_RESTORE_PATCH, SYSERR_GSLB_MAINTENANCE_MODE_CHECK,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_VERSION_MIGRATION, SYSERR_CHECK_CLUSTER_SINGLE_NODE, SYSERR_CONTROLLER_SE_SECURE_CHANNEL_CERTIFICATE_VALIDATION,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_DRYRUN_CAPABILITY, SYSERR_CHECK_DRYRUN_FIPS_MODE, SYSERR_CHECK_CONFIG_BUNDLE, SYSERR_CHECK_ROLLBACK_FIPS_MODE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_TIME_SYNC, SYSERR_CHECK_ROLLBACK_SYSTEM, SYSERR_CHECK_LICENSE_CONSUMPTION, SYSERR_CHECK_LINUX_INFRA_HEALTH,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_GSLBSERVICE_DISRUPTION, SYSERR_CHECK_MAX_DISK_SIZE_PERCENT_TS, SYSERR_CHECK_MIN_FREE_DISK_REQUIRED_TS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_SE_REACHABILITY_TS, SYSERR_CHECK_CLOUD_STATE, SYSERR_CHECK_API_PROTECTION_SEG_ROLLBACK, SYSERR_MC_UPGRADE_LICENSE_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_UPGRADE_CLUSTER_NOT_READY, SYSERR_MC_DISK_INSUFFICIENT_ERR, SYSERR_MC_CLUSTER_INPROGRESS_ERR, SYSERR_MC_SEGROUP_INPROGRESS_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_UPGRADE_INCOMPATIBLE_IMAGE_AND_PATCH, SYSERR_MC_UPGRADE_INCOMPATIBLE_FROM_TO_IMAGE, SYSERR_MC_UPGRADE_INCOMPATIBLE_PATCH,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_UPGRADE_INCOMPATIBLE_SE_GROUP_IMAGE, SYSERR_MC_SE_UNREACHABLE_ERR, SYSERR_MC_SE_GROUP_CLOUD_NOT_READY_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_UPGRADE_VS_DISRUPTED_ERR, SYSERR_MC_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_SE_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_ROLLBACK_INFO_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_CONTROLLER_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_SYSTEM_ROLLBACK_NOT_POSSIBLE, SYSERR_MC_IMAGE_INVALID_ERR, SYSERR_MC_ACTIVE_VERSIONS_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_BACKUP_ERR, SYSERR_MC_ROLLBACK_ON_ERR, SYSERR_MC_SUSPENDED_ERR, SYSERR_MC_SYSTEM_FLAG_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_PREVIOUS_PARTITION_INCOMPATIBLE_ERR, SYSERR_MC_IMAGE_VALIDATION_ERR, SYSERR_MC_CONTROLLER_PATCH_ERR, SYSERR_MC_SE_PATCH_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_SE_ROLLBACK_V1_ERR, SYSERR_MC_ALERTS, SYSERR_MC_ROLLBACK_DOCKER_IMAGE_ERR, SYSERR_MC_RESUME_OPS_ERR, SYSERR_MC_CHECK_PATCH_IMAGE_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_CHECK_SE_GROUP_ROLLBACK_ERR, SYSERR_MC_SKIP_SE_GROUPS_ERR, SYSERR_MC_CHECK_CLOUD_COMPATIBILITY_ERR, SYSERR_MC_SKIP_ALL_SE_GROUPS_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_MAND_PATCH_ROLLBACK_ERR, SYSERR_MC_GSLB_LEADER_ERR, SYSERR_MC_SYSTEM_CONFIGURATION_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_AVI_ESSENTIALS_OPERATION_NOT_SUPPORTED_ERROR, SYSERR_MC_ROLLBACK_VS_DISRUPTED_ERR, SYSERR_MC_SE_LINUX_ENABLED_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_PREVIOUS_DOCKER_IMAGE_NOT_PRESENT_ERR, SYSERR_MC_DOCKER_VERSION_INCOMPATIBLE_ERROR, SYSERR_MC_IP_TYPE_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_INVALID_SE_LICENSE_ERR, SYSERR_MC_AVI_CLOUD_SERVICES_OPERATION_NOT_SUPPORTED_ERROR, SYSERR_MC_CONFIG_CHK_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_GSLB_MANUAL_RESUME_ERR, SYSERR_MC_K8S_ACCESS_ERR, SYSERR_MC_IMAGE_AVAILABILITY_ERR, SYSERR_MC_POD_IMAGE_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_REMOTE_IMAGE_REF_ERR, SYSERR_MC_CONTROLLER_PACKAGE_ERR, SYSERR_MC_PATCH_PACKAGE_ERR, SYSERR_MC_CONSENT_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_CONFIG_VERSION_ERR, SYSERR_MC_CONFIG_FIPS_ERR, SYSERR_MC_CONFIG_FILES_ERR, SYSERR_MC_CONFIG_IMAGES_ERR, SYSERR_MC_CONFIG_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_CONFIG_SE_ERR, SYSERR_CHECK_CONFIG_ENV_ERR, SYSERR_CHECK_CONFIG_ACTIVE_VERSIONS_ERR, SYSERR_CHECK_RESTORE_PATCH_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_GSLB_MAINTENANCE_MODE_ERR, SYSERR_CHECK_VERSION_MIGRATION_ERR, SYSERR_CHECK_CLUSTER_SINGLE_NODE_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CONTROLLER_SE_SECURE_CHANNEL_CERTIFICATE_VALIDATION_ERR, SYSERR_CHECK_DRYRUN_CAPABILITY_ERR, SYSERR_CHECK_SE_AVAILABLE_MEMORY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_SE_AVAILABLE_MEMORY_ERR, SYSERR_CHECK_DRYRUN_FIPS_MODE_ERR, SYSERR_CHECK_CONFIG_BUNDLE_ERR, SYSERR_CHECK_ROLLBACK_FIPS_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MC_CHECK_TIME_SYNC_ERR, SYSERR_CHECK_ROLLBACK_SYSTEM_ERR, SYSERR_MC_CHECK_LICENSE_CONSUMPTION_ERR, SYSERR_MC_LINUX_INFRA_HEALTH_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_GSLBSERVICE_DISRUPTED_ERR, SYSERR_CHECK_MAX_DISK_SIZE_PERCENT_TS_ERR, SYSERR_CHECK_MIN_FREE_DISK_REQUIRED_TS_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_SE_REACHABILITY_TS_ERR, SYSERR_MC_CHECK_CLOUD_STATE_ERR, SYSERR_MC_CHECK_API_PROTECTION_SEG_ROLLBACK_ERR, SYSERR_VS_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_DEFAULT_POOL_NOT_FOUND, SYSERR_PROXY_POOL_NOT_FOUND, SYSERR_MISSING_APPLICATION_PROFILE, SYSERR_APP_PROFILE_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_WAF_POLICY_NOT_FOUND, SYSERR_DUPLICATE_VS, SYSERR_WRONG_VS_TYPE, SYSERR_POOL_IN_PG_NOT_FOUND, SYSERR_PG_IN_PG,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LB_MODULE_INIT_FAILED, SYSERR_CONNPOOL_MODULE_INIT_FAILED, SYSERR_LBACTION_MODULE_INIT_FAILED, SYSERR_PG_NOT_FOUND, SYSERR_DUPLICATE_POOL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSL_PROFILE_NOT_FOUND, SYSERR_PKI_PROFILE_NOT_FOUND, SYSERR_SSL_CERTKEY_NOT_FOUND, SYSERR_SET_CIPHER_LIST_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SET_CIPHER_SUITES_FAILED, SYSERR_WRONG_TLS_VERSION, SYSERR_ERR_PAGE_PROFILE_NO_PAGES, SYSERR_ERR_PAGE_PROFILE_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_ERR_PAGE_NOT_FOUND, SYSERR_ERR_PAGE_REDIRECT_NOT_CONFIGURED, SYSERR_HM_NOT_FOUND, SYSERR_HTTPS_HM_MISSING_CONFIG,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SNI_PARENT_UNCONFIGURED, SYSERR_SNI_PARENT_NOT_FOUND, SYSERR_HTTP_POLICYSET_NOT_FOUND, SYSERR_VSDS_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_MULTIPLE_SP_POOLS_CONFIGURED, SYSERR_L4SSL_VS_INVALID_CLIENT_CERT, SYSERR_CR_PROFILE_NOT_FOUND, SYSERR_POOL_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LISTEN_PORTS_CFG_FAILED, SYSERR_STRGRP_NOT_FOUND, SYSERR_SSOPOLICY_NULL, SYSERR_SSOPOLICY_NO_AUTHN_POLICY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSOPOLICY_NO_AUTH_PROFILE, SYSERR_AUTHPROFILE_NULL, SYSERR_SSOPOLICY_INVALID_AUTH_TYPE, SYSERR_SSOPOLICY_MISSING_SAML_IDP_SP_CONF,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SAML_SP_CONFIG_NULL, SYSERR_SAML_SINGLE_SIGNON_URL_NULL, SYSERR_SAML_SP_METADATA_NULL, SYSERR_SAML_COOKIE_NAME_OR_KEY_NULL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LASSO_SERVER_CONFIG_FAILURE, SYSERR_SAML_ENTITY_ID_NULL, SYSERR_BASIC_AUTH_CONF_NULL, SYSERR_LDAP_REQUIRE_FIELD_EMPTY,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LDAP_URL_INVALID_PARAMETER, SYSERR_LDAP_BAD_SCHEME, SYSERR_LDAP_BAD_ENCLOSURE, SYSERR_LDAP_BAD_EXTNS, SYSERR_LDAP_BAD_FILTER,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LDAP_BAD_SCOPE, SYSERR_LDAP_BAD_ATTRS, SYSERR_LDAP_BAD_HOST, SYSERR_LDAP_USER_ATTRIBUTE_NULL, SYSERR_LDAP_URL_PARSE_FAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LDAP_INVALID_URL, SYSERR_AUTH_PROFILE_NOT_FOUND, SYSERR_SSO_TYPE_MISMATCH, SYSERR_NULL_CACHE_CONFIG, SYSERR_SSOPOLICY_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CLIENT_AUTH_PROFILE_NOT_FOUND, SYSERR_CLIENT_AUTH_PROFILE_NULL, SYSERR_SAML_IDP_METADATA_NULL, SYSERR_INVALID_OAUTH_LOGOUT_URI_HTTP_SCHEME,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LASSO_SERVER_ERROR_ADD_PROVIDER_FAILED, SYSERR_LASSO_SERVER_ERROR_ADD_PROVIDER_PROTOCOL_MISMATCH,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LASSO_PARAMS_PROVIDERS_UNAVAILABLE, SYSERR_JWTPROFILE_NULL, SYSERR_JWTSERVER_PROFILE_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_AUTH_PROFILE_JWTSERVER_PROFILE_OBJECT_NULL, SYSERR_JWT_NAME_NULL, SYSERR_JWT_LOCATION_NULL, SYSERR_JWT_VS_AUDIENCE_NULL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSO_JWT_VS_INFO_NULL, SYSERR_SUB_CONFIG_FAILURE, SYSERR_BIND_WAF_FAILURE, SYSERR_PROXY_INIT_FAILURE, SYSERR_GRPC_CONFIG_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_BIND_POLICY_FAILURE, SYSERR_BIND_PROFILE_FAILURE, SYSERR_BIND_LUA_SCRIPT_FAILURE, SYSERR_LUA_SCRIPT_SYNTAX, SYSERR_MISSING_LDAP_VS_CONF,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SECPOL_RATE_LIMITER_HTTP_LOC_ERR, SYSERR_BIND_CSRF_FAILURE, SYSERR_COMPR_FLTR_UNKNOWN_LEVEL, SYSERR_COMPR_MIME_TYPE_NOT_INITED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_IPADDRGRP_NOT_FOUND, SYSERR_DUPLICATE_UPSTREAM, SYSERR_UPSTREAM_COMPLEX_COMPILATION_FAILED, SYSERR_UPSTREAM_INIT_NO_SERVERS,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPSTREAM_INVALID_ADDRESS, SYSERR_UPSTREAM_INVALID_HOST, SYSERR_UPSTREAM_WITHOUT_PORT, SYSERR_UPSTREAM_INVALID_PARAMETER,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPSTREAM_INVALID_VALUE, SYSERR_UPSTREAM_LB_NO_PEERS, SYSERR_UPSTREAM_LB_NULL_CONF, SYSERR_UPSTREAM_PARSE_URL_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_UPSTREAM_UNSUPPORTED_PARAMETER, SYSERR_PAA_NO_OBJECT, SYSERR_PAA_FILESYSTEM_CREATE_FAIL, SYSERR_PAA_CACHE_CREATE_FAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_WAF_INIT_FAIL, SYSERR_WAF_INIT_SIGNATURES_FAIL, SYSERR_WAF_WHITELIST_INIT_FAIL, SYSERR_WAF_PSM_INIT_FAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_WAF_INIT_APP_SIGNATURES_FAIL, SYSERR_WAF_POSTPROCESS_SIGNATURES_FAIL, SYSERR_WAF_ALLOWLIST_INIT_FAIL, SYSERR_WAF_POLICY_INIT_FAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_WAF_INIT_CRS_OVERRIDE_FAIL, SYSERR_WAF_INIT_INSUFFICIENT_APP_LEARNING_MEMORY, SYSERR_BOT_INIT_FAIL, SYSERR_BOT_ALLOWLIST_INIT_FAIL,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_BOT_POLICY_NOT_FOUND, SYSERR_BIND_BOT_FAILURE, SYSERR_BOT_MAPPING_NOT_FOUND, SYSERR_BOT_CONSOLIDATOR_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_APPLICATION_INSIGHTS_NOT_FOUND, SYSERR_POLICY_HASH_REMOVE, SYSERR_POLICY_V4_TREE_CREATION, SYSERR_POLICY_V6_TREE_CREATION,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_POLICY_APPLOG_PROV, SYSERR_POLICY_CLIENT_IP_GROUP_UUID, SYSERR_POLICY_PATH_MATCH_GROUP_UUID, SYSERR_POLICY_QUERY_MATCH_GROUP_UUID,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_POLICY_UNKOWN_MATCH_ACTION, SYSERR_POLICY_INVALID_HDR_ACTIONS, SYSERR_POLICY_RWH_COOKIE_OPER, SYSERR_POLICY_HASH_INSERT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSL_CERT_NOT_PRESENT, SYSERR_SSL_CERT_KEY_NOT_PRESENT, SYSERR_SSL_CTX_CREATION_ERR, SYSERR_SSL_CERT_READ_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSL_CERT_LOAD_TO_CTX, SYSERR_SSL_CERT_IDX_TO_CTX, SYSERR_SSL_KEY_LOAD_TO_CTX, SYSERR_SSL_CERT_CHAIN_READ_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSL_CERT_CHAIN_ADD_FAILURE, SYSERR_SSL_KEY_READ_FAILURE, SYSERR_SSL_CERTIFICATE_AND_KEY_MISMATCH, SYSERR_SSL_CIPHER_LIST_NOT_SET,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSL_CIPHER_SUITES_NOT_SET, SYSERR_SSL_PKI_CLIENT_CA, SYSERR_SSL_DHPARAM_FAILURE, SYSERR_SSL_ECDH_FAILURE, SYSERR_SSL_HOSTMAP_FAILURE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSL_SESSION_CACHE_INIT, SYSERR_SSL_SESSION_TIX_KEYS_INIT, SYSERR_SSL_PKI_CRL, SYSERR_PKI_PROFILE_CONFIG_NO_CA_CERT,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_DUPLICATE_PKI_PROFILE, SYSERR_SET_SSL_STAPLE_FAILURE, SYSERR_ICAP_PROFILE_NOT_FOUND, SYSERR_SSL_EVH_PARENT_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSL_MEMPOOL_NAME_LEN_EXCEEDED, SYSERR_SSL_MEMPOOL_UUID_LEN_EXCEEDED, SYSERR_CONFIG_OBJ_NAME_LEN_EXCEEDED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_SSL_EVH_PARENT_IN_FAULT_STATE, SYSERR_SPL_OBJ_NAME_LEN_EXCEEDED, SYSERR_SSL_PKI_CRL_FILEOBJECT_NOT_FOUND,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_AUTH_MISSING_OAUTH_PROFILE, SYSERR_OAUTH_MISSING_AUTHZ_EP, SYSERR_OAUTH_MISSING_TOKEN_EP, SYSERR_OAUTH_MISSING_INTROSPECTION_EP,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_INVALID_JWT_PROFILE_OBJECT, SYSERR_OAUTH_MISSING_POOL_OBJECT, SYSERR_MISSING_OAUTH_VS_CONF, SYSERR_OAUTH_MISSING_REDIRECT_URI,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_OAUTH_MISSING_CLIENT_CREDENTIALS, SYSERR_OAUTH_MISSING_RS_CREDENTIALS, SYSERR_OAUTH_MISSING_ISSUER, SYSERR_OAUTH_MISSING_USERINFO_EP,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CSRF_POLICY_NOT_FOUND, SYSERR_CSRF_INIT_FAIL, SYSERR_LIC_CONVERT_METERED_BANDWIDTH_NON_AZURE_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_LIC_RESERVE_LEDGER_METADATA_REQ_UNIDENTIFIED, SYSERR_LIC_CONVERT_FORMULA_NOT_DEFINED, SYSERR_LIC_CONVERT_MALFORMED_PAYLOAD,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_FILE_CONTENT_DECODE_FAILED, SYSERR_RETENTION_POLICY_ERR, SYSERR_RETENTION_POLICY_SERVICE_UNAVAILABLE,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_RETENTION_POLICY_INVALID_ACTION, SYSERR_SVC_FAILURE, SYSERR_SVC_SUCCESS, SYSERR_PROTOBUF_MEM_CHUNK_SIZE_EXCEEDED,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_REPORT_GENERATION_STARTED, SYSERR_REPORT_GENERATION_FAILED, SYSERR_CHECK_MIN_FREE_DISK_REQUIRED_REPORTING,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_MIN_FREE_DISK_REQUIRED_REPORTING_ERR, SYSERR_CHECK_CLUSTER_REPORTING, SYSERR_CHECK_CLUSTER_REPORTING_ERR,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_UPGRADE_IN_PROGRESS, SYSERR_CHECK_UPGRADE_IN_PROGRESS_ERR, SYSERR_CHECK_WAF_ENABLED_REPORTING,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_WAF_ENABLED_REPORTING_ERR, SYSERR_CHECK_REPORT_SE_GROUP_VERSION, SYSERR_CHECK_REPORT_LOWER_SE_GROUP_VERSION,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_REPORT_DATA_SAMPLES, SYSERR_CHECK_REPORT_DATA_SAMPLES_ERR, SYSERR_CHECK_WAAP_ENABLED_REPORTING,
-                </div>
-                                <div style="font-size: small">
-                  - SYSERR_CHECK_WAAP_ENABLED_REPORTING_ERR.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Keyless license subscription details.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>site</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Site information for the controller registration.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>site_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Site id the controller is registered with.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>site_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Site name the controller is registered with.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>user_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Name of the portal user.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1123,7 +349,31 @@ Parameters
         
                                                 <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>name</b>
+                <b>configpb_attributes</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protobuf versioning for config pbs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>created_by</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -1133,10 +383,151 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the policy.
+                  - Identifies the user type that created the configuration.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Nil for non-service users.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SERVICE_USER.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>version</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version sequence number that monotonically advances with each configuration update event.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>connected_at</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timestamp of last successful connection.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>secs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>usecs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>connectivity_status</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Connectivity status of controller with albservices.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - ALBSERVICES_CONNECTIVITY_UNKNOWN, ALBSERVICES_DISCONNECTED, ALBSERVICES_CONNECTED.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as ALBSERVICES_CONNECTIVITY_UNKNOWN.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>error</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Descriptive error message.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1145,10 +536,10 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>policy</b>
+                <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                                        <span style="color: purple">str</span>
                                                             </div>
             </td>
             <td>
@@ -1158,10 +549,60 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Policy specification.
+                  - Name of the albservicesstatus object.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>registration_status</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Registration status of the controller with albservices.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - ALBSERVICES_REGISTRATION_UNKNOWN, ALBSERVICES_REGISTERED, ALBSERVICES_DEREGISTERED.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as ALBSERVICES_REGISTRATION_UNKNOWN.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>services_health</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Health of hosted services.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1172,7 +613,76 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>disk</b>
+                <b>available</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Availability status of service.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>controllerReason</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Error message of failure if the service is unoperational, updated by controller.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Unique id for each service.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>last_updated_time</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                             <span style="color: purple">dict / elements=dictionary </span>
@@ -1182,10 +692,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Disk usage policy.
+                  - Timestamp of the last update on health of service.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1197,58 +707,41 @@ Parameters
                             <td class="elbow-placeholder"></td>
                                     <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>action</b>
+                <b>secs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                                        <span style="color: purple">int</span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Action to trigger when policy conditions are met.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                <tr>
                                     <td class="elbow-placeholder"></td>
                             <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="4">
+                                    <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>args</b>
+                <b>usecs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                                        <span style="color: purple">int</span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Arguments for the action.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="3">
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -1260,715 +753,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name of the argument.
+                  - Name of service.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>value</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Value for the argument.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                        <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>path</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Path to invoke for the action.
-                </div>
-                                <div style="font-size: small">
-                  - For example, for api action, this would be an api endpoint.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>type</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Type of action to perform such as api, rpc, script, etc.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - ACTION_API, ACTION_GRPC, ACTION_SCRIPT, ACTION_RPC.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                        <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>filepath</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Path against which disk usage is measured, user cannot modify the path.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>max_disk_percent</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Trigger the action when disk usage percent exceeds on the specified path.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-25.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is percent.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>min_free_disk_percent</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Trigger the action when total available diskspace falls below this level.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 5-50.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is percent.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>retain</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - When number of files at this path does not exceed this limit, skip renteion action regardless of other disk criteria.
-                </div>
-                                <div style="font-size: small">
-                  - Trigger the action when no other disk criteria is specified and number of files exceed the retain limit.
-                </div>
-                                <div style="font-size: small">
-                  - Subdirectories do not count.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                        <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>object</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Objects policy.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>action</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Action to trigger when policy conditions are met.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>args</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Arguments for the action.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>name</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Name of the argument.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>value</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Value for the argument.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                        <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>path</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Path to invoke for the action.
-                </div>
-                                <div style="font-size: small">
-                  - For example, for api action, this would be an api endpoint.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>type</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Type of action to perform such as api, rpc, script, etc.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - ACTION_API, ACTION_GRPC, ACTION_SCRIPT, ACTION_RPC.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                        <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>limit</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Maximum number of objects allowed in the system.
-                </div>
-                                <div style="font-size: small">
-                  - When the limit exceeds, action is invoked for the oldest objects.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-100.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>model_name</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Name of the object model.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                        <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>periodic</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Periodic policy.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>action</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Action to trigger when policy conditions are met.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>args</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Arguments for the action.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>name</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Name of the argument.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="3">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>value</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Value for the argument.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                        <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>path</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Path to invoke for the action.
-                </div>
-                                <div style="font-size: small">
-                  - For example, for api action, this would be an api endpoint.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="4">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>type</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Type of action to perform such as api, rpc, script, etc.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - ACTION_API, ACTION_GRPC, ACTION_SCRIPT, ACTION_RPC.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                        <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>interval</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Time interval in minutes between the action triggers.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-43200.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is min.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-            
-                                                <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>summary</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                            <span style="color: purple">dict / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Details of most recent run.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>duration</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Action duration.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is sec.
+                  - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1978,7 +766,33 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>end_time</b>
+                <b>operational</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Operationality status of service.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>portalReason</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -1988,33 +802,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Action end time.
+                  - Error message of failure if the service is unavailable, updated by pulse cloud services.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>messages</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Action messages.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2024,7 +815,7 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>start_time</b>
+                <b>reason</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -2034,30 +825,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Action start time.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>status</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Action status.
+                  - Reason of failure if the service is unavailable.
                 </div>
                                 <div style="font-size: small">
                   - Enum options - SYSERR_SUCCESS, SYSERR_FAILURE, SYSERR_OUT_OF_MEMORY, SYSERR_NO_ENT, SYSERR_INVAL, SYSERR_ACCESS, SYSERR_FAULT, SYSERR_IO,
@@ -2879,10 +1647,13 @@ Parameters
                   - SYSERR_CHECK_WAAP_ENABLED_REPORTING_ERR.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SYSERR_SUCCESS.
                 </div>
                                             </td>
     </tr>
@@ -2905,7 +1676,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2913,6 +1684,168 @@ Parameters
                                             </td>
     </tr>
                                             <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tenant_status</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tenant based status information.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>iprep_synced_at</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Iprep sync timestamp.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>last_connected_at</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timestamp for last connection established.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>last_disconnected_at</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timestamp for last connection broken at.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>last_registered_at</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timestamp for registration.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>last_token_refreshed_at</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timestamp for token refresh.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>license_refreshed_at</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timestamp for license refresh.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -2940,10 +1873,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid identifier for the policy.
+                  - Unique identifier of customer portal status object in the database and datastore.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 31.1.1.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2972,11 +1905,11 @@ Examples
           api_version: "21.1.1"
           tenant: "admin"
       tasks:
-        - name: Example to create RetentionPolicy object
-          avi_retentionpolicy:
+        - name: Example to create ALBServicesStatus object
+          avi_albservicesstatus:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_retentionpolicy
+            name: sample_albservicesstatus
 
 
 Authors

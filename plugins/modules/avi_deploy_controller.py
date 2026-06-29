@@ -43,6 +43,11 @@ options:
     ssl_verify:
         description:
             - Flag to set ssl Verification while deploying the VM.
+        default: true
+        type: bool
+    skip_manifest_check:
+        description:
+            - Flag to skip OVA manifest integrity check.
         default: false
         type: bool
     con_datacenter:
@@ -488,7 +493,8 @@ def main():
             vcenter_host=dict(required=True, type='str'),
             vcenter_user=dict(required=True, type='str'),
             vcenter_password=dict(required=True, type='str', no_log=True),
-            ssl_verify=dict(required=False, type='bool', default=False),
+            ssl_verify=dict(required=False, type='bool', default=True),
+            skip_manifest_check=dict(required=False, type='bool', default=False),
             state=dict(required=False, type='str', default='present', choices=['absent', 'present']),
             con_datacenter=dict(required=False, type='str'),
             con_cluster=dict(required=False, type='str'),
@@ -712,9 +718,10 @@ def main():
         command_tokens.append('--noSSLVerify')
     if check_mode:
         command_tokens.append('--verifyOnly')
+    if module.params['skip_manifest_check']:
+        command_tokens.append('--skipManifestCheck')
     command_tokens.extend([
         '--acceptAllEulas',
-        '--skipManifestCheck',
         '--allowExtraConfig',
         '--diskMode=%s' % module.params['con_disk_mode'],
         '--datastore=%s' % ds.name,
