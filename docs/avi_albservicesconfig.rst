@@ -1307,7 +1307,7 @@ Parameters
                   - Allowed values are 5-60.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1335,7 +1335,7 @@ Parameters
                   - The fqdn or ip address of the pulse cloud services.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2034,7 +2034,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field introduced in 20.1.7.
+                  - Field introduced in 18.2.6.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

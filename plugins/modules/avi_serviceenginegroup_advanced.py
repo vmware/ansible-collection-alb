@@ -213,7 +213,7 @@ options:
             - 1-doubles the burst size and kni resources.
             - 2-quadruples the burst size and kni resources.
             - Allowed values are 0-2.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
@@ -294,7 +294,7 @@ options:
             - Bypass the kernel's traffic control layer, to deliver packets directly to the driver.
             - Enabling this feature results in egress packets not being captured in host tcpdump.
             - Note   brief packet reordering or loss may occur upon toggle.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
@@ -336,7 +336,7 @@ options:
     se_rum_sampling_nav_interval:
         description:
             - Minimum time to wait on server between taking sampleswhen sampling the navigation timing data from the end user client.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Unit is sec.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -344,14 +344,14 @@ options:
     se_rum_sampling_nav_percent:
         description:
             - Percentage of navigation timing data from the end user client, used for sampling to get client insights.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
     se_rum_sampling_res_interval:
         description:
             - Minimum time to wait on server between taking sampleswhen sampling the resource timing data from the end user client.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Unit is sec.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 2.
@@ -359,7 +359,7 @@ options:
     se_rum_sampling_res_percent:
         description:
             - Percentage of resource timing data from the end user client used for sampling to get client insight.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 100.
         type: int

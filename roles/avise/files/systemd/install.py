@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/usr/bin/python3
 
 ############################################################################
 # ========================================================================
@@ -76,19 +76,14 @@ def copy_avihost_service_to_hostroot():
                     current_avi_host_md5 = current_avi_host_md5.split(' ', maxsplit=1)[0]
                 except Exception as e:
                     pass
-                print_info("Receive avihost checksum from controller: %s and current is: %s" % (latest_avi_host_md5, current_avi_host_md5))
+                print_info(f"Receive avihost checksum from controller: {latest_avi_host_md5} and current is: {current_avi_host_md5}")
                 if latest_avi_host_md5 and current_avi_host_md5 and current_avi_host_md5 == latest_avi_host_md5:
-                    print_info(
-                        "No differences detected in file %s, "
-                        "controller checksum: %s and current checksum is: %s"
-                        % (host_file, latest_avi_host_md5, current_avi_host_md5))
+                    print_info(f"No differences detected in file {host_file}, controller checksum: {latest_avi_host_md5}")
+                    print_info(f"current checksum is: {current_avi_host_md5}")
                     continue
                 else:
-                    print_info(
-                        f"Migration needed, differences detected in file {host_file}, "
-                        f"controller checksum: {latest_avi_host_md5} and current checksum is: {current_avi_host_md5}"
-                    )
-
+                    print_info(f"Migration needed, differences detected in file {host_file}, controller checksum: {latest_avi_host_md5}")
+                    print_info(f"current checksum is: {current_avi_host_md5}")
                     replace_host_files = True
                     break
 

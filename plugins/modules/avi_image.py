@@ -56,7 +56,7 @@ options:
     controller_info:
         description:
             - Controller package details.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     controller_patch_name:
@@ -114,13 +114,13 @@ options:
     migrations:
         description:
             - This field describes the api migration related information.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:
         description:
             - Name of the image.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
@@ -136,7 +136,7 @@ options:
     se_info:
         description:
             - Se package details.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     se_patch_name:
@@ -169,7 +169,7 @@ options:
         description:
             - Tenant that this object belongs to.
             - It is a reference to an object of type tenant.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     total_tasks:
@@ -183,7 +183,7 @@ options:
         description:
             - Type of the image patch/system.
             - Enum options - IMAGE_TYPE_PATCH, IMAGE_TYPE_SYSTEM, IMAGE_TYPE_MUST_CHECK.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     uber_bundle:
@@ -200,7 +200,7 @@ options:
     uuid:
         description:
             - Uuid of the image.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:

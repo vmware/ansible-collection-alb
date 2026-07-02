@@ -128,7 +128,7 @@ def get_idp_class(idp):
 
 def main():
     argument_specs = dict(
-        idp_class=dict(type='str', required=True, ),
+        idp_class=dict(type='str', required=True, no_log=True),
         api_context=dict(type='dict',),
         username=dict(type='str', default=''),
         tenant_uuid=dict(type='str', default=''),

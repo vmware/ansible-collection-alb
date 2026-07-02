@@ -585,7 +585,7 @@ options:
         description:
             - Used for testing se datastore upgrade 2.0 functionality.
             - It is a reference to an object of type testsedatastorelevel1.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     topology_policies:

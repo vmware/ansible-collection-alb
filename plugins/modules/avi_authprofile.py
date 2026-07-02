@@ -121,9 +121,8 @@ options:
             - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH,
             - AUTH_PROFILE_CLIENT_CERT.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values-
-            - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert), basic (allowed values-
-            - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert) edition.
+            - Allowed in essentials (allowed values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...), basic (allowed
+            - values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...) edition.
         required: true
         type: str
     url:

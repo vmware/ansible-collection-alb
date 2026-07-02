@@ -161,8 +161,8 @@ options:
             - Enum options - APPLICATION_PROFILE_TYPE_L4, APPLICATION_PROFILE_TYPE_HTTP, APPLICATION_PROFILE_TYPE_SYSLOG, APPLICATION_PROFILE_TYPE_DNS,
             - APPLICATION_PROFILE_TYPE_SSL, APPLICATION_PROFILE_TYPE_SIP, APPLICATION_PROFILE_TYPE_DIAMETER.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- application_profile_type_l4), basic (allowed values-
-            - application_profile_type_l4,application_profile_type_http) edition.
+            - Allowed in essentials (allowed values- application_profile_type_l4), basic (allowed values- application_profile_type_l4,
+            - application_profile_type_http) edition.
         required: true
         type: str
     url:

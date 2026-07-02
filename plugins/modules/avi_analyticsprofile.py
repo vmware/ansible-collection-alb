@@ -654,7 +654,7 @@ options:
         description:
             - Score assigned when supporting tls1.3 encryption protocol.
             - Allowed values are 0-5.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Allowed in essentials (allowed values- 5.0), basic (allowed values- 5.0) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.0.
