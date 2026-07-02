@@ -18,10 +18,19 @@ else:
     from urllib.parse import urlparse
 
 from datetime import datetime, timedelta
-from requests import ConnectionError
-from requests import Response
-from requests.exceptions import ChunkedEncodingError
-from requests.sessions import Session
+try:
+    from requests import ConnectionError
+    from requests import Response
+    from requests.exceptions import ChunkedEncodingError
+    from requests.sessions import Session
+except ImportError:
+    class Response(object):
+        pass
+
+    class Session(object):
+        pass
+    ConnectionError = Exception
+    ChunkedEncodingError = Exception
 from ssl import SSLError
 
 

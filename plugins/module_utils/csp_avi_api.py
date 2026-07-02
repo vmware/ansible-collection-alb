@@ -9,8 +9,11 @@ from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSessi
 import logging
 import time
 
-from requests import ConnectionError
-from requests.exceptions import ChunkedEncodingError
+try:
+    from requests import ConnectionError
+    from requests.exceptions import ChunkedEncodingError
+except ImportError:
+    pass
 from ssl import SSLError
 
 logger = logging.getLogger(__name__)

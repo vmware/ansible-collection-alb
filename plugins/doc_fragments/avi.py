@@ -40,7 +40,12 @@ options:
         description:
             - Avi API version of to use for Avi API and objects.
         type: str
-        default: 20.1.7
+        default: ''
+    verify:
+        description:
+            - Used to enable SSL certificate validation and ensure secure communication
+        type: bool
+        default: False
     avi_credentials:
         description:
             - Avi Credentials dictionary which can be used in lieu of enumerating Avi Controller login details.
@@ -49,19 +54,22 @@ options:
                 description:
                   - Avi controller IP or SQDN
                 type: str
+                default: ''
             username:
                 description:
                   - Avi controller username
                 type: str
+                default: ''
             password:
                 description:
                   - Avi controller password
                 type: str
+                default: ''
             api_version:
                 description:
                   - Avi controller version
                 type: str
-                default: 20.1.7
+                default: ''
             tenant:
                 description:
                   - Avi controller tenant
@@ -80,6 +88,7 @@ options:
                 description:
                   - Avi controller API token
                 type: str
+                default: ''
             timeout:
                 description:
                   - Avi controller request timeout
@@ -89,30 +98,42 @@ options:
                 description:
                   - Avi controller API session id to reuse existing session with csrftoken
                 type: str
+                default: ''
             csrftoken:
                 description:
                   - Avi controller API csrftoken to reuse existing session with session id
                 type: str
+                default: ''
             csp_host:
                 description:
                   - CSP host for Saas controller
                 type: str
+                default: ''
             csp_token:
                 description:
                   - Saas controller password
                 type: str
+                default: ''
             idp_class:
                 description:
                   - Specifies whether it is an Avi controller or Saas controller
                 type: str
+                default: ''
             ssl_cert:
                 description:
                   - Specifies the ssl cert
                 type: str
+                default: ''
             ssl_key:
                 description:
                   - Specifies the ssl key
                 type: str
+                default: ''
+            verify:
+                description:
+                    - Used to enable SSL certificate validation and ensure secure communication
+                type: bool
+                default: False
         type: dict
     api_context:
         description:

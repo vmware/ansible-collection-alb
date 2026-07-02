@@ -135,8 +135,9 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default=''),
         avi_credentials=dict(type='dict',),
+        verify=dict(type='bool', default=False),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
     if HAS_REQUESTS:

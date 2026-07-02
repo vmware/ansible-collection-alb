@@ -10,7 +10,10 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 import os
 import re
-import yaml
+try:
+    import yaml
+except ImportError:
+    pass
 import time
 import logging
 from copy import deepcopy
@@ -637,7 +640,7 @@ def avi_common_argument_spec():
         csp_token=dict(default='', type='str', no_log=True),
         ssl_cert=dict(default='', type='str', no_log=True),
         ssl_key=dict(default='', type='str', no_log=True),
-        verify=dict(default=False)
+        verify=dict(type='bool', default=False)
     )
 
     return dict(
@@ -647,7 +650,7 @@ def avi_common_argument_spec():
         tenant=dict(default='admin'),
         tenant_uuid=dict(default=''),
         api_version=dict(default=os.environ.get('API_VERSION', '')),
-        verify=dict(default=False),
+        verify=dict(type='bool', default=False),
         avi_credentials=dict(default=None, type='dict',
                              options=credentials_spec),
         api_context=dict(type='dict', no_log=True),
