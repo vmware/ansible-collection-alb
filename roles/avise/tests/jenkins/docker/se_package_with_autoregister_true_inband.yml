@@ -1,23 +1,34 @@
-# ansible-playbook se_package_with_autoregister_true.yml -i 10.70.160.54, --ask-pass --ask-become-pass -e "controller_ip=10.70.160.51 controller_username=admin controller_password=AviNetworks123!" -u root --tags ubuntu
-
-- hosts: all
-  become: yes
-  gather_facts: no
+# ansible-playbook se_package_with_autoregister_true.yml -i 10.70.160.54, --ask-pass --ask-become-pass -e
+# "controller_ip=10.70.160.51 controller_username=admin controller_password=AviNetworks123!" -u root --tags ubuntu
+---
+- name: Install python2
+  hosts: all
+  become: true
+  gather_facts: false
   pre_tasks:
-    - name: 'install python2'
-      raw: sudo apt-get -y install python-simplejson
+    - name: 'Install python2'
+      ansible.builtin.raw: sudo apt-get -y install python-simplejson
+      changed_when: false
       failed_when: false
 
-- hosts: all
-  become: yes
+- name: Install Avi SE
+  hosts: all
+  become: true
   pre_tasks:
     - name: Enable ipv4 forwarding
-      sysctl: name="net.ipv4.ip_forward" value=1 sysctl_set=yes state=present reload=yes
+      ansible.posix.sysctl:
+        name: "net.ipv4.ip_forward"
+        value: 1
+        sysctl_set: true
+        state: present
+        reload: true
     - name: Deactivate and stop Firewalld
-      service: name="firewalld" state="stopped" enabled="no"
+      ansible.builtin.service:
+        name: "firewalld"
+        state: "stopped"
+        enabled: false
       when: ansible_distribution == "Redhat"
   roles:
-    - role: avinetworks.avisdk
     - role: avinetworks.docker
     - role: avinetworks.avise
       se_leader_ctl_ip: "{{ controller_ip }}"

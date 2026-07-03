@@ -1,0 +1,37 @@
+# Automatically Generated File
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+---
+- name: Avi ApiSchema | Create or Update ApiSchema
+  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  vmware.alb.avi_apischema:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    additional_object_key_action: "{{ item.additional_object_key_action | default(omit) }}"
+    additional_properties_schema: "{{ item.additional_properties_schema | default(omit) }}"
+    allow_additional_properties: "{{ item.allow_additional_properties | default(omit) }}"
+    array_item_type: "{{ item.array_item_type | default(omit) }}"
+    composite_types: "{{ item.composite_types | default(omit) }}"
+    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
+    discriminator: "{{ item.discriminator | default(omit) }}"
+    max_items: "{{ item.max_items | default(omit) }}"
+    min_items: "{{ item.min_items | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    object_properties: "{{ item.object_properties | default(omit) }}"
+    source: "{{ item.source | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    type: "{{ item.type | default(omit) }}"
+    unique_items: "{{ item.unique_items | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+  when:
+    - (avi_role_state_mode == "present" and avi_config_state == "present")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.apischema | default([]) }}"

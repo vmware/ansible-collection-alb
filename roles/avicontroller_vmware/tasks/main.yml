@@ -3,13 +3,11 @@
 - name: Check ansible version
   when:
     - ansible_version.full is version_compare('2.4', '<')
-  debug: >
-    msg="This role works best with ansible version 2.4 or greater.
-    It is recommended to use the latest ansible version for
-    the best experience."
+  ansible.builtin.debug:
+    msg: "This role works best with ansible version 2.4 or greater. It is recommended to use the latest ansible version for the best experience."
 
 - name: Avi Controller | VMware | Set Execution Flow
-  set_fact:
+  ansible.builtin.set_fact:
     run_deploy_module: true
   when:
     - vcenter_host is defined
@@ -27,7 +25,8 @@
     vcenter_host: "{{ vcenter_host | default(omit) }}"
     vcenter_user: "{{ vcenter_user | default(omit) }}"
     vcenter_password: "{{ vcenter_password | default(omit) }}"
-    ssl_verify: "{{ ssl_verify | default(false) }}"
+    ssl_verify: "{{ ssl_verify | default(omit) }}"
+    skip_manifest_check: "{{ skip_manifest_check | default(omit) }}"
     con_datacenter: "{{ con_datacenter | default(omit) }}"
     con_cluster: "{{ con_cluster | default(omit) }}"
     con_datastore: "{{ con_datastore | default(omit) }}"
@@ -65,7 +64,7 @@
     esxi_hostname: "{{ con_esx_host | default(omit) }}"
     folder: "{{ con_vcenter_folder | default(omit) }}"
     name: "{{ con_vm_name | default(omit) }}"
-    validate_certs: "{{ ssl_verify | default(false) }}"
+    validate_certs: "{{ ssl_verify | default(true) }}"
     uuid: "{{ uuid | default(omit) }}"
     use_instance_uuid: "{{ use_instance_uuid | default(omit) }}"
     moid: "{{ moid | default(omit) }}"

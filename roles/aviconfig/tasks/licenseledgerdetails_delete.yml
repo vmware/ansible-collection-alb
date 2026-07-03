@@ -1,8 +1,8 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi LicenseLedgerDetails | Delete LicenseLedgerDetails
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_licenseledgerdetails:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -15,8 +15,11 @@
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
     escrow_infos: "{{ item.escrow_infos | default(omit) }}"
+    se_group_infos: "{{ item.se_group_infos | default(omit) }}"
     se_infos: "{{ item.se_infos | default(omit) }}"
+    tenant_infos: "{{ item.tenant_infos | default(omit) }}"
     tier_usages: "{{ item.tier_usages | default(omit) }}"
+    total_licenses_reserved: "{{ item.total_licenses_reserved | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)

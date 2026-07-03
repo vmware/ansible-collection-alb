@@ -43,6 +43,11 @@ options:
     ssl_verify:
         description:
             - Flag to set ssl Verification while deploying the VM.
+        default: true
+        type: bool
+    skip_manifest_check:
+        description:
+            - Flag to skip OVA manifest integrity check.
         default: false
         type: bool
     con_datacenter:
@@ -61,6 +66,11 @@ options:
         description:
             - Name of the object.
         required: true
+        type: str
+    con_esx_host:
+        description:
+            - Optional selection of the host.
+        required: false
         type: str
     con_disk_mode:
         description:
@@ -162,19 +172,18 @@ options:
 '''
 
 EXAMPLES = """
-- hosts: localhost
+- name: Deploy Avi Controller
+  hosts: localhost
   connection: local
-  collections:
-    - vmware.alb
   tasks:
     - name: Avi Controller | VMware | Configure VMware controller
-      import_role:
+      ansible.builtin.import_role:
         name: avicontroller_vmware
       vars:
         ovftool_path: /usr/lib/vmware-ovftool
-        vcenter_host: '{{ vcenter_host }}'
-        vcenter_user: '{{ vcenter_user }}'
-        vcenter_password: '{{ vcenter_password }}'
+        vcenter_host: "{% raw %}{{ vcenter_host }}{% endraw %}"
+        vcenter_user: "{% raw %}{{ vvcenter_user }}{% endraw %}"
+        vcenter_password: "{% raw %}{{ vcenter_password }}{% endraw %}"
         con_datacenter: 10GTest
         con_cluster: Arista
         con_mgmt_network: Mgmt_Ntwk_3
@@ -299,7 +308,7 @@ def get_ds(dc, name):
         try:
             if ds.name == name:
                 return ds
-        except:  # Ignore datastores that have issues
+        except Exception:  # Ignore datastores that have issues
             pass
     raise Exception("Failed to find %s on datacenter %s" % (name, dc.name))
 
@@ -324,7 +333,7 @@ def get_largest_free_ds(cl):
             if free_space > largest_free and ds.summary.accessible:
                 largest_free = free_space
                 largest = ds
-        except:  # Ignore datastores that have issues
+        except Exception:  # Ignore datastores that have issues
             pass
     if largest is None:
         raise Exception('Failed to find any free datastores on %s' % cl.name)
@@ -437,9 +446,13 @@ def is_ipv6_address(controller_ip):
         return False
 
 
-def controller_wait(controller_ip, round_wait=10, wait_time=3600):
+def controller_wait(controller_ip, round_wait=10, wait_time=3600, ssl_verify=False):
     """
     It waits for controller to come up for a given wait_time (default 1 hour).
+    :param controller_ip: IP address of the controller
+    :param round_wait: Wait time between retries in seconds
+    :param wait_time: Total wait time in seconds
+    :param ssl_verify: Whether to verify SSL certificates (default: False)
     :return: controller_up: Boolean value for controller up state.
     """
     count = 0
@@ -455,7 +468,7 @@ def controller_wait(controller_ip, round_wait=10, wait_time=3600):
         if count >= max_count:
             break
         try:
-            r = requests.get(path, timeout=10, verify=False)
+            r = requests.get(path, timeout=10, verify=ssl_verify)
             # Check for controller response for login URI.
             if r.status_code in (500, 502, 503) and count < max_count:
                 time.sleep(10)
@@ -480,12 +493,14 @@ def main():
             vcenter_host=dict(required=True, type='str'),
             vcenter_user=dict(required=True, type='str'),
             vcenter_password=dict(required=True, type='str', no_log=True),
-            ssl_verify=dict(required=False, type='bool', default=False),
+            ssl_verify=dict(required=False, type='bool', default=True),
+            skip_manifest_check=dict(required=False, type='bool', default=False),
             state=dict(required=False, type='str', default='present', choices=['absent', 'present']),
             con_datacenter=dict(required=False, type='str'),
             con_cluster=dict(required=False, type='str'),
             con_datastore=dict(required=False, type='str'),
             con_mgmt_network=dict(required=True, type='str'),
+            con_esx_host=dict(required=False, type='str'),
             con_disk_mode=dict(required=False, type='str', default='thin',
                                choices=['thin', 'thick', 'eagerzeroedthick']),
             con_ova_path=dict(required=True, type='str'),
@@ -684,6 +699,7 @@ def main():
     ova_file = module.params['con_ova_path']
     quoted_vcenter_user = quote(module.params['vcenter_user'])
     quoted_vcenter_pass = quote(module.params['vcenter_password'])
+    module.no_log_values.add(quoted_vcenter_pass)
     if is_ipv6_address(module.params['vcenter_host']):
         vi_string = 'vi://%s:%s@[%s]' % (
             quoted_vcenter_user, quoted_vcenter_pass,
@@ -702,9 +718,10 @@ def main():
         command_tokens.append('--noSSLVerify')
     if check_mode:
         command_tokens.append('--verifyOnly')
+    if module.params['skip_manifest_check']:
+        command_tokens.append('--skipManifestCheck')
     command_tokens.extend([
         '--acceptAllEulas',
-        '--skipManifestCheck',
         '--allowExtraConfig',
         '--diskMode=%s' % module.params['con_disk_mode'],
         '--datastore=%s' % ds.name,
@@ -751,13 +768,11 @@ def main():
         command_tokens.append('--prop:%s=%s' % (
             'avi.default-gw.CONTROLLER', module.params['con_default_gw']))
 
-    if module.params.get('con_mgmt_ip_v6_enable', None):
-        command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
+    command_tokens.append('--prop:%s=%s' % (
+        'avi.mgmt-ip-v6-enable.CONTROLLER', module.params['con_mgmt_ip_v6_enable']))
 
-    if module.params.get('con_mgmt_ip_v4_enable', None) and not module.params['con_mgmt_ip_v6_enable']:
-        command_tokens.append('--prop:%s=%s' % (
-            'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
+    command_tokens.append('--prop:%s=%s' % (
+        'avi.mgmt-ip-v4-enable.CONTROLLER', module.params['con_mgmt_ip_v4_enable']))
 
     if module.params.get('con_sysadmin_public_key', None):
         command_tokens.append('--prop:%s=%s' % (
@@ -775,6 +790,8 @@ def main():
         command_tokens.append(
             '--vmFolder=%s' % module.params['con_vcenter_folder'])
 
+    if module.params.get('con_esx_host', None):
+        vi_string += '/%s' % (module.params['con_esx_host'])
     command_tokens.extend([ova_file, vi_string])
     ova_tool_result = module.run_command(command_tokens)
 
@@ -835,7 +852,8 @@ def main():
     # Wait for controller tcontroller_waito come up for given con_wait_time
     if controller_ip:
         controller_up = controller_wait(controller_ip, module.params['round_wait'],
-                                        module.params['con_wait_time'])
+                                        module.params['con_wait_time'],
+                                        module.params['ssl_verify'])
         if not controller_up:
             return module.fail_json(
                 msg='Something wrong with the controller. The Controller is not in the up state.')

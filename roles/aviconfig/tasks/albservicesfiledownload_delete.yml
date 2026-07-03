@@ -1,8 +1,8 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi ALBServicesFileDownload | Delete ALBServicesFileDownload
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_albservicesfiledownload:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -14,16 +14,6 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    destination_dir: "{{ item.destination_dir | default(omit) }}"
-    file_type: "{{ item.file_type | default(omit) }}"
-    file_uri: "{{ item.file_uri | default(omit) }}"
-    message: "{{ item.message | default(omit) }}"
-    metadata: "{{ item.metadata | default(omit) }}"
-    name: "{{ item.name | default(omit) }}"
-    status: "{{ item.status | default(omit) }}"
-    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
-    uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))

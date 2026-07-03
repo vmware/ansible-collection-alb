@@ -1,4 +1,4 @@
-# Copyright 2021 VMware, Inc.
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -10,7 +10,7 @@ import json
 import logging
 import time
 import ipaddress
-import socket
+import warnings
 
 if sys.version_info < (3, 5):
     from urlparse import urlparse
@@ -27,8 +27,8 @@ from ssl import SSLError
 
 logger = logging.getLogger(__name__)
 
-global sessionDict
 sessionDict = {}
+EXCLUDED_PRINT_FIELDS = ['X-CSRFToken', 'Authorization', 'Cookie']
 
 
 def avi_timedelta(td):
@@ -37,7 +37,7 @@ def avi_timedelta(td):
     does not have total_seconds method
     :param td timedelta object
     """
-    if type(td) != timedelta:
+    if not isinstance(td, timedelta):
         raise TypeError()
     if sys.version_info >= (2, 7):
         ts = td.total_seconds()
@@ -140,7 +140,7 @@ class ApiResponse(Response):
 
     @staticmethod
     def to_avi_response(resp):
-        if type(resp) == Response:
+        if isinstance(resp, Response):
             return ApiResponse(resp)
         return resp
 
@@ -149,7 +149,7 @@ class AviCredentials(object):
     controller = ''
     username = ''
     password = ''
-    api_version = '18.2.6'
+    api_version = '20.1.1'
     tenant = None
     tenant_uuid = None
     token = None
@@ -157,9 +157,12 @@ class AviCredentials(object):
     timeout = 300
     session_id = None
     csrftoken = None
+    ssl_cert = None
+    ssl_key = None
     idp_class = None
     csp_host = None
     csp_token = None
+    verify = False
 
     def __init__(self, **kwargs):
         for k, v in kwargs.items():
@@ -173,6 +176,9 @@ class AviCredentials(object):
         if m.params.get('avi_credentials'):
             for k, v in m.params['avi_credentials'].items():
                 if hasattr(self, k):
+                    if k == 'verify':
+                        val = str(v).strip().lower()
+                        v = True if val == "true" else False if val == "false" else val
                     setattr(self, k, v)
         if m.params['controller']:
             self.controller = m.params['controller']
@@ -181,7 +187,7 @@ class AviCredentials(object):
         if m.params['password']:
             self.password = m.params['password']
         if (m.params['api_version'] and
-                (m.params['api_version'] != '18.2.6')):
+                (m.params['api_version'] != '20.1.1')):
             self.api_version = m.params['api_version']
         if m.params['tenant']:
             self.tenant = m.params['tenant']
@@ -191,6 +197,10 @@ class AviCredentials(object):
             self.session_id = m.params['session_id']
         if m.params.get('csrftoken'):
             self.csrftoken = m.params['csrftoken']
+        if m.params.get('ssl_cert'):
+            self.ssl_cert = m.params['ssl_cert']
+        if m.params.get('ssl_key'):
+            self.ssl_key = m.params['ssl_key']
 
     def __str__(self):
         return 'controller %s user %s api %s tenant %s' % (
@@ -219,7 +229,7 @@ class ApiSession(Session):
                  port=None, timeout=60, api_version=None,
                  retry_conxn_errors=True, data_log=False,
                  avi_credentials=None, session_id=None, csrftoken=None,
-                 lazy_authentication=False, max_api_retries=None, csp_host=CSP_HOST, csp_token=None, user_hdrs={}):
+                 lazy_authentication=False, max_api_retries=None, csp_host=CSP_HOST, csp_token=None, user_hdrs=None, ssl_cert=None, ssl_key=None):
         """
          ApiSession takes ownership of avi_credentials and may update the
          information inside it.
@@ -240,17 +250,16 @@ class ApiSession(Session):
         """
 
         super(ApiSession, self).__init__()
-        logger.debug("Creating session with following values:\n "
-                     "controller_ip: %s, username: %s, tenant: %s, "
-                     "tenant_uuid: %s, verify: %s, port: %s, timeout: %s, "
-                     "api_version: %s, retry_conxn_errors: %s, data_log: %s,"
-                     "avi_credentials: %s, session_id: %s, csrftoken: %s,"
-                     "lazy_authentication: %s, max_api_retries: %s"
-                     % (controller_ip, username, tenant,
-                        tenant_uuid, verify, port,
-                        timeout, api_version, retry_conxn_errors,
-                        data_log, avi_credentials, session_id,
-                        csrftoken, lazy_authentication, max_api_retries))
+        logger.debug(
+            "Creating session with following values:\n "
+            "controller_ip: %s, username: %s, tenant: %s, "
+            "tenant_uuid: %s, verify: %s, port: %s, timeout: %s, "
+            "api_version: %s, retry_conxn_errors: %s, data_log: %s,"
+            "lazy_authentication: %s, max_api_retries: %s",
+            controller_ip, username, tenant,
+            tenant_uuid, verify, port,
+            timeout, api_version, retry_conxn_errors,
+            data_log, lazy_authentication, max_api_retries)
         if not avi_credentials:
             tenant = tenant if tenant else "admin"
             self.avi_credentials = AviCredentials(
@@ -258,14 +267,24 @@ class ApiSession(Session):
                 password=password, api_version=api_version,
                 tenant=tenant, tenant_uuid=tenant_uuid,
                 token=token, port=port, timeout=timeout,
-                session_id=session_id, csp_host=csp_host, csp_token=csp_token, csrftoken=csrftoken)
+                session_id=session_id, csp_host=csp_host, csp_token=csp_token, csrftoken=csrftoken, ssl_cert=ssl_cert, ssl_key=ssl_key)
         else:
             self.avi_credentials = avi_credentials
         self.headers = {}
         self.verify = verify
+        if str(self.verify).lower() == 'false':
+            warning_msg = (
+                "\n"
+                "********************************************************************************\n"
+                "Strong Recommendation: It is highly recommended to use verify=True \n"
+                "to enable SSL certificate validation and ensure secure communication.\n"
+                "********************************************************************************"
+            )
+            logger.warning(warning_msg)
+            warnings.warn(warning_msg)
         self.retry_conxn_errors = retry_conxn_errors
         self.remote_api_version = {}
-        self.user_hdrs = user_hdrs
+        self.user_hdrs = user_hdrs if user_hdrs else {}
         self.data_log = data_log
         self.num_session_retries = 0
         self.num_api_retries = 0
@@ -301,8 +320,16 @@ class ApiSession(Session):
                 self.prefix += ':{}'.format(port)
 
         self.timeout = timeout
-        self.key = '%s:%s:%s' % (self.avi_credentials.controller,
-                                 self.avi_credentials.username, k_port)
+        self.key = '%s:%s:%s:%s:%s:%s:%s:%s' % (
+            self.avi_credentials.controller,
+            self.avi_credentials.username,
+            k_port,
+            self.avi_credentials.tenant,
+            self.avi_credentials.tenant_uuid,
+            self.verify,
+            hash(self.avi_credentials.password) if self.avi_credentials.password else '',
+            hash(self.avi_credentials.token) if self.avi_credentials.token else ''
+        )
 
         if self.user_hdrs and 'Authorization' in self.user_hdrs:
             return
@@ -425,7 +452,7 @@ class ApiSession(Session):
             tenant=None, tenant_uuid=None, verify=False, port=None, timeout=60,
             retry_conxn_errors=True, api_version=None, data_log=False,
             avi_credentials=None, session_id=None, csrftoken=None,
-            lazy_authentication=False, max_api_retries=None, csp_host=None, csp_token=None, idp_class=None, user_hdrs=None):
+            lazy_authentication=False, max_api_retries=None, csp_host=None, csp_token=None, idp_class=None, user_hdrs=None, ssl_cert=None, ssl_key=None):
         """
         returns the session object for same user and tenant
         calls init if session dose not exist and adds it to session cache
@@ -448,7 +475,7 @@ class ApiSession(Session):
         if not idp_class:
             idp_class = ApiSession
         else:
-            if not ("ApiSession" in str(idp_class.__base__)):
+            if "ApiSession" not in str(idp_class.__base__):
                 raise APIError("idp_class {} not valid class. Please provide "
                                "correct idp class. Base class of idp class is "
                                "{}".format(idp_class, str(idp_class.__base__)))
@@ -460,13 +487,21 @@ class ApiSession(Session):
                 password=password, api_version=api_version,
                 tenant=tenant, tenant_uuid=tenant_uuid,
                 token=token, port=port, timeout=timeout,
-                session_id=session_id, csrftoken=csrftoken, csp_host=csp_host, csp_token=csp_token)
+                session_id=session_id, csrftoken=csrftoken, csp_host=csp_host, csp_token=csp_token, ssl_cert=ssl_cert, ssl_key=ssl_key)
 
         k_port = avi_credentials.port if avi_credentials.port else 443
         if avi_credentials.controller.startswith('http'):
             k_port = 80 if not avi_credentials.port else k_port
-        key = '%s:%s:%s' % (avi_credentials.controller,
-                            avi_credentials.username, k_port)
+        key = '%s:%s:%s:%s:%s:%s:%s:%s' % (
+            avi_credentials.controller,
+            avi_credentials.username,
+            k_port,
+            avi_credentials.tenant,
+            avi_credentials.tenant_uuid,
+            verify,
+            hash(avi_credentials.password) if avi_credentials.password else '',
+            hash(avi_credentials.token) if avi_credentials.token else ''
+        )
         cached_session = sessionDict.get(key)
         if cached_session:
             user_session = cached_session['api']
@@ -518,11 +553,12 @@ class ApiSession(Session):
                      self.avi_credentials.username, self.prefix)
         self.cookies.clear()
         err = None
+        certificate = self.avi_credentials.ssl_cert
+        key = self.avi_credentials.ssl_key
         try:
             rsp = super(ApiSession, self).post(
                 self.prefix + "/login", body, timeout=self.timeout,
-                verify=self.verify)
-
+                verify=self.verify, cert=(certificate, key))
             if rsp.status_code == 200:
                 self.num_session_retries = 0
                 self.remote_api_version = rsp.json().get('version', {})
@@ -547,8 +583,8 @@ class ApiSession(Session):
                 return
             # Check for bad request and invalid credentials response code
             elif rsp.status_code in [401, 403]:
-                logger.error('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text))
+                logger.error(
+                    'Status Code %s msg %s', rsp.status_code, rsp.text)
                 err = APIError('Failed: %s Status Code %s msg %s' % (
                     rsp.url, rsp.status_code, rsp.text), rsp)
                 raise err
@@ -570,8 +606,8 @@ class ApiSession(Session):
         self.num_session_retries += 1
         if self.num_session_retries > self.max_session_retries:
             self.num_session_retries = 0
-            logger.error("giving up after %d retries connection failure %s" % (
-                self.max_session_retries, True))
+            logger.error("giving up after %d retries connection failure %s",
+                         self.max_session_retries, True)
             raise err
         self.authenticate_session()
         return
@@ -641,6 +677,10 @@ class ApiSession(Session):
         err = None
         api_hdrs = self._get_api_headers(tenant, tenant_uuid, timeout, headers,
                                          api_version)
+        certificate = self.avi_credentials.ssl_cert
+        key = self.avi_credentials.ssl_key
+        if certificate and key:
+            kwargs['cert'] = (certificate, key)
         if 'X-CSRFToken' in api_hdrs:
             cookies = {
                 'csrftoken': api_hdrs['X-CSRFToken'],
@@ -662,7 +702,7 @@ class ApiSession(Session):
             except KeyError:
                 pass
         try:
-            if (data is not None) and (type(data) == dict):
+            if (data is not None) and isinstance(data, dict):
                 resp = fn(fullpath, data=json.dumps(data), headers=api_hdrs,
                           timeout=timeout, cookies=cookies, **kwargs)
             else:
@@ -678,9 +718,13 @@ class ApiSession(Session):
             logger.error('Error in Requests library %s', e)
             raise
         if not connection_error:
+            log_hdrs = copy.deepcopy(api_hdrs)
+            for k in EXCLUDED_PRINT_FIELDS:
+                if k in log_hdrs:
+                    log_hdrs[k] = '***REDACTED***'
             logger.debug('path: %s http_method: %s hdrs: %s params: '
                          '%s data: %s rsp: %s', fullpath, api_name.upper(),
-                         api_hdrs, kwargs, data,
+                         log_hdrs, kwargs, data,
                          (resp.text if self.data_log else 'None'))
         if connection_error or resp.status_code in (401, 419):
             if 'multipart/form-data' in api_hdrs['Content-Type']:
@@ -716,8 +760,8 @@ class ApiSession(Session):
                     err = APIError('Failed: %s Status Code %s msg %s' % (
                         resp.url, resp.status_code, resp.text), resp)
                 logger.error(
-                    "giving up after %d retries conn failure %s err %s" % (
-                        self.max_session_retries, connection_error, err))
+                    "giving up after %d retries conn failure %s err %s",
+                    self.max_session_retries, connection_error, err)
                 raise err
             # should restore the updated_hdrs to one passed down
             resp = self._api(api_name, path, tenant, tenant_uuid, data,
@@ -797,7 +841,7 @@ class ApiSession(Session):
                 params=params, **kwargs)
         if resp.status_code > 499 or 'Invalid version' in resp.text:
             logger.error('Error in get object by name for %s named %s. '
-                         'Error: %s' % (path, name, resp.text))
+                         'Error: %s', path, name, resp.text)
             raise AviServerError(resp.text, rsp=resp)
         elif resp.status_code > 299:
             return obj
@@ -808,8 +852,8 @@ class ApiSession(Session):
                 # For apis returning single object eg. api/cluster
                 obj = resp.json()
         except IndexError:
-            logger.warning('Warning: Object Not found for %s named %s' %
-                           (path, name))
+            logger.warning(
+                'Warning: Object Not found for %s named %s', path, name)
             obj = None
         self._update_session_last_used()
         return obj
@@ -1123,7 +1167,8 @@ class ApiSession(Session):
                                "for session ID: %s %s",
                                session, e)
                 pass
-            del session_cache[key]
+            if session_cache.get(key):
+                del session_cache[key]
             logger.debug("Cleaned inactive session : %s", key)
 
     def delete_session(self):
@@ -1134,7 +1179,7 @@ class ApiSession(Session):
 
     def is_ipv6_address(self, controller_ip):
         try:
-            logger.info('Verifing IPV6 Controller IP %s', controller_ip)
+            logger.info('Verifing Controller IP %s', controller_ip)
             ip = ipaddress.ip_address(controller_ip)
             return ip.version == self.IPV6
         except ValueError as ve:

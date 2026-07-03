@@ -1,0 +1,35 @@
+# Automatically Generated File
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+---
+- name: Avi ApiSpecGenerate | Delete ApiSpecGenerate
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
+  vmware.alb.avi_apispecgenerate:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
+    avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
+    completed_events: "{{ item.completed_events | default(omit) }}"
+    duration: "{{ item.duration | default(omit) }}"
+    end_time: "{{ item.end_time | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
+    obj_state: "{{ item.obj_state | default(omit) }}"
+    params: "{{ item.params | default(omit) }}"
+    path: "{{ item.path | default(omit) }}"
+    progress: "{{ item.progress | default(omit) }}"
+    start_time: "{{ item.start_time | default(omit) }}"
+    task_events: "{{ item.task_events | default(omit) }}"
+    tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    total_events: "{{ item.total_events | default(omit) }}"
+    uuid: "{{ item.uuid | default(omit) }}"
+  when:
+    - (item.name | length > 0)
+    - (not (item.system_default | default(false)))
+    - (avi_config_state == "absent" or avi_role_state_mode == "absent")
+    - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
+  with_items: "{{ avi_role_cfg.apispecgenerate | default([]) }}"
