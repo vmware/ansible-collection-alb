@@ -4006,7 +4006,7 @@ Parameters
                   - Action to take when a header parameter fails schema validation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4035,7 +4035,7 @@ Parameters
                   - Action to take when a path parameter fails schema validation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4064,7 +4064,7 @@ Parameters
                   - Action to take when a query argument fails schema validation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4093,7 +4093,7 @@ Parameters
                   - Action to take when the request body fails schema validation.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4122,7 +4122,7 @@ Parameters
                   - Action to take when a mandatory header parameter is missing.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4151,7 +4151,7 @@ Parameters
                   - Action to take when a mandatory query argument is missing.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4180,7 +4180,7 @@ Parameters
                   - Action to take when a mandatory request body parameter is missing.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4209,7 +4209,7 @@ Parameters
                   - Action to take when a request does not match any server url defined in this policy.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4238,7 +4238,7 @@ Parameters
                   - Action to take when a header parameter is present but not defined in the schema.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4267,7 +4267,7 @@ Parameters
                   - Action to take when a query argument is present but not defined in the schema.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4276,7 +4276,7 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as API_ACTION_LEARN.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as API_ACTION_FLAG.
                 </div>
                                             </td>
     </tr>
@@ -4296,7 +4296,7 @@ Parameters
                   - Action to take when a request body parameter is present but not defined in the schema.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4305,7 +4305,7 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as API_ACTION_LEARN.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as API_ACTION_FLAG.
                 </div>
                                             </td>
     </tr>
@@ -4325,7 +4325,7 @@ Parameters
                   - Action to take on an unknown request content type, can be overridden per path.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4357,7 +4357,7 @@ Parameters
                   - Can be overridden per path.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4386,7 +4386,7 @@ Parameters
                   - Action to take when a request matches a server url but does not match any defined api path.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4415,7 +4415,7 @@ Parameters
                   - Action to take on unknown response content type, can be overridden per path.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -4444,7 +4444,7 @@ Parameters
                   - Action to take on unknown response status code, can be overridden per path.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.

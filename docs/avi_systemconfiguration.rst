@@ -6668,9 +6668,6 @@ Parameters
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as avinetworks.
-                </div>
                                             </td>
     </tr>
                                     <td class="elbow-placeholder"></td>
@@ -6700,7 +6697,7 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as SNMP_V3_AUTH_MD5.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SNMP_V3_AUTH_SHA_256.
                 </div>
                                             </td>
     </tr>
@@ -6726,9 +6723,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as avinetworks.
                 </div>
                                             </td>
     </tr>
@@ -6759,7 +6753,7 @@ Parameters
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as SNMP_V3_PRIV_DES.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SNMP_V3_PRIV_AES.
                 </div>
                                             </td>
     </tr>

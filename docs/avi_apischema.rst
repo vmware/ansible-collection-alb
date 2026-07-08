@@ -147,7 +147,7 @@ Parameters
                   - Action to take on unspecified keys in an object.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_LEARN, API_ACTION_FLAG, API_ACTION_REJECT.
+                  - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
