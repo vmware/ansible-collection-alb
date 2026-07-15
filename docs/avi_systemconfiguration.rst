@@ -1937,7 +1937,7 @@ Parameters
                   - Enum options - THRESHOLD_TYPE_STATIC, SE_CPU_THRESHOLD, SE_MEM_THRESHOLD, SE_DISK_THRESHOLD, CONTROLLER_CPU_THRESHOLD, CONTROLLER_MEM_THRESHOLD,
                 </div>
                                 <div style="font-size: small">
-                  - CONTROLLER_DISK_THRESHOLD.
+                  - CONTROLLER_DISK_THRESHOLD, SE_SHM_MEM_THRESHOLD, SE_CONN_MEM_THRESHOLD.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.

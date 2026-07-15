@@ -18,7 +18,6 @@
     allow_admin_network_updates: "{{ item.allow_admin_network_updates | default(omit) }}"
     allow_ip_forwarding: "{{ item.allow_ip_forwarding | default(omit) }}"
     allow_unauthenticated_apis: "{{ item.allow_unauthenticated_apis | default(omit) }}"
-    allow_unauthenticated_nodes: "{{ item.allow_unauthenticated_nodes | default(omit) }}"
     api_idle_timeout: "{{ item.api_idle_timeout | default(omit) }}"
     api_perf_logging_threshold: "{{ item.api_perf_logging_threshold | default(omit) }}"
     appviewx_compat_mode: "{{ item.appviewx_compat_mode | default(omit) }}"

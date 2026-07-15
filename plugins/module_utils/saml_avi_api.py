@@ -67,7 +67,7 @@ class WS1loginSAMLApiSession(ApiSession):
 
         # Getting controller session
         controller_session = requests.Session()
-        controller_session.verify = False
+        controller_session.verify = self.verify
         saml_controller_url = self.prefix + self.SAML_URL_SUFFIX
         logger.info("Getting SAML request from url: %s", saml_controller_url)
         resp = controller_session.get(saml_controller_url,
@@ -115,7 +115,7 @@ class WS1loginSAMLApiSession(ApiSession):
             auth = {'username': username, 'password': password, 'issueToken': 'true'}
             idp_session.headers.update({'content-type': 'application/json'})
             idp_session.headers.update({'accept': 'application/json'})
-            idp_session.verify = False
+            idp_session.verify = self.verify
             auth_resp = idp_session.post(auth_url, json=auth)
             if auth_resp.status_code != 200:
                 logger.error('Status Code %s msg %s' % (
@@ -299,7 +299,7 @@ class OneloginSAMLApiSession(ApiSession):
 
         # Getting controller session
         controller_session = requests.Session()
-        controller_session.verify = False
+        controller_session.verify = self.verify
         saml_controller_url = self.prefix + self.SAML_URL_SUFFIX
         logger.info("Getting SAML request from url: %s", saml_controller_url)
         resp = controller_session.get(saml_controller_url,
@@ -569,7 +569,7 @@ class OktaSAMLApiSession(ApiSession):
 
         # Getting controller session
         controller_session = requests.Session()
-        controller_session.verify = False
+        controller_session.verify = self.verify
         saml_controller_url = self.prefix + self.SAML_URL_SUFFIX
         logger.info("Getting SAML request from url: %s", saml_controller_url)
         resp = controller_session.get(saml_controller_url,
@@ -591,7 +591,7 @@ class OktaSAMLApiSession(ApiSession):
                                   re.M | re.S).group(1)
 
         idp_session = requests.Session()
-        idp_session.verify = False
+        idp_session.verify = self.verify
         saml_data = urllib.parse.urlencode({
             'SAMLRequest': saml_request,
             'RelayState': relay_state})
