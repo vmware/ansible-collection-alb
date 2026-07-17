@@ -150,3 +150,4 @@ plugins/modules/avi_virtualservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_licensestatus.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesfiledownload.py validate-modules:invalid-argument-name
+plugins/modules/avi_albservicesfiledownload.py validate-modules:nonexistent-parameter-documented

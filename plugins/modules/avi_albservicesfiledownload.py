@@ -73,6 +73,12 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
+    message:
+        description:
+            - Downloads success / failure message.
+            - Field introduced in 30.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     metadata:
         description:
             - Metadata of the file from pulse.
