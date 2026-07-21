@@ -40,7 +40,7 @@ options:
         description:
             - Avi API version of to use for Avi API and objects.
         type: str
-        default: ''
+        default: '20.1.7'
     verify:
         description:
             - Used to enable SSL certificate validation and ensure secure communication
@@ -69,7 +69,7 @@ options:
                 description:
                   - Avi controller version
                 type: str
-                default: ''
+                default: '20.1.7'
             tenant:
                 description:
                   - Avi controller tenant
