@@ -754,6 +754,36 @@ Parameters
                             <td class="elbow-placeholder"></td>
                                     <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ai_assistant_project_key</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Project key for the ai assistant feature.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as
+                </div>
+                                <div style="font-size: small">
+                  - b083b897e50a49103446ed6112aad3fd2e956eca572e1d8b807a3e2338fdd0dc/stage.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>alert_manager_use_evms</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1157,13 +1187,16 @@ Parameters
                   - Use ansible for se creation in baremetal.
                 </div>
                                 <div style="font-size: small">
+                  - Deprecated  ssh-based deployment removed, ansible is now always used.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 32.2.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 17.2.2.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -2711,36 +2744,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>intelligent_assist_project_key</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Project key for the intelligent assist feature.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 32.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as
-                </div>
-                                <div style="font-size: small">
-                  - b083b897e50a49103446ed6112aad3fd2e956eca572e1d8b807a3e2338fdd0dc/stage.
                 </div>
                                             </td>
     </tr>
@@ -4578,70 +4581,70 @@ Parameters
                   - SEAUTOSCALERSTATUSRESPONSE, SEGROUPONETIMEREQUESTRESPONSE, SEGROUPREBALANCEHISTORYRESPONSE, REBALANCEPARAMS, SESYSTEMINFORUNTIME, NICINFO,
                 </div>
                                 <div style="font-size: small">
-                  - METRICSAPISRVRSTATS, SEAGENTSTARTGARP, SESSIONKEYFORWARDERSTATS, SESSIONKEYFORWARDERSTATSDETAIL, SECURITYMGRINGRESSPIPELINESTATS,
+                  - METRICSAPISRVRSTATS, SEAGENTSTARTGARP, SESSIONKEYFORWARDERSTATS, SESSIONKEYFORWARDERSTATSDETAIL, SECURITYMGRINGRESSPIPELINESTATS, SECMGRSTATS,
                 </div>
                                 <div style="font-size: small">
-                  - SECURITYMGRSTATS, SERESOURCEPROTO, SECONSUMERPROTO, SECREATEPENDINGPROTO, PLACEMENTSTATS, SEVIPPROTO, RMVRFPROTO, VCENTERMAP, VIMGRVCENTERRUNTIME,
+                  - SERESOURCEPROTO, SECONSUMERPROTO, SECREATEPENDINGPROTO, PLACEMENTSTATS, SEVIPPROTO, RMVRFPROTO, VCENTERMAP, VIMGRVCENTERRUNTIME, INTERESTEDVMS,
                 </div>
                                 <div style="font-size: small">
-                  - INTERESTEDVMS, INTERESTEDHOSTS, VCENTERSUPPORTEDCOUNTERS, ENTITYCOUNTERS, TRANSACTIONSTATS, SEVMCREATEPROGRESS, PLACEMENTSTATUS, VISUBFOLDERS,
+                  - INTERESTEDHOSTS, VCENTERSUPPORTEDCOUNTERS, ENTITYCOUNTERS, TRANSACTIONSTATS, SEVMCREATEPROGRESS, PLACEMENTSTATUS, VISUBFOLDERS, VIDATASTORE,
                 </div>
                                 <div style="font-size: small">
-                  - VIDATASTORE, VIHOSTRESOURCES, CLOUDCONNECTOR, VINETWORKSUBNETVMS, VIDATASTORECONTENTS, VIMGRVCENTERCLOUDRUNTIME, VIVCENTERPORTGROUPS,
+                  - VIHOSTRESOURCES, CLOUDCONNECTOR, VINETWORKSUBNETVMS, VIDATASTORECONTENTS, VIMGRVCENTERCLOUDRUNTIME, VIVCENTERPORTGROUPS, VIVCENTERDATACENTERS,
                 </div>
                                 <div style="font-size: small">
-                  - VIVCENTERDATACENTERS, VIMGRHOSTRUNTIME, PLACEMENTGLOBALS, ALBSERVICES, RMCLOUDOPSPROTO, CLOUDPLACEMENTSUMMARY, CLOUDPLACEMENTINELIGIBLE,
+                  - VIMGRHOSTRUNTIME, PLACEMENTGLOBALS, ALBSERVICES, RMCLOUDOPSPROTO, CLOUDPLACEMENTSUMMARY, CLOUDPLACEMENTINELIGIBLE, SEGROUPPLACEMENTSUMMARY,
                 </div>
                                 <div style="font-size: small">
-                  - SEGROUPPLACEMENTSUMMARY, SEGROUPPLACEMENTDETAIL, SEGROUPPLACEMENTINELIGIBLE, SECONSUMERSUMMARY, SECONSUMERDETAIL, SERESOURCESUMMARY,
+                  - SEGROUPPLACEMENTDETAIL, SEGROUPPLACEMENTINELIGIBLE, SECONSUMERSUMMARY, SECONSUMERDETAIL, SERESOURCESUMMARY, SERESOURCEDETAIL,
                 </div>
                                 <div style="font-size: small">
-                  - SERESOURCEDETAIL, PLACEMENTSYSTEMSUMMARY, VIMGRNWRUNTIME, NETWORKRUNTIME, SCTPSTATRUNTIME, SEHUGEPAGEINFORUNTIME, VIRTUALSERVICEVHROUTESRUNTIME,
+                  - PLACEMENTSYSTEMSUMMARY, VIMGRNWRUNTIME, NETWORKRUNTIME, SCTPSTATRUNTIME, SEHUGEPAGEINFORUNTIME, VIRTUALSERVICEVHROUTESRUNTIME, APICCONFIGURATION,
                 </div>
                                 <div style="font-size: small">
-                  - APICCONFIGURATION, CIFTABLE, APICTRANSACTION, VIRTUALSERVICESTATEDBCACHESUMMARY, POOLSTATEDBCACHESUMMARY, SERVERSTATEDBCACHESUMMARY,
+                  - CIFTABLE, APICTRANSACTION, VIRTUALSERVICESTATEDBCACHESUMMARY, POOLSTATEDBCACHESUMMARY, SERVERSTATEDBCACHESUMMARY, APICAGENTINTERNAL,
                 </div>
                                 <div style="font-size: small">
-                  - APICAGENTINTERNAL, APICTRANSACTIONFLAP, APICGRAPHINSTANCES, APICEPGS, APICEPGEPS, APICDEVICEPKGVER, APICTENANTS, APICVMMDOMAINS, STATECACHESTATS,
+                  - APICTRANSACTIONFLAP, APICGRAPHINSTANCES, APICEPGS, APICEPGEPS, APICDEVICEPKGVER, APICTENANTS, APICVMMDOMAINS, STATECACHESTATS, STATECACHECONFIG,
                 </div>
                                 <div style="font-size: small">
-                  - STATECACHECONFIG, STATECACHEINTERNAL, STATECACHEDNS, STATECACHECONFIGVERSION, STATECACHEOPERSTATUS, STATECACHEVIRTUALSERVICE, STATECACHEPOOL,
+                  - STATECACHEINTERNAL, STATECACHEDNS, STATECACHECONFIGVERSION, STATECACHEOPERSTATUS, STATECACHEVIRTUALSERVICE, STATECACHEPOOL, STATECACHENODE,
                 </div>
                                 <div style="font-size: small">
-                  - STATECACHENODE, STATECACHEOPERSTATE, STATECACHESERVICEENGINE, NSXCONFIGURATION, NSXSGTABLE, NSXAGENTINTERNAL, NSXSGINFO, NSXSGIPS,
+                  - STATECACHEOPERSTATE, STATECACHESERVICEENGINE, NSXCONFIGURATION, NSXSGTABLE, NSXAGENTINTERNAL, NSXSGINFO, NSXSGIPS, NSXAGENTINTERNALCLI, NSXTAGENT,
                 </div>
                                 <div style="font-size: small">
-                  - NSXAGENTINTERNALCLI, NSXTAGENT, SERATELIMITINGRLINTERNAL, SERATELIMITINGMSFINTERNAL, ADAPTREPL, POOLGROUPENABLEPRIMARYPOOL, KEYVALSESSION,
+                  - SERATELIMITINGRLINTERNAL, SERATELIMITINGMSFINTERNAL, ADAPTREPL, POOLGROUPENABLEPRIMARYPOOL, KEYVALSESSION, KEYVALSESSIONSUMMARY, SYSTEMREPORT,
                 </div>
                                 <div style="font-size: small">
-                  - KEYVALSESSIONSUMMARY, SYSTEMREPORT, AWSLOGIN, ADAPTREPLFAULTINJ, ALERTFAULTPARAMS, ALERTMGRPARAMS, ALERTTESTEMAILPARAMS,
+                  - AWSLOGIN, ADAPTREPLFAULTINJ, ALERTFAULTPARAMS, ALERTMGRPARAMS, ALERTTESTEMAILPARAMS, ALERTTESTSYSLOGSNMPPARAMS, APICVSPLACEMENTREQ,
                 </div>
                                 <div style="font-size: small">
-                  - ALERTTESTSYSLOGSNMPPARAMS, APICVSPLACEMENTREQ, APPLYLOGRECOMMENDATIONS, CCFAULTPARAMS, CLUSTERPARAMS, CREDPARAMS, GETLOGRECOMMENDATIONS,
+                  - APPLYLOGRECOMMENDATIONS, CCFAULTPARAMS, CLUSTERPARAMS, CREDPARAMS, GETLOGRECOMMENDATIONS, GROUPPARAMS, NSXTNSSERVICEPARAMS, OPENSTACKLOGIN,
                 </div>
                                 <div style="font-size: small">
-                  - GROUPPARAMS, NSXTNSSERVICEPARAMS, OPENSTACKLOGIN, RETRYPLACEMENTPARAMS, SERVERSCALEINPARAMS, SERVERSCALEOUTPARAMS, SYSTESTEMAILPARAMS,
+                  - RETRYPLACEMENTPARAMS, SERVERSCALEINPARAMS, SERVERSCALEOUTPARAMS, SYSTESTEMAILPARAMS, TIER1ROUTERFILTER, TRANSPORTZONEPARAMS, VIFAULTINJECTION,
                 </div>
                                 <div style="font-size: small">
-                  - TIER1ROUTERFILTER, TRANSPORTZONEPARAMS, VIFAULTINJECTION, VISETMGMTIPSEREQ, VCENTERCLOUDSTATUSREQ, VCENTERINVENTORYDIAGREQ,
+                  - VISETMGMTIPSEREQ, VCENTERCLOUDSTATUSREQ, VCENTERINVENTORYDIAGREQ, VCENTERQUARANTINEDHOSTPARAMS, VSMIGRATEPARAMS, VSRESYNCPARAMS, VSSCALEINPARAMS,
                 </div>
                                 <div style="font-size: small">
-                  - VCENTERQUARANTINEDHOSTPARAMS, VSMIGRATEPARAMS, VSRESYNCPARAMS, VSSCALEINPARAMS, VSSCALEOUTPARAMS, VSSWITCHOVERPARAMS, TASKJOURNAL, JOURNALERROR,
+                  - VSSCALEOUTPARAMS, VSSWITCHOVERPARAMS, TASKJOURNAL, JOURNALERROR, JOURNALINFO, JOURNALSUMMARY, EVENTMANAGERSTATS, EVENTMANAGERSUBSCRIPTIONS,
                 </div>
                                 <div style="font-size: small">
-                  - JOURNALINFO, JOURNALSUMMARY, EVENTMANAGERSTATS, EVENTMANAGERSUBSCRIPTIONS, EVENTMANAGERCONFIG, SYSTEMHEALTHGETSYSTEMHEALTHSECURECHANNELRESPONSE,
+                  - EVENTMANAGERCONFIG, SYSTEMHEALTHGETSYSTEMHEALTHSECURECHANNELRESPONSE, SYSTEMHEALTHGETSYSTEMHEALTHCLUSTERINGRESPONSE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSTEMHEALTHGETSYSTEMHEALTHCLUSTERINGRESPONSE, SYSTEMHEALTHGETSYSTEMHEALTHPOSTGRESRESPONSE, SYSTEMHEALTHGETSERVICEFAILEDRESPONSE,
+                  - SYSTEMHEALTHGETSYSTEMHEALTHPOSTGRESRESPONSE, SYSTEMHEALTHGETSERVICEFAILEDRESPONSE, SYSTEMHEALTHGETSERVICERESTARTEDRESPONSE,
                 </div>
                                 <div style="font-size: small">
-                  - SYSTEMHEALTHGETSERVICERESTARTEDRESPONSE, SYSTEMHEALTHGETSERVICEDETAILRESPONSE, SEAGENTSEDATASTOREDOWNLOADFAIL, UPGRADEPROFILE, QATINFO,
+                  - SYSTEMHEALTHGETSERVICEDETAILRESPONSE, SEAGENTSEDATASTOREDOWNLOADFAIL, UPGRADEPROFILE, QATINFO, RETENTIONPOLICY, SYSTEMLIMITOBJECTCOUNT,
                 </div>
                                 <div style="font-size: small">
-                  - RETENTIONPOLICY, SYSTEMLIMITOBJECTCOUNT, SYSTEMLIMITOBJECTCOUNTS, EVENTGENPARAMS, LOGMANAGERSTATS, TECHSUPPORTPROFILE, TECHSUPPORT,
+                  - SYSTEMLIMITOBJECTCOUNTS, EVENTGENPARAMS, LOGMANAGERSTATS, TECHSUPPORTPROFILE, TECHSUPPORT, TECHSUPPORTPARAMS, TECHSUPPORTMESSAGE, REPORT,
                 </div>
                                 <div style="font-size: small">
-                  - TECHSUPPORTPARAMS, TECHSUPPORTMESSAGE, REPORT, REPORTPROFILE, SSPINSTANCE, VSPHEREZONEPARAMS, ROTATIONPARAMS, IPADDRGROUPSYNCPARAMS,
+                  - REPORTPROFILE, SSPINSTANCE, VSPHEREZONEPARAMS, ROTATIONPARAMS, IPADDRGROUPSYNCPARAMS, OPERSTATUSSTREAMER_CACHEDUMP, VPCPARAMS,
                 </div>
                                 <div style="font-size: small">
                   - ALERTMGRMONITORINGDATA, MAXOBJECTS, GSLBSMRUNTIME, GSLBCRMRUNTIME, GSLBHSMRUNTIME, VERSIONINFO, CFGSTATE, GSLBDNSSEINFO, GSLBPERDNSSTATE,

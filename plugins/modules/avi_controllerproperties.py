@@ -47,6 +47,14 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    ai_assistant_project_key:
+        description:
+            - Project key for the ai assistant feature.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as
+            - b083b897e50a49103446ed6112aad3fd2e956eca572e1d8b807a3e2338fdd0dc/stage.
+        type: str
     alert_manager_use_evms:
         description:
             - Enable to use event manager as source of eventsdisable to use log manager as source of events.
@@ -144,13 +152,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
-    bm_use_ansible:
-        description:
-            - Use ansible for se creation in baremetal.
-            - Field introduced in 17.2.2.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
-        type: bool
     cc_user_password_expiry_days:
         description:
             - Number of days after which cloudconnectoruser (service account) password expires.
@@ -493,14 +494,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    intelligent_assist_project_key:
-        description:
-            - Project key for the intelligent assist feature.
-            - Field introduced in 32.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as
-            - b083b897e50a49103446ed6112aad3fd2e956eca572e1d8b807a3e2338fdd0dc/stage.
-        type: str
     ipgls_client_cache_size:
         description:
             - Size of the ipgls client cache.
@@ -1063,6 +1056,7 @@ def main():
         api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
+        ai_assistant_project_key=dict(type='str', no_log=True,),
         alert_manager_use_evms=dict(type='bool',),
         allow_admin_network_updates=dict(type='bool',),
         allow_ip_forwarding=dict(type='bool',),
@@ -1076,7 +1070,6 @@ def main():
         async_patch_request_cleanup_duration=dict(type='int',),
         attach_ip_retry_interval=dict(type='int',),
         attach_ip_retry_limit=dict(type='int',),
-        bm_use_ansible=dict(type='bool',),
         cc_user_password_expiry_days=dict(type='int', no_log=True,),
         cc_user_password_rotation_job_period=dict(type='int',),
         cert_rotation_jwt_retention_days=dict(type='int',),
@@ -1119,7 +1112,6 @@ def main():
         gslb_purge_batch_size=dict(type='int',),
         gslb_purge_sleep_time_ms=dict(type='int',),
         ignore_vrf_in_networksubnetlist=dict(type='bool',),
-        intelligent_assist_project_key=dict(type='str', no_log=True,),
         ipgls_client_cache_size=dict(type='int',),
         ipgls_client_cache_ttl_minutes=dict(type='int',),
         log_records_allocated_size=dict(type='int',),
@@ -1198,7 +1190,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'cc_user_password_expiry_days', 'intelligent_assist_project_key', 'portal_token'})
+                           {'ai_assistant_project_key', 'cc_user_password_expiry_days', 'portal_token'})
 
 
 if __name__ == '__main__':

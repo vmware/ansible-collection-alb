@@ -295,7 +295,7 @@ Parameters
                   - Type of the ssp feature instance.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - SSP_INTELLIGENT_ASSIST, SSP_CENTRAL_LICENSING_SERVICE.
+                  - Enum options - SSP_AVI_OPERATIONS, SSP_CENTRAL_LICENSING_SERVICE.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.1.1.

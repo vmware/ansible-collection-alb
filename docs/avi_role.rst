@@ -544,13 +544,10 @@ Parameters
                   - PERMISSION_TECHSUPPORTMESSAGE, PERMISSION_ALERTSCRIPTCONFIG, PERMISSION_REPORT, PERMISSION_REPORTPROFILE, PERMISSION_APPLICATIONINSIGHTSPOLICY,
                 </div>
                                 <div style="font-size: small">
-                  - PERMISSION_POSITIVESECURITYPOLICY, PERMISSION_TENANTBINDING, PERMISSION_INTELLIGENT_ASSIST, PERMISSION_AKOAMKOCLUSTER,
+                  - PERMISSION_POSITIVESECURITYPOLICY, PERMISSION_TENANTBINDING, PERMISSION_AI_ASSISTANT, PERMISSION_AKOAMKOCLUSTER, PERMISSION_SESSIONKEYFORWARDER,
                 </div>
                                 <div style="font-size: small">
-                  - PERMISSION_SESSIONKEYFORWARDER, PERMISSION_LABELPROFILE, PERMISSION_APIPATH, PERMISSION_APISCHEMA, PERMISSION_APIPOLICY,
-                </div>
-                                <div style="font-size: small">
-                  - PERMISSION_APISPECGENERATE.
+                  - PERMISSION_LABELPROFILE, PERMISSION_APIPATH, PERMISSION_APISCHEMA, PERMISSION_APIPOLICY, PERMISSION_APISPECGENERATE.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

@@ -965,10 +965,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Client certificate for mutual tls authentication.
+                  - Client certificate for mutual tls connection.
                 </div>
                                 <div style="font-size: small">
-                  - Required when tls_mode is tls_mode_mtls.
+                  - Required when tls mode is mutual tls.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type sslkeyandcertificate.
@@ -995,22 +995,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tls authentication mode for outbound connections.
+                  - Select how tls is used to establish a secure connection.
                 </div>
                                 <div style="font-size: small">
-                  - Tls_mode_disabled  no tls.
-                </div>
-                                <div style="font-size: small">
-                  - Tls_mode_tls  server certificate verification.
-                </div>
-                                <div style="font-size: small">
-                  - Tls_mode_mtls  mutual tls; client_cert_uuid must be provided.
-                </div>
-                                <div style="font-size: small">
-                  - Tls_mode_verify_only  certificate chain verification without a full tls session.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - TLS_MODE_DISABLED, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_VERIFY_ONLY.
+                  - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_SKIP_HOSTNAME_VERIFY.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.
@@ -1929,10 +1917,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Client certificate for mutual tls authentication.
+                  - Client certificate for mutual tls connection.
                 </div>
                                 <div style="font-size: small">
-                  - Required when tls_mode is tls_mode_mtls.
+                  - Required when tls mode is mutual tls.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type sslkeyandcertificate.
@@ -1959,22 +1947,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Tls authentication mode for outbound connections.
+                  - Select how tls is used to establish a secure connection.
                 </div>
                                 <div style="font-size: small">
-                  - Tls_mode_disabled  no tls.
-                </div>
-                                <div style="font-size: small">
-                  - Tls_mode_tls  server certificate verification.
-                </div>
-                                <div style="font-size: small">
-                  - Tls_mode_mtls  mutual tls; client_cert_uuid must be provided.
-                </div>
-                                <div style="font-size: small">
-                  - Tls_mode_verify_only  certificate chain verification without a full tls session.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - TLS_MODE_DISABLED, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_VERIFY_ONLY.
+                  - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_SKIP_HOSTNAME_VERIFY.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.

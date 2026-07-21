@@ -16,6 +16,7 @@
     avi_api_patch_op: delete
     ntp_configuration: {}
     admin_auth_configuration: "{{ item.admin_auth_configuration | default(omit) }}"
+    ai_assistant_enabled: "{{ item.ai_assistant_enabled | default(omit) }}"
     allow_legacy_sha1_ntp_auth: "{{ item.allow_legacy_sha1_ntp_auth | default(omit) }}"
     allow_private_ips: "{{ item.allow_private_ips | default(omit) }}"
     avi_email_login_password: "{{ item.avi_email_login_password | default(omit) }}"
@@ -34,7 +35,6 @@
     fips_mode: "{{ item.fips_mode | default(omit) }}"
     global_tenant_config: "{{ item.global_tenant_config | default(omit) }}"
     host_key_algorithm_exclude: "{{ item.host_key_algorithm_exclude | default(omit) }}"
-    intelligent_assist_enabled: "{{ item.intelligent_assist_enabled | default(omit) }}"
     kex_algorithm_exclude: "{{ item.kex_algorithm_exclude | default(omit) }}"
     legacy_ssl_support: "{{ item.legacy_ssl_support | default(omit) }}"
     license_quota: "{{ item.license_quota | default(omit) }}"
@@ -53,7 +53,7 @@
     ssh_hmacs: "{{ item.ssh_hmacs | default(omit) }}"
     sync_kex_host_to_se: "{{ item.sync_kex_host_to_se | default(omit) }}"
     sync_syslog_to_se: "{{ item.sync_syslog_to_se | default(omit) }}"
-    syslog_servers: "{{ item.syslog_servers | default(omit) }}"
+    syslog_server_settings: "{{ item.syslog_server_settings | default(omit) }}"
     telemetry_configuration: "{{ item.telemetry_configuration | default(omit) }}"
     trusted_host_profiles_refs: "{{ item.trusted_host_profiles_refs | default(omit) }}"
     truststore_ca_certs_pem: "{{ item.truststore_ca_certs_pem | default(omit) }}"

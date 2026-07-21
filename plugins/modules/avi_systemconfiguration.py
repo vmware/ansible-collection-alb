@@ -51,6 +51,13 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    ai_assistant_enabled:
+        description:
+            - Enable or disable ai assistant feature on the controller.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     allow_legacy_sha1_ntp_auth:
         description:
             - Allow ntp authentication using legacy md5 or sha1 algorithms.
@@ -168,13 +175,6 @@ options:
             - Field introduced in 22.1.3.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    intelligent_assist_enabled:
-        description:
-            - Enable or disable intelligent assist feature on the controller.
-            - Field introduced in 32.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     kex_algorithm_exclude:
         description:
             - Users can specify comma separated list of deprecated key exchange algorithm.if nothing is specified, all known algorithms provided by openssh
@@ -288,10 +288,10 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
-    syslog_servers:
+    syslog_server_settings:
         description:
-            - The destination syslog server ip(v4/v6) address or fqdn.
-            - Field introduced in 31.2.1.
+            - Syslog server destinations including address, port, transport protocol, and output format.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
@@ -404,6 +404,7 @@ def main():
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         admin_auth_configuration=dict(type='dict',),
+        ai_assistant_enabled=dict(type='bool',),
         allow_legacy_sha1_ntp_auth=dict(type='bool',),
         allow_private_ips=dict(type='bool',),
         avi_email_login_password=dict(type='str', no_log=True,),
@@ -422,7 +423,6 @@ def main():
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
         host_key_algorithm_exclude=dict(type='str', no_log=True,),
-        intelligent_assist_enabled=dict(type='bool',),
         kex_algorithm_exclude=dict(type='str',),
         legacy_ssl_support=dict(type='bool',),
         license_quota=dict(type='dict',),
@@ -442,7 +442,7 @@ def main():
         ssh_hmacs=dict(type='list', elements='str',),
         sync_kex_host_to_se=dict(type='bool',),
         sync_syslog_to_se=dict(type='bool',),
-        syslog_servers=dict(type='list', elements='dict',),
+        syslog_server_settings=dict(type='list', elements='dict',),
         telemetry_configuration=dict(type='dict',),
         trusted_host_profiles_refs=dict(type='list', elements='str',),
         truststore_ca_certs_pem=dict(type='str',),
@@ -460,7 +460,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           {'avi_email_login_password', 'rekey_volume_limit', 'host_key_algorithm_exclude', 'rekey_time_limit'})
+                           {'rekey_time_limit', 'avi_email_login_password', 'rekey_volume_limit', 'host_key_algorithm_exclude'})
 
 
 if __name__ == '__main__':
