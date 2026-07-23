@@ -20,6 +20,7 @@
     description: "{{ item.description | default(omit) }}"
     file_object_refs: "{{ item.file_object_refs | default(omit) }}"
     label_mappings: "{{ item.label_mappings | default(omit) }}"
+    log_labels: "{{ item.log_labels | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     non_api_url_labels: "{{ item.non_api_url_labels | default(omit) }}"
     orphan_api_classification_settings: "{{ item.orphan_api_classification_settings | default(omit) }}"

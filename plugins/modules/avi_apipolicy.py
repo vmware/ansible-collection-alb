@@ -91,6 +91,13 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    log_labels:
+        description:
+            - Enables logging of waap labels effective for a request into apilog.effective_labels in the application log.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     name:
         description:
             - Name of this object, unique per tenant.
@@ -249,6 +256,7 @@ def main():
         description=dict(type='str',),
         file_object_refs=dict(type='list', elements='str',),
         label_mappings=dict(type='list', elements='dict',),
+        log_labels=dict(type='bool',),
         name=dict(type='str', required=True),
         non_api_url_labels=dict(type='dict',),
         orphan_api_classification_settings=dict(type='dict',),
