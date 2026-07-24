@@ -3,22 +3,16 @@
 
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
-from __future__ import (absolute_import, division, print_function)
-
-__metaclass__ = type
 import logging
 import time
 
-from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, \
-    sessionDict, APIError, AviCredentials
-
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, APIError
 from requests import ConnectionError
 from requests.exceptions import ChunkedEncodingError
 from ssl import SSLError
 
 logger = logging.getLogger(__name__)
 
-global sessionDict
 sessionDict = {}
 
 
@@ -30,7 +24,7 @@ class CSPApiSession(ApiSession):
                  port=None, timeout=60, api_version=None,
                  retry_conxn_errors=True, data_log=False,
                  avi_credentials=None, session_id=None, csrftoken=None,
-                 lazy_authentication=False, max_api_retries=None, csp_host=CSP_HOST, csp_token=None, user_hdrs={}):
+                 lazy_authentication=False, max_api_retries=None, csp_host=CSP_HOST, csp_token=None, user_hdrs=None):
 
         super(CSPApiSession, self).__init__(
             controller_ip, username, password, token,
@@ -70,8 +64,8 @@ class CSPApiSession(ApiSession):
                 return
             # Check for bad request and invalid credentials response code
             elif rsp.status_code in [401, 403]:
-                logger.error('Status Code %s msg %s' % (
-                    rsp.status_code, rsp.text))
+                logger.error('Status Code %s msg %s',
+                             rsp.status_code, rsp.text)
                 err = APIError('Failed: %s Status Code %s msg %s' % (
                     rsp.url, rsp.status_code, rsp.text), rsp)
                 raise err
@@ -93,8 +87,8 @@ class CSPApiSession(ApiSession):
         self.num_session_retries += 1
         if self.num_session_retries > self.max_session_retries:
             self.num_session_retries = 0
-            logger.error("giving up after %d retries connection failure %s" % (
-                self.max_session_retries, True))
+            logger.error("giving up after %d retries connection failure %s",
+                         self.max_session_retries, True)
             raise err
         self.generate_access_token()
         return

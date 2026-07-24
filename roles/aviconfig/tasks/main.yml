@@ -100,6 +100,18 @@
   vars:
     avi_role_state_mode: present
 
+- name: Avi Config | Upload FileObjects
+  ansible.builtin.include_tasks: "fileobject_upload.yml"
+  when:
+    - avi_config_state == "present"
+    - avi_role_cfg.fileobject_upload is defined
+
+- name: Avi Config | Delete FileObject Upload
+  ansible.builtin.include_tasks: "fileobject_upload_delete.yml"
+  when:
+    - avi_config_state == "absent"
+    - avi_role_cfg.fileobject_upload is defined
+
 - name: Build Avi module includes
   ansible.builtin.set_fact:
     config_resources: "{{ config_resources | default([]) + [outer_item] }}"

@@ -864,7 +864,7 @@ def main():
         service_metadata=dict(type='str',),
         service_pool_select=dict(type='list', elements='dict',),
         services=dict(type='list', elements='dict',),
-        session_key_forwarder_ref=dict(type='str',),
+        session_key_forwarder_ref=dict(type='str', no_log=True,),
         sideband_profile=dict(type='dict',),
         snat_ip=dict(type='list', elements='dict',),
         snat_ip6_addresses=dict(type='list', elements='dict',),
@@ -906,7 +906,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'virtualservice',
-                           {'ssl_key_and_certificate_refs'})
+                           {'session_key_forwarder_ref', 'ssl_key_and_certificate_refs'})
 
 
 if __name__ == '__main__':

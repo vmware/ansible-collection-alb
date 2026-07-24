@@ -122,6 +122,7 @@ Name | Description
 [vmware.alb.avi_errorpagebody](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_errorpagebody.rst)|Module to create update or delete ErrorPageBody
 [vmware.alb.avi_errorpageprofile](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_errorpageprofile.rst)|Module to create update or delete ErrorPageProfile
 [vmware.alb.avi_fileobject](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_fileobject.rst)|Module to create update or delete FileObject
+[vmware.alb.avi_fileobject_upload](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_fileobject_upload.rst)|Module to create update or delete FileobjectUpload
 [vmware.alb.avi_geodb](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_geodb.rst)|Module to create update or delete GeoDB
 [vmware.alb.avi_gslb](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_gslb.rst)|Module to create update or delete Gslb
 [vmware.alb.avi_gslbcrmruntime](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_gslbcrmruntime.rst)|Module to create update or delete GslbCRMRuntime

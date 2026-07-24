@@ -91,6 +91,7 @@ avi_resource_types:
   - systemreport
   - apiratelimitprofile
   - fileobject
+  - fileobject_upload
   - sslkeyandcertificate
   - testsedatastorelevel1
   - pkiprofile

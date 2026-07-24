@@ -224,7 +224,7 @@ def main():
         api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
-        additional_object_key_action=dict(type='str',),
+        additional_object_key_action=dict(type='str', no_log=True,),
         additional_properties_schema=dict(type='dict',),
         allow_additional_properties=dict(type='bool',),
         array_item_type=dict(type='dict',),
@@ -252,7 +252,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'apischema',
-                           set())
+                           {'additional_object_key_action'})
 
 
 if __name__ == '__main__':
