@@ -386,6 +386,14 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    event_manager_api_rate_limit_per_min:
+        description:
+            - Maximum number of post /api/eventmanager/generateevent requests allowed per minute, across all event_id values.
+            - Allowed values are 1-10000.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 60.
+        type: int
     event_manager_file_modified_ts_filter:
         description:
             - Stated time duration beyond which event manager disregards files whose modified timestamp from current time is later.
@@ -1099,6 +1107,7 @@ def main():
         enable_per_process_stop=dict(type='bool',),
         enable_resmgr_log_cache_print=dict(type='bool',),
         enable_streaming_based_nsx_ip_group_sync=dict(type='bool',),
+        event_manager_api_rate_limit_per_min=dict(type='int',),
         event_manager_file_modified_ts_filter=dict(type='int',),
         event_manager_max_goroutines=dict(type='int',),
         event_manager_max_subscribers=dict(type='int',),
@@ -1190,7 +1199,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'portal_token', 'ai_assistant_project_key', 'cc_user_password_expiry_days'})
+                           {'ai_assistant_project_key', 'portal_token', 'cc_user_password_expiry_days'})
 
 
 if __name__ == '__main__':

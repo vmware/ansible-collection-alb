@@ -906,7 +906,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'virtualservice',
-                           {'session_key_forwarder_ref', 'ssl_key_and_certificate_refs'})
+                           {'ssl_key_and_certificate_refs', 'session_key_forwarder_ref'})
 
 
 if __name__ == '__main__':
