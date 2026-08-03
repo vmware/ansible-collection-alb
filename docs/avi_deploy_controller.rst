@@ -518,14 +518,38 @@ Parameters
                 <b>skip_manifest_check</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
+                                    </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
                   - Flag to skip OVA manifest integrity check.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ssl_ca_bundle</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Path to a custom CA certificate bundle file used for SSL verification.
+                </div>
+                                <div style="font-size: small">
+                  - Only applicable when ssl_verify is true.
+                </div>
+                                <div style="font-size: small">
+                  - If not set, the system's default CA store is used.
+                </div>
+                                <div style="font-size: small">
+                  - Use this when vCenter presents a certificate signed by a private or internal CA that is not in the system trust store.
                 </div>
                                             </td>
     </tr>
@@ -542,6 +566,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Flag to set ssl Verification while deploying the VM.
+                </div>
+                                <div style="font-size: small">
+                  - Any playbook that omits this parameter will attempt a verified SSL connection to vCenter. If the vCenter certificate is self-signed or does not include the connecting IP as a Subject Alternative Name (SAN), the task will fail with an SSL error. To restore the previous behavior explicitly set ssl_verify as false, or provide a trusted CA bundle via ssl_ca_bundle.
                 </div>
                                             </td>
     </tr>

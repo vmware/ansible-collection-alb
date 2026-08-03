@@ -79,7 +79,6 @@ plugins/modules/avi_gslbhsmruntime.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbsmruntime.py validate-modules:missing-gplv3-license
 plugins/modules/avi_localworkerfdsversion.py validate-modules:missing-gplv3-license
 plugins/modules/avi_serviceauthprofile.py validate-modules:missing-gplv3-license
-plugins/modules/avi_gslb.py validate-modules:missing-gplv3-license
 plugins/modules/avi_poolgroupdeploymentpolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_vsgs.py validate-modules:missing-gplv3-license
 plugins/modules/avi_dynamicdnsrecord.py validate-modules:missing-gplv3-license
@@ -125,6 +124,7 @@ plugins/modules/avi_apipolicy.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbgeodbprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_backupconfiguration.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cloud.py validate-modules:missing-gplv3-license
+plugins/modules/avi_gslb.py validate-modules:missing-gplv3-license
 plugins/modules/avi_healthmonitor.py validate-modules:missing-gplv3-license
 plugins/modules/avi_alertsyslogconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_applicationprofile.py validate-modules:missing-gplv3-license

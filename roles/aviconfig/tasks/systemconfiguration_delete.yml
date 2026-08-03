@@ -34,6 +34,7 @@
     enable_license_quota: "{{ item.enable_license_quota | default(omit) }}"
     fips_mode: "{{ item.fips_mode | default(omit) }}"
     global_tenant_config: "{{ item.global_tenant_config | default(omit) }}"
+    gslb_client_cert_ref: "{{ item.gslb_client_cert_ref | default(omit) }}"
     host_key_algorithm_exclude: "{{ item.host_key_algorithm_exclude | default(omit) }}"
     kex_algorithm_exclude: "{{ item.kex_algorithm_exclude | default(omit) }}"
     legacy_ssl_support: "{{ item.legacy_ssl_support | default(omit) }}"

@@ -13,6 +13,7 @@ Role Variables
 |vcenter_password|Yes||VMware password|
 |ssl_verify|No|True|ovftool sslverify option|
 |skip_manifest_check|No|False|Skip OVA SHA manifest integrity check|
+|ssl_ca_bundle|No||Path to a custom CA certificate bundle file used for SSL verification|
 |state|No|present|Option to specify create or destroy the infra|
 |con_datacenter|No|Picked first from the list|Name of VMware datacenter|
 |con_cluster|No|Picked from the first in the list of given datacenters clusters|Name of a cluster in the datacenter|

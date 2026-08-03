@@ -168,6 +168,14 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    gslb_client_cert_ref:
+        description:
+            - Client certificate for mutual tls authentication.
+            - Required when tls_mode is tls_mode_mtls.
+            - It is a reference to an object of type sslkeyandcertificate.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     host_key_algorithm_exclude:
         description:
             - Users can specify comma separated list of deprecated host key algorithm.if nothing is specified, all known algorithms provided by openssh will be
@@ -422,6 +430,7 @@ def main():
         enable_license_quota=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
+        gslb_client_cert_ref=dict(type='str',),
         host_key_algorithm_exclude=dict(type='str', no_log=True,),
         kex_algorithm_exclude=dict(type='str',),
         legacy_ssl_support=dict(type='bool',),
@@ -460,7 +469,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           {'rekey_time_limit', 'host_key_algorithm_exclude', 'rekey_volume_limit', 'avi_email_login_password'})
+                           {'host_key_algorithm_exclude', 'rekey_time_limit', 'avi_email_login_password', 'rekey_volume_limit'})
 
 
 if __name__ == '__main__':

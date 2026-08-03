@@ -43,13 +43,26 @@ options:
     ssl_verify:
         description:
             - Flag to set ssl Verification while deploying the VM.
+            - Any playbook that omits this parameter will attempt a verified SSL connection
+              to vCenter. If the vCenter certificate is self-signed or does not include the connecting IP
+              as a Subject Alternative Name (SAN), the task will fail with an SSL error.
+              To restore the previous behavior explicitly set ssl_verify as false, or
+              provide a trusted CA bundle via ssl_ca_bundle.
         default: true
         type: bool
     skip_manifest_check:
         description:
             - Flag to skip OVA manifest integrity check.
         default: false
-        type: bool
+    ssl_ca_bundle:
+        description:
+            - Path to a custom CA certificate bundle file used for SSL verification.
+            - Only applicable when ssl_verify is true.
+            - If not set, the system's default CA store is used.
+            - Use this when vCenter presents a certificate signed by a private or
+              internal CA that is not in the system trust store.
+        required: false
+        type: str
     con_datacenter:
         description:
             - Destination datacenter for the deploy operation.
@@ -203,6 +216,7 @@ try:
         from urllib.parse import quote
     import os
     import requests
+    import ssl
     import time
     import ipaddress
     from pyVim.connect import SmartConnect, Disconnect
@@ -495,6 +509,7 @@ def main():
             vcenter_password=dict(required=True, type='str', no_log=True),
             ssl_verify=dict(required=False, type='bool', default=True),
             skip_manifest_check=dict(required=False, type='bool', default=False),
+            ssl_ca_bundle=dict(required=False, type='str', default=None),
             state=dict(required=False, type='str', default='present', choices=['absent', 'present']),
             con_datacenter=dict(required=False, type='str'),
             con_cluster=dict(required=False, type='str'),
@@ -533,10 +548,17 @@ def main():
         return module.fail_json(msg=(
             'Some of the python package is not installed. please install the requirements from requirements.txt'))
     try:
-        si = SmartConnect(disableSslCertValidation=True,
-                          host=module.params['vcenter_host'],
-                          user=module.params['vcenter_user'],
-                          pwd=module.params['vcenter_password'])
+        if module.params['ssl_verify']:
+            ssl_context = ssl.create_default_context(cafile=module.params.get('ssl_ca_bundle'))
+            si = SmartConnect(host=module.params['vcenter_host'],
+                              user=module.params['vcenter_user'],
+                              pwd=module.params['vcenter_password'],
+                              sslContext=ssl_context)
+        else:
+            si = SmartConnect(host=module.params['vcenter_host'],
+                              user=module.params['vcenter_user'],
+                              pwd=module.params['vcenter_password'],
+                              sslContext=ssl._create_unverified_context())
         atexit.register(Disconnect, si)
     except vim.fault.InvalidLogin:
         return module.fail_json(
@@ -546,6 +568,14 @@ def main():
         return module.fail_json(
             msg='exception while connecting to vCenter, check hostname, '
                 'FQDN or IP')
+    except ssl.SSLError as e:
+        return module.fail_json(
+            msg='SSL certificate verification failed while connecting to vCenter: %s. '
+                'If connecting via IP address, the vCenter certificate may not include it as a '
+                'Subject Alternative Name (SAN). Use the vCenter FQDN instead, or set '
+                'ssl_verify: false to disable SSL verification.' % str(e))
+    except Exception as e:
+        return module.fail_json(msg='exception while connecting to vCenter: %s' % str(e))
     check_mode = module.check_mode
     if module.params['state'] == 'absent':
         vm = get_vm_by_name(si, module.params['con_vm_name'])

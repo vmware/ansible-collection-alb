@@ -232,6 +232,13 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    tls_config:
+        description:
+            - Tls configuration for the site-to-site gslb federation channel (peer site login and remotesitewatcherrpc replication stream).
+            - Tls_mode_no_verify (default) preserves legacy behavior of not verifying the peer sites certificate.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     url:
         description:
             - Avi controller URL of the object.
@@ -497,6 +504,7 @@ def main():
         tenant_ref=dict(type='str',),
         tenant_scoped=dict(type='bool',),
         third_party_sites=dict(type='list', elements='dict',),
+        tls_config=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
         view_id=dict(type='int',),

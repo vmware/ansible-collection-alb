@@ -55,7 +55,6 @@ avi_resource_types:
   - gslbsmruntime
   - localworkerfdsversion
   - serviceauthprofile
-  - gslb
   - poolgroupdeploymentpolicy
   - vsgs
   - dynamicdnsrecord
@@ -102,6 +101,7 @@ avi_resource_types:
   - gslbgeodbprofile
   - backupconfiguration
   - cloud
+  - gslb
   - healthmonitor
   - alertsyslogconfig
   - applicationprofile

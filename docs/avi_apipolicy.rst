@@ -1076,7 +1076,7 @@ Parameters
                   - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Maximum of 5000 items allowed.
+                  - Maximum of 2000 items allowed.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

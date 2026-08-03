@@ -115,6 +115,12 @@ options:
             - Field introduced in 31.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    tls_connection_err:
+        description:
+            - This field will provide error information if any in gslb tls connection between sites.
+            - Field introduced in 32.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     url:
         description:
             - Avi controller URL of the object.
@@ -191,6 +197,7 @@ def main():
         site_name=dict(type='str',),
         status_info=dict(type='dict',),
         tenant_ref=dict(type='str',),
+        tls_connection_err=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )

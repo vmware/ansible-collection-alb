@@ -25,6 +25,7 @@
     site_name: "{{ item.site_name | default(omit) }}"
     status_info: "{{ item.status_info | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    tls_connection_err: "{{ item.tls_connection_err | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
