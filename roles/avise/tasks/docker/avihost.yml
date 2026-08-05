@@ -1,37 +1,26 @@
 ---
 - name: Cleanup avihost service
-  ansible.builtin.service:
-    name: avihost
-    enabled: false
-    state: stopped
+  service: name=avihost enabled=no state=stopped
   become: true
-  failed_when: false
+  ignore_errors: yes
 
 - name: Copy Avi Host script to remote machine
-  ansible.builtin.copy:
+  copy:
     src: "systemd/avi_host_server.py"
     dest: /usr/sbin/avi_host_server.py
-    mode: "0755"
-    owner: root
-    group: root
-    validate: "python3 -m py_compile %s"
+    mode: 0755
   become: true
 
-- name: Systemd | Deploy the avihost service
-  ansible.builtin.copy:
+- name: systemd | Deploy the avihost service
+  copy:
     src: "systemd/avihost.service"
     dest: /etc/systemd/system/avihost.service
-    mode: "0644"
-    owner: root
-    group: root
+    mode: 0644
   become: true
 
-- name: Systemd | Deploy the avihost service script
-  ansible.builtin.copy:
+- name: systemd | Deploy the avihost service script
+  copy:
     src: "systemd/avihost_service_script.sh"
     dest: /etc/systemd/system/avihost_service_script.sh
-    mode: "0755"
-    owner: root
-    group: root
-    validate: "/bin/bash -n %s"
+    mode: 0755
   become: true

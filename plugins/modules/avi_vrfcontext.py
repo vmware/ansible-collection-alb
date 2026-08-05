@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.2
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_vrfcontext
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of VrfContext Avi RESTful Object
 description:
-    - This module is used to configure VrfContext object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure VrfContext object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -146,20 +146,19 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Example to create VrfContext object
-      vmware.alb.avi_vrfcontext:
-        avi_credentials: "{{ avi_credentials }}"
-        state: present
-        name: sample_vrfcontext
+
+- name: Example to create VrfContext object
+  vmware.alb.avi_vrfcontext:
+    avi_credentials: "{{ avi_credentials }}"
+    state: present
+    name: sample_vrfcontext
 """
 
 RETURN = '''
@@ -187,15 +186,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         attrs=dict(type='list', elements='dict',),
         bfd_profile=dict(type='dict',),
         bgp_profile=dict(type='dict',),
@@ -214,8 +204,7 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

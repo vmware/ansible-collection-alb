@@ -3,7 +3,7 @@
 
 # module_check: supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
@@ -14,7 +14,7 @@ DOCUMENTATION = \
     '''
 ---
 module: avi_serviceenginegroup
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of ServiceEngineGroup Avi RESTful Object
 description:
     - This module is used to configure ServiceEngineGroup object
@@ -1612,8 +1612,9 @@ extends_documentation_fragment:
 
 EXAMPLES = \
     """
-- name: Example to create ServiceEngineGroup object
-  hosts: localhost
+- hosts: localhost
+  collections:
+    - vmware.alb
   vars:
     avi_credentials:
       username: "{{ username }}"
@@ -1717,7 +1718,7 @@ def main():
         hardwaresecuritymodulegroup_ref=dict(type='str'),
         heap_minimum_config_memory=dict(type='int'),
         hm_on_standby=dict(type='bool'),
-        host_attribute_key=dict(type='str', no_log=True),
+        host_attribute_key=dict(type='str'),
         host_attribute_value=dict(type='str'),
         host_gateway_monitor=dict(type='bool'),
         http_rum_console_log=dict(type='bool'),
@@ -1857,18 +1858,8 @@ def main():
         vs_se_scaleout_additional_wait_time=dict(type='int'),
         vs_se_scaleout_ready_timeout=dict(type='int'),
         vs_switchover_timeout=dict(type='int'),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs,
                            supports_check_mode=True)
     if not HAS_REQUESTS:

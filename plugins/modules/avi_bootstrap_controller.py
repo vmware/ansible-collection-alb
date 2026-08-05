@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: not supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -23,6 +23,7 @@ options:
     password:
         description:
             - New password to initialize controller password.
+        required: true
         type: str
     ssh_key_pair:
         description:
@@ -50,17 +51,17 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-- name: Initialize user password
-  vmware.alb.avi_bootstrap_controller:
-  avi_credentials:
-    username: "{{ username }}"
-    password: "{{ password }}"
-    controller: "{{ controller }}"
-    api_version: "{{ api_version }}"
-  ssh_key_pair: "/path/to/key-pair-file.pem"
-  password: new_password
-  con_wait_time: 3600
-  round_wait: 10
+  - name: Initialize user password
+    vmware.alb.avi_bootstrap_controller:
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
+      ssh_key_pair: "/path/to/key-pair-file.pem"
+      password: new_password
+      con_wait_time: 3600
+      round_wait: 10
 '''
 
 RETURN = '''
@@ -76,7 +77,6 @@ try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import avi_common_argument_spec
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
-
     import subprocess
     import requests
     HAS_REQUESTS = True
@@ -92,7 +92,7 @@ def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600):
     count = 0
     max_count = wait_time / round_wait
     ctrl_port = port if port else 80
-    path = "http://{1}:{2}{3}".format(controller_ip, ctrl_port, "/api/cluster/runtime")
+    path = "http://{0}:{1}{2}".format(controller_ip, ctrl_port, "/api/cluster/runtime")
     ctrl_status = False
     while True:
         if count >= max_count:
@@ -112,24 +112,15 @@ def controller_wait(controller_ip, port=None, round_wait=10, wait_time=3600):
 
 def main():
     argument_specs = dict(
-        password=dict(type='str', no_log=True, default=""),
-        ssh_key_pair=dict(type='str', required=True, no_log=True,),
+        password=dict(type='str', required=True, no_log=True),
+        ssh_key_pair=dict(type='str', required=True),
         force_mode=dict(type='bool', default=False),
         # Max time to wait for controller up state
         con_wait_time=dict(type='int', default=3600),
         # Retry after every rount_wait time to check for controller state.
         round_wait=dict(type='int', default=10),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(

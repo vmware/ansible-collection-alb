@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: not supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_api_session
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Avi API Module
 description:
     - This module can be used for calling any resources defined in Avi REST API. U(https://avinetworks.com/)
@@ -51,66 +51,64 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-- name: Get Pool Information using avi_api_session
-  hosts: all
-  vars:
-    avi_credentials:
-      username: "{{ username }}"
-      password: "{{ password }}"
-      controller: "{{ controller }}"
-      api_version: "{{ api_version }}"
+  - hosts: all
+    vars:
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
 
-  tasks:
-    - name: Get Pool Information using avi_api_session
-      vmware.alb.avi_api_session:
-        avi_credentials: "{{ avi_credentials }}"
-        http_method: get
-        path: pool
-        params:
-          name: "{{ pool_name }}"
-        api_version: 16.4
-      register: pool_results
+  - name: Get Pool Information using avi_api_session
+    vmware.alb.avi_api_session:
+      avi_credentials: "{{ avi_credentials }}"
+      http_method: get
+      path: pool
+      params:
+        name: "{{ pool_name }}"
+      api_version: 16.4
+    register: pool_results
 
-    - name: Patch Pool with list of servers
-      vmware.alb.avi_api_session:
-        avi_credentials: "{{ avi_credentials }}"
-        http_method: patch
-        path: "{{ pool_path }}"
-        api_version: 16.4
-        data:
-          add:
-            servers:
-              - ip:
-                  addr: 10.10.10.10
-                  type: V4
-              - ip:
-                  addr: 20.20.20.20
-                  type: V4
-      register: updated_pool
+  - name: Patch Pool with list of servers
+    vmware.alb.avi_api_session:
+      avi_credentials: "{{ avi_credentials }}"
+      http_method: patch
+      path: "{{ pool_path }}"
+      api_version: 16.4
+      data:
+        add:
+          servers:
+            - ip:
+                addr: 10.10.10.10
+                type: V4
+            - ip:
+                addr: 20.20.20.20
+                type: V4
+    register: updated_pool
 
-    - name: Fetch Pool metrics bandwidth and connections rate
-      vmware.alb.avi_api_session:
-        avi_credentials: "{{ avi_credentials }}"
-        http_method: get
-        path: analytics/metrics/pool
-        api_version: 16.4
-        params:
-          name: "{{ pool_name }}"
-          metric_id: l4_server.avg_bandwidth,l4_server.avg_complete_conns
-          step: 300
-          limit: 10
-      register: pool_metrics
-    - name: Wait for Controller upgrade to finish
-      vmware.alb.avi_api_session:
-        avi_credentials: "{{ avi_credentials }}"
-        http_method: get
-        timeout: 300
-        path: cluster/upgrade/status
-        api_version: 16.4
-      register: upgrade_status
-      until: "'result' in upgrade_status.obj and upgrade_status.obj.result == 'SUCCESS'"
-      retries: 120
-      delay: 10
+  - name: Fetch Pool metrics bandwidth and connections rate
+    vmware.alb.avi_api_session:
+      avi_credentials: "{{ avi_credentials }}"
+      http_method: get
+      path: analytics/metrics/pool
+      api_version: 16.4
+      params:
+        name: "{{ pool_name }}"
+        metric_id: l4_server.avg_bandwidth,l4_server.avg_complete_conns
+        step: 300
+        limit: 10
+    register: pool_metrics
+  - name: Wait for Controller upgrade to finish
+    vmware.alb.avi_api_session:
+      avi_credentials: "{{ avi_credentials }}"
+      http_method: get
+      timeout: 300
+      path: cluster/upgrade/status
+      api_version: 16.4
+    register: upgrade_status
+    until: "'result' in upgrade_status.obj and upgrade_status.obj.result == 'SUCCESS'"
+    retries: 120
+    delay: 10
 '''
 
 
@@ -145,19 +143,9 @@ def main():
         path=dict(type='str', required=True),
         params=dict(type='dict'),
         data=dict(type='jsonarg'),
-        timeout=dict(type='int', default=60),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
+        timeout=dict(type='int', default=60)
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
@@ -169,7 +157,7 @@ def main():
         api_creds.controller, api_creds.username, password=api_creds.password,
         timeout=api_creds.timeout, tenant=api_creds.tenant,
         tenant_uuid=api_creds.tenant_uuid, token=api_creds.token,
-        port=api_creds.port, ssl_cert=api_creds.ssl_cert,
+        port=api_creds.port,ssl_cert=api_creds.ssl_cert,
         ssl_key=api_creds.ssl_key)
 
     tenant_uuid = api_creds.tenant_uuid

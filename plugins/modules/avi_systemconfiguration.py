@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_systemconfiguration
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of SystemConfiguration Avi RESTful Object
 description:
-    - This module is used to configure SystemConfiguration object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure SystemConfiguration object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -51,12 +51,27 @@ options:
         description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    allow_legacy_sha1_ntp_auth:
+        description:
+            - Allow ntp authentication using legacy md5 or sha1 algorithms.
+            - When enabled, configuring md5 or sha1 ntp keys is permitted but a warning event is generated in the controller ui.
+            - When disabled (default), only sha256 or stronger is accepted and configuring md5 or sha1 results in an api error.
+            - Field introduced in 32.1.3.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     avi_email_login_password:
         description:
             - Password for avi_email_login user.
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: str
+    certificate_security_policy:
+        description:
+            - Certificate security policy for the system.
+            - Field introduced in 32.1.3.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+        type: dict
     common_criteria_mode:
         description:
             - Common criteria modes current state.
@@ -311,8 +326,15 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
+  vars:
+    avi_credentials:
+      username: "admin"
+      password: "something"
+      controller: "192.168.15.18"
+      api_version: "21.1.1"
+
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
@@ -324,7 +346,7 @@ EXAMPLES = """
       vmware.alb.avi_systemconfiguration:
         avi_credentials: "{{ avi_credentials }}"
         state: present
-        welcome_workflow_complete: true
+        welcome_workflow_complete: True
         dns_configuration:
           search_domain: ''
           server_list:
@@ -359,17 +381,10 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         admin_auth_configuration=dict(type='dict',),
+        allow_legacy_sha1_ntp_auth=dict(type='bool',),
         avi_email_login_password=dict(type='str', no_log=True,),
+        certificate_security_policy=dict(type='dict',),
         common_criteria_mode=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
         controller_analytics_policy=dict(type='dict',),
@@ -383,7 +398,7 @@ def main():
         enable_license_quota=dict(type='bool',),
         fips_mode=dict(type='bool',),
         global_tenant_config=dict(type='dict',),
-        host_key_algorithm_exclude=dict(type='str', no_log=True,),
+        host_key_algorithm_exclude=dict(type='str',),
         kex_algorithm_exclude=dict(type='str',),
         legacy_ssl_support=dict(type='bool',),
         license_quota=dict(type='dict',),
@@ -393,8 +408,8 @@ def main():
         password_policy_managed_at_ops=dict(type='bool',),
         portal_configuration=dict(type='dict',),
         proxy_configuration=dict(type='dict',),
-        rekey_time_limit=dict(type='str', no_log=True,),
-        rekey_volume_limit=dict(type='str', no_log=True,),
+        rekey_time_limit=dict(type='str',),
+        rekey_volume_limit=dict(type='str',),
         sddcmanager_fqdn=dict(type='str',),
         secure_channel_configuration=dict(type='dict',),
         service_auth_configurations=dict(type='list', elements='dict',),
@@ -411,8 +426,7 @@ def main():
         uuid=dict(type='str',),
         welcome_workflow_complete=dict(type='bool',),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -420,7 +434,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           {'avi_email_login_password', 'host_key_algorithm_exclude', 'rekey_time_limit', 'rekey_volume_limit'})
+                           ['avi_email_login_password'])
 
 
 if __name__ == '__main__':

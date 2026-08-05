@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.2
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_controllerproperties
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of ControllerProperties Avi RESTful Object
 description:
-    - This module is used to configure ControllerProperties object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure ControllerProperties object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -70,11 +70,6 @@ options:
     allow_unauthenticated_apis:
         description:
             - Allow unauthenticated access for special apis.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
-    allow_unauthenticated_nodes:
-        description:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -285,7 +280,7 @@ options:
             - Minimum api timeout value.if this value is not 60, it will be the default timeout for all apis that do not have a specific timeout.if an api has
             - a specific timeout but is less than this value, this value will become the new timeout.
             - Allowed values are 60-3600.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Unit is sec.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
@@ -392,6 +387,14 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    event_manager_api_rate_limit_per_min:
+        description:
+            - Maximum number of post /api/eventmanager/generateevent requests allowed per minute, across all event_id values.
+            - Allowed values are 1-10000.
+            - Field introduced in 32.1.3.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 60.
+        type: int
     event_manager_file_modified_ts_filter:
         description:
             - Stated time duration beyond which event manager disregards files whose modified timestamp from current time is later.
@@ -975,20 +978,19 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Example to create ControllerProperties object
-      vmware.alb.avi_controllerproperties:
-        avi_credentials: "{{ avi_credentials }}"
-        state: present
-        name: sample_controllerproperties
+
+- name: Example to create ControllerProperties object
+  vmware.alb.avi_controllerproperties:
+    avi_credentials: "{{ avi_credentials }}"
+    state: present
+    name: sample_controllerproperties
 """
 
 RETURN = '''
@@ -1016,20 +1018,10 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         alert_manager_use_evms=dict(type='bool',),
         allow_admin_network_updates=dict(type='bool',),
         allow_ip_forwarding=dict(type='bool',),
         allow_unauthenticated_apis=dict(type='bool',),
-        allow_unauthenticated_nodes=dict(type='bool',),
         api_idle_timeout=dict(type='int',),
         api_perf_logging_threshold=dict(type='int',),
         appviewx_compat_mode=dict(type='bool',),
@@ -1040,7 +1032,7 @@ def main():
         attach_ip_retry_interval=dict(type='int',),
         attach_ip_retry_limit=dict(type='int',),
         bm_use_ansible=dict(type='bool',),
-        cc_user_password_expiry_days=dict(type='int', no_log=True,),
+        cc_user_password_expiry_days=dict(type='int',),
         cc_user_password_rotation_job_period=dict(type='int',),
         cert_rotation_jwt_retention_days=dict(type='int',),
         check_vsvip_fqdn_syntax=dict(type='bool',),
@@ -1069,6 +1061,7 @@ def main():
         enable_per_process_stop=dict(type='bool',),
         enable_resmgr_log_cache_print=dict(type='bool',),
         enable_streaming_based_nsx_ip_group_sync=dict(type='bool',),
+        event_manager_api_rate_limit_per_min=dict(type='int',),
         event_manager_file_modified_ts_filter=dict(type='int',),
         event_manager_max_goroutines=dict(type='int',),
         event_manager_max_subscribers=dict(type='int',),
@@ -1147,8 +1140,7 @@ def main():
         warmstart_se_reconnect_wait_time=dict(type='int',),
         warmstart_vs_resync_wait_time=dict(type='int',),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -1156,7 +1148,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'portal_token', 'cc_user_password_expiry_days'})
+                           ['portal_token'])
 
 
 if __name__ == '__main__':
