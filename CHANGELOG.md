@@ -1,5 +1,13 @@
 # Changelog
 
+## 32.1.2
+
+### Security Fixes
+- Enforced OVA manifest verification and enabled TLS certificate validation by default to prevent tampered OVA deployments and MITM attacks.
+- Fixed vCenter connections to honor the ssl_verify setting instead of always bypassing certificate validation (CWE-295).
+- Prevented leakage of session tokens, cookies, CSRF tokens, and other sensitive credentials in Ansible logs, SDK logs, and API error messages (CWE-532, CWE-209).
+- Fixed exposure of URL-encoded vCenter passwords in ovftool deployment failure logs by ensuring sensitive values are properly redacted.
+
 ## 32.1.1
 
 ### Enhancements
@@ -15,6 +23,13 @@
 - Added bs4 installation requirement to fix automation failures
 - Asset updates by contributors through automated collection engineering workflows
 - Ansible sanity issue fixes and collection stabilization improvements
+
+## 31.2.2
+- No functional changes; version bump only.
+
+## 31.1.2
+- Added the installation of bs4 as a requirement to fix failure of auto… sync pr
+- Fixes ansible module doc
 
 ## 30.2.6
 

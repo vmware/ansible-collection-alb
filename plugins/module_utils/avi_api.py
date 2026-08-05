@@ -10,6 +10,7 @@ import json
 import logging
 import time
 import ipaddress
+import warnings
 
 if sys.version_info < (3, 5):
     from urlparse import urlparse
@@ -17,10 +18,19 @@ else:
     from urllib.parse import urlparse
 
 from datetime import datetime, timedelta
-from requests import ConnectionError
-from requests import Response
-from requests.exceptions import ChunkedEncodingError
-from requests.sessions import Session
+try:
+    from requests import ConnectionError
+    from requests import Response
+    from requests.exceptions import ChunkedEncodingError
+    from requests.sessions import Session
+except ImportError:
+    class Response(object):
+        pass
+
+    class Session(object):
+        pass
+    ConnectionError = Exception
+    ChunkedEncodingError = Exception
 from ssl import SSLError
 
 
@@ -160,6 +170,7 @@ class AviCredentials(object):
     idp_class = None
     csp_host = None
     csp_token = None
+    verify = False
 
     def __init__(self, **kwargs):
         for k, v in kwargs.items():
@@ -173,6 +184,9 @@ class AviCredentials(object):
         if m.params.get('avi_credentials'):
             for k, v in m.params['avi_credentials'].items():
                 if hasattr(self, k):
+                    if k == 'verify':
+                        val = str(v).strip().lower()
+                        v = True if val == "true" else False if val == "false" else val
                     setattr(self, k, v)
         if m.params['controller']:
             self.controller = m.params['controller']
@@ -268,6 +282,16 @@ class ApiSession(Session):
             self.avi_credentials = avi_credentials
         self.headers = {}
         self.verify = verify
+        if str(self.verify).lower() == 'false':
+            warning_msg = (
+                "\n"
+                "********************************************************************************\n"
+                "Strong Recommendation: It is highly recommended to use verify=True \n"
+                "to enable SSL certificate validation and ensure secure communication.\n"
+                "********************************************************************************"
+            )
+            logger.warning(warning_msg)
+            warnings.warn(warning_msg)
         self.retry_conxn_errors = retry_conxn_errors
         self.remote_api_version = {}
         self.user_hdrs = user_hdrs if user_hdrs else {}
@@ -306,8 +330,16 @@ class ApiSession(Session):
                 self.prefix += ':{}'.format(port)
 
         self.timeout = timeout
-        self.key = '%s:%s:%s' % (self.avi_credentials.controller,
-                                 self.avi_credentials.username, k_port)
+        self.key = '%s:%s:%s:%s:%s:%s:%s:%s' % (
+            self.avi_credentials.controller,
+            self.avi_credentials.username,
+            k_port,
+            self.avi_credentials.tenant,
+            self.avi_credentials.tenant_uuid,
+            self.verify,
+            hash(self.avi_credentials.password) if self.avi_credentials.password else '',
+            hash(self.avi_credentials.token) if self.avi_credentials.token else ''
+        )
 
         if self.user_hdrs and 'Authorization' in self.user_hdrs:
             return
@@ -470,8 +502,16 @@ class ApiSession(Session):
         k_port = avi_credentials.port if avi_credentials.port else 443
         if avi_credentials.controller.startswith('http'):
             k_port = 80 if not avi_credentials.port else k_port
-        key = '%s:%s:%s' % (avi_credentials.controller,
-                            avi_credentials.username, k_port)
+        key = '%s:%s:%s:%s:%s:%s:%s:%s' % (
+            avi_credentials.controller,
+            avi_credentials.username,
+            k_port,
+            avi_credentials.tenant,
+            avi_credentials.tenant_uuid,
+            verify,
+            hash(avi_credentials.password) if avi_credentials.password else '',
+            hash(avi_credentials.token) if avi_credentials.token else ''
+        )
         cached_session = sessionDict.get(key)
         if cached_session:
             user_session = cached_session['api']

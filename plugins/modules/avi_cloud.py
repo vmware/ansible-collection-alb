@@ -107,7 +107,7 @@ options:
             - By default, pool member fqdns are resolved on the controller.
             - When this is set, pool member fqdns are instead resolved on service engines in this cloud.
             - This is useful in scenarios where pool member fqdns can only be resolved from service engines and not from the controller.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Allowed in essentials (allowed values- false), basic (allowed values- false) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.

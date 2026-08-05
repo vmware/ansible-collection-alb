@@ -9889,7 +9889,7 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- cloud_none,cloud_vcenter), basic (allowed values- cloud_none,cloud_nsxt) edition.
+                  - Allowed in essentials (allowed values- cloud_none, cloud_vcenter), basic (allowed values- cloud_none,cloud_nsxt) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as CLOUD_NONE.

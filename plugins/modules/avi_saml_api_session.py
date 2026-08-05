@@ -128,7 +128,7 @@ def get_idp_class(idp):
 
 def main():
     argument_specs = dict(
-        idp_class=dict(type='str', required=True, ),
+        idp_class=dict(type='str', required=True, no_log=True),
         api_context=dict(type='dict',),
         username=dict(type='str', default=''),
         tenant_uuid=dict(type='str', default=''),
@@ -137,6 +137,7 @@ def main():
         controller=dict(type='str', default=''),
         api_version=dict(type='str', default='20.1.7'),
         avi_credentials=dict(type='dict',),
+        verify=dict(type='bool', default=False),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
     if HAS_REQUESTS:
