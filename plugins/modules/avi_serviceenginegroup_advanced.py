@@ -714,20 +714,7 @@ obj:
 from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec,
-        avi_obj_cmp,
-        ansible_return,
-        purge_optional_fields,
-        AviCheckModeResponse,
-    )
-    from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-        ApiSession,
-        AviCredentials,
-        ObjectNotFound,
-    )
-    import yaml
-    from copy import deepcopy
-
+        avi_common_argument_spec, avi_ansible_api)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -735,6 +722,8 @@ except ImportError:
 
 def main():
     argument_specs = dict(
+        state=dict(default="present", choices=["absent", "present"]),
+
         name=dict(type="str", required=True),
         uuid=dict(type="str"),
         avi_api_update_method=dict(default="put", choices=["put", "patch"]),
@@ -829,182 +818,28 @@ def main():
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
-        return module.fail_json(
-            msg="Python requests package is not installed. For installation instructions, visit https://pypi.org/project/requests."
-        )
-    changed = False
-    avi_patch_op = module.params["avi_api_patch_op"]
-    uuid = module.params.get("uuid", None)
-    obj_type = "serviceenginegroup"
-    obj_path = "%s/%s" % (obj_type, uuid)
-    api_creds = AviCredentials()
-    api_creds.update_from_ansible_module(module)
-    api = ApiSession.get_session(
-        api_creds.controller,
-        api_creds.username,
-        password=api_creds.password,
-        timeout=api_creds.timeout,
-        tenant=api_creds.tenant,
-        tenant_uuid=api_creds.tenant_uuid,
-        token=api_creds.token,
-        port=api_creds.port,
+        return module.fail_json(msg=(
+            'Python requests package is not installed. '
+            'For installation instructions, visit https://pypi.org/project/requests.'))
+
+    # avi_serviceenginegroup_advanced is deprecated. All of its fields have been
+    # merged into avi_serviceenginegroup, which is now the single, canonical
+    # ServiceEngineGroup module. This module is kept only as a thin backward
+    # compatible alias that delegates to the same avi_ansible_api logic used
+    # by avi_serviceenginegroup, so existing playbooks keep working unchanged.
+    module.deprecate(
+        msg=(
+            'avi_serviceenginegroup_advanced is deprecated. '
+            'Use avi_serviceenginegroup instead, which now supports all '
+            'ServiceEngineGroup fields (including the former "advanced" fields).'
+        ),
+        version='34.1.0',
+        collection_name='vmware.alb',
     )
-
-    # Get the api version.
-    # avi_update_method = module.params.get('avi_api_update_method', 'put')
-
-    avi_patch_op = module.params.get("avi_api_patch_op", "add")
-    avi_patch_path = module.params.get("avi_patch_path")
-    avi_patch_value = module.params.get("avi_patch_value", None)
-    api_version = api_creds.api_version
-    name = module.params.get("name", None)
-
-    # Added Support to get uuid
-
-    check_mode = module.check_mode
-    if uuid and obj_type:
-        obj_path = "%s/%s" % (obj_type, uuid)
-    else:
-        obj_path = "%s/" % obj_type
-    obj = deepcopy(module.params)
-    tenant = obj.pop("tenant", "")
-    tenant_uuid = obj.pop("tenant_uuid", "")
-
-    # obj.pop('cloud_ref', None)
-
-    POP_FIELDS = [
-        "state",
-        "controller",
-        "username",
-        "password",
-        "api_version",
-        "avi_credentials",
-        "avi_api_update_method",
-        "avi_api_patch_op",
-        "avi_patch_path",
-        "avi_patch_value",
-        "api_context",
-        "tenant",
-        "tenant_uuid",
-        "avi_deactivate_session_cache_as_fact",
-    ]
-
-    for k in POP_FIELDS:
-        obj.pop(k, None)
-        purge_optional_fields(obj, module)
-
-    if uuid:
-
-        # Get the object based on uuid.
-
-        try:
-            existing_obj = api.get(
-                obj_path,
-                tenant=tenant,
-                tenant_uuid=tenant_uuid,
-                params={"include_refs": "", "include_name": ""},
-                api_version=api_version,
-            )
-            existing_obj = existing_obj.json()
-        except ObjectNotFound:
-            existing_obj = None
-    elif name:
-        params = {"include_refs": "", "include_name": ""}
-        if obj.get("cloud_ref", None):
-
-            # this is the case when gets have to be scoped with cloud
-
-            cloud = obj["cloud_ref"].split("name=")[1]
-            params["cloud_ref.name"] = cloud
-        existing_obj = api.get_object_by_name(
-            obj_type,
-            name,
-            tenant=tenant,
-            tenant_uuid=tenant_uuid,
-            params=params,
-            api_version=api_version,
-        )
-
-        # Need to check if tenant_ref was provided and the object returned
-        # is actually in admin tenant.
-
-        if (existing_obj and "tenant_ref" in obj and "tenant_ref" in existing_obj and obj["tenant_ref"] is not None):
-            existing_obj_tenant = existing_obj["tenant_ref"].split("#")[1]
-            obj_tenant = obj["tenant_ref"].split("name=")[1]
-            if obj_tenant != existing_obj_tenant:
-                existing_obj = None
-    else:
-
-        # added api version to avi api call.
-
-        existing_obj = api.get(
-            obj_path,
-            tenant=tenant,
-            tenant_uuid=tenant_uuid,
-            params={"include_refs": "", "include_name": ""},
-            api_version=api_version,
-        ).json()
-    rsp = None
-    req = None
-    if existing_obj:
-
-        # this is case of modify as object exists. should find out
-        # if changed is true or not
-
-        if name is not None:
-            obj_uuid = existing_obj["uuid"]
-            obj_path = "%s/%s" % (obj_type, obj_uuid)
-        changed = not avi_obj_cmp(obj, existing_obj)
-        if check_mode:
-
-            # No need to process any further.
-
-            rsp = AviCheckModeResponse(obj=existing_obj)
-        else:
-            if changed:
-                obj.pop("name", None)
-                patch_data = {}
-                if avi_patch_path:
-                    if avi_patch_value:
-                        avi_patch_value = yaml.load(avi_patch_value)
-                    patch_data = {
-                        "json_patch": [
-                            {
-                                "op": avi_patch_op,
-                                "path": avi_patch_path,
-                                "value": avi_patch_value,
-                            }
-                        ]
-                    }
-                else:
-
-                    patch_data.update({avi_patch_op: obj})
-                try:
-                    rsp = api.patch(
-                        obj_path,
-                        data=patch_data,
-                        tenant=tenant,
-                        tenant_uuid=tenant_uuid,
-                        api_version=api_version,
-                    )
-                    obj = rsp.json()
-                    changed = not avi_obj_cmp(obj, existing_obj)
-                except ObjectNotFound:
-                    changed = False
-                    rsp = None
-
-    return ansible_return(
-        module,
-        rsp,
-        changed,
-        req,
-        existing_obj=existing_obj,
-        api_context=api.get_context(),
-    )
+    return avi_ansible_api(module, 'serviceenginegroup', set([]))
 
 
 if __name__ == "__main__":
