@@ -21,6 +21,12 @@ short_description: Module for setup of ServiceEngineGroup Avi RESTful Object
 description:
     - This module is used to configure ServiceEngineGroup object's advanced features
 options:
+    state:
+        description:
+            - The state that should be applied on the entity.
+        default: present
+        choices: ["absent", "present"]
+        type: str
     avi_api_update_method:
         description:
             - Default method for object update is HTTP PUT.
