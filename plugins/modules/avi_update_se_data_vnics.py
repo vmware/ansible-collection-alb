@@ -38,15 +38,15 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-- name: Update data vnics and vlan interfaces
-  vmware.alb.avi_update_se_data_vnics:
-    avi_credentials:
-      controller: "{{ controller }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
-      api_version: "{{ api_version }}"
-    se_name: "10.10.20.30"
-    data_vnics_config:
+  - name: Update data vnics and vlan interfaces
+    vmware.alb.avi_update_se_data_vnics:
+      avi_credentials:
+        controller: "{{ controller }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        api_version: "{{ api_version }}"
+      se_name: "10.10.20.30"
+      data_vnics_config:
       - if_name: "eth1"
         is_asm: false
         can_se_dp_takeover: true
@@ -112,18 +112,8 @@ def main():
     argument_specs = dict(
         data_vnics_config=dict(type='list', elements='dict',),
         se_name=dict(type='str', required=True),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

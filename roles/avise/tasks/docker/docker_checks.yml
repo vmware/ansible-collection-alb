@@ -1,184 +1,123 @@
 ---
 - name: Check if Docker is installed
-  ansible.builtin.shell: >
-    set -o pipefail && \
-    which {{ se_deploy_type }} | wc -l
-  args:
-    executable: /bin/bash
+  shell: "which {{ se_deploy_type }} | wc -l"
   register: result
   changed_when: false
 
-- name: Check Docker installation
-  when: result.stdout == "0"
-  block:
+- block:
     - name: Set error message if Docker is not installed
-      ansible.builtin.set_fact:
+      set_fact:
         error_string: "Docker is not installed. Please install Docker for ServiceEngine container to be started"
     - name: Include error tasks if Docker is not installed
       ansible.builtin.include_tasks: error.yml
+  when: result.stdout == "0"
 
-- name: Check Docker status
-  when: se_deploy_type == "docker"
-  block:
+- block:
     - name: Check if Docker is running
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        ps -ef | grep docker | grep -v grep | wc -l
-      args:
-        executable: /bin/bash
+      shell: "ps -ef | grep docker | grep -v grep | wc -l"
       register: result
       changed_when: false
-      failed_when: false
+  when: se_deploy_type == "docker"
 
-- name: Check Docker status
-  when: se_deploy_type == "docker" and result.stdout == "0"
-  block:
+- block:
     - name: Set error message if Docker is not running
-      ansible.builtin.set_fact:
+      set_fact:
         error_string: "Docker is not running, please start Docker"
     - name: Include error tasks if Docker is not running
       ansible.builtin.include_tasks: error.yml
+  when: se_deploy_type == "docker" and result.stdout == "0"
 
 - name: Get Docker version
-  ansible.builtin.shell: >
-    set -o pipefail && \
-    {{ se_deploy_type }} --version | awk '{print $3}' | sed -e 's/,//'
-  args:
-    executable: /bin/bash
-  changed_when: false
+  shell: "{{ se_deploy_type }} --version | awk '{print $3}' | sed -e 's/,//'"
   register: result
 
-- name: Check Docker version
-  when: se_deploy_type == "docker" and result.stdout is version('1.6.1', '<')
-  block:
+- block:
     - name: Set error message if Docker version is less than 1.6.1
-      ansible.builtin.set_fact:
+      set_fact:
         error_string: "Docker version {{ result.stdout }} not supported for spawning ServiceEngine container, please upgrade Docker to 1.6.1 or greater"
     - name: Include error tasks if Docker version is too low
       ansible.builtin.include_tasks: error.yml
+  when: se_deploy_type == "docker" and result.stdout is version('1.6.1', '<')
 
-- name: Check Podman version
-  when: se_deploy_type == "podman" and result.stdout is version('3.0.1', '<')
-  block:
+- block:
     - name: Set error message if Podman version is less than 3.0.1
-      ansible.builtin.set_fact:
+      set_fact:
         error_string: "Podman version {{ result.stdout }} not supported for spawning ServiceEngine container, please upgrade Podman to 3.0.1 or greater"
     - name: Include error tasks if Podman version is too low
       ansible.builtin.include_tasks: error.yml
+  when: se_deploy_type == "podman" and result.stdout is version('3.0.1', '<')
 
-- name: Check Docker storage
-  when: docker_disk_dir is not defined
-  become: true
-  block:
+- block:
     - name: Verify the Docker storage
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        {{ se_deploy_type }} info | grep 'Data loop file:' | awk '{print $4}'
-      args:
-        executable: /bin/bash
-      changed_when: false
-      failed_when: false
+      shell: "{{ se_deploy_type }} info | grep 'Data loop file:' | awk '{print $4}'"
       register: docker_dir
     - name: Set Docker disk directory
-      ansible.builtin.set_fact:
+      set_fact:
         docker_disk_dir: "{{ docker_dir.stdout }}"
       when: docker_dir.stdout != ""
-
-- name: Get Docker directory
   when: docker_disk_dir is not defined
   become: true
-  block:
+
+- block:
     - name: Get Docker directory
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        {{ se_deploy_type }} info | grep '^ Root Dir:' | awk '{print $3}'
-      args:
-        executable: /bin/bash
-      changed_when: false
-      failed_when: false
+      shell: "{{ se_deploy_type }} info | grep '^ Root Dir:' | awk '{print $3}'"
       register: docker_dir
     - name: Set Docker disk directory
-      ansible.builtin.set_fact:
+      set_fact:
         docker_disk_dir: "{{ docker_dir.stdout }}"
       when: docker_dir.stdout != ""
-
-- name: Get Docker directory
   when: docker_disk_dir is not defined
   become: true
-  block:
+
+- block:
     - name: Get Docker directory
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        {{ se_deploy_type }} info | grep 'docker Root Dir:' | awk '{print $4}'
-      args:
-        executable: /bin/bash
-      changed_when: false
-      failed_when: false
+      shell: "{{ se_deploy_type }} info | grep 'docker Root Dir:' | awk '{print $4}'"
       register: docker_dir
     - name: Set Docker disk directory
-      ansible.builtin.set_fact:
+      set_fact:
         docker_disk_dir: "{{ docker_dir.stdout }}"
       when: docker_dir.stdout != ""
-
-- name: Get Docker disk available size
-  when: docker_disk_dir is defined
+  when: docker_disk_dir is not defined
   become: true
-  block:
+
+- block:
     - name: Get Docker disk available size
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        df {{ docker_disk_dir }} -P | grep -iv Used | awk '{print $4}'
-      args:
-        executable: /bin/bash
-      changed_when: false
-      failed_when: false
+      shell: "df {{ docker_disk_dir }} -P | grep -iv Used | awk '{print $4}'"
       register: size_avail
     - name: Set Docker size
-      ansible.builtin.set_fact:
+      set_fact:
         docker_size_avail: "{{ size_avail.stdout }}"
-
-- name: Get Docker disk available size
-  when: docker_size_avail is not defined
+  when: docker_disk_dir is defined
   become: true
-  block:
+
+- block:
     - name: Get available size
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        {{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $4}'
-      args:
-        executable: /bin/bash
-      changed_when: false
-      failed_when: false
+      shell: "{{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $4}'"
       register: size_avail
     - name: Get available size format
-      ansible.builtin.shell: >
-        set -o pipefail && \
-        {{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $5}'
-      args:
-        executable: /bin/bash
-      changed_when: false
-      failed_when: false
+      shell: "{{ se_deploy_type }} info | grep 'Data Space Available:' | awk '{print $5}'"
       register: format
     - name: Set Docker available size in TB
-      ansible.builtin.set_fact:
-        docker_size_avail: "{{ size_avail.stdout | int * 1024 * 1024 * 1024 }}"
+      set_fact:
+        docker_size_avail: "{{ size_avail.stdout|int * 1024 * 1024 * 1024 }}"
       when: format.stdout == "TB"
     - name: Set Docker available size in GB
-      ansible.builtin.set_fact:
-        docker_size_avail: "{{ size_avail.stdout | int * 1024 * 1024 }}"
+      set_fact:
+        docker_size_avail: "{{ size_avail.stdout|int * 1024 * 1024 }}"
       when: format.stdout == "GB"
     - name: Set Docker available size in MB
-      ansible.builtin.set_fact:
-        docker_size_avail: "{{ size_avail.stdout | int * 1024 }}"
+      set_fact:
+        docker_size_avail: "{{ size_avail.stdout|int * 1024 }}"
       when: format.stdout == "MB"
+  when: docker_size_avail is not defined
+  become: true
 
-- name: Check Docker disk size
-  when: docker_size_avail is defined and docker_size_avail|int < docker_size_req|int
-  block:
+- block:
     - name: Set error message
-      ansible.builtin.set_fact:
-        error_string: >-
-          Docker disk size is not sufficient, available is {{ (docker_size_avail | int) / (1024 * 1024) }} GB,
-          required disk size is {{ (docker_size_req | int) / (1024 * 1024) }} GB
+      set_fact:
+        error_string: "Docker disk size is not sufficient, available is {{ docker_size_avail|int / (1024 * 1024) }} GB, required disk size is {{ docker_size_req|int / (1024 * 1024) }} GB"
     - name: Include error tasks if Docker disk size is insufficient
       ansible.builtin.include_tasks: error.yml
+  when: docker_size_avail is defined and docker_size_avail|int < docker_size_req|int
+
+

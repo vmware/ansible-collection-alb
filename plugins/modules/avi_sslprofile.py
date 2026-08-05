@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_sslprofile
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of SSLProfile Avi RESTful Object
 description:
-    - This module is used to configure SSLProfile object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure SSLProfile object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -77,16 +77,17 @@ options:
             - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_256_CBC_SHA,
             - TLS_RSA_WITH_3DES_EDE_CBC_SHA, TLS_AES_256_GCM_SHA384...
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- tls_ecdhe_ecdsa_with_aes_128_gcm_sha256, tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,
-            - tls_ecdhe_rsa_with_aes_128_gcm_sha256, tls_ecdhe_rsa_with_aes_256_gcm_sha384, ...), basic (allowed values-
-            - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256, tls_ecdhe_ecdsa_with_aes_256_gcm_sha384, tls_ecdhe_rsa_with_aes_128_gcm_sha256,
-            - tls_ecdhe_rsa_with_aes_256_gcm_sha384, ...) edition.
+            - Allowed in essentials (allowed values-
+            - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,tls_ecdhe_rsa_with_aes_128_gcm_sha256,tls_ecdhe_rsa_with_aes_256_gcm_sha384,tls_ecdhe_ecdsa_with_aes_128_cbc_sha256,tls_ecdhe_ecdsa_with_aes_256_cbc_sha384,tls_ecdhe_rsa_with_aes_128_cbc_sha256,tls_ecdhe_rsa_with_aes_256_cbc_sha384,tls_rsa_with_aes_128_gcm_sha256,tls_rsa_with_aes_256_gcm_sha384,tls_rsa_with_aes_128_cbc_sha256,tls_rsa_with_aes_256_cbc_sha256,tls_ecdhe_ecdsa_with_aes_128_cbc_sha,tls_ecdhe_ecdsa_with_aes_256_cbc_sha,tls_ecdhe_rsa_with_aes_128_cbc_sha,tls_ecdhe_rsa_with_aes_256_cbc_sha,tls_rsa_with_aes_128_cbc_sha,tls_rsa_with_aes_256_cbc_sha,tls_rsa_with_3des_ede_cbc_sha),
+            - basic (allowed values-
+            - tls_ecdhe_ecdsa_with_aes_128_gcm_sha256,tls_ecdhe_ecdsa_with_aes_256_gcm_sha384,tls_ecdhe_rsa_with_aes_128_gcm_sha256,tls_ecdhe_rsa_with_aes_256_gcm_sha384,tls_ecdhe_ecdsa_with_aes_128_cbc_sha256,tls_ecdhe_ecdsa_with_aes_256_cbc_sha384,tls_ecdhe_rsa_with_aes_128_cbc_sha256,tls_ecdhe_rsa_with_aes_256_cbc_sha384,tls_rsa_with_aes_128_gcm_sha256,tls_rsa_with_aes_256_gcm_sha384,tls_rsa_with_aes_128_cbc_sha256,tls_rsa_with_aes_256_cbc_sha256,tls_ecdhe_ecdsa_with_aes_128_cbc_sha,tls_ecdhe_ecdsa_with_aes_256_cbc_sha,tls_ecdhe_rsa_with_aes_128_cbc_sha,tls_ecdhe_rsa_with_aes_256_cbc_sha,tls_rsa_with_aes_128_cbc_sha,tls_rsa_with_aes_256_cbc_sha,tls_rsa_with_3des_ede_cbc_sha)
+            - edition.
         type: list
         elements: str
     ciphersuites:
         description:
             - Tls 1.3 ciphers suites represented as defined by u(https //www.openssl.org/docs/man1.1.1/man1/ciphers.html).
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Special default for essentials edition is tls_aes_256_gcm_sha384-tls_aes_128_gcm_sha256, basic edition is
             - tls_aes_256_gcm_sha384-tls_aes_128_gcm_sha256, enterprise edition is tls_aes_256_gcm_sha384-tls_chacha20_poly1305_sha256-tls_aes_128_gcm_sha256.
@@ -120,7 +121,7 @@ options:
     enable_early_data:
         description:
             - Enable early data processing for tls1.3 connections.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Allowed in essentials (allowed values- false), basic (allowed values- false) edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -211,55 +212,54 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Create SSL profile with list of allowed ciphers
-      vmware.alb.avi_sslprofile:
-        avi_credentials: "{{ avi_credentials }}"
-        accepted_ciphers: >
-          ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA:
-          ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:
-          AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:
-          AES256-SHA:DES-CBC3-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:
-          ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA
-        accepted_versions:
-          - type: SSL_VERSION_TLS1
-          - type: SSL_VERSION_TLS1_1
-          - type: SSL_VERSION_TLS1_2
-        cipher_enums:
-          - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-          - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
-          - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
-          - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-          - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-          - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-          - TLS_RSA_WITH_AES_128_GCM_SHA256
-          - TLS_RSA_WITH_AES_256_GCM_SHA384
-          - TLS_RSA_WITH_AES_128_CBC_SHA256
-          - TLS_RSA_WITH_AES_256_CBC_SHA256
-          - TLS_RSA_WITH_AES_128_CBC_SHA
-          - TLS_RSA_WITH_AES_256_CBC_SHA
-          - TLS_RSA_WITH_3DES_EDE_CBC_SHA
-          - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
-          - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-          - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-          - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-          - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-          - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
-        name: PFS-BOTH-RSA-EC
-        send_close_notify: true
-        ssl_rating:
-          compatibility_rating: SSL_SCORE_EXCELLENT
-          performance_rating: SSL_SCORE_EXCELLENT
-          security_score: '100.0'
-        tenant_ref: /api/tenant?name=Demo
+
+- name: Create SSL profile with list of allowed ciphers
+  vmware.alb.avi_sslprofile:
+    avi_credentials: "{{ avi_credentials }}"
+    accepted_ciphers: >
+      ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA:
+      ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:
+      AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:
+      AES256-SHA:DES-CBC3-SHA:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:
+      ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA
+    accepted_versions:
+    - type: SSL_VERSION_TLS1
+    - type: SSL_VERSION_TLS1_1
+    - type: SSL_VERSION_TLS1_2
+    cipher_enums:
+    - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+    - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+    - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+    - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+    - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+    - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+    - TLS_RSA_WITH_AES_128_GCM_SHA256
+    - TLS_RSA_WITH_AES_256_GCM_SHA384
+    - TLS_RSA_WITH_AES_128_CBC_SHA256
+    - TLS_RSA_WITH_AES_256_CBC_SHA256
+    - TLS_RSA_WITH_AES_128_CBC_SHA
+    - TLS_RSA_WITH_AES_256_CBC_SHA
+    - TLS_RSA_WITH_3DES_EDE_CBC_SHA
+    - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+    - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+    - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+    - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+    - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+    - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+    name: PFS-BOTH-RSA-EC
+    send_close_notify: true
+    ssl_rating:
+      compatibility_rating: SSL_SCORE_EXCELLENT
+      performance_rating: SSL_SCORE_EXCELLENT
+      security_score: '100.0'
+    tenant_ref: /api/tenant?name=Demo
 """
 
 RETURN = '''
@@ -287,15 +287,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         accepted_ciphers=dict(type='str',),
         accepted_versions=dict(type='list', elements='dict', required=True),
         allow_legacy_renegotiation=dict(type='bool',),
@@ -321,8 +312,7 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

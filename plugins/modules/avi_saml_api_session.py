@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: not supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -33,58 +33,56 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-- name: Get SAML Session
-  hosts: all
-  vars:
-    avi_credentials:
-      username: "{{ username }}"
-      password: "{{ password }}"
-      controller: "{{ controller }}"
-      api_version: "{{ api_version }}"
-    idp_class: "{{ idp_class }}"
-  tasks:
-    - name: Get SAML Session
-      vmware.alb.avi_saml_api_session:
-        idp_class: "{{ idp_class }}"
-        avi_credentials: "{{ avi_credentials }}"
-      register: saml_api_session
+  - hosts: all
+    vars:
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
+      idp_class: "{{ idp_class }}"
 
-    - name: Set SAML API Context
-      ansible.builtin.set_fact:
-        saml_api_context: "{{ saml_api_session.ansible_facts.avi_api_context }}"
+  - name: Get SAML Session
+    vmware.alb.avi_saml_api_session:
+      idp_class: "{{ idp_class }}"
+      avi_credentials: "{{ avi_credentials }}"
+    register: saml_api_session
 
-    - name: Create Pool
-      vmware.alb.avi_pool:
-        api_context: "{{ saml_api_context | default(omit) }}"
-        avi_credentials: "{{ avi_credentials }}"
-        state: "{{ state | default(present) }}"
-        name: vs-simple-pool
-        lb_algorithm: LB_ALGORITHM_ROUND_ROBIN
-        servers:
-          - ip:
-              addr: 10.90.64.12
-              type: 'V4'
-          - ip:
-              addr: 10.90.64.11
-              type: 'V4'
-          - ip:
-              addr: 10.90.64.13
-              type: 'V4'
+  - set_fact:
+      saml_api_context: "{{ saml_api_session.ansible_facts.avi_api_context }}"
 
-    - name: Create Virtual Service
-      vmware.alb.avi_virtualservice:
-        api_context: "{{ saml_api_context | default(omit) }}"
-        avi_credentials: "{{ avi_credentials }}"
-        state: "{{ state | default(present) }}"
-        name: vs-simple
-        services:
-          - port: 80
-        pool_ref: '/api/pool?name=vs-simple-pool'
-        vip:
-          - ip_address:
-              addr: 10.90.64.244
-              type: 'V4'
-            vip_id: '1'
+  - name: Create Pool
+    vmware.alb.avi_pool:
+      api_context: "{{ saml_api_context | default(omit) }}"
+      avi_credentials: "{{ avi_credentials }}"
+      state: "{{ state | default(present) }}"
+      name: vs-simple-pool
+      lb_algorithm: LB_ALGORITHM_ROUND_ROBIN
+      servers:
+      - ip:
+          addr: 10.90.64.12
+          type: 'V4'
+      - ip:
+          addr: 10.90.64.11
+          type: 'V4'
+      - ip:
+          addr: 10.90.64.13
+          type: 'V4'
+
+  - name: Create Virtual Service
+    vmware.alb.avi_virtualservice:
+      api_context: "{{ saml_api_context | default(omit) }}"
+      avi_credentials: "{{ avi_credentials }}"
+      state: "{{ state | default(present) }}"
+      name: vs-simple
+      services:
+      - port: 80
+      pool_ref: '/api/pool?name=vs-simple-pool'
+      vip:
+      - ip_address:
+          addr: 10.90.64.244
+          type: 'V4'
+        vip_id: '1'
 '''
 
 
@@ -101,6 +99,7 @@ try:
         avi_common_argument_spec, ansible_return)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
+    from pkg_resources import parse_version
     from requests import ConnectionError
     from ssl import SSLError
     from requests.exceptions import ChunkedEncodingError
@@ -128,19 +127,9 @@ def get_idp_class(idp):
 
 def main():
     argument_specs = dict(
-        idp_class=dict(type='str', required=True, ),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
+        idp_class=dict(type=str, required=True, ),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
 
     if not HAS_REQUESTS:

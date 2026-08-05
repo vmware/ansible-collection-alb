@@ -1,5 +1,5 @@
 # Automatically Generated File
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi ControllerProperties | Create or Update ControllerProperties
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -18,7 +18,6 @@
     allow_admin_network_updates: "{{ item.allow_admin_network_updates | default(omit) }}"
     allow_ip_forwarding: "{{ item.allow_ip_forwarding | default(omit) }}"
     allow_unauthenticated_apis: "{{ item.allow_unauthenticated_apis | default(omit) }}"
-    allow_unauthenticated_nodes: "{{ item.allow_unauthenticated_nodes | default(omit) }}"
     api_idle_timeout: "{{ item.api_idle_timeout | default(omit) }}"
     api_perf_logging_threshold: "{{ item.api_perf_logging_threshold | default(omit) }}"
     appviewx_compat_mode: "{{ item.appviewx_compat_mode | default(omit) }}"
@@ -58,6 +57,7 @@
     enable_per_process_stop: "{{ item.enable_per_process_stop | default(omit) }}"
     enable_resmgr_log_cache_print: "{{ item.enable_resmgr_log_cache_print | default(omit) }}"
     enable_streaming_based_nsx_ip_group_sync: "{{ item.enable_streaming_based_nsx_ip_group_sync | default(omit) }}"
+    event_manager_api_rate_limit_per_min: "{{ item.event_manager_api_rate_limit_per_min | default(omit) }}"
     event_manager_file_modified_ts_filter: "{{ item.event_manager_file_modified_ts_filter | default(omit) }}"
     event_manager_max_goroutines: "{{ item.event_manager_max_goroutines | default(omit) }}"
     event_manager_max_subscribers: "{{ item.event_manager_max_subscribers | default(omit) }}"

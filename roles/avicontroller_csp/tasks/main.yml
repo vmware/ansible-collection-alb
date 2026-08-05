@@ -4,22 +4,22 @@
 - name: Check ansible version
   when:
     - ansible_version.full is version_compare('2.4', '<')
-  ansible.builtin.debug:
+  debug:
     msg: >-
       This role works best with ansible version 2.4 or greater.
       It is recommended to use the latest ansible version for the best experience."
 
 - name: Avi Controller | CSP | Requirements
-  ansible.builtin.include_tasks: requirements.yml
+  include: requirements.yml
 
 - name: Avi Controller | CSP | Image deploy
-  ansible.builtin.include_tasks: qcow_deploy.yml
+  include: qcow_deploy.yml
 
 - name: Avi Controller | CSP | Metafile deploy
-  ansible.builtin.include_tasks: metafile_deploy.yml
+  include: metafile_deploy.yml
 
 - name: Avi Controller | CSP | Service deploy
-  ansible.builtin.include_tasks: service_deploy.yml
+  include: service_deploy.yml
 
 - name: Avi Controller | CSP | Validate controller service
-  ansible.builtin.include_tasks: validate_controller.yml
+  include: validate_controller.yml

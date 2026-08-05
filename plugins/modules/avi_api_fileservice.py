@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: not supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -56,31 +56,30 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-- name: Upload file to Avi Controller
-  hosts: all
-  vars:
-    avi_credentials:
-      username: "{{ username }}"
-      password: "{{ password }}"
-      controller: "{{ controller }}"
-      api_version: "{{ api_version }}"
+  - hosts: all
+    vars:
+      avi_credentials:
+        username: "{{ username }}"
+        password: "{{ password }}"
+        controller: "{{ controller }}"
+        api_version: "{{ api_version }}"
 
-  tasks:
-    - name: Download se image from controller
-      vmware.alb.avi_api_fileservice:
-        avi_credentials: "{{ avi_credentials }}"
-        upload: false
-        path: seova
-        file_path: ./se.ova
-        api_version: 17.2.8
+  - name: Download se image from controller
+    vmware.alb.avi_api_fileservice:
+      avi_credentials: "{{ avi_credentials }}"
+      upload: false
+      path: seova
+      file_path: ./se.ova
+      api_version: 17.2.8
 
-    - name: Upload HSM package to controller
-      vmware.alb.avi_api_fileservice:
-        avi_credentials: "{{ avi_credentials }}"
-        upload: true
-        path: hsmpackages?hsmtype=safenet
-        file_path: ./safenet.tar
-        api_version: 17.2.8
+  - name: Upload HSM package to controller
+    vmware.alb.avi_api_fileservice:
+      avi_credentials: "{{ avi_credentials }}"
+      upload: true
+      path: hsmpackages?hsmtype=safenet
+      file_path: ./safenet.tar
+      api_version: 17.2.8
+
 '''
 
 
@@ -118,19 +117,9 @@ def main():
         path=dict(type='str', required=True),
         file_path=dict(type='str', required=True),
         params=dict(type='dict'),
-        timeout=dict(type='int', default=60),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
+        timeout=dict(type='int', default=60)
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(

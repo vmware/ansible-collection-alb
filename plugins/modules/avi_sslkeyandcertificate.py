@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_sslkeyandcertificate
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of SSLKeyAndCertificate Avi RESTful Object
 description:
-    - This module is used to configure SSLKeyAndCertificate object.
-    - More examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure SSLKeyAndCertificate object
+    - more examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -196,6 +196,15 @@ options:
             - Field introduced in 20.1.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         type: dict
+    skip_auto_chain:
+        description:
+            - When set to true, disables automatic ca certificate chain discovery based on issuer common name (cn).
+            - The user must explicitly specify the desired ca certificates via the ca_certs field.
+            - Not allowed for ca-type certificates.
+            - Field introduced in 32.1.3.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     status:
         description:
             - Enum options - SSL_CERTIFICATE_FINISHED, SSL_CERTIFICATE_PENDING.
@@ -226,30 +235,29 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = """
-- name: Deploy Avi Controller
-  hosts: all
+- hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-  tasks:
-    - name: Create a SSL Key and Certificate
-      vmware.alb.avi_sslkeyandcertificate:
-        avi_credentials: "{{ avi_credentials }}"
-        key: |
-            -----BEGIN PRIVATE KEY-----
-            ....
-            -----END PRIVATE KEY-----
-        certificate:
-          self_signed: true
-          certificate: |
-            -----BEGIN CERTIFICATE-----
-            ....
-            -----END CERTIFICATE-----
-        type: SSL_CERTIFICATE_TYPE_VIRTUALSERVICE
-        name: MyTestCert
+
+- name: Create a SSL Key and Certificate
+  vmware.alb.avi_sslkeyandcertificate:
+    avi_credentials: "{{ avi_credentials }}"
+    key: |
+        -----BEGIN PRIVATE KEY-----
+        ....
+        -----END PRIVATE KEY-----
+    certificate:
+        self_signed: true
+        certificate: |
+          -----BEGIN CERTIFICATE-----
+          ....
+          -----END CERTIFICATE-----
+    type: SSL_CERTIFICATE_TYPE_VIRTUALSERVICE
+    name: MyTestCert
 """
 
 RETURN = '''
@@ -277,15 +285,6 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         ca_certs=dict(type='list', elements='dict',),
         certificate=dict(type='dict', required=True),
         certificate_base64=dict(type='bool',),
@@ -294,7 +293,7 @@ def main():
         created_by=dict(type='str',),
         dynamic_params=dict(type='list', elements='dict',),
         enable_ocsp_stapling=dict(type='bool',),
-        enckey_base64=dict(type='str', no_log=True,),
+        enckey_base64=dict(type='str',),
         enckey_name=dict(type='str',),
         format=dict(type='str',),
         hardwaresecuritymodulegroup_ref=dict(type='str',),
@@ -302,7 +301,7 @@ def main():
         is_federated=dict(type='bool',),
         key=dict(type='str', no_log=True,),
         key_base64=dict(type='bool',),
-        key_params=dict(type='dict', no_log=True,),
+        key_params=dict(type='dict',),
         key_passphrase=dict(type='str', no_log=True,),
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
@@ -310,14 +309,14 @@ def main():
         ocsp_error_status=dict(type='str',),
         ocsp_responder_url_list_from_certs=dict(type='list', elements='str',),
         ocsp_response_info=dict(type='dict',),
+        skip_auto_chain=dict(type='bool',),
         status=dict(type='str',),
         tenant_ref=dict(type='str',),
         type=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -325,7 +324,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'sslkeyandcertificate',
-                           {'key_passphrase', 'key', 'enckey_base64', 'key_params'})
+                           ['key', 'key_passphrase'])
 
 
 if __name__ == '__main__':

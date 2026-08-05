@@ -12,15 +12,14 @@
     type: "HEALTH_MONITOR_HTTPS"
     name: "TestMonitor-HTTPS"
   register: result
-- name: "Avi Health Monitor | Assert Monitor Created"
-  ansible.builtin.assert:
+- assert:
     that:
       - result is changed
       - result.obj.name == "TestMonitor-HTTPS"
       - not result.old_obj
       - result.obj.uuid is defined
 
-- name: Update health monitor
+- name: update health monitor
   avi_healthmonitor:
     username: "{{ avi_credentials.username }}"
     password: "{{ avi_credentials.password }}"
@@ -34,8 +33,7 @@
     successful_checks: "2"
     name: "Testupdated-HTTPS"
   register: updated_result
-- name: "Avi Health Monitor | Assert Monitor Updated"
-  ansible.builtin.assert:
+- assert:
     that:
       - updated_result is changed
       - updated_result.obj is defined
@@ -55,8 +53,7 @@
     type: "HEALTH_MONITOR_HTTPS"
     name: "Testupdated-HTTPS"
   register: delete_result
-- name: "Avi Health Monitor | Assert Monitor Deleted"
-  ansible.builtin.assert:
+- assert:
     that:
       - delete_result is changed
       - delete_result.old_obj.name == "Testupdated-HTTPS"

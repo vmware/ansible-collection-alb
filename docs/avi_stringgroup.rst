@@ -502,8 +502,7 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
+    - hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -519,15 +518,15 @@ Examples
           avi_stringgroup:
             avi_credentials: "{{ avi_credentials }}"
             kv:
-              - key: text/html
-              - key: text/xml
-              - key: text/plain
-              - key: text/css
-              - key: text/javascript
-              - key: application/javascript
-              - key: application/x-javascript
-              - key: application/xml
-              - key: application/pdf
+            - key: text/html
+            - key: text/xml
+            - key: text/plain
+            - key: text/css
+            - key: text/javascript
+            - key: application/javascript
+            - key: application/x-javascript
+            - key: application/xml
+            - key: application/pdf
             name: System-Compressible-Content-Types
             tenant_ref: /api/tenant?name=admin
             type: SG_TYPE_STRING

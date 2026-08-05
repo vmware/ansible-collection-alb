@@ -1,5 +1,5 @@
 # Automatically Generated File
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 ---
 - name: Avi DynamicDnsRecord | Create or Update DynamicDnsRecord
   no_log: "{{ avi_role_config_log_mode | default(False) }}"

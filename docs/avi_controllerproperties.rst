@@ -228,25 +228,6 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>allow_unauthenticated_nodes</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>api_idle_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1397,6 +1378,34 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>event_manager_api_rate_limit_per_min</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of post /api/eventmanager/generateevent requests allowed per minute, across all event_id values.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-10000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 60.
                 </div>
                                             </td>
     </tr>
@@ -3256,7 +3265,7 @@ Parameters
                   - SEAUTOSCALERSTATUSRESPONSE, SEGROUPONETIMEREQUESTRESPONSE, SEGROUPREBALANCEHISTORYRESPONSE, REBALANCEPARAMS, SESYSTEMINFORUNTIME, NICINFO,
                 </div>
                                 <div style="font-size: small">
-                  - METRICSAPISRVRSTATS, SERESOURCEPROTO, SECONSUMERPROTO, SECREATEPENDINGPROTO, PLACEMENTSTATS, SEVIPPROTO, RMVRFPROTO, VCENTERMAP,
+                  - METRICSAPISRVRSTATS, SEAGENTSTARTGARP, SERESOURCEPROTO, SECONSUMERPROTO, SECREATEPENDINGPROTO, PLACEMENTSTATS, SEVIPPROTO, RMVRFPROTO, VCENTERMAP,
                 </div>
                                 <div style="font-size: small">
                   - VIMGRVCENTERRUNTIME, INTERESTEDVMS, INTERESTEDHOSTS, VCENTERSUPPORTEDCOUNTERS, ENTITYCOUNTERS, TRANSACTIONSTATS, SEVMCREATEPROGRESS,
@@ -3316,7 +3325,7 @@ Parameters
                   - RETENTIONPOLICY, SYSTEMLIMITOBJECTCOUNT, SYSTEMLIMITOBJECTCOUNTS, EVENTGENPARAMS, LOGMANAGERSTATS, TECHSUPPORTPROFILE, TECHSUPPORT,
                 </div>
                                 <div style="font-size: small">
-                  - TECHSUPPORTPARAMS, TECHSUPPORTMESSAGE, REPORT, REPORTPROFILE, SSPINSTANCE, VSPHEREZONEPARAMS, ROTATIONPARAMS, IPADDRGROUPSYNCPARAMS,
+                  - TECHSUPPORTPARAMS, TECHSUPPORTMESSAGE, REPORT, REPORTPROFILE, SSPINSTANCE, VSPHEREZONEPARAMS, ROTATIONPARAMS, IPADDRGROUPSYNCPARAMS, VPCPARAMS,
                 </div>
                                 <div style="font-size: small">
                   - ALERTMGRMONITORINGDATA, MAXOBJECTS, GSLBSMRUNTIME, GSLBCRMRUNTIME, GSLBHSMRUNTIME, VERSIONINFO, CFGSTATE, GSLBDNSSEINFO, GSLBPERDNSSTATE,
@@ -4395,8 +4404,7 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
+    - hosts: localhost
       connection: local
       collections:
         - vmware.alb

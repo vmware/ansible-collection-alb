@@ -2,10 +2,10 @@
 # Check connection establishment with AVI Controller
 
 - name: Avi SE | Initial Data | Check if required login vars are defined
-  ansible.builtin.assert:
+  assert:
     that:
       - item != None
-  loop:
+  with_items:
     - se_master_ctl_ip
     - se_master_ctl_username
     - se_master_ctl_password
@@ -23,29 +23,26 @@
   delegate_to: localhost
 
 - name: Avi SE | Initial Data | Get Controller cluster status
-  ansible.builtin.uri:
+  uri:
     url: "https://{{ se_master_ctl_ip }}/api/cluster/status"
-    validate_certs: false  # NOSONAR - Required for isolated lab with self-signed cert
-    return_content: true
+    validate_certs: no
   register: cluster_status
   delegate_to: localhost
 
 - name: Avi SE | Initial Data | Set Controller version information
-  ansible.builtin.set_fact:
+  set_fact:
     ctl_build: "{{ initial_data.obj.version.build }}"
     se_master_ctl_version: "{{ initial_data.obj.version.Version }}"
   when: initial_data
 
 - name: Avi SE | Initial Data | Set Controller Cluster UUID information
-  ansible.builtin.set_fact:
+  set_fact:
     cluster_uuid_snap: "{{ cluster_status.json.node_info.cluster_uuid.split('-')[1] }}"
   when: cluster_status and se_csp_qcow_image_name == None
 
 - name: Avi SE | Set SE qcow2 filename
-  ansible.builtin.set_fact:
+  set_fact:
     se_csp_qcow_image_name: se-{{ se_master_ctl_version }}-{{ ctl_build }}-{{ cluster_uuid_snap }}.qcow2
   when: se_csp_qcow_image_name == None
 
-- name: Avi SE | Initial Data | Debug SE qcow2 filename
-  ansible.builtin.debug:
-    msg: "You are running Controller verison {{ se_master_ctl_version }}-{{ ctl_build }}"
+- debug: msg="You are running Controller verison {{ se_master_ctl_version }}-{{ ctl_build }}"

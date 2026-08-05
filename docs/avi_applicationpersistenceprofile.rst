@@ -666,6 +666,38 @@ Parameters
                                         <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>samesite</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Samesite attribute for the persistence cookie.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values  none (default, emitted only on ssl connections), lax, strict.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SAMESITE_NONE, SAMESITE_LAX, SAMESITE_STRICT.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SAMESITE_NONE.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1066,8 +1098,7 @@ Examples
 
 .. code-block:: yaml
 
-    - name: Deploy Controller
-      hosts: localhost
+    - hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -1086,12 +1117,12 @@ Examples
               always_send_cookie: false
               cookie_name: My-HTTP
               key:
-                - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
-                  name: c1276819-550c-4adf-912d-59efa5fd7269
-                - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
-                  name: a080de57-77c3-4580-a3ea-e7a6493c14fd
-                - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
-                  name: 60478846-33c6-484d-868d-bbc324fce4a5
+              - aes_key: ShYGZdMks8j6Bpvm2sCvaXWzvXms2Z9ob+TTjRy46lQ=
+                name: c1276819-550c-4adf-912d-59efa5fd7269
+              - aes_key: OGsyVk84VCtyMENFOW0rMnRXVnNrb0RzdG5mT29oamJRb0dlbHZVSjR1az0=
+                name: a080de57-77c3-4580-a3ea-e7a6493c14fd
+              - aes_key: UVN0cU9HWmFUM2xOUzBVcmVXaHFXbnBLVUUxMU1VSktSVU5HWjJOWmVFMTBUMUV4UmxsNk4xQmFZejA9
+                name: 60478846-33c6-484d-868d-bbc324fce4a5
               timeout: 15
             name: My-HTTP-Cookie
             persistence_type: PERSISTENCE_TYPE_HTTP_COOKIE

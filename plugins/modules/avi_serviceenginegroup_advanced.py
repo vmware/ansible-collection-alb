@@ -3,7 +3,7 @@
 
 # module_check: supported
 
-# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
 # SPDX-License-Identifier: Apache License 2.0
 from __future__ import absolute_import, division, print_function
 
@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {
 DOCUMENTATION = """
 ---
 module: avi_serviceenginegroup_advanced
-author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
 short_description: Module for setup of ServiceEngineGroup Avi RESTful Object
 description:
     - This module is used to configure ServiceEngineGroup object's advanced features
@@ -213,7 +213,7 @@ options:
             - 1-doubles the burst size and kni resources.
             - 2-quadruples the burst size and kni resources.
             - Allowed values are 0-2.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
@@ -294,7 +294,7 @@ options:
             - Bypass the kernel's traffic control layer, to deliver packets directly to the driver.
             - Enabling this feature results in egress packets not being captured in host tcpdump.
             - Note   brief packet reordering or loss may occur upon toggle.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
@@ -336,7 +336,7 @@ options:
     se_rum_sampling_nav_interval:
         description:
             - Minimum time to wait on server between taking sampleswhen sampling the navigation timing data from the end user client.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Unit is sec.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -344,14 +344,14 @@ options:
     se_rum_sampling_nav_percent:
         description:
             - Percentage of navigation timing data from the end user client, used for sampling to get client insights.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
     se_rum_sampling_res_interval:
         description:
             - Minimum time to wait on server between taking sampleswhen sampling the resource timing data from the end user client.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Unit is sec.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 2.
@@ -359,7 +359,7 @@ options:
     se_rum_sampling_res_percent:
         description:
             - Percentage of resource timing data from the end user client used for sampling to get client insight.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 100.
         type: int
@@ -690,8 +690,9 @@ extends_documentation_fragment:
 """
 
 EXAMPLES = """
-- name: Example to configure ServiceEngineGroup object's advanced fields
-  hosts: localhost
+- hosts: localhost
+  collections:
+    - vmware.alb
   vars:
     avi_credentials:
       username: "{{ username }}"
@@ -819,18 +820,8 @@ def main():
         vss_placement_enabled=dict(type="bool"),
         waf_mempool=dict(type="bool"),
         waf_mempool_size=dict(type="int"),
-        api_context=dict(type='dict',),
-        username=dict(type='str', default=''),
-        tenant_uuid=dict(type='str', default=''),
-        tenant=dict(type='str', default='admin'),
-        password=dict(type='str', default='', no_log=True),
-        controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
-        avi_credentials=dict(type='dict',),
-        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False)
     )
-    if HAS_REQUESTS:
-        argument_specs.update(avi_common_argument_spec())
+    argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(
