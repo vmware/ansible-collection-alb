@@ -1,5 +1,5 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi AnalyticsProfile | Create or Update AnalyticsProfile
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -43,6 +43,7 @@
     enable_server_analytics: "{{ item.enable_server_analytics | default(omit) }}"
     enable_vs_analytics: "{{ item.enable_vs_analytics | default(omit) }}"
     exclude_client_close_before_request_as_error: "{{ item.exclude_client_close_before_request_as_error | default(omit) }}"
+    exclude_conn_drop_client_small_window_as_error: "{{ item.exclude_conn_drop_client_small_window_as_error | default(omit) }}"
     exclude_dns_policy_drop_as_significant: "{{ item.exclude_dns_policy_drop_as_significant | default(omit) }}"
     exclude_gs_down_as_error: "{{ item.exclude_gs_down_as_error | default(omit) }}"
     exclude_http_error_codes: "{{ item.exclude_http_error_codes | default(omit) }}"
@@ -101,6 +102,7 @@
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     time_tracker_props: "{{ item.time_tracker_props | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
+    waap_classification_disabled_penalty: "{{ item.waap_classification_disabled_penalty | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")

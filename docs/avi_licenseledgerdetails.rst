@@ -1,3 +1,4 @@
+
 .. vmware.alb.avi_licenseledgerdetails:
 
 
@@ -26,12 +27,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="7">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +53,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +77,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +100,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +116,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -130,14 +131,14 @@ Parameters
                 </div>
             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+            <tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>escrow_infos</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -149,18 +150,253 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>last_updated</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Last updated time.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_group</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Se group for this license entry.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>service_cores</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Quantity of service cores.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tenant_uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Specifies the license tier.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tier</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Specifies the license tier.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, ENTERPRISE_WITH_CLOUD_SERVICES.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Identifier(license_id, se_uuid, cookie).
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_group_infos</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maintain information about se group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>consumed</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - License cores consumed by se group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>escrow</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - License cores reserved by se group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Se group uuid for reference.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_infos</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -172,18 +408,230 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>last_updated</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Last updated time.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_group</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Se group for this license entry.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>service_cores</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Quantity of service cores.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tenant_uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Specifies the license tier.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tier</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Specifies the license tier.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, ENTERPRISE_WITH_CLOUD_SERVICES.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Identifier(license_id, se_uuid, cookie).
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tenant_infos</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maintain information about tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>reserved</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - License cores reserved by tenant/se group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid for tenant/se group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tier_usages</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -195,18 +643,200 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
+    </tr>
                 <tr>
-            <td colspan="2">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tier</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Specifies the license tier.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - ENTERPRISE_16, ENTERPRISE, ENTERPRISE_18, BASIC, ESSENTIALS, ENTERPRISE_WITH_CLOUD_SERVICES.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>usage</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Usage stats of license tier.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>available</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Total license cores available for consumption.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>consumed</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Total license cores consumed.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>escrow</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Total license cores reserved or escrowed.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>remaining</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Total license cores remaining for consumption.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.0.
+                </div>
+                                            </td>
+    </tr>
+        
+            
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>total_licenses_reserved</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Total of max licenses reserved as per quota config of tenant/segroup.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>url</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -215,15 +845,14 @@ Parameters
                   - Avi controller URL of the object.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -235,20 +864,21 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-            </table>
+    </tr>
+        
+    </table>
     <br/>
-
 
 Examples
 --------
 
 .. code-block:: yaml
 
-    - hosts: localhost
+    - name: Deploy Controller
+      hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -258,6 +888,7 @@ Examples
           password: "avi_password"
           controller: "192.168.138.18"
           api_version: "21.1.1"
+          tenant: "admin"
       tasks:
         - name: Example to create LicenseLedgerDetails object
           avi_licenseledgerdetails:
@@ -268,9 +899,6 @@ Examples
 
 Authors
 ~~~~~~~
-- Gaurav Rastogi (grastogi@vmware.com)
-- Sandeep Bandi (sbandi@vmware.com)
-- Amol Shinde (samol@vmware.com)
-
-
-
+- Anurag Palsule (anurag.palsule@broadcom.com)
+- Parikshit Manur (parikshit.manur@broadcom.com)
+- Rohan Suryavanshi (rohan.suryavanshi@broadcom.com)

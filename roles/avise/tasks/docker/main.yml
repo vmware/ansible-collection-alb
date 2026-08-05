@@ -1,12 +1,19 @@
 ---
 # This task will appropriately start the actions on SE's
-- name: Check SeGroup Upgrade in progress
-  fail:
-    msg: SeGroup upgrade in progress
+- name: Note SeGroup Upgrade in progress
+  ansible.builtin.debug:
+    msg: "SeGroup upgrade in progress; proceeding with SE start (idempotent)."
   when: (se_action == "start") and (ups is defined) and ups
 
-- include: version_check.yml
+- name: Print se_action value
+  ansible.builtin.debug:
+    msg: "The value of se_action is {{ se_action }}"
+
+- name: Include version check tasks
+  ansible.builtin.include_tasks:
+    file: version_check.yml
   when: se_action != "verify"
 
 - name: Avi SE actions
-  include: "se_{{ se_action }}.yml"
+  ansible.builtin.include_tasks:
+    file: "se_{{ se_action }}.yml"

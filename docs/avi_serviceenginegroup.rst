@@ -1,3 +1,4 @@
+
 .. vmware.alb.avi_serviceenginegroup:
 
 
@@ -26,12 +27,12 @@ Parameters
 
     <table  border=0 cellpadding=0 class="documentation-table">
         <tr>
-            <th colspan="2">Parameter</th>
+            <th colspan="7">Parameter</th>
             <th>Choices/<font color="blue">Defaults</font></th>
             <th width="100%">Comments</th>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>state</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -52,7 +53,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_update_method</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -76,7 +77,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_api_patch_op</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -99,7 +100,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -115,7 +116,7 @@ Parameters
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -130,14 +131,14 @@ Parameters
                 </div>
             </td>
         </tr>
-                <tr>
-            <td colspan="2">
+            <tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>accelerated_networking</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -158,15 +159,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>active_standby</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -181,15 +181,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>aggressive_failure_detection</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -207,15 +206,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>algo</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -233,15 +231,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as PLACEMENT_ALGO_PACKED.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>allow_burst</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -256,15 +253,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>app_cache_percent</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -300,15 +296,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>app_cache_threshold</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -335,15 +330,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 5.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>app_learning_memory_percent</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -370,15 +364,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>archive_shm_limit</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -399,15 +392,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 8.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>async_ssl</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -425,15 +417,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>async_ssl_threads</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -451,15 +442,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>auto_rebalance</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -480,15 +470,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>auto_rebalance_capacity_per_se</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -503,15 +492,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>auto_rebalance_criteria</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -529,15 +517,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>auto_rebalance_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -555,15 +542,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 300.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>auto_redistribute_active_standby_load</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -584,15 +570,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>availability_zone_refs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -610,15 +595,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_path</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -627,15 +611,14 @@ Parameters
                   - Patch path to use when using avi_api_update_method as patch.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_patch_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -644,15 +627,14 @@ Parameters
                   - Patch value to use when using avi_api_update_method as patch.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>baremetal_dispatcher_handles_flows</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -673,15 +655,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>bgp_peer_monitor_failover_enabled</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -699,15 +680,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>bgp_state_update_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -731,15 +711,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 60.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>buffer_se</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -754,15 +733,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>cloud_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -774,15 +752,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>compress_ip_rules_for_each_ns_subnet</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -800,15 +777,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>config_debugs_on_all_cores</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -826,15 +802,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -852,15 +827,14 @@ Parameters
                   - edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>connection_memory_percentage</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -884,15 +858,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 50.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>core_shm_app_cache</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -910,15 +883,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>core_shm_app_learning</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -936,15 +908,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>cpu_reserve</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -956,15 +927,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>cpu_socket_affinity</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -982,15 +952,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>custom_securitygroups_data</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1005,15 +974,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>custom_securitygroups_mgmt</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1028,15 +996,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>custom_tag</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1051,15 +1018,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>data_network_id</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1077,15 +1043,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>datascript_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1106,15 +1071,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1000000.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>deactivate_ipv6_discovery</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1129,15 +1093,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>deactivate_kni_filtering_at_dispatcher</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1155,15 +1118,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dedicated_dispatcher_core</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1178,15 +1140,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>description</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1195,15 +1156,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>disable_avi_securitygroups</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1230,15 +1190,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>disable_csum_offloads</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1256,15 +1215,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>disable_flow_probes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1282,15 +1240,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>disable_gro</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1308,15 +1265,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>disable_se_memory_check</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1334,15 +1290,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>disable_tso</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1363,15 +1318,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>disk_per_se</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1389,15 +1343,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 15.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>distribute_load_active_standby</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1415,15 +1368,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>distribute_queues</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1450,15 +1402,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>distribute_vnics</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1479,15 +1430,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>downstream_send_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1508,15 +1458,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 3600000.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dp_aggressive_deq_interval_msec</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1543,15 +1492,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dp_aggressive_enq_interval_msec</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1578,15 +1526,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dp_aggressive_hb_frequency</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1607,15 +1554,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dp_aggressive_hb_timeout_count</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1633,15 +1579,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dp_deq_interval_msec</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1668,15 +1613,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dp_enq_interval_msec</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1703,15 +1647,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dp_hb_frequency</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1732,15 +1675,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dp_hb_timeout_count</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1758,15 +1700,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>dpdk_gro_timeout_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1793,15 +1734,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 50.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_gratarp_permanent</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1819,15 +1759,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_hsm_log</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1845,15 +1784,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_hsm_priming</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1877,15 +1815,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_multi_lb</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1906,15 +1843,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>enable_pcap_tx_ring</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1938,15 +1874,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ephemeral_portrange_end</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1961,15 +1896,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ephemeral_portrange_start</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -1984,15 +1918,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>extra_config_multiplier</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">float</span>
-                </div>
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2007,15 +1940,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>extra_shared_config_memory</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2036,15 +1968,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>flow_table_new_syn_max_entries</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2062,15 +1993,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>free_list_size</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2088,15 +2018,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>gcp_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2111,15 +2040,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>gratarp_permanent_periodicity</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2143,15 +2071,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>grpc_channel_connect_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2172,15 +2099,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 15.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ha_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2207,15 +2133,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as HA_MODE_SHARED.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>handle_per_pkt_attack</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2236,15 +2161,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>hardwaresecuritymodulegroup_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2256,15 +2180,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>heap_minimum_config_memory</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2288,15 +2211,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 8.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>hm_on_standby</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2317,15 +2239,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>host_attribute_key</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2358,15 +2279,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>host_attribute_value</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2381,15 +2301,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>host_gateway_monitor</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2410,15 +2329,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>http_rum_console_log</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2439,15 +2357,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>http_rum_min_content_length</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2468,15 +2385,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 64.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>hybrid_rss_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2500,15 +2416,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>hypervisor</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2523,15 +2438,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ignore_docker_mac_change</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2552,15 +2466,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ignore_rtt_threshold</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2581,15 +2494,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 5000.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ingress_access_data</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2610,15 +2522,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as SG_INGRESS_ACCESS_ALL.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ingress_access_mgmt</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2639,15 +2550,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as SG_INGRESS_ACCESS_ALL.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>instance_flavor</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2659,15 +2569,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>instance_flavor_info</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2685,15 +2594,14 @@ Parameters
                   - edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>iptables</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2708,15 +2616,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>l7_conns_per_core</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2734,15 +2641,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 16384.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>l7_resvd_listen_conns_per_core</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2760,15 +2666,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 256.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>labels</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2786,15 +2691,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>lbaction_num_requests_to_dispatch</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2815,15 +2719,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>lbaction_rq_per_request_max_retries</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2841,15 +2744,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 22.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>least_load_core_selection</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2864,15 +2766,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>license_tier</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2893,15 +2794,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>license_type</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2919,15 +2819,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_compress_logs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2945,15 +2844,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_debug_enabled</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -2977,15 +2875,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_file_sz_appl</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3003,15 +2900,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_file_sz_conn</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3029,15 +2925,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_file_sz_debug</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3055,15 +2950,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_file_sz_event</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3081,15 +2975,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_log_storage_min_sz</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3110,15 +3003,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_max_concurrent_rsync</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3136,15 +3028,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_max_storage_excess_percent</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3162,15 +3053,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 110.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_max_storage_ignore_percent</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">float</span>
-                </div>
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3188,15 +3078,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_min_storage_per_vs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3214,15 +3103,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_sleep_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3243,15 +3131,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_trace_enabled</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3272,15 +3159,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_agent_unknown_vs_timer</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3301,15 +3187,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1800.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_disksz</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3330,15 +3215,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10000.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_malloc_failure</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3359,15 +3243,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>log_message_max_file_list_size</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3385,15 +3268,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 64.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>markers</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3411,15 +3293,14 @@ Parameters
                   - edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_concurrent_external_hm</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3440,15 +3321,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_cpu_usage</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3472,15 +3352,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 80.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_memory_per_mempool</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3501,15 +3380,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 64.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_num_se_dps</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3536,15 +3414,14 @@ Parameters
                   - services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_public_ips_per_lb</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3565,15 +3442,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 30.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_queues_per_vnic</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3597,15 +3473,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_rules_per_lb</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3626,15 +3501,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 150.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_scaleout_per_vs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3652,15 +3526,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_se</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3678,15 +3551,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_vs_per_se</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3704,15 +3576,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>mem_reserve</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3724,15 +3595,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>memory_for_config_update</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3756,15 +3626,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 15.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>memory_per_se</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3782,15 +3651,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 2048.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>mgmt_network_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3805,15 +3673,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>mgmt_subnet</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3825,15 +3692,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>min_cpu_usage</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3857,15 +3723,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 30.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>min_scaleout_per_vs</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3883,15 +3748,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>min_se</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3912,15 +3776,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>minimum_connection_memory</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3944,15 +3807,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>n_log_streaming_threads</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -3973,15 +3835,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                 <div style="font-size: small">
@@ -3993,15 +3854,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>non_significant_log_throttle</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4028,15 +3888,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ns_helper_deq_interval_msec</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4063,15 +3922,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ntp_sync_fail_event</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4095,15 +3953,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ntp_sync_status_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4136,15 +3993,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>num_dispatcher_cores</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4171,15 +4027,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>num_dispatcher_queues</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4200,15 +4055,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>objsync_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4223,15 +4077,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>objsync_port</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4258,15 +4111,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 9001.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>openstack_availability_zones</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4281,15 +4133,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>openstack_mgmt_network_name</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4301,15 +4152,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>openstack_mgmt_network_uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4321,15 +4171,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>os_reserved_memory</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4347,15 +4196,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>per_app</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4379,15 +4227,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>per_vs_admission_control</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4408,15 +4255,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>placement_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4434,15 +4280,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as PLACEMENT_MODE_AUTO.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>realtime_se_metrics</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4454,15 +4299,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>reboot_on_panic</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4480,15 +4324,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>replay_vrf_routes_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4515,15 +4358,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1000.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>resync_time_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4547,15 +4389,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 65536.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>sdb_flush_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4582,15 +4423,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>sdb_pipeline_size</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4614,15 +4454,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>sdb_scan_count</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4646,15 +4485,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1000.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_bandwidth_type</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4675,15 +4513,14 @@ Parameters
                   - se_bandwidth_unlimited), enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_delayed_flow_delete</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4707,15 +4544,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_deprovision_delay</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4742,15 +4578,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 120.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_dos_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4759,15 +4594,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_dp_hm_drops</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4788,15 +4622,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_dp_if_state_poll_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4817,15 +4650,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_dp_isolation</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4855,15 +4687,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_dp_isolation_num_non_dp_cpus</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4896,15 +4727,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_dp_log_nf_enqueue_percent</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4922,15 +4752,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 70.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_dp_log_udf_enqueue_percent</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4948,15 +4777,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 90.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_dpdk_pmd</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -4980,15 +4808,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_emulated_cores</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5012,15 +4839,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_hyperthreaded_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5050,15 +4876,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as SE_CPU_HT_AUTO.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_lro</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5073,15 +4898,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_mtu</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5099,15 +4923,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_name_prefix</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5122,15 +4945,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as Avi.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_use_dpdk</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5154,15 +4976,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>self_se_election</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5183,15 +5004,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>significant_log_throttle</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5218,15 +5038,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tenant_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5238,15 +5057,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>udf_log_throttle</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5276,15 +5094,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>use_dp_util_for_scaleout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5305,15 +5122,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>use_hyperthreaded_cores</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5334,15 +5150,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>use_objsync</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5363,15 +5178,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>use_standard_alb</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5392,15 +5206,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>user_agent_cache_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5415,15 +5228,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5432,15 +5244,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_clusters</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5449,15 +5260,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_datastore_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5472,15 +5282,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as VCENTER_DATASTORE_ANY.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_datastores</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5489,15 +5298,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_datastores_include</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5509,15 +5317,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_folder</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5532,15 +5339,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as AviSeFolder.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_hosts</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">dict</span>
-                </div>
+                                                                        <span style="color: purple">dict</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5549,15 +5355,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_parking_vnic_pg</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">str</span>
-                </div>
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5572,15 +5377,14 @@ Parameters
                   - Allowed in enterprise edition with any value, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenters</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">list</span>
-                </div>
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5595,15 +5399,14 @@ Parameters
                   - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcpus_per_se</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5621,15 +5424,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vs_host_redundancy</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">bool</span>
-                </div>
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5650,15 +5452,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vs_scalein_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5676,15 +5477,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 30.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vs_scalein_timeout_for_upgrade</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5702,15 +5502,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 30.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vs_scaleout_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5728,15 +5527,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 600.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vs_se_scaleout_additional_wait_time</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5766,15 +5564,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vs_se_scaleout_ready_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5798,15 +5595,14 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 60.
                 </div>
                                             </td>
-        </tr>
-                <tr>
-            <td colspan="2">
+    </tr>
+                                            <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vs_switchover_timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                    <span style="color: purple">int</span>
-                </div>
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
             </td>
             <td>
                                                             </td>
@@ -5827,17 +5623,18 @@ Parameters
                   - Default value when not specified in API or module is interpreted by Avi Controller as 300.
                 </div>
                                             </td>
-        </tr>
-            </table>
+    </tr>
+        
+    </table>
     <br/>
-
 
 Examples
 --------
 
 .. code-block:: yaml
 
-    - hosts: localhost
+    - name: Deploy Controller
+      hosts: localhost
       connection: local
       collections:
         - vmware.alb
@@ -5847,6 +5644,7 @@ Examples
           password: "avi_password"
           controller: "192.168.138.18"
           api_version: "21.1.1"
+          tenant: "admin"
       tasks:
         - name: Example to create Serviceenginegroup object
           avi_serviceenginegroup:
@@ -5857,9 +5655,6 @@ Examples
 
 Authors
 ~~~~~~~
-- Gaurav Rastogi (grastogi@vmware.com)
-- Sandeep Bandi (sbandi@vmware.com)
-- Amol Shinde (samol@vmware.com)
-
-
-
+- Anurag Palsule (anurag.palsule@broadcom.com)
+- Parikshit Manur (parikshit.manur@broadcom.com)
+- Rohan Suryavanshi (rohan.suryavanshi@broadcom.com)

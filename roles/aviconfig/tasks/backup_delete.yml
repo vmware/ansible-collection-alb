@@ -1,8 +1,8 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi Backup | Delete Backup
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_backup:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -17,6 +17,7 @@
     backup_config_ref: "{{ item.backup_config_ref | default(omit) }}"
     file_name: "{{ item.file_name | default(omit) }}"
     local_file_url: "{{ item.local_file_url | default(omit) }}"
+    name: "{{ item.name | default(omit) }}"
     remote_file_url: "{{ item.remote_file_url | default(omit) }}"
     scheduler_ref: "{{ item.scheduler_ref | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
