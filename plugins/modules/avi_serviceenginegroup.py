@@ -1986,7 +1986,7 @@ options:
         type: int
     se_l3_encap_ipc:
         description:
-            - Determines if se-se ipc messages use se interface ip instead of vip        0        automatically determine based on hypervisor type    1       
+            - Determines if se-se ipc messages use se interface ip instead of vip        0        automatically determine based on hypervisor type    1
             - use se interface ip unconditionally    ~[0,1]   dont use se interface iprequires se reboot.
             - Field introduced in 20.1.3.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
