@@ -842,7 +842,7 @@ def main():
             'Use avi_serviceenginegroup instead, which now supports all '
             'ServiceEngineGroup fields (including the former "advanced" fields).'
         ),
-        version='34.1.0',
+        version='32.1.2',
         collection_name='vmware.alb',
     )
     return avi_ansible_api(module, 'serviceenginegroup', set([]))
