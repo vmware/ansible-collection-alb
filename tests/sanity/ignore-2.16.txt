@@ -16,6 +16,8 @@ plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
 plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:missing-gplv3-license
+plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:collection-deprecated-version
+plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:removal-version-must-be-major
 plugins/modules/avi_seproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_useraccountprofile.py validate-modules:missing-gplv3-license
