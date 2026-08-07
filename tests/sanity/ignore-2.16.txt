@@ -24,7 +24,6 @@ tests/integration/run_tests.sh shellcheck:SC2154
 plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
 plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
-plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:missing-gplv3-license
 plugins/modules/avi_federationcheckpoint.py validate-modules:missing-gplv3-license
 plugins/modules/avi_pingaccessagent.py validate-modules:missing-gplv3-license
 plugins/modules/avi_albservicesfiledownload.py validate-modules:invalid-argument-name
@@ -34,8 +33,6 @@ plugins/module_utils/csp_avi_api.py import-3.12!skip
 plugins/module_utils/saml_avi_api.py import-3.12!skip
 plugins/module_utils/utils/ansible_utils.py import-3.12!skip
 plugins/lookup/avi.py import-3.12!skip
-plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:collection-deprecated-version
-plugins/modules/avi_serviceenginegroup_advanced.py validate-modules:removal-version-must-be-major
 plugins/modules/avi_seproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_useraccountprofile.py validate-modules:missing-gplv3-license
@@ -167,10 +164,3 @@ plugins/modules/avi_systemconfiguration.py validate-modules:missing-gplv3-licens
 plugins/modules/avi_virtualservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_licensestatus.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbservice.py validate-modules:missing-gplv3-license
-<<<<<<< HEAD
-=======
-plugins/modules/avi_albservicesfiledownload.py validate-modules:invalid-argument-name
-plugins/modules/avi_albservicesfiledownload.py validate-modules:nonexistent-parameter-documented
-plugins/modules/avi_serviceenginegroup_advanced.py pylint:collection-deprecated-version
-plugins/modules/avi_serviceenginegroup_advanced.py pylint:removal-version-must-be-major
->>>>>>> 43c28cb (Fixing ci failure)
