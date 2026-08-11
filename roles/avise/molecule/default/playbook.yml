@@ -1,5 +1,4 @@
 ---
-# @AI-Modified: 2026-01-23 - Fixed file modes to address ansible:S2612
 - name: Converge
   hosts: all
   pre_tasks:

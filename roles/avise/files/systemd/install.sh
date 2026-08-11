@@ -2,13 +2,20 @@
 
 ############################################################################
 # ========================================================================
-# Copyright 2024 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # ========================================================================
 ###
 
 set -e
+
 echo "Migrating avihost service files."
-major_version=$(grep Version /bootstrap/VERSION | awk '{split($2,a,"."); print a[1]}')
+
+major_version=$(
+    awk '/Version/ {
+        split($2, a, ".");
+        print a[1]
+    }' /bootstrap/VERSION
+)
 
 BASEDIR=$(dirname "$0")
 

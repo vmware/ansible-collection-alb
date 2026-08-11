@@ -20,6 +20,7 @@
 
 - name: Fetch and delete log file
   become: true
+  failed_when: true
   block:
     - name: Fetch log file
       ansible.builtin.fetch:

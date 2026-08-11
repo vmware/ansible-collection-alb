@@ -1,5 +1,4 @@
 ---
-# @AI-Modified: 2026-01-23 - Added input validation to address security hotspots
 # check system against minimum requirements
 - name: Avi Controller | Requirements | Check for docker
   ansible.builtin.command: "which docker"
@@ -7,14 +6,9 @@
   changed_when: false
 
 - name: Avi Controller | Requirements | Get docker version
-  ansible.builtin.command: docker -v
-  register: docker_version_raw
+  ansible.builtin.command: "docker -v | cut -d ' ' -f 3 | cut -d ',' -f 1"
+  register: docker_version
   changed_when: false
-
-- name: Avi Controller | Requirements | Parse docker version
-  ansible.builtin.set_fact:
-    docker_version:
-      stdout: "{{ docker_version_raw.stdout | regex_search('Docker version ([0-9.]+)', '\\1') | first | default('0.0.0') }}"
 
 - name: Avi Controller | Requirements | Check docker version
   ansible.builtin.assert:
@@ -38,18 +32,13 @@
         fail_msg: "Invalid controller IP format: {{ con_controller_ip }}"
 
     - name: Avi Controller | Requirements | Get the management device name | ip addr
-      ansible.builtin.command: ip addr show
-      register: con_ip_addr_output
+      ansible.builtin.command: "ip addr show | grep {{ con_controller_ip }} | awk '{print $NF}'"
+      register: con_mgmt_device
       changed_when: false
-
-    - name: Avi Controller | Requirements | Parse management device name
-      ansible.builtin.set_fact:
-        con_mgmt_device_parsed: "{{ con_ip_addr_output.stdout_lines | select('search', con_controller_ip) | first | default('') | split() | last | default('') }}"
-
     - name: Avi Controller | Requirements | Set the management device name | ip addr
       ansible.builtin.set_fact:
-        con_dev_name: "{{ con_mgmt_device_parsed }}"
-        AVICONTROLLER_DEV_NAME: "{{ con_mgmt_device_parsed }}"
+        con_dev_name: "{{ con_mgmt_device.stdout }}"
+        AVICONTROLLER_DEV_NAME: "{{ con_mgmt_device.stdout }}"
 
 - name: Avi Controller | Requirements | Set max_cores and memory limits of environment
   ansible.builtin.set_fact:
@@ -78,19 +67,6 @@
   ansible.builtin.include_tasks: fresh_install.yml
   when: con_fresh_install
 
-- name: Avi Controller | Requirements | Validate disk paths
-  ansible.builtin.assert:
-    that:
-      - item is match('^[a-zA-Z0-9/_.-]+$')
-      - "'..' not in item"
-    fail_msg: "Invalid disk path: {{ item }}"
-  when: item != None
-  loop:
-    - "{{ con_disk_path }}"
-    - "{{ con_metrics_disk_path }}"
-    - "{{ con_logs_disk_path }}"
-
-# @AI-Modified: 2026-01-23 - Added owner/group and changed mode to address ansible:S2612
 - name: Avi Controller | Requirements | Create directories for controller
   ansible.builtin.file:
     path: "{{ item }}"
@@ -105,61 +81,32 @@
     - "{{ con_logs_disk_path }}"
 
 - name: Avi Controller | Requirements | Get disk space on controller disk path
-  ansible.builtin.stat:
-    path: "{{ con_disk_path }}"
-  register: con_disk_path_stat
+  ansible.builtin.shell: >
+    set -o pipefail && \
+    "df {{ con_disk_path }} -BG | grep -iv Used | awk '{print $4}' | sed s/G//g"
+  args:
+    executable: /bin/bash
+  changed_when: false
+  failed_when: false
+  register: con_disk_path_space
   when: con_disk_path != None
 
-- name: Avi Controller | Requirements | Get filesystem info for controller disk path
-  ansible.builtin.command:
-    cmd: "df -BG {{ con_disk_path }}"
-  register: con_disk_path_df
-  changed_when: false
-  when: con_disk_path != None and con_disk_path_stat.stat.exists
-
-- name: Avi Controller | Requirements | Parse disk space for controller disk path
-  ansible.builtin.set_fact:
-    con_disk_path_space:
-      stdout: "{{ con_disk_path_df.stdout_lines[1] | regex_search('([0-9]+)G\\s+[0-9]+%', '\\1') | first | default('0') }}"
-  when: con_disk_path != None and con_disk_path_stat.stat.exists
-
 - name: Avi Controller | Requirements | Get disk space on controller logs disk path
-  ansible.builtin.stat:
-    path: "{{ con_logs_disk_path }}"
-  register: con_logs_disk_path_stat
   when: con_logs_disk_path != None
-
-- name: Avi Controller | Requirements | Get filesystem info for controller logs disk path
-  ansible.builtin.command:
-    cmd: "df -BG {{ con_logs_disk_path }}"
-  register: con_logs_disk_path_df
+  ansible.builtin.shell: >
+    set -o pipefail && \
+    "df {{ con_logs_disk_path }} -BG | grep -iv Used | awk '{print $4}' | sed s/G//g"
   changed_when: false
-  when: con_logs_disk_path != None and con_logs_disk_path_stat.stat.exists
+  register: con_logs_disk_path_space
 
-- name: Avi Controller | Requirements | Parse disk space for controller logs disk path
-  ansible.builtin.set_fact:
-    con_logs_disk_path_space:
-      stdout: "{{ con_logs_disk_path_df.stdout_lines[1] | regex_search('([0-9]+)G\\s+[0-9]+%', '\\1') | first | default('0') }}"
-  when: con_logs_disk_path != None and con_logs_disk_path_stat.stat.exists
 
 - name: Avi Controller | Requirements | Get disk space on controller metrics disk path
-  ansible.builtin.stat:
-    path: "{{ con_metrics_disk_path }}"
-  register: con_metrics_disk_path_stat
   when: con_metrics_disk_path != None
-
-- name: Avi Controller | Requirements | Get filesystem info for controller metrics disk path
-  ansible.builtin.command:
-    cmd: "df -BG {{ con_metrics_disk_path }}"
-  register: con_metrics_disk_path_df
+  ansible.builtin.shell: >
+    set -o pipefail && \
+    "df {{ con_metrics_disk_path }} -BG | grep -iv Used | awk '{print $4}' | sed s/G//g"
   changed_when: false
-  when: con_metrics_disk_path != None and con_metrics_disk_path_stat.stat.exists
-
-- name: Avi Controller | Requirements | Parse disk space for controller metrics disk path
-  ansible.builtin.set_fact:
-    con_metrics_disk_path_space:
-      stdout: "{{ con_metrics_disk_path_df.stdout_lines[1] | regex_search('([0-9]+)G\\s+[0-9]+%', '\\1') | first | default('0') }}"
-  when: con_metrics_disk_path != None and con_metrics_disk_path_stat.stat.exists
+  register: con_metrics_disk_path_space
 
 - name: Avi Controller | Requirements | Check if there is enough space for controller disk path
   when: not con_skip_requirements

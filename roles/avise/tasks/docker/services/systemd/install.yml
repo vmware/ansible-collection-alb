@@ -1,8 +1,7 @@
 ---
-# @AI-Modified: 2026-01-23 - Fixed mode format and added owner/group to address ansible:S2612
 - name: Systemd | Deploy the avise service
   ansible.builtin.template:
-    src: "avise_service.j2"
+    src: "{{ se_service_files_path }}avise_service.j2"
     dest: /etc/systemd/system/avise.service
     mode: "0640"
     owner: root

@@ -31,10 +31,10 @@
       ansible.builtin.uri:
         url: "https://{{ se_leader_ctl_ip }}/api/initial-data"
         validate_certs: false
+        return_content: true
       register: controller_initial_data
       delegate_to: localhost
   roles:
-    - role: avinetworks.avisdk
     - role: avinetworks.docker
     - role: avinetworks.avise
       se_version: "{{ controller_initial_data.json.version.Tag }}"

@@ -238,10 +238,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Field deprecated in 31.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -4527,7 +4527,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:

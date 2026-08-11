@@ -475,7 +475,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -486,22 +486,22 @@ Examples
           api_version: "{{ api_version }}"
           tenant: "{{ admin }}"
       tasks:        
-            - name: Create a string group configuration
-              avi_stringgroup:
-                avi_credentials: "{{ avi_credentials }}"
-                kv:
-                  - key: text/html
-                  - key: text/xml
-                  - key: text/plain
-                  - key: text/css
-                  - key: text/javascript
-                  - key: application/javascript
-                  - key: application/x-javascript
-                  - key: application/xml
-                  - key: application/pdf
-                name: System-Compressible-Content-Types
-                tenant_ref: /api/tenant?name=admin
-                type: SG_TYPE_STRING
+        - name: Create a string group configuration
+          avi_stringgroup:
+            avi_credentials: "{{ avi_credentials }}"
+            kv:
+              - key: text/html
+              - key: text/xml
+              - key: text/plain
+              - key: text/css
+              - key: text/javascript
+              - key: application/javascript
+              - key: application/x-javascript
+              - key: application/xml
+              - key: application/pdf
+            name: System-Compressible-Content-Types
+            tenant_ref: /api/tenant?name=admin
+            type: SG_TYPE_STRING
 
 
 

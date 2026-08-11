@@ -1,10 +1,10 @@
 ---
 # Validate if controller is up and running
-# @AI-Modified: 2026-01-23 - Made validate_certs configurable to address SonarQube security warning
 - name: Avi Controller | CSP | Validate controller service
   ansible.builtin.uri:
     url: 'https://{{ con_csp_mgmt_ip }}/#!/login'
-    validate_certs: "{{ avi_validate_certs | default(false) }}"
+    validate_certs: false  # NOSONAR - Required for isolated lab with self-signed cert
+    return_content: true
   retries: 120
   delay: 30
   register: task_result

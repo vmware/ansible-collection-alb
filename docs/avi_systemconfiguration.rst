@@ -6746,7 +6746,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -6757,18 +6757,18 @@ Examples
           api_version: "{{ api_version }}"
           tenant: "{{ admin }}"
       tasks:        
-            - name: Example to create SystemConfiguration object
-              vmware.alb.avi_systemconfiguration:
-                avi_credentials: "{{ avi_credentials }}"
-                state: present
-                welcome_workflow_complete: true
-                dns_configuration:
-                  search_domain: ''
-                  server_list:
-                    - type: V4
-                      addr: "8.8.8.8"
-                    - type: DNS
-                      addr: "dns.rainpole.com"
+        - name: Example to create SystemConfiguration object
+          vmware.alb.avi_systemconfiguration:
+            avi_credentials: "{{ avi_credentials }}"
+            state: present
+            welcome_workflow_complete: true
+            dns_configuration:
+              search_domain: ''
+              server_list:
+                - type: V4
+                  addr: "8.8.8.8"
+                - type: DNS
+                  addr: "dns.rainpole.com"
 
 
 
