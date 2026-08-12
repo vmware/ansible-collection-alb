@@ -1077,6 +1077,39 @@ Parameters
                             <td class="elbow-placeholder"></td>
                                     <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>auto_window_growth_without_timestamp</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Controls whether receive window auto growth is allowed to fall back to an rtt-based estimate when the tcp timestamp option is not negotiated on
+                </div>
+                                <div style="font-size: small">
+                  - the connection.
+                </div>
+                                <div style="font-size: small">
+                  - Only takes effect when auto_window_growth is also enabled.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>automatic</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

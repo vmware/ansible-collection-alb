@@ -313,7 +313,7 @@ Parameters
                   - MATCH_ACTION_SCOPE_HTTPREQUESTPOLICY, MATCH_ACTION_SCOPE_HTTPRESPONSEPOLICY, MATCH_ACTION_SCOPE_CSRFPOLICY, MATCH_ACTION_SCOPE_AUTHPROFILE,
                 </div>
                                 <div style="font-size: small">
-                  - MATCH_ACTION_SCOPE_DATASCRIPT, MATCH_ACTION_SCOPE_BOTDETECTIONPOLICY.
+                  - MATCH_ACTION_SCOPE_VSDATASCRIPTSET, MATCH_ACTION_SCOPE_BOTDETECTIONPOLICY.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.2.1.

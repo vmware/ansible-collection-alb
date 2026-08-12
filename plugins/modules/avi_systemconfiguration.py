@@ -83,7 +83,7 @@ options:
     certificate_security_policy:
         description:
             - Certificate security policy for the system.
-            - Field introduced in 32.2.1, 32.1.3.
+            - Field introduced in 32.1.3, 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     common_criteria_mode:
@@ -469,7 +469,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           {'rekey_time_limit', 'avi_email_login_password', 'host_key_algorithm_exclude', 'rekey_volume_limit'})
+                           {'avi_email_login_password', 'rekey_volume_limit', 'host_key_algorithm_exclude', 'rekey_time_limit'})
 
 
 if __name__ == '__main__':

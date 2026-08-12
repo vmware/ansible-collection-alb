@@ -1746,7 +1746,7 @@ Parameters
                   - Certificate security policy for the system.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1, 32.1.3.
+                  - Field introduced in 32.1.3, 32.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1776,7 +1776,7 @@ Parameters
                   - SIGNATURE_ALGORITHM_SHA512, SIGNATURE_ALGORITHM_ED25519.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1, 32.1.3.
+                  - Field introduced in 32.1.3, 32.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1802,7 +1802,7 @@ Parameters
                   - Enum options - OCSP_HASH_SHA1, OCSP_HASH_SHA256, OCSP_HASH_SHA384, OCSP_HASH_SHA512.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1, 32.1.3.
+                  - Field introduced in 32.1.3, 32.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

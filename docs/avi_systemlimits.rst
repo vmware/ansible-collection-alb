@@ -2932,6 +2932,142 @@ Parameters
                                             </td>
     </tr>
         
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>serviceengine_waap_limits</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Per-tier waap se sizing limits (small, medium, large).
+                </div>
+                                <div style="font-size: small">
+                  - Defines the min_vcpus, min_memory, and max_vs_per_se for each tier.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_vs_per_se</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of virtualservices allowed per se for this tier.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>min_memory</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Minimum memory per se (mib) for this tier.
+                </div>
+                                <div style="font-size: small">
+                  - Ses in a waap-mode se group of this size must have at least this much memory.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is mb.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>min_vcpus</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Minimum vcpus per se for this tier.
+                </div>
+                                <div style="font-size: small">
+                  - Ses in a waap-mode se group of this size must have at least this many vcpus.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>waap_se_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Size tier this entry describes (small, medium, or large).
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SE_SIZE_SMALL, SE_SIZE_MEDIUM, SE_SIZE_LARGE.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
             
                                                 <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>

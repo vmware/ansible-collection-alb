@@ -6,7 +6,7 @@
 vmware.alb.avi_serviceenginegroup
 **********************************************
 
-**Module for setup of Serviceenginegroup Avi RESTful Object**
+**Module for setup of ServiceEngineGroup Avi RESTful Object**
 
 
 .. contents::
@@ -16,7 +16,7 @@ vmware.alb.avi_serviceenginegroup
 
 Synopsis
 --------
-- This module is used to configure Serviceenginegroup object.
+- This module is used to configure ServiceEngineGroup object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -156,7 +156,7 @@ Parameters
                   - Field introduced in 17.2.14,18.1.5,18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -175,7 +175,7 @@ Parameters
                   - Service engines in active/standby mode for ha failover.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -197,10 +197,7 @@ Parameters
                   - Enable aggressive failover configuration for ha.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -222,10 +219,16 @@ Parameters
                   - In compact placement, virtual services are placed on existing ses until max_vs_per_se limit is reached.
                 </div>
                                 <div style="font-size: small">
+                  - In distributed placement, virtual services are placed on new ses until max_se limit is reached.
+                </div>
+                                <div style="font-size: small">
+                  - Once this limit is reached, virtual services are placed on ses with least load.
+                </div>
+                                <div style="font-size: small">
                   - Enum options - PLACEMENT_ALGO_PACKED, PLACEMENT_ALGO_DISTRIBUTED.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as PLACEMENT_ALGO_PACKED.
@@ -250,7 +253,7 @@ Parameters
                   - Field introduced in 17.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -284,13 +287,7 @@ Parameters
                   - Unit is percent.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- 0), basic edition(allowed values- 0), enterprise with cloud
-                </div>
-                                <div style="font-size: small">
-                  - services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Special default for essentials edition is 0, basic edition is 0, enterprise is 10.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
@@ -324,7 +321,7 @@ Parameters
                   - Unit is gb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 5.
@@ -358,7 +355,7 @@ Parameters
                   - Unit is percent.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -386,10 +383,41 @@ Parameters
                   - Unit is gb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 8.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>arp_cache_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timeout in seconds for idle arp entries.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-86400.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1200.
                 </div>
                                             </td>
     </tr>
@@ -408,10 +436,7 @@ Parameters
                   - Ssl handshakes will be handled by dedicated ssl threads.requires se reboot.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -436,10 +461,35 @@ Parameters
                   - Allowed values are 1-16.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>audit_qat_huge_pages</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This knob enables audit of qat hugepages.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -461,10 +511,7 @@ Parameters
                   - Only alerts are generated when the auto_rebalance is not set.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -489,7 +536,35 @@ Parameters
                   - Field introduced in 17.2.4.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>auto_rebalance_cool_down_time</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The time in minutes controller waits before rebalancing the vs again after a scalein/scaleout.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 15.
                 </div>
                                             </td>
     </tr>
@@ -514,7 +589,35 @@ Parameters
                   - Field introduced in 17.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>auto_rebalance_dry_run_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If enabled, the controller will not perform the rebalance actions.it will only generate the actions and update that in the debug api.this is
+                </div>
+                                <div style="font-size: small">
+                  - useful for testing the rebalance logic without actually performing the actions.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -530,16 +633,41 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Frequency of rebalance, if 'auto rebalance' is enabled.
+                  - Frequency of rebalance, if auto rebalance is enabled.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 300.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>auto_rebalance_raise_events_for_actions</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If enabled, the controller will raise events for rebalance actions.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -561,10 +689,7 @@ Parameters
                   - If the auto-redistribute load option is left in its default off state, any desired rebalancing requires calls to rest api.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -592,39 +717,7 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>avi_patch_path</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Patch path to use when using avi_api_update_method as patch.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>avi_patch_value</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Patch value to use when using avi_api_update_method as patch.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -646,10 +739,7 @@ Parameters
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -674,7 +764,7 @@ Parameters
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -705,7 +795,7 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 60.
@@ -727,7 +817,7 @@ Parameters
                   - Excess service engine capacity provisioned for ha failover.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -749,7 +839,7 @@ Parameters
                   - It is a reference to an object of type cloud.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -771,7 +861,7 @@ Parameters
                   - Field introduced in 18.2.9, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -796,7 +886,7 @@ Parameters
                   - Field introduced in 17.2.13,18.1.5,18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -808,7 +898,7 @@ Parameters
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -821,14 +911,68 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>created_by</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Identifies the user type that created the configuration.
+                </div>
+                                <div style="font-size: small">
+                  - Nil for non-service users.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SERVICE_USER.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>version</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Version sequence number that monotonically advances with each configuration update event.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>connection_memory_percentage</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -852,10 +996,35 @@ Parameters
                   - Unit is percent.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 50.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>control_qat_huge_pages</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This knob enables control of qat hugepages.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -877,7 +1046,7 @@ Parameters
                   - Field introduced in 18.2.8, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -902,7 +1071,7 @@ Parameters
                   - Field introduced in 18.2.8, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -921,7 +1090,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Set cpu shares for service engine virtual machines to high.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -946,7 +1118,7 @@ Parameters
                   - Applicable only for vcenter cloud.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -971,7 +1143,7 @@ Parameters
                   - Field introduced in 17.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -993,7 +1165,7 @@ Parameters
                   - Field introduced in 17.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -1002,7 +1174,7 @@ Parameters
                 <b>custom_tag</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -1015,11 +1187,47 @@ Parameters
                   - Note this is not the same as the prefix for se name.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tag_key</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tag_val</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>data_network_id</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -1040,7 +1248,7 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -1065,7 +1273,7 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1000000.
@@ -1090,7 +1298,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -1115,7 +1323,7 @@ Parameters
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -1134,10 +1342,7 @@ Parameters
                   - Dedicate the core that handles packet receive/transmit from the network to just the dispatching function.
                 </div>
                                 <div style="font-size: small">
-                  - Don't use it for tcp/ip and ssl functions.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -1153,7 +1358,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -1184,7 +1389,7 @@ Parameters
                   - Field introduced in 17.2.13,18.1.4,18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1209,7 +1414,7 @@ Parameters
                   - Field introduced in 17.1.14, 17.2.5, 18.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1228,13 +1433,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Disable flow probes for scaled out vs'es.
+                  - Disable flow probes for scaled out vses.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1256,13 +1461,47 @@ Parameters
                   - Disable generic receive offload (gro) in dpdk poll-mode driver packet receive path.
                 </div>
                                 <div style="font-size: small">
-                  - Gro is on by default on nics that do not support lro (large receive offload) or do not gain performance boost from lro.
+                  - Gro can be enabled on nics that do not support lro (large receive offload) or do not gain performance boost from lro.
+                </div>
+                                <div style="font-size: small">
+                  - Gro is on by default on nics in a system with 8 vcpus or higher.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.5, 18.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>disable_qat_bulk_crypto</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This knob enables the qat offloads for tls application data.
+                </div>
+                                <div style="font-size: small">
+                  - (if the host cpu is capable, and the qat device is exposed).
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -1284,7 +1523,7 @@ Parameters
                   - Field introduced in 18.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1312,7 +1551,7 @@ Parameters
                   - Field introduced in 17.2.5, 18.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1337,7 +1576,7 @@ Parameters
                   - Unit is gb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 15.
@@ -1359,10 +1598,7 @@ Parameters
                   - Use both the active and standby service engines for virtual service placement in the legacy active standby ha mode.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1393,10 +1629,7 @@ Parameters
                   - Field introduced in 17.2.8.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1421,10 +1654,7 @@ Parameters
                   - Field introduced in 18.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1452,7 +1682,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 3600000.
@@ -1483,10 +1713,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -1517,10 +1744,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -1548,7 +1772,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
@@ -1573,7 +1797,7 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
@@ -1604,10 +1828,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.
@@ -1638,10 +1859,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.
@@ -1669,7 +1887,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
@@ -1694,7 +1912,7 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
@@ -1728,7 +1946,7 @@ Parameters
                   - Unit is microseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 50.
@@ -1753,7 +1971,7 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1778,7 +1996,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1809,7 +2027,7 @@ Parameters
                   - Field introduced in 17.2.7, 18.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1837,7 +2055,7 @@ Parameters
                   - Field introduced in 17.2.10, 18.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -1871,7 +2089,35 @@ Parameters
                   - Field introduced in 18.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enable_qat</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This knob enables the service engine to use qat offloads (if the host cpu is capable, and the qat device is exposed).
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -1893,7 +2139,7 @@ Parameters
                   - Field introduced in 17.2.13, 18.1.5, 18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -1915,7 +2161,7 @@ Parameters
                   - Field introduced in 17.2.13, 18.1.5, 18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -1934,7 +2180,7 @@ Parameters
                   - Multiplier for extra config to support large vs/pool config.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.0.
@@ -1962,7 +2208,7 @@ Parameters
                   - Unit is mb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -1987,7 +2233,7 @@ Parameters
                   - Field introduced in 17.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -2012,7 +2258,7 @@ Parameters
                   - Field introduced in 17.2.10, 18.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
@@ -2024,7 +2270,7 @@ Parameters
                 <b>gcp_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -2037,11 +2283,85 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>backend_data_vpc_network_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Service engine backend data network name, used only for gcp cloud.overrides the cloud level setting for backend data network in gcp two arm mode.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>backend_data_vpc_project_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Project id of the service engine backend data network.
+                </div>
+                                <div style="font-size: small">
+                  - By default, service engine project id will be used.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>backend_data_vpc_subnet_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Service engine backend data subnet name, used only for gcp cloud.overrides the cloud level setting for backend data subnet in gcp two arm mode.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>gratarp_permanent_periodicity</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -2065,7 +2385,7 @@ Parameters
                   - Unit is min.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
@@ -2093,10 +2413,38 @@ Parameters
                   - Field introduced in 22.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 15.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>gve_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Deploys google virtual ethernet (gve) - gvnic for all supported intances types in gcp.
+                </div>
+                                <div style="font-size: small">
+                  - Applies only to newly created ses.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -2118,16 +2466,7 @@ Parameters
                   - Enum options - HA_MODE_SHARED_PAIR, HA_MODE_SHARED, HA_MODE_LEGACY_ACTIVE_STANDBY.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- ha_mode_legacy_active_standby), basic edition(allowed values-
-                </div>
-                                <div style="font-size: small">
-                  - ha_mode_legacy_active_standby), enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Special default for essentials edition is ha_mode_legacy_active_standby, basic edition is ha_mode_legacy_active_standby, enterprise is
-                </div>
-                                <div style="font-size: small">
-                  - ha_mode_shared.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as HA_MODE_SHARED.
@@ -2155,7 +2494,7 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -2177,7 +2516,7 @@ Parameters
                   - It is a reference to an object of type hardwaresecuritymodulegroup.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -2205,7 +2544,7 @@ Parameters
                   - Unit is mb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 8.
@@ -2227,13 +2566,7 @@ Parameters
                   - Enable active health monitoring from the standby se for all placed virtual services.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Special default for essentials edition is false, basic edition is false, enterprise is true.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -2264,7 +2597,7 @@ Parameters
                   - May also be used for isolation between different classes of virtualservices.
                 </div>
                                 <div style="font-size: small">
-                  - Virtualservices' se group may be specified via annotations/labels.
+                  - Virtualservices se group may be specified via annotations/labels.
                 </div>
                                 <div style="font-size: small">
                   - A openshift/kubernetes namespace maybe annotated with a matching se group label as openshift.io/node-selector  apptype=prod.
@@ -2276,7 +2609,7 @@ Parameters
                   - host_attribute_key.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -2298,7 +2631,7 @@ Parameters
                   - Needs to be specified together with host_attribute_key.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -2323,7 +2656,7 @@ Parameters
                   - Field introduced in 17.2.4.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -2348,10 +2681,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -2376,10 +2706,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- 64), basic edition(allowed values- 64), enterprise with cloud
-                </div>
-                                <div style="font-size: small">
-                  - services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 64.
@@ -2398,10 +2725,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Toggles se hybrid only mode of operation in dpdk mode with rss configured;where-in each se datapath instance operates as an independent
+                  - Toggles se hybrid only mode of operation in dpdk mode with rss configured;where-in each se datapath instance operates as a standalone hybrid
                 </div>
                                 <div style="font-size: small">
-                  - standalonehybrid instance performing both dispatcher and proxy function.
+                  - instance performing both dispatcher and proxy function.
                 </div>
                                 <div style="font-size: small">
                   - Requires reboot.
@@ -2410,7 +2737,7 @@ Parameters
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -2435,7 +2762,7 @@ Parameters
                   - Enum options - DEFAULT, VMWARE_ESX, KVM, VMWARE_VSAN, XEN.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -2457,10 +2784,7 @@ Parameters
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -2488,7 +2812,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 5000.
@@ -2516,7 +2840,7 @@ Parameters
                   - Field introduced in 17.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as SG_INGRESS_ACCESS_ALL.
@@ -2544,7 +2868,7 @@ Parameters
                   - Field introduced in 17.1.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as SG_INGRESS_ACCESS_ALL.
@@ -2566,7 +2890,7 @@ Parameters
                   - Instance/flavor name for se instance.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -2575,7 +2899,7 @@ Parameters
                 <b>instance_flavor_info</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -2588,19 +2912,454 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>cost</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>disk_gb</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enhanced_nw</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>is_recommended</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If a vm flavor is recommended for requested se_usage_type.set to true if the chosen vm flavor is recommended for requested se_usage_type.else set
+                </div>
+                                <div style="font-size: small">
+                  - to false.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.4, 18.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_ip6s_per_nic</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of ipv6 addresses that can be configured per nic.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_ips_per_nic</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_nics</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>meta</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>key</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>value</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>public</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ram_mb</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vcpus</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_advertisement_profile</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Configuration for periodic ip advertisement (gratarp for ipv4, neighbor advertisement for ipv6).
+                </div>
+                                <div style="font-size: small">
+                  - When configured, the specified ip types will send periodic advertisements to maintain arp/ndp cache entries on network devices.
+                </div>
+                                <div style="font-size: small">
+                  - Enable_gratarp_permanent independently controls vip_ip.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>default_periodicity</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Default periodicity for periodic ip advertisement (gratarp/na) in minutes.
+                </div>
+                                <div style="font-size: small">
+                  - Used when a per-type periodicity is not specified.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-30.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_types</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of ip address types for which periodic ip advertisement (gratarp/na) is enabled.
+                </div>
+                                <div style="font-size: small">
+                  - Supported ip_type values are vip_ip, snat_ip, floating_intf_ip, and primary_intf_ip.
+                </div>
+                                <div style="font-size: small">
+                  - Applied uniformly to all vrfs in this serviceenginegroup.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address type for which periodic ip advertisement (gratarp/na) is enabled.
+                </div>
+                                <div style="font-size: small">
+                  - Supported values are vip_ip, snat_ip, floating_intf_ip, and primary_intf_ip.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - NAT_IP, VIP_IP, SNAT_IP, FLOATING_INTF_IP, PRIMARY_INTF_IP.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>periodicity</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Periodicity override for this ip type in minutes.
+                </div>
+                                <div style="font-size: small">
+                  - If not set, uses ip_advertisement_profile.default_periodicity.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-30.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+            
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>iptables</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -2613,7 +3372,725 @@ Parameters
                   - Maximum of 128 items allowed.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>chain</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>rules</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>action</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - ACCEPT, DROP, REJECT, DNAT, MASQUERADE.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>dnat_ip</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>dst_ip</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mask</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>dst_port</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>end</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tcp/udp port range end (inclusive).
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>start</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tcp/udp port range start (inclusive).
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>input_interface</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>output_interface</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>proto</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - PROTO_TCP, PROTO_UDP, PROTO_ICMP, PROTO_ALL.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>src_ip</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mask</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>src_port</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>end</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tcp/udp port range end (inclusive).
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>start</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tcp/udp port range start (inclusive).
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tag</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>table</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>kni_allowed_server_ports</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Port ranges for any servers running in inband linuxserver clouds.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>protocol</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Protocol associated with port range.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - KNI_PROTO_TCP, KNI_PROTO_UDP.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>range</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Port range to be allowed to kni.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>end</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tcp/udp port range end (inclusive).
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>start</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tcp/udp port range start (inclusive).
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+            
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>kv_val_max_len</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Max length allowed for the value in a kv pair.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 128,256,512,1024,2048,4096,8192.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 4096.
                 </div>
                                             </td>
     </tr>
@@ -2635,7 +4112,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 16384.
@@ -2660,7 +4137,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 256.
@@ -2672,7 +4149,7 @@ Parameters
                 <b>labels</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -2688,11 +4165,53 @@ Parameters
                   - Maximum of 1 items allowed.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>key</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>value</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Value.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>lbaction_num_requests_to_dispatch</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -2713,7 +4232,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
@@ -2738,7 +4257,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 22.
@@ -2760,7 +4279,7 @@ Parameters
                   - Select core with least load for new flow.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -2768,6 +4287,94 @@ Parameters
                                             </td>
     </tr>
                                             <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>license_quota</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - License quota for the se group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>limit</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum license service units allowed for consumption.
+                </div>
+                                <div style="font-size: small">
+                  - -1 as default is maximum value.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are -1-+65535.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as -1.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>reservation</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Minimum license service units reserved for consumption.
+                </div>
+                                <div style="font-size: small">
+                  - Reservation is not enforced for tenant/se group.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>license_tier</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -2791,7 +4398,7 @@ Parameters
                   - Field introduced in 17.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -2816,7 +4423,7 @@ Parameters
                   - Field introduced in 17.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -2838,7 +4445,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -2869,7 +4476,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -2894,7 +4501,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
@@ -2919,7 +4526,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
@@ -2944,7 +4551,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
@@ -2969,7 +4576,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
@@ -2997,7 +4604,7 @@ Parameters
                   - Unit is mb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
@@ -3022,7 +4629,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
@@ -3047,7 +4654,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 110.
@@ -3072,7 +4679,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.0.
@@ -3097,7 +4704,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
@@ -3125,7 +4732,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
@@ -3153,10 +4760,84 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>log_agent_udp_fqdn_resolve_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Interval in seconds at which the service engine re-resolves the dns for fqdn-based udp log streaming endpoints.
+                </div>
+                                <div style="font-size: small">
+                  - Prevents streaming to stale ips when dns records change.
+                </div>
+                                <div style="font-size: small">
+                  - Only applies when the streaming endpoint is configured as an fqdn, not a literal ip.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 60-86400.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.3, 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 900.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>log_agent_udp_fqdn_resolve_log_count</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of udp log messages sent before re-resolving the fqdn.
+                </div>
+                                <div style="font-size: small">
+                  - Re-resolution also happens on the time interval (log_agent_udp_fqdn_resolve_interval); whichever trigger fires first wins, with log count checked
+                </div>
+                                <div style="font-size: small">
+                  - before time.
+                </div>
+                                <div style="font-size: small">
+                  - Only applies when the streaming endpoint is configured as an fqdn, not a literal ip.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 100-100000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.3, 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 5000.
                 </div>
                                             </td>
     </tr>
@@ -3181,7 +4862,7 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1800.
@@ -3209,7 +4890,7 @@ Parameters
                   - Unit is mb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10000.
@@ -3234,10 +4915,7 @@ Parameters
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- true), basic edition(allowed values- true), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -3262,7 +4940,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 64.
@@ -3271,10 +4949,95 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>log_streaming_tls_config</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tls configuration for log streaming connections from this service engine group.
+                </div>
+                                <div style="font-size: small">
+                  - Effective only for log_streaming_protocol_tls and log_streaming_protocol_syslog_over_tls.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>client_cert_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Client certificate for mutual tls connection.
+                </div>
+                                <div style="font-size: small">
+                  - Required when tls mode is mutual tls.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type sslkeyandcertificate.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tls_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Select how tls is used to establish a secure outbound connection.
+                </div>
+                                <div style="font-size: small">
+                  - Certificate validation uses the trust store configured in system configuration (truststore pki profile).
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_SKIP_HOSTNAME_VERIFY.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>markers</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -3287,14 +5050,68 @@ Parameters
                   - Field introduced in 20.1.7.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>key</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Key for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>values</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Values for filter match.
+                </div>
+                                <div style="font-size: small">
+                  - Multiple values will be evaluated as or.
+                </div>
+                                <div style="font-size: small">
+                  - Example  key = value1 or key = value2.
+                </div>
+                                <div style="font-size: small">
+                  - Behavior for match is key = * if this field is empty.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_concurrent_external_hm</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -3318,7 +5135,41 @@ Parameters
                   - Field introduced in 18.2.7.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_cpu_load_adaptive_sampling</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - When adaptive sampling is enabled, specifies the max cpu load allowed for adaptive sampling.
+                </div>
+                                <div style="font-size: small">
+                  - If the cpu load exceeds this value, no requests will be sampled.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is percent.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 95.
                 </div>
                                             </td>
     </tr>
@@ -3346,7 +5197,7 @@ Parameters
                   - Unit is percent.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 80.
@@ -3374,10 +5225,44 @@ Parameters
                   - Unit is mb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 64.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_num_http_sessions_to_store</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of http session that will be created.
+                </div>
+                                <div style="font-size: small">
+                  - Each session uses about 1kb in the key-value storage in shared memory.
+                </div>
+                                <div style="font-size: small">
+                  - Setting this value too high can lead to exhaustion of shared memory and affect services.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-2000000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 50000.
                 </div>
                                             </td>
     </tr>
@@ -3408,10 +5293,7 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- 0), basic edition(allowed values- 0), enterprise with cloud
-                </div>
-                                <div style="font-size: small">
-                  - services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -3436,7 +5318,7 @@ Parameters
                   - Field introduced in 17.2.12, 18.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 30.
@@ -3455,7 +5337,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Maximum number of queues per vnic setting to '0' utilises all queues that are distributed across dispatcher cores.
+                  - Maximum number of queues per vnic setting to 0 utilises all queues that are distributed across dispatcher cores.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0,1,2,4,8,16.
@@ -3464,10 +5346,7 @@ Parameters
                   - Field introduced in 18.2.7, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- 1), basic edition(allowed values- 1), enterprise with cloud
-                </div>
-                                <div style="font-size: small">
-                  - services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -3495,7 +5374,7 @@ Parameters
                   - Field introduced in 17.2.12, 18.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 150.
@@ -3520,7 +5399,7 @@ Parameters
                   - Allowed values are 1-64.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4.
@@ -3545,10 +5424,44 @@ Parameters
                   - Allowed values are 0-1000.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_skb_frags</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum of number of 4 kb pages allocated to the linux kernel gro subsystem for packet coalescing.
+                </div>
+                                <div style="font-size: small">
+                  - This parameter is limited to supported kernels only.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-17.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 17.
                 </div>
                                             </td>
     </tr>
@@ -3570,7 +5483,7 @@ Parameters
                   - Allowed values are 1-1000.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
@@ -3589,7 +5502,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -3620,7 +5533,7 @@ Parameters
                   - Unit is percent.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 15.
@@ -3645,10 +5558,56 @@ Parameters
                   - Changes to this setting do not affect existing ses.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed values are 2048-262144.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is mb.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 2048.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>metrics_collection_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Metrics collection mode, 0 = pull mode.
+                </div>
+                                <div style="font-size: small">
+                  - Se_agent pulls metrics from se_dp,  1 = push mode.
+                </div>
+                                <div style="font-size: small">
+                  - Se_dp pushes metrics to se_agent.
+                </div>
+                                <div style="font-size: small">
+                  - 9 = special value to reset collection state in push mode.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-1.
+                </div>
+                                <div style="font-size: small">
+                  - Special values are 9- reset metrics collection state.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
     </tr>
@@ -3670,7 +5629,7 @@ Parameters
                   - It is a reference to an object of type network.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -3679,7 +5638,7 @@ Parameters
                 <b>mgmt_subnet</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -3689,11 +5648,91 @@ Parameters
                   - Management subnet to use for avi service engines.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mask</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>min_cpu_usage</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -3717,7 +5756,7 @@ Parameters
                   - Unit is percent.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 30.
@@ -3742,7 +5781,7 @@ Parameters
                   - Allowed values are 1-64.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -3770,7 +5809,7 @@ Parameters
                   - Field introduced in 17.2.13,18.1.3,18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -3801,10 +5840,35 @@ Parameters
                   - Unit is percent.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>multicast_enable</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This knob enables the service engine to process multicast traffic(for vmware hypervisor).
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -3829,7 +5893,7 @@ Parameters
                   - Field introduced in 17.2.12, 18.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -3851,7 +5915,128 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>nd6_cache_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timeout in seconds for idle nd6 entries.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-86400.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 86400.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>netlink_poller_threads</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of threads to poll for netlink messages excluding the thread for default namespace.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-32.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 2.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>netlink_sock_buf_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Socket buffer size for the netlink sockets.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-128.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is mega_bytes.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ngx_free_connection_stack</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Free the connection stack.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -3882,7 +6067,7 @@ Parameters
                   - Unit is per_second.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
@@ -3913,10 +6098,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 20.
@@ -3944,10 +6126,7 @@ Parameters
                   - Field introduced in 22.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -3984,10 +6163,7 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -4018,10 +6194,7 @@ Parameters
                   - Field introduced in 17.2.12, 18.1.3, 18.2.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- 0), basic edition(allowed values- 0), enterprise with cloud
-                </div>
-                                <div style="font-size: small">
-                  - services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -4049,7 +6222,7 @@ Parameters
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
@@ -4058,10 +6231,32 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_flow_cores_sum_changes_to_ignore</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of changes in num flow cores sum to ignore.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 8.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>objsync_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -4074,7 +6269,136 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>objsync_cpu_limit</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Se cpu limit for interse object distribution.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-100.
+                </div>
+                                <div style="font-size: small">
+                  - Special values are 0- no restriction.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is percent.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>objsync_hub_elect_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Hub election interval for interse object distribution.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 30-300.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 60.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>objsync_reconcile_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Reconcile interval for interse object distribution.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-120.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>objsync_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enables se-se object syncing.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - OBJSYNC_DISABLED, OBJSYNC_ENABLED, OBJSYNC_AUTO.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as OBJSYNC_ENABLED.
                 </div>
                                             </td>
     </tr>
@@ -4102,13 +6426,16 @@ Parameters
                   - Requires se reboot.
                 </div>
                                 <div style="font-size: small">
+                  - Allowed values are 1024-65535.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 9001.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 4001.
                 </div>
                                             </td>
     </tr>
@@ -4130,7 +6457,7 @@ Parameters
                   - Maximum of 5 items allowed.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -4149,7 +6476,7 @@ Parameters
                   - Avi management network name.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -4168,7 +6495,35 @@ Parameters
                   - Management network uuid.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>optimistic_placement</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allows packed placement on existing ses with asynchronous spinning up of buffer ses.
+                </div>
+                                <div style="font-size: small">
+                  - Used in packed placement with buffer ses.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -4190,10 +6545,128 @@ Parameters
                   - Unit is mb.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>path_mtu_discovery_v4</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable path mtu discovery feature for ipv4.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>path_mtu_discovery_v6</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable path mtu discovery feature for ipv6.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>pcap_tx_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Determines the pcap transmit mode of operation.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - PCAP_TX_AUTO, PCAP_TX_SOCKET, PCAP_TX_RING.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.8, 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as PCAP_TX_AUTO.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>pcap_tx_ring_rd_balancing_factor</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - In pcap mode, reserve a configured portion of tx ring resources for itself and the remaining portion for the rx ring to achieve better balance in
+                </div>
+                                <div style="font-size: small">
+                  - terms of queue depth.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 10-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is percent.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 10.
                 </div>
                                             </td>
     </tr>
@@ -4218,10 +6691,7 @@ Parameters
                   - Vcpus in per-app ses count towards licensing usage at 25% rate.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -4249,7 +6719,7 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -4268,13 +6738,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - If placement mode is 'auto', virtual services are automatically placed on service engines.
+                  - If placement mode is auto, virtual services are automatically placed on service engines.
                 </div>
                                 <div style="font-size: small">
                   - Enum options - PLACEMENT_MODE_AUTO.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as PLACEMENT_MODE_AUTO.
@@ -4283,10 +6753,69 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>pre_upgrade_se_available_mem_threshold</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Available memory threshold on se in mb, to get qualified for upgrade operation.
+                </div>
+                                <div style="font-size: small">
+                  - Adjusting this knob will override the internal value of available memory threshold for se, thereby qualifying it for upgrade operation.
+                </div>
+                                <div style="font-size: small">
+                  - 0 is a special auto value, which will indicate that memory threshold is calculated based on total memory size of the se.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>qat_hpage_mem_per_process</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This knob is used to set the number of qat hugepages.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - QAT_HPAGE_MEM_8MB, QAT_HPAGE_MEM_16MB, QAT_HPAGE_MEM_32MB.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as QAT_HPAGE_MEM_16MB.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>realtime_se_metrics</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -4296,11 +6825,71 @@ Parameters
                   - Enable or deactivate real time se metrics.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>duration</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Real time metrics collection duration in minutes.
+                </div>
+                                <div style="font-size: small">
+                  - 0 for infinite.
+                </div>
+                                <div style="font-size: small">
+                  - Special values are 0 - infinite.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is min.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 30.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enables real time metrics collection.
+                </div>
+                                <div style="font-size: small">
+                  - When deactivated, 6 hour view is the most granular the system will track.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>reboot_on_panic</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -4318,7 +6907,7 @@ Parameters
                   - Field introduced in 18.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -4352,7 +6941,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1000.
@@ -4360,6 +6949,103 @@ Parameters
                                             </td>
     </tr>
                                             <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>reserved_configuration</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Reserved configuration used for internal configuration purposes.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>key_value_configurations</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of configurations for internal purposes.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>key</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Reserved key string to be used for internal configuration.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>value</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Value corresponding to the key.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+            
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>resync_time_interval</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -4371,7 +7057,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Time interval to re-sync se's time with wall clock time.
+                  - Time interval to re-sync ses time with wall clock time.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 8-600000.
@@ -4383,7 +7069,7 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 65536.
@@ -4414,13 +7100,41 @@ Parameters
                   - Unit is milliseconds.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>sdb_key_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The time in seconds controller redis server persists the key.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 60-600.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.4.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 60.
                 </div>
                                             </td>
     </tr>
@@ -4445,10 +7159,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
@@ -4476,10 +7187,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1000.
@@ -4507,10 +7215,41 @@ Parameters
                   - Field introduced in 17.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- se_bandwidth_unlimited), basic edition(allowed values-
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_debug_trace_sz</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Use to cap the size of debug ring min(se_debug_trace_sz, num_dispatcher_cores).
                 </div>
                                 <div style="font-size: small">
-                  - se_bandwidth_unlimited), enterprise with cloud services edition.
+                  - Only applicable to > 8g systems.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1,2,4,8,255.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 8.
                 </div>
                                             </td>
     </tr>
@@ -4535,10 +7274,7 @@ Parameters
                   - Field introduced in 20.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- true), basic edition(allowed values- true), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -4572,7 +7308,7 @@ Parameters
                   - Unit is min.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 120.
@@ -4584,18 +7320,152 @@ Parameters
                 <b>se_dos_profile</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>thresh_info</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Attack type, min and max values for dos attack detection.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>attack</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Attack type.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - LAND, SMURF, ICMP_PING_FLOOD, UNKOWN_PROTOCOL, TEARDROP, IP_FRAG_OVERRUN, IP_FRAG_TOOSMALL, IP_FRAG_FULL, IP_FRAG_INCOMPLETE,
+                </div>
+                                <div style="font-size: small">
+                  - PORT_SCAN, TCP_NON_SYN_FLOOD_OLD, SYN_FLOOD, BAD_RST_FLOOD, MALFORMED_FLOOD, FAKE_SESSION, ZERO_WINDOW_STRESS, SMALL_WINDOW_STRESS,
+                </div>
+                                <div style="font-size: small">
+                  - DOS_HTTP_TIMEOUT, DOS_HTTP_ERROR, DOS_HTTP_ABORT, DOS_SSL_ERROR, DOS_APP_ERROR, DOS_REQ_IP_RL_DROP, DOS_REQ_URI_RL_DROP,
+                </div>
+                                <div style="font-size: small">
+                  - DOS_REQ_URI_SCAN_BAD_RL_DROP, DOS_REQ_URI_SCAN_UNKNOWN_RL_DROP, DOS_REQ_IP_URI_RL_DROP, DOS_CONN_IP_RL_DROP, DOS_SLOW_URL, TCP_NON_SYN_FLOOD,
+                </div>
+                                <div style="font-size: small">
+                  - DOS_REQ_CIP_SCAN_BAD_RL_DROP, DOS_REQ_CIP_SCAN_UNKNOWN_RL_DROP, DOS_REQ_IP_RL_DROP_BAD, DOS_REQ_URI_RL_DROP_BAD, DOS_REQ_IP_URI_RL_DROP_BAD,
+                </div>
+                                <div style="font-size: small">
+                  - POLICY_DROPS, DOS_CONN_RL_DROP, DOS_REQ_RL_DROP, DOS_REQ_HDR_RL_DROP, DOS_REQ_CUSTOM_RL_DROP, DNS_ATTACK_REFLECTION,
+                </div>
+                                <div style="font-size: small">
+                  - DNS_ATTACK_AMPLIFICATION_EGRESS, TCP_SLOW_AND_LOW, DNS_ATTACK_NXDOMAIN.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_value</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of packets or connections or requests in a given interval of time to be deemed as attack.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>min_value</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Minimum number of packets or connections or requests in a given interval of time to be deemed as attack.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>thresh_period</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timer value in seconds to collect dos attack metrics based on threshold on the service engine for this virtual service.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_dp_hm_drops</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -4616,7 +7486,7 @@ Parameters
                   - Field introduced in 20.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -4641,10 +7511,7 @@ Parameters
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 10.
@@ -4681,7 +7548,7 @@ Parameters
                   - Field introduced in 20.1.4.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -4703,7 +7570,7 @@ Parameters
                   - Number of cpus for non se-dp tasks in se datapath isolation mode.
                 </div>
                                 <div style="font-size: small">
-                  - Translates total cpus minus 'num_non_dp_cpus' for datapath use.
+                  - Translates total cpus minus num_non_dp_cpus for datapath use.
                 </div>
                                 <div style="font-size: small">
                   - It is recommended to reserve an even number of cpus for hyper-threaded processors.
@@ -4721,7 +7588,7 @@ Parameters
                   - Field introduced in 20.1.4.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -4746,7 +7613,7 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 70.
@@ -4771,10 +7638,166 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 90.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_dp_max_hb_version</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The highest supported se-se heartbeat protocol version.
+                </div>
+                                <div style="font-size: small">
+                  - This version is reported by secondary se to primary se in heartbeat response messages.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-3.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_dp_vnic_queue_stall_event_sleep</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time (in seconds) service engine waits for after generating a vnic transmit queue stall event before resetting thenic.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_dp_vnic_queue_stall_threshold</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of consecutive transmit failures to look for before generating a vnic transmit queue stall event.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 2000.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_dp_vnic_queue_stall_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time (in milliseconds) to wait for network/nic recovery on detecting a transmit queue stall after which service engine resets the nic.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 10000.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_dp_vnic_restart_on_queue_stall_count</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of consecutive transmit queue stall events in se_dp_vnic_stall_se_restart_window to look for before restarting se.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_dp_vnic_stall_se_restart_window</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Window of time (in seconds) during which se_dp_vnic_restart_on_queue_stall_count number of consecutive stalls results in a se restart.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3600.
                 </div>
                                             </td>
     </tr>
@@ -4793,7 +7816,7 @@ Parameters
                   - Determines if dpdk pool mode driver should be used or not   0  automatically determine based on hypervisor/nic type 1  unconditionally use dpdk
                 </div>
                                 <div style="font-size: small">
-                  - poll mode driver 2  don't use dpdk poll mode driver.requires se reboot.
+                  - poll mode driver 2  dont use dpdk poll mode driver.requires se reboot.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0-2.
@@ -4802,10 +7825,35 @@ Parameters
                   - Field introduced in 18.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_dump_core_on_assert</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable core dump on assert.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -4830,10 +7878,7 @@ Parameters
                   - Field introduced in 21.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- 0), basic edition(allowed values- 0), enterprise with cloud
-                </div>
-                                <div style="font-size: small">
-                  - services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -4841,6 +7886,204 @@ Parameters
                                             </td>
     </tr>
                                             <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_flow_probe_retries</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Flow probe retry count if no replies are received.requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-5.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.4, 18.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 2.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_flow_probe_retry_timer</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timeout in milliseconds for flow probe retries.requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 20-50.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is milliseconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 40.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_group_analytics_policy</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Analytics policy for serviceenginegroup.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>metrics_event_thresholds</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Thresholds for various events generated by metrics system.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>metrics_event_threshold_type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Type of the metrics event threshold.
+                </div>
+                                <div style="font-size: small">
+                  - This value will decide which metric rule (or rules) use configured thresholds.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - THRESHOLD_TYPE_STATIC, SE_CPU_THRESHOLD, SE_MEM_THRESHOLD, SE_DISK_THRESHOLD, CONTROLLER_CPU_THRESHOLD, CONTROLLER_MEM_THRESHOLD,
+                </div>
+                                <div style="font-size: small">
+                  - CONTROLLER_DISK_THRESHOLD, SE_SHM_MEM_THRESHOLD, SE_CONN_MEM_THRESHOLD.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>reset_threshold</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">float</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This value is used to reset the event state machine.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>watermark_thresholds</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Threshold value for which event in raised.
+                </div>
+                                <div style="font-size: small">
+                  - There can be multiple thresholds defined.health score degrades when the the target is higher than this threshold.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+            
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>se_hyperthreaded_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -4870,10 +8113,215 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as SE_CPU_HT_AUTO.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_ip_encap_ipc</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Determines if se-se ipc messages are encapsulated in an ip header       0        automatically determine based on hypervisor type    1        use
+                </div>
+                                <div style="font-size: small">
+                  - ip encap unconditionally    ~[0,1]   dont use ip encaprequires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_kernel_rss</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allows runtime updates and planting of ft entries across all dispacther cpu.
+                </div>
+                                <div style="font-size: small">
+                  - Any changes does not impact existing flows.
+                </div>
+                                <div style="font-size: small">
+                  - Should be used under supervision.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_kni_burst_factor</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This knob controls the resource availability and burst size used between se datapath and kni.
+                </div>
+                                <div style="font-size: small">
+                  - This helps in minimising packet drops when there is higher kni traffic (non-vip traffic from and to linux).
+                </div>
+                                <div style="font-size: small">
+                  - The factor takes the following values      0-default.
+                </div>
+                                <div style="font-size: small">
+                  - 1-doubles the burst size and kni resources.
+                </div>
+                                <div style="font-size: small">
+                  - 2-quadruples the burst size and kni resources.
+                </div>
+                                <div style="font-size: small">
+                  - 3-increases the burst size and kni resources by a factor of eight.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-3.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_l3_encap_ipc</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Determines if se-se ipc messages use se interface ip instead of vip        0        automatically determine based on hypervisor type    1
+                </div>
+                                <div style="font-size: small">
+                  - use se interface ip unconditionally    ~[0,1]   dont use se interface iprequires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_log_buffer_app_blocking_dequeue</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Internal flag that blocks dataplane until all application logs are flushed to log-agent process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_log_buffer_conn_blocking_dequeue</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Internal flag that blocks dataplane until all connection logs are flushed to log-agent process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_log_buffer_events_blocking_dequeue</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Internal flag that blocks dataplane until all outstanding events are flushed to log-agent process.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -4895,7 +8343,35 @@ Parameters
                   - Field introduced in 18.2.5.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_mp_ring_retry_count</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The retry count for the multi-producer enqueue before yielding the cpu.
+                </div>
+                                <div style="font-size: small">
+                  - To be used under surveillance of avi support.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 500.
                 </div>
                                             </td>
     </tr>
@@ -4920,7 +8396,7 @@ Parameters
                   - Field introduced in 18.2.8, 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -4939,10 +8415,909 @@ Parameters
                   - Prefix to use for virtual machine name of service engines.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as Avi.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_packet_buffer_max</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Internal use only.
+                </div>
+                                <div style="font-size: small">
+                  - Used to artificially reduce the available number of packet buffers.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_pcap_lookahead</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enables lookahead mode of packet receive in pcap mode.
+                </div>
+                                <div style="font-size: small">
+                  - Introduced to overcome an issue with hv_netvsc driver.
+                </div>
+                                <div style="font-size: small">
+                  - Lookahead mode attempts to ensure that application and kernels view of the receive rings are consistent.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_pcap_pkt_count</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Max number of packets the pcap interface can hold and if the value is 0 the optimum value will be chosen.
+                </div>
+                                <div style="font-size: small">
+                  - The optimum value will be chosen based on se-memory, cloud type and number of interfaces.requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_pcap_pkt_sz</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Max size of each packet in the pcap interface.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 69632.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_pcap_qdisc_bypass</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Bypass the kernels traffic control layer, to deliver packets directly to the driver.
+                </div>
+                                <div style="font-size: small">
+                  - Enabling this feature results in egress packets not being captured in host tcpdump.
+                </div>
+                                <div style="font-size: small">
+                  - Note   brief packet reordering or loss may occur upon toggle.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_pcap_reinit_frequency</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Frequency in seconds at which periodically a pcap reinit check is triggered.
+                </div>
+                                <div style="font-size: small">
+                  - May be used in conjunction with the configuration pcap_reinit_threshold.
+                </div>
+                                <div style="font-size: small">
+                  - (valid range   15 mins - 12 hours, 0 - disables).
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 900-43200.
+                </div>
+                                <div style="font-size: small">
+                  - Special values are 0- disable.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.13, 18.1.3, 18.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_pcap_reinit_threshold</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Threshold for input packet receive errors in pcap mode exceeding which a pcap reinit is triggered.
+                </div>
+                                <div style="font-size: small">
+                  - If not set, an unconditional reinit is performed.
+                </div>
+                                <div style="font-size: small">
+                  - This value is checked every pcap_reinit_frequency interval.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.13, 18.1.3, 18.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is metric_count.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_probe_port</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tcp port on se where echo service will be run.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 7.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_rl_prop</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Rate limiter properties.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>msf_num_stages</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of stages in msf rate limiter.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-2.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>msf_stage_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Each stage size in msf rate limiter.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 16384.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_rum_sampling_nav_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Minimum time to wait on server between taking sampleswhen sampling the navigation timing data from the end user client.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_rum_sampling_nav_percent</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Percentage of navigation timing data from the end user client, used for sampling to get client insights.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_rum_sampling_res_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Minimum time to wait on server between taking sampleswhen sampling the resource timing data from the end user client.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 2.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_rum_sampling_res_percent</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Percentage of resource timing data from the end user client used for sampling to get client insight.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 100.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_sb_dedicated_core</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Sideband traffic will be handled by a dedicated core.requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 16.5.2, 17.1.9, 17.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_sb_threads</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of sideband threads per se.requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-128.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 16.5.2, 17.1.9, 17.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_thread_multiplier</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Multiplier for se threads based on vcpu.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-10.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_time_tracker_props</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time tracker properties for latency audit.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>egress_audit_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Audit queueing latency from proxy to dispatcher.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SE_TT_AUDIT_OFF, SE_TT_AUDIT_ON, SE_TT_AUDIT_ON_WITH_EVENT.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SE_TT_AUDIT_OFF.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>egress_threshold</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum egress latency threshold between dispatcher and proxy.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is milliseconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>event_gen_window</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Window for cumulative event generation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 300.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ingress_audit_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Audit queueing latency from dispatcher to proxy.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SE_TT_AUDIT_OFF, SE_TT_AUDIT_ON, SE_TT_AUDIT_ON_WITH_EVENT.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SE_TT_AUDIT_OFF.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ingress_threshold</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum ingress latency threshold between dispatcher and proxy.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is milliseconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_tracert_port_range</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Traceroute port range.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.8.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>end</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tcp/udp port range end (inclusive).
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>start</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tcp/udp port range start (inclusive).
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_tunnel_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Determines if direct secondary return (dsr) from secondary se is active or not  0  automatically determine based on hypervisor type.
+                </div>
+                                <div style="font-size: small">
+                  - 1  enable tunnel mode - dsr is unconditionally disabled.
+                </div>
+                                <div style="font-size: small">
+                  - 2  disable tunnel mode - dsr is unconditionally enabled.
+                </div>
+                                <div style="font-size: small">
+                  - Tunnel mode can be enabled or disabled at run-time.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-2.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_tunnel_udp_port</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Udp port for tunneled packets from secondary to primary se in docker bridge mode.requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1550.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_tx_batch_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of packets to batch for transmit to the nic.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 64.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_txq_threshold</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Once the tx queue of the dispatcher reaches this threshold, hardware queues are not polled for further packets.
+                </div>
+                                <div style="font-size: small">
+                  - To be used under surveillance of avi support.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 512-32768.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 2048.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_udp_encap_ipc</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Determines if se-se ipc messages are encapsulated in a udp header  0  automatically determine based on hypervisor type.
+                </div>
+                                <div style="font-size: small">
+                  - 1  use udp encap unconditionally.requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-1.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
     </tr>
@@ -4958,10 +9333,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Determines if dpdk library should be used or not   0  automatically determine based on hypervisor type 1  use dpdk if pcap is not enabled 2
+                  - Determines if dpdk library should be used or not   0  automatically determine based on hypervisor type 1  use dpdk if pcap is not enabled 2  dont
                 </div>
                                 <div style="font-size: small">
-                  - don't use dpdk.
+                  - use dpdk.
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 0-2.
@@ -4970,10 +9345,171 @@ Parameters
                   - Field introduced in 18.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_vnic_tx_sw_queue_flush_frequency</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Configure the frequency in milliseconds of software transmit spillover queue flush when enabled.
+                </div>
+                                <div style="font-size: small">
+                  - This is necessary to flush any packets in the spillover queue in the absence of a packet transmit in the normal course of operation.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 50-500.
+                </div>
+                                <div style="font-size: small">
+                  - Special values are 0- disable.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is milliseconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_vnic_tx_sw_queue_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Configure the size of software transmit spillover queue when enabled.
+                </div>
+                                <div style="font-size: small">
+                  - Requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 128-2048.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 256.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_vs_hb_max_pkts_in_batch</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of aggregated vs heartbeat packets to send in a batch.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-256.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 64.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_vs_hb_max_vs_in_pkt</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum number of virtualservices for which heartbeat messages are aggregated in one packet.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-1024.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 256.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>seg_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Operating mode for this se group.
+                </div>
+                                <div style="font-size: small">
+                  - Seg_mode_waap requires waap_mode_config to also be set; virtualservices with api protection enabled can only be placed on an se group in that
+                </div>
+                                <div style="font-size: small">
+                  - mode.
+                </div>
+                                <div style="font-size: small">
+                  - This field cannot change after creation.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SEG_MODE_NORMAL, SEG_MODE_WAAP.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as SEG_MODE_NORMAL.
                 </div>
                                             </td>
     </tr>
@@ -4995,13 +9531,288 @@ Parameters
                   - Field introduced in 18.1.2.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- false), basic edition(allowed values- false), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>send_se_ready_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timeout for sending se_ready without ns helper registration completion.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 10-600.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 300.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>service_ip6_subnets</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ipv6 subnets assigned to the se group.
+                </div>
+                                <div style="font-size: small">
+                  - Required for vs group placement.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 128 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mask</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>service_ip_subnets</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Subnets assigned to the se group.
+                </div>
+                                <div style="font-size: small">
+                  - Required for vs group placement.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 128 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mask</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>shm_minimum_config_memory</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Minimum required shared memory to apply any configuration.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is mb.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 4.
                 </div>
                                             </td>
     </tr>
@@ -5032,10 +9843,63 @@ Parameters
                   - Unit is per_second.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ssl_preprocess_sni_hostname</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - (beta) preprocess ssl client hello for sni hostname extension.if set to true, this will apply sni childs ssl protocol(s), if they are different
+                </div>
+                                <div style="font-size: small">
+                  - from sni parents allowed ssl protocol(s).
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ssl_sess_cache_per_vs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of ssl sessions that can be cached per vs.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 4096.
                 </div>
                                             </td>
     </tr>
@@ -5054,7 +9918,38 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>transient_shared_memory_max</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The threshold for the transient shared config memory in the se.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is percent.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 30.
                 </div>
                                             </td>
     </tr>
@@ -5088,10 +9983,135 @@ Parameters
                   - Unit is per_second.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 100.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>upstream_connect_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timeout for backend connection.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is milliseconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3600000.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>upstream_connpool_enable</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable upstream connection pool,.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>upstream_read_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timeout for data to be received from backend.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is milliseconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3600000.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>upstream_send_timeout</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Timeout for upstream to become writable.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is milliseconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3600000.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>url</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Avi controller URL of the object.
                 </div>
                                             </td>
     </tr>
@@ -5113,10 +10133,7 @@ Parameters
                   - Field introduced in 22.1.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-                </div>
-                                <div style="font-size: small">
-                  - edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -5144,7 +10161,7 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -5153,7 +10170,7 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>use_objsync</b>
+                <b>use_legacy_netlink</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">bool</span>
@@ -5163,19 +10180,16 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable interse objsyc distribution framework.
+                  - Enable legacy model of netlink notifications.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.3.
+                  - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -5203,7 +10217,10 @@ Parameters
                   - Field introduced in 18.2.3.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -5212,7 +10229,7 @@ Parameters
                 <b>user_agent_cache_config</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -5225,7 +10242,411 @@ Parameters
                   - Field introduced in 21.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>batch_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - How many unknown user-agents to batch up before querying controller - unless max_wait_time is reached first.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-500.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 100.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>controller_cache_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The number of user-agent entries to cache on the controller.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 500-10000000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 300000.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_age</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time interval in seconds after which an existing entry is refreshed from upstream if it has been accessed during max_last_hit_time.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 60-604800.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 86400.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_last_hit_time</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time interval in seconds backwards from now during which an existing entry must have been hit for refresh from upstream.
+                </div>
+                                <div style="font-size: small">
+                  - Entries that have last been accessed further in the past than max_last_hit time are not included in upstream refresh requests even if they are
+                </div>
+                                <div style="font-size: small">
+                  - older than 'max_age'.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 60-604800.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 86400.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_upstream_queries</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - How often at most to query controller for a given user-agent.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 2-100.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_wait_time</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The time interval in seconds after which to make a request to the controller, even if the 'batch_size' hasn't been reached yet.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 20-100000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 60.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_entries_upstream_update</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - How many botuacacheresult elements to include in an upstream update message.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-10000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 100.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>percent_reserved_for_bad_bots</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - How much space to reserve in percent for known bad bots.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>percent_reserved_for_browsers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - How much space to reserve in percent for browsers.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 50.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>percent_reserved_for_good_bots</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - How much space to reserve in percent for known good bots.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 20.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>percent_reserved_for_outstanding</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - How much space to reserve in percent for outstanding upstream requests.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_cache_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The number of user-agent entries to cache on each service engine.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 500-10000000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 20000.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>upstream_update_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - How often in seconds to send updates about user-agent cache entries to the next upstream cache.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 3600.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>user_defined_metric_age</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Defines in seconds how long before an unused user-defined-metric is garbage collected.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 60.
                 </div>
                                             </td>
     </tr>
@@ -5241,7 +10662,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -5250,18 +10671,60 @@ Parameters
                 <b>vcenter_clusters</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>cluster_refs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - It is a reference to an object of type vimgrclusterruntime.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>include</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_datastore_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -5276,7 +10739,7 @@ Parameters
                   - Enum options - VCENTER_DATASTORE_ANY, VCENTER_DATASTORE_LOCAL, VCENTER_DATASTORE_SHARED.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as VCENTER_DATASTORE_ANY.
@@ -5288,18 +10751,60 @@ Parameters
                 <b>vcenter_datastores</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>datastore_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>managed_object_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Will be used by default, if not set fallback to datastore_name.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 22.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_datastores_include</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -5311,7 +10816,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
@@ -5333,7 +10838,7 @@ Parameters
                   - Folder to place all the service engine virtual machines in vcenter.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as AviSeFolder.
@@ -5345,18 +10850,60 @@ Parameters
                 <b>vcenter_hosts</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">dict</span>
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>host_refs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - It is a reference to an object of type vimgrhostruntime.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>include</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcenter_parking_vnic_pg</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -5374,7 +10921,7 @@ Parameters
                   - Field introduced in 22.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
@@ -5383,7 +10930,7 @@ Parameters
                 <b>vcenters</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
+                                                                        <span style="color: purple">list / elements=dictionary </span>
                                                             </div>
             </td>
             <td>
@@ -5396,11 +10943,396 @@ Parameters
                   - Field introduced in 20.1.1.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>clusters</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Cluster vsphere ha configuration.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.7, 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>cluster_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Transport node cluster.
+                </div>
+                                <div style="font-size: small">
+                  - Avi derives vsphere ha property from vcenter cluster.if vsphere ha enabled on vcenter cluster, vsphere will handle ha of serviceengine vms in
+                </div>
+                                <div style="font-size: small">
+                  - case of underlying esx failure.ex mob  domain-c23.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.7, 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>override_vsphere_ha</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If this flag set to true, avi handles serviceengine failure irrespective of vsphere ha enabled on vcenter cluster or not.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.7, 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vmg_name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Cluster vm group name.vm group name is unique inside cluster.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.7, 21.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>nsxt_clusters</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of transport node clusters include or exclude.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>cluster_ids</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of transport node clusters.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>include</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Include or exclude.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>nsxt_datastores</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of shared datastores to include or exclude.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ds_ids</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of shared datastores.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>include</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Include or exclude.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>nsxt_hosts</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of transport nodes include or exclude.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>host_ids</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of transport nodes.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>include</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Include or exclude.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vcenter_folder</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Folder to place all the service engine virtual machines in vcenter.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vcenter_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Vcenter server configuration.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type vcenterserver.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>vcpus_per_se</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -5418,10 +11350,486 @@ Parameters
                   - Changes to this setting do not affect existing ses.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vip_asg</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - When vip_asg is set, vip configuration will be managed by avi.user will be able to configure vip_asg or vips individually at the time of create.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>configuration</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>zones</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - This is the list of az+subnet in which vips will be spawned.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>availability_zone</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Availability zone associated with the subnet.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>fip_capable</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Determines if the subnet is capable of hosting publicly accessible ip.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>subnet_uuid</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Uuid of the subnet for new ip address allocation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+            
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>policy</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>dns_cooldown</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The amount of time, in seconds, when a vip is withdrawn before a scaling activity starts.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 60.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>max_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The maximum size of the group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>min_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - The minimum size of the group.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>suspend</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - When set, scaling is suspended.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.12, 18.1.2.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+        
+            
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vmotion_notification_poll_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Interval in seconds to poll vmotion notifications.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is seconds.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vnic_dhcp_ip_check_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Dhcp ip check interval.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-1000.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 6.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vnic_dhcp_ip_max_retries</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Dhcp ip max retries.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 10.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vnic_ip_delete_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Wait interval before deleting ip.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vnic_probe_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Probe vnic interval.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vnic_rpc_retry_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Time interval for retrying the failed vnic rpc requests.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vnicdb_cmd_history_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Size of vnicdb command history.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 21.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 256.
                 </div>
                                             </td>
     </tr>
@@ -5440,13 +11848,7 @@ Parameters
                   - Ensure primary and secondary service engines are deployed on different physical hosts.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials edition(allowed values- true), basic edition(allowed values- true), enterprise with
-                </div>
-                                <div style="font-size: small">
-                  - cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Special default for essentials edition is true, basic edition is true, enterprise is true.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as True.
@@ -5471,7 +11873,7 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 30.
@@ -5496,7 +11898,7 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 30.
@@ -5521,10 +11923,84 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 600.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vs_se_primary_switchover_additional_wait_time</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Wait time for primary switchover ready notification after flows are completed.
+                </div>
+                                <div style="font-size: small">
+                  - In certain deployments, there may be an additional delay to accept traffic.
+                </div>
+                                <div style="font-size: small">
+                  - For example, for bgp, some time is needed for route advertisement.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-300.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vs_se_scalein_additional_wait_time</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Wait time for sending scalein ready notification after flows are completed.
+                </div>
+                                <div style="font-size: small">
+                  - In certain deployments, there may be an additional delay to accept traffic.
+                </div>
+                                <div style="font-size: small">
+                  - For example, for bgp, some time is needed for route advertisement.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-300.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 30.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
                 </div>
                                             </td>
     </tr>
@@ -5558,7 +12034,7 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 0.
@@ -5589,7 +12065,7 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 60.
@@ -5617,10 +12093,327 @@ Parameters
                   - Unit is sec.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 300.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vsphere_storage_policies</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Vsphere vm storage policy uuid to be associated to the service engine.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vcenter_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Vcenter server configuration , applicable only for nsxt-cloud.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type vcenterserver.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vsphere_storage_policy_id</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Vsphere vm storage policy uuid to be associated to the service engine.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vss_placement</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Parameters to place virtual services on only a subset of the cores of an se.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>core_nonaffinity</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Degree of core non-affinity for vs placement.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-256.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 2.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_subcores</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Number of sub-cores that comprise a cpu core.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-128.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 4.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vss_placement_enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If set, virtual services will be placed on only a subset of the cores of an se.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 18.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>waap_mode_config</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Configuration for api protection (waap) mode.
+                </div>
+                                <div style="font-size: small">
+                  - Required when seg_mode is seg_mode_waap.
+                </div>
+                                <div style="font-size: small">
+                  - Whether this field is set or unset cannot change after creation.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>se_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Waap sizing tier for this se group.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SE_SIZE_SMALL, SE_SIZE_MEDIUM, SE_SIZE_LARGE.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>waf_mempool</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable memory pool for waf.requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>waf_mempool_size</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Memory pool size used for waf.requires se reboot.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 17.2.3.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is kb.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 64.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>waf_use_jit_for_pcre</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Use the jit compiler for pcre regular expressions in waf.
+                </div>
+                                <div style="font-size: small">
+                  - Setting this to false will impact performance.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 31.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -5646,7 +12439,7 @@ Examples
           api_version: "21.1.1"
           tenant: "admin"
       tasks:
-        - name: Example to create Serviceenginegroup object
+        - name: Example to create ServiceEngineGroup object
           avi_serviceenginegroup:
             avi_credentials: "{{ avi_credentials }}"
             state: present

@@ -1085,6 +1085,32 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>rfc_compliant_soa_response</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - If enabled, soa record is sent in the authority section for nodata responses per rfc 2308.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>ttl</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -14668,6 +14694,32 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>close_client_side_connection_on_error</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Close client-side connection when an error response is sent to the client while the client's request body has not been fully received.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>close_server_side_connection_on_error</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -15752,6 +15804,41 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enable_100_continue_upstream_peek</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - While a 100-continue response has been sent to the client and its request body is still being uploaded, peek at the upstream response status line
+                </div>
+                                <div style="font-size: small">
+                  - so a non-2xx (error or redirect) response is forwarded to the client immediately instead of waiting for the body upload to finish; a 2xx response
+                </div>
+                                <div style="font-size: small">
+                  - is still deferred until the upload completes.
+                </div>
+                                <div style="font-size: small">
+                  - Only applicable when respond_with_100_continue is enabled.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

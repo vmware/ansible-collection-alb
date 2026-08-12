@@ -3790,7 +3790,7 @@ Parameters
                   - Allowed values are 0-1024.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.3, 32.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is mb.
@@ -3946,7 +3946,7 @@ Parameters
                   - Allowed values are 10-3600.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.3, 32.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Unit is seconds.

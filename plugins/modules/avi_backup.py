@@ -67,7 +67,7 @@ options:
     name:
         description:
             - Name of the backup.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.3, 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     remote_file_url:

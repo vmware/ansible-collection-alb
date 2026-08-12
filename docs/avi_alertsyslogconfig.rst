@@ -310,13 +310,16 @@ Parameters
                   - Enable anonymous authentication of syslog serverwhich will disable server certificate authentication.
                 </div>
                                 <div style="font-size: small">
+                  - Deprecated; use tls_config.tls_mode = tls_mode_no_verify instead.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 32.2.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 17.2.17, 18.2.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -365,6 +368,9 @@ Parameters
                   - Select the pkiprofile containing a ca or list of ca chainswhich will validate the certificate of the syslog server.
                 </div>
                                 <div style="font-size: small">
+                  - When unset, systemconfiguration.truststore_pkiprofile_uuid is used instead.
+                </div>
+                                <div style="font-size: small">
                   - It is a reference to an object of type pkiprofile.
                 </div>
                                 <div style="font-size: small">
@@ -391,7 +397,13 @@ Parameters
                   - Select a certificate and key which will be used to authenticate to the syslog server.
                 </div>
                                 <div style="font-size: small">
+                  - Deprecated; use tls_config.client_cert_uuid instead.
+                </div>
+                                <div style="font-size: small">
                   - It is a reference to an object of type sslkeyandcertificate.
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 32.2.1.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.17, 18.2.5.
@@ -417,13 +429,16 @@ Parameters
                   - Strict verificiation of certificate given by the server.
                 </div>
                                 <div style="font-size: small">
+                  - Deprecated; use tls_config.tls_mode instead (tls_mode_tls/tls_mode_mtls for strict verification, tls_mode_skip_hostname_verify otherwise).
+                </div>
+                                <div style="font-size: small">
+                  - Field deprecated in 32.2.1.
+                </div>
+                                <div style="font-size: small">
                   - Field introduced in 30.1.1.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -473,6 +488,94 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tls_config</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tls mode and client certificate for the connection to this syslog server, effective only when tls_enable is set.
+                </div>
+                                <div style="font-size: small">
+                  - Supersedes ssl_key_and_certificate_uuid, anon_auth, and strict_cert_verify, which are deprecated in favor of this field.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>client_cert_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Client certificate for mutual tls connection.
+                </div>
+                                <div style="font-size: small">
+                  - Required when tls mode is mutual tls.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type sslkeyandcertificate.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>tls_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Select how tls is used to establish a secure outbound connection.
+                </div>
+                                <div style="font-size: small">
+                  - Certificate validation uses the trust store configured in system configuration (truststore pki profile).
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_SKIP_HOSTNAME_VERIFY.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tls_enable</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -484,6 +587,9 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Enable tls to the syslog server.
+                </div>
+                                <div style="font-size: small">
+                  - Use tls_config to select the tls mode and client certificate.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.16, 18.2.3.

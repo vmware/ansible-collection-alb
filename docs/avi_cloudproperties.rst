@@ -4689,7 +4689,10 @@ Parameters
                   - EVENTINFO, GSLBSITEHTTPTABLE, LOCALWORKERFDSVERSION, GSLBSERVICEHEALTHSTATUS, GSLBFILEOBJECTRUNTIME, GSLBRUNTIMESUMMARY, GSLBRUNTIMEDETAIL,
                 </div>
                                 <div style="font-size: small">
-                  - GSLBRUNTIMEINTERNAL, GSLBLEADERCHANGERUNTIME, LABELPROFILE, APIPATH, APISCHEMA, APIPOLICY, WAAPSTATS, APIPATHSTATS, APISPECGENERATE.
+                  - GSLBRUNTIMEINTERNAL, GSLBLEADERCHANGERUNTIME, LABELPROFILE, APIPATH, APISCHEMA, APIPOLICY, WAAPSTATS, APIPATHSTATS, APISPECGENERATE,
+                </div>
+                                <div style="font-size: small">
+                  - VIRTUALSERVICELEARNINGSTATS.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.1.1.

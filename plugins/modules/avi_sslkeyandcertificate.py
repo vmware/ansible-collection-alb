@@ -196,8 +196,10 @@ options:
         type: dict
     skip_auto_chain:
         description:
-            - Skip automatic chain selection for the certificate.
-            - Field introduced in 32.2.1.
+            - When set to true, disables automatic ca certificate chain discovery based on issuer common name (cn).
+            - The user must explicitly specify the desired ca certificates via the ca_certs field.
+            - Not allowed for ca/intermediate type certificates.
+            - Field introduced in 32.1.3, 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -331,7 +333,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'sslkeyandcertificate',
-                           {'key_passphrase', 'key_params', 'enckey_base64', 'key'})
+                           {'key_passphrase', 'enckey_base64', 'key_params', 'key'})
 
 
 if __name__ == '__main__':
