@@ -1,9 +1,8 @@
 ---
-# metadata file for avise_kvm vmware role
-# @AI-Modified: 2026-01-23 - Updated min_ansible_version and changed HTTP to HTTPS to address security hotspots
+# metadata file for avise_csp role
 galaxy_info:
-  author: Avi Networks <https://avinetworks.com/>
-  description: Configuration for avise_kvm
-  role_name: avise_kvm
-  min_ansible_version: '2.14'
+  author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
+  description: Configuration for Avi load balancer
   license: Apache 2.0
+  min_ansible_version: '2.9'
+  role_name: avise_csp

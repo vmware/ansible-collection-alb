@@ -19,6 +19,7 @@
       ansible.builtin.uri:
         url: "https://{{ se_leader_ctl_ip }}/api/initial-data"
         validate_certs: false
+        return_content: true
       register: controller_initial_data
       delegate_to: localhost
     - name: Enable ipv4 forwarding

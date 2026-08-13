@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # SPDX-License-Identifier: Apache License 2.0
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
@@ -177,9 +176,9 @@ EXAMPLES = """
         name: avicontroller_vmware
       vars:
         ovftool_path: /usr/lib/vmware-ovftool
-        vcenter_host: host
-        vcenter_user: user
-        vcenter_password: password
+        vcenter_host: "{% raw %}{{ vcenter_host }}{% endraw %}"
+        vcenter_user: "{% raw %}{{ vvcenter_user }}{% endraw %}"
+        vcenter_password: "{% raw %}{{ vcenter_password }}{% endraw %}"
         con_datacenter: 10GTest
         con_cluster: Arista
         con_mgmt_network: Mgmt_Ntwk_3
@@ -690,6 +689,7 @@ def main():
     ova_file = module.params['con_ova_path']
     quoted_vcenter_user = quote(module.params['vcenter_user'])
     quoted_vcenter_pass = quote(module.params['vcenter_password'])
+    module.no_log_values.add(quoted_vcenter_pass)
     if is_ipv6_address(module.params['vcenter_host']):
         vi_string = 'vi://%s:%s@[%s]' % (
             quoted_vcenter_user, quoted_vcenter_pass,

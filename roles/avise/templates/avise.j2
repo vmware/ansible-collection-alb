@@ -2,7 +2,7 @@
 
 #***************************************************************************
 # ------------------------------------------------------------------------
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # ------------------------------------------------------------------------
 #
 
@@ -33,7 +33,7 @@ populate_container_platform()
 
   # Possible known values for $version which we support
   # On Ubuntu:
-  #   version = "24.04" (or) "22.04"
+  #   version = "22.04" (or) "24.04"
   # On RHEL / OL :
   #   version = "8.*" (or) "9.*"
   version=$(grep "^VERSION_ID=" /etc/os-release | cut -d"=" -f2 | sed 's/"//g')

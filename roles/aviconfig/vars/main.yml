@@ -1,6 +1,5 @@
 # Automatically Generated File
 # Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
-# getting lint issue here for aviconfig_resource_types:
 ---
 avi_resource_types:
   - seproperties

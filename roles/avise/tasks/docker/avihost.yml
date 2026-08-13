@@ -1,5 +1,4 @@
 ---
-# @AI-Modified: 2026-01-23 - Changed hardcoded absolute paths to relative paths and added owner/group to address security hotspots
 - name: Cleanup avihost service
   ansible.builtin.service:
     name: avihost
@@ -18,7 +17,6 @@
     validate: "python3 -m py_compile %s"
   become: true
 
-# @AI-Modified: 2026-01-23 - Changed mode to 0640 to address ansible:S2612
 - name: Systemd | Deploy the avihost service
   ansible.builtin.copy:
     src: "systemd/avihost.service"

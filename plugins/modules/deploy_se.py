@@ -1,7 +1,4 @@
 #!/usr/bin/python
-
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
-
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 ANSIBLE_METADATA = {'metadata_version': '1.1',
@@ -11,7 +8,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: deploy_se
-author: shubhamavi (@shubhamavi) <shubhamavi@vmware.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for deploying se
 description:
     - This module is used to deploy an se

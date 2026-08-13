@@ -1,20 +1,22 @@
 ---
 - name: Avi SE | VMware | Find VM Folder
-  vmware_guest_find:
+  community.vmware.vmware_guest_find:
     hostname: "{{ vcenter_host }}"
     username: "{{ vcenter_user }}"
     password: "{{ vcenter_password }}"
     validate_certs: false
+    return_content: true
     name: "{{ se_vmw_vm_name }}"
   delegate_to: localhost
   register: vm_facts
 
 - name: Avi SE | VMware | Get VM Info
-  vmware_vm_info:
+  community.vmware.vmware_vm_info:
     hostname: '{{ vcenter_host }}'
     username: '{{ vcenter_user }}'
     password: '{{ vcenter_password }}'
     validate_certs: false
+    return_content: true
     folder: "{{ vm_facts.folders[0] }}"
   delegate_to: localhost
   register: vm_info

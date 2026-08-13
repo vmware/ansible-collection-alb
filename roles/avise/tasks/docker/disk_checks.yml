@@ -2,11 +2,12 @@
 - name: Check if avise present on host
   ansible.builtin.shell: >
     set -o pipefail &&
-    {{ se_deploy_type }} ps | grep avise | wc -l || true
+    {{ se_deploy_type }} ps | grep avise | wc -l
   args:
     executable: /bin/bash
   register: present
   changed_when: false
+  failed_when: false
   become: true
 
 - name: Avise present, set values for used disks info
@@ -16,28 +17,31 @@
     - name: Avise present, set values for used disks info
       ansible.builtin.shell: >
         set -o pipefail &&
-        {{ se_deploy_type }} inspect avise | grep ':/vol/' || true
+        {{ se_deploy_type }} inspect avise | grep ':/vol/'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: check_dir
     - name: Read system disk path
       ansible.builtin.shell: >
         set -o pipefail &&
-        docker inspect avise | grep ":/vol/" | cut -d ':' -f 1 | sed s/\"//g || true
+        docker inspect avise | grep ":/vol/" | cut -d ':' -f 1 | sed s/\"//g
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: u_sysdisk_path
       when: check_dir.rc == 0 and se_deploy_type == "docker"
 
     - name: Read system disk path
       ansible.builtin.shell: >
         set -o pipefail &&
-        podman inspect avise | grep ":/vol/" | cut -d ':' -f 1 | sed s/\"//g || true
+        podman inspect avise | grep ":/vol/" | cut -d ':' -f 1 | sed s/\"//g
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: u_sysdisk_path
       when: check_dir.rc == 0 and se_deploy_type == "podman"
 
@@ -54,30 +58,33 @@
     - name: Read logs directory
       ansible.builtin.shell: >
         set -o pipefail &&
-        {{ se_deploy_type }} inspect avise | grep ':/vol_logs/' || true
+        {{ se_deploy_type }} inspect avise | grep ':/vol_logs/'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: check_dir
 
     - name: Read logs disk path
       ansible.builtin.shell: >
         set -o pipefail &&
-        docker inspect avise | grep ":/vol_logs/" | cut -d ':' -f 1 | sed s/\"//g || true
+        docker inspect avise | grep ":/vol_logs/" | cut -d ':' -f 1 | sed s/\"//g
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: u_logdisk_path
       when: check_dir.rc == 0 and se_deploy_type == "docker"
 
     - name: Read logs disk path
       ansible.builtin.shell: >
         set -o pipefail &&
-        podman inspect avise | grep ":/vol_logs/" | cut -d ':' -f 1 | sed s/\"//g || true
+        podman inspect avise | grep ":/vol_logs/" | cut -d ':' -f 1 | sed s/\"//g
       args:
         executable: /bin/bash
       register: u_logdisk_path
       changed_when: false
+      failed_when: false
       when: check_dir.rc == 0 and se_deploy_type == "podman"
 
     - name: Get mount point for logs disk
@@ -96,11 +103,12 @@
     - name: Get default largest disk for loading SE system partition
       ansible.builtin.shell: >
         set -o pipefail &&
-        df -lTP | tail -n +2 | egrep -v 'tmpfs|overlay' | sort -k 5,5 -nr | awk 'NR==1{print $NF}' || true
+        df -lTP | tail -n +2 | egrep -v 'tmpfs|overlay' | sort -k 5,5 -nr | awk 'NR==1{print $NF}'
       args:
         executable: /bin/bash
       register: result
       changed_when: false
+      failed_when: false
     - name: "Set se destination disk"
       ansible.builtin.set_fact:
         se_dest_disk: "{{ result.stdout }}"
@@ -159,10 +167,11 @@
     - name: Get disk space on service engine disk path
       ansible.builtin.shell: >
         set -o pipefail &&
-        df {{ se_disk_mount.stdout }} -BG -P | grep -iv Used | awk '{print $4}' | sed s/G//g || true
+        df {{ se_disk_mount.stdout }} -BG -P | grep -iv Used | awk '{print $4}' | sed s/G//g
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: se_disk_path_space
 
 - name: Check service engine disk usage
@@ -226,21 +235,22 @@
     - name: Get disk space on service engine logs disk path
       ansible.builtin.shell: >
         set -o pipefail &&
-        df {{ se_log_mount.stdout }} -BG -P | grep -iv Used | awk '{print $4}' | sed s/G//g || true
+        df {{ se_log_mount.stdout }} -BG -P | grep -iv Used | awk '{print $4}' | sed s/G//g
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: se_logs_disk_path_space
 
 - name: Check service engine logs disk usage
   when: u_logdisk_mount.stdout is defined and se_log_mount.stdout is defined and u_logdisk_mount.stdout == se_log_mount.stdout
   become: true
   block:
-    - name: Axecute dokcer container
+    - name: Execute docker container
       ansible.builtin.command: "{{ se_deploy_type }} exec avise du -s -BG /vol_logs/"
       changed_when: false
       register: check_dir
-    - name: Execute dokcer container
+    - name: Execute docker container
       ansible.builtin.shell: >
         set -o pipefail &&
         {{ se_deploy_type }} exec avise du -s -BG /vol_logs/ | awk '{print $1}' | sed s/G//
@@ -293,4 +303,3 @@
   ansible.builtin.set_fact:
     se_logs_disk_path: "{{ se_destination_log_disk }}/opt/avi/se/log"
   when: se_destination_log_disk and se_destination_log_disk|string
-  

@@ -5851,7 +5851,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -5862,20 +5862,20 @@ Examples
           api_version: "{{ api_version }}"
           tenant: "{{ admin }}"
       tasks:        
-            - name: Create a HTTPS health monitor
-              avi_healthmonitor:
-                avi_credentials: "{{ avi_credentials }}"
-                https_monitor:
-                  http_request: HEAD / HTTP/1.0
-                  http_response_code:
-                    - HTTP_2XX
-                    - HTTP_3XX
-                receive_timeout: 4
-                failed_checks: 3
-                send_interval: 10
-                successful_checks: 3
-                type: HEALTH_MONITOR_HTTPS
-                name: MyWebsite-HTTPS
+        - name: Create a HTTPS health monitor
+          avi_healthmonitor:
+            avi_credentials: "{{ avi_credentials }}"
+            https_monitor:
+              http_request: HEAD / HTTP/1.0
+              http_response_code:
+                - HTTP_2XX
+                - HTTP_3XX
+            receive_timeout: 4
+            failed_checks: 3
+            send_interval: 10
+            successful_checks: 3
+            type: HEALTH_MONITOR_HTTPS
+            name: MyWebsite-HTTPS
 
 
 

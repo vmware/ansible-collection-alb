@@ -22,17 +22,6 @@
     - kvm_virt_intf_name
     - kvm_total_num_vfs
 
-# @AI-Modified: 2026-01-23 - Added validation to address security hotspots for command injection
-- name: "Avi SE | KVM | Validate VM hostname format"
-  ansible.builtin.assert:
-    that:
-      - kvm_vm_hostname is defined
-      - kvm_vm_hostname | length > 0
-      - kvm_vm_hostname | length < 64
-      - kvm_vm_hostname is match('^[a-zA-Z0-9][a-zA-Z0-9_.-]*$')
-      - "'..' not in kvm_vm_hostname"
-    fail_msg: "Invalid VM hostname format: {{ kvm_vm_hostname | default('undefined') }}"
-
 - name: "Avi SE | KVM | Check vm exist or not for {{ kvm_vm_hostname }}"
   ansible.builtin.command:
     cmd: "virsh dominfo {{ kvm_vm_hostname }}"
@@ -76,12 +65,11 @@
     msg: "Pinning is not supportable for the os version {{ hostvars[inventory_hostname].ansible_distribution_version }}"
   when: 'hostvars[inventory_hostname].ansible_distribution_version | float == 16.04 and kvm_pinning'
 
-# @AI-Modified: 2026-01-23 - Fixed directory mode (needs execute) and added owner/group to address ansible:S2612
 - name: "Avi SE | KVM | Create directory on KVM Host"
   ansible.builtin.file:
     path: "/root/{{ kvm_vm_hostname }}"
     state: directory
-    mode: "0750"
+    mode: '0770'
     owner: root
     group: root
 
@@ -139,7 +127,6 @@
   when: 'kvm_vm_base_img is undefined'
   delegate_to: localhost
 
-# @AI-Modified: 2026-01-23 - Added group and changed mode to address ansible:S2612
 - name: "Avi SE | KVM | Copy se.qcow2 file on KVM host into /root/{{ kvm_vm_hostname }}"
   ansible.builtin.copy:
     src: "/tmp/se.qcow2"
@@ -147,7 +134,7 @@
     remote_src: false
     owner: root
     group: root
-    mode: "0640"
+    mode: 'g=r,u+w,o='
   when: 'kvm_vm_base_img is undefined'
 
 - name: "Avi SE | KVM | Set SE authentication token"

@@ -7,7 +7,6 @@
   ansible.builtin.set_fact:
     image: "/var/lib/libvirt/images/{{ kvm_vm_hostname }}.qcow2"
 
-# @AI-Modified: 2026-01-23 - Added owner/group to address ansible:S2612
 - name: "Avi SE | KVM | Generate the meta-data config file for VM on KVM host"
   ansible.builtin.template:
     src: avi_meta-data.j2
@@ -63,28 +62,13 @@
     mode: "0640"
   when: kvm_vm_base_img is undefined
 
-# @AI-Modified: 2026-01-23 - Added validation and replaced shell with command to address security hotspot
-- name: "Avi SE | KVM | Validate interface names"
-  ansible.builtin.assert:
-    that:
-      - item is match('^[a-zA-Z0-9_-]+$')
-      - item | length > 0
-      - item | length < 64
-    fail_msg: "Invalid interface name: {{ item }}"
-  loop: "{{ kvm_virt_intf_name }}"
-
-- name: "Avi SE | KVM | Get interface info from ethtool"
-  ansible.builtin.command:
-    cmd: "ethtool -i {{ item }}"
+- name: "Avi SE | KVM | Get interface Names from the list of kvm_virt_intf_name"
+  ansible.builtin.shell: >
+    set -o pipefail && \
+    ethtool -i {{ item }} | grep "bus-info" | cut -f2 -d " "
   changed_when: false
-  register: intf_ethtool_output
+  register: intf_name
   loop: "{{ kvm_virt_intf_name }}"
-
-- name: "Avi SE | KVM | Parse bus-info from interface output"
-  ansible.builtin.set_fact:
-    intf_name:
-      results: "{{ intf_name.results | default([]) + [{'stdout_lines': [item.stdout | regex_search('bus-info:\\s*(\\S+)', '\\1') | first | default('')]}] }}"
-  loop: "{{ intf_ethtool_output.results }}"
 
 - name: "Avi SE | KVM | Replace and update interface names"
   ansible.builtin.set_fact:

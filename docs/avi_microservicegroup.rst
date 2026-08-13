@@ -326,7 +326,7 @@ Examples
 
     - name: Deploy Controller
       hosts: localhost
-      connection: 
+      connection: local
       collections:
         - vmware.alb
       vars:
@@ -337,12 +337,12 @@ Examples
           api_version: "{{ api_version }}"
           tenant: "{{ admin }}"
       tasks:        
-            - name: Create a Microservice Group that can be used for setting up Network security policy
-              avi_microservicegroup:
-                avi_credentials: "{{ avi_credentials }}"
-                description: Group created by my Secure My App UI.
-                name: vs-msg-marketing
-                tenant_ref: /api/tenant?name=admin
+        - name: Create a Microservice Group that can be used for setting up Network security policy
+          avi_microservicegroup:
+            avi_credentials: "{{ avi_credentials }}"
+            description: Group created by my Secure My App UI.
+            name: vs-msg-marketing
+            tenant_ref: /api/tenant?name=admin
 
 
 

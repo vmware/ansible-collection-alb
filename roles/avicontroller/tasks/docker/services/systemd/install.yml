@@ -1,5 +1,4 @@
 ---
-# @AI-Modified: 2026-01-23 - Fixed mode format and added owner/group to address ansible:S2612
 - name: Avi Controller | Services | systemd | Deploy the avicontroller service
   ansible.builtin.template:
     src: avicontroller.service.j2

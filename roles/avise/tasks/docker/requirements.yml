@@ -41,13 +41,13 @@
     - name: Check if AVI SE is the same version
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} ps | grep avise | grep -i {{ se_version }} | wc -l || true
+        {{ se_deploy_type }} ps | grep avise | grep -i {{ se_version }} | wc -l
       args:
         executable: /bin/bash
       register: output
       when: result.rc == 0
       changed_when: false
-      ignore_errors: true
+      failed_when: false
     - name: SE is already running, exiting
       ansible.builtin.set_fact:
         error_string: "running"
@@ -71,13 +71,13 @@
     - name: Check if AVI SE is the same version
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} ps | grep avise | grep -i {{ se_version }} | wc -l || true
+        {{ se_deploy_type }} ps | grep avise | grep -i {{ se_version }} | wc -l
       args:
         executable: /bin/bash
       register: output
       when: result.rc == 0
       changed_when: false
-      ignore_errors: true
+      failed_when: false
     - name: SE is already running, exiting
       ansible.builtin.set_fact:
         error_string: "running"
@@ -166,11 +166,12 @@
 - name: Check if avicontroller present on same host
   ansible.builtin.shell: >
     set -o pipefail && \
-    {{ se_deploy_type }} ps | grep avicontroller | wc -l || true
+    {{ se_deploy_type }} ps | grep avicontroller | wc -l
   args:
     executable: /bin/bash
   register: result
   changed_when: false
+  failed_when: false
   become: true
 
 - name: Check if avicontroller is present
@@ -180,18 +181,20 @@
     - name: If avicontroller present, get value for cpu
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} exec avicontroller env | grep NUM_CPU | wc -l || true
+        {{ se_deploy_type }} exec avicontroller env | grep NUM_CPU | wc -l
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: c_cpu
     - name: If avicontroller present, get value for memory
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} exec avicontroller env | grep NUM_CPU | sed -e 's/=/ /g' | awk '{print $2}' || true
+        {{ se_deploy_type }} exec avicontroller env | grep NUM_CPU | sed -e 's/=/ /g' | awk '{print $2}'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: temp
       when: c_cpu.stdout|int == 1
     - name: Set cpu for controller
@@ -200,18 +203,20 @@
     - name: Check existense of NUM_MEMG env variable inside controller
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} exec avicontroller env | grep NUM_MEMG | wc -l || true
+        {{ se_deploy_type }} exec avicontroller env | grep NUM_MEMG | wc -l
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: c_mem
     - name: Get controller memory
       ansible.builtin.shell: >
         set -o pipefail && \
-        {{ se_deploy_type }} exec avicontroller env | grep NUM_MEMG | sed -e 's/=/ /g' | awk '{print $2}' || true
+        {{ se_deploy_type }} exec avicontroller env | grep NUM_MEMG | sed -e 's/=/ /g' | awk '{print $2}'
       args:
         executable: /bin/bash
       changed_when: false
+      failed_when: false
       register: temp
       when: c_mem.stdout|int == 1
     - name: Set controller memory
@@ -334,27 +339,26 @@
   changed_when: false
   ignore_errors: true
 
+# @AI-Modified: 2026-03-09 - Fixed port check logic to use single result instead of loop
 - name: Set failed port
   ansible.builtin.set_fact:
-    failed_port: "{{ item.item }}"
-  when: item.rc is defined and item.rc == 0 and error is undefined
-  loop:
-    - "{{ port_res.results }}"
+    failed_port: "5099"
+  when: port_res.rc is defined and port_res.rc == 0
 
-- name: Fetch the process name
+- name: Fetch the process name using port 5099
   when: failed_port is defined
   block:
     - name: Fetch the process name
       ansible.builtin.shell: >
         set -o pipefail && \
-        echo '{{ ns_res.stdout }}' | grep -w {{ failed_port }} | awk '{print $NF}'
+        echo '{{ ns_res.stdout }}' | grep -w 5099 | awk '{print $NF}'
       args:
         executable: /bin/bash
       changed_when: false
       register: proc_res
-    - name: Set error string to display to the user
+    - name: Set error string for user
       ansible.builtin.set_fact:
-        error_string: "Cannot create ServiceEngine as port {{ failed_port }} is in use by process {{ proc_res.stdout }} on this host"
+        error_string: "Cannot create ServiceEngine as port 5099 is in use by process {{ proc_res.stdout }} on this host"
       when: proc_res.stdout is defined
     - name: Include error tasks
       ansible.builtin.include_tasks: error.yml

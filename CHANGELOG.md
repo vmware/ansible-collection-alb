@@ -1,5 +1,21 @@
 # Changelog
 
+## 32.1.1
+
+### Enhancements
+- Added installation of **bs4** as a required dependency to resolve automation failures
+- Auto-updated collection assets for Ansible Collection Engineering
+- Performed additional collection asset synchronization updates
+
+### Bug Fixes
+- Fixed Ansible sanity issues across the collection modules
+- Resolved automation validation and compliance issues
+
+### Contributions
+- Added bs4 installation requirement to fix automation failures
+- Asset updates by contributors through automated collection engineering workflows
+- Ansible sanity issue fixes and collection stabilization improvements
+
 ## 31.2.2
 - No functional changes; version bump only.
 
@@ -29,7 +45,7 @@
   - Enhanced Ping Access Agent module
   - Improved deploy_se and verify_se modules
 
-- **Role Enhancements**:
+  - **Role Enhancements**:
   - **avicontroller**: Enhanced Docker deployment, service management, and systemd integration
   - **avise**: Improved SE deployment with better autoregistration, disk checks, and DPDK support
   - **aviconfig**: Enhanced configuration management with better error handling
@@ -91,6 +107,16 @@ The following modules received lint fixes and improvements:
 - Enhanced role task templates with better error handling
 - Improved collection documentation templates
 - Updated systemd service files and installation scripts
+
+### Bug Fixes
+- Fixed multiple ansible-lint issues across all modules and roles
+- Resolved ansible-test sanity validation-module errors
+- Fixed doc-default-does-not-match-spec issues
+- Corrected shellcheck issues in shell scripts
+- Fixed shebang issues in templates and scripts
+- Resolved pep8 and pylint compliance issues
+- Corrected line-ending issues in configuration files
+
 
 ## 30.2.5
 - Initial release of the VMware Avi collection

@@ -3,4 +3,3 @@ pyVmomi>=8.0.2.0.1
 pyVim>=3.0.2
 beautifulsoup4>=4.9.3
 requests_toolbelt
-avinetworks.docker

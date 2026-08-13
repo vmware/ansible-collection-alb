@@ -6,17 +6,17 @@
   become: true
   ansible.builtin.shell: >
     set -o pipefail && \
-    {{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l || true
+    {{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l
   args:
     executable: /bin/bash
   changed_when: false
+  failed_when: false
   register: se_docker_match
 
 - name: Copy SE image
   when: se_docker_match.stdout | int != 1
   become: true
   block:
-    # @AI-Modified: 2026-01-23 - Added owner/group and changed mode to address ansible:S2612
     - name: Copy SE image
       ansible.builtin.copy:
         src: "{{ se_package_source }}"

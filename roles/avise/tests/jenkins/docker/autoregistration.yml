@@ -14,7 +14,8 @@
 - name: Avi SE | Autoregistration | Get Controller information
   ansible.builtin.uri:
     url: "https://{{ se_leader_ctl_ip }}/api/initial-data"
-    validate_certs: false
+    validate_certs: false  # NOSONAR - Required for isolated lab with self-signed cert
+    return_content: true
   register: controller_initial_data
   delegate_to: localhost
 
