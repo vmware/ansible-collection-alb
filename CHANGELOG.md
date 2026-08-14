@@ -20,6 +20,9 @@
 ## 31.2.2
 - No functional changes; version bump only.
 
+## 31.2.3
+- avi_serviceenginegroup_advanced Module is removed. All fields previously only available through avi_serviceenginegroup_advanced are now available directly on vmware.alb.avi_serviceenginegroup. Action required: Playbooks and roles using avi_serviceenginegroup_advanced must be updated to use avi_serviceenginegroup instead, passing all fields (both previously "basic" and "advanced") to that single module.
+
 ## 31.1.2
 - Added the installation of bs4 as a requirement to fix failure of auto… sync pr
 - Fixes ansible module doc
