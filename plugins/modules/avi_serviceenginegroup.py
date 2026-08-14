@@ -781,6 +781,25 @@ options:
             - Allowed in enterprise edition with any value, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
+    log_agent_udp_fqdn_resolve_interval:
+        description:
+            - Interval in seconds at which the service engine re-resolves the dns for fqdn-based udp log streaming
+              endpoints.
+            - Prevents streaming to stale ips when dns records change.
+            - Only applies when the streaming endpoint is configured as an fqdn, not a literal ip.
+            - Field introduced in 31.2.3.
+            - Unit is sec.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 900.
+        type: int
+    log_agent_udp_fqdn_resolve_log_count:
+        description:
+            - Number of udp log messages sent before re-resolving the fqdn.
+            - Re-resolution also happens on the time interval (log_agent_udp_fqdn_resolve_interval).
+            - Whichever trigger fires first wins, with log count checked before time.
+            - Only applies when the streaming endpoint is configured as an fqdn, not a literal ip.
+            - Field introduced in 31.2.3.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5000.
+        type: int
     log_agent_unknown_vs_timer:
         description:
             - Timeout to purge unknown virtual service logs from the service engine.
@@ -1615,13 +1634,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1200.
         type: int
-    audit_qat_huge_pages:
-        description:
-            - This knob enables audit of qat hugepages.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
-        type: bool
     auto_rebalance_cool_down_time:
         description:
             - The time in minutes controller waits before rebalancing the vs again after a scalein/scaleout.
@@ -1644,13 +1656,6 @@ options:
             - Field introduced in 31.2.1.
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
-    control_qat_huge_pages:
-        description:
-            - This knob enables control of qat hugepages.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     disable_qat_bulk_crypto:
         description:
@@ -1796,14 +1801,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as OBJSYNC_ENABLED.
         type: str
-    optimistic_placement:
-        description:
-            - Allows packed placement on existing ses with asynchronous spinning up of buffer ses.
-            - Used in packed placement with buffer ses.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     path_mtu_discovery_v4:
         description:
             - Enable path mtu discovery feature for ipv4.
@@ -1847,14 +1844,6 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 0.
         type: int
-    qat_hpage_mem_per_process:
-        description:
-            - This knob is used to set the number of qat hugepages.
-            - Enum options - QAT_HPAGE_MEM_8MB, QAT_HPAGE_MEM_16MB, QAT_HPAGE_MEM_32MB.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as QAT_HPAGE_MEM_16MB.
-        type: str
     reserved_configuration:
         description:
             - Reserved configuration used for internal configuration purposes.
@@ -2619,6 +2608,8 @@ def main():
         log_agent_min_storage_per_vs=dict(type='int'),
         log_agent_sleep_interval=dict(type='int'),
         log_agent_trace_enabled=dict(type='bool'),
+        log_agent_udp_fqdn_resolve_interval=dict(type='int'),
+        log_agent_udp_fqdn_resolve_log_count=dict(type='int'),
         log_agent_unknown_vs_timer=dict(type='int'),
         log_disksz=dict(type='int'),
         log_malloc_failure=dict(type='bool'),
@@ -2736,11 +2727,9 @@ def main():
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         arp_cache_timeout=dict(type='int'),
-        audit_qat_huge_pages=dict(type='bool'),
         auto_rebalance_cool_down_time=dict(type='int'),
         auto_rebalance_dry_run_enabled=dict(type='bool'),
         auto_rebalance_raise_events_for_actions=dict(type='bool'),
-        control_qat_huge_pages=dict(type='bool'),
         disable_qat_bulk_crypto=dict(type='bool'),
         enable_qat=dict(type='bool'),
         gve_enabled=dict(type='bool'),
@@ -2758,13 +2747,11 @@ def main():
         ngx_free_connection_stack=dict(type='bool'),
         num_flow_cores_sum_changes_to_ignore=dict(type='int'),
         objsync_mode=dict(type='str'),
-        optimistic_placement=dict(type='bool'),
         path_mtu_discovery_v4=dict(type='bool'),
         path_mtu_discovery_v6=dict(type='bool'),
         pcap_tx_mode=dict(type='str'),
         pcap_tx_ring_rd_balancing_factor=dict(type='int'),
         pre_upgrade_se_available_mem_threshold=dict(type='int'),
-        qat_hpage_mem_per_process=dict(type='str'),
         reserved_configuration=dict(type='dict'),
         sdb_key_timeout=dict(type='int'),
         se_debug_trace_sz=dict(type='int'),
