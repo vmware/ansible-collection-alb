@@ -115,7 +115,6 @@ avi_resource_types:
   - network
   - pool
   - serviceenginegroup
-  - serviceenginegroup_advanced
   - trafficcloneprofile
   - vsvip
   - poolgroup
