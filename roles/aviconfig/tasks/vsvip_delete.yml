@@ -1,8 +1,8 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi VsVip | Delete VsVip
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_vsvip:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -26,7 +26,6 @@
     name: "{{ item.name | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     tier1_lr: "{{ item.tier1_lr | default(omit) }}"
-    use_standard_alb: "{{ item.use_standard_alb | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     vip: "{{ item.vip | default(omit) }}"
     vrf_context_ref: "{{ item.vrf_context_ref | default(omit) }}"

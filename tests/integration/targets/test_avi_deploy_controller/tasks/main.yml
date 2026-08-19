@@ -1,4 +1,11 @@
 ---
+- name: "Avi Controller | VMware | Install ovftool"
+  ansible.builtin.shell: >
+        set -o pipefail && \
+        "yes | /root/ansible_collections/vmware/alb/VMware-ovftool-4.4.0-16360108-lin.x86_64.bundle"
+  changed_when: false
+  become: true
+
 - name: "Avi Controller | VMware | Delete VMware controller if exist"
   avi_deploy_controller:
     state: "absent"
@@ -14,7 +21,8 @@
     con_power_on: true
     con_vcenter_folder: "{{ con_vcenter_folder }}"
   register: result
-- assert:
+- name: "Avi Controller | VMware | Assert VM not found"
+  ansible.builtin.assert:
     that:
       - result is not changed
       - result.msg == "A VM with the name ansible-test-controller not found"
@@ -34,7 +42,8 @@
     con_power_on: true
     con_vcenter_folder: "{{ con_vcenter_folder }}"
   register: result
-- assert:
+- name: "Avi Controller | VMware | Assert VM created"
+  ansible.builtin.assert:
     that:
       - result is changed
 
@@ -53,7 +62,8 @@
     con_power_on: true
     con_vcenter_folder: "{{ con_vcenter_folder }}"
   register: result
-- assert:
+- name: "Avi Controller | VMware | Assert VM deleted"
+  ansible.builtin.assert:
     that:
       - result is not changed
       - result.msg == "A VM with the name ansible-test-controller deleted successfully"

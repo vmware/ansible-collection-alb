@@ -29,7 +29,7 @@ se_csp_service_name: avi-se
 se_csp_metafile_name: avi_meta_{{ se_csp_service_name }}.yml
 se_csp_num_cpu: ~
 se_csp_memory_gb: ~
-se_csp_memory_mb: "{{ se_csp_memory_gb|int * 1024 }}"
+se_csp_memory_mb: "{{ se_csp_memory_gb | int * 1024 }}"
 se_csp_vnics:
   - nic: "0"
     type: access

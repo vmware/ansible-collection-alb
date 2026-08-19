@@ -4,7 +4,7 @@ kvm_host_ip: "{{ inventory_hostname }}"
 kvm_vm_hostname: ~
 kvm_host_username: "{{ ansible_ssh_user }}"
 kvm_host_password: "{{ ansible_ssh_pass }}"
-#kvm_vm_base_img: ~
+# kvm_vm_base_img: ~
 kvm_vm_vcpus: "8"
 kvm_vm_ram: "24576"
 kvm_vm_os_disk_size: "100"

@@ -1,5 +1,5 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi Tenant | Create or Update Tenant
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -24,6 +24,7 @@
     local: "{{ item.local | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
+    vcf_org_id: "{{ item.vcf_org_id | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")

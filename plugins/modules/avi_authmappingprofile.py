@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_authmappingprofile
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of AuthMappingProfile Avi RESTful Object
 description:
-    - This module is used to configure AuthMappingProfile object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure AuthMappingProfile object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -46,25 +46,41 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    allow_unlabelled_access:
+        description:
+            - Allow access to unlabelled objects.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Description for the authmappingprofile.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
+    dynamic_role_filters:
+        description:
+            - Filters for granular object access control based on object labels.
+            - Multiple filters are merged using the and operator.
+            - If empty, all objects according to the privileges will be accessible to the user.
+            - Field introduced in 32.1.1.
+            - Maximum of 4 items allowed.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: dict
     mapping_rules:
         description:
             - Rules list for tenant or role mapping.
             - Field introduced in 22.1.1.
             - Minimum of 1 items required.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: list
         elements: dict
@@ -72,7 +88,7 @@ options:
         description:
             - Name of the authmappingprofile.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -80,14 +96,15 @@ options:
             - Tenant ref for the auth mapping profile.
             - It is a reference to an object of type tenant.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Type of the auth profile for which these rules can be linked.
-            - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH.
+            - Enum options - AUTH_PROFILE_LDAP, AUTH_PROFILE_TACACS_PLUS, AUTH_PROFILE_SAML, AUTH_PROFILE_PINGACCESS, AUTH_PROFILE_JWT, AUTH_PROFILE_OAUTH,
+            - AUTH_PROFILE_CLIENT_CERT.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     url:
@@ -98,26 +115,27 @@ options:
         description:
             - Uuid of the authmappingprofile.
             - Field introduced in 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create AuthMappingProfile object
-  vmware.alb.avi_authmappingprofile:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_authmappingprofile
+  tasks:
+    - name: Example to create AuthMappingProfile object
+      vmware.alb.avi_authmappingprofile:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_authmappingprofile
 """
 
 RETURN = '''
@@ -145,8 +163,19 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='20.1.7'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
+        allow_unlabelled_access=dict(type='bool',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
+        dynamic_role_filters=dict(type='list', elements='dict',),
         mapping_rules=dict(type='list', elements='dict', required=True),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
@@ -154,7 +183,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
