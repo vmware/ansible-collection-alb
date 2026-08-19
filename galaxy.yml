@@ -1,6 +1,6 @@
 authors:
-- Anurag Palsule <apalsule@vmware.com>
-- Parikshit Manur <parikshitm@vmware.com>
+  - Anurag Palsule <apalsule@vmware.com>
+  - Parikshit Manur <parikshitm@vmware.com>
 description: VMware Advanced Load Balancer (formerly Avi) Ansible Collection
 issues: https://github.com/vmware/ansible-collection-alb/issues
 license_file: LICENSE
@@ -8,14 +8,21 @@ name: alb
 namespace: vmware
 readme: README.md
 repository: https://github.com/vmware/ansible-collection-alb
+build_ignore:
+  - molecule
+  - testing.md
+  - CODE-OF-CONDUCT.md
+  - CODEOWNERS
+  - CONTRIBUTING.md
 tags:
-- avi
-- controller
-- avicontroller
-- avisdk
-- avinetworks
-- network
-- load
-- balancer
-- sdk
+  - networking
+  - avi
+  - controller
+  - avicontroller
+  - avisdk
+  - avinetworks
+  - network
+  - load
+  - balancer
+  - sdk
 version: 31.2.3

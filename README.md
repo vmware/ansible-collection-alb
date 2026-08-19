@@ -17,10 +17,26 @@ This collection has been tested against following Ansible versions: **>=2.9.10**
 
 ## Installation and Usage
 
-Install ALB collection using `ansible-galaxy` CLI:
-```
+### Install ALB Collection
+
+Install the ALB collection from **Red Hat Ansible Automation Hub**.
+
+Configure your Ansible environment to use Red Hat Ansible Automation Hub and authenticate with your Red Hat account. Then install the collection using the `ansible-galaxy` CLI:
+
+```bash
 ansible-galaxy collection install vmware.alb
 ```
+
+For more information, see the [Red Hat Ansible Automation Platform documentation](https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/).
+
+### Install from Ansible Galaxy
+
+Alternatively, the ALB collection can be installed from Ansible Galaxy using:
+
+```bash
+ansible-galaxy collection install vmware.alb
+```
+
 
 Install ALB collection using `requirements.yml` file:
 
@@ -53,6 +69,18 @@ sudo ./VMware-ovftool-4.4.0-15722219-lin.x86_64.bundle
 After ALB collection installation we need to install the required python libraries using following command:
 ```
 pip install -r ~/.ansible/collections/ansible_collections/vmware/alb/requirements.txt
+```
+
+### Required Ansible Collections and Roles
+
+For VMware deployment roles (`avicontroller_vmware`, `avise_vmware`), install the `community.vmware` collection:
+```bash
+ansible-galaxy collection install community.vmware
+```
+
+For running Molecule or Docker test playbooks, install the required `avinetworks` roles:
+```bash
+ansible-galaxy install avinetworks.docker avinetworks.avicontroller avinetworks.avisdk avinetworks.avise
 ```
 
 ### Support
