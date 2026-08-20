@@ -212,7 +212,7 @@ options:
         description:
             - Time in minutes to wait between consecutive cloud discovery cycles.
             - Allowed values are 1-1440.
-            - Field introduced in 22.1.5, 30.2.1.
+            - Field introduced in 22.1.5, 30.1.2, 30.2.1.
             - Unit is min.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.
@@ -228,7 +228,7 @@ options:
         description:
             - Time in minutes to wait between consecutive cloud reconcile cycles.
             - Allowed values are 1-1440.
-            - Field introduced in 22.1.5, 30.2.1.
+            - Field introduced in 22.1.5, 30.1.2, 30.2.1.
             - Unit is min.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.
@@ -1199,7 +1199,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'cc_user_password_expiry_days', 'portal_token', 'ai_assistant_project_key'})
+                           {'ai_assistant_project_key', 'portal_token', 'cc_user_password_expiry_days'})
 
 
 if __name__ == '__main__':

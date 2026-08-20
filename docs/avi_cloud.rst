@@ -9500,7 +9500,7 @@ Parameters
                   - If true, vm's on the vcenter will not be discovered.set it to true if there are more than 10000 vms in the datacenter.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 30.1.1.
+                  - Field deprecated in 22.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.5.
