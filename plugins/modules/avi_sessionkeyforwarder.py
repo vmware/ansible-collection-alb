@@ -49,13 +49,13 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     enable:
         description:
             - Enable or disable session key forwarder.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
@@ -63,7 +63,7 @@ options:
         description:
             - Ip addresses and ports to be used for connection with session key forwarder.
             - At least one entry required; maximum 16 (matches the per-core stats slot limit).
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Minimum of 1 items required.
             - Maximum of 16 items allowed.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -73,7 +73,7 @@ options:
     name:
         description:
             - Name of the session key forwarder profile.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
@@ -81,28 +81,28 @@ options:
         description:
             - Pki profile used to validate the ssl certificate presented by a server.
             - It is a reference to an object of type pkiprofile.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     ssl_key_and_certificate_ref:
         description:
             - Service engines will present this ssl certificate to the server.
             - It is a reference to an object of type sslkeyandcertificate.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     ssl_profile_ref:
         description:
             - Ssl profile defines ciphers and ssl versions to be used for session key forwarder.
             - It is a reference to an object of type sslprofile.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - Tenant reference for the session key forwarder object.
             - It is a reference to an object of type tenant.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
@@ -112,14 +112,14 @@ options:
     use_mgmt:
         description:
             - If enabled, connection with session key forwarder will use the management network.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     uuid:
         description:
             - Uuid of the session key forwarder profile.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -174,7 +174,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         configpb_attributes=dict(type='dict',),

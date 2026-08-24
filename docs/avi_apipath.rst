@@ -147,7 +147,7 @@ Parameters
                   - Protobuf versioning for config pbs.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -226,7 +226,7 @@ Parameters
                   - Description of this api path.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -248,7 +248,7 @@ Parameters
                   - List of api endpoints for this path.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 10 items allowed.
@@ -281,7 +281,7 @@ Parameters
                   - Set override_global_active_api_labels to true to use only the endpoint-level labels.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -306,7 +306,7 @@ Parameters
                   - Enables the labels configuration.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -330,7 +330,7 @@ Parameters
                   - The list of labels to be applied to the api.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 256 items allowed.
@@ -360,7 +360,7 @@ Parameters
                   - When true, this endpoint will not be validated, learned, or labeled.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -386,7 +386,7 @@ Parameters
                   - Describes the functionality of the api endpoint.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -415,7 +415,7 @@ Parameters
                   - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -450,7 +450,7 @@ Parameters
                   - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -482,7 +482,7 @@ Parameters
                   - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -508,7 +508,7 @@ Parameters
                   - Request header parameter definitions for this endpoint, used to validate incoming request headers.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 64 items allowed.
@@ -539,7 +539,7 @@ Parameters
                   - ?foo=) is treated as a schema violation.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -569,7 +569,7 @@ Parameters
                   - When a deprecated parameter is received in a request, it is treated as a schema violation and will be learned but not logged.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -596,7 +596,7 @@ Parameters
                   - Name of the parameter.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -623,7 +623,7 @@ Parameters
                   - A missing parameter is treated as a violation; enforcement depends on the missing-mandatory action configured for its location (query or header).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -653,7 +653,7 @@ Parameters
                   - If the schema is not known, use schema_type_undefined.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -679,7 +679,7 @@ Parameters
                   - Maximum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -704,7 +704,7 @@ Parameters
                   - Minimum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -735,7 +735,7 @@ Parameters
                   - It is a reference to an object of type apischema.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -760,7 +760,7 @@ Parameters
                   - If set, this is a list of all possible values for this string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 1024 items allowed.
@@ -803,7 +803,7 @@ Parameters
                   - API_STRING_FORMAT_JSON_POINTER, API_STRING_FORMAT_REGEX.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -828,7 +828,7 @@ Parameters
                   - Maximum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -853,7 +853,7 @@ Parameters
                   - Minimum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -878,7 +878,7 @@ Parameters
                   - If set, this is a regular expression which must match the string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -909,7 +909,7 @@ Parameters
                   - SCHEMA_TYPE_ARRAY, SCHEMA_TYPE_OBJECT, SCHEMA_TYPE_REFERENCE, SCHEMA_TYPE_ONE_OF, SCHEMA_TYPE_ALL_OF, SCHEMA_TYPE_ANY_OF.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -946,7 +946,7 @@ Parameters
                   - HTTP_METHOD_LOCK, HTTP_METHOD_UNLOCK.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -969,7 +969,7 @@ Parameters
                   - Unique identifier for this operation from the openapi specification.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -995,7 +995,7 @@ Parameters
                   - When false (default), endpoint-level and global active_api_labels are applied in conjunction.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1024,7 +1024,7 @@ Parameters
                   - Example  for path /pets/{petid}, a path parameter named 'petid' would be listed here.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 32 items allowed.
@@ -1055,7 +1055,7 @@ Parameters
                   - ?foo=) is treated as a schema violation.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1085,7 +1085,7 @@ Parameters
                   - When a deprecated parameter is received in a request, it is treated as a schema violation and will be learned but not logged.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1112,7 +1112,7 @@ Parameters
                   - Name of the parameter.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1139,7 +1139,7 @@ Parameters
                   - A missing parameter is treated as a violation; enforcement depends on the missing-mandatory action configured for its location (query or header).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1169,7 +1169,7 @@ Parameters
                   - If the schema is not known, use schema_type_undefined.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1195,7 +1195,7 @@ Parameters
                   - Maximum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1220,7 +1220,7 @@ Parameters
                   - Minimum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1251,7 +1251,7 @@ Parameters
                   - It is a reference to an object of type apischema.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1276,7 +1276,7 @@ Parameters
                   - If set, this is a list of all possible values for this string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 1024 items allowed.
@@ -1319,7 +1319,7 @@ Parameters
                   - API_STRING_FORMAT_JSON_POINTER, API_STRING_FORMAT_REGEX.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1344,7 +1344,7 @@ Parameters
                   - Maximum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1369,7 +1369,7 @@ Parameters
                   - Minimum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1394,7 +1394,7 @@ Parameters
                   - If set, this is a regular expression which must match the string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1425,7 +1425,7 @@ Parameters
                   - SCHEMA_TYPE_ARRAY, SCHEMA_TYPE_OBJECT, SCHEMA_TYPE_REFERENCE, SCHEMA_TYPE_ONE_OF, SCHEMA_TYPE_ALL_OF, SCHEMA_TYPE_ANY_OF.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1456,7 +1456,7 @@ Parameters
                   - Example  for get /pets?limit=10, a query parameter named 'limit' would be listed here.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 128 items allowed.
@@ -1487,7 +1487,7 @@ Parameters
                   - ?foo=) is treated as a schema violation.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1517,7 +1517,7 @@ Parameters
                   - When a deprecated parameter is received in a request, it is treated as a schema violation and will be learned but not logged.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1544,7 +1544,7 @@ Parameters
                   - Name of the parameter.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1571,7 +1571,7 @@ Parameters
                   - A missing parameter is treated as a violation; enforcement depends on the missing-mandatory action configured for its location (query or header).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1601,7 +1601,7 @@ Parameters
                   - If the schema is not known, use schema_type_undefined.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1627,7 +1627,7 @@ Parameters
                   - Maximum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1652,7 +1652,7 @@ Parameters
                   - Minimum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1683,7 +1683,7 @@ Parameters
                   - It is a reference to an object of type apischema.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1708,7 +1708,7 @@ Parameters
                   - If set, this is a list of all possible values for this string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 1024 items allowed.
@@ -1751,7 +1751,7 @@ Parameters
                   - API_STRING_FORMAT_JSON_POINTER, API_STRING_FORMAT_REGEX.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1776,7 +1776,7 @@ Parameters
                   - Maximum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1801,7 +1801,7 @@ Parameters
                   - Minimum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1826,7 +1826,7 @@ Parameters
                   - If set, this is a regular expression which must match the string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1857,7 +1857,7 @@ Parameters
                   - SCHEMA_TYPE_ARRAY, SCHEMA_TYPE_OBJECT, SCHEMA_TYPE_REFERENCE, SCHEMA_TYPE_ONE_OF, SCHEMA_TYPE_ALL_OF, SCHEMA_TYPE_ANY_OF.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1885,7 +1885,7 @@ Parameters
                   - Expected format and schema of the request body, including content-type to schema mappings.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1910,7 +1910,7 @@ Parameters
                   - Description of the request body from the openapi specification.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1940,7 +1940,7 @@ Parameters
                   - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1967,7 +1967,7 @@ Parameters
                   - Mapping of the content type to the request body schema.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 128 items allowed.
@@ -2002,7 +2002,7 @@ Parameters
                   - For response, it is the content type of the response.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2036,7 +2036,7 @@ Parameters
                   - Other apischemadatatype values are not allowed for content type mappings.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2063,7 +2063,7 @@ Parameters
                   - Maximum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2089,7 +2089,7 @@ Parameters
                   - Minimum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2121,7 +2121,7 @@ Parameters
                   - It is a reference to an object of type apischema.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2147,7 +2147,7 @@ Parameters
                   - If set, this is a list of all possible values for this string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 1024 items allowed.
@@ -2191,7 +2191,7 @@ Parameters
                   - API_STRING_FORMAT_JSON_POINTER, API_STRING_FORMAT_REGEX.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2217,7 +2217,7 @@ Parameters
                   - Maximum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2243,7 +2243,7 @@ Parameters
                   - Minimum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2269,7 +2269,7 @@ Parameters
                   - If set, this is a regular expression which must match the string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2301,7 +2301,7 @@ Parameters
                   - SCHEMA_TYPE_ARRAY, SCHEMA_TYPE_OBJECT, SCHEMA_TYPE_REFERENCE, SCHEMA_TYPE_ONE_OF, SCHEMA_TYPE_ALL_OF, SCHEMA_TYPE_ANY_OF.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2333,7 +2333,7 @@ Parameters
                   - A missing body is treated as a violation; enforcement depends on the configured body validation actions.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2363,7 +2363,7 @@ Parameters
                   - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2390,7 +2390,7 @@ Parameters
                   - Expected response definitions for this endpoint, each associated with an http status code or status code range.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 32 items allowed.
@@ -2418,7 +2418,7 @@ Parameters
                   - Mapping of response content types to their corresponding schemas.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 128 items allowed.
@@ -2453,7 +2453,7 @@ Parameters
                   - For response, it is the content type of the response.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2487,7 +2487,7 @@ Parameters
                   - Other apischemadatatype values are not allowed for content type mappings.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2514,7 +2514,7 @@ Parameters
                   - Maximum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2540,7 +2540,7 @@ Parameters
                   - Minimum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2572,7 +2572,7 @@ Parameters
                   - It is a reference to an object of type apischema.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2598,7 +2598,7 @@ Parameters
                   - If set, this is a list of all possible values for this string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 1024 items allowed.
@@ -2642,7 +2642,7 @@ Parameters
                   - API_STRING_FORMAT_JSON_POINTER, API_STRING_FORMAT_REGEX.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2668,7 +2668,7 @@ Parameters
                   - Maximum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2694,7 +2694,7 @@ Parameters
                   - Minimum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2720,7 +2720,7 @@ Parameters
                   - If set, this is a regular expression which must match the string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2752,7 +2752,7 @@ Parameters
                   - SCHEMA_TYPE_ARRAY, SCHEMA_TYPE_OBJECT, SCHEMA_TYPE_REFERENCE, SCHEMA_TYPE_ONE_OF, SCHEMA_TYPE_ALL_OF, SCHEMA_TYPE_ANY_OF.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2781,7 +2781,7 @@ Parameters
                   - Description of the response from the openapi specification.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2805,7 +2805,7 @@ Parameters
                   - Response header parameter definitions for this status code.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 64 items allowed.
@@ -2837,7 +2837,7 @@ Parameters
                   - ?foo=) is treated as a schema violation.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2868,7 +2868,7 @@ Parameters
                   - When a deprecated parameter is received in a request, it is treated as a schema violation and will be learned but not logged.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2896,7 +2896,7 @@ Parameters
                   - Name of the parameter.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2924,7 +2924,7 @@ Parameters
                   - A missing parameter is treated as a violation; enforcement depends on the missing-mandatory action configured for its location (query or header).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2955,7 +2955,7 @@ Parameters
                   - If the schema is not known, use schema_type_undefined.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2982,7 +2982,7 @@ Parameters
                   - Maximum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3008,7 +3008,7 @@ Parameters
                   - Minimum allowed value for integer and number types (inclusive by default).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3040,7 +3040,7 @@ Parameters
                   - It is a reference to an object of type apischema.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3066,7 +3066,7 @@ Parameters
                   - If set, this is a list of all possible values for this string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 1024 items allowed.
@@ -3110,7 +3110,7 @@ Parameters
                   - API_STRING_FORMAT_JSON_POINTER, API_STRING_FORMAT_REGEX.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3136,7 +3136,7 @@ Parameters
                   - Maximum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3162,7 +3162,7 @@ Parameters
                   - Minimum allowed length for string values.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3188,7 +3188,7 @@ Parameters
                   - If set, this is a regular expression which must match the string.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3220,7 +3220,7 @@ Parameters
                   - SCHEMA_TYPE_ARRAY, SCHEMA_TYPE_OBJECT, SCHEMA_TYPE_REFERENCE, SCHEMA_TYPE_ONE_OF, SCHEMA_TYPE_ALL_OF, SCHEMA_TYPE_ANY_OF.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3249,7 +3249,7 @@ Parameters
                   - Http status code or status code range.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3395,7 +3395,7 @@ Parameters
                   - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3434,7 +3434,7 @@ Parameters
                   - Enum options - SOURCE_USER_DEFINED, SOURCE_API_SPEC, SOURCE_DISCOVERED.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3469,7 +3469,7 @@ Parameters
                   - Enum options - API_TYPE_ACTIVE, API_TYPE_ORPHAN, API_TYPE_ZOMBIE.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3498,7 +3498,7 @@ Parameters
                   - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3527,7 +3527,7 @@ Parameters
                   - Name of this object, unique per tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3555,7 +3555,7 @@ Parameters
                   - Parameters can be defined in curly braces, for example /pet/{pet_id}.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3580,7 +3580,7 @@ Parameters
                   - Enum options - SOURCE_USER_DEFINED, SOURCE_API_SPEC, SOURCE_DISCOVERED.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3605,7 +3605,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3633,7 +3633,7 @@ Parameters
                   - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3674,7 +3674,7 @@ Parameters
                   - The object uuid.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

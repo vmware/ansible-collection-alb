@@ -91,7 +91,7 @@ options:
         description:
             - Api policy configuration for the virtual service to apply api protection.
             - It is a reference to an object of type apipolicy.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     application_insights_ref:
@@ -341,7 +341,7 @@ options:
         description:
             - Label profile configuration for the virtual service to categorize api endpoints.
             - It is a reference to an object of type labelprofile.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     ldap_vs_config:
@@ -510,7 +510,7 @@ options:
         description:
             - Session key forwarder profile for the virtual service for the session key forwarding.
             - It is a reference to an object of type sessionkeyforwarder.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     sideband_profile:
@@ -792,7 +792,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         active_standby_se_tag=dict(type='str',),

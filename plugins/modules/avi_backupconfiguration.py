@@ -101,7 +101,7 @@ options:
             - Reference to a fileobject of type known_hosts whose file body is openssh known_hosts file used for host key verification when uploading backups
             - over sftp or scp.
             - It is a reference to an object of type fileobject.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     maximum_backups_stored:
@@ -228,7 +228,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         aws_access_key=dict(type='str', no_log=True,),

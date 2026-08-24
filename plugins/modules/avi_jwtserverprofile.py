@@ -54,7 +54,7 @@ options:
             - Only applicable when jwt profile type is client_auth.
             - Enum options - JWS_ALG_RS256, JWS_ALG_RS384, JWS_ALG_RS512, JWS_ALG_PS256, JWS_ALG_PS384, JWS_ALG_PS512, JWS_ALG_ES256, JWS_ALG_ES384,
             - JWS_ALG_ES512.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Maximum of 9 items allowed.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
@@ -183,7 +183,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         allowed_algorithms=dict(type='list', elements='str',),

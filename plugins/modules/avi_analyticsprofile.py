@@ -678,7 +678,7 @@ options:
     waap_classification_disabled_penalty:
         description:
             - Penalty points per disabled orphan/zombie classification in waap.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 50.0.
         type: float
@@ -785,7 +785,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         apdex_response_threshold=dict(type='int',),

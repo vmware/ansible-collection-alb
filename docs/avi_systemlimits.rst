@@ -501,7 +501,7 @@ Parameters
                   - Api protection, learning, and metrics limits for this controller sizing.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -527,7 +527,7 @@ Parameters
                   - Api configuration limits for this controller sizing.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -554,7 +554,7 @@ Parameters
                   - Maximum number of api path definitions (unique url path patterns) that can be configured for a single api policy.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -580,7 +580,7 @@ Parameters
                   - Maximum number of api schema objects that can be associated with a single api policy.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -609,7 +609,7 @@ Parameters
                   - Each apipath can have up to 7 apiendpoints.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -641,7 +641,7 @@ Parameters
                   - In the datapath, json payloads with greater nesting depth will not be parsed.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -667,7 +667,7 @@ Parameters
                   - Api learning limits for this controller sizing.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -697,7 +697,7 @@ Parameters
                   - Enabling applicationinsights on a virtual service is rejected at config time if adding its parameter budget would exceed this limit.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -726,7 +726,7 @@ Parameters
                   - Enabling applicationinsights on a virtual service is rejected at config time if adding its endpoint budget would exceed this limit.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -752,7 +752,7 @@ Parameters
                   - Api metrics limits for this controller sizing.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -782,7 +782,7 @@ Parameters
                   - Associating an apipolicy with a virtual service is rejected at config time if adding its metrics budget would exceed this limit.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1112,7 +1112,7 @@ Parameters
                   - Use api_limits.learning_limits.num_apis instead, which provides a cumulative system-wide api endpoint count.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -1142,7 +1142,7 @@ Parameters
                   - Use api_limits.learning_limits.num_apis instead, which provides a cumulative system-wide api endpoint count.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.2.1.
@@ -1792,7 +1792,7 @@ Parameters
                   - Maximum number of tenant bindings.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2951,7 +2951,7 @@ Parameters
                   - Defines the min_vcpus, min_memory, and max_vs_per_se for each tier.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2976,7 +2976,7 @@ Parameters
                   - Maximum number of virtualservices allowed per se for this tier.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3003,7 +3003,7 @@ Parameters
                   - Ses in a waap-mode se group of this size must have at least this much memory.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Unit is mb.
@@ -3033,7 +3033,7 @@ Parameters
                   - Ses in a waap-mode se group of this size must have at least this many vcpus.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3060,7 +3060,7 @@ Parameters
                   - Enum options - SE_SIZE_SMALL, SE_SIZE_MEDIUM, SE_SIZE_LARGE.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

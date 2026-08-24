@@ -4112,7 +4112,7 @@ Parameters
                   - This field will provide error information if any in gslb tls connection between sites.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

@@ -15,10 +15,10 @@ DOCUMENTATION = '''
 ---
 module: avi_fileobject_upload
 author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
-short_description: Upload or register a FileObject via the consolidated upload endpoint (32.2.1+)
+short_description: Upload or register a FileObject via the consolidated upload endpoint (32.1.4+)
 description:
     - Uses C(POST /api/fileobject/upload) with the structured B(UploadParams) schema
-      introduced in 32.2.1.
+      introduced in 32.1.4.
     - Supports two upload modes, both routed through the collection's standard
       C(avi_ansible_api) helper (session management, idempotency, API call).
     - B(url) mode -- the controller fetches a CRL from a remote server URL and
@@ -29,8 +29,8 @@ description:
       the local file and skips the upload when it matches the stored checksum.
       Requires the C(requests_toolbelt) Python package on the control node.
     - The response is always a B(FileObject) JSON object.
-    - B(Requires API version 32.2.1 or later on the controller.)
-    - For controllers older than 32.2.1 use M(vmware.alb.avi_fileobject) for
+    - B(Requires API version 32.1.4 or later on the controller.)
+    - For controllers older than 32.1.4 use M(vmware.alb.avi_fileobject) for
       metadata and M(vmware.alb.avi_api_fileservice) for file uploads.
 options:
     state:
@@ -131,7 +131,7 @@ EXAMPLES = '''
       api_version: "{{ api_version }}"
 
   tasks:
-    # URL-based CRL (32.2.1+)
+    # URL-based CRL (32.1.4+)
     - name: Create CRL FileObject from remote URL
       vmware.alb.avi_fileobject_upload:
         avi_credentials: ""
@@ -140,7 +140,7 @@ EXAMPLES = '''
         url: "http://crl4.digicert.com/DigiCertGlobalRootCA.crl"
         update_interval: 480
 
-    # Binary file upload (32.2.1+)
+    # Binary file upload (32.1.4+)
     - name: Upload MaxMind GeoIP database
       vmware.alb.avi_fileobject_upload:
         avi_credentials: ""

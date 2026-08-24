@@ -55,7 +55,7 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     connected_at:
@@ -81,7 +81,7 @@ options:
     name:
         description:
             - Name of the albservicesstatus object.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
@@ -175,7 +175,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         asset_details=dict(type='dict',),

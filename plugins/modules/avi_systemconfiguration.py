@@ -54,7 +54,7 @@ options:
     ai_assistant_enabled:
         description:
             - Enable or disable ai assistant feature on the controller.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -70,7 +70,7 @@ options:
     allow_private_ips:
         description:
             - Allow usage of private ips in crl server, saml metadata url.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -83,7 +83,7 @@ options:
     certificate_security_policy:
         description:
             - Certificate security policy for the system.
-            - Field introduced in 32.1.3, 32.2.1.
+            - Field introduced in 32.1.3.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     common_criteria_mode:
@@ -173,7 +173,7 @@ options:
             - Client certificate for mutual tls authentication.
             - Required when tls_mode is tls_mode_mtls.
             - It is a reference to an object of type sslkeyandcertificate.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     host_key_algorithm_exclude:
@@ -299,7 +299,7 @@ options:
     syslog_server_settings:
         description:
             - Syslog server destinations including address, port, transport protocol, and output format.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
@@ -323,7 +323,7 @@ options:
         description:
             - Resolved ca certificate chain pem for the system truststore pki profile.
             - Populated by the controller before pushing to ses; not user-configurable.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     truststore_pkiprofile_ref:
@@ -408,7 +408,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         admin_auth_configuration=dict(type='dict',),
@@ -469,7 +469,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           {'avi_email_login_password', 'rekey_volume_limit', 'host_key_algorithm_exclude', 'rekey_time_limit'})
+                           {'rekey_volume_limit', 'host_key_algorithm_exclude', 'avi_email_login_password', 'rekey_time_limit'})
 
 
 if __name__ == '__main__':

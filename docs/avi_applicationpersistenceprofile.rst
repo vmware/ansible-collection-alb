@@ -685,7 +685,7 @@ Parameters
                   - Enum options - SAMESITE_NONE, SAMESITE_LAX, SAMESITE_STRICT.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

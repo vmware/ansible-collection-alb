@@ -199,7 +199,7 @@ options:
             - When set to true, disables automatic ca certificate chain discovery based on issuer common name (cn).
             - The user must explicitly specify the desired ca certificates via the ca_certs field.
             - Not allowed for ca/intermediate type certificates.
-            - Field introduced in 32.1.3, 32.2.1.
+            - Field introduced in 32.1.3.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -290,7 +290,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         ca_certs=dict(type='list', elements='dict',),
@@ -333,7 +333,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'sslkeyandcertificate',
-                           {'key_passphrase', 'key', 'enckey_base64', 'key_params'})
+                           {'enckey_base64', 'key_params', 'key_passphrase', 'key'})
 
 
 if __name__ == '__main__':

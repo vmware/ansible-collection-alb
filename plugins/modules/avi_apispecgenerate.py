@@ -49,77 +49,77 @@ options:
     completed_events:
         description:
             - Number of tasks completed.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     duration:
         description:
             - Spec generation duration in seconds.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Unit is sec.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     end_time:
         description:
             - Time the spec generation completed or failed.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     name:
         description:
             - Name of the spec generation object.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     obj_state:
         description:
             - Current lifecycle state of the spec generation.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     params:
         description:
             - Parameters for the spec generation.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     path:
         description:
             - Path to the generated spec file.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     progress:
         description:
             - Overall spec generation progress percentage.
             - Allowed values are 0-100.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Unit is percent.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     start_time:
         description:
             - Time the spec generation started.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     task_events:
         description:
             - Per-task status and event details.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     total_events:
         description:
             - Total number of tasks.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     url:
@@ -129,7 +129,7 @@ options:
     uuid:
         description:
             - Uuid of the spec generation object.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -184,7 +184,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         completed_events=dict(type='int',),

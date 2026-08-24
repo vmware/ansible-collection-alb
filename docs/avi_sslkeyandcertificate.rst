@@ -191,7 +191,7 @@ Parameters
                   - Internal field used for detecting parent certificate content changes.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -214,7 +214,7 @@ Parameters
                   - Common name of the ca certificate issuer.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -254,7 +254,7 @@ Parameters
                   - Expiry date of the ca certificate in utc string form.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -277,7 +277,7 @@ Parameters
                   - Common name of the ca certificate subject.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2024,7 +2024,7 @@ Parameters
                   - Enum options - OCSP_HASH_SHA1, OCSP_HASH_SHA256, OCSP_HASH_SHA384, OCSP_HASH_SHA512.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2393,7 +2393,7 @@ Parameters
                   - Not allowed for ca/intermediate type certificates.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

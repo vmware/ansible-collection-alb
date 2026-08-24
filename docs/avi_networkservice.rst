@@ -1159,7 +1159,7 @@ Parameters
                   - Special values are 0- auto.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Unit is bytes.

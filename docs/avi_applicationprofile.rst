@@ -1098,7 +1098,7 @@ Parameters
                   - If enabled, soa record is sent in the authority section for nodata responses per rfc 2308.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

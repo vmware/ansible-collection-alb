@@ -49,7 +49,7 @@ options:
     api_spec_detail:
         description:
             - Api specification details extracted from the file, populated for open_api_spec type only.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     checksum:
@@ -69,7 +69,7 @@ options:
     completed_events:
         description:
             - Number of processing events that have completed.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     compressed:
@@ -106,14 +106,14 @@ options:
     duration:
         description:
             - Time taken to complete the operation in seconds.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Unit is sec.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     end_time:
         description:
             - End time of the file object processing operation.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     events:
@@ -149,7 +149,7 @@ options:
     history:
         description:
             - File object processing events history for the version specified.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
@@ -172,7 +172,7 @@ options:
     obj_state:
         description:
             - State of the file object.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     path:
@@ -185,7 +185,7 @@ options:
         description:
             - Percentage of completed events.
             - Allowed values are 0-100.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Unit is percent.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
@@ -210,13 +210,13 @@ options:
     start_time:
         description:
             - Start time of the file object processing operation.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     task_events:
         description:
             - File object processing events for the version specified.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
@@ -230,7 +230,7 @@ options:
     total_events:
         description:
             - Total number of processing events for this file object.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     type:
@@ -310,7 +310,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         api_spec_detail=dict(type='dict',),

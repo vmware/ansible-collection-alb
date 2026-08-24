@@ -49,20 +49,20 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Description of this label profile.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     label_definitions:
         description:
             - Labels available in this profile.
             - Label names must be unique (case-insensitive).
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Maximum of 256 items allowed.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
@@ -70,21 +70,21 @@ options:
     log_labels:
         description:
             - Enables logging of waap labels effective for a request into apilog.effective_labels in the application log.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     name:
         description:
             - Name of this object, unique per tenant.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
@@ -94,7 +94,7 @@ options:
     uuid:
         description:
             - The object uuid.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -149,7 +149,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         configpb_attributes=dict(type='dict',),

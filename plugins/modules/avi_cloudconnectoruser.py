@@ -188,7 +188,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         azure_serviceprincipal=dict(type='dict',),
@@ -217,7 +217,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'cloudconnectoruser',
-                           {'password', 'new_password_enc', 'azure_userpass', 'private_key', 'obj_password'})
+                           {'new_password_enc', 'obj_password', 'azure_userpass', 'private_key', 'password'})
 
 
 if __name__ == '__main__':

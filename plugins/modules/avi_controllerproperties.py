@@ -50,7 +50,7 @@ options:
     ai_assistant_project_key:
         description:
             - Project key for the ai assistant feature.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as
             - b083b897e50a49103446ed6112aad3fd2e956eca572e1d8b807a3e2338fdd0dc/stage.
@@ -390,7 +390,7 @@ options:
         description:
             - Maximum number of post /api/eventmanager/generateevent requests allowed per minute, across all event_id values.
             - Allowed values are 1-10000.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
@@ -508,7 +508,7 @@ options:
             - This cache stores country code lookups for ip addresses to reduce grpc calls to the ipgls service.
             - Set to 0 to disable caching.
             - Allowed values are 0-1000000.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10000.
         type: int
@@ -519,7 +519,7 @@ options:
             - Lower values provide fresher data but increase load on ipgls service.
             - Higher values reduce load but may serve stale geolocation data.
             - Allowed values are 1-1440.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Unit is min.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.
@@ -677,7 +677,7 @@ options:
             - Promoted fields are indexed in opensearch and included in default api responses.
             - Supports dot-notation for nested fields (e.g., waf_log.status).
             - Changes require log subsystem restart to take effect.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     query_host_fail:
@@ -1061,7 +1061,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         ai_assistant_project_key=dict(type='str', no_log=True,),
@@ -1199,7 +1199,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'ai_assistant_project_key', 'portal_token', 'cc_user_password_expiry_days'})
+                           {'portal_token', 'cc_user_password_expiry_days', 'ai_assistant_project_key'})
 
 
 if __name__ == '__main__':

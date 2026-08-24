@@ -1643,7 +1643,7 @@ Parameters
                   - Enable or disable ai assistant feature on the controller.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1699,7 +1699,7 @@ Parameters
                   - Allow usage of private ips in crl server, saml metadata url.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1746,7 +1746,7 @@ Parameters
                   - Certificate security policy for the system.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1776,7 +1776,7 @@ Parameters
                   - SIGNATURE_ALGORITHM_SHA512, SIGNATURE_ALGORITHM_ED25519.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1802,7 +1802,7 @@ Parameters
                   - Enum options - OCSP_HASH_SHA1, OCSP_HASH_SHA256, OCSP_HASH_SHA384, OCSP_HASH_SHA512.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2698,7 +2698,7 @@ Parameters
                   - When unset, no starttls is attempted regardless of disable_tls.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2729,7 +2729,7 @@ Parameters
                   - It is a reference to an object of type sslkeyandcertificate.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2759,7 +2759,7 @@ Parameters
                   - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_SKIP_HOSTNAME_VERIFY.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3160,7 +3160,7 @@ Parameters
                   - It is a reference to an object of type sslkeyandcertificate.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -5963,7 +5963,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -5983,7 +5983,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -6035,7 +6035,7 @@ Parameters
                   - Allowed values are 1-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -6061,7 +6061,7 @@ Parameters
                   - Allowed values are 1-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -6133,7 +6133,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -7088,7 +7088,7 @@ Parameters
                   - Syslog server destinations including address, port, transport protocol, and output format.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -7115,7 +7115,7 @@ Parameters
                   - Enum options - SYSLOG_LEGACY, SYSLOG_RFC5424, SYSLOG_JSON, SYSLOG_RFC5425_ENHANCED.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -7144,7 +7144,7 @@ Parameters
                   - Allowed values are 1-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -7170,7 +7170,7 @@ Parameters
                   - Ip address or fqdn of the syslog server.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -7237,7 +7237,7 @@ Parameters
                   - Udp transport (default true); set to false to use tcp.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -7373,7 +7373,7 @@ Parameters
                   - Populated by the controller before pushing to ses; not user-configurable.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

@@ -988,7 +988,7 @@ options:
             - Prevents streaming to stale ips when dns records change.
             - Only applies when the streaming endpoint is configured as an fqdn, not a literal ip.
             - Allowed values are 60-86400.
-            - Field introduced in 32.1.3, 32.2.1.
+            - Field introduced in 32.1.3.
             - Unit is sec.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 900.
@@ -1000,7 +1000,7 @@ options:
             - before time.
             - Only applies when the streaming endpoint is configured as an fqdn, not a literal ip.
             - Allowed values are 100-100000.
-            - Field introduced in 32.1.3, 32.2.1.
+            - Field introduced in 32.1.3.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5000.
         type: int
@@ -1038,7 +1038,7 @@ options:
         description:
             - Tls configuration for log streaming connections from this service engine group.
             - Effective only for log_streaming_protocol_tls and log_streaming_protocol_syslog_over_tls.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     markers:
@@ -2070,7 +2070,7 @@ options:
             - mode.
             - This field cannot change after creation.
             - Enum options - SEG_MODE_NORMAL, SEG_MODE_WAAP.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as SEG_MODE_NORMAL.
         type: str
@@ -2310,7 +2310,7 @@ options:
     vmotion_notification_poll_interval:
         description:
             - Interval in seconds to poll vmotion notifications.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Unit is seconds.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 5.
@@ -2465,7 +2465,7 @@ options:
             - Configuration for api protection (waap) mode.
             - Required when seg_mode is seg_mode_waap.
             - Whether this field is set or unset cannot change after creation.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     waf_mempool:
@@ -2543,7 +2543,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         accelerated_networking=dict(type='bool',),

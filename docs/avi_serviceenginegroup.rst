@@ -4791,7 +4791,7 @@ Parameters
                   - Allowed values are 60-86400.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Unit is sec.
@@ -4831,7 +4831,7 @@ Parameters
                   - Allowed values are 100-100000.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.1.3, 32.2.1.
+                  - Field introduced in 32.1.3.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -4965,7 +4965,7 @@ Parameters
                   - Effective only for log_streaming_protocol_tls and log_streaming_protocol_syslog_over_tls.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -4995,7 +4995,7 @@ Parameters
                   - It is a reference to an object of type sslkeyandcertificate.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -5024,7 +5024,7 @@ Parameters
                   - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_SKIP_HOSTNAME_VERIFY.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -9503,7 +9503,7 @@ Parameters
                   - Enum options - SEG_MODE_NORMAL, SEG_MODE_WAAP.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -11652,7 +11652,7 @@ Parameters
                   - Interval in seconds to poll vmotion notifications.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Unit is seconds.
@@ -12301,7 +12301,7 @@ Parameters
                   - Whether this field is set or unset cannot change after creation.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -12328,7 +12328,7 @@ Parameters
                   - Enum options - SE_SIZE_SMALL, SE_SIZE_MEDIUM, SE_SIZE_LARGE.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

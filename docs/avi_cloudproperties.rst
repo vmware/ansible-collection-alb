@@ -767,7 +767,7 @@ Parameters
                   - Project key for the ai assistant feature.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1190,7 +1190,7 @@ Parameters
                   - Deprecated  ssh-based deployment removed, ansible is now always used.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.2.
@@ -2157,7 +2157,7 @@ Parameters
                   - Allowed values are 1-10000.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2803,7 +2803,7 @@ Parameters
                   - Allowed values are 0-1000000.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -2842,7 +2842,7 @@ Parameters
                   - Allowed values are 1-1440.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Unit is min.
@@ -3436,7 +3436,7 @@ Parameters
                   - Changes require log subsystem restart to take effect.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3465,7 +3465,7 @@ Parameters
                   - Example  'waf_log' promotes the entire submessage; 'waf_log.status' promotes only the status sub-field.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3490,7 +3490,7 @@ Parameters
                   - Dot-notation field paths to promote for connectionlog.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3515,7 +3515,7 @@ Parameters
                   - Dot-notation field paths to promote for eventlog.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

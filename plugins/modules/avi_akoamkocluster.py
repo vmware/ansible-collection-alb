@@ -49,52 +49,52 @@ options:
     cloud_config_cksum:
         description:
             - Checksum of the cloud configuration for akoamkocluster object.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     cloud_ref:
         description:
             - Cloud reference uuid in avi controller.
             - It is a reference to an object of type cloud.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     cluster_type:
         description:
             - Type of operator - ako or amko.
             - Enum options - CLUSTER_TYPE_AKO, CLUSTER_TYPE_AMKO.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     created_by:
         description:
             - Ako/amko user identifier.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     deployment_info:
         description:
             - Deployment configuration information.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     metadata:
         description:
             - Additional cluster metadata.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:
         description:
             - Name of the ako/amko cluster.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
@@ -102,7 +102,7 @@ options:
         description:
             - Tenant that ako/amko cluster belongs to.
             - It is a reference to an object of type tenant.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
@@ -112,13 +112,13 @@ options:
     uuid:
         description:
             - Uuid of the ako/amko cluster.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     version_info:
         description:
             - Version information including kubernetes and ako/amko versions.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
 extends_documentation_fragment:
@@ -173,7 +173,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         cloud_config_cksum=dict(type='str',),

@@ -50,7 +50,7 @@ options:
         description:
             - Action to take on unspecified keys in an object.
             - Enum options - API_ACTION_INHERIT_FROM_API_POLICY, API_ACTION_PASS, API_ACTION_FLAG, API_ACTION_REJECT.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as API_ACTION_INHERIT_FROM_API_POLICY.
         type: str
@@ -58,27 +58,27 @@ options:
         description:
             - Type constraint for additional properties not defined in object_properties.
             - When set, unknown keys must conform to this schema.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     allow_additional_properties:
         description:
             - When true, object keys not defined in object_properties are permitted.
             - Corresponds to openapi additionalproperties  true.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool
     array_item_type:
         description:
             - If the type is array, this is the type of the array items.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     composite_types:
         description:
             - Sub-schemas for this composite type (oneof, anyof, or allof).
             - Each entry must be a schema_type_reference pointing to an apischema.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Maximum of 64 items allowed.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
@@ -86,45 +86,45 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Description of this api schema.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     discriminator:
         description:
             - Property used to distinguish between sub-schemas in oneof/anyof composite types.
             - Maps a discriminator property value to the matching schema.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     max_items:
         description:
             - Maximum number of items allowed in an array.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     min_items:
         description:
             - Minimum number of items allowed in an array.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
     name:
         description:
             - Name of this object, unique per tenant.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     object_properties:
         description:
             - List of properties for this object schema.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Maximum of 512 items allowed.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
@@ -133,14 +133,14 @@ options:
         description:
             - Indicates whether this schema was user-defined or imported from an openapi specification file.
             - Enum options - SOURCE_USER_DEFINED, SOURCE_API_SPEC, SOURCE_DISCOVERED.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as SOURCE_USER_DEFINED.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     type:
@@ -149,14 +149,14 @@ options:
             - Can be object, array, or a composite type (oneof, anyof, allof).
             - Enum options - SCHEMA_TYPE_UNDEFINED, SCHEMA_TYPE_STRING, SCHEMA_TYPE_INTEGER, SCHEMA_TYPE_NUMBER, SCHEMA_TYPE_BOOLEAN, SCHEMA_TYPE_NULL,
             - SCHEMA_TYPE_ARRAY, SCHEMA_TYPE_OBJECT, SCHEMA_TYPE_REFERENCE, SCHEMA_TYPE_ONE_OF, SCHEMA_TYPE_ALL_OF, SCHEMA_TYPE_ANY_OF.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     unique_items:
         description:
             - If true, all items in the array must be unique.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool
     url:
@@ -166,7 +166,7 @@ options:
     uuid:
         description:
             - The object uuid.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
@@ -221,7 +221,7 @@ def main():
         tenant=dict(type='str', default='admin'),
         password=dict(type='str', default='', no_log=True),
         controller=dict(type='str', default=''),
-        api_version=dict(type='str', default='20.1.7'),
+        api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         additional_object_key_action=dict(type='str', no_log=True,),

@@ -313,7 +313,7 @@ Parameters
                   - Deprecated; use tls_config.tls_mode = tls_mode_no_verify instead.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.17, 18.2.5.
@@ -403,7 +403,7 @@ Parameters
                   - It is a reference to an object of type sslkeyandcertificate.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.17, 18.2.5.
@@ -432,7 +432,7 @@ Parameters
                   - Deprecated; use tls_config.tls_mode instead (tls_mode_tls/tls_mode_mtls for strict verification, tls_mode_skip_hostname_verify otherwise).
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.2.1.
+                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 30.1.1.
@@ -504,7 +504,7 @@ Parameters
                   - Supersedes ssl_key_and_certificate_uuid, anon_auth, and strict_cert_verify, which are deprecated in favor of this field.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -535,7 +535,7 @@ Parameters
                   - It is a reference to an object of type sslkeyandcertificate.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -565,7 +565,7 @@ Parameters
                   - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_SKIP_HOSTNAME_VERIFY.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
