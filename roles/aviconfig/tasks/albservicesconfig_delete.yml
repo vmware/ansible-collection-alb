@@ -1,8 +1,8 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi ALBServicesConfig | Delete ALBServicesConfig
-  no_log: "{{ avi_role_config_log_mode | default(False) }}"
+  no_log: "{{ avi_role_config_log_mode | default('false') }}"
   vmware.alb.avi_albservicesconfig:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
@@ -23,7 +23,6 @@
     ip_reputation_config: "{{ item.ip_reputation_config | default(omit) }}"
     mode: "{{ item.mode | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    operations_config: "{{ item.operations_config | default(omit) }}"
     polling_interval: "{{ item.polling_interval | default(omit) }}"
     portal_url: "{{ item.portal_url | default(omit) }}"
     saas_licensing_config: "{{ item.saas_licensing_config | default(omit) }}"

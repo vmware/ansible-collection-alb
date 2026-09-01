@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -31,8 +31,8 @@ options:
         description:
             - Token which is used to login to pulse from controller for the specific user.
             - For generation of the jwt_token paste the related link in Incognito window to prevent IdP from considering any existing valid login session
-            - If controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ctrllogin
-            - If controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.avipulse.vmware.com/portal/controller/auth/ccctrllogin
+            - If controller is running >= 21.1.3 and is in ENTERPRISE tier then visit URL :https://portal.pulse.broadcom.com/portal/controller/auth/ctrllogin
+            - If controller is running >= 21.1.3 and is in SAAS tier then visit URL :https://portal.pulse.broadcom.com/portal/controller/auth/ccctrllogin
             - jwt_token is valid for 365 days.
         required: true
         type: str
@@ -70,37 +70,37 @@ options:
         description:
             - Enable to clean up the attached files.
         type: bool
-        default: False
+        default: false
     enable_appsignature_sync:
         description:
             - Enable to receive application specific signature updates.
         type: bool
-        default: False
+        default: false
     enable_ip_reputation:
         description:
             - Enable to receive IP reputation updates.
         type: bool
-        default: False
+        default: false
     enable_pulse_case_management:
         description:
             - Enable for pulse case management.
         type: bool
-        default: False
+        default: false
     enable_pulse_waf_management:
         description:
             - Enable to receive WAF CRS updates.
         type: bool
-        default: False
+        default: false
     enable_user_agent_db_sync:
         description:
             - Enable to receive bot management updates.
         type: bool
-        default: False
+        default: false
     use_tls:
         description:
             - Enable to allow secure end to end communication between controller and NSX alb services.
         type: bool
-        default: False
+        default: false
     waf_config:
         description:
             - Dictionary which is used to set the default values to be used for WAF management.
@@ -109,12 +109,12 @@ options:
                 description:
                     - Enable event notifications when new WAF signatures/CRS versions are available.
                 type: bool
-                default: False
+                default: false
             enable_auto_download_waf_signatures:
                 description:
                     - Enable to automatically download new WAF signatures/CRS version to the controller.
                 type: bool
-                default: False
+                default: false
         type: dict
     case_config:
         description:
@@ -124,21 +124,20 @@ options:
                 description:
                     - Enable pro-active support case creation when a controller failure occurs.
                 type: bool
-                default: False
+                default: false
             enable_auto_case_creation_on_se_failure:
                 description:
                     - Enable pro-active support case creation when a service engine failure occurs.
                 type: bool
-                default: False
+                default: false
         type: dict
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: localhost
-  collections:
-    - vmware.alb
+- name: Register for Avi Pulse
+  hosts: localhost
   vars:
     avi_credentials:
       username: "{{ username }}"
@@ -156,19 +155,19 @@ EXAMPLES = """
         email: 'user@gmail.com'
         account_id: '123456789'
         optins: present
-        enable_pulse_case_management: True
+        enable_pulse_case_management: true
         case_config:
-          enable_auto_case_creation_on_controller_failure: False
-          enable_auto_case_creation_on_se_failure: True
-        enable_pulse_waf_management: True
+          enable_auto_case_creation_on_controller_failure: false
+          enable_auto_case_creation_on_se_failure: true
+        enable_pulse_waf_management: true
         waf_config:
-          enable_waf_signatures_notifications: True
-          enable_auto_download_waf_signatures: True
-        enable_user_agent_db_sync: False
-        enable_ip_reputation: True
-        enable_appsignature_sync: True
+          enable_waf_signatures_notifications: true
+          enable_auto_download_waf_signatures: true
+        enable_user_agent_db_sync: false
+        enable_ip_reputation: true
+        enable_appsignature_sync: true
     - name: Sleep for 7 seconds and continue with play
-      wait_for:
+      ansible.builtin.wait_for:
         timeout: 7
       delegate_to: localhost
 """
@@ -184,8 +183,7 @@ import time
 from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, AviCheckModeResponse, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
+        avi_common_argument_spec, AviCheckModeResponse, avi_obj_cmp)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
     HAS_REQUESTS = True
@@ -220,9 +218,19 @@ def main():
         enable_user_agent_db_sync=dict(type='bool', default=False),
         use_tls=dict(type='bool', default=False),
         waf_config=dict(type='dict', options=waf_spec),
-        case_config=dict(type='dict', options=case_spec)
+        case_config=dict(type='dict', options=case_spec),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='30.2.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
         return module.fail_json(msg=(
@@ -247,7 +255,7 @@ def main():
     description = module.params.get('description', None)
     email = module.params.get('email', None)
     account_id = module.params.get('account_id', None)
-    portal_url = 'https://portal.avipulse.vmware.com'
+    portal_url = 'https://portal.pulse.broadcom.com'
     optins = module.params.get('optins', None)
     enable_cleanup_of_attached_files = module.params.get('enable_cleanup_of_attached_files', None)
     enable_appsignature_sync = module.params.get('enable_appsignature_sync', None)

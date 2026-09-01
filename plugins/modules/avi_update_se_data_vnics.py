@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 
@@ -38,15 +38,15 @@ extends_documentation_fragment:
 '''
 
 EXAMPLES = '''
-  - name: Update data vnics and vlan interfaces
-    vmware.alb.avi_update_se_data_vnics:
-      avi_credentials:
-        controller: "{{ controller }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-        api_version: "{{ api_version }}"
-      se_name: "10.10.20.30"
-      data_vnics_config:
+- name: Update data vnics and vlan interfaces
+  vmware.alb.avi_update_se_data_vnics:
+    avi_credentials:
+      controller: "{{ controller }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      api_version: "{{ api_version }}"
+    se_name: "10.10.20.30"
+    data_vnics_config:
       - if_name: "eth1"
         is_asm: false
         can_se_dp_takeover: true
@@ -100,8 +100,7 @@ obj:
 from ansible.module_utils.basic import AnsibleModule
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
-        avi_common_argument_spec, ansible_return, avi_ansible_api, avi_obj_cmp,
-        cleanup_absent_fields)
+        avi_common_argument_spec, avi_ansible_api)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
         ApiSession, AviCredentials)
     HAS_REQUESTS = True
@@ -113,8 +112,18 @@ def main():
     argument_specs = dict(
         data_vnics_config=dict(type='list', elements='dict',),
         se_name=dict(type='str', required=True),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='30.2.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

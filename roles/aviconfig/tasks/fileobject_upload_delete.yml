@@ -1,0 +1,35 @@
+# Automatically Generated File
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
+---
+- name: Avi FileObject Upload | Delete FileObject Upload
+  no_log: false
+  vmware.alb.avi_fileobject_upload:
+    controller: "{{ avi_controller | default(omit) }}"
+    username: "{{ avi_username | default(omit) }}"
+    password: "{{ avi_password | default(omit) }}"
+    tenant: "{{ item.tenant | default(omit) }}"
+    api_version: "{{ api_version | default(omit) }}"
+    avi_credentials: "{{ avi_credentials | default(omit) }}"
+    state: "{{ avi_role_state_mode }}"
+    api_context: "{{ avi_api_context | default(omit) }}"
+    name: "{{ item.name }}"
+    type: "{{ item.type }}"
+    file_path: "{{ item.file_path | default(omit) }}"
+    url: "{{ item.url | default(omit) }}"
+    update_interval: "{{ item.update_interval | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
+    is_federated: "{{ item.is_federated | default(omit) }}"
+    expires_at: "{{ item.expires_at | default(omit) }}"
+    gslb_geodb_format: "{{ item.gslb_geodb_format | default(omit) }}"
+    part: "{{ item.part | default(omit) }}"
+    size: "{{ item.size | default(omit) }}"
+    compressed: "{{ item.compressed | default(omit) }}"
+    read_only: "{{ item.read_only | default(omit) }}"
+    restrict_download: "{{ item.restrict_download | default(omit) }}"
+    timeout: "{{ item.timeout | default(omit) }}"
+  loop: "{{ avi_role_cfg.fileobject_upload | default([]) }}"
+  when:
+    - avi_role_state_mode == "absent"
+    - avi_config_state == "absent"
+    - item.state is defined
+    - item.state == "absent"

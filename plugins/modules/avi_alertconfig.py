@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_alertconfig
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of AlertConfig Avi RESTful Object
 description:
-    - This module is used to configure AlertConfig object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure AlertConfig object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -50,65 +50,63 @@ options:
         description:
             - The alert config will trigger the selected alert action, which can send notifications and execute a controlscript.
             - It is a reference to an object of type actiongroupconfig.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     alert_rule:
         description:
             - List of filters matching on events or client logs used for triggering alerts.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: dict
     autoscale_alert:
         description:
             - This alert config applies to auto scale alerts.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool
     category:
         description:
             - Determines whether an alert is raised immediately when event occurs (realtime) or after specified number of events occurs within rolling time
             - window.
             - Enum options - REALTIME, ROLLINGWINDOW, WATERMARK.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as REALTIME.
-        required: true
         type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - A custom description field.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     enabled:
         description:
             - Enable or disable this alert config from generating new alerts.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     expiry_time:
         description:
             - An alert is expired and deleted after the expiry time has elapsed.
-            - The original event triggering the alert remains in the event's log.
+            - The original event triggering the alert remains in the events log.
             - Allowed values are 1-31536000.
             - Unit is sec.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 86400.
         type: int
     name:
         description:
             - Name of the alert configuration.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     obj_uuid:
         description:
-            - Uuid of the resource for which alert was raised.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Instance of the resource for which alert was raised.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     object_type:
         description:
@@ -117,42 +115,42 @@ options:
             - Enum options - VIRTUALSERVICE, POOL, HEALTHMONITOR, NETWORKPROFILE, APPLICATIONPROFILE, HTTPPOLICYSET, DNSPOLICY, SECURITYPOLICY, IPADDRGROUP,
             - STRINGGROUP, SSLPROFILE, SSLKEYANDCERTIFICATE, NETWORKSECURITYPOLICY, APPLICATIONPERSISTENCEPROFILE, ANALYTICSPROFILE, VSDATASCRIPTSET, TENANT,
             - PKIPROFILE, AUTHPROFILE, CLOUD...
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     recommendation:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     rolling_window:
         description:
             - Only if the number of events is reached or exceeded within the time window will an alert be generated.
             - Allowed values are 1-31536000.
             - Unit is sec.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 300.
         type: int
     source:
         description:
             - Signifies system events or the type of client logsused in this alert configuration.
             - Enum options - CONN_LOGS, APP_LOGS, EVENT_LOGS, METRICS.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     summary:
         description:
             - Summary of reason why alert is generated.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     threshold:
         description:
             - An alert is created only when the number of events meets or exceeds this number within the chosen time frame.
             - Allowed values are 1-65536.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
     throttle:
@@ -160,7 +158,7 @@ options:
             - Alerts are suppressed (throttled) for this duration of time since the last alert was raised for this alert config.
             - Allowed values are 0-31536000.
             - Unit is sec.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 600.
         type: int
     url:
@@ -169,26 +167,27 @@ options:
         type: str
     uuid:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create AlertConfig object
-  vmware.alb.avi_alertconfig:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_alertconfig
+  tasks:
+    - name: Example to create AlertConfig object
+      vmware.alb.avi_alertconfig:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_alertconfig
 """
 
 RETURN = '''
@@ -216,10 +215,19 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='30.2.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         action_group_ref=dict(type='str',),
         alert_rule=dict(type='dict', required=True),
         autoscale_alert=dict(type='bool',),
-        category=dict(type='str', required=True),
+        category=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         enabled=dict(type='bool',),
@@ -237,7 +245,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

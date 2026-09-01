@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_webapput
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of WebappUT Avi RESTful Object
 description:
-    - This module is used to configure WebappUT object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure WebappUT object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -46,91 +46,97 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    cloud_ref:
+        description:
+            - Cloud of the webapput object-level0.
+            - It is a reference to an object of type cloud.
+            - Field introduced in 30.2.2.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    default_fifth_int:
+        description:
+            - Default int32 field.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
     default_first_int:
         description:
             - Default uint64 field.
             - Field introduced in 30.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
-    default_second_int:
+    default_fourth_int:
         description:
-            - Default int64 field.
-            - Field introduced in 30.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 2.
+            - Default int32 field.
+            - Field introduced in 31.2.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 4.
         type: int
     default_string:
         description:
             - Default string field.
             - Field introduced in 30.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as default string.
         type: str
-    default_third_int:
-        description:
-            - Default int32 field.
-            - Field introduced in 30.1.2.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as 3.
-        type: int
     mandatory_test:
         description:
             - Optional message for nested f_mandatory test cases defined at level1.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     mandatory_tests:
         description:
             - Repeated message for nested f_mandatory test cases-level1.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Name of the webapput object-level0.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     sensitive_test:
         description:
             - Optional message for nested f_sensitive test cases defined at level1.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     sensitive_tests:
         description:
             - Repeated message for nested f_sensitive test cases-level1.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     skip_optional_check_tests:
         description:
             - Optional bool for nested skip_optional_check test cases-level1.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool
     string_length_test:
         description:
             - Optional message for nested  max string length test cases.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     string_length_tests:
         description:
             - Repeated message for nested  max string length test cases.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     tenant_ref:
@@ -138,20 +144,20 @@ options:
             - Tenant of the webapput object-level0.
             - It is a reference to an object of type tenant.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     test_sensitive_string:
         description:
             - The string for sensitive (secret) field.
             - Object-level0.
             - Field introduced in 22.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     test_string:
         description:
             - The maximum string length.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -161,26 +167,27 @@ options:
         description:
             - Uuid of the webapput object-level0.
             - Field introduced in 21.1.5, 22.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create WebappUT object
-  vmware.alb.avi_webapput:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_webapput
+  tasks:
+    - name: Example to create WebappUT object
+      vmware.alb.avi_webapput:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_webapput
 """
 
 RETURN = '''
@@ -208,11 +215,21 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='30.2.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
+        cloud_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
+        default_fifth_int=dict(type='int',),
         default_first_int=dict(type='int',),
-        default_second_int=dict(type='int',),
+        default_fourth_int=dict(type='int',),
         default_string=dict(type='str',),
-        default_third_int=dict(type='int',),
         mandatory_test=dict(type='dict',),
         mandatory_tests=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
@@ -227,7 +244,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -235,7 +253,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'webapput',
-                           ['test_sensitive_string'])
+                           {'test_sensitive_string'})
 
 
 if __name__ == '__main__':

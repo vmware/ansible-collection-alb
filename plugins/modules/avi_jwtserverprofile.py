@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_jwtserverprofile
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of JWTServerProfile Avi RESTful Object
 description:
-    - This module is used to configure JWTServerProfile object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure JWTServerProfile object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -46,61 +46,80 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    allowed_algorithms:
+        description:
+            - Allowed signing algorithms when the matched jwk omits the alg field (rfc 7517 §4.4).
+            - If the jwk carries alg, that value always wins and this list is ignored.
+            - An empty list rejects all such tokens (secure default).
+            - Only applicable when jwt profile type is client_auth.
+            - Enum options - JWS_ALG_RS256, JWS_ALG_RS384, JWS_ALG_RS512, JWS_ALG_PS256, JWS_ALG_PS384, JWS_ALG_PS512, JWS_ALG_ES256, JWS_ALG_ES384,
+            - JWS_ALG_ES512.
+            - Field introduced in 32.1.4.
+            - Maximum of 9 items allowed.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     controller_internal_auth:
         description:
             - Jwt auth configuration for profile_type controller_internal_auth.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     is_federated:
         description:
-            - This field describes the object's replication scope.
+            - This field describes the objects replication scope.
             - If the field is set to false, then the object is visible within the controller-cluster.
             - If the field is set to true, then the object is replicated across the federation.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     issuer:
         description:
             - Uniquely identifiable name of the token issuer, only allowed with profile_type client_auth.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     jwks_keys:
         description:
             - Jwks key set used for validating the jwt, only allowed with profile_type client_auth.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     jwt_profile_type:
         description:
             - Type of jwt server profile which defines the usage type.
             - Enum options - CLIENT_AUTH, CONTROLLER_INTERNAL_AUTH.
             - Field introduced in 20.1.6.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as CLIENT_AUTH.
         type: str
     name:
         description:
             - Name of the jwt profile.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
+    protected_resource_config:
+        description:
+            - Oauth 2.0 protected resource metadata configuration (rfc 9728).
+            - Only applicable when jwt_profile_type is client_auth.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     tenant_ref:
         description:
             - Uuid of the tenant.
             - It is a reference to an object of type tenant.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -110,26 +129,27 @@ options:
         description:
             - Uuid of the jwtprofile.
             - Field introduced in 20.1.3.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create JWTServerProfile object
-  vmware.alb.avi_jwtserverprofile:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_jwtserverprofile
+  tasks:
+    - name: Example to create JWTServerProfile object
+      vmware.alb.avi_jwtserverprofile:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_jwtserverprofile
 """
 
 RETURN = '''
@@ -157,18 +177,30 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='30.2.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
+        allowed_algorithms=dict(type='list', elements='str',),
         configpb_attributes=dict(type='dict',),
         controller_internal_auth=dict(type='dict',),
         is_federated=dict(type='bool',),
         issuer=dict(type='str',),
-        jwks_keys=dict(type='str',),
+        jwks_keys=dict(type='str', no_log=True,),
         jwt_profile_type=dict(type='str',),
         name=dict(type='str', required=True),
+        protected_resource_config=dict(type='dict',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
@@ -176,7 +208,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'jwtserverprofile',
-                           set())
+                           {'jwks_keys'})
 
 
 if __name__ == '__main__':
