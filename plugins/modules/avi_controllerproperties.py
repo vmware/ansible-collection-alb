@@ -1199,7 +1199,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'portal_token', 'cc_user_password_expiry_days', 'ai_assistant_project_key'})
+                           {'cc_user_password_expiry_days', 'portal_token', 'ai_assistant_project_key'})
 
 
 if __name__ == '__main__':
