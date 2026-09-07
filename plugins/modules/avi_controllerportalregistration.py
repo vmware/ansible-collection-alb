@@ -48,18 +48,18 @@ options:
         type: str
     asset:
         description:
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:
         description:
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     portal_auth:
         description:
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     site_info:
@@ -71,7 +71,7 @@ options:
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
@@ -80,7 +80,7 @@ options:
         type: str
     uuid:
         description:
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:

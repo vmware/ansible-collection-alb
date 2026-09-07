@@ -5746,10 +5746,10 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp), basic (allowed values-
+                  - Allowed in essentials (allowed values- health_monitor_ping, health_monitor_tcp, health_monitor_udp), basic (allowed values- health_monitor_ping,
                 </div>
                                 <div style="font-size: small">
-                  - health_monitor_ping,health_monitor_tcp,health_monitor_udp,health_monitor_http,health_monitor_https) edition.
+                  - health_monitor_tcp, health_monitor_udp, health_monitor_http, ...) edition.
                 </div>
                                             </td>
     </tr>

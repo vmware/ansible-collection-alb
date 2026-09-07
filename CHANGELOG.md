@@ -16,6 +16,13 @@
 - Asset updates by contributors through automated collection engineering workflows
 - Ansible sanity issue fixes and collection stabilization improvements
 
+## 31.2.2
+- No functional changes; version bump only.
+
+## 31.1.2
+- Added the installation of bs4 as a requirement to fix failure of auto… sync pr
+- Fixes ansible module doc
+
 ## 30.2.6
 
 ### Enhancements

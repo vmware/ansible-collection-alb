@@ -60,13 +60,13 @@ options:
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     test_se_datastore_level_3_refs:
         description:
             - It is a reference to an object of type testsedatastorelevel3.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str

@@ -2399,7 +2399,7 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- cloud_none,cloud_vcenter), basic (allowed values- cloud_none,cloud_nsxt) edition.
+                  - Allowed in essentials (allowed values- cloud_none, cloud_vcenter), basic (allowed values- cloud_none, cloud_nsxt) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as CLOUD_NONE.
@@ -10958,7 +10958,7 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- vs_type_normal), basic (allowed values- vs_type_normal,vs_type_vh_parent) edition.
+                  - Allowed in essentials (allowed values- vs_type_normal), basic (allowed values- vs_type_normal, vs_type_vh_parent) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as VS_TYPE_NORMAL.
@@ -13851,7 +13851,7 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in basic (allowed values- vs_type_vh_sni,vs_type_vh_enhanced) edition.
+                  - Allowed in basic (allowed values- vs_type_vh_sni, vs_type_vh_enhanced) edition.
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as VS_TYPE_VH_SNI.

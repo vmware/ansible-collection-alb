@@ -2632,13 +2632,10 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values-
+                  - Allowed in essentials (allowed values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...), basic (allowed
                 </div>
                                 <div style="font-size: small">
-                  - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert), basic (allowed values-
-                </div>
-                                <div style="font-size: small">
-                  - auth_profile_ldap,auth_profile_tacacs_plus,auth_profile_saml,auth_profile_jwt,auth_profile_oauth,auth_profile_client_cert) edition.
+                  - values- auth_profile_ldap, auth_profile_tacacs_plus, auth_profile_saml, auth_profile_jwt, ...) edition.
                 </div>
                                             </td>
     </tr>

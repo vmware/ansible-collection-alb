@@ -693,6 +693,7 @@ def main():
     ova_file = module.params['con_ova_path']
     quoted_vcenter_user = quote(module.params['vcenter_user'])
     quoted_vcenter_pass = quote(module.params['vcenter_password'])
+    module.no_log_values.add(quoted_vcenter_pass)
     if is_ipv6_address(module.params['vcenter_host']):
         vi_string = 'vi://%s:%s@[%s]' % (
             quoted_vcenter_user, quoted_vcenter_pass,
