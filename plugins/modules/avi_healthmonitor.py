@@ -274,8 +274,8 @@ options:
             - HEALTH_MONITOR_POP3, HEALTH_MONITOR_POP3S, HEALTH_MONITOR_IMAP, HEALTH_MONITOR_IMAPS, HEALTH_MONITOR_FTP, HEALTH_MONITOR_FTPS,
             - HEALTH_MONITOR_LDAP, HEALTH_MONITOR_LDAPS...
             - Allowed with any value in enterprise, enterprise with cloud services edition.
-            - Allowed in essentials (allowed values- health_monitor_ping,health_monitor_tcp,health_monitor_udp), basic (allowed values-
-            - health_monitor_ping,health_monitor_tcp,health_monitor_udp,health_monitor_http,health_monitor_https) edition.
+            - Allowed in essentials (allowed values- health_monitor_ping, health_monitor_tcp, health_monitor_udp), basic (allowed values- health_monitor_ping,
+            - health_monitor_tcp, health_monitor_udp, health_monitor_http, ...) edition.
         required: true
         type: str
     udp_monitor:

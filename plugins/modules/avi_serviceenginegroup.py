@@ -1610,8 +1610,7 @@ extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
-EXAMPLES = \
-    """
+EXAMPLES = """
 - name: Example to create ServiceEngineGroup object
   hosts: localhost
   vars:

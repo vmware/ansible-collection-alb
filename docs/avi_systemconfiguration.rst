@@ -1630,6 +1630,37 @@ Parameters
             
                                                 <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>allow_legacy_sha1_ntp_auth</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Allow ntp authentication using legacy md5 or sha1 algorithms.
+                </div>
+                                <div style="font-size: small">
+                  - When enabled, configuring md5 or sha1 ntp keys is permitted but a warning event is generated in the controller ui.
+                </div>
+                                <div style="font-size: small">
+                  - When disabled (default), only sha256 or stronger is accepted and configuring md5 or sha1 results in an api error.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>avi_email_login_password</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -1651,6 +1682,85 @@ Parameters
                                             </td>
     </tr>
                                             <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>certificate_security_policy</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Certificate security policy for the system.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>blocked_certificate_signature_algorithms</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Signature algorithm families whose certificates are blocked on new imports.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - SIGNATURE_ALGORITHM_MD5, SIGNATURE_ALGORITHM_SHA1, SIGNATURE_ALGORITHM_SHA256, SIGNATURE_ALGORITHM_SHA384,
+                </div>
+                                <div style="font-size: small">
+                  - SIGNATURE_ALGORITHM_SHA512, SIGNATURE_ALGORITHM_ED25519.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>blocked_ocsp_request_hash_algorithms</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Hash algorithms not allowed for ocsp requests.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - OCSP_HASH_SHA1, OCSP_HASH_SHA256, OCSP_HASH_SHA384, OCSP_HASH_SHA512.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.3.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>common_criteria_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -1827,7 +1937,7 @@ Parameters
                   - Enum options - THRESHOLD_TYPE_STATIC, SE_CPU_THRESHOLD, SE_MEM_THRESHOLD, SE_DISK_THRESHOLD, CONTROLLER_CPU_THRESHOLD, CONTROLLER_MEM_THRESHOLD,
                 </div>
                                 <div style="font-size: small">
-                  - CONTROLLER_DISK_THRESHOLD.
+                  - CONTROLLER_DISK_THRESHOLD, SE_SHM_MEM_THRESHOLD, SE_CONN_MEM_THRESHOLD.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.3.
@@ -5262,16 +5372,19 @@ Parameters
                   - Message digest algorithm used for ntp authentication.
                 </div>
                                 <div style="font-size: small">
-                  - Default is ntp_auth_algorithm_md5.
+                  - Default is ntp_auth_algorithm_sha256.
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - NTP_AUTH_ALGORITHM_MD5, NTP_AUTH_ALGORITHM_SHA1.
+                  - Use of md5 or sha1 requires allow_legacy_sha1_ntp_auth to be enabled in systemconfiguration.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - NTP_AUTH_ALGORITHM_MD5, NTP_AUTH_ALGORITHM_SHA1, NTP_AUTH_ALGORITHM_SHA256.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as NTP_AUTH_ALGORITHM_MD5.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as NTP_AUTH_ALGORITHM_SHA256.
                 </div>
                                             </td>
     </tr>
@@ -5803,58 +5916,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as False.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>minimum_password_length</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Minimum password length for user accounts.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 6-32.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 32.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 20.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>password_strength_check</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Strict checking of password strength for user accounts.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 32.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>

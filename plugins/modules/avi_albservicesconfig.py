@@ -111,14 +111,14 @@ options:
         description:
             - Time interval in minutes.
             - Allowed values are 5-60.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10.
         type: int
     portal_url:
         description:
             - The fqdn or ip address of the pulse cloud services.
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
@@ -182,7 +182,7 @@ options:
         type: dict
     uuid:
         description:
-            - Field introduced in 20.1.7.
+            - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     waf_config:

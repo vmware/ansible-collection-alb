@@ -18766,10 +18766,10 @@ Parameters
                   - Allowed with any value in enterprise, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed in essentials (allowed values- application_profile_type_l4), basic (allowed values-
+                  - Allowed in essentials (allowed values- application_profile_type_l4), basic (allowed values- application_profile_type_l4,
                 </div>
                                 <div style="font-size: small">
-                  - application_profile_type_l4,application_profile_type_http) edition.
+                  - application_profile_type_http) edition.
                 </div>
                                             </td>
     </tr>
