@@ -1960,6 +1960,50 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
+    audit_qat_huge_pages:
+        description:
+            - This knob enables audit of qat hugepages.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    control_qat_huge_pages:
+        description:
+            - This knob enables control of qat hugepages.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    qat_hpage_mem_per_process:
+        description:
+            - This knob is used to set the number of qat hugepages.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as QAT_HPAGE_MEM_16MB.
+        type: str
+    optimistic_placement:
+        description:
+            - Allows packed placement on existing ses with asynchronous spinning up of buffer ses.
+            - Used in packed placement with buffer ses.
+            - Field introduced in 32.1.1.
+            - Allowed with any value in enterprise, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    vmotion_notification_poll_interval:
+        description:
+            - Interval in seconds to poll vmotion notifications.
+            - Field introduced in 32.1.3.
+            - Unit is sec.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 5.
+        type: int
+    ip_advertisement_profile:
+        description:
+            - Configuration for periodic ip advertisement (gratarp for ipv4, neighbor advertisement for ipv6).
+            - When configured, the specified ip types will send periodic advertisements to maintain arp/ndp cache
+              entries on network devices.
+            - Enable_gratarp_permanent independently controls vip_ip.
+            - Field introduced in 32.1.3.
+        type: dict
     se_kni_burst_factor:
         description:
             - This knob controls the resource availability and burst size used between se datapath and kni.
@@ -2767,6 +2811,12 @@ def main():
         se_group_analytics_policy=dict(type='dict'),
         se_ip_encap_ipc=dict(type='int'),
         se_kernel_rss=dict(type='bool'),
+        audit_qat_huge_pages=dict(type='bool'),
+        control_qat_huge_pages=dict(type='bool'),
+        qat_hpage_mem_per_process=dict(type='str'),
+        optimistic_placement=dict(type='bool'),
+        vmotion_notification_poll_interval=dict(type='int'),
+        ip_advertisement_profile=dict(type='dict'),
         se_kni_burst_factor=dict(type='int'),
         se_l3_encap_ipc=dict(type='int'),
         se_log_buffer_app_blocking_dequeue=dict(type='bool'),
