@@ -1,5 +1,5 @@
 # Automatically Generated File
-# Copyright 2021 VMware, Inc. All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
 - name: Avi VirtualService | Create or Update VirtualService
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
@@ -19,6 +19,8 @@
     allow_invalid_client_cert: "{{ item.allow_invalid_client_cert | default(omit) }}"
     analytics_policy: "{{ item.analytics_policy | default(omit) }}"
     analytics_profile_ref: "{{ item.analytics_profile_ref | default(omit) }}"
+    api_policy_ref: "{{ item.api_policy_ref | default(omit) }}"
+    application_insights_ref: "{{ item.application_insights_ref | default(omit) }}"
     application_profile_ref: "{{ item.application_profile_ref | default(omit) }}"
     azure_availability_set: "{{ item.azure_availability_set | default(omit) }}"
     bgp_local_preference: "{{ item.bgp_local_preference | default(omit) }}"
@@ -55,6 +57,7 @@
     ign_pool_net_reach: "{{ item.ign_pool_net_reach | default(omit) }}"
     jwt_config: "{{ item.jwt_config | default(omit) }}"
     l4_policies: "{{ item.l4_policies | default(omit) }}"
+    label_profile_ref: "{{ item.label_profile_ref | default(omit) }}"
     ldap_vs_config: "{{ item.ldap_vs_config | default(omit) }}"
     limit_doser: "{{ item.limit_doser | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
@@ -64,11 +67,11 @@
     name: "{{ item.name | default(omit) }}"
     network_profile_ref: "{{ item.network_profile_ref | default(omit) }}"
     network_security_policy_ref: "{{ item.network_security_policy_ref | default(omit) }}"
-    nsx_securitygroup: "{{ item.nsx_securitygroup | default(omit) }}"
     oauth_vs_config: "{{ item.oauth_vs_config | default(omit) }}"
     performance_limits: "{{ item.performance_limits | default(omit) }}"
     pool_group_ref: "{{ item.pool_group_ref | default(omit) }}"
     pool_ref: "{{ item.pool_ref | default(omit) }}"
+    positive_security_ref: "{{ item.positive_security_ref | default(omit) }}"
     remove_listening_port_on_vs_down: "{{ item.remove_listening_port_on_vs_down | default(omit) }}"
     requests_rate_limit: "{{ item.requests_rate_limit | default(omit) }}"
     revoke_vip_route: "{{ item.revoke_vip_route | default(omit) }}"
@@ -80,6 +83,7 @@
     service_metadata: "{{ item.service_metadata | default(omit) }}"
     service_pool_select: "{{ item.service_pool_select | default(omit) }}"
     services: "{{ item.services | default(omit) }}"
+    session_key_forwarder_ref: "{{ item.session_key_forwarder_ref | default(omit) }}"
     sideband_profile: "{{ item.sideband_profile | default(omit) }}"
     snat_ip: "{{ item.snat_ip | default(omit) }}"
     snat_ip6_addresses: "{{ item.snat_ip6_addresses | default(omit) }}"

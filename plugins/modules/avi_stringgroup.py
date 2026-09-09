@@ -2,7 +2,7 @@
 # module_check: supported
 
 # Avi Version: 17.1.1
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -15,11 +15,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_stringgroup
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of StringGroup Avi RESTful Object
 description:
-    - This module is used to configure StringGroup object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure StringGroup object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -51,52 +51,49 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 21.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     kv:
         description:
             - Configure key value in the string group.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     longest_match:
         description:
             - Enable the longest match, default is the shortest match.
             - Field introduced in 18.2.8.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
     markers:
         description:
             - List of labels to be used for granular rbac.
             - Field introduced in 20.1.5.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - Name of the string group.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     type:
         description:
             - Type of stringgroup.
             - Enum options - SG_TYPE_STRING, SG_TYPE_KEYVAL.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as SG_TYPE_STRING.
-        required: true
         type: str
     url:
         description:
@@ -105,37 +102,38 @@ options:
     uuid:
         description:
             - Uuid of the string group.
-            - Allowed in enterprise edition with any value, essentials, basic, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Create a string group configuration
-  vmware.alb.avi_stringgroup:
-    avi_credentials: "{{ avi_credentials }}"
-    kv:
-    - key: text/html
-    - key: text/xml
-    - key: text/plain
-    - key: text/css
-    - key: text/javascript
-    - key: application/javascript
-    - key: application/x-javascript
-    - key: application/xml
-    - key: application/pdf
-    name: System-Compressible-Content-Types
-    tenant_ref: /api/tenant?name=admin
-    type: SG_TYPE_STRING
+  tasks:
+    - name: Create a string group configuration
+      vmware.alb.avi_stringgroup:
+        avi_credentials: "{{ avi_credentials }}"
+        kv:
+          - key: text/html
+          - key: text/xml
+          - key: text/plain
+          - key: text/css
+          - key: text/javascript
+          - key: application/javascript
+          - key: application/x-javascript
+          - key: application/xml
+          - key: application/pdf
+        name: System-Compressible-Content-Types
+        tenant_ref: /api/tenant?name=admin
+        type: SG_TYPE_STRING
 """
 
 RETURN = '''
@@ -163,6 +161,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='30.2.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         configpb_attributes=dict(type='dict',),
         description=dict(type='str',),
         kv=dict(type='list', elements='dict',),
@@ -170,11 +177,12 @@ def main():
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
         tenant_ref=dict(type='str',),
-        type=dict(type='str', required=True),
+        type=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:

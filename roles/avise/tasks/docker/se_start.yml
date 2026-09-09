@@ -1,36 +1,46 @@
 ---
 - name: Checking minimum requirements
-  include: requirements.yml
+  ansible.builtin.include_tasks: requirements.yml
 
-- name: Avi SE | Docker | Check if specified image already exists.
-  shell: "{{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l"
+- name: Avi SE | Docker | Check if specified image already exists
+  become: true
+  ansible.builtin.shell: >
+    set -o pipefail && \
+    {{ se_deploy_type }} images | grep avinetworks/se | grep {{ se_version }} | wc -l
+  args:
+    executable: /bin/bash
   changed_when: false
+  failed_when: false
   register: se_docker_match
-  become: true
 
-- block:
-  - name: Copy SE image
-    copy: src={{ se_package_source }} dest={{ se_package_dest }}
-  - name: Load docker image
-    command: "{{ se_deploy_type }} load -i {{ se_package_dest }}"
-  when: se_docker_match.stdout|int != 1
+- name: Copy SE image
+  when: se_docker_match.stdout | int != 1
   become: true
+  block:
+    - name: Copy SE image
+      ansible.builtin.copy:
+        src: "{{ se_package_source }}"
+        dest: "{{ se_package_dest }}"
+        mode: "0640"
+        owner: root
+        group: root
+    - name: Load docker image
+      ansible.builtin.command: "{{ se_deploy_type }} load -i {{ se_package_dest }}"
+      changed_when: false
 
-- block:
-  - name: Enable Podman Socket
-    command: "systemctl enable podman.socket"
+- name: Enable Podman Socket
   when: se_deploy_type == "podman"
   become: true
-
-- block:
-  - name: Start Podman Socket
-    command: "systemctl start podman.socket"
-  when: se_deploy_type == "podman"
-  become: true
+  block:
+    - name: Enable Podman Socket
+      ansible.builtin.systemd:
+        name: podman.socket
+        enabled: true
+        state: started
 
 - name: Avi SE | Install DPDK
-  include: dpdk.yml
+  ansible.builtin.include_tasks: dpdk.yml
   when: se_dpdk
 
 - name: Avi SE | Install the Avi SE service
-  include: services/install.yml
+  ansible.builtin.include_tasks: services/install.yml

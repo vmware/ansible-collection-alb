@@ -40,7 +40,7 @@ options:
         description:
             - Avi API version of to use for Avi API and objects.
         type: str
-        default: 18.2.6
+        default: 30.2.1
     avi_credentials:
         description:
             - Avi Credentials dictionary which can be used in lieu of enumerating Avi Controller login details.
@@ -61,7 +61,7 @@ options:
                 description:
                   - Avi controller version
                 type: str
-                default: 18.2.6
+                default: 30.2.1
             tenant:
                 description:
                   - Avi controller tenant
@@ -104,6 +104,14 @@ options:
             idp_class:
                 description:
                   - Specifies whether it is an Avi controller or Saas controller
+                type: str
+            ssl_cert:
+                description:
+                  - Specifies the ssl cert
+                type: str
+            ssl_key:
+                description:
+                  - Specifies the ssl key
                 type: str
         type: dict
     api_context:

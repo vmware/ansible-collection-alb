@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Copyright 2021 VMware, Inc.  All rights reserved. VMware Confidential
+# Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
 from __future__ import (absolute_import, division, print_function)
@@ -14,11 +14,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: avi_tenantsystemconfiguration
-author: Gaurav Rastogi (@grastogi23) <grastogi@avinetworks.com>
+author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
 short_description: Module for setup of TenantSystemConfiguration Avi RESTful Object
 description:
-    - This module is used to configure TenantSystemConfiguration object
-    - more examples at U(https://github.com/avinetworks/devops)
+    - This module is used to configure TenantSystemConfiguration object.
+    - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
         description:
@@ -50,22 +50,21 @@ options:
         description:
             - Protobuf versioning for config pbs.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, essentials edition with any value, basic edition with any value, enterprise with cloud services
-            - edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     dns_virtualservice_refs:
         description:
             - Dns virtual services hosting fqdn records for applications configured within this tenant.
             - It is a reference to an object of type virtualservice.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
     name:
         description:
             - Name of the tenant system configuration object.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
     tenant_ref:
@@ -73,7 +72,7 @@ options:
             - Unique identifier of the tenant that this object belongs to.
             - It is a reference to an object of type tenant.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
         description:
@@ -83,26 +82,27 @@ options:
         description:
             - Tenant system configuration uuid.
             - Field introduced in 30.1.1.
-            - Allowed in enterprise edition with any value, enterprise with cloud services edition.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
 
 EXAMPLES = """
-- hosts: all
+- name: Deploy Avi Controller
+  hosts: all
   vars:
     avi_credentials:
       username: "admin"
       password: "something"
       controller: "192.168.15.18"
       api_version: "21.1.1"
-
-- name: Example to create TenantSystemConfiguration object
-  vmware.alb.avi_tenantsystemconfiguration:
-    avi_credentials: "{{ avi_credentials }}"
-    state: present
-    name: sample_tenantsystemconfiguration
+  tasks:
+    - name: Example to create TenantSystemConfiguration object
+      vmware.alb.avi_tenantsystemconfiguration:
+        avi_credentials: "{{ avi_credentials }}"
+        state: present
+        name: sample_tenantsystemconfiguration
 """
 
 RETURN = '''
@@ -130,6 +130,15 @@ def main():
         avi_api_patch_op=dict(choices=['add', 'replace', 'delete', 'remove']),
         avi_patch_path=dict(type='str',),
         avi_patch_value=dict(type='str',),
+        api_context=dict(type='dict',),
+        username=dict(type='str', default=''),
+        tenant_uuid=dict(type='str', default=''),
+        tenant=dict(type='str', default='admin'),
+        password=dict(type='str', default='', no_log=True),
+        controller=dict(type='str', default=''),
+        api_version=dict(type='str', default='30.2.1'),
+        avi_credentials=dict(type='dict',),
+        avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         configpb_attributes=dict(type='dict',),
         dns_virtualservice_refs=dict(type='list', elements='str',),
         name=dict(type='str', required=True),
@@ -137,7 +146,8 @@ def main():
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
-    argument_specs.update(avi_common_argument_spec())
+    if HAS_REQUESTS:
+        argument_specs.update(avi_common_argument_spec())
     module = AnsibleModule(
         argument_spec=argument_specs, supports_check_mode=True)
     if not HAS_REQUESTS:
