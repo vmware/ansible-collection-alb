@@ -170,8 +170,8 @@ options:
         type: dict
     gslb_client_cert_ref:
         description:
-            - Sslkeyandcertificate used as the client certificate for gslb site-to-site mutual tls (mtls) authentication between controllers.
-            - Required when tls_mode is set to mutual tls in gslb site-to-site configuration.
+            - Client certificate for mutual tls authentication.
+            - Required when tls_mode is tls_mode_mtls.
             - It is a reference to an object of type sslkeyandcertificate.
             - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -469,7 +469,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           {'rekey_time_limit', 'rekey_volume_limit', 'host_key_algorithm_exclude', 'avi_email_login_password'})
+                           {'avi_email_login_password', 'rekey_volume_limit', 'host_key_algorithm_exclude', 'rekey_time_limit'})
 
 
 if __name__ == '__main__':

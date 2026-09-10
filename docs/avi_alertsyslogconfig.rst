@@ -307,10 +307,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Skip server certificate verification when connecting to the syslog server (anonymous authentication).
+                  - Enable anonymous authentication of syslog serverwhich will disable server certificate authentication.
                 </div>
                                 <div style="font-size: small">
-                  - Deprecated, use the tls_mode field of tls_config instead, set to tls_mode_no_verify.
+                  - Deprecated; use tls_config.tls_mode = tls_mode_no_verify instead.
                 </div>
                                 <div style="font-size: small">
                   - Field deprecated in 32.1.4.
@@ -365,16 +365,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Select the pkiprofile containing a ca or list of ca chains which will validate the certificate of the syslog server.
+                  - Select the pkiprofile containing a ca or list of ca chainswhich will validate the certificate of the syslog server.
                 </div>
                                 <div style="font-size: small">
-                  - When unset, the trust store configured in system configuration is used instead.
+                  - When unset, systemconfiguration.truststore_pkiprofile_uuid is used instead.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type pkiprofile.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 17.2.17, 18.2.5.
@@ -397,10 +394,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Certificate and key used to authenticate the controller to the syslog server over tls.
+                  - Select a certificate and key which will be used to authenticate to the syslog server.
                 </div>
                                 <div style="font-size: small">
-                  - Deprecated, use the client_cert_uuid field of tls_config instead.
+                  - Deprecated; use tls_config.client_cert_uuid instead.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type sslkeyandcertificate.
@@ -429,10 +426,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Enable strict verification of the certificate presented by the syslog server.
+                  - Strict verificiation of certificate given by the server.
                 </div>
                                 <div style="font-size: small">
-                  - Deprecated, use the tls_mode field of tls_config instead (tls_mode_tls or tls_mode_mtls).
+                  - Deprecated; use tls_config.tls_mode instead (tls_mode_tls/tls_mode_mtls for strict verification, tls_mode_skip_hostname_verify otherwise).
                 </div>
                                 <div style="font-size: small">
                   - Field deprecated in 32.1.4.
@@ -549,69 +546,6 @@ Parameters
                             <td class="elbow-placeholder"></td>
                                     <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>pki_profile_ref</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Pki profile used to validate the server certificate validation in one-way tls and mutual tls.
-                </div>
-                                <div style="font-size: small">
-                  - If this field is not set, the pki profile from system configuration will be used.
-                </div>
-                                <div style="font-size: small">
-                  - Effective when tls mode is one-way tls or mutual tls.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type pkiprofile.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 32.1.4.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>skip_hostname_verification</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">bool</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Skip hostname verification on the server certificate, chain validation still applies.
-                </div>
-                                <div style="font-size: small">
-                  - Effective when tls mode is one-way tls or mutual tls.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 32.1.4.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                            <td class="elbow-placeholder"></td>
-                                    <td colspan="5">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tls_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -622,13 +556,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - How tls is used for this outbound connection.
+                  - Select how tls is used to establish a secure outbound connection.
                 </div>
                                 <div style="font-size: small">
-                  - Certificate validation uses the truststore pki profile (default  truststore pki profile from system configuration).
+                  - Certificate validation uses the trust store configured in system configuration (truststore pki profile).
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS.
+                  - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_SKIP_HOSTNAME_VERIFY.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.1.4.
