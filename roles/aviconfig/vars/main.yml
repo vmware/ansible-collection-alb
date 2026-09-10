@@ -101,11 +101,11 @@ avi_resource_types:
   - gslbgeodbprofile
   - backupconfiguration
   - cloud
+  - gslb
   - healthmonitor
   - alertsyslogconfig
   - applicationprofile
   - sessionkeyforwarder
-  - gslb
   - networksecuritypolicy
   - wafpolicy
   - botdetectionpolicy
