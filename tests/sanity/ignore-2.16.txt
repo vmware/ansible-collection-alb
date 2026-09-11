@@ -26,8 +26,6 @@ plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
 plugins/modules/avi_federationcheckpoint.py validate-modules:missing-gplv3-license
 plugins/modules/avi_pingaccessagent.py validate-modules:missing-gplv3-license
-plugins/modules/avi_albservicesfiledownload.py validate-modules:invalid-argument-name
-plugins/modules/avi_albservicesfiledownload.py validate-modules:nonexistent-parameter-documented
 plugins/module_utils/avi_api.py import-3.12!skip
 plugins/module_utils/csp_avi_api.py import-3.12!skip
 plugins/module_utils/saml_avi_api.py import-3.12!skip
