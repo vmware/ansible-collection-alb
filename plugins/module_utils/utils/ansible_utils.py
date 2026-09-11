@@ -466,6 +466,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
     if 'obj_state' in obj:
         obj['state'] = obj['obj_state']
         obj.pop('obj_state')
+    if 'obj_message' in obj:
+        obj['message'] = obj['obj_message']
+        obj.pop('obj_message')
     if 'full_name' not in obj and 'name' in obj and obj_type == "user":
         obj['full_name'] = obj['name']
         # Special case as name represent full_name in user module

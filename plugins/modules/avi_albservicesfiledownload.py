@@ -73,11 +73,13 @@ options:
             - Allowed with any value in enterprise, enterprise with cloud services edition.
         required: true
         type: str
-    message:
+    obj_message:
         description:
             - Downloads success / failure message.
             - Field introduced in 30.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - This maps to the C(message) field of the ALBServicesFileDownload API object. It is renamed here as
+              C(message) is a reserved argument name used internally by the Ansible Core Engine.
         type: str
     metadata:
         description:
@@ -177,7 +179,7 @@ def main():
         destination_dir=dict(type='str', required=True),
         file_type=dict(type='str', required=True),
         file_uri=dict(type='str', required=True),
-        message=dict(type='str',),
+        obj_message=dict(type='str',),
         metadata=dict(type='dict',),
         name=dict(type='str', required=True),
         status=dict(type='str',),
