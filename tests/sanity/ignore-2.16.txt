@@ -7,15 +7,6 @@ plugins/modules/avi_saml_api_session.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbservice_patch_member.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_fileservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_image.py validate-modules:missing-gplv3-license
-plugins/modules/avi_api_version.py import-3.8!skip
-plugins/modules/avi_api_session.py import-3.8!skip
-plugins/modules/avi_user.py import-3.8!skip
-plugins/modules/avi_useraccount.py import-3.8!skip
-plugins/modules/avi_update_se_data_vnics.py import-3.8!skip
-plugins/modules/avi_saml_api_session.py import-3.8!skip
-plugins/modules/avi_gslbservice_patch_member.py import-3.8!skip
-plugins/modules/avi_api_fileservice.py import-3.8!skip
-plugins/modules/avi_api_image.py import-3.8!skip
 plugins/modules/avi_deploy_controller.py validate-modules:missing-gplv3-license
 tests/integration/run_tests.sh shebang
 roles/avise/files/systemd/install.py shebang
@@ -26,11 +17,6 @@ plugins/modules/deploy_se.py validate-modules:missing-gplv3-license
 plugins/modules/verify_se.py validate-modules:missing-gplv3-license
 plugins/modules/avi_federationcheckpoint.py validate-modules:missing-gplv3-license
 plugins/modules/avi_pingaccessagent.py validate-modules:missing-gplv3-license
-plugins/module_utils/avi_api.py import-3.12!skip
-plugins/module_utils/csp_avi_api.py import-3.12!skip
-plugins/module_utils/saml_avi_api.py import-3.12!skip
-plugins/module_utils/utils/ansible_utils.py import-3.12!skip
-plugins/lookup/avi.py import-3.12!skip
 plugins/modules/avi_seproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_useraccountprofile.py validate-modules:missing-gplv3-license
