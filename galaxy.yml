@@ -9,6 +9,7 @@ namespace: vmware
 readme: README.md
 repository: https://github.com/vmware/ansible-collection-alb
 tags:
+- networking
 - avi
 - controller
 - avicontroller
