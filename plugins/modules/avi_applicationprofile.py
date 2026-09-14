@@ -49,9 +49,9 @@ options:
         type: str
     app_service_type:
         description:
-            - Specifies app service type for an application.
+            - Specifies app service type for an application, including l4 message-level load balancing (app_service_type_l4_msg_lb) for iso 8583-style traffic.
             - Enum options - APP_SERVICE_TYPE_L7_HORIZON, APP_SERVICE_TYPE_L4_BLAST, APP_SERVICE_TYPE_L4_PCOIP, APP_SERVICE_TYPE_L4_FTP,
-            - APP_SERVICE_TYPE_HTTP_MCP.
+            - APP_SERVICE_TYPE_HTTP_MCP, APP_SERVICE_TYPE_L4_MSG_LB.
             - Field introduced in 21.1.3.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
@@ -112,6 +112,13 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    msg_lb_app_service_profile:
+        description:
+            - Per-client connection cap settings for l4 message-level load balancing (app_service_type_l4_msg_lb).
+            - Ignored for other application profile types.
+            - Field introduced in 32.1.5.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     name:
         description:
             - The name of the application profile.
@@ -289,6 +296,7 @@ def main():
         http_profile=dict(type='dict',),
         l4_ssl_profile=dict(type='dict',),
         markers=dict(type='list', elements='dict',),
+        msg_lb_app_service_profile=dict(type='dict',),
         name=dict(type='str', required=True),
         preserve_client_ip=dict(type='bool',),
         preserve_client_port=dict(type='bool',),
