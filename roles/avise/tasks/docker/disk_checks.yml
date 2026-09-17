@@ -127,7 +127,7 @@
   ansible.builtin.stat:
     path: "{{ se_dest_disk }}"
   register: st
-  when: se_dest_disk is truthy
+  when: se_dest_disk and se_dest_disk|string
 
 - name: Check if logs directory exists
   block:
@@ -136,13 +136,13 @@
         error_string: "Directory path {{ se_dest_disk }} specified for system logs does not exist"
     - name: Include error.yml
       ansible.builtin.include_tasks: error.yml
-      when: se_dest_disk is truthy  and (not st.stat.exists or not st.stat.isdir)
+      when: se_dest_disk and se_dest_disk|string  and (not st.stat.exists or not st.stat.isdir)
 
 - name: "Check status of {{ se_destination_log_disk }}"
   ansible.builtin.stat:
     path: "{{ se_destination_log_disk }}"
   register: st
-  when: se_destination_log_disk is truthy
+  when: se_destination_log_disk and se_destination_log_disk|string
 
 - name: Set error message
   block:
@@ -151,10 +151,10 @@
         error_string: "Directory path {{ se_destination_log_disk }} specified for client logs does not exist"
     - name: Include error.yml
       ansible.builtin.include_tasks: error.yml
-      when: se_destination_log_disk is truthy and (not st.stat.exists or not st.stat.isdir)
+      when: se_destination_log_disk and se_destination_log_disk|string and (not st.stat.exists or not st.stat.isdir)
 
 - name: Check service engine disk
-  when: se_dest_disk is truthy
+  when: se_dest_disk and se_dest_disk|string
   block:
     - name: Get mount point for sys disk
       ansible.builtin.shell: >
@@ -198,7 +198,7 @@
       when: check_dir.rc == 0
 
 - name: Check service engine disk usage
-  when: se_dest_disk is truthy and (se_disk_path_space.stdout|int + se_used_sysdisk|int) < se_disk_gb|int
+  when: se_dest_disk and se_dest_disk|string and (se_disk_path_space.stdout|int + se_used_sysdisk|int) < se_disk_gb|int
   block:
     - name: Set error message
       ansible.builtin.set_fact:
@@ -209,7 +209,7 @@
       ansible.builtin.include_tasks: error.yml
 
 - name: Check service engine disk size
-  when: se_dest_disk is truthy
+  when: se_dest_disk and se_dest_disk|string
   block:
     - name: Check se disk in gb is greater than 0
       ansible.builtin.assert:
@@ -219,10 +219,10 @@
 - name: Set sys disk path
   ansible.builtin.set_fact:
     se_disk_path: "{{ se_dest_disk }}/opt/avi/se/data"
-  when: se_dest_disk is truthy
+  when: se_dest_disk and se_dest_disk|string
 
 - name: Check service engine logs disk size
-  when: se_destination_log_disk is truthy
+  when: se_destination_log_disk and se_destination_log_disk|string
   block:
     - name: Get mount point for log disk
       ansible.builtin.shell: >
@@ -267,7 +267,7 @@
 
 - name: Check service engine logs disk usage
   when: >
-    se_destination_log_disk is truthy and
+    se_destination_log_disk and se_destination_log_disk|string and
     (se_logs_disk_path_space.stdout|int + se_used_logsdisk|int) < se_logs_disk_gb|int
   block:
     - name: Set error message
@@ -279,7 +279,7 @@
       ansible.builtin.include_tasks: error.yml
 
 - name: Check service engine logs disk size
-  when: se_destination_log_disk is truthy
+  when: se_destination_log_disk and se_destination_log_disk|string
   block:
     - name: Check se_logs_disk_gb is greater that 0
       ansible.builtin.assert:
@@ -288,7 +288,7 @@
 
 - name: Check service engine logs disk path
   when: >
-    se_destination_log_disk is truthy and se_disk_mount.stdout == se_log_mount.stdout
+    se_destination_log_disk and se_destination_log_disk|string and se_disk_mount.stdout == se_log_mount.stdout
     and (se_logs_disk_path_space.stdout|int + se_used_sysdisk|int + se_used_logsdisk|int) < se_logs_disk_gb|int + se_disk_gb|int
   block:
     - name: Set error message
@@ -302,4 +302,4 @@
 - name: Set log disk path
   ansible.builtin.set_fact:
     se_logs_disk_path: "{{ se_destination_log_disk }}/opt/avi/se/log"
-  when: se_destination_log_disk is truthy
+  when: se_destination_log_disk and se_destination_log_disk|string
