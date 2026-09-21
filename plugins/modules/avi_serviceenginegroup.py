@@ -2142,6 +2142,13 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 4096.
         type: int
+    supervisor_group:
+        description:
+            - Indicates that this service engine group is reserved for exclusive use by the supervisor in vcf environment.
+            - This is read only and cannot be modified.
+            - Field introduced in 32.1.5.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: bool
     tenant_ref:
         description:
             - It is a reference to an object of type tenant.
@@ -2815,6 +2822,7 @@ def main():
         significant_log_throttle=dict(type='int',),
         ssl_preprocess_sni_hostname=dict(type='bool',),
         ssl_sess_cache_per_vs=dict(type='int',),
+        supervisor_group=dict(type='bool',),
         tenant_ref=dict(type='str',),
         transient_shared_memory_max=dict(type='int',),
         udf_log_throttle=dict(type='int',),

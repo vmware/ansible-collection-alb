@@ -2692,7 +2692,7 @@ Parameters
                   - Tls mode and optional client certificate for outbound smtp connections.
                 </div>
                                 <div style="font-size: small">
-                  - Ca trust is always sourced from systemconfiguration.truststore_pkiprofile_uuid.
+                  - Ca trust is always sourced from the trust store configured in system configuration.
                 </div>
                                 <div style="font-size: small">
                   - When unset, no starttls is attempted regardless of disable_tls.
@@ -2740,6 +2740,69 @@ Parameters
                             <td class="elbow-placeholder"></td>
                                     <td colspan="5">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>pki_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Pki profile used to validate the server certificate validation in one-way tls and mutual tls.
+                </div>
+                                <div style="font-size: small">
+                  - If this field is not set, the pki profile from system configuration will be used.
+                </div>
+                                <div style="font-size: small">
+                  - Effective when tls mode is one-way tls or mutual tls.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type pkiprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.4.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>skip_hostname_verification</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Skip hostname verification on the server certificate, chain validation still applies.
+                </div>
+                                <div style="font-size: small">
+                  - Effective when tls mode is one-way tls or mutual tls.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.4.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>tls_mode</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -2750,13 +2813,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Select how tls is used to establish a secure outbound connection.
+                  - How tls is used for this outbound connection.
                 </div>
                                 <div style="font-size: small">
-                  - Certificate validation uses the trust store configured in system configuration (truststore pki profile).
+                  - Certificate validation uses the truststore pki profile (default  truststore pki profile from system configuration).
                 </div>
                                 <div style="font-size: small">
-                  - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS, TLS_MODE_SKIP_HOSTNAME_VERIFY.
+                  - Enum options - TLS_MODE_NO_VERIFY, TLS_MODE_TLS, TLS_MODE_MTLS.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.1.4.
@@ -3151,10 +3214,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Client certificate for mutual tls authentication.
+                  - Sslkeyandcertificate used as the client certificate for gslb site-to-site mutual tls (mtls) authentication between controllers.
                 </div>
                                 <div style="font-size: small">
-                  - Required when tls_mode is tls_mode_mtls.
+                  - Required when tls_mode is set to mutual tls in gslb site-to-site configuration.
                 </div>
                                 <div style="font-size: small">
                   - It is a reference to an object of type sslkeyandcertificate.
@@ -5963,10 +6026,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -5983,10 +6046,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -6035,9 +6098,6 @@ Parameters
                   - Allowed values are 1-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
-                </div>
-                                <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
@@ -6059,9 +6119,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-65535.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -6133,10 +6190,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>

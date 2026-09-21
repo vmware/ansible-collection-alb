@@ -1,8 +1,8 @@
 ---
 # This task will appropriately start the actions on SE's
-- name: Note SeGroup Upgrade in progress
-  ansible.builtin.debug:
-    msg: "SeGroup upgrade in progress; proceeding with SE start (idempotent)."
+- name: Check SeGroup Upgrade in progress
+  ansible.builtin.fail:
+    msg: SeGroup upgrade in progress
   when: (se_action == "start") and (ups is defined) and ups
 
 - name: Print se_action value
