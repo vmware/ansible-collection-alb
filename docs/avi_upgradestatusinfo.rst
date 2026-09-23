@@ -4475,6 +4475,29 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>system</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Flag indicating whether the upgrade operation was initiated as a system-upgrade (applying to controller and all service engine groups).
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>upgrade_events</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -8988,7 +9011,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Flag is set only in the cluster if the upgrade is initiated as a system-upgrade.
+                  - Flag indicating whether the upgrade operation was initiated as a system-upgrade (applying to controller and all service engine groups).
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 18.2.6.
