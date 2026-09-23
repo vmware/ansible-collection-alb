@@ -385,6 +385,13 @@ options:
             - Field introduced in 18.2.1, 17.2.12.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: int
+    msg_lb_conn_pool_config:
+        description:
+            - Tcp connection pool limits for l4 message-level load balancing vses that use this pool.
+            - Distinct from l7 conn_pool_properties.
+            - Field introduced in 32.1.5.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     name:
         description:
             - The name of the pool.
@@ -713,6 +720,7 @@ def main():
         max_conn_rate_per_server=dict(type='dict',),
         min_health_monitors_up=dict(type='int',),
         min_servers_up=dict(type='int',),
+        msg_lb_conn_pool_config=dict(type='dict',),
         name=dict(type='str', required=True),
         networks=dict(type='list', elements='dict',),
         nsx_securitygroup=dict(type='list', elements='str',),
