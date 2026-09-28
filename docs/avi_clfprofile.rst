@@ -1,12 +1,12 @@
 
-.. vmware.alb.avi_vsdatascriptset:
+.. vmware.alb.avi_clfprofile:
 
 
 **********************************************
-vmware.alb.avi_vsdatascriptset
+vmware.alb.avi_clfprofile
 **********************************************
 
-**Module for setup of VSDataScriptSet Avi RESTful Object**
+**Module for setup of ClfProfile Avi RESTful Object**
 
 
 .. contents::
@@ -16,7 +16,7 @@ vmware.alb.avi_vsdatascriptset
 
 Synopsis
 --------
-- This module is used to configure VSDataScriptSet object.
+- This module is used to configure ClfProfile object.
 - More examples at (https://github.com/avinetworks/devops).
 
 
@@ -134,7 +134,69 @@ Parameters
             <tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>clf_profile_ref</b>
+                <b>clf_pools</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of pools associated with this profile.
+                </div>
+                                <div style="font-size: small">
+                  - Each pool must have a unique priority value.
+                </div>
+                                <div style="font-size: small">
+                  - The controller rejects profiles where two pools share the same priority (http 400).
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 8 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>health_monitor_refs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=string </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Reference to at most one health monitor for collectors in this pool.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type healthmonitor.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 1 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>lb_algorithm</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
                                                                         <span style="color: purple">str</span>
@@ -144,13 +206,86 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Optional custom log forward profile this datascriptset forwards logs to via avi.vs.log_forward().
+                  - Load balancing algorithm for distributing logs across servers.
                 </div>
                                 <div style="font-size: small">
-                  - Resolved from the specific datascriptset invoking log_forward(), not from the virtualservice it is attached to.
+                  - Only lb_algorithm_round_robin and lb_algorithm_consistent_hash are supported; consistent-hash always hashes on the uuid of the virtualservice
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type clfprofile.
+                  - invoking avi.vs.log_forward(), not a per-request client ip/uri/header, so all of one vs's log records land on the same collector.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - LB_ALGORITHM_LEAST_CONNECTIONS, LB_ALGORITHM_ROUND_ROBIN, LB_ALGORITHM_FASTEST_RESPONSE, LB_ALGORITHM_CONSISTENT_HASH,
+                </div>
+                                <div style="font-size: small">
+                  - LB_ALGORITHM_LEAST_LOAD, LB_ALGORITHM_FEWEST_SERVERS, LB_ALGORITHM_RANDOM, LB_ALGORITHM_FEWEST_TASKS, LB_ALGORITHM_NEAREST_SERVER,
+                </div>
+                                <div style="font-size: small">
+                  - LB_ALGORITHM_CORE_AFFINITY, LB_ALGORITHM_TOPOLOGY.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as LB_ALGORITHM_ROUND_ROBIN.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>log_format</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Wire format for log records delivered to this pool's collectors.
+                </div>
+                                <div style="font-size: small">
+                  - Each pool independently configures its format.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - CLF_LOG_FORMAT_SYSLOG_LEGACY, CLF_LOG_FORMAT_SYSLOG_OCTET, CLF_LOG_FORMAT_CUSTOM.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as CLF_LOG_FORMAT_SYSLOG_OCTET.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>name</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Unique name for this pool within the clfprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Used as part of the composite key for the backing se_pool_t on the se.
+                </div>
+                                <div style="font-size: small">
+                  - The controller rejects profiles where two pools share the same name.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.1.5.
@@ -160,7 +295,311 @@ Parameters
                 </div>
                                             </td>
     </tr>
-                                            <td colspan="7">
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>pki_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Pki profile whose ca certificates validate the collector's server certificate.
+                </div>
+                                <div style="font-size: small">
+                  - Required when transport is clf_transport_tcp_tls.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type pkiprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>priority</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Pool priority within the clfprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Higher value = higher priority.
+                </div>
+                                <div style="font-size: small">
+                  - Must be unique across all pools in the same profile.
+                </div>
+                                <div style="font-size: small">
+                  - When replicate=false, the highest-priority pool with an up member receives all log records; lower-priority pools act as fallback.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-255.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>servers</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">list / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - List of log collector endpoints for this pool.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Maximum of 32 items allowed.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enabled</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enable or disable this collector.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ip_addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                            <span style="color: purple">dict / elements=dictionary </span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address of the external log collector.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                <tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>addr</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ip address.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="4">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>type</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Enum options - V4, DNS, V6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>port</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Udp/tcp port the collector listens on.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-65535.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+        
+                                        <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ssl_key_and_certificate_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Client certificate and key the se presents to the collector for mutual tls.
+                </div>
+                                <div style="font-size: small">
+                  - Optional even when transport is clf_transport_tcp_tls; server-authentication-only tls is used when this is not set.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type sslkeyandcertificate.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>ssl_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Ssl profile controlling the tls version and cipher policy used for this pool's collector connections.
+                </div>
+                                <div style="font-size: small">
+                  - Required when transport is clf_transport_tcp_tls.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type sslprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>transport</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Transport protocol for log delivery.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - CLF_TRANSPORT_TCP, CLF_TRANSPORT_UDP, CLF_TRANSPORT_TCP_TLS.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as CLF_TRANSPORT_TCP.
+                </div>
+                                            </td>
+    </tr>
+        
+                                                <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
@@ -172,10 +611,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Protobuf versioning for config pbs.
+                  - Protobuf versioning and config-push attributes.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -241,110 +680,6 @@ Parameters
         
                                                 <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>created_by</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Creator name.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 17.1.11,17.2.4.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>datascript</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Datascripts to execute.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>evt</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Event triggering execution of datascript.
-                </div>
-                                <div style="font-size: small">
-                  - Enum options - VS_DATASCRIPT_EVT_HTTP_REQ, VS_DATASCRIPT_EVT_HTTP_RESP, VS_DATASCRIPT_EVT_HTTP_RESP_DATA, VS_DATASCRIPT_EVT_HTTP_LB_FAILED,
-                </div>
-                                <div style="font-size: small">
-                  - VS_DATASCRIPT_EVT_HTTP_REQ_DATA, VS_DATASCRIPT_EVT_HTTP_RESP_FAILED, VS_DATASCRIPT_EVT_HTTP_LB_DONE, VS_DATASCRIPT_EVT_HTTP_AUTH,
-                </div>
-                                <div style="font-size: small">
-                  - VS_DATASCRIPT_EVT_HTTP_POST_AUTH, VS_DATASCRIPT_EVT_TCP_CLIENT_ACCEPT, VS_DATASCRIPT_EVT_SSL_HANDSHAKE_DONE,
-                </div>
-                                <div style="font-size: small">
-                  - VS_DATASCRIPT_EVT_CLIENT_SSL_PRE_CONNECT, VS_DATASCRIPT_EVT_CLIENT_SSL_CLIENT_HELLO, VS_DATASCRIPT_EVT_SERVER_SSL_SERVER_HELLO,
-                </div>
-                                <div style="font-size: small">
-                  - VS_DATASCRIPT_EVT_SERVER_SSL_HANDSHAKE_DONE, VS_DATASCRIPT_EVT_CLIENT_SSL_CLIENT_CERT, VS_DATASCRIPT_EVT_DNS_REQ, VS_DATASCRIPT_EVT_DNS_RESP,
-                </div>
-                                <div style="font-size: small">
-                  - VS_DATASCRIPT_EVT_L4_REQUEST, VS_DATASCRIPT_EVT_L4_RESPONSE, VS_DATASCRIPT_EVT_CLIENT_CLOSED, VS_DATASCRIPT_EVT_SERVER_CLOSED,
-                </div>
-                                <div style="font-size: small">
-                  - VS_DATASCRIPT_EVT_SERVER_CONNECTED, VS_DATASCRIPT_EVT_L4_LB_DONE, VS_DATASCRIPT_EVT_L4_LB_FAILED, VS_DATASCRIPT_EVT_MAX.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>script</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Datascript to execute when the event triggers.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                                <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>description</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -355,29 +690,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>geo_db_ref</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Geo location mapping database used by this datascriptset.
+                  - Human-readable description for this clf profile.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type geodb.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 21.1.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -386,48 +702,29 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>ip_reputation_db_ref</b>
+                <b>enabled</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
+                                                                        <span style="color: purple">bool</span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Ip reputation database that can be used by datascript functions.
+                  - Enable or disable log delivery for this profile without disturbing pool state, health monitors, or virtualservice/datascriptset bindings.
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type ipreputationdb.
+                  - When false, avi.vs.log_forward() is a silent no-op for every vs attached via this profile; delivery resumes immediately when set back to true.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.3.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>ipgroup_refs</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Uuid of ip groups that could be referred by vsdatascriptset objects.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type ipaddrgroup.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -446,7 +743,7 @@ Parameters
                   - List of labels to be used for granular rbac.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 20.1.5.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -525,7 +822,10 @@ Parameters
                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Name for the virtual service datascript collection.
+                  - The name of the clf profile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -534,447 +834,29 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>pki_profile_refs</b>
+                <b>replicate</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
+                                                                        <span style="color: purple">bool</span>
                                                             </div>
             </td>
             <td>
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuids of pkiprofile objects that could be referred by vsdatascriptset objects.
+                  - When false (default), log records are routed to the highest-priority pool that has at least one up member (priority-based failover).
                 </div>
                                 <div style="font-size: small">
-                  - It is a reference to an object of type pkiprofile.
+                  - When true, log records are replicated to all pools regardless of priority.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 21.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>pool_group_refs</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Uuid of pool groups that could be referred by vsdatascriptset objects.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type poolgroup.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>pool_refs</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Uuid of pools that could be referred by vsdatascriptset objects.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type pool.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>protocol_parser_refs</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - List of protocol parsers that could be referred by vsdatascriptset objects.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type protocolparser.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.3.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>rate_limiters</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - The rate limit definitions needed for this datascript.
-                </div>
-                                <div style="font-size: small">
-                  - The name is composed of the virtual service name and the datascript name.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.9.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>burst_sz</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Maximum number of connections, requests or packets to be let through instantaneously.
-                </div>
-                                <div style="font-size: small">
-                  - If this is less than count, it will have no effect.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 0-1000000000.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.9.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 0.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>count</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Maximum number of connections, requests or packets permitted each period.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-1000000000.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.9.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 1000000000.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>name</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Identifier for rate limit.
-                </div>
-                                <div style="font-size: small">
-                  - Constructed according to context.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.9.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>period</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">int</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Time value in seconds to enforce rate count.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed values are 1-1000000000.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 18.2.9.
-                </div>
-                                <div style="font-size: small">
-                  - Unit is sec.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                <div style="font-size: small">
-                  - Default value when not specified in API or module is interpreted by Avi Controller as 1.
-                </div>
-                                            </td>
-    </tr>
-        
-                                                <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>snat_ip6s</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Ipv6 address used by a vs-datascript in avi.l4.source_ip api.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 8 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>addr</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Ip address.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>type</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enum options - V4, DNS, V6.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                                <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>snat_ips</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=dictionary </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Ipv4 address used by a vs-datascript in avi.l4.source_ip api.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 31.2.1.
-                </div>
-                                <div style="font-size: small">
-                  - Maximum of 8 items allowed.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                <tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>addr</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Ip address.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                    <td class="elbow-placeholder"></td>
-                                    <td colspan="6">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>type</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">str</span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Enum options - V4, DNS, V6.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-        
-                                                <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>ssl_key_certificate_refs</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Uuids of sslkeyandcertificate objects that could be referred by vsdatascriptset objects.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type sslkeyandcertificate.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 21.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>ssl_profile_refs</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Uuids of sslprofile objects that could be referred by vsdatascriptset objects.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type sslprofile.
-                </div>
-                                <div style="font-size: small">
-                  - Field introduced in 21.1.1.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-                </div>
-                                            </td>
-    </tr>
-                                            <td colspan="7">
-                <div class="ansibleOptionAnchor" id="parameter-"></div>
-                <b>string_group_refs</b>
-                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
-                <div style="font-size: small">
-                                                                        <span style="color: purple">list / elements=string </span>
-                                                            </div>
-            </td>
-            <td>
-                                                            </td>
-            <td>
-                                                <div style="font-size: small">
-                  - Uuid of string groups that could be referred by vsdatascriptset objects.
-                </div>
-                                <div style="font-size: small">
-                  - It is a reference to an object of type stringgroup.
-                </div>
-                                <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
                 </div>
                                             </td>
     </tr>
@@ -990,7 +872,13 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
+                  - Reference to the tenant that owns this clf profile.
+                </div>
+                                <div style="font-size: small">
                   - It is a reference to an object of type tenant.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1025,7 +913,44 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Uuid of the virtual service datascript collection.
+                  - Uuid of the clf profile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>vrf_context_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Virtual routing context for this profiles collector pools.
+                </div>
+                                <div style="font-size: small">
+                  - Only virtual services in the same virtual routing context can use this profile.
+                </div>
+                                <div style="font-size: small">
+                  - Cannot be changed once set.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type vrfcontext.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -1054,11 +979,11 @@ Examples
           api_version: "21.1.1"
           tenant: "admin"
       tasks:
-        - name: Example to create VSDataScriptSet object
-          avi_vsdatascriptset:
+        - name: Example to create ClfProfile object
+          avi_clfprofile:
             avi_credentials: "{{ avi_credentials }}"
             state: present
-            name: sample_vsdatascriptset
+            name: sample_clfprofile
 
 
 Authors

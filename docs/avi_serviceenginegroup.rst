@@ -9979,7 +9979,7 @@ Parameters
                   - Indicates that this service engine group is reserved for exclusive use by the supervisor in vcf environment.
                 </div>
                                 <div style="font-size: small">
-                  - This is read only and cannot be modified.
+                  - This is a read-only field for external user.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.1.5.
