@@ -6026,10 +6026,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -6046,10 +6046,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
@@ -6098,9 +6098,6 @@ Parameters
                   - Allowed values are 1-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
-                </div>
-                                <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
@@ -6122,9 +6119,6 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Allowed values are 1-65535.
-                </div>
-                                <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -6196,10 +6190,10 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Field deprecated in 32.1.4.
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                  - Default value when not specified in API or module is interpreted by Avi Controller as True.
                 </div>
                                             </td>
     </tr>
