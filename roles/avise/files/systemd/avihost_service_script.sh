@@ -13,12 +13,10 @@ start()
         version=$(cat /opt/avitest_python_version)
     else
         # Ref: https://stackoverflow.com/a/38485534/9328077
-        # Prefer the bundled python3.14; fall back to whatever python the host has.
         version='0'
         command -v python >/dev/null 2>&1 && version=''
         command -v python2 >/dev/null 2>&1 && version='2'
         command -v python3 >/dev/null 2>&1 && version='3'
-        command -v python3.14 >/dev/null 2>&1 && version='3.14'
     fi
 
     if [[ $version != '0' ]]; then

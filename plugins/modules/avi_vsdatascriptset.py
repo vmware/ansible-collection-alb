@@ -47,6 +47,14 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    clf_profile_ref:
+        description:
+            - Optional custom log forward profile this datascriptset forwards logs to via avi.vs.log_forward().
+            - Resolved from the specific datascriptset invoking log_forward(), not from the virtualservice it is attached to.
+            - It is a reference to an object of type clfprofile.
+            - Field introduced in 32.1.5.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -249,6 +257,7 @@ def main():
         api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
+        clf_profile_ref=dict(type='str',),
         configpb_attributes=dict(type='dict',),
         created_by=dict(type='str',),
         datascript=dict(type='list', elements='dict',),

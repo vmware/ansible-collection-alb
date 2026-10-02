@@ -122,6 +122,7 @@ Name | Description
 [vmware.alb.avi_botmapping](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_botmapping.rst)|Module to create update or delete BotMapping
 [vmware.alb.avi_certificatemanagementprofile](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_certificatemanagementprofile.rst)|Module to create update or delete CertificateManagementProfile
 [vmware.alb.avi_certjwtstore](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_certjwtstore.rst)|Module to create update or delete CertJwtStore
+[vmware.alb.avi_clfprofile](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_clfprofile.rst)|Module to create update or delete ClfProfile
 [vmware.alb.avi_cloud](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_cloud.rst)|Module to create update or delete Cloud
 [vmware.alb.avi_cloudconnectoruser](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_cloudconnectoruser.rst)|Module to create update or delete CloudConnectorUser
 [vmware.alb.avi_cloudproperties](https://github.com/vmware/ansible-collection-alb/blob/32.2.1/docs/avi_cloudproperties.rst)|Module to create update or delete CloudProperties

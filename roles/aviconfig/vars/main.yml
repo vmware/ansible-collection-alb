@@ -118,6 +118,7 @@ avi_resource_types:
   - nsxtsegmentruntime
   - actiongroupconfig
   - backup
+  - clfprofile
   - availabilityzone
   - alertconfig
   - serverautoscalepolicy

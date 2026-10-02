@@ -134,6 +134,34 @@ Parameters
             <tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>clf_profile_ref</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Optional custom log forward profile this datascriptset forwards logs to via avi.vs.log_forward().
+                </div>
+                                <div style="font-size: small">
+                  - Resolved from the specific datascriptset invoking log_forward(), not from the virtualservice it is attached to.
+                </div>
+                                <div style="font-size: small">
+                  - It is a reference to an object of type clfprofile.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>configpb_attributes</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

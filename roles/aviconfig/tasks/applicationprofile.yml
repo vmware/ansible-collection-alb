@@ -25,6 +25,7 @@
     http_profile: "{{ item.http_profile | default(omit) }}"
     l4_ssl_profile: "{{ item.l4_ssl_profile | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
+    msg_lb_app_service_profile: "{{ item.msg_lb_app_service_profile | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     preserve_client_ip: "{{ item.preserve_client_ip | default(omit) }}"
     preserve_client_port: "{{ item.preserve_client_port | default(omit) }}"

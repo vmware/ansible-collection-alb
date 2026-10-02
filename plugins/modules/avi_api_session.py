@@ -41,6 +41,14 @@ options:
             - 'Path for Avi API resource. For example, C(path: virtualservice) will translate to C(api/virtualserivce).'
         required: true
         type: str
+    preflight_check:
+        description:
+            - When http_method is post or put, controls whether an automated pre-flight GET is performed to check
+              whether the object already exists to decide between POST/create and PUT/update.
+            - Set to false for action or write-only endpoints that do not support GET for example segroup/resume,
+              to avoid a spurious HTTP 404/405 from the pre-flight check.
+        type: bool
+        default: true
     timeout:
         description:
             - Timeout (in seconds) for Avi API calls.
@@ -111,6 +119,16 @@ EXAMPLES = '''
       until: "'result' in upgrade_status.obj and upgrade_status.obj.result == 'SUCCESS'"
       retries: 120
       delay: 10
+
+    - name: Execute an action endpoint that does not support GET, skipping the pre-flight check
+      vmware.alb.avi_api_session:
+        avi_credentials: "{{ avi_credentials }}"
+        http_method: post
+        path: segroup/resume
+        preflight_check: false
+        data:
+          uuid: "{{ segroup_uuid }}"
+      register: resume_result
 '''
 
 
@@ -129,9 +147,9 @@ from copy import deepcopy
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import (
         avi_common_argument_spec, ansible_return, avi_obj_cmp,
-        cleanup_absent_fields)
+        cleanup_absent_fields, handle_preflight_get_error)
     from ansible_collections.vmware.alb.plugins.module_utils.avi_api import (
-        ApiSession, AviCredentials)
+        ApiSession, AviCredentials, ObjectNotFound, APIError)
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
@@ -143,6 +161,7 @@ def main():
                          choices=['get', 'put', 'post', 'patch',
                                   'delete']),
         path=dict(type='str', required=True),
+        preflight_check=dict(type='bool', default=True),
         params=dict(type='dict'),
         data=dict(type='jsonarg'),
         timeout=dict(type='int', default=60),
@@ -184,6 +203,7 @@ def main():
     if data is not None:
         data = json.loads(data)
     method = module.params['http_method']
+    preflight_check = module.params.get('preflight_check', True)
 
     existing_obj = None
     changed = method != 'get'
@@ -196,7 +216,7 @@ def main():
     api_post_not_allowed = ["alert", "fileservice"]
     api_put_not_allowed = ["backup"]
 
-    if method == 'post' and not any(path.startswith(uri) for uri in api_post_not_allowed):
+    if method == 'post' and preflight_check and not any(path.startswith(uri) for uri in api_post_not_allowed):
         # TODO: Above condition should be updated after AV-38981 is fixed
         # need to check if object already exists. In that case
         # change the method to be put
@@ -217,6 +237,8 @@ def main():
         except (IndexError, KeyError):
             # object is not found
             pass
+        except (ObjectNotFound, APIError) as e:
+            handle_preflight_get_error(module, path, e)
         else:
             if (not any(path.startswith(uri) for uri in api_get_not_allowed)
                     and not any(path.endswith(uri) for uri in
@@ -225,7 +247,7 @@ def main():
                 method = 'put'
                 path += '/' + existing_obj['uuid']
 
-    if method == 'put' and not any(path.startswith(uri) for uri in api_put_not_allowed):
+    if method == 'put' and preflight_check and not any(path.startswith(uri) for uri in api_put_not_allowed):
         # put can happen with when full path is specified or it is put + post
         get_path = path
         data_for_cmp = data
@@ -241,20 +263,23 @@ def main():
                 data_for_cmp = deepcopy(data) if data else {}
                 data_for_cmp.pop("commit", None)
 
-            rsp = api.get(get_path, tenant=tenant, tenant_uuid=tenant_uuid,
-                          params=gparams, api_version=api_version)
-            rsp_data = rsp.json()
-            if using_collection:
+            try:
+                rsp = api.get(get_path, tenant=tenant, tenant_uuid=tenant_uuid,
+                              params=gparams, api_version=api_version)
+                rsp_data = rsp.json()
+            except (ObjectNotFound, APIError) as e:
+                handle_preflight_get_error(module, get_path, e)
+                rsp_data = None
+            if rsp_data is None:
+                method = 'post'
+            elif using_collection:
                 if rsp_data['results']:
                     existing_obj = rsp_data['results'][0]
                     path += '/' + existing_obj['uuid']
                 else:
                     method = 'post'
             else:
-                if rsp.status_code == 404:
-                    method = 'post'
-                else:
-                    existing_obj = rsp_data
+                existing_obj = rsp_data
         if existing_obj:
             changed = not avi_obj_cmp(data_for_cmp, existing_obj)
             cleanup_absent_fields(data)

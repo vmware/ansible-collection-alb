@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # module_check: supported
 
-# Avi Version: 17.1.1
 # Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 # SPDX-License-Identifier: Apache License 2.0
 
@@ -14,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_cloudconnectoruser
+module: avi_clfprofile
 author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
-short_description: Module for setup of CloudConnectorUser Avi RESTful Object
+short_description: Module for setup of ClfProfile Avi RESTful Object
 description:
-    - This module is used to configure CloudConnectorUser object.
+    - This module is used to configure ClfProfile object.
     - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -47,91 +46,85 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
-    azure_serviceprincipal:
+    clf_pools:
         description:
-            - Field introduced in 17.2.1.
+            - List of pools associated with this profile.
+            - Each pool must have a unique priority value.
+            - The controller rejects profiles where two pools share the same priority (http 400).
+            - Field introduced in 32.1.5.
+            - Maximum of 8 items allowed.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
-    azure_userpass:
-        description:
-            - Field introduced in 17.2.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
+        type: list
+        elements: dict
     configpb_attributes:
         description:
-            - Protobuf versioning for config pbs.
-            - Field introduced in 21.1.1.
+            - Protobuf versioning and config-push attributes.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
-    gcp_credentials:
+    description:
         description:
-            - Credentials for google cloud platform.
-            - Field introduced in 18.2.1.
+            - Human-readable description for this clf profile.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
-    last_password_rotation:
+        type: str
+    enabled:
         description:
-            - Timestamp (unix epoch in seconds) of last successful password rotation.
-            - Used to determine when next rotation is due based on cc_user_password_expiry_days.
-            - Field introduced in 32.1.1.
-            - Unit is sec.
+            - Enable or disable log delivery for this profile without disturbing pool state, health monitors, or virtualservice/datascriptset bindings.
+            - When false, avi.vs.log_forward() is a silent no-op for every vs attached via this profile; delivery resumes immediately when set back to true.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: int
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 32.1.5.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: dict
     name:
         description:
+            - The name of the clf profile.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    new_password_enc:
+    replicate:
         description:
-            - New password stored temporarily during rotation.
-            - Cleared after successful rotation.
-            - Field introduced in 32.1.1.
+            - When false (default), log records are routed to the highest-priority pool that has at least one up member (priority-based failover).
+            - When true, log records are replicated to all pools regardless of priority.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
-    nsxt_credentials:
-        description:
-            - Credentials to talk to nsx-t manager.
-            - Field introduced in 20.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
-    obj_password:
-        description:
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
-    private_key:
-        description:
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
-    public_key:
-        description:
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
     tenant_ref:
         description:
+            - Reference to the tenant that owns this clf profile.
             - It is a reference to an object of type tenant.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    tencent_credentials:
-        description:
-            - Credentials for tencent cloud.
-            - Field introduced in 18.2.3.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
     url:
         description:
             - Avi controller URL of the object.
         type: str
     uuid:
         description:
+            - Uuid of the clf profile.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
-    vcenter_credentials:
+    vrf_context_ref:
         description:
-            - Credentials to talk to vcenter.
-            - Field introduced in 20.1.1.
+            - Virtual routing context for this profiles collector pools.
+            - Only virtual services in the same virtual routing context can use this profile.
+            - Cannot be changed once set.
+            - It is a reference to an object of type vrfcontext.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
+        required: true
+        type: str
 extends_documentation_fragment:
     - vmware.alb.avi
 '''
@@ -146,20 +139,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
   tasks:
-    - name: Create a Cloud connector user that is used for integration into cloud platforms
-      vmware.alb.avi_cloudconnectoruser:
+    - name: Example to create ClfProfile object
+      vmware.alb.avi_clfprofile:
         avi_credentials: "{{ avi_credentials }}"
-        name: root
-        private_key: |
-          -----BEGIN RSA PRIVATE KEY-----
-          -----END RSA PRIVATE KEY-----'
-        public_key: 'ssh-rsa ...'
-        tenant_ref: /api/tenant?name=admin
+        state: present
+        name: sample_clfprofile
 """
 
 RETURN = '''
 obj:
-    description: CloudConnectorUser (api/cloudconnectoruser) object
+    description: ClfProfile (api/clfprofile) object
     returned: success, changed
     type: dict
 '''
@@ -191,22 +180,17 @@ def main():
         api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
-        azure_serviceprincipal=dict(type='dict',),
-        azure_userpass=dict(type='dict', no_log=True,),
+        clf_pools=dict(type='list', elements='dict',),
         configpb_attributes=dict(type='dict',),
-        gcp_credentials=dict(type='dict',),
-        last_password_rotation=dict(type='int',),
+        description=dict(type='str',),
+        enabled=dict(type='bool',),
+        markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
-        new_password_enc=dict(type='str', no_log=True,),
-        nsxt_credentials=dict(type='dict',),
-        obj_password=dict(type='str', no_log=True,),
-        private_key=dict(type='str', no_log=True,),
-        public_key=dict(type='str',),
+        replicate=dict(type='bool',),
         tenant_ref=dict(type='str',),
-        tencent_credentials=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
-        vcenter_credentials=dict(type='dict',),
+        vrf_context_ref=dict(type='str', required=True),
     )
     if HAS_REQUESTS:
         argument_specs.update(avi_common_argument_spec())
@@ -216,8 +200,8 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'cloudconnectoruser',
-                           {'private_key', 'password', 'new_password_enc', 'obj_password', 'azure_userpass'})
+    return avi_ansible_api(module, 'clfprofile',
+                           set())
 
 
 if __name__ == '__main__':
