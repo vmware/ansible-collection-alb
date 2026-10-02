@@ -2154,7 +2154,13 @@ Parameters
                   - Maximum number of post /api/eventmanager/generateevent requests allowed per minute, across all event_id values.
                 </div>
                                 <div style="font-size: small">
-                  - Allowed values are 1-10000.
+                  - A value of 0 blocks all requests to this api.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 1-1000.
+                </div>
+                                <div style="font-size: small">
+                  - Special values are 0- blocks all requests.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.1.4.
