@@ -71,7 +71,8 @@ options:
     enabled:
         description:
             - Enable or disable log delivery for this profile without disturbing pool state, health monitors, or virtualservice/datascriptset bindings.
-            - When false, avi.vs.log_forward() is a silent no-op for every vs attached via this profile; delivery resumes immediately when set back to true.
+            - When false, datascript log forwarding is a silent no-op for every vs attached via this profile; delivery resumes immediately when set back to
+            - true.
             - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.

@@ -212,7 +212,7 @@ Parameters
                   - Only lb_algorithm_round_robin and lb_algorithm_consistent_hash are supported; consistent-hash always hashes on the uuid of the virtualservice
                 </div>
                                 <div style="font-size: small">
-                  - invoking avi.vs.log_forward(), not a per-request client ip/uri/header, so all of one vs's log records land on the same collector.
+                  - invoking the datascript log forwarding call, not a per-request client ip/uri/header, so all of one vs's log records land on the same collector.
                 </div>
                                 <div style="font-size: small">
                   - Enum options - LB_ALGORITHM_LEAST_CONNECTIONS, LB_ALGORITHM_ROUND_ROBIN, LB_ALGORITHM_FASTEST_RESPONSE, LB_ALGORITHM_CONSISTENT_HASH,
@@ -715,7 +715,10 @@ Parameters
                   - Enable or disable log delivery for this profile without disturbing pool state, health monitors, or virtualservice/datascriptset bindings.
                 </div>
                                 <div style="font-size: small">
-                  - When false, avi.vs.log_forward() is a silent no-op for every vs attached via this profile; delivery resumes immediately when set back to true.
+                  - When false, datascript log forwarding is a silent no-op for every vs attached via this profile; delivery resumes immediately when set back to
+                </div>
+                                <div style="font-size: small">
+                  - true.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.1.5.
