@@ -544,7 +544,7 @@ Parameters
                   - DNS_RECORD_TXT, DNS_RECORD_RP, DNS_RECORD_DNSKEY, DNS_RECORD_AAAA, DNS_RECORD_SRV, DNS_RECORD_OPT, DNS_RECORD_RRSIG, DNS_RECORD_AXFR,
                 </div>
                                 <div style="font-size: small">
-                  - DNS_RECORD_ANY.
+                  - DNS_RECORD_ANY, DNS_RECORD_CAA.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

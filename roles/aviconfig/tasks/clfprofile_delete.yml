@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
-- name: Avi VSDataScriptSet | Delete VSDataScriptSet
+- name: Avi ClfProfile | Delete ClfProfile
   no_log: "{{ avi_role_config_log_mode | default('false') }}"
-  vmware.alb.avi_vsdatascriptset:
+  vmware.alb.avi_clfprofile:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,31 +14,19 @@
     state: "{{ avi_role_state_mode }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    clf_profile_ref: "{{ item.clf_profile_ref | default(omit) }}"
+    clf_pools: "{{ item.clf_pools | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    created_by: "{{ item.created_by | default(omit) }}"
-    datascript: "{{ item.datascript | default(omit) }}"
     description: "{{ item.description | default(omit) }}"
-    geo_db_ref: "{{ item.geo_db_ref | default(omit) }}"
-    ip_reputation_db_ref: "{{ item.ip_reputation_db_ref | default(omit) }}"
-    ipgroup_refs: "{{ item.ipgroup_refs | default(omit) }}"
+    enabled: "{{ item.enabled | default(omit) }}"
     markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    pki_profile_refs: "{{ item.pki_profile_refs | default(omit) }}"
-    pool_group_refs: "{{ item.pool_group_refs | default(omit) }}"
-    pool_refs: "{{ item.pool_refs | default(omit) }}"
-    protocol_parser_refs: "{{ item.protocol_parser_refs | default(omit) }}"
-    rate_limiters: "{{ item.rate_limiters | default(omit) }}"
-    snat_ip6s: "{{ item.snat_ip6s | default(omit) }}"
-    snat_ips: "{{ item.snat_ips | default(omit) }}"
-    ssl_key_certificate_refs: "{{ item.ssl_key_certificate_refs | default(omit) }}"
-    ssl_profile_refs: "{{ item.ssl_profile_refs | default(omit) }}"
-    string_group_refs: "{{ item.string_group_refs | default(omit) }}"
+    replicate: "{{ item.replicate | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
+    vrf_context_ref: "{{ item.vrf_context_ref | default(omit) }}"
   when:
     - (item.name | length > 0)
     - (not (item.system_default | default(false)))
     - (avi_config_state == "absent" or avi_role_state_mode == "absent")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.vsdatascriptset | default([]) }}"
+  with_items: "{{ avi_role_cfg.clfprofile | default([]) }}"

@@ -13,11 +13,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: avi_certjwtstore
+module: avi_clfprofile
 author: Parikshit Manur (@pm020058) <parikshit.manur@broadcom.com>
-short_description: Module for setup of CertJwtStore Avi RESTful Object
+short_description: Module for setup of ClfProfile Avi RESTful Object
 description:
-    - This module is used to configure CertJwtStore object.
+    - This module is used to configure ClfProfile object.
     - More examples at U(https://github.com/avinetworks/devops)
 options:
     state:
@@ -46,59 +46,64 @@ options:
         description:
             - Patch value to use when using avi_api_update_method as patch.
         type: str
+    clf_pools:
+        description:
+            - List of pools associated with this profile.
+            - Each pool must have a unique priority value.
+            - The controller rejects profiles where two pools share the same priority (http 400).
+            - Field introduced in 32.1.5.
+            - Maximum of 8 items allowed.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: dict
     configpb_attributes:
         description:
-            - Protobuf versioning for config pbs.
-            - Field introduced in 32.1.1.
+            - Protobuf versioning and config-push attributes.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
-    jwt:
+    description:
         description:
-            - Jwt containing current portal certificate along with the full certificate bundle chain, signed by the private key of previous portal certificate.
-            - Field introduced in 32.1.1.
+            - Human-readable description for this clf profile.
+            - Field introduced in 32.1.5.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
+    enabled:
+        description:
+            - Enable or disable log delivery for this profile without disturbing pool state, health monitors, or virtualservice/datascriptset bindings.
+            - When false, datascript log forwarding is a silent no-op for every vs attached via this profile; delivery resumes immediately when set back to
+            - true.
+            - Field introduced in 32.1.5.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
+    markers:
+        description:
+            - List of labels to be used for granular rbac.
+            - Field introduced in 32.1.5.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: list
+        elements: dict
+    name:
+        description:
+            - The name of the clf profile.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    key:
+    replicate:
         description:
-            - Private key.
-            - Field introduced in 32.1.1.
+            - When false (default), log records are routed to the highest-priority pool that has at least one up member (priority-based failover).
+            - When true, log records are replicated to all pools regardless of priority.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: str
-    key_passphrase:
+            - Default value when not specified in API or module is interpreted by Avi Controller as False.
+        type: bool
+    tenant_ref:
         description:
-            - Private key passphrase.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: str
-    kid:
-        description:
-            - Sha256 thumbprint of the previous old portal certificate.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: str
-    last_rotated_at:
-        description:
-            - Timestamp of certificate rotation.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: dict
-    public_key_algorithm:
-        description:
-            - Public key algorithm.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        required: true
-        type: str
-    type:
-        description:
-            - Type of ssl certificate.
-            - Enum options - SSL_CERTIFICATE_TYPE_VIRTUALSERVICE, SSL_CERTIFICATE_TYPE_SYSTEM, SSL_CERTIFICATE_TYPE_CA, SSL_CERTIFICATE_TYPE_CLIENT,
-            - SSL_CERTIFICATE_TYPE_SECURE_CHANNEL.
-            - Field introduced in 32.1.1.
+            - Reference to the tenant that owns this clf profile.
+            - It is a reference to an object of type tenant.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
@@ -107,9 +112,19 @@ options:
         type: str
     uuid:
         description:
-            - Uuid of jwt.
-            - Field introduced in 32.1.1.
+            - Uuid of the clf profile.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: str
+    vrf_context_ref:
+        description:
+            - Virtual routing context for this profiles collector pools.
+            - Only virtual services in the same virtual routing context can use this profile.
+            - Cannot be changed once set.
+            - It is a reference to an object of type vrfcontext.
+            - Field introduced in 32.1.5.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        required: true
         type: str
 extends_documentation_fragment:
     - vmware.alb.avi
@@ -125,16 +140,16 @@ EXAMPLES = """
       controller: "192.168.15.18"
       api_version: "21.1.1"
   tasks:
-    - name: Example to create CertJwtStore object
-      vmware.alb.avi_certjwtstore:
+    - name: Example to create ClfProfile object
+      vmware.alb.avi_clfprofile:
         avi_credentials: "{{ avi_credentials }}"
         state: present
-        name: sample_certjwtstore
+        name: sample_clfprofile
 """
 
 RETURN = '''
 obj:
-    description: CertJwtStore (api/certjwtstore) object
+    description: ClfProfile (api/clfprofile) object
     returned: success, changed
     type: dict
 '''
@@ -166,16 +181,17 @@ def main():
         api_version=dict(type='str', default='30.2.1'),
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
+        clf_pools=dict(type='list', elements='dict',),
         configpb_attributes=dict(type='dict',),
-        jwt=dict(type='str', required=True),
-        key=dict(type='str', no_log=True, required=True),
-        key_passphrase=dict(type='str', no_log=True,),
-        kid=dict(type='str', required=True),
-        last_rotated_at=dict(type='dict', required=True),
-        public_key_algorithm=dict(type='str', required=True),
-        type=dict(type='str',),
+        description=dict(type='str',),
+        enabled=dict(type='bool',),
+        markers=dict(type='list', elements='dict',),
+        name=dict(type='str', required=True),
+        replicate=dict(type='bool',),
+        tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
+        vrf_context_ref=dict(type='str', required=True),
     )
     if HAS_REQUESTS:
         argument_specs.update(avi_common_argument_spec())
@@ -185,8 +201,8 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'certjwtstore',
-                           {'key', 'key_passphrase'})
+    return avi_ansible_api(module, 'clfprofile',
+                           set())
 
 
 if __name__ == '__main__':

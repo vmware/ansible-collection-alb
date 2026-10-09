@@ -1,9 +1,9 @@
 # Automatically Generated File
 # Copyright (c) 2026 Broadcom Inc. and/or its subsidiaries. All Rights Reserved. Broadcom Confidential.
 ---
-- name: Avi JWTServerProfile | Create or Update JWTServerProfile
+- name: Avi ClfProfile | Create or Update ClfProfile
   no_log: "{{ avi_role_config_log_mode | default(False) }}"
-  vmware.alb.avi_jwtserverprofile:
+  vmware.alb.avi_clfprofile:
     controller: "{{ avi_controller | default(omit) }}"
     username: "{{ avi_username | default(omit) }}"
     password: "{{ avi_password | default(omit) }}"
@@ -14,20 +14,17 @@
     api_context: "{{ avi_api_context | default(omit) }}"
     avi_api_update_method: "{{ item.avi_api_update_method | default(omit) }}"
     avi_api_patch_op: "{{ item.avi_api_patch_op | default(omit) }}"
-    allowed_algorithms: "{{ item.allowed_algorithms | default(omit) }}"
-    clock_skew_config: "{{ item.clock_skew_config | default(omit) }}"
+    clf_pools: "{{ item.clf_pools | default(omit) }}"
     configpb_attributes: "{{ item.configpb_attributes | default(omit) }}"
-    controller_internal_auth: "{{ item.controller_internal_auth | default(omit) }}"
-    is_federated: "{{ item.is_federated | default(omit) }}"
-    issuer: "{{ item.issuer | default(omit) }}"
-    jwks_keys: "{{ item.jwks_keys | default(omit) }}"
-    jwt_profile_type: "{{ item.jwt_profile_type | default(omit) }}"
+    description: "{{ item.description | default(omit) }}"
+    enabled: "{{ item.enabled | default(omit) }}"
+    markers: "{{ item.markers | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
-    protected_resource_config: "{{ item.protected_resource_config | default(omit) }}"
-    reject_non_expiring_tokens: "{{ item.reject_non_expiring_tokens | default(omit) }}"
+    replicate: "{{ item.replicate | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
+    vrf_context_ref: "{{ item.vrf_context_ref | default(omit) }}"
   when:
     - (avi_role_state_mode == "present" and avi_config_state == "present")
     - (item.state | default("present") == avi_role_state_mode or avi_config_state == "absent")
-  with_items: "{{ avi_role_cfg.jwtserverprofile | default([]) }}"
+  with_items: "{{ avi_role_cfg.clfprofile | default([]) }}"

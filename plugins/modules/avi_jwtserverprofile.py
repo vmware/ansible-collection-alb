@@ -59,6 +59,14 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: str
+    clock_skew_config:
+        description:
+            - Clock-skew tolerance applied to the nbf and exp claims when validating jwts.
+            - If not configured, no clock-skew tolerance is applied.
+            - Only applicable when jwt profile type is client_auth.
+            - Field introduced in 32.1.4.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     configpb_attributes:
         description:
             - Protobuf versioning for config pbs.
@@ -114,6 +122,14 @@ options:
             - Field introduced in 32.1.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
+    reject_non_expiring_tokens:
+        description:
+            - Reject jwts whose exp claim is missing or non-numeric.
+            - This configuration knob is applicable only when the jwt profile type is client_auth.
+            - Field introduced in 32.1.4.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as True.
+        type: bool
     tenant_ref:
         description:
             - Uuid of the tenant.
@@ -187,6 +203,7 @@ def main():
         avi_credentials=dict(type='dict',),
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         allowed_algorithms=dict(type='list', elements='str',),
+        clock_skew_config=dict(type='dict',),
         configpb_attributes=dict(type='dict',),
         controller_internal_auth=dict(type='dict',),
         is_federated=dict(type='bool',),
@@ -195,6 +212,7 @@ def main():
         jwt_profile_type=dict(type='str',),
         name=dict(type='str', required=True),
         protected_resource_config=dict(type='dict',),
+        reject_non_expiring_tokens=dict(type='bool',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         uuid=dict(type='str',),
