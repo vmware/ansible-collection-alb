@@ -1,2 +1,9 @@
 ---
 requires_ansible: '>=2.16.0'
+
+plugin_routing:
+    modules:
+        avi_pulse_registration:
+            deprecation:
+                removal_version: 32.1.6
+                warning_text: Use avi_cloud_console_registration for registration and avi_cloud_console_license_subscription for subscription instead.

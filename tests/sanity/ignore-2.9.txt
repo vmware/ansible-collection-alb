@@ -8,11 +8,16 @@ plugins/modules/avi_gslbservice_patch_member.py validate-modules:missing-gplv3-l
 plugins/modules/avi_api_fileservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_api_image.py validate-modules:missing-gplv3-license
 plugins/modules/avi_deploy_controller.py validate-modules:missing-gplv3-license
+plugins/modules/avi_cloud_console_registration.py validate-modules:missing-gplv3-license
+plugins/modules/avi_cloud_console_license_subscription.py validate-modules:missing-gplv3-license
 tests/integration/run_tests.sh shebang
 roles/avise/files/systemd/install.py shebang
 tests/integration/run_tests.sh shellcheck:SC2157
 tests/integration/run_tests.sh shellcheck:SC2154
 plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
+plugins/modules/avi_pulse_registration.py validate-modules:removal-version-must-be-major
+plugins/modules/avi_pulse_registration.py validate-modules:collection-deprecated-module
+meta/runtime.yml runtime-metadata
 plugins/lookup/avi.py validate-modules:invalid-documentation
 plugins/modules/avi_fileobject_upload.py validate-modules:missing-gplv3-license
 plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed

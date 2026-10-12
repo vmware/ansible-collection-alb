@@ -469,7 +469,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'systemconfiguration',
-                           {'rekey_time_limit', 'avi_email_login_password', 'rekey_volume_limit', 'host_key_algorithm_exclude'})
+                           {'avi_email_login_password', 'rekey_volume_limit', 'host_key_algorithm_exclude', 'rekey_time_limit'})
 
 
 if __name__ == '__main__':

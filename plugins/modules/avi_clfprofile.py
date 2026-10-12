@@ -51,7 +51,7 @@ options:
             - List of pools associated with this profile.
             - Each pool must have a unique priority value.
             - The controller rejects profiles where two pools share the same priority (http 400).
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Maximum of 8 items allowed.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
@@ -59,13 +59,13 @@ options:
     configpb_attributes:
         description:
             - Protobuf versioning and config-push attributes.
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     description:
         description:
             - Human-readable description for this clf profile.
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     enabled:
@@ -73,21 +73,21 @@ options:
             - Enable or disable log delivery for this profile without disturbing pool state, health monitors, or virtualservice/datascriptset bindings.
             - When false, datascript log forwarding is a silent no-op for every vs attached via this profile; delivery resumes immediately when set back to
             - true.
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as True.
         type: bool
     markers:
         description:
             - List of labels to be used for granular rbac.
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
     name:
         description:
             - The name of the clf profile.
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
@@ -95,7 +95,7 @@ options:
         description:
             - When false (default), log records are routed to the highest-priority pool that has at least one up member (priority-based failover).
             - When true, log records are replicated to all pools regardless of priority.
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as False.
         type: bool
@@ -103,7 +103,7 @@ options:
         description:
             - Reference to the tenant that owns this clf profile.
             - It is a reference to an object of type tenant.
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     url:
@@ -113,7 +113,7 @@ options:
     uuid:
         description:
             - Uuid of the clf profile.
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     vrf_context_ref:
@@ -122,7 +122,7 @@ options:
             - Only virtual services in the same virtual routing context can use this profile.
             - Cannot be changed once set.
             - It is a reference to an object of type vrfcontext.
-            - Field introduced in 32.1.5.
+            - Field introduced in 32.2.1.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
