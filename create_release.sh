@@ -92,7 +92,7 @@ if [ "$BRANCH" = "eng" ]; then
     exit 1
 fi
 
-if [ -z $REL ]; then
+if [ -z "$REL" ]; then
     echo "Pl. give the release version eg. 32.1.3"
     usage
     exit 1
@@ -116,10 +116,10 @@ if [ "$GALAXY_VERSION" != "$REL" ]; then
     exit 1
 fi
 
-git tag $REL_TAG origin/$BRANCH
-git push origin $REL_TAG
+git tag "$REL_TAG" "origin/$BRANCH"
+git push origin "$REL_TAG"
 set -e
-git checkout -B $BRANCH origin/$BRANCH
+git checkout -B "$BRANCH" "origin/$BRANCH"
 
 # Creating the GitHub release is what triggers .github/workflows/release.yaml
 # (on: release: published), which builds and publishes the collection to
@@ -144,7 +144,7 @@ fi
 # and fail this script if it fails.
 echo "Waiting for the release.yaml workflow run to start..."
 RUN_ID=""
-for i in $(seq 1 30); do
+for _ in $(seq 1 30); do
     RUN_ID=$(gh run list --workflow=release.yaml --json databaseId,event,createdAt \
         --jq "[.[] | select(.event == \"release\" and .createdAt >= \"$RELEASE_CREATED_AT\")] | sort_by(.createdAt) | last | .databaseId // empty")
     if [ -n "$RUN_ID" ]; then
