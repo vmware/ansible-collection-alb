@@ -16,8 +16,7 @@ import yaml
 import time
 import logging
 from copy import deepcopy
-from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, avi_sdk_syslog_logger, \
-    AviCredentials
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, avi_sdk_syslog_logger, AviCredentials
 from ansible_collections.vmware.alb.plugins.module_utils.csp_avi_api import CSPApiSession
 from ansible_collections.vmware.alb.plugins.module_utils.saml_avi_api import OneloginSAMLApiSession, OktaSAMLApiSession
 
@@ -36,6 +35,25 @@ else:
 
 class InvalidRefFormat(Exception):
     pass
+
+
+def handle_preflight_get_error(module, path, exc):
+    """
+    :param module: AnsibleModule, used to surface the warning
+    :param path: path that was queried, for the warning message
+    :param exc: the ObjectNotFound or APIError raised by rsp.json()
+    """
+    if isinstance(exc, ObjectNotFound):
+        return
+    rsp = exc.args[1] if len(exc.args) > 1 else None
+    if getattr(rsp, 'status_code', None) == 405:
+        module.warn(
+            "Pre-flight GET on path '%s' returned HTTP 405 (Method Not "
+            "Allowed); treating it as an action endpoint without GET "
+            "support and skipping the pre-flight existence check. Set "
+            "preflight_check: false to suppress this warning." % path)
+        return
+    raise exc
 
 
 class AviCheckModeResponse(object):
@@ -465,7 +483,8 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
         # As per API response, name is always same as username regardless of full_name
         obj['name'] = obj['username']
 
-    log.info('passed object %s ', {**obj, 'password': None})
+    redact_keys = set(sensitive_fields or ()) | {'password'}
+    log.info('passed object %s ', {k: (None if k in redact_keys else v) for k, v in obj.items()})
 
     file_path = obj.pop('file_path', None)
     is_fileObject_endpoint = obj_type == "fileobject/upload"
@@ -500,11 +519,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                                       existing_obj=existing_obj,
                                       api_context=api.get_context())
 
-        # Build multipart form fields.  The module exposes 'url' for the CRL
-        # server address, but the fileobject/upload form schema uses 'server_url'.
         fields = {}
         for k, v in obj.items():
-            fields['server_url' if k == 'url' else k] = str(v)
+            fields[k] = str(v)
 
         rsp = None
         if file_path:
