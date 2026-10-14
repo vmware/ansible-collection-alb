@@ -308,6 +308,7 @@
       ansible.builtin.file:
         path: "{{ item }}"
         state: directory
+        mode: "0755"
       when: item != None
       loop:
         - "{{ se_disk_path }}"

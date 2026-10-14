@@ -12,15 +12,13 @@ tests/integration/run_tests.sh shebang
 roles/avise/files/systemd/install.py shebang
 tests/integration/run_tests.sh shellcheck:SC2157
 tests/integration/run_tests.sh shellcheck:SC2154
-plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
-plugins/lookup/avi.py validate-modules:invalid-documentation
-plugins/modules/avi_fileobject_upload.py validate-modules:missing-gplv3-license
-plugins/modules/avi_cloudconnectoruser.py validate-modules:no-log-needed
 plugins/module_utils/avi_api.py import-3.12!skip
 plugins/module_utils/csp_avi_api.py import-3.12!skip
 plugins/module_utils/saml_avi_api.py import-3.12!skip
 plugins/module_utils/utils/ansible_utils.py import-3.12!skip
 plugins/lookup/avi.py import-3.12!skip
+plugins/modules/avi_pulse_registration.py validate-modules:missing-gplv3-license
+plugins/modules/avi_fileobject_upload.py validate-modules:missing-gplv3-license
 plugins/modules/avi_seproperties.py validate-modules:missing-gplv3-license
 plugins/modules/avi_labelgroup.py validate-modules:missing-gplv3-license
 plugins/modules/avi_useraccountprofile.py validate-modules:missing-gplv3-license
@@ -160,4 +158,3 @@ plugins/modules/avi_systemconfiguration.py validate-modules:missing-gplv3-licens
 plugins/modules/avi_virtualservice.py validate-modules:missing-gplv3-license
 plugins/modules/avi_licensestatus.py validate-modules:missing-gplv3-license
 plugins/modules/avi_gslbservice.py validate-modules:missing-gplv3-license
-create_release.sh shebang

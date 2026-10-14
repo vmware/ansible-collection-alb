@@ -2,9 +2,11 @@
 
 ## 32.1.4
 
-- Introduced a new fileobject_upload module to support file uploads.
-- AV-293089: Updated REST path endpoints in ansible module
-- AV-274876: Enhanced logging security by masking all sensitive fields.
+- File Upload Support: Introduced a new fileobject_upload module to enable file upload operations through the Ansible collection. This allows users to automate file uploads within their Ansible workflows, reducing the need for manual upload operations.
+- REST API Endpoint Updates (AV-293089): Updated REST API paths used by Ansible modules to align with the revised endpoint structure. This helps users execute automation tasks against the correct API endpoints and reduces issues caused by outdated REST paths.
+- Enhanced Logging Security (AV-274876): Enhanced logging security by masking all sensitive fields in log output. This helps users troubleshoot module execution more securely while reducing the risk of exposing confidential information in logs.
+- Added preflight_check boolean parameter (default true) to the avi_api_session module to gate pre-flight GET requests before POST/PUT operations.
+
 
 ## 32.1.3
 
