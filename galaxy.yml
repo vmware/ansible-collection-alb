@@ -7,6 +7,7 @@ build_ignore:
 - CODE-OF-CONDUCT.md
 - CODEOWNERS
 - CONTRIBUTING.md
+- create_release.sh
 description: VMware Advanced Load Balancer (formerly Avi) Ansible Collection
 issues: https://github.com/vmware/ansible-collection-alb/issues
 license_file: LICENSE
@@ -25,4 +26,4 @@ tags:
 - load
 - balancer
 - sdk
-version: 32.2.1
+version: 32.1.4

@@ -34,6 +34,7 @@
     check_vsvip_fqdn_syntax: "{{ item.check_vsvip_fqdn_syntax | default(omit) }}"
     cleanup_expired_authtoken_timeout_period: "{{ item.cleanup_expired_authtoken_timeout_period | default(omit) }}"
     cleanup_sessions_timeout_period: "{{ item.cleanup_sessions_timeout_period | default(omit) }}"
+    clock_skew_config: "{{ item.clock_skew_config | default(omit) }}"
     cloud_discovery_interval: "{{ item.cloud_discovery_interval | default(omit) }}"
     cloud_reconcile: "{{ item.cloud_reconcile | default(omit) }}"
     cloud_reconcile_interval: "{{ item.cloud_reconcile_interval | default(omit) }}"

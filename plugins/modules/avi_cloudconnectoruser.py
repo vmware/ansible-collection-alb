@@ -195,7 +195,7 @@ def main():
         azure_userpass=dict(type='dict', no_log=True,),
         configpb_attributes=dict(type='dict',),
         gcp_credentials=dict(type='dict',),
-        last_password_rotation=dict(type='int',),
+        last_password_rotation=dict(type='int', no_log=True),
         name=dict(type='str', required=True),
         new_password_enc=dict(type='str', no_log=True,),
         nsxt_credentials=dict(type='dict',),
