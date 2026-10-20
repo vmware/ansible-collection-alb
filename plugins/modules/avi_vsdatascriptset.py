@@ -51,7 +51,7 @@ options:
         description:
             - Uuid of the custom log forward profile that is referred by virtual service datascript objects.
             - It is a reference to an object of type clfprofile.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: str
     configpb_attributes:

@@ -18205,6 +18205,38 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>enable_transaction_logs</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Generate a per-transaction log for each completed msglb request/response pair.
+                </div>
+                                <div style="font-size: small">
+                  - Only requests that carry a transaction key are logged.
+                </div>
+                                <div style="font-size: small">
+                  - Disabled by default because it produces one log per message.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>max_tcp_conn_per_client_per_server</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -18231,6 +18263,47 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 1.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>msg_lb_connection_log_interval</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Interval in seconds at which a cumulative per-connection msglb log is pushed for each open client connection, so long-lived connections are
+                </div>
+                                <div style="font-size: small">
+                  - visible before they close.
+                </div>
+                                <div style="font-size: small">
+                  - 0 disables the periodic log; the log pushed when the connection closes is always generated.
+                </div>
+                                <div style="font-size: small">
+                  - Changes apply to existing connections as well.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed values are 0-3600.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Unit is sec.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as 300.
                 </div>
                                             </td>
     </tr>

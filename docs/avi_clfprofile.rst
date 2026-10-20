@@ -141,10 +141,13 @@ Parameters
                                                             </div>
             </td>
             <td>
-                                                            </td>
+                                <div style="font-size: small">
+                <b>required: true</b>
+                </div>
+                            </td>
             <td>
                                                 <div style="font-size: small">
-                  - List of pools associated with this profile.
+                  - List of pools associated with this profile (1 to 8).
                 </div>
                                 <div style="font-size: small">
                   - Each pool must have a unique priority value.
@@ -153,7 +156,10 @@ Parameters
                   - The controller rejects profiles where two pools share the same priority (http 400).
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Minimum of 1 items required.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 8 items allowed.
@@ -183,7 +189,7 @@ Parameters
                   - It is a reference to an object of type healthmonitor.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 1 items allowed.
@@ -224,7 +230,7 @@ Parameters
                   - LB_ALGORITHM_CORE_AFFINITY, LB_ALGORITHM_TOPOLOGY.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -256,7 +262,7 @@ Parameters
                   - Enum options - CLF_LOG_FORMAT_SYSLOG_LEGACY, CLF_LOG_FORMAT_SYSLOG_OCTET, CLF_LOG_FORMAT_CUSTOM.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -288,7 +294,7 @@ Parameters
                   - The controller rejects profiles where two pools share the same name.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -317,7 +323,7 @@ Parameters
                   - It is a reference to an object of type pkiprofile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -337,22 +343,19 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Pool priority within the clfprofile.
+                  - Pool priority within the clfprofile (mandatory, no default value, it must be given on every pool).
                 </div>
                                 <div style="font-size: small">
-                  - Higher value = higher priority.
+                  - A higher value means a higher priority.
                 </div>
                                 <div style="font-size: small">
                   - Must be unique across all pools in the same profile.
                 </div>
                                 <div style="font-size: small">
-                  - When replicate=false, the highest-priority pool with an up member receives all log records; lower-priority pools act as fallback.
-                </div>
-                                <div style="font-size: small">
                   - Allowed values are 1-255.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -375,7 +378,10 @@ Parameters
                   - List of log collector endpoints for this pool.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Minimum of 1 items required.
                 </div>
                                 <div style="font-size: small">
                   - Maximum of 32 items allowed.
@@ -403,7 +409,7 @@ Parameters
                   - Enable or disable this collector.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -430,7 +436,7 @@ Parameters
                   - Ip address of the external log collector.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -503,7 +509,7 @@ Parameters
                   - Allowed values are 1-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -533,7 +539,7 @@ Parameters
                   - It is a reference to an object of type sslkeyandcertificate.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -562,7 +568,7 @@ Parameters
                   - It is a reference to an object of type sslprofile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -588,7 +594,7 @@ Parameters
                   - Enum options - CLF_TRANSPORT_TCP, CLF_TRANSPORT_UDP, CLF_TRANSPORT_TCP_TLS.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -614,7 +620,7 @@ Parameters
                   - Protobuf versioning and config-push attributes.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -693,7 +699,7 @@ Parameters
                   - Human-readable description for this clf profile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -721,7 +727,7 @@ Parameters
                   - true.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -746,7 +752,7 @@ Parameters
                   - List of labels to be used for granular rbac.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -828,7 +834,7 @@ Parameters
                   - The name of the clf profile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -853,7 +859,7 @@ Parameters
                   - When true, log records are replicated to all pools regardless of priority.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -881,7 +887,7 @@ Parameters
                   - It is a reference to an object of type tenant.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -906,6 +912,43 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>use_management</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - When true, log forwarding traffic for this profile is sent through the service engine management interface in the management vrf instead of the
+                </div>
+                                <div style="font-size: small">
+                  - data interfaces in the profiles vrf context.
+                </div>
+                                <div style="font-size: small">
+                  - Health monitors cannot be configured on any pool of a profile with this knob enabled, and the knob cannot be enabled while any pool has health
+                </div>
+                                <div style="font-size: small">
+                  - monitors; remove them first.
+                </div>
+                                <div style="font-size: small">
+                  - Cannot be changed after the profile is created.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.5.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as False.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>uuid</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -919,7 +962,7 @@ Parameters
                   - Uuid of the clf profile.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -953,7 +996,7 @@ Parameters
                   - It is a reference to an object of type vrfcontext.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

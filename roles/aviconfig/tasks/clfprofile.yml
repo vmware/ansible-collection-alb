@@ -22,6 +22,7 @@
     name: "{{ item.name | default(omit) }}"
     replicate: "{{ item.replicate | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
+    use_management: "{{ item.use_management | default(omit) }}"
     uuid: "{{ item.uuid | default(omit) }}"
     vrf_context_ref: "{{ item.vrf_context_ref | default(omit) }}"
   when:
