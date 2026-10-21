@@ -93,14 +93,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         required: true
         type: str
-    replicate:
-        description:
-            - When false (default), log records are routed to the highest-priority pool that has at least one up member (priority-based failover).
-            - When true, log records are replicated to all pools regardless of priority.
-            - Field introduced in 32.1.5.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-            - Default value when not specified in API or module is interpreted by Avi Controller as False.
-        type: bool
     tenant_ref:
         description:
             - Reference to the tenant that owns this clf profile.
@@ -200,7 +192,6 @@ def main():
         enabled=dict(type='bool',),
         markers=dict(type='list', elements='dict',),
         name=dict(type='str', required=True),
-        replicate=dict(type='bool',),
         tenant_ref=dict(type='str',),
         url=dict(type='str',),
         use_management=dict(type='bool',),

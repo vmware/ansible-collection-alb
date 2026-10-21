@@ -3209,7 +3209,7 @@ Parameters
                   - Distinct from l7 conn_pool_properties.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
@@ -3239,7 +3239,7 @@ Parameters
                   - Special values are 0 - disable.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Unit is milliseconds.
@@ -3274,7 +3274,7 @@ Parameters
                   - Allowed values are 0-65535.
                 </div>
                                 <div style="font-size: small">
-                  - Field introduced in 32.2.1.
+                  - Field introduced in 32.1.5.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

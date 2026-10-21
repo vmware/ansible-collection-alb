@@ -116,7 +116,7 @@ options:
         description:
             - Per-client connection cap settings for l4 message-level load balancing (app_service_type_l4_msg_lb).
             - Ignored for other application profile types.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:

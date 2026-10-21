@@ -389,7 +389,7 @@ options:
         description:
             - Tcp connection pool limits for l4 message-level load balancing vses that use this pool.
             - Distinct from l7 conn_pool_properties.
-            - Field introduced in 32.2.1.
+            - Field introduced in 32.1.5.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: dict
     name:
