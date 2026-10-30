@@ -91,6 +91,18 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: list
         elements: dict
+    max_request_body_inspection_size:
+        description:
+            - Size of the client request body inspected by api request body validation.
+            - A larger body is validated up to this size.
+            - More is inspected if another module (e.g.
+            - Waf) buffers more; the application profiles client_max_body_size, if set, is the upper limit.
+            - Allowed values are 1-32768.
+            - Field introduced in 32.2.1.
+            - Unit is kb.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+            - Default value when not specified in API or module is interpreted by Avi Controller as 1024.
+        type: int
     name:
         description:
             - Name of this object, unique per tenant.
@@ -249,6 +261,7 @@ def main():
         description=dict(type='str',),
         file_object_refs=dict(type='list', elements='str',),
         label_mappings=dict(type='list', elements='dict',),
+        max_request_body_inspection_size=dict(type='int',),
         name=dict(type='str', required=True),
         non_api_url_labels=dict(type='dict',),
         orphan_api_classification_settings=dict(type='dict',),

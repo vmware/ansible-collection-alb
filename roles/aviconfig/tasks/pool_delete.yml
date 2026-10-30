@@ -61,6 +61,7 @@
     max_conn_rate_per_server: "{{ item.max_conn_rate_per_server | default(omit) }}"
     min_health_monitors_up: "{{ item.min_health_monitors_up | default(omit) }}"
     min_servers_up: "{{ item.min_servers_up | default(omit) }}"
+    msg_lb_conn_pool_config: "{{ item.msg_lb_conn_pool_config | default(omit) }}"
     name: "{{ item.name | default(omit) }}"
     networks: "{{ item.networks | default(omit) }}"
     nsx_securitygroup: "{{ item.nsx_securitygroup | default(omit) }}"

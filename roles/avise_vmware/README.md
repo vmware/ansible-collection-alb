@@ -7,7 +7,7 @@ Using this module you are able to install the Avi Vantage Service Engine, to you
 
 - `avisdk` python library, which can be installed by `pip install avisdk --upgrade`
 - `pyvmomi` python library, which can be installed by  `pip install pyvmomi --upgrade`
-- `requests_toolbelt` python library, which can be installed by `pip install requests_toolbelt --upgrade`
+- `httpx2` python library, which can be installed by `pip install httpx2 --upgrade`
 
 ## Role Dependencies
 
