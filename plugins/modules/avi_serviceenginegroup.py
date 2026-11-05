@@ -1153,6 +1153,8 @@ options:
     max_vs_per_se:
         description:
             - Maximum number of virtual services that can be placed on a single service engine.
+            - Sni / evh child and shared vip virtual services when placed on a service engine due to networking constraints might lead to this limit being
+            - exceeded.
             - Allowed values are 1-1000.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 10.

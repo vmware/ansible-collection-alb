@@ -5541,6 +5541,12 @@ Parameters
                   - Maximum number of virtual services that can be placed on a single service engine.
                 </div>
                                 <div style="font-size: small">
+                  - Sni / evh child and shared vip virtual services when placed on a service engine due to networking constraints might lead to this limit being
+                </div>
+                                <div style="font-size: small">
+                  - exceeded.
+                </div>
+                                <div style="font-size: small">
                   - Allowed values are 1-1000.
                 </div>
                                 <div style="font-size: small">
