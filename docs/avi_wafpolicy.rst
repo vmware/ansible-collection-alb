@@ -2926,6 +2926,41 @@ Parameters
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Waf mode for the application specific rules.
+                </div>
+                                <div style="font-size: small">
+                  - This can be either detection, enforcement or evaluation.
+                </div>
+                                <div style="font-size: small">
+                  - If this is not set, the waf policy mode is used.
+                </div>
+                                <div style="font-size: small">
+                  - This only takes effect if the policy allows mode delegation.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - WAF_MODE_DETECTION_ONLY, WAF_MODE_ENFORCEMENT, WAF_MODE_EVALUATION.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>provider_ref</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">

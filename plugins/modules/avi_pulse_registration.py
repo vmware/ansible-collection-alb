@@ -9,13 +9,19 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
-                    'status': ['preview'],
+                    'status': ['deprecated'],
                     'supported_by': 'community'}
 
 DOCUMENTATION = '''
 ---
 module: avi_pulse_registration
 author: Patnala Chandana (@chandanapatnala) <cpatnala@vmware.com>
+
+deprecated:
+  removed_in: '32.1.6'
+  why: Starting with controller version 32.1.1, registration and subscription are handled separately.
+    Therefore, separate modules were introduced for registration and subscription.
+  alternative: Use avi_cloud_console_registration for registration and avi_cloud_console_license_subscription for subscription instead.
 
 short_description: Avi API Module for pulse registration
 description:

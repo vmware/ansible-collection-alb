@@ -63,10 +63,40 @@ import os
 from ansible.module_utils.basic import AnsibleModule
 
 try:
-    from requests_toolbelt import MultipartEncoder
+    import httpx2
     HAS_LIB = True
 except ImportError:
     HAS_LIB = False
+
+
+class MultipartEncoder:
+    """Streaming multipart/form-data body built on httpx2 (drop-in for requests_toolbelt.MultipartEncoder)."""
+
+    def __init__(self, fields):
+        data = {k: v for k, v in fields.items() if not isinstance(v, (tuple, list))}
+        files = {k: v for k, v in fields.items() if isinstance(v, (tuple, list))}
+        request = httpx2.Request(
+            'POST', 'https://multipart-encoder.invalid/', data=data, files=files)
+        self.content_type = request.headers['Content-Type']
+        content_length = request.headers.get('Content-Length')
+        self._content_length = int(content_length) if content_length is not None else None
+        self._stream = request.stream
+
+    def __iter__(self):
+        return iter(self._stream)
+
+    def __len__(self):
+        # httpx2 omits Content-Length (chunked transfer) when a file field's
+        # length can't be pre-determined (non-seekable file object, pipe).
+        # Raising here lets requests.utils.super_len's except clause catch it
+        # and fall back to chunked transfer, same as it does for any other
+        # body object without a usable __len__.
+        if self._content_length is None:
+            raise TypeError(
+                'Content-Length unavailable for this multipart body (a file '
+                'field is not seekable); falling back to chunked transfer')
+        return self._content_length
+
 
 try:
     from ansible_collections.vmware.alb.plugins.module_utils.utils.ansible_utils import avi_common_argument_spec
@@ -107,7 +137,7 @@ def main():
             'For installation instructions, visit https://pypi.org/project/requests.'))
     if not HAS_LIB:
         return module.fail_json(
-            msg='avi_api_image, requests_toolbelt is required for this module')
+            msg='avi_api_image, httpx2 is required for this module')
 
     api_creds = AviCredentials()
     api_creds.update_from_ansible_module(module)

@@ -7116,7 +7116,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Flag is used to indicate whether tls certificate verificationbe done when establishing a connection to a vcenter and nsx-t manager.
+                  - Flag is used to indicate whether tls certificate verification be done when establishing a connection to a vcenter and nsx-t manager.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.1.1.
@@ -9811,7 +9811,7 @@ Parameters
                                                             </td>
             <td>
                                                 <div style="font-size: small">
-                  - Flag is used to indicate whether tls certificate verificationbe done when establishing a connection to a vcenter server.
+                  - Flag is used to indicate whether tls certificate verification be done when establishing a connection to a vcenter server.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 31.1.1.

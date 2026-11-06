@@ -323,7 +323,7 @@ options:
         type: str
     system:
         description:
-            - Flag is set only in the cluster if the upgrade is initiated as a system-upgrade.
+            - Flag indicating whether the upgrade operation was initiated as a system-upgrade (applying to controller and all service engine groups).
             - Field introduced in 18.2.6.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
         type: bool

@@ -541,6 +541,32 @@ Parameters
                             <td class="elbow-placeholder"></td>
                                     <td colspan="3">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_api_paths</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum total number of api path objects allowed across the system.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.4.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>num_api_paths_per_policy</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
@@ -552,6 +578,32 @@ Parameters
             <td>
                                                 <div style="font-size: small">
                   - Maximum number of api path definitions (unique url path patterns) that can be configured for a single api policy.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.4.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="3">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_api_schemas</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Maximum total number of api schema objects allowed across the system.
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 32.1.4.
@@ -974,6 +1026,30 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Field introduced in 20.1.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                            </td>
+    </tr>
+                                    <td class="elbow-placeholder"></td>
+                            <td class="elbow-placeholder"></td>
+                                    <td colspan="5">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>num_geodb_records</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">int</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - System-wide maximum number of records allowed in a geodb database (systemgeodb and gslbgeodb).
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.4.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.

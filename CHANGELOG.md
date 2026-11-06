@@ -1,5 +1,13 @@
 # Changelog
 
+## 32.1.6
+
+### deprecated_features
+- **deprecated**: avi_pulse_registration
+  - removed_in: "32.1.6"
+  - why: "Starting with controller version 32.1.1, registration and subscription are handled separately. Therefore, separate modules were introduced for registration and subscription."
+  - alternative: "Use avi_cloud_console_registration for registration and avi_cloud_console_license_subscription for subscription instead."
+
 ## 30.2.6
 
 ### Enhancements
