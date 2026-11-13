@@ -5541,6 +5541,12 @@ Parameters
                   - Maximum number of virtual services that can be placed on a single service engine.
                 </div>
                                 <div style="font-size: small">
+                  - Sni / evh child and shared vip virtual services when placed on a service engine due to networking constraints might lead to this limit being
+                </div>
+                                <div style="font-size: small">
+                  - exceeded.
+                </div>
+                                <div style="font-size: small">
                   - Allowed values are 1-1000.
                 </div>
                                 <div style="font-size: small">
@@ -6335,6 +6341,41 @@ Parameters
                                             </td>
     </tr>
                 <tr>
+                                    <td class="elbow-placeholder"></td>
+                                    <td colspan="6">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>cert_validation_mode</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">str</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Tls certificate validation mode for inter-se objsync, validated against the system secure channel certificate.
+                </div>
+                                <div style="font-size: small">
+                  - Strict (default) is the most secure mode.
+                </div>
+                                <div style="font-size: small">
+                  - Compat also accepts legacy se certificates for backward compatibility.
+                </div>
+                                <div style="font-size: small">
+                  - Enum options - OBJSYNC_CERT_VALIDATION_COMPAT, OBJSYNC_CERT_VALIDATION_STRICT, OBJSYNC_CERT_VALIDATION_AUTO.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.2.1.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+                </div>
+                                <div style="font-size: small">
+                  - Default value when not specified in API or module is interpreted by Avi Controller as OBJSYNC_CERT_VALIDATION_STRICT.
+                </div>
+                                            </td>
+    </tr>
                                     <td class="elbow-placeholder"></td>
                                     <td colspan="6">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
@@ -9961,6 +10002,31 @@ Parameters
                 </div>
                                 <div style="font-size: small">
                   - Default value when not specified in API or module is interpreted by Avi Controller as 4096.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>supervisor_group</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - Indicates that this service engine group is reserved for exclusive use by the supervisor in vcf environment.
+                </div>
+                                <div style="font-size: small">
+                  - This is a read-only field for external user.
+                </div>
+                                <div style="font-size: small">
+                  - Field introduced in 32.1.6.
+                </div>
+                                <div style="font-size: small">
+                  - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
                 </div>
                                             </td>
     </tr>

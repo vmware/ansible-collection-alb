@@ -208,6 +208,12 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
         type: int
+    clock_skew_config:
+        description:
+            - Clock-skew tolerance configuration for site to site communication with jwt authentication.
+            - Field introduced in 32.1.4.
+            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
+        type: dict
     cloud_discovery_interval:
         description:
             - Time in minutes to wait between consecutive cloud discovery cycles.
@@ -389,7 +395,9 @@ options:
     event_manager_api_rate_limit_per_min:
         description:
             - Maximum number of post /api/eventmanager/generateevent requests allowed per minute, across all event_id values.
-            - Allowed values are 1-10000.
+            - A value of 0 blocks all requests to this api.
+            - Allowed values are 1-1000.
+            - Special values are 0- blocks all requests.
             - Field introduced in 32.1.4.
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 60.
@@ -1084,6 +1092,7 @@ def main():
         check_vsvip_fqdn_syntax=dict(type='bool',),
         cleanup_expired_authtoken_timeout_period=dict(type='int',),
         cleanup_sessions_timeout_period=dict(type='int',),
+        clock_skew_config=dict(type='dict',),
         cloud_discovery_interval=dict(type='int',),
         cloud_reconcile=dict(type='bool',),
         cloud_reconcile_interval=dict(type='int',),
@@ -1199,7 +1208,7 @@ def main():
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
     return avi_ansible_api(module, 'controllerproperties',
-                           {'portal_token', 'ai_assistant_project_key', 'cc_user_password_expiry_days'})
+                           {'ai_assistant_project_key', 'cc_user_password_expiry_days', 'portal_token'})
 
 
 if __name__ == '__main__':

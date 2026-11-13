@@ -104,6 +104,25 @@ Parameters
     </tr>
                                             <td colspan="7">
                 <div class="ansibleOptionAnchor" id="parameter-"></div>
+                <b>preflight_check</b>
+                <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
+                <div style="font-size: small">
+                                                                        <span style="color: purple">bool</span>
+                                                            </div>
+            </td>
+            <td>
+                                                            </td>
+            <td>
+                                                <div style="font-size: small">
+                  - When http_method is post or put, controls whether an automated pre-flight GET is performed to check whether the object already exists to decide between POST/create and PUT/update.
+                </div>
+                                <div style="font-size: small">
+                  - Set to false for action or write-only endpoints that do not support GET for example segroup/resume, to avoid a spurious HTTP 404/405 from the pre-flight check.
+                </div>
+                                            </td>
+    </tr>
+                                            <td colspan="7">
+                <div class="ansibleOptionAnchor" id="parameter-"></div>
                 <b>timeout</b>
                 <a class="ansibleOptionLink" href="#parameter-" title="Permalink to this option"></a>
                 <div style="font-size: small">
