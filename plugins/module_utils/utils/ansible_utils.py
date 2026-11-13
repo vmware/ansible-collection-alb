@@ -16,8 +16,8 @@ import yaml
 import time
 import logging
 from copy import deepcopy
-from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, avi_sdk_syslog_logger, \
-    AviCredentials
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, APIError, \
+    avi_sdk_syslog_logger, AviCredentials
 from ansible_collections.vmware.alb.plugins.module_utils.csp_avi_api import CSPApiSession
 from ansible_collections.vmware.alb.plugins.module_utils.saml_avi_api import OneloginSAMLApiSession, OktaSAMLApiSession
 
@@ -36,6 +36,25 @@ else:
 
 class InvalidRefFormat(Exception):
     pass
+
+
+def handle_preflight_get_error(module, path, exc):
+    """
+    :param module: AnsibleModule, used to surface the warning
+    :param path: path that was queried, for the warning message
+    :param exc: the ObjectNotFound or APIError raised by rsp.json()
+    """
+    if isinstance(exc, ObjectNotFound):
+        return
+    rsp = exc.args[1] if len(exc.args) > 1 else None
+    if getattr(rsp, 'status_code', None) == 405:
+        module.warn(
+            "Pre-flight GET on path '%s' returned HTTP 405 (Method Not "
+            "Allowed); treating it as an action endpoint without GET "
+            "support and skipping the pre-flight existence check. Set "
+            "preflight_check: false to suppress this warning." % path)
+        return
+    raise exc
 
 
 class AviCheckModeResponse(object):

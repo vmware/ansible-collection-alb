@@ -10,9 +10,21 @@ set -e
 
 echo "Migrating avihost service files."
 
+major_version=$(
+    awk '/Version/ {
+        split($2, a, ".");
+        print a[1]
+    }' /bootstrap/VERSION
+)
+
 BASEDIR=$(dirname "$0")
 
-# Minimum supported SE version is 30.x (Python 3 only); legacy pre-20 Python 2 check removed.
-python3 "$BASEDIR/install.py"
+python_cmd="python3"
+if [ "$major_version" -lt 20 ]; then
+    echo "using python2"
+    python_cmd="python"
+fi
+
+"$python_cmd" "$BASEDIR/install.py"
 
 echo "Completed: Migration of avihost service files."
