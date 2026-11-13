@@ -140,6 +140,7 @@ plugins/modules/avi_akoamkocluster.py validate-modules:missing-gplv3-license
 plugins/modules/avi_nsxtsegmentruntime.py validate-modules:missing-gplv3-license
 plugins/modules/avi_actiongroupconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_backup.py validate-modules:missing-gplv3-license
+plugins/modules/avi_clfprofile.py validate-modules:missing-gplv3-license
 plugins/modules/avi_availabilityzone.py validate-modules:missing-gplv3-license
 plugins/modules/avi_alertconfig.py validate-modules:missing-gplv3-license
 plugins/modules/avi_serverautoscalepolicy.py validate-modules:missing-gplv3-license
