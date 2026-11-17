@@ -1,0 +1,29 @@
+---
+profile: production
+skip_list:
+  - var-naming[no-role-prefix]
+  - var-naming[pattern]
+  - yaml[line-length]
+
+# Exclude runtime/cache directories and non-core test/molecule paths
+exclude_paths:
+  - .ansible/
+  - .cache/
+  - roles/avicontroller/molecule/
+  - roles/avise/molecule/
+  - roles/avise/tests/
+
+# Mock external galaxy roles used in test/molecule playbooks during syntax-check
+mock_roles:
+  - avinetworks.docker
+  - avinetworks.avicontroller
+  - avinetworks.avisdk
+  - avinetworks.avise
+  - avinetworks.avise_vmware
+  - avinetworks.avicontroller_vmware
+
+# Mock external collection modules used in VMware deployment roles during syntax-check
+mock_modules:
+  - community.vmware.vmware_guest_network
+  - community.vmware.vmware_guest_find
+  - community.vmware.vmware_vm_info

@@ -5,14 +5,20 @@ from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, \
     sessionDict, APIError
-import requests
 import re
 import urllib
 import json
 from datetime import datetime
-from requests import ConnectionError
-from requests.exceptions import ChunkedEncodingError
 from ssl import SSLError
+
+try:
+    import requests
+    from requests import ConnectionError
+    from requests.exceptions import ChunkedEncodingError
+except ImportError:
+    # ApiSession raises a clear error when requests is missing.
+    requests = None
+    ChunkedEncodingError = Exception
 import time
 import logging
 import warnings

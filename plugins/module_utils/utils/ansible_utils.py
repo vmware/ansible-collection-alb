@@ -12,14 +12,19 @@ __metaclass__ = type
 import hashlib
 import os
 import re
-import yaml
 import time
 import logging
 from copy import deepcopy
-from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, avi_sdk_syslog_logger, \
-    AviCredentials
+from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, ObjectNotFound, avi_sdk_syslog_logger, AviCredentials
 from ansible_collections.vmware.alb.plugins.module_utils.csp_avi_api import CSPApiSession
 from ansible_collections.vmware.alb.plugins.module_utils.saml_avi_api import OneloginSAMLApiSession, OktaSAMLApiSession
+
+try:
+    import yaml
+    HAS_YAML = True
+except ImportError:
+    yaml = None
+    HAS_YAML = False
 
 try:
     from requests_toolbelt import MultipartEncoder
@@ -36,6 +41,25 @@ else:
 
 class InvalidRefFormat(Exception):
     pass
+
+
+def handle_preflight_get_error(module, path, exc):
+    """
+    :param module: AnsibleModule, used to surface the warning
+    :param path: path that was queried, for the warning message
+    :param exc: the ObjectNotFound or APIError raised by rsp.json()
+    """
+    if isinstance(exc, ObjectNotFound):
+        return
+    rsp = exc.args[1] if len(exc.args) > 1 else None
+    if getattr(rsp, 'status_code', None) == 405:
+        module.warn(
+            "Pre-flight GET on path '%s' returned HTTP 405 (Method Not "
+            "Allowed); treating it as an action endpoint without GET "
+            "support and skipping the pre-flight existence check. Set "
+            "preflight_check: false to suppress this warning." % path)
+        return
+    raise exc
 
 
 class AviCheckModeResponse(object):
@@ -110,6 +134,35 @@ def purge_optional_fields(obj, module):
     for param in purge_fields:
         obj.pop(param, None)
     return obj
+
+
+def merge_with_existing(new_obj, existing_obj):
+    """
+    For a PUT: returns the object to send. It starts from the controller's
+    object and puts the playbook's values on top, at every level of nested
+    dicts, so everything the playbook leaves out keeps the controller's value
+    (AV-298730). Before this, only top-level fields were filled in (AV-280874):
+    a playbook that set part of a sub-object, for example some fields of
+    systemconfiguration.portal_configuration, sent a PUT with only those
+    fields, and the controller reset the rest (http_port, https_port, ...).
+    - dict in the playbook and on the controller: merged key by key, the same way
+    - None in the playbook: the controller's value is kept
+    - anything else (string, number, bool, list): the playbook's value replaces
+      the controller's value. Lists are replaced as a whole, not item by item.
+    Neither argument is changed.
+    :param new_obj: object from the playbook
+    :param existing_obj: object from the controller
+    :return: merged object
+    """
+    merged = deepcopy(existing_obj)
+    for key, value in new_obj.items():
+        if value is None:
+            continue
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = merge_with_existing(value, merged[key])
+        else:
+            merged[key] = deepcopy(value)
+    return merged
 
 
 def cleanup_absent_fields(obj):
@@ -465,7 +518,8 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
         # As per API response, name is always same as username regardless of full_name
         obj['name'] = obj['username']
 
-    log.info('passed object %s ', {**obj, 'password': None})
+    redact_keys = set(sensitive_fields or ()) | {'password'}
+    log.info('passed object %s ', {k: (None if k in redact_keys else v) for k, v in obj.items()})
 
     file_path = obj.pop('file_path', None)
     is_fileObject_endpoint = obj_type == "fileobject/upload"
@@ -500,11 +554,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                                       existing_obj=existing_obj,
                                       api_context=api.get_context())
 
-        # Build multipart form fields.  The module exposes 'url' for the CRL
-        # server address, but the fileobject/upload form schema uses 'server_url'.
         fields = {}
         for k, v in obj.items():
-            fields['server_url' if k == 'url' else k] = str(v)
+            fields[k] = str(v)
 
         rsp = None
         if file_path:
@@ -641,11 +693,9 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
             obj_uuid = existing_obj['uuid']
             obj_path = '%s/%s' % (obj_type, obj_uuid)
         if avi_update_method == 'put':
-            # Merge with existing object to preserve unspecified fields
-            merged_obj = deepcopy(existing_obj)
-            for key, value in obj.items():
-                if value is not None:
-                    merged_obj[key] = value
+            # Merge with existing object to preserve unspecified fields,
+            # also inside sub-objects (AV-298730)
+            merged_obj = merge_with_existing(obj, existing_obj)
 
             changed = not avi_obj_cmp(merged_obj, existing_obj, sensitive_fields)
             obj = cleanup_absent_fields(merged_obj)
@@ -670,6 +720,8 @@ def avi_ansible_api(module, obj_type, sensitive_fields):
                 patch_data = {}
                 if avi_patch_path:
                     if avi_patch_value:
+                        if not HAS_YAML:
+                            return module.fail_json(msg='The python "PyYAML" library is required to use avi_patch_value')
                         avi_patch_value = yaml.load(avi_patch_value, Loader=yaml.SafeLoader)
                     patch_data = {
                         "json_patch": [{
@@ -724,7 +776,7 @@ def avi_common_argument_spec():
         csp_token=dict(default='', type='str', no_log=True),
         ssl_cert=dict(default='', type='str', no_log=True),
         ssl_key=dict(default='', type='str', no_log=True),
-        verify=dict(default=False)
+        verify=dict(default=False, type='raw')
     )
 
     return dict(
@@ -734,7 +786,7 @@ def avi_common_argument_spec():
         tenant=dict(default='admin'),
         tenant_uuid=dict(default=''),
         api_version=dict(default=os.environ.get('API_VERSION', '')),
-        verify=dict(default=False),
+        verify=dict(default=False, type='raw'),
         avi_credentials=dict(default=None, type='dict',
                              options=credentials_spec),
         api_context=dict(type='dict', no_log=True),

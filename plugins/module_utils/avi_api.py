@@ -18,11 +18,21 @@ else:
     from urllib.parse import urlparse
 
 from datetime import datetime, timedelta
-from requests import ConnectionError
-from requests import Response
-from requests.exceptions import ChunkedEncodingError
-from requests.sessions import Session
 from ssl import SSLError
+
+try:
+    from requests import ConnectionError
+    from requests import Response
+    from requests.exceptions import ChunkedEncodingError
+    from requests.sessions import Session
+    HAS_REQUESTS = True
+except ImportError:
+    # Lets the file load without requests (ansible-test import check).
+    # ApiSession raises a clear error when it is created.
+    HAS_REQUESTS = False
+    Response = object
+    Session = object
+    ChunkedEncodingError = Exception
 
 
 logger = logging.getLogger(__name__)
@@ -149,7 +159,7 @@ class AviCredentials(object):
     controller = ''
     username = ''
     password = ''
-    api_version = '20.1.1'
+    api_version = '30.2.1'
     tenant = None
     tenant_uuid = None
     token = None
@@ -187,7 +197,7 @@ class AviCredentials(object):
         if m.params['password']:
             self.password = m.params['password']
         if (m.params['api_version'] and
-                (m.params['api_version'] != '20.1.1')):
+                (m.params['api_version'] != '30.2.1')):
             self.api_version = m.params['api_version']
         if m.params['tenant']:
             self.tenant = m.params['tenant']
@@ -249,6 +259,8 @@ class ApiSession(Session):
             the prefix.
         """
 
+        if not HAS_REQUESTS:
+            raise ImportError('The python "requests" library is required for ApiSession')
         super(ApiSession, self).__init__()
         logger.debug(
             "Creating session with following values:\n "
