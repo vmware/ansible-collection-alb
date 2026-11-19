@@ -169,7 +169,7 @@ def main():
         return module.fail_json(msg=(
             'Python requests package is not installed. '
             'For installation instructions, visit https://pypi.org/project/requests.'))
-    return avi_ansible_api(module, 'licenseledgerdetails',
+    return avi_ansible_api(module, 'licensing/ledger/details',
                            set())
 
 

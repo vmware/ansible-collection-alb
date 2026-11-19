@@ -7,9 +7,14 @@ import logging
 import time
 
 from ansible_collections.vmware.alb.plugins.module_utils.avi_api import ApiSession, APIError
-from requests import ConnectionError
-from requests.exceptions import ChunkedEncodingError
 from ssl import SSLError
+
+try:
+    from requests import ConnectionError
+    from requests.exceptions import ChunkedEncodingError
+except ImportError:
+    # ApiSession raises a clear error when requests is missing.
+    ChunkedEncodingError = Exception
 
 logger = logging.getLogger(__name__)
 

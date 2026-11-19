@@ -39,8 +39,14 @@ options:
     api_version:
         description:
             - Avi API version of to use for Avi API and objects.
+            - The default value is the environment variable C(API_VERSION). If that is not set, C(30.2.1) is used.
         type: str
-        default: 30.2.1
+        default: ''
+    verify:
+        description:
+            - Not used. Set I(avi_credentials.verify) instead.
+        type: raw
+        default: false
     avi_credentials:
         description:
             - Avi Credentials dictionary which can be used in lieu of enumerating Avi Controller login details.
@@ -49,19 +55,22 @@ options:
                 description:
                   - Avi controller IP or SQDN
                 type: str
+                default: ''
             username:
                 description:
                   - Avi controller username
                 type: str
+                default: ''
             password:
                 description:
                   - Avi controller password
                 type: str
+                default: ''
             api_version:
                 description:
-                  - Avi controller version
+                  - Avi controller version. The default value is the environment variable C(API_VERSION).
                 type: str
-                default: 30.2.1
+                default: ''
             tenant:
                 description:
                   - Avi controller tenant
@@ -80,6 +89,7 @@ options:
                 description:
                   - Avi controller API token
                 type: str
+                default: ''
             timeout:
                 description:
                   - Avi controller request timeout
@@ -89,30 +99,42 @@ options:
                 description:
                   - Avi controller API session id to reuse existing session with csrftoken
                 type: str
+                default: ''
             csrftoken:
                 description:
                   - Avi controller API csrftoken to reuse existing session with session id
                 type: str
+                default: ''
             csp_host:
                 description:
                   - CSP host for Saas controller
                 type: str
+                default: ''
             csp_token:
                 description:
                   - Saas controller password
                 type: str
+                default: ''
             idp_class:
                 description:
                   - Specifies whether it is an Avi controller or Saas controller
                 type: str
+                default: ''
             ssl_cert:
                 description:
                   - Specifies the ssl cert
                 type: str
+                default: ''
             ssl_key:
                 description:
                   - Specifies the ssl key
                 type: str
+                default: ''
+            verify:
+                description:
+                  - Verify the TLS certificate of the controller. Use C(true), C(false), or the path to a CA bundle file.
+                type: raw
+                default: false
         type: dict
     api_context:
         description:
