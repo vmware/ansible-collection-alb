@@ -20,14 +20,15 @@
 
 - name: Fetch and delete log file
   become: true
-  failed_when: true
   block:
     - name: Fetch log file
       ansible.builtin.fetch:
         src: /tmp/log
         dest: /tmp/log
+      ignore_errors: true
 
     - name: Delete log file
       ansible.builtin.file:
         path: /tmp/log
         state: absent
+      ignore_errors: true
