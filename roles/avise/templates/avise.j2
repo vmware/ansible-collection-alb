@@ -83,7 +83,8 @@ container_exists() {
 
 start_container() {
   write_log "[`date`] Starting the ${container} container"
-  write_log "[`date`] Using se_docker_run_params=${se_docker_run_params}"
+  masked_run_params=$(printf '%s\n' "${se_docker_run_params}" | sed -E "s/(-e [A-Za-z0-9_]*(COOKIE|TOKEN|PASSWORD|PASSWD|SECRET|KEY)[A-Za-z0-9_]*=)[^[:space:]\"']+/\\1****/Ig" 2>/dev/null) || masked_run_params="<redaction failed>"
+  write_log "[`date`] Using se_docker_run_params=${masked_run_params}"
   ${cont_plat} run ${se_docker_run_params}
   if [ $? -eq 0 ]; then
     write_log "[`date`] Service ${container} running..."
