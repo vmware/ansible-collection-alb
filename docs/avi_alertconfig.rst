@@ -962,7 +962,7 @@ Parameters
                   - SE_AUTOSCALER_ACTIONS_GENERATED, PASSWORD_ROTATION_COMPLETED, PASSWORD_ROTATION_FAILED, PASSWORD_ROTATION_BOTH_PASSWORDS_INVALID,
                 </div>
                                 <div style="font-size: small">
-                  - NTP_WEAK_AUTH_ALGORITHM_CONFIGURED, OPEN_API_SPEC_DELETE_CLEANUP_STARTED, OPEN_API_SPEC_DELETE_CLEANUP_COMPLETED.
+                  - NTP_WEAK_AUTH_ALGORITHM_CONFIGURED, OPEN_API_SPEC_DELETE_CLEANUP_STARTED, OPEN_API_SPEC_DELETE_CLEANUP_COMPLETED, PASSWORD_ROTATION_AUTH_FAILED.
                 </div>
                                 <div style="font-size: small">
                   - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
