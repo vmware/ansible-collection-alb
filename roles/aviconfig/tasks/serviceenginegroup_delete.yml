@@ -283,6 +283,7 @@
     significant_log_throttle: "{{ item.significant_log_throttle | default(omit) }}"
     ssl_preprocess_sni_hostname: "{{ item.ssl_preprocess_sni_hostname | default(omit) }}"
     ssl_sess_cache_per_vs: "{{ item.ssl_sess_cache_per_vs | default(omit) }}"
+    supervisor_group: "{{ item.supervisor_group | default(omit) }}"
     tenant_ref: "{{ item.tenant_ref | default(omit) }}"
     transient_shared_memory_max: "{{ item.transient_shared_memory_max | default(omit) }}"
     udf_log_throttle: "{{ item.udf_log_throttle | default(omit) }}"

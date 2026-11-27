@@ -60,13 +60,6 @@ options:
             - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
             - Default value when not specified in API or module is interpreted by Avi Controller as 1.
         type: int
-    remote_controller:
-        description:
-            - Remote controller request to enable report generation for remote controller.
-            - If enabled, the report generation will be done for the remote controller.
-            - Field introduced in 32.1.1.
-            - Allowed with any value in enterprise, essentials, basic, enterprise with cloud services edition.
-        type: dict
     url:
         description:
             - Avi controller URL of the object.
@@ -134,7 +127,6 @@ def main():
         avi_deactivate_session_cache_as_fact=dict(type='bool', default=False),
         collection_rules=dict(type='dict',),
         max_concurrent_reports=dict(type='int',),
-        remote_controller=dict(type='dict',),
         url=dict(type='str',),
         uuid=dict(type='str',),
     )
